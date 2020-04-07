@@ -1,8 +1,4 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+// See: https://www.gatsbyjs.org/docs/node-apis/
 
 // https://www.gatsbyjs.org/docs/add-custom-webpack-config/
 exports.onCreateWebpackConfig = ({
@@ -13,11 +9,13 @@ exports.onCreateWebpackConfig = ({
   const config = getConfig()
 
   // Hides "[HMR] ..." logs in devtools
-  config.entry.commons = config.entry.commons.map(path => (
-    // Add query param to entry added by Gatsby CLI https://git.io/JvAC5
-    path.indexOf('/webpack-hot-middleware/client.js?') > -1 ?
-      path + '&quiet=true' : path
-  ))
+  if (config.entry.commons) {
+    config.entry.commons = config.entry.commons.map(path => (
+      // Add query param to entry added by Gatsby CLI https://git.io/JvAC5
+      path.indexOf('/webpack-hot-middleware/client.js?') > -1 ?
+        path + '&quiet=true' : path
+    ))
+  }
 
   actions.replaceWebpackConfig(config)
 
