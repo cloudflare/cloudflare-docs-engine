@@ -15,8 +15,8 @@ exports.onCreateWebpackConfig = ({
   // Hides "[HMR] ..." logs in devtools
   config.entry.commons = config.entry.commons.map(path => (
     // Add query param to entry added by Gatsby CLI https://git.io/JvAC5
-    path.indexOf('/webpack-hot-middleware/client.js?') !== -1 ?
-      path : path + '&quiet=true'
+    path.indexOf('/webpack-hot-middleware/client.js?') > -1 ?
+      path + '&quiet=true' : path
   ))
 
   actions.replaceWebpackConfig(config)
