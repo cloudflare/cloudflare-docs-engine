@@ -1,12 +1,5 @@
 import getPageTitle from "./get-page-title"
 
-const getPath = filePath => {
-  return filePath
-    .split(/.*\/src\/pages/)[1] // TODO
-    .split('.')[0]
-    .replace(/index$/, '') // TODO
-}
-
 const getParentPath = path => {
   return path.replace(/\/[^/]*$/, '')
 }
@@ -30,7 +23,7 @@ const generateNavTree = pages => {
   const pagesByPath = {}
 
   pages.forEach((page, i) => {
-    const path = getPath(page.fileAbsolutePath)
+    const path = page.fields.slug
     pages[i].path = path
     pagesByPath[path] = page
 

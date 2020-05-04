@@ -20,13 +20,15 @@ const DocsSidebarNav = () => {
         edges {
           node {
             id
+            fields {
+              slug
+            }
             frontmatter {
               title
               type
               order
               hidden
             }
-            fileAbsolutePath
             headings(depth: h1) {
               value
               depth

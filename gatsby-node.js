@@ -31,27 +31,37 @@ exports.onCreateWebpackConfig = ({
 }
 
 
+const { createFilePath } = require("gatsby-source-filesystem")
 
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
 
+  if (node.internal.type.toLowerCase() === "mdx") {
+    const value = createFilePath({ node, getNode }).replace(/(.+)(\/)$/, "$1")
 
-
-// TODO
-const getPath = filePath => {
-  return filePath
-    .split(/.*\/src\/pages/)[1]
-    .split('.')[0]
-    .replace(/index$/, '')
+    createNodeField({
+      name: "slug",
+      node,
+      value
+    })
+  }
 }
 
-exports.createPages = async ({ actions, graphql }) => {
+
+const path = require("path")
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  const query = await graphql(`
-    {
+  const result = await graphql(`
+    query {
       allMdx {
         edges {
           node {
             id
+            fields {
+              slug
+            }
             frontmatter {
               title
               type
@@ -69,20 +79,17 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `)
 
-  if (query.errors) throw query.errors
+  if (result.errors) {
+    reporter.panicOnBuild('ERROR: Loading "createPages" query')
+  }
 
-  query.data.allMdx.edges.forEach(({ node }) => {
-    const {
-      frontmatter: { pathname }
-    } = node
+  const pages = result.data.allMdx.edges
 
+  pages.forEach(({ node }) => {
     createPage({
-      path: `/foobar${ getPath(node.fileAbsolutePath) }`,
-      component: node.fileAbsolutePath,
-      context: {
-        id: node.id,
-        headings: node.headings
-      }
+      path: node.fields.slug,
+      component: path.resolve("./src/components/custom-mdx-renderer.js"),
+      context: node
     })
   })
 }

@@ -9,38 +9,13 @@ import DocsSidebar from "./docs-sidebar"
 import DocsToolbar from "./docs-toolbar"
 import DocsBody from "./docs-body"
 
-import { MDXProvider } from "@mdx-js/react"
-import { Link } from "gatsby"
-// import { YouTube, Twitter, TomatoBox } from "./ui"
-
 import getPageTitle from "../utils/get-page-title"
-
-// const globalMDXComponents = { Link, YouTube, Twitter, TomatoBox }
-const globalMDXComponents = { Link }
 
 const DocsPage = ({ pageContext, children }) => {
   const { frontmatter } = pageContext
 
-  console.log(pageContext)
-
-  // console.log(getPageTitle(pageContext))
-  // console.log(frontmatter)
-
+  const title = getPageTitle(pageContext)
   const pageType = frontmatter && frontmatter.type ? frontmatter.type : "document"
-
-  // const { site } = useStaticQuery(
-  //   graphql`
-  //     query {
-  //       site {
-  //         siteMetadata {
-  //           title
-  //           description
-  //           author
-  //         }
-  //       }
-  //     }
-  //   `
-  // )
 
   return (
     <div className="DocsPage">
@@ -52,13 +27,11 @@ const DocsPage = ({ pageContext, children }) => {
       <DocsToolbar/>
 
       <DocsBody>
-        <SEO title="Learning" /> {/* TODO */}
+        <SEO title={title} />
 
         <div className="DocsContent" page-type={pageType}>
           <div className="DocsMarkdown">
-            <MDXProvider components={globalMDXComponents}>
-              {children}
-            </MDXProvider>
+            {children}
           </div>
         </div>
       </DocsBody>
