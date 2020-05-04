@@ -1,0 +1,47 @@
+html[is-docs-page],
+html[is-docs-page] body {
+  height: 100%;
+  overscroll-behavior: none;
+}
+
+.DocsPage {
+  --docs-header-height: 3.7647058824rem; /* 64 / 17 */
+  --docs-sidebar-width: 18rem;
+  --docs-body-sidebar-width: var(--docs-sidebar-width);
+  --docs-page-side-padding: 1rem;
+  --docs-page-width: 1440px; /* TODO */
+  position: relative;
+  width: 100%;
+  max-width: var(--docs-page-width);
+  min-height: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 1439px) {
+  .DocsPage {
+    --docs-page-sidebar-preserverd-width: calc(100vw - var(--docs-sidebar-width)
+      - (var(--docs-page-width) - 2 * var(--docs-sidebar-width)));
+
+    --docs-body-sidebar-width: calc(15vw + var(--docs-page-sidebar-preserverd-width) / 4);
+  }
+}
+
+@media (max-width: 1280px) {
+  .DocsPage {
+    --docs-sidebar-width: 17rem;
+    --docs-body-sidebar-width: 18vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .DocsPage {
+    --docs-body-sidebar-width: 0px;
+  }
+}
+
+@media (max-width: 768px) {
+  .DocsPage {
+    --docs-header-height: 3rem;
+    padding-top: var(--docs-header-height);
+  }
+}

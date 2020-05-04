@@ -1,0 +1,112 @@
+.DocsTutorials {
+  margin: 2em 0;
+  width: 53em;
+  max-width: 100%;
+}
+
+[theme="dark"] .DocsTutorials {
+  color: var(--gray-7); /* TODO */
+}
+
+.DocsTutorials--item {
+  display: flex;
+  --gap: 1.5em;
+  align-items: center;
+  padding-bottom: .5em;
+}
+
+.DocsTutorials--item:not(:last-child) {
+  border-bottom: 1px solid rgba(var(--color-rgb), .1);
+  margin-bottom: .5em;
+}
+
+.DocsTutorials--item-header-text {
+  font-size: .9em;
+  font-weight: bold;
+}
+
+.DocsTutorials--item.DocsTutorials--item-header {
+  border-bottom-width: .125em;
+  padding-bottom: .1875em;
+}
+
+.DocsTutorials--item-name {
+  flex: 1;
+  padding-right: calc(var(--gap) / 2);
+}
+
+.DocsTutorials--item-link {
+  font-size: 1.2em;
+  color: inherit;
+  text-decoration-color: rgba(var(--orange-rgb), .75);;
+  box-shadow: 0 0 0 var(--focus-size) var(--focus-color);
+  transition: box-shadow .3s ease;
+}
+
+[theme="dark"] .DocsTutorials--item-link {
+  text-decoration-color: rgba(var(--orange-rgb), .5);;
+}
+
+.DocsTutorials--item-is-new .DocsTutorials--item-link::after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  height: 8px;
+  width: 8px;
+  border-radius: 999em;
+  margin-left: .75em;
+  background: var(--orange);
+}
+
+[js-focus-visible-polyfill-available] .DocsTutorials--item-link:focus {
+  outline: none;
+}
+
+.DocsTutorials--item-link[is-focus-visible] {
+  --underline-size: 0;
+}
+
+.DocsTutorials--item-link:not([is-focus-visible]) {
+  --focus-size: 0;
+}
+
+.DocsTutorials--item-updated {
+  padding-left: calc(var(--gap) / 2);
+  padding-right: calc(var(--gap) / 2);
+}
+
+.DocsTutorials--item-difficulty {
+  width: 6.5em;
+  padding-left: calc(var(--gap) / 2);
+  padding-right: calc(var(--gap) / 2);
+  flex-shrink: 0;
+}
+
+.DocsTutorials--item-length {
+  width: 4.5em;
+  padding-left: calc(var(--gap) / 2);
+  flex-shrink: 0;
+}
+
+.DocsTutorials--item-length-bar {
+  width: 100%;
+  height: .5em;
+}
+
+.DocsTutorials--item-length-bar-inner {
+  background: rgba(var(--color-rgb), .5);
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .DocsTutorials--item-difficulty,
+  .DocsTutorials--item-length {
+    display: none;
+  }
+
+  .DocsTutorials--item-updated {
+    padding-right: 0;
+  }
+}

@@ -1,0 +1,24 @@
+[with-styled-webkit-scrollbars] ::-webkit-scrollbar {
+  width: .5em;
+  background: transparent;
+}
+
+[with-styled-webkit-scrollbars] ::-webkit-scrollbar-thumb {
+  border-radius: 1em;
+}
+
+[with-styled-webkit-scrollbars]:hover ::-webkit-scrollbar-thumb {
+  background: var(--gray-5);
+}
+
+[with-styled-webkit-scrollbars]:hover ::-webkit-scrollbar-track-piece {
+  background: var(--gray-8);
+}
+
+[theme="dark"] [with-styled-webkit-scrollbars]:hover ::-webkit-scrollbar-thumb {
+  background: var(--gray-2);
+}
+
+[theme="dark"] [with-styled-webkit-scrollbars]:hover ::-webkit-scrollbar-track-piece {
+  background: transparent;
+}

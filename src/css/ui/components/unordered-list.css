@@ -1,0 +1,35 @@
+.UnorderedList {
+  padding: 0;
+  list-style: none;
+}
+
+.UnorderedList > li {
+  padding-left: 2em;
+  background: url("./resources/icons/bullet.svg") no-repeat .25em .4em;
+  background-size: .6em .6em;
+}
+
+[theme="dark"] .UnorderedList > li {
+  background: url("./resources/icons/bullet-dark-theme.svg") no-repeat .25em .4em;
+  background-size: .6em .6em;
+}
+
+.UnorderedList > li:not(:last-child) {
+  margin-bottom: .5em;
+}
+
+.UnorderedList.UnorderedList-is-primary {
+  padding: 0;
+  list-style: none;
+}
+
+.UnorderedList.UnorderedList-is-primary > li,
+[theme="dark"] .UnorderedList.UnorderedList-is-primary > li {
+  background: url("./resources/icons/bullet-orange.svg") no-repeat 0 .275em;
+  background-size: 1em 1em;
+  padding-left: 2em;
+}
+
+.UnorderedList.UnorderedList-is-primary > li:not(:last-child) {
+  margin-bottom: .75em;
+}

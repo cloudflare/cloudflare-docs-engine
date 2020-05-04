@@ -1,0 +1,55 @@
+.InlineCode {
+  display: inline-block;
+  font-family: var(--monospace-font-family);
+  font-size: .85em;
+  --default-padding: .1em .3em;
+  padding: var(--padding, var(--default-padding));
+  --default-background: rgba(var(--color-rgb), .05);
+  background: var(--background, var(--default-background));
+  border-radius: .25em;
+  max-width: 100%;
+}
+
+.InlineCode.InlineCode-is-nowrap {
+  white-space: nowrap;
+}
+
+.InlineCode.InlineCode-is-definition {
+  font-size: .9em;
+  --padding: .125em .3em;
+}
+
+.InlineCode.InlineCode-is-type,
+.InlineCode--type {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 700;
+  font-size: .666rem;
+  border-radius: .2em;
+  opacity: .75;
+  --border-opacity: .4;
+  box-shadow: 0 0 0 1px rgba(var(--color-rgb), var(--border-opacity));
+
+  /* TODO */
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.InlineCode.InlineCode-is-type {
+  padding: 1px 4px; /* Avoid messy em-rounding */
+  --background: transparent;
+}
+
+.InlineCode--type {
+  padding: 0 3px; /* Avoid messy em-rounding */
+  margin-left: .5em;
+  --border-opacity: .25;
+}
+
+@media (max-width: 768px) {
+  .InlineCode.InlineCode-is-type,
+  .InlineCode--type {
+    padding: 0 2px;
+  }
+}

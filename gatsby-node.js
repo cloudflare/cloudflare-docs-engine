@@ -29,3 +29,60 @@ exports.onCreateWebpackConfig = ({
     ]
   })
 }
+
+
+
+
+
+
+// TODO
+const getPath = filePath => {
+  return filePath
+    .split(/.*\/src\/pages/)[1]
+    .split('.')[0]
+    .replace(/index$/, '')
+}
+
+exports.createPages = async ({ actions, graphql }) => {
+  const { createPage } = actions
+
+  const query = await graphql(`
+    {
+      allMdx {
+        edges {
+          node {
+            id
+            frontmatter {
+              title
+              type
+              order
+              hidden
+            }
+            fileAbsolutePath
+            headings(depth: h1) {
+              value
+              depth
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (query.errors) throw query.errors
+
+  query.data.allMdx.edges.forEach(({ node }) => {
+    const {
+      frontmatter: { pathname }
+    } = node
+
+    createPage({
+      path: `/foobar${ getPath(node.fileAbsolutePath) }`,
+      component: node.fileAbsolutePath,
+      context: {
+        id: node.id,
+        headings: node.headings
+      }
+    })
+  })
+}

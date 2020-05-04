@@ -1,0 +1,323 @@
+.CodeBlock {
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--monospace-font-family);
+  font-size: .9em;
+  margin: 0;
+  --padding-vertical: .9em;
+  --padding-horizontal: 1.25em;
+  --border-radius: .5em;
+  border-radius: var(--border-radius);
+  background: var(--code-block-background-color);
+  color: var(--code-block-color);
+  max-width: 100%;
+  cursor: text;
+}
+
+[theme="light"] .CodeBlock-is-light-in-light-theme {
+  --code-block-background-color: var(--gray-9);
+  --code-block-color: currentColor;
+  --code-block-scrollbar-color: var(--gray-6);
+
+  --code-gray:   var(--code-gray-light-theme);
+  --code-red:    var(--code-red-light-theme);
+  --code-orange: var(--code-orange-light-theme);
+  --code-gold:   var(--code-gold-light-theme);
+  --code-green:  var(--code-green-light-theme);
+  --code-blue:   var(--code-blue-light-theme);
+  --code-cyan:   var(--code-cyan-light-theme);
+  --code-indigo: var(--code-indigo-light-theme);
+  --code-lilac:  var(--code-lilac-light-theme);
+  --code-violet: var(--code-violet-light-theme);
+
+  --diff-indicator-red: var(--diff-indicator-red-light-theme);
+  --diff-indicator-green: var(--diff-indicator-green-light-theme);
+}
+
+.CodeBlock > code {
+  display: block;
+  padding: var(--padding-vertical) var(--padding-horizontal);
+  font-family: inherit;
+}
+
+.CodeBlock > code::-webkit-scrollbar {
+  height: 14px;
+  opacity: 0;
+}
+
+.CodeBlock > code::-webkit-scrollbar-track-piece {
+  background: transparent;
+  border-radius: var(--border-radius);
+}
+
+.CodeBlock > code::-webkit-scrollbar-thumb {
+  border-radius: var(--border-radius);
+  box-shadow: inset 0 1px 1px rgba(var(--background-color-rgb), .15);
+  border: 5px solid var(--code-block-background-color);
+  background: var(--code-block-scrollbar-color);
+  border-radius: calc(20 * var(--border-radius));
+  transition: all 1s ease;
+}
+
+.CodeBlock-is-one-liner > code {
+  border-radius: calc(.625 * var(--border-radius));
+  white-space: nowrap;
+  word-break: normal;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.CodeBlock-scrolls-horizontally > code {
+  white-space: pre;
+  word-break: normal;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.CodeBlock-is-hero {
+  --padding-vertical: 1.25em;
+  --padding-horizontal: 1.5em;
+  box-shadow:
+    0 1px 1px rgba(var(--shadow-color-rgb), .075),
+    0 .1333em .26667em rgba(var(--shadow-color-rgb), .075),
+    0 .2222em .66667em 0 rgba(var(--shadow-color-rgb), .075),
+    0 .4444em 1.3333em 0 rgba(var(--shadow-color-rgb), .075);
+}
+
+.CodeBlock--header,
+.CodeBlock--filename {
+  background: rgba(var(--color-rgb), .05);
+  box-shadow: 0 1px rgba(var(--shadow-color-rgb), .12);
+  padding: .4em var(--padding-horizontal);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  opacity: .9;
+  font-weight: bold;
+}
+
+[theme="light"] .CodeBlock-is-light-in-light-theme .CodeBlock--header,
+[theme="light"] .CodeBlock-is-light-in-light-theme .CodeBlock--filename {
+  background: transparent;
+}
+
+.CodeBlock--header {
+  font-family: var(--font-family);
+}
+
+.CodeBlock--filename {
+  padding-top: .45em;
+  font-size: .9em;
+  padding-left: calc(var(--padding-horizontal) / .9);
+  padding-right: calc(var(--padding-horizontal) / .9);
+}
+
+.CodeBlock b {
+  font-weight: normal;
+}
+
+.CodeBlock u {
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  text-decoration: none;
+  transition: opacity .25s ease;
+}
+
+@media (hover: hover) {
+  .CodeBlock:hover u {
+    opacity: .25;
+  }
+}
+
+.CodeBlock[has-selection-contained-within] u {
+  opacity: .25;
+}
+
+@media (hover: none) {
+  .CodeBlock:hover u {
+    opacity: .25;
+  }
+}
+
+/* Diffing */
+
+.CodeBlock.CodeBlock-with-rows > code {
+  padding-bottom: .5em; /* TODO */
+}
+
+.CodeBlock.CodeBlock-with-rows.CodeBlock-scrolls-horizontally > code {
+  padding-bottom: calc(var(--padding-vertical) - 14px); /* TODO */
+}
+
+.CodeBlock.CodeBlock-with-rows,
+.CodeBlock.CodeBlock-with-rows > code {
+  white-space: normal;
+}
+
+.CodeBlock-with-rows > code {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.CodeBlock-with-rows .CodeBlock--rows {
+  display: inline-block;
+  min-width: 100%;
+}
+
+.CodeBlock-with-rows .CodeBlock--row-content:empty::before {
+  content: " ";
+}
+
+.CodeBlock-with-rows .CodeBlock--row {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.CodeBlock-with-rows .CodeBlock--row-content {
+  display: block;
+  white-space: pre-wrap;
+  padding: 0 var(--padding-horizontal);
+}
+
+.CodeBlock-with-rows.CodeBlock-scrolls-horizontally .CodeBlock--row-content {
+  white-space: pre;
+}
+
+.CodeBlock--row-diff-add {
+  --row-diff-background-color: rgba(var(--color-rgb), .05);
+  background: var(--row-diff-background-color);
+}
+
+[theme="light"] .CodeBlock-is-light-in-light-theme.CodeBlock-with-rows .CodeBlock--row-diff-add {
+  --row-diff-background-color: rgba(var(--background-color-rgb), .8);
+}
+
+.CodeBlock--row-diff-remove {
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.CodeBlock-with-rows .CodeBlock--row-diff-add .CodeBlock--row-indicator,
+.CodeBlock-with-rows .CodeBlock--row-diff-remove .CodeBlock--row-indicator {
+  position: sticky;
+  left: 0;
+  display: flex;
+  border-left: .125em solid;
+  --width: .75em;
+  width: var(--width);
+  margin-right: calc(-1 * var(--width));
+  background:
+    linear-gradient(to right, var(--row-diff-background-color), transparent),
+    linear-gradient(to right, var(--code-block-background-color), transparent);
+}
+
+.CodeBlock-with-rows .CodeBlock--row-diff-add .CodeBlock--row-indicator {
+  border-left-color: var(--diff-indicator-green);
+}
+
+.CodeBlock-with-rows .CodeBlock--row-diff-remove .CodeBlock--row-indicator {
+  border-left-color: var(--diff-indicator-red);
+}
+
+[theme="light"] .CodeBlock-with-rows.CodeBlock-is-light-in-light-theme .CodeBlock--row-diff-add .CodeBlock--row-indicator {
+  background: transparent;
+}
+
+.CodeBlock-with-rows .CodeBlock--word-remove {
+  opacity: .5;
+  position: relative;
+}
+
+.CodeBlock-with-rows .CodeBlock--word-remove::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: .125em;
+  right: -.5em;
+  bottom: 0em;
+  left: -.5em;
+  height: 1px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: linear-gradient(
+    to right,
+    rgba(var(--color-rgb), 0),
+    rgba(var(--color-rgb), 0) 1em,
+    rgba(var(--color-rgb), .5) 2em,
+    rgba(var(--color-rgb), .5) calc(100% - 2em),
+    rgba(var(--color-rgb), 0) calc(100% - .5em),
+    rgba(var(--color-rgb), 0)
+  );
+}
+
+/* Syntax highlighting */
+
+.CodeBlock--comment {
+  font-style: italic;
+  color: var(--code-gray);
+}
+
+/* Terminal tokens */
+
+.CodeBlock--directory {
+  color: var(--code-orange);
+}
+
+.CodeBlock--prompt {
+  color: var(--code-orange);
+  opacity: .7;
+}
+
+.CodeBlock--value {
+  color: var(--code-cyan);
+}
+
+.CodeBlock--success {
+  color: var(--code-green);
+}
+
+/* Code tokens */
+
+.CodeBlock--keyword {
+  color: var(--code-red);
+}
+
+.CodeBlock--declaration-keyword {
+  color: var(--code-cyan);
+}
+
+.CodeBlock--class,
+.CodeBlock--function {
+  color: var(--code-green);
+}
+
+.CodeBlock--operator {
+  color: var(--code-red);
+}
+
+.CodeBlock--function-parameter {
+  font-style: italic;
+  color: var(--code-lilac);
+}
+
+.CodeBlock--number,
+.CodeBlock--boolean,
+.CodeBlock--null-undefined,
+.CodeBlock--built-in {
+  color: var(--code-violet);
+}
+
+.CodeBlock--api {
+  color: var(--code-orange);
+}
+
+.CodeBlock--regex,
+.CodeBlock--string,
+.CodeBlock--object-property {
+  color: var(--code-gold);
+}

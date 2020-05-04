@@ -1,0 +1,86 @@
+/* TODO */
+/*
+<div>
+  <div class="DocsMobileNav">
+    <ul class="DocsMobileNav-list">
+      <li class="DocsMobileNav-item">
+        <a class="DocsMobileNav-link" href>Item</a>
+      </li>
+      <li class="DocsMobileNav-item">
+        <a class="DocsMobileNav-link" href>Item</a>
+        <ul class="DocsMobileNav-subnav">
+          <li class="DocsMobileNav-item">
+            <a class="DocsMobileNav-link" href>Sub-item</a>
+          </li>
+          <li class="DocsMobileNav-item">
+            <a class="DocsMobileNav-link" href>Sub-item</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+*/
+
+.DocsMobileNav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* TODO */
+  display: none;
+}
+
+.DocsMobileNav-list {
+  list-style: none;
+  font-size: 1.11em;
+  padding: 0;
+}
+
+.DocsMobileNav-link {
+  position: relative;
+  display: block;
+  padding: .4125em 3.9em; /* TODO - use calc for left padding */
+  margin-top: -1px;
+}
+
+.DocsMobileNav-subnav {
+  list-style: none;
+  font-size: .85em;
+  padding: 0 0 1em;
+}
+
+.DocsMobileNav-subnav .DocsMobileNav-link {
+  padding: .25em 5.5em; /* TODO - use calc for left padding */
+}
+
+.DocsMobileNav-link:focus {
+  z-index: 1;
+}
+
+.DocsMobileNav-link[is-active] {
+  z-index: 2;
+}
+
+.DocsMobileNav-link-text {
+  position: relative;
+  display: inline-block;
+  padding: .2em .75em;
+  margin: -.2em -.75em;
+  border-radius: 99999em;
+}
+
+.DocsMobileNav-link:hover .DocsMobileNav-link-text {
+  background: rgba(var(--orange-rgb), .05);
+  color: var(--orange);
+}
+
+.DocsMobileNav-link:active .DocsMobileNav-link-text,
+.DocsMobileNav-link[is-active] .DocsMobileNav-link-text {
+  padding: .35em 1em .4em;
+  margin: -.35em -1em -.4em;
+  background: var(--sidebar-background-color);
+  transition: all .3s ease; /* TODO */
+}

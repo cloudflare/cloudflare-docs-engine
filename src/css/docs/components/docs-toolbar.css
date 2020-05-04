@@ -1,0 +1,40 @@
+.DocsToolbar {
+  position: absolute;
+  top: 0;
+  left: var(--docs-sidebar-width);
+  right: 0;
+  display: flex;
+  height: var(--docs-header-height);
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .DocsToolbar {
+    display: none; /* TODO */
+  }
+}
+
+.DocsToolbar--search {
+  flex: 1;
+  max-width: calc(var(--docs-page-width) - 2 * var(--docs-sidebar-width));
+  margin-right: auto;
+}
+
+.DocsToolbar--tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--docs-page-side-padding);
+}
+
+/* TODO */
+
+/*
+.DocsToolbar--notification-snack {
+  margin-right: var(--docs-page-side-padding);
+}
+
+.DocsToolbar--color-scheme-toggle {
+
+}
+*/

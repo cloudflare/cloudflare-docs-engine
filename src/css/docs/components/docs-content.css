@@ -1,0 +1,17 @@
+.DocsContent {
+  padding: 2.7em 3.7647058824em; /* 64 / 17 */
+}
+
+.DocsContent[page-type="document"] {
+  width: calc(100% - var(--docs-body-sidebar-width));
+}
+
+@media (max-width: 768px) {
+  .DocsContent {
+    padding: 2em 1em 1em;
+  }
+}
+
+.DocsContent--breadcrumbs {
+  margin: -.5em 0 .3125em;
+}
