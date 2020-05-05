@@ -5,7 +5,6 @@ import DocsTitle from "./docs-title"
 import DocsSidebarNav from "./docs-sidebar-nav"
 
 const DocsSidebar = () => (
-
   <div className="DocsSidebar" with-styled-webkit-scrollbars="">
     <div className="DocsSidebar--sections">
 

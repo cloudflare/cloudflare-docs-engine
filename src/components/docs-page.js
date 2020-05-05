@@ -7,36 +7,46 @@ import DocsMobileHeader from "./docs-mobile-header"
 import DocsMobileTitleHeader from "./docs-mobile-title-header"
 import DocsSidebar from "./docs-sidebar"
 import DocsToolbar from "./docs-toolbar"
-import DocsBody from "./docs-body"
+import DocsTableOfContents from "./docs-table-of-contents"
 
 import getPageTitle from "../utils/get-page-title"
+import getPageType from "../utils/get-page-type"
 
 const DocsPage = ({ pageContext, children }) => {
-  const { frontmatter } = pageContext
-
   const title = getPageTitle(pageContext)
-  const pageType = frontmatter && frontmatter.type ? frontmatter.type : "document"
+  const pageType = getPageType(pageContext)
+
+  const { tableOfContents } = pageContext
 
   return (
-    <div className="DocsPage">
-      {/* TODO - bring back <Helmate htmlAttributes/> thing */}
+    <>
+      {/* TODO - bring back <Helmet htmlAttributes/> thing */}
+      <SEO title={title}/>
 
-      <DocsMobileHeader/>
-      <DocsMobileTitleHeader/>
-      <DocsSidebar/>
-      <DocsToolbar/>
+      <div className="DocsPage">
+        <DocsMobileHeader/>
+        <DocsMobileTitleHeader/>
+        <DocsSidebar/>
+        <DocsToolbar/>
 
-      <DocsBody>
-        <SEO title={title} />
+        <div className="DocsBody">
+          {pageType === "document" && tableOfContents && (
+            <div className="DocsBody--sidebar" with-styled-webkit-scrollbars="">
+              <div className="DocsBody--sidebar-content-scroll-fade"></div>
+              <div className="DocsBody--sidebar-content">
+                <DocsTableOfContents data={tableOfContents}/>
+              </div>
+            </div>
+          )}
 
-        <div className="DocsContent" page-type={pageType}>
-          <div className="DocsMarkdown">
-            {children}
+          <div className="DocsContent" page-type={pageType}>
+            <div className="DocsMarkdown">
+              {children}
+            </div>
           </div>
         </div>
-      </DocsBody>
-
-    </div>
+      </div>
+    </>
   )
 }
 

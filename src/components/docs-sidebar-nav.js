@@ -49,7 +49,7 @@ const DocsSidebarNav = () => {
     <Location>
       {({ location }) => (
         <ul className="DocsSidebar--nav">
-          {data.map((node) => (
+          {data.map(node => (
             <DocsSidebarNavItem
               key={node.id}
               node={node}

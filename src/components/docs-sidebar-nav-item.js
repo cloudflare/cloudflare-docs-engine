@@ -22,8 +22,8 @@ class DocsSidebarNavItem extends React.Component {
   isActiveRoot() {
     const { node, location } = this.props
 
-    const isActive = (node) => node.href === location.pathname
-    const hasActiveChild = (node) => !node.children ? false : node.children.some(
+    const isActive = node => node.href === location.pathname
+    const hasActiveChild = node => !node.children ? false : node.children.some(
       node => isActive(node) || hasActiveChild(node)
     )
 
@@ -103,7 +103,7 @@ class DocsSidebarNavItem extends React.Component {
             { ...(expanded && this.getExpandCollapseHeight())}
           >
             <ul className="DocsSidebar--nav-subnav" depth={depth} style={{'--depth': depth}}>
-              {node.children.map((node) => (
+              {node.children.map(node => (
                 <DocsSidebarNavItem
                   key={node.id}
                   node={node}

@@ -68,11 +68,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               order
               hidden
             }
-            fileAbsolutePath
             headings(depth: h1) {
               value
               depth
             }
+            tableOfContents
           }
         }
       }
