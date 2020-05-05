@@ -88,7 +88,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   pages.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve("./src/components/custom-mdx-renderer.js"),
+      component: path.resolve("./src/components/mdx-custom-renderer.js"),
       context: node
     })
   })

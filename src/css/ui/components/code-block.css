@@ -143,12 +143,8 @@
 
 /* Diffing */
 
-.CodeBlock.CodeBlock-with-rows > code {
-  padding-bottom: .5em; /* TODO */
-}
-
 .CodeBlock.CodeBlock-with-rows.CodeBlock-scrolls-horizontally > code {
-  padding-bottom: calc(var(--padding-vertical) - 14px); /* TODO */
+  padding-bottom: .5em; /* TODO */
 }
 
 .CodeBlock.CodeBlock-with-rows,
@@ -166,14 +162,11 @@
   min-width: 100%;
 }
 
-.CodeBlock-with-rows .CodeBlock--row-content:empty::before {
-  content: " ";
-}
-
 .CodeBlock-with-rows .CodeBlock--row {
   position: relative;
   display: flex;
   width: 100%;
+  height: 1.43333em; /* TODO */
 }
 
 .CodeBlock-with-rows .CodeBlock--row-content {

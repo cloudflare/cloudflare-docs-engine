@@ -1,5 +1,4 @@
-import React from 'react'
-// import { Link } from "gatsby"
+import React from "react"
 
 const Item = ({ item }) => {
   return (
@@ -19,15 +18,13 @@ const Item = ({ item }) => {
   )
 }
 
-const DocsTableOfContents = ({ data }) => {
-  const items = data.items[0].items
-
+const DocsTableOfContents = ({ items }) => {
   const toTop = {
-    url: "",
+    url: "", // TODO
     title: "↑ Top"
   }
 
-  return (
+  return items.length ? (
     <ul className="DocsTableOfContents">
       <Item item={toTop}/>
 
@@ -35,7 +32,7 @@ const DocsTableOfContents = ({ data }) => {
         <Item key={item.url} item={item}/>
       ))}
     </ul>
-  )
+  ) : (<></>)
 }
 
 export default DocsTableOfContents

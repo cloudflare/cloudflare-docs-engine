@@ -11,12 +11,12 @@ import DocsTableOfContents from "./docs-table-of-contents"
 
 import getPageTitle from "../utils/get-page-title"
 import getPageType from "../utils/get-page-type"
+import getTableOfContents from "../utils/get-table-of-contents"
 
 const DocsPage = ({ pageContext, children }) => {
   const title = getPageTitle(pageContext)
   const pageType = getPageType(pageContext)
-
-  const { tableOfContents } = pageContext
+  const tableOfContents = getTableOfContents(pageContext)
 
   return (
     <>
@@ -34,7 +34,7 @@ const DocsPage = ({ pageContext, children }) => {
             <div className="DocsBody--sidebar" with-styled-webkit-scrollbars="">
               <div className="DocsBody--sidebar-content-scroll-fade"></div>
               <div className="DocsBody--sidebar-content">
-                <DocsTableOfContents data={tableOfContents}/>
+                <DocsTableOfContents items={tableOfContents}/>
               </div>
             </div>
           )}

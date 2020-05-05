@@ -2,7 +2,7 @@
   display: inline-block;
   font-family: var(--monospace-font-family);
   font-size: .85em;
-  --default-padding: .1em .3em;
+  --default-padding: .0625em .3em;
   padding: var(--padding, var(--default-padding));
   --default-background: rgba(var(--color-rgb), .05);
   background: var(--background, var(--default-background));
