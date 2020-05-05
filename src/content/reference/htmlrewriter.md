@@ -23,7 +23,7 @@ One key difference is that unlike in-browser DOM manipulation where you can quer
 
 --------------------------------
 
-## Constuctor
+## Constructor
 
 ```js
 const rewriter = new HTMLRewriter()
