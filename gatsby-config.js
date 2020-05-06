@@ -12,6 +12,12 @@ module.exports = {
     // Prevent nav from (un)mounting on page navigations
     // https://git.io/JfOKn
     {
+      resolve: "gatsby-plugin-layout",
+      options: {
+        component: require.resolve("./src/components/docs-page.js")
+      }
+    },
+    {
       resolve: "gatsby-plugin-mdx",
       options: {
         extensions: [".mdx", ".md"],
@@ -23,12 +29,6 @@ module.exports = {
       options: {
         name: "pages",
         path: `${__dirname}/src/content/`
-      }
-    },
-    {
-      resolve: "gatsby-plugin-layout",
-      options: {
-        component: require.resolve("./src/components/docs-page.js")
       }
     },
     `gatsby-plugin-react-helmet`,
