@@ -5,11 +5,9 @@ import { MDXProvider } from "@mdx-js/react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Link } from "gatsby"
 
-import CodeBlock from "./code-block"
-
-const inlineCode = props => (
-  <code className="InlineCode">{props.children}</code>
-)
+import headers from "./mdx/headers"
+import inlineCode from "./mdx/inline-code"
+import pre from "./mdx/code-block"
 
 const header = (TagName) => (props => {
   const href = `#${ props.id }`
@@ -26,14 +24,10 @@ const header = (TagName) => (props => {
 
 // https://www.gatsbyjs.org/docs/mdx/customizing-components/
 const components = {
-  Link,
   inlineCode,
-  h2: header('h2'),
-  h3: header('h3'),
-  h4: header('h4'),
-  pre: CodeBlock, // TODO - figure out why `code:` didn’t work here
-  // StreamVideo, // TODO
-  // YouTube, // TODO
+  ...headers,
+  pre, // TODO - figure out why `code:` didn’t work here
+  Link,
 }
 
 const MDXCustomRenderer = ({ data: { mdx } }) => {
@@ -46,8 +40,8 @@ const MDXCustomRenderer = ({ data: { mdx } }) => {
 
 export default MDXCustomRenderer
 
-export const pageQuery = graphql`
-  query BlogPostQuery($id: String) {
+export const query = graphql`
+  query ($id: String) {
     mdx(id: { eq: $id }) {
       id
       body
