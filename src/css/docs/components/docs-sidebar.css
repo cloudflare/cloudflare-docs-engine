@@ -278,6 +278,13 @@
   }
 }
 
+@media (max-width: 1280px) {
+  .DocsSidebar--nav {
+    margin-top: .666em;
+    --text-indent: 3rem;
+  }
+}
+
 .DocsSidebar--nav-section .DocsSidebar--section-shadow-cover {
   position: absolute;
   flex-shrink: 0;
@@ -318,13 +325,20 @@
   position: absolute;
   z-index: 3;
   --size: 2em; /* TODO - use calc to derive from effective nav item height */
-  left: calc(var(--text-indent) - var(--size) - .75em + (var(--depth, 0) * 1rem));
+  --margin-right: .75em;
+  left: calc(var(--text-indent) - var(--size) - var(--margin-right) + (var(--depth, 0) * 1rem));
   top: 0;
   height: var(--size);
   width: var(--size);
   line-height: .5em;
   padding: 0;
   text-align: center;
+}
+
+@media (max-width: 1280px) {
+  .DocsSidebar--nav-expand-collapse-button {
+    --margin-right: .25em;
+  }
 }
 
 @media (hover: hover) {
@@ -360,7 +374,7 @@
   border: solid transparent;
   border-width: .3333em .6em;
   border-left-color: currentColor;
-  margin-left: .75em;
+  margin-left: 37%; /* TODO */
   will-change: transform;
   transform: translate3d(0, 0, 0);
   transform-origin: .2em .4em;
@@ -482,30 +496,4 @@
 [theme="dark"] .DocsSidebar--nav-link:hover .DocsSidebar--nav-link-text::before,
 [theme="dark"] .DocsSidebar--nav-link[is-active] .DocsSidebar--nav-link-text::before {
   background: rgba(var(--orange-rgb), .08);
-}
-
-@media (max-width: 1280px) {
-  .DocsSidebar--nav {
-    margin-top: .666em;
-  }
-
-  .DocsSidebar--nav-section .DocsSidebar--section-shadow {
-    opacity: .7;
-  }
-
-  .DocsSidebar--nav-section .DocsSidebar--section-shadow-cover {
-    display: none;
-  }
-
-  .DocsSidebar--nav-link {
-    padding-left: 2.2rem;
-  }
-
-  .DocsSidebar--nav-subnav .DocsSidebar--nav-link {
-    padding-left: 3.3rem;
-  }
-
-  .DocsSidebar--nav-expand-collapse-button {
-    left: .4rem;
-  }
 }
