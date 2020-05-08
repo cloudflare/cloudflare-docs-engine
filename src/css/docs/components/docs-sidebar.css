@@ -278,13 +278,6 @@
   }
 }
 
-@media (max-width: 1280px) {
-  .DocsSidebar--nav {
-    margin-top: .666em;
-    --text-indent: 3rem;
-  }
-}
-
 .DocsSidebar--nav-section .DocsSidebar--section-shadow-cover {
   position: absolute;
   flex-shrink: 0;
@@ -305,6 +298,14 @@
   font-size: 1.11em;
   padding: 0 .5em 0 0;
   word-break: break-word;
+}
+
+@media (max-width: 1280px) {
+  .DocsSidebar--nav {
+    font-size: 1.05em;
+    margin-top: .666em;
+    --text-indent: 3rem;
+  }
 }
 
 .DocsSidebar--nav-item {
@@ -422,6 +423,12 @@
   list-style: none;
   font-size: .94rem;
   padding: .25em 0 .75em;
+}
+
+@media (max-width: 1280px) {
+  .DocsSidebar--nav-subnav {
+    font-size: .9em;
+  }
 }
 
 .DocsSidebar--nav-subnav .DocsSidebar--nav-item + .DocsSidebar--nav-item {
