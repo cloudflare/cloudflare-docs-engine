@@ -7,7 +7,7 @@
   --logo-size: 2.8235294118rem; /* 48 / 17 */
   --text-indent: calc(var(--content-indent) + var(--logo-size) + .4rem + .1em); /* TODO .5rem sync with logo lockup gap */
   width: var(--docs-sidebar-width);
-  z-index: 1;
+  z-index: 2;
 }
 
 @media (max-width: 768px) {

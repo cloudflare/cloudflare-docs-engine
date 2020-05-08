@@ -25,7 +25,7 @@ const DocsPage = ({ pageContext, children }) => {
       <SEO title={title}/>
 
       <Helmet>
-        <html is-docs-page="" is-smooth-scrolling="" with-styled-webkit-scrollbars=""/>
+        <html is-docs-page="" is-smooth-scrolling=""/>
       </Helmet>
 
       <div className="DocsPage">
@@ -34,24 +34,24 @@ const DocsPage = ({ pageContext, children }) => {
         <DocsSidebar/>
         <DocsToolbar/>
 
-        <div className="DocsBody">
-          {pageType === "document" && tableOfContents && (
-            <div className="DocsBody--sidebar" with-styled-webkit-scrollbars="">
-              <div className="DocsBody--sidebar-content-scroll-fade"></div>
-              <div className="DocsBody--sidebar-content">
-                <DocsTableOfContents items={tableOfContents}/>
+        <PageTransition>
+          <div className="DocsBody">
+            {pageType === "document" && tableOfContents && (
+              <div className="DocsBody--sidebar" with-styled-webkit-scrollbars="">
+                <div className="DocsBody--sidebar-content-scroll-fade"></div>
+                <div className="DocsBody--sidebar-content">
+                  <DocsTableOfContents items={tableOfContents}/>
+                </div>
+              </div>
+            )}
+
+            <div className="DocsContent" page-type={pageType}>
+              <div className="DocsMarkdown">
+                {children}
               </div>
             </div>
-          )}
-
-          <div className="DocsContent" page-type={pageType}>
-            <div className="DocsMarkdown">
-              <PageTransition>
-                {children}
-              </PageTransition>
-            </div>
           </div>
-        </div>
+        </PageTransition>
       </div>
     </>
   )

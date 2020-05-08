@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.CSSTransitionFadeLift---root > div {
+  will-change: transform, opacity;
+}
+
 .CSSTransitionFadeLift-enter {
   opacity: 0;
   transform: translate3d(0, .25em, 0);
@@ -29,4 +33,8 @@
   left: 0;
   right: 0;
   transition: opacity .18s ease, transform .18s ease;
+}
+
+.CSSTransitionFadeLift-enter-done {
+  transition: none;
 }
