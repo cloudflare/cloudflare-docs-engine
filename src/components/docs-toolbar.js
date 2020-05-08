@@ -1,6 +1,6 @@
 import React from "react"
 
-import ColorSchemeToggle from "./color-scheme-toggle"
+import ThemeToggle from "./theme-toggle"
 
 const DocsToolbar = () => (
   <div className="DocsToolbar">
@@ -23,8 +23,8 @@ const DocsToolbar = () => (
     </div>
 
     <div className="DocsToolbar--tools">
-      <div className="DocsToolbar--color-scheme-toggle">
-        <ColorSchemeToggle/>
+      <div className="DocsToolbar--theme-toggle">
+        <ThemeToggle/>
       </div>
     </div>
   </div>

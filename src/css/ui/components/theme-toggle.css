@@ -1,18 +1,18 @@
 /* Note: this component intentionally uses px to avoid rounding issues */
 
-.ColorSchemeToggle {
+.ThemeToggle {
   width: 50px;
   height: 28px;
   border-radius: 99em;
 }
 
-.ColorSchemeToggle--input {
+.ThemeToggle--input {
   position: absolute;
   opacity: 0;
   top: -9999em;
 }
 
-.ColorSchemeToggle--toggle {
+.ThemeToggle--toggle {
   position: relative;
   display: block;
   width: 100%;
@@ -24,15 +24,15 @@
   transition: box-shadow .3s ease;
 }
 
-.ColorSchemeToggle--input:not([is-focus-visible]) ~ .ColorSchemeToggle--toggle {
+.ThemeToggle--input:not([is-focus-visible]) ~ .ThemeToggle--toggle {
   --focus-size: 0;
 }
 
-.ColorSchemeToggle--input:checked ~ .ColorSchemeToggle--toggle {
+.ThemeToggle--input:checked ~ .ThemeToggle--toggle {
   background: rgba(var(--gray-2-rgb), .7);
 }
 
-.ColorSchemeToggle--toggle-handle {
+.ThemeToggle--toggle-handle {
   position: absolute;
   top: 3px;
   left: 3px;
@@ -44,7 +44,7 @@
   box-shadow: 0 .15em .3em rgba(0, 0, 0, .15), 0 .2em .5em rgba(0, 0, 0, .3);
 }
 
-.ColorSchemeToggle--input:checked ~ .ColorSchemeToggle--toggle .ColorSchemeToggle--toggle-handle {
+.ThemeToggle--input:checked ~ .ThemeToggle--toggle .ThemeToggle--toggle-handle {
   left: auto;
   right: 3px;
   background: var(--gray-00);
@@ -52,27 +52,27 @@
   box-shadow: 0 .5px rgba(255, 255, 255, .16);
 }
 
-.ColorSchemeToggle--toggle-handle-icon {
+.ThemeToggle--toggle-handle-icon {
   position: absolute;
   top: 6px;
   width: 16px;
   height: 16px;
 }
 
-.ColorSchemeToggle--sun {
+.ThemeToggle--sun {
   left: 6px;
 }
 
-.ColorSchemeToggle--moon {
+.ThemeToggle--moon {
   right: 6px;
   color: var(--gray-3);
 }
 
-.ColorSchemeToggle--sun,
-.ColorSchemeToggle--input:checked ~ .ColorSchemeToggle--toggle .ColorSchemeToggle--moon {
+.ThemeToggle--sun,
+.ThemeToggle--input:checked ~ .ThemeToggle--toggle .ThemeToggle--moon {
   color: var(--orange);
 }
 
-.ColorSchemeToggle--input:checked ~ .ColorSchemeToggle--toggle .ColorSchemeToggle--sun {
+.ThemeToggle--input:checked ~ .ThemeToggle--toggle .ThemeToggle--sun {
   color: rgba(var(--gray-6-rgb), .8);
 }

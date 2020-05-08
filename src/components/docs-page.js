@@ -1,7 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import SEO from "./seo" // TODO
+import Helmet from "react-helmet"
+import SEO from "./seo"
 
 import DocsMobileHeader from "./docs-mobile-header"
 import DocsMobileTitleHeader from "./docs-mobile-title-header"
@@ -20,8 +21,11 @@ const DocsPage = ({ pageContext, children }) => {
 
   return (
     <>
-      {/* TODO - bring back <Helmet htmlAttributes/> thing */}
       <SEO title={title}/>
+
+      <Helmet>
+        <html is-docs-page="" is-smooth-scrolling="" with-styled-webkit-scrollbars=""/>
+      </Helmet>
 
       <div className="DocsPage">
         <DocsMobileHeader/>
