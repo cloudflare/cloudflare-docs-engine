@@ -27,6 +27,7 @@ import "./src/css/ui/components/cloudflare-logo.css"
 import "./src/css/ui/components/cloudflare-workers-logo.css"
 import "./src/css/ui/components/code-block.css"
 import "./src/css/ui/components/theme-toggle.css"
+// import "./src/css/ui/components/unordered-list.css" // TODO
 import "./src/css/ui/components/definition-list.css"
 import "./src/css/ui/components/dropdown.css"
 import "./src/css/ui/components/error-page.css"
@@ -39,7 +40,6 @@ import "./src/css/ui/components/number.css"
 import "./src/css/ui/components/radio-tabs.css"
 import "./src/css/ui/components/stream-video.css"
 import "./src/css/ui/components/superscript.css"
-// import "./src/css/ui/components/unordered-list.css" // TODO
 
 import "./src/css/docs/components/docs-body.css"
 import "./src/css/docs/components/docs-content.css"
