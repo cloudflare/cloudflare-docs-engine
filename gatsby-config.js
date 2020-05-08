@@ -4,7 +4,21 @@ module.exports = {
     description: "Documentation for Cloudflare products and services.",
     author: "@cloudflare",
     cloudflareDocs: {
-      product: "Workers"
+      product: "Workers",
+      externalLinks: [
+        {
+          title: "Workers home",
+          url: "https://workers.cloudflare.com"
+        },
+        {
+          title: "Playground",
+          url: "https://cloudflareworkers.com"
+        },
+        {
+          title: "Pricing",
+          url: "https://workers.cloudflare.com/#plans"
+        },
+      ]
     },
   },
 
