@@ -3,7 +3,6 @@ import Helmet from "react-helmet"
 
 import setIntervalVisible from "set-interval-visible"
 
-const defaultTheme = "light"
 const colorSchemeQuery = "(prefers-color-scheme: dark)"
 
 const storeInterval = 30 * 1000
@@ -116,8 +115,6 @@ class ThemeToggle extends React.Component {
     return (
       <>
         <Helmet>
-          <html theme={defaultTheme} />
-
           {/* Run theme initialization in the <head/> to avoid a flash */}
           <script>{ getThemeFromStorageSource }</script>
         </Helmet>
