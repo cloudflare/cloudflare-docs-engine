@@ -6,7 +6,7 @@ html[is-docs-page] body {
 
 .DocsPage {
   --docs-header-height: 3.7647058824rem; /* 64 / 17 */
-  --docs-sidebar-width: 18rem;
+  --docs-sidebar-width: 19rem;
   --docs-body-sidebar-width: var(--docs-sidebar-width);
   --docs-page-side-padding: 1rem;
   --docs-page-width: 1440px; /* TODO */
@@ -26,6 +26,12 @@ html[is-docs-page] body {
   }
 }
 
+@media (max-width: 1350px) {
+  .DocsPage {
+    --docs-sidebar-width: 18rem;
+  }
+}
+
 @media (max-width: 1280px) {
   .DocsPage {
     --docs-sidebar-width: 17rem;
@@ -33,8 +39,9 @@ html[is-docs-page] body {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1152px) {
   .DocsPage {
+    --docs-sidebar-width: calc(10rem + 12vw);
     --docs-body-sidebar-width: 0px;
   }
 }

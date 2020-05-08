@@ -19,7 +19,7 @@
   width: var(--docs-body-sidebar-width);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1152px) {
   .DocsBody--sidebar {
     display: none;
   }
