@@ -98,7 +98,7 @@ html {
   --violet-9: #f7f1f8; --violet-9-rgb: 247, 241, 248;
 
   --gray-00-rgb: 23, 23, 24;    --gray-00: rgb(var(--gray-00-rgb));
-  --gray-0F-rgb: 25, 25, 27;    --gray-0F: rgb(var(--gray-0F-rgb));
+  --gray-0F-rgb: 25, 27, 29;    --gray-0F: rgb(var(--gray-0F-rgb));
   --gray-0-rgb:  29, 31, 32;    --gray-0:  rgb(var(--gray-0-rgb));
   --gray-05-rgb: 36, 38, 40;    --gray-05: rgb(var(--gray-05-rgb));
   --gray-1-rgb:  54, 57, 58;    --gray-1:  rgb(var(--gray-1-rgb));
