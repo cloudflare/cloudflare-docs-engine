@@ -74,6 +74,7 @@ class DocsSidebarNavItem extends React.Component {
 
     const props = {}
     if (expanded) props['is-expanded'] = ''
+    if (this.isActive()) props['is-active'] = ''
     if (this.isActiveRoot()) props['is-active-root'] = ''
 
     const linkProps = {}

@@ -366,6 +366,7 @@
   transform-origin: .2em .4em;
 }
 
+[theme="dark"] .DocsSidebar--nav-item[is-active] > .DocsSidebar--nav-expand-collapse-button > .DocsSidebar--nav-expand-collapse-button-content,
 .DocsSidebar--nav-item[is-active-root]:not([is-expanded]) > .DocsSidebar--nav-expand-collapse-button > .DocsSidebar--nav-expand-collapse-button-content {
   color: var(--orange);
 }
@@ -373,6 +374,10 @@
 @media (hover: hover) {
   .DocsSidebar--nav-expand-collapse-button:not(:hover) > .DocsSidebar--nav-expand-collapse-button-content {
     opacity: .4;
+  }
+
+  [theme="dark"] .DocsSidebar--nav-item[is-active] > .DocsSidebar--nav-expand-collapse-button > .DocsSidebar--nav-expand-collapse-button-content {
+    opacity: .8;
   }
 
   .DocsSidebar--nav-item[is-active-root]:not([is-expanded]) > .DocsSidebar--nav-expand-collapse-button > .DocsSidebar--nav-expand-collapse-button-content {
