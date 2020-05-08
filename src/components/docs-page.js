@@ -4,6 +4,8 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import SEO from "./seo"
 
+import PageTransition from "./page-transition"
+
 import DocsMobileHeader from "./docs-mobile-header"
 import DocsMobileTitleHeader from "./docs-mobile-title-header"
 import DocsSidebar from "./docs-sidebar"
@@ -45,7 +47,9 @@ const DocsPage = ({ pageContext, children }) => {
 
           <div className="DocsContent" page-type={pageType}>
             <div className="DocsMarkdown">
-              {children}
+              <PageTransition>
+                {children}
+              </PageTransition>
             </div>
           </div>
         </div>
