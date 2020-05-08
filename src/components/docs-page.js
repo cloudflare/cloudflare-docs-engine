@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 
 import Helmet from "react-helmet"
 import SEO from "./seo"
@@ -56,10 +55,6 @@ const DocsPage = ({ pageContext, children }) => {
       </div>
     </>
   )
-}
-
-DocsPage.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default DocsPage
