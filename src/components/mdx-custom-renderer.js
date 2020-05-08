@@ -9,19 +9,6 @@ import headers from "./mdx/headers"
 import inlineCode from "./mdx/inline-code"
 import pre from "./mdx/code-block"
 
-const header = (TagName) => (props => {
-  const href = `#${ props.id }`
-
-  return (
-    <TagName id={props.id}>
-      <span className="DocsMarkdown--header-anchor-positioner">
-        <a className="DocsMarkdown--header-anchor Link Link-without-underline" href={href} aria-hidden="true">&#8203;</a>
-      </span>
-      <span>{props.children}</span>
-    </TagName>
-  )
-})
-
 // https://www.gatsbyjs.org/docs/mdx/customizing-components/
 const components = {
   inlineCode,
