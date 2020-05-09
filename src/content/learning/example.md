@@ -1,3 +1,0 @@
-# Learning example
-
-*WOOOOOO*
