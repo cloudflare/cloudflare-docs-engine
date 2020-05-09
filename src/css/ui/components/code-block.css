@@ -41,11 +41,17 @@
   display: block;
   padding: var(--padding-vertical) var(--padding-horizontal);
   font-family: inherit;
+  cursor: default;
+}
+
+.CodeBlock > code > * {
+  cursor: text;
 }
 
 .CodeBlock > code::-webkit-scrollbar {
   height: 14px;
   opacity: 0;
+  cursor: default;
 }
 
 .CodeBlock > code::-webkit-scrollbar-track-piece {
@@ -55,11 +61,16 @@
 
 .CodeBlock > code::-webkit-scrollbar-thumb {
   border-radius: var(--border-radius);
-  box-shadow: inset 0 1px 1px rgba(var(--background-color-rgb), .15);
-  border: 5px solid var(--code-block-background-color);
-  background: var(--code-block-scrollbar-color);
+  box-shadow: inset 0 1px 1px rgba(var(--background-color-rgb), .1);
+  background-color: var(--code-block-scrollbar-color);
+  background-clip: padding-box;
+  border: 4px solid transparent;
   border-radius: calc(20 * var(--border-radius));
   transition: all 1s ease;
+}
+
+[theme="dark"] .CodeBlock > code::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 1px 1px rgba(var(--color-rgb), .1);
 }
 
 .CodeBlock-is-one-liner > code {
