@@ -4,6 +4,7 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+  touch-action: manipulation;
 
   position: relative;
   border: 0;
