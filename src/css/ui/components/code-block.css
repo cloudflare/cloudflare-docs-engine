@@ -285,6 +285,7 @@
 }
 
 .CodeBlock--class,
+.CodeBlock--class-name,
 .CodeBlock--function {
   color: var(--code-green);
 }
@@ -293,6 +294,7 @@
   color: var(--code-red);
 }
 
+.CodeBlock--parameter,
 .CodeBlock--function-parameter {
   font-style: italic;
   color: var(--code-lilac);
@@ -301,7 +303,8 @@
 .CodeBlock--number,
 .CodeBlock--boolean,
 .CodeBlock--null-undefined,
-.CodeBlock--built-in {
+.CodeBlock--built-in,
+.CodeBlock--method {
   color: var(--code-violet);
 }
 
@@ -312,5 +315,32 @@
 .CodeBlock--regex,
 .CodeBlock--string,
 .CodeBlock--object-property {
+  color: var(--code-gold);
+}
+
+/* CSS tokens */
+
+[language="css"] .CodeBlock--selector {
+  color: var(--code-green);
+}
+
+[language="css"] .CodeBlock--plain,
+[language="css"] .CodeBlock--property {
+  color: var(--code-blue);
+}
+
+[language="css"] .CodeBlock--unit {
+  color: var(--code-red);
+}
+
+[language="css"] .CodeBlock--function {
+  color: var(--code-lilac);
+}
+
+[language="css"] .CodeBlock--variable {
+  color: var(--code-violet);
+}
+
+[language="css"] .CodeBlock--color {
   color: var(--code-gold);
 }

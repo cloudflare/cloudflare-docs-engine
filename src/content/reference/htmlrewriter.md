@@ -181,7 +181,7 @@ Element handlers are attached to an `HTMLRewriter` instance using the [`.on`](#m
 
 ```js
 async function handleRequest(request) {
-  const response = await fetch(req)
+  const response = await fetch(request)
 
   const rewriter = new HTMLRewriter()
 
@@ -192,5 +192,86 @@ async function handleRequest(request) {
   })
 
   return rewriter.transform(response)
+}
+```
+
+```js
+async function handle(request) {
+  const oldResponse = await fetch(request)
+  const newResponse = new HTMLRewriter()
+    .on('*', {
+      element(element) {
+        throw new Error('A really bad error.')
+      },
+    })
+    .transform(oldResponse)
+
+  /**
+   * At this point, an expression like `await newResponse.text()`
+   * will throw `new Error("A really bad error.")`. Thereafter,
+   * any use of `newResponse.body` will throw the same error,
+   * and `oldResponse.body` will be closed.
+   *
+   * Alternatively, this will produce a truncated response to
+   * the client:
+   */
+  return newResponse
+}
+```
+
+```css
+.CodeBlock {
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--monospace-font-family);
+  font-size: .9em;
+  margin: 0;
+  --padding-vertical: .9em;
+  --padding-horizontal: 1.25em;
+  --border-radius: .5em;
+  border-radius: var(--border-radius);
+  background: var(--code-block-background-color);
+  color: var(--code-block-color);
+  max-width: 100%;
+  cursor: text;
+}
+
+[theme="light"] .CodeBlock-is-light-in-light-theme {
+  --code-block-background-color: var(--gray-9);
+  --code-block-color: currentColor;
+  --code-block-scrollbar-color: var(--gray-6);
+
+  --code-gray:   var(--code-gray-light-theme);
+  --code-red:    var(--code-red-light-theme);
+  --code-orange: var(--code-orange-light-theme);
+  --code-gold:   var(--code-gold-light-theme);
+  --code-green:  var(--code-green-light-theme);
+  --code-blue:   var(--code-blue-light-theme);
+  --code-cyan:   var(--code-cyan-light-theme);
+  --code-indigo: var(--code-indigo-light-theme);
+  --code-lilac:  var(--code-lilac-light-theme);
+  --code-violet: var(--code-violet-light-theme);
+
+  --diff-indicator-red: var(--diff-indicator-red-light-theme);
+  --diff-indicator-green: var(--diff-indicator-green-light-theme);
+}
+
+.CodeBlock > code {
+  display: block;
+  padding: var(--padding-vertical) var(--padding-horizontal);
+  font-family: inherit;
+}
+
+.CodeBlock > code::-webkit-scrollbar {
+  height: 14px;
+  opacity: 0;
+}
+
+.CodeBlock > code::-webkit-scrollbar-track-piece {
+  background: transparent;
+  border-radius: var(--border-radius);
 }
 ```

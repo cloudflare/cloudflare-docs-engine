@@ -246,9 +246,9 @@ p.DocsMarkdown--small-header {
 
 /* TODO */
 .DocsMarkdown pre {
-  margin-left: -1.111em;
-  width: calc(100% + 2.222em);
-  max-width: calc(100% + 2.222em);
+  margin-left: -1rem;
+  width: calc(100% + 2rem);
+  max-width: calc(100% + 2rem);
 }
 
 @media (max-width: 768px) {
@@ -256,16 +256,12 @@ p.DocsMarkdown--small-header {
   .DocsMarkdown pre {
     --border-radius: 0em;
   }
-
-  .DocsMarkdown pre > code {
-    padding-left: 1.33em;
-    padding-right: 1.33em;
-  }
 }
 
+/* TODO */
 @media (max-width: 414px) {
-  .DocsMarkdown pre > code {
-    font-size: .9em;
+  .DocsMarkdown pre {
+    font-size: .8em;
   }
 }
 
