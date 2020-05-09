@@ -144,7 +144,7 @@
 /* Diffing */
 
 .CodeBlock.CodeBlock-with-rows.CodeBlock-scrolls-horizontally > code {
-  padding-bottom: .5em; /* TODO */
+  display: flex; /* TODO */
 }
 
 .CodeBlock.CodeBlock-with-rows,
