@@ -1,119 +1,86 @@
 import React from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import TimeAgo from "react-timeago"
 
-const DocsTutorials = () => (
-  <div className="DocsTutorials">
-    <div className="DocsTutorials--item DocsTutorials--item-header">
-      <div className="DocsTutorials--item-name">
-        <span className="DocsTutorials--item-header-text">Name</span>
-      </div>
-      <div className="DocsTutorials--item-updated">
-        <span className="DocsTutorials--item-header-text">Updated</span>
-      </div>
-      <div className="DocsTutorials--item-difficulty">
-        <span className="DocsTutorials--item-header-text">Difficulty</span>
-      </div>
-      <div className="DocsTutorials--item-length">
-        <span className="DocsTutorials--item-header-text">Length</span>
-      </div>
-    </div>
+import getPageTitle from "../utils/get-page-title"
 
-    <div className="DocsTutorials--item DocsTutorials--item-is-new">
-      <div className="DocsTutorials--item-name">
-        <a className="DocsTutorials--item-link" href="/tutorials">Build a web scraper</a>
-      </div>
-      <div className="DocsTutorials--item-updated">Today</div>
-      <div className="DocsTutorials--item-difficulty">Expert</div>
-      <div className="DocsTutorials--item-length">
-        <div className="DocsTutorials--item-length-bar">
-          <div className="DocsTutorials--item-length-bar-inner" style={{width: '20%'}}></div>
+const oneWeekInMS = 7 * 24 * 60 * 60 * 1000
+
+const DocsTutorials = () => {
+  const query = useStaticQuery(graphql`
+    query {
+      allMdx {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+              updated
+              difficulty
+              length
+              hidden
+            }
+            headings(depth: h1) {
+              value
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const tutorials = query.allMdx.edges
+    .map(({ node }) => node)
+    .filter(page => page.fields.slug.match(/^\/tutorials\/.+/))
+    .map(page => ({
+      title: getPageTitle(page),
+      url: page.fields.slug,
+      updated: page.frontmatter.updated,
+      difficulty: page.frontmatter.difficulty,
+      length: page.frontmatter.length,
+      new: (+new Date - +new Date(page.frontmatter.updated)) < oneWeekInMS
+    }))
+    .sort((a, b) => +new Date(b.updated) - +new Date(a.updated))
+
+  return (
+    <div className="DocsTutorials">
+      <div className="DocsTutorials--item DocsTutorials--item-header">
+        <div className="DocsTutorials--item-name">
+          <span className="DocsTutorials--item-header-text">Name</span>
+        </div>
+        <div className="DocsTutorials--item-updated">
+          <span className="DocsTutorials--item-header-text">Updated</span>
+        </div>
+        <div className="DocsTutorials--item-difficulty">
+          <span className="DocsTutorials--item-header-text">Difficulty</span>
+        </div>
+        <div className="DocsTutorials--item-length">
+          <span className="DocsTutorials--item-header-text">Length</span>
         </div>
       </div>
-    </div>
-    <div className="DocsTutorials--item">
-      <div className="DocsTutorials--item-name">
-        <a className="DocsTutorials--item-link" href="/tutorials">Build an application</a>
-      </div>
-      <div className="DocsTutorials--item-updated">7d ago</div>
-      <div className="DocsTutorials--item-difficulty">Beginner</div>
-      <div className="DocsTutorials--item-length">
-        <div className="DocsTutorials--item-length-bar">
-          <div className="DocsTutorials--item-length-bar-inner" style={{width: '50%'}}></div>
+
+      {tutorials.map(tutorial => (
+        <div key={tutorial.url} className={"DocsTutorials--item" + (tutorial.new ? " DocsTutorials--item-is-new" : "")}>
+          <div className="DocsTutorials--item-name">
+            <Link className="DocsTutorials--item-link" to={tutorial.url}>
+              {tutorial.title}
+            </Link>
+          </div>
+          <div className="DocsTutorials--item-updated">
+            <TimeAgo date={tutorial.updated} minPeriod={60}/>
+          </div>
+          <div className="DocsTutorials--item-difficulty">{tutorial.difficulty}</div>
+          <div className="DocsTutorials--item-length">
+            <div className="DocsTutorials--item-length-bar">
+              <div className="DocsTutorials--item-length-bar-inner" style={{width: tutorial.length}}></div>
+            </div>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
-    <div className="DocsTutorials--item">
-      <div className="DocsTutorials--item-name">
-        <a className="DocsTutorials--item-link" href="/tutorials">Build a todo list with Workers KV</a>
-      </div>
-      <div className="DocsTutorials--item-updated">12d ago</div>
-      <div className="DocsTutorials--item-difficulty">Beginner</div>
-      <div className="DocsTutorials--item-length">
-        <div className="DocsTutorials--item-length-bar">
-          <div className="DocsTutorials--item-length-bar-inner" style={{width: '10%'}}></div>
-        </div>
-      </div>
-    </div>
-    <div className="DocsTutorials--item">
-      <div className="DocsTutorials--item-name">
-        <a className="DocsTutorials--item-link" href="/tutorials">Build a serverless function</a>
-      </div>
-      <div className="DocsTutorials--item-updated">1m ago</div>
-      <div className="DocsTutorials--item-difficulty">Beginner</div>
-      <div className="DocsTutorials--item-length">
-        <div className="DocsTutorials--item-length-bar">
-          <div className="DocsTutorials--item-length-bar-inner" style={{width: '80%'}}></div>
-        </div>
-      </div>
-    </div>
-    <div className="DocsTutorials--item">
-      <div className="DocsTutorials--item-name">
-        <a className="DocsTutorials--item-link" href="/tutorials">Deploy a react app</a>
-      </div>
-      <div className="DocsTutorials--item-updated">3m ago</div>
-      <div className="DocsTutorials--item-difficulty">Beginner</div>
-      <div className="DocsTutorials--item-length">
-        <div className="DocsTutorials--item-length-bar">
-          <div className="DocsTutorials--item-length-bar-inner" style={{width: '70%'}}></div>
-        </div>
-      </div>
-    </div>
-    <div className="DocsTutorials--item">
-      <div className="DocsTutorials--item-name">
-        <a className="DocsTutorials--item-link" href="/tutorials">Hosting static Wordpress sites</a>
-      </div>
-      <div className="DocsTutorials--item-updated">4m ago</div>
-      <div className="DocsTutorials--item-difficulty">Beginner</div>
-      <div className="DocsTutorials--item-length">
-        <div className="DocsTutorials--item-length-bar">
-          <div className="DocsTutorials--item-length-bar-inner" style={{width: '100%'}}></div>
-        </div>
-      </div>
-    </div>
-    <div className="DocsTutorials--item">
-      <div className="DocsTutorials--item-name">
-        <a className="DocsTutorials--item-link" href="/tutorials">Configure a CDN</a>
-      </div>
-      <div className="DocsTutorials--item-updated">1y ago</div>
-      <div className="DocsTutorials--item-difficulty">Advanced</div>
-      <div className="DocsTutorials--item-length">
-        <div className="DocsTutorials--item-length-bar">
-          <div className="DocsTutorials--item-length-bar-inner" style={{width: '50%'}}></div>
-        </div>
-      </div>
-    </div>
-    <div className="DocsTutorials--item">
-      <div className="DocsTutorials--item-name">
-        <a className="DocsTutorials--item-link" href="/tutorials">Managing multiple projects with Lerna</a>
-      </div>
-      <div className="DocsTutorials--item-updated">2y ago</div>
-      <div className="DocsTutorials--item-difficulty">Advanced</div>
-      <div className="DocsTutorials--item-length">
-        <div className="DocsTutorials--item-length-bar">
-          <div className="DocsTutorials--item-length-bar-inner" style={{width: '70%'}}></div>
-        </div>
-      </div>
-    </div>
-  </div>
-)
+  )
+}
 
 export default DocsTutorials
