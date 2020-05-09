@@ -1,7 +1,8 @@
 ---
-title: "Environment Variables"
-weight: 5
+order: 5
 ---
+
+# Environment variables
 
 Environment variables can be managed via wrangler or in the UI, it is recommended to adhere to one method.
 

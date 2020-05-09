@@ -1,17 +1,18 @@
 ---
-title: Request
-weight: 4
+order: 4
 ---
 
-### Constructor
+# Request
 
-#### Syntax
+## Constructor
+
+### Syntax
 
 ```javascript
 new Request(input [, init])
 ```
 
-#### Constructor Parameters
+### Constructor Parameters
 
 - `input`: Either a USVString that contains the URL or an existing `Request` object. Note that the `url` property is immutable, so when [modifying a request](/templates/snippets/modify_req_props/) and changing the URL, you must pass the new URL in this parameter.
 

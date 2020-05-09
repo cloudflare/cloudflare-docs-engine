@@ -1,7 +1,8 @@
 ---
-title: Web Standards
-weight: 1
+order: 1
 ---
+
+# Web Standards
 
 The Workers Runtime provides the following standardized APIs for use by scripts running at the Edge.
 

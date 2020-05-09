@@ -1,7 +1,8 @@
 ---
-title: Encoding
-weight: 6
+order: 6
 ---
+
+# Encoding
 
 ## TextEncoder
 

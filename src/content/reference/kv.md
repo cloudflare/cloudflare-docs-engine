@@ -1,22 +1,10 @@
 ---
-title: 'KV'
-weight: 5
+order: 5
 ---
 
-- [Writing key-value pairs](#writing-key-value-pairs)
-  * [Writing Data in Bulk](#writing-data-in-bulk)
-  * [Expiring Keys](#expiring-keys)
-    + [Creating expiring keys](#creating-expiring-keys)
-- [Reading key-value pairs](#reading-key-value-pairs)
-  * [Types](#types)
-- [Deleting key-value pairs](#deleting-key-value-pairs)
-- [Listing keys](#listing-keys)
-  * [More detail](#more-detail)
-  * [Listing by prefix](#listing-by-prefix)
-  * [Ordering](#ordering)
-  * [Pagination](#pagination)
+# KV
 
-# Writing key-value pairs
+## Writing key-value pairs
 
 To create a new key-value pair, or to update the value for a particular key,
 you can call the `put` method on any namespace you've bound to your script.
@@ -101,7 +89,7 @@ You can also [write with an expiration on the command line via
 Wrangler](/tooling/wrangler/kv_commands/#kv-key) or [via the
 API](https://api.cloudflare.com/#workers-kv-namespace-write-key-value-pair).
 
-# Reading key-value pairs
+## Reading key-value pairs
 
 To get the value for a given key, you can call the `get` method on any
 namespace you've bound to your script:
@@ -157,7 +145,7 @@ For large values, the choice of `type` can have a noticeable effect on latency
 and CPU usage. For reference, the `type`s can be ordered from fastest to slowest
 as `"stream"`, `"arrayBuffer"`, `"text"`, and `"json"`.
 
-# Deleting key-value pairs
+## Deleting key-value pairs
 
 To delete a key-value pair, you can call the `delete` method on any
 namespace you've bound to your script:
@@ -176,7 +164,7 @@ Wrangler](/tooling/wrangler/kv_commands/#kv-key)
 or [via the
 API](https://api.cloudflare.com/#workers-kv-namespace-delete-key-value-pair).
 
-# Listing keys
+## Listing keys
 
 You can use a list operation to see all of the keys that live in a given
 namespace. Here's a basic example:
