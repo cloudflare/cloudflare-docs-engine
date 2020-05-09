@@ -18,6 +18,6 @@ The `fetch` method is implemented on the ServiceWorkerGlobalScope and matches th
 
 The Headers class matches the documentation [provided by MDN](https://developer.mozilla.org/en-US/docs/Web/API/Headers). If you expect Unicode values in your headers, URL or Base64 encode your header values before adding them to a Headers object.
 
-#### Cloudflare Specific Headers
+### Cloudflare Specific Headers
 
 `CF-Connecting-IP`: The client IP

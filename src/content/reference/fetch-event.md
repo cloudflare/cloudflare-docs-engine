@@ -8,13 +8,13 @@ The event type for HTTP requests dispatched to a Worker (i.e the `Object` passed
 
 If multiple event listeners are registered, when an event handler does not call `respondWith()` the runtime delivers the event to the next registered event handler.
 
-### Properties
+## Properties
 
 - `type`: The type of event. Always = `fetch`.
 
 - `request`: A [Request Object](/reference/apis/request) that represents the request triggering `FetchEvent`.
 
-### Methods
+## Methods
 
 - `passThroughOnException`: Cause the script to ["fail open"](https://community.microfocus.com/t5/Security-Blog/Security-Fundamentals-Part-1-Fail-Open-vs-Fail-Closed/ba-p/283747) unhandled exceptions. Instead of returning a runtime error response, the runtime proxies the request to its destination. To prevent JavaScript errors from causing entire requests to fail on uncaught exceptions, `passThroughOnException` causes the Worker script to act as if the exception wasn’t there. This allows the script to yield control to your origin server.
 - `respondWith`: Intercept the request and send a custom response.

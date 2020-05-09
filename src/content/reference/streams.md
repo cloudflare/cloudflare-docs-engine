@@ -15,7 +15,7 @@ By default, the Cloudflare Workers service streams. Only use these APIs for _mod
 
 \*_Note: The Streams API is only available inside of [the Request Context](/about/tips/request-context)._
 
-### Streaming Passthrough
+## Streaming Passthrough
 
 The two primitives developers use to perform active streaming are `TransformStream` and the [`ReadableStream.pipeTo()`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo) method.
 
