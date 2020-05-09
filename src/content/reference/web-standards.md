@@ -18,13 +18,13 @@ All of the [standard built-in objects](https://developer.mozilla.org/en-US/docs/
 
 The following methods are available per the [Worker Global Scope](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope):
 
-#### Base64 Utility Methods
+### Base64 Utility Methods
 
 [`atob()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob) - Decodes a string of data which has been encoded using base-64 encoding.
 
 [`btoa()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa) - Creates a base-64 encoded ASCII string from a string of binary data.
 
-#### Timers
+### Timers
 
 [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) - Schedules a function to execute every time a given number of milliseconds elapses.
 
@@ -36,7 +36,7 @@ The following methods are available per the [Worker Global Scope](https://develo
 
 \*_Note: Timers are only available inside of [the Request Context](/about/tips/request-context)._
 
-#### Fetch global
+### Fetch global
 
 [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch) - Starts the process of fetching a resource from the network. See [FetchAPI](/reference/apis/fetch/). \*_Note: The Fetch API is only available inside of [the Request Context](/about/tips/request-context)._
 
