@@ -1,0 +1,10 @@
+name = "workers-docs"
+type = "webpack"
+account_id = "1e1395dd88464c726799aac6c1be4a71"
+route = "workers-docs.ruthless.design/*"
+zone_id = "e2c9f69be50a2b6870060b418cecffc7"
+workers_dev = false
+
+[site]
+bucket = "./public"
+entry-point = "workers-site"
