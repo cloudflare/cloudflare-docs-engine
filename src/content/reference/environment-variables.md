@@ -6,7 +6,7 @@ order: 5
 
 Environment variables can be managed via wrangler or in the UI, it is recommended to adhere to one method.
 
-# Text
+## Text
 
 Once a text variable is uploaded via [wrangler](/tooling/wrangler/configuration) or in the UI, the string is exposed on the global namespace as type [`String`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String).
 
@@ -18,7 +18,7 @@ if (ENVIRONMENT === "staging") {
 }
 ```
 
-# Secrets
+## Secrets
 
 Once a secret is uploaded via [wrangler](/tooling/wrangler/secret) or in the UI, the string is exposed on the global namespace as type [`String`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String).
 
