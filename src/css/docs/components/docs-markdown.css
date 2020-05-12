@@ -365,6 +365,7 @@ p.DocsMarkdown--small-header {
 }
 
 .DocsMarkdown table {
+  word-break: break-word;
   border-collapse: collapse;
   border-spacing: 0;
   border: 0;
