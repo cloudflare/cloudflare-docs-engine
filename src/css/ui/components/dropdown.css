@@ -32,7 +32,7 @@
   }
 }
 
-.Dropdown[is-active] .Dropdown--dropdown {
+.Dropdown[data-expanded="true"] .Dropdown--dropdown {
   opacity: 1;
   pointer-events: all;
   transform: scaleX(1) scaleY(1) perspective(1px);

@@ -222,7 +222,7 @@
   transition: opacity .2s ease;
 }
 
-.DocsSidebar:not(:hover) .DocsSidebar--section-more:not([is-active]) .DocsSidebar--section-more-button:not(:focus) {
+.DocsSidebar:not(:hover) .DocsSidebar--section-more:not([data-expanded="true"]) .DocsSidebar--section-more-button:not(:focus) {
   opacity: 0;
 }
 
