@@ -1,4 +1,4 @@
-# Using the Cloudflare Cache
+# Using the Cache
 
 Workers provide a way to customize cache behavior using Cloudflare's CDN for a zone’s private cache space. To learn about the benefits of caching see our Learning Center's article on [What is Caching?](https://www.cloudflare.com/learning/cdn/what-is-caching/)
 
