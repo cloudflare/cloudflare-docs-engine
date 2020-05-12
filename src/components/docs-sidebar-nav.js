@@ -1,5 +1,5 @@
-import React from 'react'
-import { Location } from '@reach/router'
+import React from "react"
+import { Location } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 
 import DocsSidebarNavItem from "./docs-sidebar-nav-item"
