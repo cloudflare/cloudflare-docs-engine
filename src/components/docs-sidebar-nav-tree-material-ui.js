@@ -88,29 +88,6 @@ const DocsSidebarNavTree = () => {
       )}
     </Location>
   )
-
-  // return (
-  //   <TreeView
-  //     className={c}
-  //     defaultCollapseIcon={<ExpandMoreIcon />}
-  //     defaultExpandIcon={<ChevronRightIcon />}
-  //   >
-  //     <TreeItem className={c+"-item"} nodeId="1" label="Applications">
-  //       <TreeItem className={c+"-item"} nodeId="2" label="Calendar" />
-  //       <TreeItem className={c+"-item"} nodeId="3" label="Chrome" />
-  //       <TreeItem className={c+"-item"} nodeId="4" label="Webstorm" />
-  //     </TreeItem>
-  //     <TreeItem className={c+"-item"} nodeId="5" label="Documents">
-  //       <TreeItem className={c+"-item"} nodeId="10" label="OSS" />
-  //       <TreeItem className={c+"-item"} nodeId="6" label="Material-UI">
-  //         <TreeItem className={c+"-item"} nodeId="7" label="src">
-  //           <TreeItem className={c+"-item"} nodeId="8" label="index.js" />
-  //           <TreeItem className={c+"-item"} nodeId="9" label="tree-view.js" />
-  //         </TreeItem>
-  //       </TreeItem>
-  //     </TreeItem>
-  //   </TreeView>
-  // )
 }
 
 export default DocsSidebarNavTree
