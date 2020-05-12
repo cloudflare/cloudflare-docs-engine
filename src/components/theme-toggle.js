@@ -98,7 +98,7 @@ class ThemeToggle extends React.Component {
   }
 
   componentWillUnmount() {
-    this.query.removeListener(colorSchemeQuery)
+    this.query.removeListener(onMediaMatchChange)
     this.interval.clear()
   }
 
