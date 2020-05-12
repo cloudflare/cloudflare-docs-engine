@@ -4,6 +4,7 @@ import Helmet from "react-helmet"
 import SEO from "./seo"
 
 import PageTransition from "./page-transition"
+import Breadcrumbs from "./breadcrumbs"
 
 import DocsMobileHeader from "./docs-mobile-header"
 import DocsMobileTitleHeader from "./docs-mobile-title-header"
@@ -46,6 +47,12 @@ const DocsPage = ({ pageContext, children }) => {
             )}
 
             <div className="DocsContent" page-type={pageType}>
+              {pageContext.frontmatter.breadcrumbs && (
+                <div className="DocsContent--breadcrumbs">
+                  <Breadcrumbs/>
+                </div>
+              )}
+
               <div className="DocsMarkdown">
                 {children}
               </div>

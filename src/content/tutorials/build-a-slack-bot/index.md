@@ -1,7 +1,8 @@
 ---
+hidden: true
+breadcrumbs: true
 updated: 2018-04-02
 difficulty: Advanced
-hidden: true
 length: 10%
 ---
 

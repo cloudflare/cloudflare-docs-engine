@@ -1,6 +1,7 @@
 ---
 title: Tutorials
 type: overview
+children: false
 order: 1
 ---
 

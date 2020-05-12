@@ -1,16 +1,13 @@
 import getPageTitle from "./get-page-title"
+import getParentPath from "./get-parent-path"
 
-const getParentPath = path => {
-  return path.replace(/\/[^/]*$/, '')
-}
-
-const formatNode = (node) => {
+const formatNode = node => {
   node.href = node.path
   node.title = getPageTitle(node)
   return node
 }
 
-const getOrder = (node) => {
+const getOrder = node => {
   if (node.frontmatter.order || node.frontmatter.order === 0) {
     return node.frontmatter.order
   }

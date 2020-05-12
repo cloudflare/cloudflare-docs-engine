@@ -14,7 +14,7 @@
 
 .Breadcrumbs--item + .Breadcrumbs--item::before {
   content: "❯";
-  margin-left: .3em;
+  margin: 0 .25em;
   padding: 0 .3em;
   opacity: .4;
   font-weight: 900;
