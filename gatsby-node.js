@@ -67,6 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               type
               order
               hidden
+              breadcrumbs
             }
             headings(depth: h1) {
               value
