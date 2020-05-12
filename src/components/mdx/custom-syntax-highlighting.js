@@ -1,3 +1,9 @@
+export const languageMappings = {
+  "bash": "sh",
+  "shell": "sh",
+  "javascript": "js"
+}
+
 const transformations = {
   js: {
     keyword: {
@@ -14,8 +20,9 @@ const transformations = {
     },
     "function": {
       to: "built-in",
-      for: ["fetch", "console"]
+      for: ["fetch", "console", "addEventListener"]
     }
+    // TODO - plain => CodeBlock--object-property
   },
   css: {
     selector: {
