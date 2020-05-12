@@ -291,6 +291,7 @@
   color: var(--code-red);
 }
 
+.CodeBlock--arrow,
 .CodeBlock--declaration-keyword {
   color: var(--code-cyan);
 }

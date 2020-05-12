@@ -2,9 +2,7 @@ import React from "react"
 
 import Highlight, { defaultProps } from "prism-react-renderer"
 
-import { transformToken } from "./custom-syntax-highlighting"
-
-const shellLanguages = ["sh", "shell", "bash"]
+import { transformToken, languageMappings, shellLanguages } from "./custom-syntax-highlighting"
 
 const addNewlineToEmptyLine = line => {
   if (line && line.length === 1 && line[0].empty) {
@@ -17,19 +15,16 @@ const addNewlineToEmptyLine = line => {
 
 const getCodeBlockClassName = language => {
   const base = "CodeBlock CodeBlock-with-rows CodeBlock-scrolls-horizontally"
-  // TODO
-  // return base + " CodeBlock-is-light-in-light-theme"
-  return base + (shellLanguages.includes(language) ? "" : " CodeBlock-is-light-in-light-theme")
-}
-
-const normalizeLanguage = language => {
-  if (shellLanguages.includes(language)) return "shell"
-  return language
+  return base + (language === "sh" ? "" : " CodeBlock-is-light-in-light-theme") // TODO
 }
 
 const CodeBlock = props => {
   const { className, children } = props.children.props
-  const language = className ? className.split("-")[1] : "js"
+
+  let language = className ? className.split("-")[1] : "js"
+  const mappedLanguage = languageMappings[language]
+  if (mappedLanguage) language = mappedLanguage
+
   let code = children.trim()
 
   const tokenProps = ({ children, className, key }) => {
