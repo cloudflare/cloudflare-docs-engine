@@ -1,7 +1,6 @@
 ---
 title: Welcome
 order: 0
-hidden: false
 ---
 
 # Cloudflare Workers documentation
