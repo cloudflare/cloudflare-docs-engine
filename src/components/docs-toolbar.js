@@ -1,13 +1,14 @@
 import React from "react"
 
 import ThemeToggle from "./theme-toggle"
+import DocsTitle from "./docs-title"
 
 const DocsToolbar = () => (
   <div className="DocsToolbar">
     <div className="DocsToolbar--search">
       <div className="DocsSearch">
         <div className="DocsSearch--input-wrapper">
-          <input className="DocsSearch--input" type="text" spellCheck="false" autoComplete="false" placeholder="Search Workers docs..."/>
+          <input className="DocsSearch--input" type="text" spellCheck="false" autoComplete="false" placeholder={"Search " + DocsTitle() + " docs..."}/>
           <div className="DocsSearch--input-icon">
             <svg id="SearchIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-labelledby="SearchIcon--title SearchIcon--desc" fill="currentColor">
               <defs>

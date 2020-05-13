@@ -18,9 +18,7 @@ const DocsTitle = () => {
     `
   )
 
-  const title = site.siteMetadata.cloudflareDocs.product
-
-  return (<>{title}</>)
+  return site.siteMetadata.cloudflareDocs.product
 }
 
 export default DocsTitle
