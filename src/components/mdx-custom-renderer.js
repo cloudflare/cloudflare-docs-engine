@@ -7,12 +7,14 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import headers from "./mdx/headers"
 import inlineCode from "./mdx/inline-code"
 import pre from "./mdx/code-block"
+import blockquote from "./mdx/blockquote"
 
 // https://www.gatsbyjs.org/docs/mdx/customizing-components/
 const components = {
   inlineCode,
   ...headers,
   pre, // TODO - figure out why `code:` didn’t work here
+  blockquote,
   Link,
 }
 

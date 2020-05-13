@@ -159,10 +159,10 @@ class ElementHandler {
 
 Element handlers are attached to an `HTMLRewriter` instance using the [`.on`](#methods) method. Attached handlers will then respond to `element`, `text`, and `comments` callbacks.
 
-<blockquote class="is-info">
-<p><strong>Tip</strong></p>
-<p>Element handlers can be named whatever you’d like, or they can even be written as an inline anonymous <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">ES6 class instance</a>. One benefit though of instantiating a named class is that you’re able to <a href="#">reference it later</a>.</p>
-</blockquote>
+> {note}
+> __Tip__
+>
+> Element handlers can be named whatever you’d like, or they can even be written as an inline anonymous <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">ES6 class instance</a>. One benefit though of instantiating a named class is that you’re able to <a href="#">reference it later</a>.
 
 #### Callbacks
 

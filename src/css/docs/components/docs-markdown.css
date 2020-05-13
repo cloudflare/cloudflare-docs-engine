@@ -2,13 +2,6 @@
   word-wrap: break-word;
 }
 
-@media (min-width: 568px) {
-  .DocsMarkdown--indent {
-    padding-left: 1.5em;
-    border-left: .28125em solid rgba(var(--color-rgb), .1);
-  }
-}
-
 .DocsMarkdown h1 {
   font-size: 2.4em;
   line-height: 1;
@@ -272,48 +265,63 @@ p.DocsMarkdown--small-header {
   max-width: 100%;
 }
 
-.DocsMarkdown blockquote {
+.DocsMarkdown blockquote:not([class]) {
+  margin: 1.5em 0;
+  padding-left: 1em;
+  border-left: .28125em solid rgba(var(--color-rgb), .5);
+  font-style: italic;
+}
+
+.DocsMarkdown blockquote:not([class]) > em {
+  font-style: normal;
+}
+
+.DocsMarkdown--custom-block {
   font-size: .9em;
   margin: 1.5em 0;
   padding: 1em 1.3333em;
-  border-left: .28125em solid rgba(var(--orange-5-rgb), .5);
-  background-color: rgba(var(--orange-5-rgb), .125);
+  border-left: .28125em solid rgba(var(--color-rgb), .5);
+  background-color: rgba(var(--color-rgb), .125);
   border-radius: 0 .5em .5em 0;
 }
 
-
-.DocsMarkdown blockquote > p:first-child {
+.DocsMarkdown--custom-block-header {
   margin-bottom: .25em;
 }
 
-[theme="dark"] .DocsMarkdown blockquote {
+.DocsMarkdown--custom-block[data-type="warning"] {
+  border-left-color: rgba(var(--orange-5-rgb), .5);
+  background-color: rgba(var(--orange-5-rgb), .125);
+}
+
+[theme="dark"] .DocsMarkdown--custom-block[data-type="warning"] {
   border-left-color: rgba(var(--orange-5-rgb), .7);
   background-color: rgba(var(--orange-6-rgb), .04);
 }
 
-.DocsMarkdown blockquote.is-info {
+.DocsMarkdown--custom-block[data-type="note"] {
   border-left-color: rgba(var(--blue-4-rgb), .4);
   background-color: rgba(var(--blue-4-rgb), .1);
 }
 
-.DocsMarkdown blockquote.is-info a:not([class]) {
+.DocsMarkdown--custom-block[data-type="note"] a:not([class]) {
   --background-color-rgb: var(--blue-4-rgb);
   --border-bottom-color-rgb: var(--blue-2-rgb);
 }
 
-[theme="dark"] .DocsMarkdown blockquote.is-info {
+[theme="dark"] .DocsMarkdown--custom-block[data-type="note"] {
   border-left-color: rgba(var(--blue-4-rgb), .8);
   background-color: rgba(var(--blue-6-rgb), .05);
 }
 
-[theme="dark"] .DocsMarkdown blockquote.is-info a:not([class]) {
+[theme="dark"] .DocsMarkdown--custom-block[data-type="note"] a:not([class]) {
   color: inherit;
   --background-color-rgb: var(--blue-6-rgb);
   --background-color-alpha: .1;
   --border-bottom-color-rgb: var(--blue-7-rgb);
 }
 
-[theme="dark"] .DocsMarkdown blockquote.is-info a:not([class]):hover {
+[theme="dark"] .DocsMarkdown--custom-block[data-type="note"] a:not([class]):hover {
   --background-color-alpha: .2;
 }
 
@@ -476,7 +484,7 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown ol > *:first-child,
 .DocsMarkdown li > *:first-child,
 .DocsMarkdown blockquote > *:first-child,
-.DocsMarkdown .DocsMarkdown--indent > *:first-child {
+.DocsMarkdown .DocsMarkdown--custom-block > *:first-child {
   margin-top: 0;
 }
 
@@ -485,6 +493,6 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown ol > *:last-child,
 .DocsMarkdown li > *:last-child,
 .DocsMarkdown blockquote > *:last-child ,
-.DocsMarkdown .DocsMarkdown--indent > *:last-child {
+.DocsMarkdown .DocsMarkdown--custom-block > *:last-child {
   margin-bottom: 0;
 }
