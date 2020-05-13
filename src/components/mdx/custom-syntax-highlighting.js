@@ -17,7 +17,7 @@ const transformations = {
     },
     "class-name": {
       to: "api",
-      for: ["HTMLRewriter", "Request", "Response", "URL", "Error"] // TODO - only applies these to Workers-specific JavaScript blocks
+      for: ["HTMLRewriter", "Request", "Response", "URL", "Error"] // TODO - apply these only to Workers-specific JS code blocks
     },
     "function": {
       to: "built-in",
