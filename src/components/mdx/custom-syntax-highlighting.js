@@ -1,7 +1,8 @@
 export const languageMappings = {
   "bash": "sh",
   "shell": "sh",
-  "javascript": "js"
+  "javascript": "js",
+  "markup": "html"
 }
 
 const transformations = {

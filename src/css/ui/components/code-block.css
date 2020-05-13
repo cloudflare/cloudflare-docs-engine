@@ -326,6 +326,7 @@
 
 .CodeBlock--regex,
 .CodeBlock--string,
+.CodeBlock--template-string,
 .CodeBlock--object-property {
   color: var(--code-gold);
 }
@@ -355,4 +356,10 @@
 
 [language="css"] .CodeBlock--color {
   color: var(--code-gold);
+}
+
+/* HTML tokens */
+
+[language="html"] .CodeBlock--tag {
+  color: var(--code-red);
 }
