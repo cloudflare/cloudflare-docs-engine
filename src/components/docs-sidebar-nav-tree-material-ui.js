@@ -19,35 +19,8 @@ const data = [
     href: "/examples"
   },
   {
-    title: "Learning",
-    href: "/learning",
-    children: [
-      { title: "How Workers works", href: "/learning/how-workers-works" },
-      { title: "The Request context", href: "/learning/the-request-context" },
-      { title: "FetchEvent lifecycle", href: "/learning/fetch-event-lifecycle" },
-      { title: "Debugging", href: "/learning/debugging" },
-      { title: "Routing", href: "/learning/routing" },
-      { title: "Cloudflare Cache", href: "/learning/cloudflare-cache" },
-      { title: "Security", href: "/learning/security" },
-      { title: "Pricing", href: "/learning/pricing" },
-      { title: "Limits", href: "/learning/limits" },
-    ]
-  },
-  {
     title: "Reference",
-    href: "/reference",
-    children: [
-      // TODO
-      { title: "How Workers works", href: "/reference/how-workers-works" },
-      { title: "The Request context", href: "/reference/the-request-context" },
-      { title: "FetchEvent lifecycle", href: "/reference/fetch-event-lifecycle" },
-      { title: "Debugging", href: "/reference/debugging" },
-      { title: "Routing", href: "/reference/routing" },
-      { title: "Cloudflare Cache", href: "/reference/cloudflare-cache" },
-      { title: "Security", href: "/reference/security" },
-      { title: "Pricing", href: "/reference/pricing" },
-      { title: "Limits", href: "/reference/limits" },
-    ]
+    href: "/reference"
   }
 ]
 
