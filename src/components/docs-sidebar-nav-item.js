@@ -1,11 +1,14 @@
 import React from 'react'
 import { Link } from "gatsby"
 
+import getNormalizedPath from "../utils/get-normalized-path"
+
 class DocsSidebarNavItem extends React.Component {
 
   constructor(props) {
     super(props)
 
+    this.props.location.pathname = getNormalizedPath(this.props.location.pathname)
     this.expandCollapseEl = React.createRef()
 
     this.state = {
