@@ -4,6 +4,8 @@ import Highlight, { defaultProps } from "prism-react-renderer"
 
 import { transformToken, languageMappings, shellLanguages } from "./custom-syntax-highlighting"
 
+const codeBlockClassName = "CodeBlock CodeBlock-with-rows CodeBlock-scrolls-horizontally CodeBlock-is-light-in-light-theme"
+
 const addNewlineToEmptyLine = line => {
   if (line && line.length === 1 && line[0].empty) {
     // Improves copy/paste behavior
@@ -11,11 +13,6 @@ const addNewlineToEmptyLine = line => {
   }
 
   return line
-}
-
-const getCodeBlockClassName = language => {
-  const base = "CodeBlock CodeBlock-with-rows CodeBlock-scrolls-horizontally"
-  return base + (language === "sh" ? "" : " CodeBlock-is-light-in-light-theme") // TODO
 }
 
 const CodeBlock = props => {
@@ -42,7 +39,7 @@ const CodeBlock = props => {
   return (
     <Highlight {...defaultProps} code={code} language={language}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={getCodeBlockClassName(language)} language={language}>
+        <pre className={codeBlockClassName} language={language}>
           <code>
             <span className="CodeBlock--line-number-rows" style={{display:"none"}}> {/* TODO - optionally display line numbers */}
               {tokens.map((line, i) => (

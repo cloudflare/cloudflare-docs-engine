@@ -358,8 +358,56 @@
   color: var(--code-gold);
 }
 
+[language="css"] .CodeBlock--atrule {
+  color: var(--code-red);
+}
+
+[language="css"] .CodeBlock--atrule ~ .CodeBlock--atrule { /* TODO */
+  color: var(--code-gold);
+}
+
 /* HTML tokens */
 
 [language="html"] .CodeBlock--tag {
   color: var(--code-red);
+}
+
+/* Markdown tokens */
+
+[language="markdown"] .CodeBlock--title,
+[language="markdown"] .CodeBlock--header {
+  color: var(--code-orange);
+}
+
+[language="markdown"] .CodeBlock--list {
+  color: var(--code-red);
+}
+
+[language="markdown"] .CodeBlock--url,
+[language="markdown"] .CodeBlock--link {
+  color: var(--code-violet);
+}
+
+[language="markdown"] .CodeBlock--bold {
+  font-weight: bold;
+}
+
+[language="markdown"] .CodeBlock--italic {
+  font-style: italic;
+}
+
+[language="markdown"] .CodeBlock--blockquote {
+  color: var(--code-blue);
+}
+
+[language="markdown"] .CodeBlock--code {
+  color: var(--code-green);
+}
+
+[language="markdown"] .CodeBlock--tag {
+  color: var(--code-lilac);
+}
+
+[language="markdown"] .CodeBlock--hr {
+  color: var(--code-gold);
 }
