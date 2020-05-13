@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import DocsTitle from "./docs-title"
 import DocsSidebarMoreDropdown from "./docs-sidebar-more-dropdown"
 import DocsSidebarNav from "./docs-sidebar-nav"
+// import DocsSidebarNav from "./docs-sidebar-nav-tree-material-ui-two" // TODO
 
 const DocsSidebarHeaderSection = () => (
   <div className="DocsSidebar--section DocsSidebar--header-section">
