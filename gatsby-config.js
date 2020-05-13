@@ -26,6 +26,8 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
+    // "gatsby-plugin-postcss",
+    "gatsby-plugin-remove-trailing-slashes",
     // Prevent nav from (un)mounting on page navigations
     // https://git.io/JfOKn
     {
