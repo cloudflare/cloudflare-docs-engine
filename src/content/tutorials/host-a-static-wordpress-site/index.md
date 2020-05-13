@@ -30,7 +30,6 @@ We'll use the free WordPress plugin [WP2Static](https://wordpress.org/plugins/st
 
 To start, we'll install the [WP2Static](https://wordpress.org/plugins/static-html-output-plugin/) plugin to export your WordPress site to a zip file. In your WordPress admin, navigate to the "Add Plugins" page, by default at `/wp-admin/plugin-install.php`. In the search bar, search WP2Static and confirm that the resulting plugin that you will be installing matches the plugin below.
 
-![Installing the plugin](media/wordpress--install-plugin.png)
 
 Select "Install" on the plugin and once it's finished installing, "Activate".
 
@@ -42,7 +41,6 @@ From the "Where will you host.." dropdown on the page, select "ZIP archive (.zip
 
 It's time to do our first export! Select "Start static site export" (it might take a while), and when it completes, save the ZIP file somewhere you can easily find it later.
 
-![Exporting your WordPress site](media/wordpress--export.png)
 
 ## Creating the Workers project
 
@@ -95,8 +93,6 @@ To preview and deploy our application, we need to fill out `wrangler.toml` - the
 Using Wrangler's preview feature, we can quickly upload a version of our site to the Cloudflare Workers preview service, and make sure that the static export looks like we'd expect. Running `wrangler preview` will upload your static site and preview it in a browser window.
 
 When your site looks correct in Wrangler's preview, you can move onto publishing your project to a domain. For a guide on how to do this, check out the [Quick Start](/quickstart/#publish-your-project).
-
-[![Demo site](media/wordpress--demo.png)](https://wp-static.signalnerve.workers.dev)
 
 ## Limitations
 

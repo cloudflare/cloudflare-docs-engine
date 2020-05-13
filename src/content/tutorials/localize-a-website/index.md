@@ -12,8 +12,6 @@ The [`HTMLRewriter`](/reference/apis/html-rewriter) (currently in BETA) class bu
 
 In this tutorial, we'll build an example internationalization and localization engine (commonly referred to as "i18n" and "l10n") for your application, server the content of your site, and automatically translate the content based your visitors' location in the world.
 
-[![Demo Image](/tutorials/localize-a-website/media/i18n.jpg)](https://i18n-example.workers-tooling.cf)
-
 ## Prerequisites
 
 To publish your project to Cloudflare Workers, you'll need a few things:
@@ -58,7 +56,6 @@ The `HTMLRewriter` class provided in the Workers runtime allows developers to pa
 
 Our example website is a basic single-page HTML project that lives in `./public`, with some text elements: an `h1` element with the text "Example Site", and a number of `p` elements with different text:
 
-![Demo Code](/tutorials/localize-a-website/media/code-example.png)
 
 What is unique about this page is the addition of [data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) in the HTML – custom attributes defined on a number of elements on this page. The `data-i18n-key` on the `h1` tag on this page, as well as many of the `p` tags, indicates that there is a corresponding internationalization key, which should be used to look up a translation for this text:
 
@@ -265,8 +262,6 @@ With that, it's time to publish your application! Using `wrangler`, we can publi
 ```sh
 $ wrangler publish
 ```
-
-[![Demo Image](/tutorials/localize-a-website/media/i18n.jpg)](https://i18n-example.workers-tooling.cf)
 
 ## Resources
 

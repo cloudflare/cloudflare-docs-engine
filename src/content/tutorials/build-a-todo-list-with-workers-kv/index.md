@@ -10,7 +10,6 @@ length: 75%
 
 In this tutorial, you’ll build a todo list application in HTML, CSS and JavaScript, with a twist: the data for the application will be stored in [Workers KV](/docs/reference/storage/overview/).
 
-![Preview](/tutorials/build-a-todo-list/media/finished.png)
 
 To build this application, we'll use [Wrangler](https://github.com/cloudflare/wrangler), the command-line tool for generating, building, and publishing projects on the Cloudflare Workers platform. If you haven't used Wrangler, we recommend checking out the [Quick Start Guide](/quickstart), which will get you set up with Wrangler, and familiar with the basic commands.
 
