@@ -6,7 +6,7 @@ html[is-docs-page] body {
 
 .DocsPage {
   --docs-header-height: 3.7647058824rem; /* 64 / 17 */
-  --docs-sidebar-width: 19rem;
+  --docs-sidebar-width: 18.5rem;
   --docs-body-sidebar-width: var(--docs-sidebar-width);
   --docs-page-side-padding: 1rem;
   --docs-page-width: 1440px; /* TODO */
