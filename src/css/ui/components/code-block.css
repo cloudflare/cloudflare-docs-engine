@@ -439,7 +439,7 @@
 .CodeBlock--language-css.CodeBlock--token-pseudo-class,
 [language="css"] .CodeBlock--token-pseudo-element,
 .CodeBlock--language-css.CodeBlock--token-pseudo-element {
-  color: violet;
+  color: var(--code-violet);
 }
 
 [language="markdown"] .CodeBlock--token-title,
