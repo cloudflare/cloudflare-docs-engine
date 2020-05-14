@@ -47,7 +47,7 @@ const DocsPage = ({ pageContext, children }) => {
             )}
 
             <div className="DocsContent" page-type={pageType}>
-              {pageContext.frontmatter.breadcrumbs && (
+              {pageContext.frontmatter && pageContext.frontmatter.breadcrumbs && (
                 <div className="DocsContent--breadcrumbs">
                   <Breadcrumbs/>
                 </div>
