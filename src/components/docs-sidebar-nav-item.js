@@ -33,6 +33,15 @@ class DocsSidebarNavItem extends React.Component {
     return hasActiveChild(node)
   }
 
+  isHidden() {
+    if (typeof this.props.isParentExpanded === "function") {
+      const isParentExpanded = this.props.isParentExpanded()
+      if (!isParentExpanded) return true
+    }
+
+    return false
+  }
+
   isExpanded() {
     const active = this.isActive()
     const activeRoot = this.isActiveRoot()
@@ -81,6 +90,8 @@ class DocsSidebarNavItem extends React.Component {
     if (this.isActiveRoot()) props['is-active-root'] = ''
 
     const linkProps = {}
+    if (this.isHidden()) linkProps.tabIndex = -1
+    if (this.isHidden()) linkProps["aria-hidden"] = true
     if (this.isActive()) linkProps['is-active'] = ''
 
     return (
@@ -113,6 +124,7 @@ class DocsSidebarNavItem extends React.Component {
                   node={node}
                   location={location}
                   depth={depth}
+                  isParentExpanded={this.isExpanded.bind(this)}
                 />
               ))}
             </ul>
