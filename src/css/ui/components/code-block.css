@@ -409,11 +409,14 @@
   color: var(--code-violet);
 }
 
-[language="css"] .CodeBlock--token-color,
 [language="css"] .CodeBlock--token-attribute.CodeBlock--token-value,
-.CodeBlock--language-css.CodeBlock--token-color,
 .CodeBlock--language-css.CodeBlock--token-attribute.CodeBlock--token-value {
   color: var(--code-gold);
+}
+
+[language="css"] .CodeBlock--token-color,
+.CodeBlock--language-css.CodeBlock--token-color {
+  color: var(--code-violet);
 }
 
 [language="css"] .CodeBlock--token-attribute.CodeBlock--token-punctuation,
