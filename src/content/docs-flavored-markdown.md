@@ -17,7 +17,7 @@ For internal links—those you want to use `pushState` for—use `<Link/>`.
 
 __Example:__ Here’s a link to <Link to="/tutorials">Tutorials</Link>.
 
-```html
+```markdown
 Here’s a link to <Link to="/tutorials">Tutorials</Link>.
 ```
 
@@ -25,7 +25,7 @@ For external link, use regular Markdown.
 
 __Example:__ Here’s a link to [example.com](https://example.com).
 
-```html
+```markdown
 Here’s a link to [example.com](https://example.com).
 ```
 
