@@ -9,7 +9,7 @@ const transformations = {
   js: {
     keyword: {
       to: "declaration-keyword",
-      for: ["const", "let", "var", "async", "function", "class"]
+      for: ["const", "let", "var", "async", "await", "function", "class"]
     },
     punctuation: {
       to: "operator",
@@ -17,24 +17,18 @@ const transformations = {
     },
     "class-name": {
       to: "api",
-      for: ["HTMLRewriter", "Request", "Response", "URL", "Error"] // TODO - apply these only to Workers-specific JS code blocks
+      for: ["HTMLRewriter", "Request", "Response", "URL", "Error"] // TODO - apply these only to Workers-specific JS code blocks?
     },
     "function": {
-      to: "built-in",
+      to: "builtin",
       for: ["fetch", "console", "addEventListener"]
-    }
-    // TODO - plain => CodeBlock--object-property
-  },
-  css: {
-    selector: {
-      to: "operator",
-      for: ["="]
     },
-    "*": {
-      to: "string",
-      for: (s) => s.match(/^".+"$/)
-    }
+    // TODO - plain => CodeBlock--object-property
   }
+}
+
+transformations.html = {
+  keyword: transformations.js.keyword
 }
 
 export const transformToken = ({ token, children, language }) => {

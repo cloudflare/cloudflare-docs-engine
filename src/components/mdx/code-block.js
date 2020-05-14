@@ -25,9 +25,17 @@ const CodeBlock = props => {
   let code = children.trim()
 
   const tokenProps = ({ children, className, key }) => {
-    let token = className.split(" ")[1]
-    token = transformToken({ token, children, language })
-    className = "CodeBlock--" + token
+    const tokens = className.replace("token ", "").split(" ")
+
+    className = ""
+
+    tokens.forEach((token, i) => {
+      token = transformToken({ token, children, language })
+      if (token.indexOf("language-") !== 0) token = `token-${ token }`
+      className += ` CodeBlock--${ token }`
+    })
+
+    className = className.trim()
 
     return {
       key,
@@ -39,7 +47,7 @@ const CodeBlock = props => {
   return (
     <Highlight {...defaultProps} code={code} language={language}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={codeBlockClassName} language={language}>
+        <pre className={codeBlockClassName + " CodeBlock--language-" + language} language={language}>
           <code>
             <span className="CodeBlock--line-number-rows" style={{display:"none"}}> {/* TODO - optionally display line numbers */}
               {tokens.map((line, i) => (

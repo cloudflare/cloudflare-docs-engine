@@ -259,155 +259,222 @@
   );
 }
 
-/* Syntax highlighting */
+/* PrismJS syntax highlighting */
 
-.CodeBlock--comment {
+.CodeBlock--token-punctuation {
+  color: inherit;
+}
+
+.CodeBlock--token-comment,
+.CodeBlock--token-block-comment,
+.CodeBlock--token-prolog,
+.CodeBlock--token-doctype,
+.CodeBlock--token-cdata {
   font-style: italic;
   color: var(--code-gray);
 }
 
-/* Terminal tokens */
+.CodeBlock--token-keyword,
+.CodeBlock--token-operator {
+  color: var(--code-red);
+}
 
-.CodeBlock--directory {
+.CodeBlock--token-class,
+.CodeBlock--token-class-name,
+.CodeBlock--token-function,
+.CodeBlock--token-function-name { /* TODO */
+  color: var(--code-green);
+}
+
+.CodeBlock--token-symbol,
+.CodeBlock--token-constant {
+  color: var(--code-indigo); /* TODO */
+}
+
+.CodeBlock--token-arrow,
+.CodeBlock--token-declaration-keyword {
+  color: var(--code-cyan);
+}
+
+.CodeBlock--token-parameter,
+.CodeBlock--token-function-parameter {
+  font-style: italic;
+  color: var(--code-lilac);
+}
+
+.CodeBlock--token-number,
+.CodeBlock--token-boolean,
+.CodeBlock--token-null-undefined,
+.CodeBlock--token-builtin,
+.CodeBlock--token-method {
+  color: var(--code-violet);
+}
+
+.CodeBlock--token-api {
   color: var(--code-orange);
 }
 
-.CodeBlock--prompt {
+.CodeBlock--token-char,
+.CodeBlock--token-regex,
+.CodeBlock--token-string,
+.CodeBlock--token-template-string,
+.CodeBlock--token-object-property {
+  color: var(--code-gold);
+}
+
+.CodeBlock--token-bold,
+.CodeBlock--token-important { /* TODO */
+  font-weight: bold;
+}
+
+.CodeBlock--token-italic {
+  font-style: italic;
+}
+
+.CodeBlock--token-namespace,
+.CodeBlock--token-deleted {
+  color: var(--code-red);
+}
+
+.CodeBlock--token-entity {
+  color: var(--code-blue);
+  cursor: help;
+}
+
+.CodeBlock--token-inserted {
+  color: var(--code-green);
+}
+
+.CodeBlock--token-url,
+.CodeBlock--token-link {
+  color: var(--code-violet);
+}
+
+.CodeBlock--token-url.CodeBlock--token-content,
+.CodeBlock--token-link.CodeBlock--token-content {
+  color: inherit; /* TODO */
+}
+
+.CodeBlock--token-tag {
+  color: var(--code-red);
+}
+
+.CodeBlock--token-tag.CodeBlock--token-punctuation {
+  color: inherit;
+}
+
+.CodeBlock--token-tag.CodeBlock--token-attr-name {
+  color: var(--code-green);
+}
+
+.CodeBlock--token-tag.CodeBlock--token-attr-name + .CodeBlock--token-punctuation {
+  color: inherit;
+}
+
+.CodeBlock--token-tag.CodeBlock--token-attr-value {
+  color: var(--code-gold);
+}
+
+[language="css"] .CodeBlock--token-plain,
+[language="css"] .CodeBlock--token-property,
+.CodeBlock--language-css.CodeBlock--token-plain,
+.CodeBlock--language-css.CodeBlock--token-style,
+.CodeBlock--language-css.CodeBlock--token-property {
+  color: var(--code-blue);
+}
+
+.CodeBlock--language-css.CodeBlock--token-style.CodeBlock--token-punctuation {
+  color: inherit;
+}
+
+[language="css"] .CodeBlock--token-selector,
+.CodeBlock--language-css.CodeBlock--token-selector {
+  color: var(--code-red);
+}
+
+[language="css"] .CodeBlock--token-class,
+[language="css"] .CodeBlock--token-attribute,
+.CodeBlock--language-css.CodeBlock--token-class,
+.CodeBlock--language-css.CodeBlock--token-attribute {
+  color: var(--code-green);
+}
+
+[language="css"] .CodeBlock--token-function,
+.CodeBlock--language-css.CodeBlock--token-function {
+  color: var(--code-lilac);
+}
+
+[language="css"] .CodeBlock--token-variable,
+.CodeBlock--language-css.CodeBlock--token-variable {
+  color: var(--code-violet);
+}
+
+[language="css"] .CodeBlock--token-color,
+[language="css"] .CodeBlock--token-attribute.CodeBlock--token-value,
+.CodeBlock--language-css.CodeBlock--token-color,
+.CodeBlock--language-css.CodeBlock--token-attribute.CodeBlock--token-value {
+  color: var(--code-gold);
+}
+
+[language="css"] .CodeBlock--token-attribute.CodeBlock--token-punctuation,
+.CodeBlock--language-css.CodeBlock--token-attribute.CodeBlock--token-punctuation {
+  color: inherit;
+}
+
+[language="css"] .CodeBlock--token-unit,
+[language="css"] .CodeBlock--token-important,
+[language="css"] .CodeBlock--token-atrule.CodeBlock--token-rule,
+[language="css"] .CodeBlock--token-attribute.CodeBlock--token-operator,
+.CodeBlock--language-css.CodeBlock--token-unit,
+.CodeBlock--language-css.CodeBlock--token-important,
+.CodeBlock--language-css.CodeBlock--token-atrule.CodeBlock--token-rule,
+.CodeBlock--language-css.CodeBlock--token-attribute.CodeBlock--token-operator {
+  color: var(--code-red);
+}
+
+[language="css"] .CodeBlock--token-pseudo-class,
+.CodeBlock--language-css.CodeBlock--token-pseudo-class,
+[language="css"] .CodeBlock--token-pseudo-element,
+.CodeBlock--language-css.CodeBlock--token-pseudo-element {
+  color: violet;
+}
+
+[language="markdown"] .CodeBlock--token-title,
+[language="markdown"] .CodeBlock--token-header {
+  color: var(--code-orange);
+}
+
+[language="markdown"] .CodeBlock--token-list {
+  color: var(--code-red);
+}
+
+[language="markdown"] .CodeBlock--token-blockquote {
+  color: var(--code-blue);
+}
+
+[language="markdown"] .CodeBlock--token-code {
+  color: var(--code-green);
+}
+
+[language="markdown"] .CodeBlock--token-hr {
+  color: var(--code-gold);
+}
+
+/* TODO - migrate existing uses in @cloudflare/workers.cloudflare.com */
+
+[language="sh"] .CodeBlock--token-directory {
+  color: var(--code-orange);
+}
+
+[language="sh"] .CodeBlock--token-prompt {
   color: var(--code-orange);
   opacity: .7;
 }
 
-.CodeBlock--value {
+[language="sh"] .CodeBlock--token-value {
   color: var(--code-cyan);
 }
 
-.CodeBlock--success {
+[language="sh"] .CodeBlock--token-success {
   color: var(--code-green);
-}
-
-/* Code tokens */
-
-.CodeBlock--keyword {
-  color: var(--code-red);
-}
-
-.CodeBlock--arrow,
-.CodeBlock--declaration-keyword {
-  color: var(--code-cyan);
-}
-
-.CodeBlock--class,
-.CodeBlock--class-name,
-.CodeBlock--function {
-  color: var(--code-green);
-}
-
-.CodeBlock--operator {
-  color: var(--code-red);
-}
-
-.CodeBlock--parameter,
-.CodeBlock--function-parameter {
-  font-style: italic;
-  color: var(--code-lilac);
-}
-
-.CodeBlock--number,
-.CodeBlock--boolean,
-.CodeBlock--null-undefined,
-.CodeBlock--built-in,
-.CodeBlock--method {
-  color: var(--code-violet);
-}
-
-.CodeBlock--api {
-  color: var(--code-orange);
-}
-
-.CodeBlock--regex,
-.CodeBlock--string,
-.CodeBlock--template-string,
-.CodeBlock--object-property {
-  color: var(--code-gold);
-}
-
-/* CSS tokens */
-
-[language="css"] .CodeBlock--selector {
-  color: var(--code-green);
-}
-
-[language="css"] .CodeBlock--plain,
-[language="css"] .CodeBlock--property {
-  color: var(--code-blue);
-}
-
-[language="css"] .CodeBlock--unit {
-  color: var(--code-red);
-}
-
-[language="css"] .CodeBlock--function {
-  color: var(--code-lilac);
-}
-
-[language="css"] .CodeBlock--variable {
-  color: var(--code-violet);
-}
-
-[language="css"] .CodeBlock--color {
-  color: var(--code-gold);
-}
-
-[language="css"] .CodeBlock--atrule {
-  color: var(--code-red);
-}
-
-[language="css"] .CodeBlock--atrule ~ .CodeBlock--atrule { /* TODO */
-  color: var(--code-gold);
-}
-
-/* HTML tokens */
-
-[language="html"] .CodeBlock--tag {
-  color: var(--code-red);
-}
-
-/* Markdown tokens */
-
-[language="markdown"] .CodeBlock--title,
-[language="markdown"] .CodeBlock--header {
-  color: var(--code-orange);
-}
-
-[language="markdown"] .CodeBlock--list {
-  color: var(--code-red);
-}
-
-[language="markdown"] .CodeBlock--url,
-[language="markdown"] .CodeBlock--link {
-  color: var(--code-violet);
-}
-
-[language="markdown"] .CodeBlock--bold {
-  font-weight: bold;
-}
-
-[language="markdown"] .CodeBlock--italic {
-  font-style: italic;
-}
-
-[language="markdown"] .CodeBlock--blockquote {
-  color: var(--code-blue);
-}
-
-[language="markdown"] .CodeBlock--code {
-  color: var(--code-green);
-}
-
-[language="markdown"] .CodeBlock--tag {
-  color: var(--code-lilac);
-}
-
-[language="markdown"] .CodeBlock--hr {
-  color: var(--code-gold);
 }
