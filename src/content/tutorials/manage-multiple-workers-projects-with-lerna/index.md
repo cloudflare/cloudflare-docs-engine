@@ -8,7 +8,8 @@ length: 20%
 
 # Managing multiple Workers projects with Lerna
 
-_Note: this integration tutorial assumes the usage of [`wrangler`](https://github.com/cloudflare/wrangler), our open-source CLI tool, for building and deploying your projects._
+> {note}
+> __Note:__ This integration tutorial assumes the usage of [`wrangler`](https://github.com/cloudflare/wrangler), our open-source CLI tool, for building and deploying your projects.
 
 Using [`lerna`](https://github.com/lerna/lerna), a tool for managing multiple JavaScript codebases inside a single "monorepo", developers can work with multiple Wrangler projects and share dependencies between them. If your codebase is already managed with `lerna`, you can also add a new Wrangler project into your existing monorepo without disrupting your workflow.
 

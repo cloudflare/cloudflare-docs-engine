@@ -8,15 +8,6 @@ length: 80%
 
 # Host a static WordPress site
 
-- [Prerequisites](#prerequisites)
-- [Setup](#setup)
-  - [Export your WordPress site](#export-your-wordpress-site)
-- [Creating the Workers project](#creating-the-workers-project)
-  - [Port the WordPress Site](#port-the-wordpress-site)
-- [Deploying](#deploying)
-- [Limitations](#limitations)
-- [Conclusions](#conclusions)
-
 In this tutorial, we'll migrate a WordPress site to Cloudflare Workers, making use of [Workers Sites](/sites). Serving a static version of your WordPress site has many advantages over directly exposing your WordPress site. While WordPress is extremely powerful and easy to use, the consistent discovery of new vulnerabilities make it an obvious target for hackers to attack. Because WordPress is built on PHP, each incoming request to your site regenerates a new response on the server – for most websites this isn't necessary, and leads to scaling issues when your site receives a lot of traffic.
 
 We'll use the free WordPress plugin [WP2Static](https://wordpress.org/plugins/static-html-output-plugin/), which generates a completely static (HTML, CSS, and JS) version of your WordPress site. Using [Wrangler](https://github.com/cloudflare/wrangler), we'll publish the site to Cloudflare Workers. The Workers Sites functionality built into Wrangler includes support for serving and caching your site directly in Cloudflare's CDN, enabling users to view your site quickly and securely.
