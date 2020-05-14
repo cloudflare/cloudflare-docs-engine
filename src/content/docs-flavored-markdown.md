@@ -133,3 +133,80 @@ This is a paragraph with __bold__ and _italics_ contained within it.
 
 This is the end.
 ```
+
+### Markup with embedded CSS and JS
+
+```html
+<!DOCTYPE html>
+<html theme="light">
+  <head>
+    <meta charSet="utf-8"/>
+    <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <script>
+      (() => {
+        getThemeFromStorage = () => {
+          let storedTheme
+
+          const query = window.matchMedia("(prefers-color-scheme: dark)")
+          const queryTheme = query.matches ? "dark" : "light"
+
+          try {
+            const theme = JSON.parse(localStorage.theme)
+            const themeIsValid = ["dark", "light"].includes(theme.theme)
+            const themeWasRecentlySet = theme.updated > +new Date - (30 * 60 * 1000)
+
+            if (themeIsValid && themeWasRecentlySet) {
+              storedTheme = theme.theme
+            }
+          } catch (error) {}
+
+          return storedTheme || queryTheme
+        }
+
+        document.documentElement.setAttribute("theme", getThemeFromStorage())
+      })()
+    </script>
+
+    <style>
+      html {
+        -webkit-font-smoothing: antialiased;
+        background: #fff;
+        color: #000;
+      }
+
+      html[theme="dark"] {
+        background: #000;
+        color: #fff;
+      }
+
+      :root {
+        --color-rgb: 8, 10, 60;
+        --color: rgb(var(--color-rgb));
+      }
+
+      .Class {
+        box-sizing: border-box;
+        width: calc(80vw - 2em);
+        padding: 1em;
+        color: var(--color);
+
+        --bg-alpha: .5;
+        background-color: rgba(var(--color-rgb), var(--bg-alpha));
+      }
+
+      @supports (backdrop-filter: blur(1em)) {
+        .Class {
+          --bg-alpha: .1;
+          backdrop-filter: saturate(200%) blur(1.25em);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- TODO -->
+  </body>
+</html>
+```
