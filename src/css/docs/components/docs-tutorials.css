@@ -37,6 +37,10 @@
   top: -.1em;
 }
 
+.DocsTutorials--body .DocsTutorials--column[data-column="length"] {
+  top: -.2em;
+}
+
 .DocsTutorials--column[data-column="name"] {
   flex: 1;
   padding-right: calc(var(--gap) / 2);
