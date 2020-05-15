@@ -16,7 +16,7 @@
 
 .DocsToolbar--search {
   flex: 1;
-  max-width: calc(var(--docs-page-width) - 2 * var(--docs-sidebar-width));
+  max-width: var(--docs-body-width);
   margin-right: auto;
 }
 

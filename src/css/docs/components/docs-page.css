@@ -9,18 +9,25 @@ html[is-docs-page] body {
   --docs-sidebar-width: 18.5rem;
   --docs-body-sidebar-width: var(--docs-sidebar-width);
   --docs-page-side-padding: 1rem;
-  --docs-page-width: 1440px; /* TODO */
+  --docs-max-page-width: 1440px;
+  --docs-page-width: var(--docs-max-page-width);
+
+  --docs-sidebars-combined-width: calc(var(--docs-sidebar-width) + var(--docs-body-sidebar-width));
+  --docs-body-width: calc(var(--docs-page-width) - var(--docs-sidebars-combined-width));
+
   position: relative;
   width: 100%;
-  max-width: var(--docs-page-width);
+  max-width: var(--docs-max-page-width);
   min-height: 100%;
   margin: 0 auto;
 }
 
 @media (max-width: 1439px) {
   .DocsPage {
+    --docs-page-width: 100vw;
+
     --docs-page-sidebar-preserverd-width: calc(100vw - var(--docs-sidebar-width)
-      - (var(--docs-page-width) - 2 * var(--docs-sidebar-width)));
+      - (var(--docs-max-page-width) - 2 * var(--docs-sidebar-width)));
 
     --docs-body-sidebar-width: calc(15vw + var(--docs-page-sidebar-preserverd-width) / 4);
   }
