@@ -121,6 +121,8 @@
   border-radius: 0 0 .5em .5em;
   padding-top: var(--docs-header-height);
   width: var(--docs-body-width);
+
+  --suggestion-item-vertical-padding: .5em;
 }
 
 [theme="dark"] .DocsSearch .ds-dropdown-menu {
@@ -159,8 +161,9 @@
 
 .DocsSearch .ds-suggestion {
   display: block;
-  padding: .5em 1em;
-  margin: 0 -1em;
+  --horizontal-padding: 1em;
+  padding: var(--suggestion-item-vertical-padding) var(--horizontal-padding);
+  margin: 0 calc(-1 * var(--horizontal-padding));
   border-radius: .25em;
 }
 
@@ -191,6 +194,15 @@
 
 [theme="dark"] .DocsSearch .algolia-docsearch-suggestion--highlight {
   --highlight-opacity: .4;
+}
+
+.DocsSearch .algolia-docsearch-suggestion--no-results {
+  padding-top: var(--suggestion-item-vertical-padding);
+  margin-bottom: 1em;
+}
+
+.DocsSearch .algolia-docsearch-suggestion--no-results .algolia-docsearch-suggestion--text {
+  font-size: 1em;
 }
 
 .DocsSearch .algolia-docsearch-footer {
