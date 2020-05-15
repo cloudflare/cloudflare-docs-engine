@@ -9,7 +9,7 @@ html {
   --button-line-height: var(--form-field-line-height);
   --button-border-radius: .375em;
   --section-vertical-padding: 6em;
-  --header-height: 4.5em;
+  --header-height: 4.5rem;
 }
 
 @media (max-width: 1280px) {
@@ -27,6 +27,6 @@ html {
 
 @media (max-width: 414px) {
   html {
-    --header-height: 4em;
+    --header-height: 4rem;
   }
 }
