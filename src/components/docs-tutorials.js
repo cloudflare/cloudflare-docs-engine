@@ -46,39 +46,43 @@ const DocsTutorials = () => {
 
   return (
     <div className="DocsTutorials">
-      <div className="DocsTutorials--item DocsTutorials--item-header">
-        <div className="DocsTutorials--item-name">
-          <span className="DocsTutorials--item-header-text">Name</span>
-        </div>
-        <div className="DocsTutorials--item-updated">
-          <span className="DocsTutorials--item-header-text">Updated</span>
-        </div>
-        <div className="DocsTutorials--item-difficulty">
-          <span className="DocsTutorials--item-header-text">Difficulty</span>
-        </div>
-        <div className="DocsTutorials--item-length">
-          <span className="DocsTutorials--item-header-text">Length</span>
+      <div className="DocsTutorials--header">
+        <div className="DocsTutorials--row">
+          <div className="DocsTutorials--column" data-column="name">
+            <span className="DocsTutorials--column-text">Name</span>
+          </div>
+          <div className="DocsTutorials--column" data-column="updated">
+            <span className="DocsTutorials--column-text">Updated</span>
+          </div>
+          <div className="DocsTutorials--column" data-column="difficulty">
+            <span className="DocsTutorials--column-text">Difficulty</span>
+          </div>
+          <div className="DocsTutorials--column" data-column="length">
+            <span className="DocsTutorials--column-text">Length</span>
+          </div>
         </div>
       </div>
 
-      {tutorials.map(tutorial => (
-        <div key={tutorial.url} className={"DocsTutorials--item" + (tutorial.new ? " DocsTutorials--item-is-new" : "")}>
-          <div className="DocsTutorials--item-name">
-            <Link className="DocsTutorials--item-link" to={tutorial.url}>
-              {tutorial.title}
-            </Link>
-          </div>
-          <div className="DocsTutorials--item-updated">
-            <TimeAgo date={tutorial.updated} minPeriod={60}/>
-          </div>
-          <div className="DocsTutorials--item-difficulty">{tutorial.difficulty}</div>
-          <div className="DocsTutorials--item-length">
-            <div className="DocsTutorials--item-length-bar">
-              <div className="DocsTutorials--item-length-bar-inner" style={{width: tutorial.length}}></div>
+      <div className="DocsTutorials--body">
+        {tutorials.map(tutorial => (
+          <div key={tutorial.url} className={"DocsTutorials--row" + (tutorial.new ? " DocsTutorials--row-is-new" : "")}>
+            <div className="DocsTutorials--column" data-column="name">
+              <Link className="DocsTutorials--link" to={tutorial.url}>
+                {tutorial.title}
+              </Link>
+            </div>
+            <div className="DocsTutorials--column" data-column="updated">
+              <TimeAgo date={tutorial.updated} minPeriod={60}/>
+            </div>
+            <div className="DocsTutorials--column" data-column="difficulty">{tutorial.difficulty}</div>
+            <div className="DocsTutorials--column" data-column="length">
+              <div className="DocsTutorials--length-bar">
+                <div className="DocsTutorials--length-bar-inner" style={{width: tutorial.length}}></div>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }
