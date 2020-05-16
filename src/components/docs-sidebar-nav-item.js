@@ -94,6 +94,10 @@ class DocsSidebarNavItem extends React.Component {
     if (this.isHidden()) linkProps["aria-hidden"] = true
     if (this.isActive()) linkProps['is-active'] = ''
 
+    const buttonProps = {}
+    if (this.isHidden()) buttonProps.tabIndex = -1
+    if (this.isHidden()) buttonProps["aria-hidden"] = true
+
     return (
       <li
         className="DocsSidebar--nav-item"
@@ -101,7 +105,7 @@ class DocsSidebarNavItem extends React.Component {
         {...props}
       >
         {Array.isArray(node.children) && (
-          <button onClick={this.onExpandCollapseClick.bind(this)} className="Button DocsSidebar--nav-expand-collapse-button">
+          <button onClick={this.onExpandCollapseClick.bind(this)} className="Button DocsSidebar--nav-expand-collapse-button" {...buttonProps}>
             <span className="DocsSidebar--nav-expand-collapse-button-content"></span>
           </button>
         )}
