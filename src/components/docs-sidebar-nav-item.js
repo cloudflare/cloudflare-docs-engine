@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from "gatsby"
 
+import Collapse from "@material-ui/core/Collapse"
+
 import getNormalizedPath from "../utils/get-normalized-path"
 
 class DocsSidebarNavItem extends React.Component {
@@ -46,17 +48,6 @@ class DocsSidebarNavItem extends React.Component {
     const active = this.isActive()
     const activeRoot = this.isActiveRoot()
     return !!(this.props.node.children && (active || activeRoot))
-  }
-
-  onChildExpandedChange() {
-    // TODO
-    console.log('onChildExpandedChange', this.props.node.href)
-  }
-
-  getExpandCollapseHeight() {
-    const el = this.expandCollapseEl.current
-    const height = !el ? 'auto' : el.firstElementChild.clientHeight
-    return { style: { height }}
   }
 
   componentDidMount() {
@@ -116,23 +107,21 @@ class DocsSidebarNavItem extends React.Component {
         </Link>
 
         {Array.isArray(node.children) && (
-          <div
-            className="DocsSidebar--nav-item-collapse-wrapper"
-            ref={this.expandCollapseEl}
-            { ...(expanded && this.getExpandCollapseHeight())}
-          >
-            <ul className="DocsSidebar--nav-subnav" depth={depth} style={{'--depth': depth}}>
-              {node.children.map(node => (
-                <DocsSidebarNavItem
-                  key={node.id}
-                  node={node}
-                  location={location}
-                  depth={depth}
-                  isParentExpanded={this.isExpanded.bind(this)}
-                />
-              ))}
-            </ul>
-          </div>
+          <Collapse in={expanded} timeout={400}>
+            <div className="DocsSidebar--nav-item-collapse-content">
+              <ul className="DocsSidebar--nav-subnav" depth={depth} style={{'--depth': depth}}>
+                {node.children.map(node => (
+                  <DocsSidebarNavItem
+                    key={node.id}
+                    node={node}
+                    location={location}
+                    depth={depth}
+                    isParentExpanded={this.isExpanded.bind(this)}
+                  />
+                ))}
+              </ul>
+            </div>
+          </Collapse>
         )}
       </li>
     )

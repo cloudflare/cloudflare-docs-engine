@@ -404,17 +404,14 @@
   transform: rotate(90deg) translate3d(-.1em, 0, 0);
 }
 
-.DocsSidebar--nav-item-collapse-wrapper {
-  overflow: hidden;
-  height: 0;
+.DocsSidebar--nav-item-collapse-content {
   opacity: 0;
   transform: translate3d(-.5em, 0, 0);
-  padding-right: .25em;
-  will-change: transform, height, opacity;
-  transition: transform .4s ease, height .4s ease, opacity .4s ease;
+  will-change: transform, opacity;
+  transition: transform .4s ease, opacity .4s ease;
 }
 
-.DocsSidebar--nav-item[is-expanded] > .DocsSidebar--nav-item-collapse-wrapper {
+.DocsSidebar--nav-item[is-expanded] .DocsSidebar--nav-item-collapse-content {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
