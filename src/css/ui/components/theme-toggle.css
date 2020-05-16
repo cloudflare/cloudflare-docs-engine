@@ -28,7 +28,8 @@
   --focus-size: 0;
 }
 
-.ThemeToggle--input:checked ~ .ThemeToggle--toggle {
+.ThemeToggle--input:checked ~ .ThemeToggle--toggle,
+[theme="dark"] .ThemeToggle[data-is-loading="true"] .ThemeToggle--toggle {
   background: rgba(var(--gray-2-rgb), .7);
 }
 
@@ -44,7 +45,8 @@
   box-shadow: 0 .15em .3em rgba(0, 0, 0, .15), 0 .2em .5em rgba(0, 0, 0, .3);
 }
 
-.ThemeToggle--input:checked ~ .ThemeToggle--toggle .ThemeToggle--toggle-handle {
+.ThemeToggle--input:checked ~ .ThemeToggle--toggle .ThemeToggle--toggle-handle,
+[theme="dark"] .ThemeToggle[data-is-loading="true"] .ThemeToggle--toggle-handle {
   left: auto;
   right: 3px;
   background: var(--gray-00);
@@ -69,10 +71,12 @@
 }
 
 .ThemeToggle--sun,
-.ThemeToggle--input:checked ~ .ThemeToggle--toggle .ThemeToggle--moon {
+.ThemeToggle--input:checked ~ .ThemeToggle--toggle .ThemeToggle--moon,
+[theme="dark"] .ThemeToggle[data-is-loading="true"] .ThemeToggle--moon {
   color: var(--orange);
 }
 
-.ThemeToggle--input:checked ~ .ThemeToggle--toggle .ThemeToggle--sun {
+.ThemeToggle--input:checked ~ .ThemeToggle--toggle .ThemeToggle--sun,
+[theme="dark"] .ThemeToggle[data-is-loading="true"] .ThemeToggle--sun {
   color: rgba(var(--gray-6-rgb), .8);
 }

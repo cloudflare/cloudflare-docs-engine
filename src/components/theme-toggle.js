@@ -79,6 +79,7 @@ class ThemeToggle extends React.Component {
     super(props)
 
     this.state = {
+      loading: true,
       checked: false
     }
   }
@@ -87,7 +88,8 @@ class ThemeToggle extends React.Component {
     const theme = getThemeFromStorage()
     const checked = theme === "dark"
 
-    this.setState({ checked })
+    const loading = false
+    this.setState({ checked, loading })
 
     this.query = window.matchMedia(colorSchemeQuery)
     this.query.addListener(onMediaMatchChange)
@@ -112,6 +114,8 @@ class ThemeToggle extends React.Component {
   }
 
   render() {
+    const { loading } = this.state
+
     return (
       <>
         <Helmet>
@@ -119,7 +123,7 @@ class ThemeToggle extends React.Component {
           <script>{ getThemeFromStorageSource }</script>
         </Helmet>
 
-        <div className="ThemeToggle">
+        <div className="ThemeToggle" data-is-loading={loading}>
           <input
             type="checkbox"
             id="ThemeToggle"
