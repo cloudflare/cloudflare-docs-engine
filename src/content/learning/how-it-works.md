@@ -10,7 +10,7 @@ Though Cloudflare Workers behave similar to JavaScript in the browser or in Node
 
 The differences between JavaScript written for the browser or Node.js happen at runtime. Rather than running on an individual's machine (e.g a browser application or on a centralized server), Workers functions run on [Cloudflare's Edge Network](https://www.cloudflare.com/network/) - a growing global network of thousands of machines distributed across hundreds of locations.
 
-<NetworkMap/>
+<figure><NetworkMap/></figure>
 
 Each of these machines hosts an instance of the Workers runtime, and each of those runtimes is capable of running thousands of user-defined apps. This guide will unpack some of those differences, and help you dig deeper into these differences.
 
