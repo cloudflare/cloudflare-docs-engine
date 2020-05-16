@@ -1,5 +1,7 @@
 import React, { useEffect } from "react"
 
+import { navigate } from "@reach/router"
+
 import Helmet from "react-helmet"
 import DocsTitle from "./docs-title"
 
@@ -9,16 +11,57 @@ const DocsSearch = () => {
     const init = () => {
       frames += 1
 
-      // TODO - find workaround for this hack
-      // (which is only needed for local developement because of how Helmet works)
+      // Sadly this is needed because of the way Helmet works in local developement
       if (!window.docsearch && frames < 60) {
         return requestAnimationFrame(() => init())
       }
 
-      window.docsearch({
-        apiKey: '4a3bbdb939606486b94f9ce867bfd4f5', // TODO - use dotenv ala https://www.gatsbyjs.org/docs/adding-search-with-algolia/
-        indexName: 'workers-cloudflare', // TODO - generic to all Cloudflare products
-        inputSelector: '#DocsSearch--input', // TODO - pass DOM in with Reacth.createRef?
+      const search = window.docsearch({
+        // TODO - replace with new index and API key
+        indexName: "workers-cloudflare",
+        apiKey: "4a3bbdb939606486b94f9ce867bfd4f5",
+
+        inputSelector: "#DocsSearch--input", // TODO - pass DOM in with Reacth.createRef?
+
+        autocompleteOptions: {
+          // https://github.com/algolia/autocomplete.js#global-options
+          autoselect: true,
+          openOnFocus: true,
+          clearOnSelected: false,
+          tabAutocomplete: false,
+
+          appendTo: ".DocsSearch--input-wrapper",
+          hint: false,
+
+          autoselectOnBlur: matchMedia("(pointer: course)").matches
+        },
+
+        // https://docsearch.algolia.com/docs/behavior
+        handleSelected: (input, event, suggestion, datasetNumber, context) => {
+          const url = new URL(suggestion.url)
+
+          // TODO - use a pathPrefix so this becomes unnecessary
+          navigate(url.pathname.replace("/workers", ""))
+        },
+
+        transformData: function(hits) {
+          // Remove empty results
+          for (let i = hits.length - 1; i >= 0; i -= 1) {
+            if (!hits[i].hierarchy.lvl0 && !hits[i].hierarchy.lvl1) {
+              hits.splice(i, 1)
+            }
+          }
+        }
+      })
+
+      const autocompleteWrapper = search.autocomplete.autocomplete.getWrapper()
+
+      search.autocomplete.on("autocomplete:shown", event => {
+        autocompleteWrapper.setAttribute("data-expanded", true)
+      })
+
+      search.autocomplete.on("autocomplete:closed", event => {
+        autocompleteWrapper.setAttribute("data-expanded", false)
       })
     }
 
