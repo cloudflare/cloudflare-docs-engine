@@ -118,8 +118,9 @@
     0 3rem 6rem -1.2rem rgba(var(--shadow-color-rgb), .25),
     0 3rem 6rem -3rem rgba(var(--shadow-color-rgb), .3);
 
+  --backdrop-box-shadow-alpha: .07;
   --backdrop-box-shadow:
-    0 0 0 999em rgba(var(--shadow-color-rgb), .07);
+    0 0 0 999em rgba(var(--shadow-color-rgb), var(--backdrop-box-shadow-alpha));
 
   box-shadow: var(--box-shadow), var(--backdrop-box-shadow);
 
@@ -127,20 +128,20 @@
   transition: opacity .15s ease;
 }
 
+[theme="dark"] .DocsSearch .algolia-autocomplete {
+  --dark-theme-shadow-offset: 1px;
+  --dropdown-text-indent: calc(var(--text-indent) - var(--dark-theme-shadow-offset));
+  --box-shadow: 0 0 0 1px rgb(var(--shadow-color-rgb), .3), 0 .3em 2em rgb(var(--shadow-color-rgb), .3);
+  --backdrop-box-shadow-alpha: .3;
+  background: var(--gray-0);
+  margin-left: var(--dark-theme-shadow-offset);
+}
+
 .DocsSearch .algolia-autocomplete[style*="display: none"],
 .DocsSearch .algolia-autocomplete:not([data-expanded="true"]) {
   opacity: 0;
   --backdrop-box-shadow: none;
   pointer-events: none;
-}
-
-[theme="dark"] .DocsSearch .algolia-autocomplete {
-  --dark-theme-shadow-offset: 1px;
-  --dropdown-text-indent: calc(var(--text-indent) - var(--dark-theme-shadow-offset));
-  --box-shadow: 0 0 0 1px rgb(var(--shadow-color-rgb), .3), 0 .3em 2em rgb(var(--shadow-color-rgb), .3);
-  --backdrop-box-shadow: 0 0 0 999em rgba(var(--shadow-color-rgb), .3);
-  background: var(--gray-0);
-  margin-left: var(--dark-theme-shadow-offset);
 }
 
 @supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
