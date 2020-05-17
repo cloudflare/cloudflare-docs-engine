@@ -8,30 +8,33 @@ breadcrumbs: false
 
 The Cloudflare Docs engine uses its own custom MDX/Markdown parsing to generate consistent and manageable markup, while offering flexibility to content authors.
 
-> {warning} __Warning:__ This is a work-in-progress. The docs Markdown API is subject to change.
+> {warning} __Warning:__ This doc is a work-in-progress, and likely to change substantially before release.
 
 --------------------------------
 
 ## Links
 
-For internal links—those you want to use `pushState` for—use `<Link/>`.
+For both internal and external links, use the regular Markdown syntax.
 
-__Example:__ Here’s a link to <Link to="/tutorials">Tutorials</Link>.
+- __External links__ (matching `/^https?:/`), will be rendered as regular `<a/>` elements.
+- __Internal links__ will use the [Gatsby’s `<Link/>` component](https://www.gatsbyjs.org/docs/gatsby-link/), which means they will be routed through `@reach/router` using `pushState`.
 
-```markdown
-Here’s a link to <Link to="/tutorials">Tutorials</Link>.
-```
-
-For external link, use regular Markdown.
-
-__Example:__ Here’s a link to [example.com](https://example.com).
+_Example:_ Here’s a link to [example.com](https://example.com).
 
 ```markdown
 Here’s a link to [example.com](https://example.com).
 ```
 
+While it shouldn’t ever be necessary, you may also explicitly use a `<Link/>` component.
+
+_Example:_ Here’s a link to <Link to="/tutorials">Tutorials</Link>.
+
+```markdown
+Here’s a link to <Link to="/tutorials">Tutorials</Link>.
+```
+
 > {note}
-> __Note:__ We’re working on a solution which would allow content authors to use standard Markdown syntax for _all links_, but for now this is not available. If you prefer to use this syntax now, just note that until our solution is build, your links won’t get the benefit of faster routing through `@reach/router`.
+> __Tip:__ When linking to a section of a page, you can signal that to the user by displaying the hash in the link text itself, e.g. like this: [HTMLRewriter#selectors](/reference/html-rewriter#selectors).
 
 --------------------------------
 
