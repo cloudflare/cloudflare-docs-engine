@@ -1,6 +1,5 @@
 ---
 hidden: true
-breadcrumbs: true
 updated: 2018-04-02
 difficulty: Advanced
 length: 60%

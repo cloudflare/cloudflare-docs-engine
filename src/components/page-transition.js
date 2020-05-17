@@ -24,7 +24,7 @@ const PageTransition = ({ children }) => (
         >
           <PageTransitionHandler location={location}>
             <div>
-              {children}
+              {children({ location })}
             </div>
           </PageTransitionHandler>
         </CSSTransition>

@@ -21,6 +21,11 @@ const DocsPage = ({ pageContext, children }) => {
   const pageType = getPageType(pageContext)
   const tableOfContents = getTableOfContents(pageContext)
 
+  let showBreadcrumbs = true
+  const { frontmatter } = pageContext
+  if (frontmatter && frontmatter.breadcrumbs === false)
+    showBreadcrumbs = false
+
   return (
     <>
       <SEO title={title}/>
@@ -36,28 +41,28 @@ const DocsPage = ({ pageContext, children }) => {
         <DocsToolbar/>
 
         <PageTransition>
-          <div className="DocsBody">
-            {pageType === "document" && tableOfContents && (
-              <div className="DocsBody--sidebar" with-styled-webkit-scrollbars="">
-                <div className="DocsBody--sidebar-content-scroll-fade"></div>
-                <div className="DocsBody--sidebar-content">
-                  <DocsTableOfContents items={tableOfContents}/>
-                </div>
-              </div>
-            )}
-
-            <div className="DocsContent" page-type={pageType}>
-              {pageContext.frontmatter && pageContext.frontmatter.breadcrumbs && (
-                <div className="DocsContent--breadcrumbs">
-                  <Breadcrumbs/>
+          {({ location }) => (
+            <div className="DocsBody">
+              {pageType === "document" && tableOfContents && (
+                <div className="DocsBody--sidebar" with-styled-webkit-scrollbars="">
+                  <div className="DocsBody--sidebar-content-scroll-fade"></div>
+                  <div className="DocsBody--sidebar-content">
+                    <DocsTableOfContents items={tableOfContents}/>
+                  </div>
                 </div>
               )}
 
-              <div className="DocsMarkdown">
-                {children}
+              <div className="DocsContent" page-type={pageType}>
+                {showBreadcrumbs && (
+                  <Breadcrumbs className="DocsContent--breadcrumbs" location={location}/>
+                )}
+
+                <div className="DocsMarkdown">
+                  {children}
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </PageTransition>
       </div>
     </>

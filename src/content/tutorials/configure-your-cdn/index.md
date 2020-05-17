@@ -1,6 +1,5 @@
 ---
 hidden: true
-breadcrumbs: true
 updated: 2018-03-01
 difficulty: Beginner
 length: 50%

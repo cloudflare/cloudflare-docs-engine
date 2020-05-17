@@ -20,7 +20,7 @@ const Item = ({ item }) => (
   </li>
 )
 
-const Breadcrumbs = () => {
+const Breadcrumbs = props => {
   const query = useStaticQuery(graphql`
     query {
       allMdx {
@@ -49,17 +49,22 @@ const Breadcrumbs = () => {
   const pages = query.allMdx.edges
     .map(({ node }) => node)
 
-  return (
-    <Location>
-      {({ location }) => (
-        <ul className="Breadcrumbs">
-          {getBreadcrumbs(pages, location).map(item => (
-            <Item key={item.url} item={item}/>
-          ))}
-        </ul>
-      )}
-    </Location>
-  )
+  const { className, location } = props
+  const breadcrumbs = getBreadcrumbs(pages, location)
+
+  return breadcrumbs.length ? (
+    <div className={className}>
+      <ul className="Breadcrumbs">
+        {breadcrumbs.map(item => (
+          <Item key={item.url} item={item}/>
+        ))}
+      </ul>
+    </div>
+  ) : null
+}
+
+Breadcrumbs.defaultProps = {
+  className: "Breadcrumbs---wrapper"
 }
 
 export default Breadcrumbs
