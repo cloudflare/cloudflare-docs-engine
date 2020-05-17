@@ -28,7 +28,7 @@ const DocsSidebarNav = () => {
               type
               order
               hidden
-              children
+              hideChildren
               breadcrumbs
             }
             headings(depth: h1) {

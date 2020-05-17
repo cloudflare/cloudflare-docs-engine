@@ -1,5 +1,4 @@
 ---
-hidden: true
 updated: 2020-03-08
 difficulty: Beginner
 length: 75%

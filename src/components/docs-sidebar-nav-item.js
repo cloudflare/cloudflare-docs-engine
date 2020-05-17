@@ -18,10 +18,18 @@ class DocsSidebarNavItem extends React.Component {
     }
   }
 
+  showChildren() {
+    const { node } = this.props
+    return Array.isArray(node.children) && !node.frontmatter.hideChildren
+  }
+
   isActive() {
     const { node, location } = this.props
 
-    return node.href === location.pathname
+    const isActive = node.href === location.pathname
+    const isActiveDueToChild = !this.showChildren() && this.isActiveRoot()
+
+    return isActive || isActiveDueToChild
   }
 
   isActiveRoot() {
@@ -95,7 +103,7 @@ class DocsSidebarNavItem extends React.Component {
         key={node.id}
         {...props}
       >
-        {Array.isArray(node.children) && (
+        {this.showChildren() && (
           <button onClick={this.onExpandCollapseClick.bind(this)} className="Button DocsSidebar--nav-expand-collapse-button" {...buttonProps}>
             <span className="DocsSidebar--nav-expand-collapse-button-content"></span>
           </button>
@@ -106,7 +114,7 @@ class DocsSidebarNavItem extends React.Component {
           <span className="DocsSidebar--nav-link-text">{node.title}</span>
         </Link>
 
-        {Array.isArray(node.children) && (
+        {this.showChildren() && (
           <Collapse in={expanded} timeout={400}>
             <div className="DocsSidebar--nav-item-collapse-content">
               <ul className="DocsSidebar--nav-subnav" depth={depth} style={{'--depth': depth}}>

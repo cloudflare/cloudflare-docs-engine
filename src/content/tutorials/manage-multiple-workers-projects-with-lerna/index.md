@@ -1,5 +1,4 @@
 ---
-hidden: true
 updated: 2020-05-15
 difficulty: Advanced
 length: 20%

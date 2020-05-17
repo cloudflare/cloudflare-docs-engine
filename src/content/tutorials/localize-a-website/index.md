@@ -1,5 +1,4 @@
 ---
-hidden: true
 updated: 2019-05-07
 difficulty: Expert
 length: 95%
