@@ -41,10 +41,6 @@ class ScrollbarsWithScrollShadows extends Component {
     shadow.style.opacity = shadowOpacity
   }
 
-  scrollTo(yPosition) {
-    scrollbars.scrollTop
-  }
-
   render() {
     const { children, shadowClassName, ...props } = this.props
 
