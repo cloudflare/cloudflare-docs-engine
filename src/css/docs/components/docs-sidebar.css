@@ -394,6 +394,10 @@
   transform: rotate(90deg) translate3d(-.1em, 0, 0);
 }
 
+.DocsSidebar--nav-item-collapse-container {
+  overflow: hidden;
+}
+
 .DocsSidebar--nav-item-collapse-container.DocsSidebar--nav-item-collapse-hidden {
   height: 0;
 }
