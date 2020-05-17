@@ -256,7 +256,7 @@
   scrollbar-color: rgba(var(--color-rgb), .35) transparent;
 }
 
-.DocsSidebar--nav-section .DocsSidebar--section-shadow {
+.DocsSidebar--nav-section-shadow {
   position: sticky;
   flex-shrink: 0;
   top: 0px;
@@ -272,24 +272,14 @@
 }
 
 @media (min-width: 1441px) {
-  .DocsSidebar--nav-section .DocsSidebar--section-shadow {
+  .DocsSidebar--nav-section-shadow {
     -webkit-mask-image: linear-gradient(to right, transparent, #000 1.5em, #000);
     mask-image: linear-gradient(to right, transparent, #000 1.5em, #000);
   }
 }
 
-.DocsSidebar--nav-section .DocsSidebar--section-shadow-cover {
-  position: absolute;
-  flex-shrink: 0;
-  top: 0;
-  width: 100%;
-  height: .25em;
-  background: var(--sidebar-background-color);
-  z-index: 5;
-}
-
-[theme="dark"] .DocsSidebar--nav-section .DocsSidebar--section-shadow {
-  box-shadow: inset 0 1px #101010;
+[theme="dark"] .DocsSidebar--nav-section-shadow {
+  box-shadow: inset 0 1px #101010; /* TODO */
   background: linear-gradient(rgba(0, 0, 0, .2), transparent);
 }
 
@@ -303,7 +293,6 @@
 @media (max-width: 1280px) {
   .DocsSidebar--nav {
     font-size: 1.05em;
-    margin-top: .666em;
     --text-indent: 3rem;
   }
 }

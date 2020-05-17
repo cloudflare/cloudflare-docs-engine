@@ -24,6 +24,7 @@
     "prism-react-renderer": "^1.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
     "react-spring": "^8.0.27",

@@ -1,10 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import ScrollbarsWithScrollShadow from "./scrollbars-with-scroll-shadows"
+
 import DocsTitle from "./docs-title"
 import DocsSidebarMoreDropdown from "./docs-sidebar-more-dropdown"
 import DocsSidebarNav from "./docs-sidebar-nav"
-// import DocsSidebarNav from "./docs-sidebar-nav-tree-material-ui-two" // TODO
 
 const DocsSidebarHeaderSection = () => (
   <div className="DocsSidebar--section DocsSidebar--header-section">
@@ -49,19 +50,56 @@ const DocsSidebarProductTitleSection = () => (
   </div>
 )
 
+class DocsSidebarNavSection extends React.Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  componentDidMount() {
+    this.scrollToActiveNavItem()
+  }
+
+  scrollToActiveNavItem() {
+    const { scrollbars } = this.refs.scrollbars.refs
+    const { container } = scrollbars
+
+    const activeLink = container.querySelector("a[href][is-active]")
+    if (!activeLink) return
+
+    const activeRect = activeLink.getBoundingClientRect()
+    const containerRect = container.getBoundingClientRect()
+
+    if (activeRect.bottom > containerRect.bottom) {
+      scrollbars.scrollTop(
+        activeRect.top - containerRect.top
+        - ((containerRect.height - activeRect.height) / 2)
+      )
+    }
+  }
+
+  render() {
+    return (
+      <ScrollbarsWithScrollShadow
+        ref="scrollbars"
+        className="DocsSidebar--section DocsSidebar--nav-section"
+        shadowClassName="DocsSidebar--nav-section-shadow"
+        thumbMinSize={60}
+        universal
+      >
+        <DocsSidebarNav/>
+      </ScrollbarsWithScrollShadow>
+    )
+  }
+}
+
 const DocsSidebar = () => (
-  <div className="DocsSidebar" with-styled-webkit-scrollbars="">
+  <div className="DocsSidebar">
     <div className="DocsSidebar--sections">
       <DocsSidebarHeaderSection/>
       <div className="DocsSidebar--section-separator"></div>
       <DocsSidebarProductTitleSection/>
-
-      <div className="DocsSidebar--section DocsSidebar--nav-section" is-smooth-scrolling="">
-        <div className="DocsSidebar--section-shadow"></div>
-        <div className="DocsSidebar--section-shadow-cover"></div>
-
-        <DocsSidebarNav/>
-      </div>
+      <DocsSidebarNavSection/>
     </div>
 
     <div className="DocsSidebar--shadow"></div>

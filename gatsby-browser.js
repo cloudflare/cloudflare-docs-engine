@@ -38,6 +38,7 @@ import "./src/css/ui/components/markdown-lite.css"
 import "./src/css/ui/components/network-map.css"
 import "./src/css/ui/components/number.css"
 import "./src/css/ui/components/radio-tabs.css"
+import "./src/css/ui/components/scrollbars.css"
 import "./src/css/ui/components/stream-video.css"
 import "./src/css/ui/components/superscript.css"
 
