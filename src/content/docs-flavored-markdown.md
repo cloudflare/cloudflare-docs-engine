@@ -138,7 +138,7 @@ This is a paragraph with __bold__ and _italics_ contained within it.
 This is the end.
 ```
 
-### Markup with embedded CSS and JS
+### HTML with embedded JS/CSS
 
 ```html
 <!DOCTYPE html>
