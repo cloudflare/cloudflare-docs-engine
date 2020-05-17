@@ -44,12 +44,8 @@ class DocsSidebarNavItem extends React.Component {
   }
 
   isHidden() {
-    if (typeof this.props.isParentExpanded === "function") {
-      const isParentExpanded = this.props.isParentExpanded()
-      if (!isParentExpanded) return true
-    }
-
-    return false
+    if (typeof this.props.isParentExpanded === "undefined") return false
+    return !this.props.isParentExpanded
   }
 
   isExpanded() {
@@ -124,7 +120,7 @@ class DocsSidebarNavItem extends React.Component {
                     node={node}
                     location={location}
                     depth={depth}
-                    isParentExpanded={this.isExpanded.bind(this)}
+                    isParentExpanded={expanded}
                   />
                 ))}
               </ul>
