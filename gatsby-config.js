@@ -37,6 +37,15 @@ module.exports = {
       }
     },
     {
+      resolve: "gatsby-plugin-material-ui",
+      options: {
+        stylesProvider: {
+          disableGlobal: true,
+          disableGeneration: true
+        },
+      },
+    },
+    {
       resolve: "gatsby-plugin-mdx",
       options: {
         extensions: [".mdx", ".md"],

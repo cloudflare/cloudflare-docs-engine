@@ -5,6 +5,14 @@ import Collapse from "@material-ui/core/Collapse"
 
 import getNormalizedPath from "../utils/get-normalized-path"
 
+const collapseClasses = {
+  container: "DocsSidebar--nav-item-collapse-container",
+  entered: "DocsSidebar--nav-item-collapse-entered",
+  hidden: "DocsSidebar--nav-item-collapse-hidden",
+  wrapper: "DocsSidebar--nav-item-collapse-wrapper",
+  wrapperInner: "DocsSidebar--nav-item-collapse-wrapperInner"
+}
+
 class DocsSidebarNavItem extends React.Component {
 
   constructor(props) {
@@ -111,7 +119,7 @@ class DocsSidebarNavItem extends React.Component {
         </Link>
 
         {this.showChildren() && (
-          <Collapse in={expanded} timeout={400}>
+          <Collapse classes={collapseClasses} in={expanded} timeout={400}>
             <div className="DocsSidebar--nav-item-collapse-content">
               <ul className="DocsSidebar--nav-subnav" depth={depth} style={{'--depth': depth}}>
                 {node.children.map(node => (
