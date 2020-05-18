@@ -2,10 +2,8 @@
 order: 3
 ---
 
+import DocsOverviewList from "../../components/docs-overview-list"
+
 # Learning
 
-- [How It Works](/about/how-it-works)
-- [Security](/about/security)
-- [Routes](/about/routes)
-- [Using the Cache API](/about/using-cache)
-- [Limits](/about/limits)
+<DocsOverviewList parentPath="/learning"/>

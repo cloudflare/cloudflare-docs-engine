@@ -1,18 +1,11 @@
 import getPageTitle from "./get-page-title"
 import getParentPath from "./get-parent-path"
+import getOrder from "./get-order"
 
 const formatNode = node => {
   node.href = node.path
   node.title = getPageTitle(node)
   return node
-}
-
-const getOrder = node => {
-  if (node.frontmatter.order || node.frontmatter.order === 0) {
-    return node.frontmatter.order
-  }
-
-  return 10e6 // TODO
 }
 
 const generateNavTree = pages => {
@@ -23,6 +16,7 @@ const generateNavTree = pages => {
     const path = page.fields.slug
     pages[i].path = path
     pagesByPath[path] = page
+    pages[i].title = getPageTitle(page)
 
     const depth = path.split('/').length - 2
     if (totalDepth < depth) totalDepth = depth
@@ -33,6 +27,12 @@ const generateNavTree = pages => {
     const parentPath = getParentPath(page.path)
     if (!parentPath) return
     pages[i].parentId = pagesByPath[parentPath].id
+  })
+
+  pages.sort((a, b) => {
+    if (a.title < b.title) return -1
+    if (a.title > b.title) return 1
+    return 0
   })
 
   pages.sort((a, b) => getOrder(a) - getOrder(b))
