@@ -261,7 +261,8 @@
 
 /* PrismJS syntax highlighting */
 
-.CodeBlock--token-punctuation {
+.CodeBlock--token-punctuation,
+.CodeBlock--token-template-string.CodeBlock--token-interpolation {
   color: inherit;
 }
 
@@ -275,20 +276,23 @@
 }
 
 .CodeBlock--token-keyword,
-.CodeBlock--token-operator {
+.CodeBlock--token-operator,
+.CodeBlock--token-template-string.CodeBlock--token-interpolation.CodeBlock--token-interpolation-punctuation {
   color: var(--code-red);
 }
 
 .CodeBlock--token-class,
 .CodeBlock--token-class-name,
 .CodeBlock--token-function,
-.CodeBlock--token-function-name { /* TODO */
+.CodeBlock--token-function-name,
+.CodeBlock--token-template-string.CodeBlock--token-interpolation.CodeBlock--token-function {
   color: var(--code-green);
 }
 
 .CodeBlock--token-symbol,
-.CodeBlock--token-constant {
-  color: var(--code-indigo); /* TODO */
+.CodeBlock--token-constant,
+.CodeBlock--token-template-string.CodeBlock--token-interpolation.CodeBlock--token-interpolation-constant {
+  color: var(--code-indigo);
 }
 
 .CodeBlock--token-arrow,
