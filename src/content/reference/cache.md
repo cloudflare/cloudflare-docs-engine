@@ -10,7 +10,7 @@ The Cache API allows fine grained control of reading and writing from cache, and
 
 For each individual zone, the Cloudflare Workers runtime exposes a single global cache object: `caches.default`. Though this cache object persists on all of Cloudflare's data centers, objects are not replicated to any other data centers. Note this individualized zone cache object differs from Cloudflare's Global CDN, for details see: [Using the Cache](/about/using-cache).
 
-### Syntax
+## Syntax
 
 This API is strongly influenced by the web browsers’ Cache API, but there are some important differences. For instance, Cloudflare Workers runtime exposes a single global cache object.
 
@@ -18,36 +18,36 @@ This API is strongly influenced by the web browsers’ Cache API, but there are 
 let cache = caches.default
 ```
 
-### In the Preview
+## In the Preview
 
 The Service Workers Cache API is currently unimplemented in the Cloudflare Workers Preview. Cache API operations in the previewer will have no impact. To test, one must deploy the Worker on a zone.
 
-### Methods
+## Methods
 
-#### `put`
+### `put`
 
 Adds to the cache a response keyed to the given request. Returns a promise that resolves to `undefined` once the cache stores the response.
 
-##### Syntax
+#### Syntax
 
 ```javascript
 cache.put(request, response)
 ```
 
-##### Parameters
+#### Parameters
 
-- `request`: Either a string or a [`Request`](/reference/apis/request) object to serve as the key. If a string is passed, it is interpreted as the URL for a new Request object.
+- `request`: Either a string or a [`Request`](/reference/request) object to serve as the key. If a string is passed, it is interpreted as the URL for a new Request object.
 
-- `response`: A [`Response`](/reference/apis/response) object to store under the given key.
+- `response`: A [`Response`](/reference/response) object to store under the given key.
 
-##### Invalid parameters
+#### Invalid parameters
 
 - `cache.put` throws an error if:
   - the `request` passed is a method other than `GET`
   - the `response` passed is a `status` of [`206 Partial Content`](https://httpstatuses.com/206)
   - the `response` passed contains the header `Vary: _` (required by the Cache API specification)
 
-##### Headers
+#### Headers
 
 Our implementation of the Cache API respects the following HTTP headers on the response passed to `put()`:
 
@@ -63,19 +63,19 @@ This differs from the web browser Cache API as they do not honor any headers on 
 
 Use the `Cache-Control` method to store the response without the `Set-Cookie` header.
 
-#### `match`
+### `match`
 
 Returns a promise wrapping the response object keyed to that request.
 
-##### Syntax
+#### Syntax
 
 ```javascript
 cache.match(request, options)
 ```
 
-##### Parameters
+#### Parameters
 
-- `request`: The string or [`Request`](/reference/apis/request) object used as the lookup key. Strings are interpreted as the URL for a new `Request` object.
+- `request`: The string or [`Request`](/reference/request) object used as the lookup key. Strings are interpreted as the URL for a new `Request` object.
 
 - `options`: Can contain one possible property:
   - `ignoreMethod` (Boolean): Consider the request method a GET regardless of its actual value.
@@ -92,27 +92,27 @@ Our implementation of the Cache API respects the following HTTP headers on the r
 
 `cache.match()`: Never sends a subrequest to the origin. If no matching response is found in cache, the promise that `cache.match()` returns is fulfilled with `undefined`.
 
-#### `delete`
+### `delete`
 
 Deletes the `Response` object from the cache and returns a `Promise` for a Boolean response:
 
 - `true`: The response was cached but is now deleted
 - `false`: The response was not in the cache at the time of deletion.
 
-##### Syntax
+#### Syntax
 
 ```javascript
 cache.delete(request, options)
 ```
 
-##### Parameters
+#### Parameters
 
-- `request`: The lookup key as a string or [`Request`](/reference/apis/request) object. String are interpreted as the URL for a new `Request` object.
+- `request`: The lookup key as a string or [`Request`](/reference/request) object. String are interpreted as the URL for a new `Request` object.
 
 - `options`: Can contain one of these properties:
 
     - `ignoreMethod` (Boolean): Consider the request method to `GET`, regardless of its actual value.
 
-## More Information
+# More Information
 
 [Using Cache](/about/using-cache)
