@@ -28,7 +28,7 @@
   overflow: visible;
 }
 
-.DocsMarkdown a:not([class]) {
+.DocsMarkdown--link {
   text-decoration: none;
   color: inherit;
 
@@ -46,35 +46,35 @@
   transition: border .3s ease, box-shadow .3s ease;
 }
 
-[js-focus-visible-polyfill-available] .DocsMarkdown a:not([class]):focus {
+[js-focus-visible-polyfill-available] .DocsMarkdown--link:focus {
   outline: none;
 }
 
-.DocsMarkdown a:not([class])[is-focus-visible] {
+.DocsMarkdown--link[is-focus-visible] {
   border-color: transparent;
 }
 
-.DocsMarkdown a:not([class]):not([is-focus-visible]) {
+.DocsMarkdown--link:not([is-focus-visible]) {
   --focus-size: 0;
 }
 
-.DocsMarkdown a:not([class]):hover {
+.DocsMarkdown--link:hover {
   --background-color-alpha: .15;
 }
 
-.DocsMarkdown a:not([class]) > code {
+.DocsMarkdown--link > code {
   --padding: 0;
   --background: transparent;
 }
 
-[theme="dark"] .DocsMarkdown a:not([class]) {
+[theme="dark"] .DocsMarkdown--link {
   --background-color-alpha: .03;
   --border-bottom-color-rgb: var(--orange-rgb);
   --border-bottom-color-alpha: .35;
   color: var(--code-orange); /* TODO */
 }
 
-[theme="dark"] .DocsMarkdown a:not([class]):hover {
+[theme="dark"] .DocsMarkdown--link:hover {
   --background-color-alpha: .08;
 }
 
@@ -304,7 +304,7 @@ p.DocsMarkdown--small-header {
   background-color: rgba(var(--blue-4-rgb), .1);
 }
 
-.DocsMarkdown--custom-block[data-type="note"] a:not([class]) {
+.DocsMarkdown--custom-block[data-type="note"] .DocsMarkdown--link {
   --background-color-rgb: var(--blue-4-rgb);
   --border-bottom-color-rgb: var(--blue-2-rgb);
 }
@@ -314,14 +314,14 @@ p.DocsMarkdown--small-header {
   background-color: rgba(var(--blue-6-rgb), .05);
 }
 
-[theme="dark"] .DocsMarkdown--custom-block[data-type="note"] a:not([class]) {
+[theme="dark"] .DocsMarkdown--custom-block[data-type="note"] .DocsMarkdown--link {
   color: inherit;
   --background-color-rgb: var(--blue-6-rgb);
   --background-color-alpha: .1;
   --border-bottom-color-rgb: var(--blue-7-rgb);
 }
 
-[theme="dark"] .DocsMarkdown--custom-block[data-type="note"] a:not([class]):hover {
+[theme="dark"] .DocsMarkdown--custom-block[data-type="note"] .DocsMarkdown--link:hover {
   --background-color-alpha: .2;
 }
 

@@ -1,12 +1,14 @@
 import React from "react"
 import { Link } from "gatsby"
 
-export default ({ href, ...props }) => {
+const linkClassName = "DocsMarkdown--link" // TODO - get prefix from somewhere
+
+export default ({ href, className, ...props }) => {
   const external = !!href.match(/^https?:/)
 
   return external ? (
-    <a href={href} {...props}/>
+    <a href={href} className={className || linkClassName} {...props}/>
   ) : (
-    <Link to={href} {...props}/>
+    <Link to={href} className={className || linkClassName} {...props}/>
   )
 }
