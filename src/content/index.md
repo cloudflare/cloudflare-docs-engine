@@ -10,6 +10,7 @@ Cloudflare Workers provides a serverless execution environment that allows you t
 ## Get started
 
 - [Tutorials](/tutorials)
+- [Examples](/examples)
 - [Learning](/learning)
 - [Reference](/reference)
 
