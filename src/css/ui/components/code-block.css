@@ -323,7 +323,7 @@
 }
 
 .CodeBlock--token-bold,
-.CodeBlock--token-important { /* TODO */
+.CodeBlock--token-important {
   font-weight: bold;
 }
 
@@ -352,7 +352,7 @@
 
 .CodeBlock--token-url.CodeBlock--token-content,
 .CodeBlock--token-link.CodeBlock--token-content {
-  color: inherit; /* TODO */
+  color: inherit;
 }
 
 .CodeBlock--token-tag {
