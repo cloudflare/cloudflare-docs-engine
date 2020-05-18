@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "gatsby"
+import { Location } from "@reach/router"
 
+import animate from "../utils/animate"
 import ScrollbarsWithScrollShadow from "./scrollbars-with-scroll-shadows"
 
 import DocsTitle from "./docs-title"
@@ -52,15 +54,19 @@ const DocsSidebarProductTitleSection = () => (
 
 class DocsSidebarNavSection extends React.Component {
 
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     this.scrollToActiveNavItem()
   }
 
-  scrollToActiveNavItem() {
+  componentDidUpdate(prevProps) {
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      setTimeout(() => {
+        this.scrollToActiveNavItem(true)
+      }, 400 + (1000 / 60)) // TODO
+    }
+  }
+
+  scrollToActiveNavItem(shouldAnimate) {
     const { scrollbars } = this.refs.scrollbars.refs
     const { container } = scrollbars
 
@@ -71,10 +77,22 @@ class DocsSidebarNavSection extends React.Component {
     const containerRect = container.getBoundingClientRect()
 
     if (activeRect.bottom > containerRect.bottom) {
-      scrollbars.scrollTop(
+      const scrollTop = (
         activeRect.top - containerRect.top
         - ((containerRect.height - activeRect.height) / 2)
       )
+
+      if (shouldAnimate) {
+        animate({
+          from: scrollbars.getScrollTop(),
+          to: scrollTop,
+          easing: "cubicBezier(0.4, 0.0, 0.2, 1.0)",
+          duration: 500,
+          update: value => scrollbars.scrollTop(value)
+        })
+      } else {
+        scrollbars.scrollTop(scrollTop)
+      }
     }
   }
 
@@ -99,7 +117,11 @@ const DocsSidebar = () => (
       <DocsSidebarHeaderSection/>
       <div className="DocsSidebar--section-separator"></div>
       <DocsSidebarProductTitleSection/>
-      <DocsSidebarNavSection/>
+      <Location>
+        {({ location }) => (
+          <DocsSidebarNavSection location={location}/>
+        )}
+      </Location>
     </div>
 
     <div className="DocsSidebar--shadow"></div>
