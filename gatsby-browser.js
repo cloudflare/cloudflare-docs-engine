@@ -42,6 +42,7 @@ import "./src/css/ui/components/scrollbars.css"
 import "./src/css/ui/components/stream-video.css"
 import "./src/css/ui/components/superscript.css"
 
+import "./src/css/docs/components/docs-noscript.css"
 import "./src/css/docs/components/docs-body.css"
 import "./src/css/docs/components/docs-content.css"
 import "./src/css/docs/components/docs-markdown.css"
