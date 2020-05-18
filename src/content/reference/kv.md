@@ -1,7 +1,3 @@
----
-order: 5
----
-
 # KV
 
 ## Writing key-value pairs
