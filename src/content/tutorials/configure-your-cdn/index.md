@@ -29,7 +29,7 @@ This tutorial makes use of sample images to illustrate serving data through your
 
 To follow along with this tutorial, using the data set we've provided, download the sample image collection [here](https://storage.cloud.google.com/workers-docs-configure-your-cdn-tutorial/faces.zip), and upload the zipped folder "faces" to root of your bucket. The directory structure should look like this:
 
-```
+```txt
 your-bucket
 |- faces
    |- 1.jpg
