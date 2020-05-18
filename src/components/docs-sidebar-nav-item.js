@@ -18,7 +18,6 @@ class DocsSidebarNavItem extends React.Component {
   constructor(props) {
     super(props)
 
-    this.props.location.pathname = getNormalizedPath(this.props.location.pathname)
     this.expandCollapseEl = React.createRef()
 
     this.state = {
@@ -34,7 +33,7 @@ class DocsSidebarNavItem extends React.Component {
   isActive() {
     const { node, location } = this.props
 
-    const isActive = node.href === location.pathname
+    const isActive = node.href === getNormalizedPath(location.pathname)
     const isActiveDueToChild = !this.showChildren() && this.isActiveRoot()
 
     return isActive || isActiveDueToChild
@@ -43,7 +42,7 @@ class DocsSidebarNavItem extends React.Component {
   isActiveRoot() {
     const { node, location } = this.props
 
-    const isActive = node => node.href === location.pathname
+    const isActive = node => node.href === getNormalizedPath(location.pathname)
     const hasActiveChild = node => !node.children ? false : node.children.some(
       node => isActive(node) || hasActiveChild(node)
     )
@@ -72,7 +71,7 @@ class DocsSidebarNavItem extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.location.pathname !== prevProps.location.pathname) {
+    if (getNormalizedPath(this.props.location.pathname) !== getNormalizedPath(prevProps.location.pathname)) {
       this.setState({ expanded: this.isExpanded() })
     }
   }
