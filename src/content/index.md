@@ -9,10 +9,10 @@ Cloudflare Workers provides a serverless execution environment that allows you t
 
 ## Get started
 
-- <Link to="/tutorials">Tutorials</Link>
-- <Link to="/learning">Learning</Link>
-- <Link to="/reference">Reference</Link>
+- [Tutorials](/tutorials)
+- [Learning](/learning)
+- [Reference](/reference)
 
 ## Learn how to use these docs
 
-- <Link to="/docs-flavored-markdown">Docs-flavored Markdown</Link>
+- [Docs-flavored Markdown](/docs-flavored-markdown)
