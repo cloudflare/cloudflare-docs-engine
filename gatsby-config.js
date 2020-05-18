@@ -40,7 +40,6 @@ module.exports = {
       resolve: "gatsby-plugin-material-ui",
       options: {
         stylesProvider: {
-          disableGlobal: true,
           disableGeneration: true
         },
       },
