@@ -10,6 +10,8 @@ import inlineCode from "./mdx/inline-code"
 import pre from "./mdx/code-block"
 import blockquote from "./mdx/blockquote"
 
+import DirectoryListing from "./mdx/directory-listing"
+
 // https://www.gatsbyjs.org/docs/mdx/customizing-components/
 const components = {
   a,
@@ -18,6 +20,7 @@ const components = {
   pre, // TODO - figure out why `code:` didn’t work here
   blockquote,
   Link,
+  DirectoryListing
 }
 
 const MDXCustomRenderer = ({ data: { mdx } }) => {

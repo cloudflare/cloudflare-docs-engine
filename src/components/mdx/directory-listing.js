@@ -1,14 +1,13 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-import getParentPath from "../utils/get-parent-path"
-import getPageTitle from "../utils/get-page-title"
-import getOrder from "../utils/get-order"
+import AnchorLink from "./anchor-link"
 
-// TODO - make this a global MDX component so it’s
-// always available and give it a more generic name
+import getParentPath from "../../utils/get-parent-path"
+import getPageTitle from "../../utils/get-page-title"
+import getOrder from "../../utils/get-order"
 
-const DocsOverviewList = props => {
+const DirectoryListing = props => {
   const query = useStaticQuery(graphql`
     query {
       allMdx {
@@ -34,7 +33,7 @@ const DocsOverviewList = props => {
   const pages = query.allMdx.edges
     .map(({ node }) => node)
     .filter(page => !page.frontmatter.hidden)
-    .filter(page => getParentPath(page.fields.slug) === props.parentPath)
+    .filter(page => getParentPath(page.fields.slug) === props.path)
     .map(page => ({
       title: getPageTitle(page),
       url: page.fields.slug,
@@ -47,19 +46,17 @@ const DocsOverviewList = props => {
     })
     .sort((a, b) => a.order - b.order)
 
-  // TODO - render out a tree here rather than a flat list
   return (
     <ul>
       {pages.map(page => (
         <li key={page.url}>
-          {/* TODO - get class name from somewhere */}
-          <Link className="DocsMarkdown--link" to={page.url}>
+          <AnchorLink href={page.url}>
             {page.title}
-          </Link>
+          </AnchorLink>
         </li>
       ))}
     </ul>
   )
 }
 
-export default DocsOverviewList
+export default DirectoryListing
