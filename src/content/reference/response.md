@@ -19,13 +19,13 @@ new Response(body, init)
 - `init` (optional): An `options` object that contains custom settings to apply to the response. Valid options are:
   - `status`: The status code for the reponse, such as `200`.
   - `statusText`: The status message associated with the status code, like, `OK`.
-  - `headers`: Any headers to add to your response that are contained within a [`Headers`](/reference/apis/fetch#headers) object or object literal of [`ByteString`](https://developer.mozilla.org/en-US/docs/Web/API/ByteString) key/value pairs.
+  - `headers`: Any headers to add to your response that are contained within a [`Headers`](/reference/fetch#headers) object or object literal of [`ByteString`](https://developer.mozilla.org/en-US/docs/Web/API/ByteString) key/value pairs.
 
 ### Properties
 
-- `body`: A simple getter used to expose a [`ReadableStream`](/reference/apis/streams) of the body contents.
+- `body`: A simple getter used to expose a [`ReadableStream`](/reference/streams) of the body contents.
 - `bodyUsed`: A Boolean value that declares if the body was used in a response.
-- `headers`: Contains the associated [Headers](/reference/apis/fetch#headers) object for the request.
+- `headers`: Contains the associated [Headers](/reference/fetch#headers) object for the request.
 - `ok`: Contains a Boolean value to indicate if the response was successful (status in the range 200-299).
 - `redirected`: Indicates if the response is the result of a redirect, that is, its URL list has more than one entry.
 - `status`: Contains the status code of the response (for example, `200` to indicate success).

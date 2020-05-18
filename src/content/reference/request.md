@@ -18,7 +18,7 @@ new Request(input [, init])
 
 - `init` (optional): An options object that contains custom settings to apply to the request. Valid options are:
   - `method`: The request method, such as `GET` or `POST`
-  - `headers`: A [Headers](/reference/apis/fetch#headers) object
+  - `headers`: A [Headers](/reference/fetch#headers) object
     - `body`: Any text to add to the request. **Note:** Requests using the `GET` or `HEAD` methods cannot have a body.
     - `redirect`: The mode respected when the request is fetched. **Note:** default for requests generated from the incoming `fetchEvent` from the event handler is `manual`. Default for newly constructed Requests (i.e. `new Request(url)` ) is `follow`. Valid options:
     - `follow`: If a redirect reponse is returned to the fetch, another fetch will be fired based on the `Location` header in the response until a non-redirect code is returned. (i.e. `await fetch(..)` could never return a `301` redirect)
@@ -28,17 +28,17 @@ new Request(input [, init])
 
 All properties of an incoming `Request` object (i.e. `event.request`) are read only. To [modify a request](/templates/snippets/modify_req_props/), you must create a new `Request` object and pass the options to modify to its [constructor](#Constructor).
 
-- `body`: A simple getter that exposes a [`ReadableStream`](/reference/apis/streams) of the contents.
+- `body`: A simple getter that exposes a [`ReadableStream`](/reference/streams) of the contents.
 - `bodyUsed`: A Boolean that declares if the body has been used in a response.
 - `cf`: An object that contains data provided by Cloudflare (see `request.cf` below).
-- `headers`: Contain the associated [`Headers`](/reference/apis/fetch#headers) object for the request.
+- `headers`: Contain the associated [`Headers`](/reference/fetch#headers) object for the request.
 - `method`: The request method, such as `GET` or `POST`, associated with the request.
 - `redirect`: The redirect mode to use: `follow` or `manual`.
 - `url`: Contains the URL of the request.
 
 #### The `cf` Object
 
-In addition to the properties on the standard [`Request`](/reference/apis/request) object, you can use a `request.cf` object to control how Cloudflare features are applied as well as other custom information provided by Cloudflare.
+In addition to the properties on the standard [`Request`](/reference/request) object, you can use a `request.cf` object to control how Cloudflare features are applied as well as other custom information provided by Cloudflare.
 
 Note: Currently, settings in the cf object cannot be tested in the playground.
 
@@ -88,7 +88,7 @@ Cloudflare features all plans can set on outbound requests:
 
 A Workers script runs after Cloudflare security features, but before everything else. Therefore, a Workers script cannot affect the operation of security features (since they already finished), but it can affect other features, like Polish or ScrapeShield, or how Cloudflare caches the response.
 
-Updating the `cf` object is similar to [modifying a request](/templates/snippets/modify_req_props//). You can add the `cf` object to a `Request` by passing a custom object to [`fetch`](/reference/apis/fetch/). For examples on controlling cache settings see [the template](/templates/pages/cache_ttl).
+Updating the `cf` object is similar to [modifying a request](/templates/snippets/modify_req_props//). You can add the `cf` object to a `Request` by passing a custom object to [`fetch`](/reference/fetch/). For examples on controlling cache settings see [the template](/templates/pages/cache_ttl).
 
 ```javascript
 // Disable ScrapeShield for this request.

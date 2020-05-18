@@ -38,7 +38,7 @@ The following methods are available per the [Worker Global Scope](https://develo
 
 ### Fetch global
 
-[`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch) - Starts the process of fetching a resource from the network. See [FetchAPI](/reference/apis/fetch/). \*_Note: The Fetch API is only available inside of [the Request Context](/about/tips/request-context)._
+[`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch) - Starts the process of fetching a resource from the network. See [FetchAPI](/reference/fetch/). \*_Note: The Fetch API is only available inside of [the Request Context](/about/tips/request-context)._
 
 ## Encoding API
 

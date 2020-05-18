@@ -12,7 +12,7 @@ If multiple event listeners are registered, when an event handler does not call 
 
 - `type`: The type of event. Always = `fetch`.
 
-- `request`: A [Request Object](/reference/apis/request) that represents the request triggering `FetchEvent`.
+- `request`: A [Request Object](/reference/request) that represents the request triggering `FetchEvent`.
 
 ## Methods
 

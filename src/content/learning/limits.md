@@ -46,19 +46,19 @@ Routes in fail closed mode will display a Cloudflare 1027 error page to visitors
 
 Most Workers requests consume less than a millisecond. It’s rare to find a normally operating Workers script that exceeds the CPU time limit. A Worker may consume up to 10ms on the free plan and 50ms on the Unlimited tier. The 10ms allowance on the free plan is enough execution time for most use cases including application hosting.
 
-There is no limit on the real runtime for a Workers script. As long as the client that sent the request remains connected, the Workers script can continue processing, making subrequests, and setting timeouts on behalf of that request. When the client disconnects, all tasks associated with that client request are canceled. You can use [`event.waitUntil()`](/reference/apis/fetch-event/) to delay cancellation for another 30 seconds or until the promise passed to `waitUntil()` completes.
+There is no limit on the real runtime for a Workers script. As long as the client that sent the request remains connected, the Workers script can continue processing, making subrequests, and setting timeouts on behalf of that request. When the client disconnects, all tasks associated with that client request are canceled. You can use [`event.waitUntil()`](/reference/fetch-event/) to delay cancellation for another 30 seconds or until the promise passed to `waitUntil()` completes.
 
 ## Memory
 
-Only one Workers instance runs on each of the many global Cloudflare edge servers. Each Workers instance can consume up to 128MB of memory. Use [global variables](/reference/apis/standard/) to persist data between requests on individual nodes; note however, that nodes are occasionally evicted from memory.
+Only one Workers instance runs on each of the many global Cloudflare edge servers. Each Workers instance can consume up to 128MB of memory. Use [global variables](/reference/standard/) to persist data between requests on individual nodes; note however, that nodes are occasionally evicted from memory.
 
-Use the [TransformStream API](/reference/apis/streams/) to stream responses if you are concerned about memory usage. This avoids loading an entire response into memory.
+Use the [TransformStream API](/reference/streams/) to stream responses if you are concerned about memory usage. This avoids loading an entire response into memory.
 
 ## Subrequests
 
 ### Can a Workers script make subrequests to load other sites on the Internet?
 
-Yes. Use the [Fetch API](/reference/apis/fetch/) to make arbitrary requests to other Internet resources.
+Yes. Use the [Fetch API](/reference/fetch/) to make arbitrary requests to other Internet resources.
 
 ### How many subrequests can I make?
 
@@ -66,21 +66,21 @@ The limit for subrequests a Workers script can make is 50 per request. Each subr
 
 ### Can I make a subrequest after my Worker has responded to the user?
 
-Yes, you can use [`event.waitUntil()`](/reference/apis/fetch-event) to register asynchronous tasks that may continue after the response has been returned.
+Yes, you can use [`event.waitUntil()`](/reference/fetch-event) to register asynchronous tasks that may continue after the response has been returned.
 
 ### How long can a subrequest take?
 
 There is no hard limit on the amount of real time a Worker may use. As long as the client which sent a request remains connected, the Worker may continue processing, making subrequests, and setting timeouts on behalf of that request.
 
-When the client disconnects, all tasks associated with that client’s request are proactively canceled. If the Worker passed a promise to [`event.waitUntil()`](/reference/apis/fetch-event), cancellation will be delayed until the promise has completed or until an additional 30 seconds have elapsed, whichever happens first.
+When the client disconnects, all tasks associated with that client’s request are proactively canceled. If the Worker passed a promise to [`event.waitUntil()`](/reference/fetch-event), cancellation will be delayed until the promise has completed or until an additional 30 seconds have elapsed, whichever happens first.
 
 ## Simultaneous Open Connections
 
 While handling a request, each Worker script is allowed to have up to six connections open simultaneously. The connections opened by the following API calls all count toward this limit:
 
-- the `fetch()` method of the [Fetch API](/reference/apis/fetch/)
-- `get()`, `put()`, `list()`, and `delete()` methods of [Workers KV namespace objects](/reference/apis/kv)
-- `put()`, `match()`, and `delete()` methods of [Cache objects](/reference/apis/cache/)
+- the `fetch()` method of the [Fetch API](/reference/fetch/)
+- `get()`, `put()`, `list()`, and `delete()` methods of [Workers KV namespace objects](/reference/kv)
+- `put()`, `match()`, and `delete()` methods of [Cache objects](/reference/cache/)
 
 Once a Worker has six connections open, it can still attempt to open additional connections. However, these attempts are put in a pending queue - the connections won't be actually be initiated until one of the currently open connections has closed. Since earlier connections can delay later ones, if a Worker tries to make many simultaneous subrequests, its later subrequests may appear to take longer to start.
 
@@ -114,7 +114,7 @@ The maximum number of environment variables (secret and text combined) for an ac
 
 Each environment variable has a size limitation of 1kB.
 
-## [Cache API](/reference/apis/cache/)
+## [Cache API](/reference/cache/)
 
 - 50 total `put()`, `match()`, or `delete()` calls per-request, using the same quota as `fetch()`
 

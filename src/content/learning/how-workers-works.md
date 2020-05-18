@@ -44,13 +44,13 @@ async function handleRequest(request) {
 }
 ```
 
-When a request to your workers.dev subdomain or to your Cloudflare-managed domain is received by any of Cloudflare's runtimes, the Workers script is passed a [`FetchEvent`](/reference/apis/fetch-event) argument to the event handler defined in the script. From there you can generate a [`Response`](/reference/apis/response) by computing a response on the spot, calling to another server using [`fetch`](/reference/apis/fetch), etc.. The CPU cycles it takes to get to the point of the `respondWith` call all contribute to the compute time. For example, a `setInterval` timeout does not consume CPU cycles while waiting.
+When a request to your workers.dev subdomain or to your Cloudflare-managed domain is received by any of Cloudflare's runtimes, the Workers script is passed a [`FetchEvent`](/reference/fetch-event) argument to the event handler defined in the script. From there you can generate a [`Response`](/reference/response) by computing a response on the spot, calling to another server using [`fetch`](/reference/fetch), etc.. The CPU cycles it takes to get to the point of the `respondWith` call all contribute to the compute time. For example, a `setInterval` timeout does not consume CPU cycles while waiting.
 
 **Your account is billed based on the number of requests your script handles, rather than on compute time.**
 
 ### Further reading
 
-- [More about FetchEvents](/reference/apis/fetch-event)
+- [More about FetchEvents](/reference/fetch-event)
 
 - [More about the Request Context](/about/tips/request-context)
 
