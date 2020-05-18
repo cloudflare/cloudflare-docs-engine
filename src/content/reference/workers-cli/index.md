@@ -1,9 +1,9 @@
 ---
-order: 100
+order: -1
 ---
+
+import DocsOverviewList from "../../../components/docs-overview-list"
 
 # Workers CLI
 
-## Overview
-
-...
+<DocsOverviewList parentPath="/reference/workers-cli"/>
