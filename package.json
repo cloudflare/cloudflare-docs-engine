@@ -33,6 +33,9 @@
     "remark-slug": "^6.0.0",
     "set-interval-visible": "^2.0.0"
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "devDependencies": {
     "gatsby-plugin-remove-trailing-slashes": "^2.3.2",
     "prettier": "^1.19.1"
