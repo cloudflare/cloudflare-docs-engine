@@ -4,12 +4,10 @@ The `HTMLRewriter` class allows you to parse, query, modify, format, and transfo
 
 You can do all kinds of things with it, for example:
 
-
-- [Scraping data from websites](#)
-- [Converting websites into live APIs by parsing meta tags](#)
-- [Transforming link URLs on the fly](#)
-- [HTML templating](#)
-- [And so much more...](#)
+- [Transforming link URLs on the fly](https://blog.cloudflare.com/introducing-htmlrewriter/)
+- [Scraping data from websites](https://workers.cloudflare.com/built-with/projects/web-scraper)
+- [Converting websites into live APIs by parsing meta tags](https://workers.cloudflare.com/built-with/projects/web-scraper)
+- [And so much more...](https://github.com/search?q=new+HTMLRewriter&type=Code)
 
 
 --------------------------------
