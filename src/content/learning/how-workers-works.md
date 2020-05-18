@@ -1,14 +1,10 @@
----
-order: 0
----
-
 import NetworkMap from "../../components/network-map"
 
-# How it works
+# How Workers works
 
-Though Cloudflare Workers behave similar to JavaScript in the browser or in Node.js, there are a few subtle differences in how you have to think about your code. Under the hood, the Workers runtime uses the [V8 engine](https://v8.dev/) - the same engine used by Chromium and Node.js. The Workers runtime also implements many of the standard [APIs](/reference/runtime/apis) available in most modern browsers.
+Though Cloudflare Workers behave similar to JavaScript in the browser or in Node.js, there are a few subtle differences in how you have to think about your code. Under the hood, the Workers runtime uses the [V8 engine](https://v8.dev/)—the same engine used by Chromium and Node.js. The Workers runtime also implements many of the standard [APIs](/reference/runtime/apis) available in most modern browsers.
 
-The differences between JavaScript written for the browser or Node.js happen at runtime. Rather than running on an individual's machine (e.g a browser application or on a centralized server), Workers functions run on [Cloudflare's Edge Network](https://www.cloudflare.com/network/) - a growing global network of thousands of machines distributed across hundreds of locations.
+The differences between JavaScript written for the browser or Node.js happen at runtime. Rather than running on an individual's machine (e.g a browser application or on a centralized server), Workers functions run on [Cloudflare's Edge Network](https://www.cloudflare.com/network/)—a growing global network of thousands of machines distributed across hundreds of locations.
 
 <figure><NetworkMap/></figure>
 
@@ -34,7 +30,7 @@ Because of this, it is generally advised that you not store mutable state in you
 
 If you're interested in how we handle security with the Workers runtime, you can [read more about how Isolates relate to Security and Spectre Threat Mitigation](/about/security).
 
-## Compute per Request
+## Compute per request
 
 Most Workers scripts are a variation on the default Workers flow:
 
@@ -52,7 +48,7 @@ When a request to your workers.dev subdomain or to your Cloudflare-managed domai
 
 **Your account is billed based on the number of requests your script handles, rather than on compute time.**
 
-### Further Reading
+### Further reading
 
 - [More about FetchEvents](/reference/apis/fetch-event)
 
@@ -60,7 +56,7 @@ When a request to your workers.dev subdomain or to your Cloudflare-managed domai
 
 - [More about Runtime Limitations](/about/limits)
 
-## Distributed Execution
+## Distributed execution
 
 Isolates are resilient and continuously available for the duration of a request, but in rare instances isolates may be evicted. When a script hit our [limits](/about/limits) or when resources are exceptionally tight on the machine the request is running on, the runtime will selectively evict isolates _after_ their events are properly resolved.
 
