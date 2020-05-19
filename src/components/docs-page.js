@@ -31,7 +31,7 @@ const DocsPage = ({ pageContext, children }) => {
       <SEO title={title}/>
 
       <Helmet>
-        <html is-docs-page="" is-smooth-scrolling=""/>
+        <html is-docs-page=""/>
       </Helmet>
 
       <div className="DocsPage">

@@ -418,6 +418,13 @@
   transform: translate3d(0, 0, 0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .DocsSidebar--nav-expand-collapse-button-content,
+  .DocsSidebar--nav-item-collapse-content {
+    transition: none;
+  }
+}
+
 .DocsSidebar--nav-subnav {
   list-style: none;
   font-size: .94rem;

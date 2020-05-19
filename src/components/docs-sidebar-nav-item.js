@@ -3,14 +3,38 @@ import { Link } from "gatsby"
 
 import Collapse from "@material-ui/core/Collapse"
 
-import getNormalizedPath from "../utils/get-normalized-path"
+import sidebarCollapseTransitionDuration from "../constants/sidebar-collapse-transition-duration"
 
-const collapseClasses = {
-  container: "DocsSidebar--nav-item-collapse-container",
-  entered: "DocsSidebar--nav-item-collapse-entered",
-  hidden: "DocsSidebar--nav-item-collapse-hidden",
-  wrapper: "DocsSidebar--nav-item-collapse-wrapper",
-  wrapperInner: "DocsSidebar--nav-item-collapse-wrapperInner"
+import getNormalizedPath from "../utils/get-normalized-path"
+import userPrefersReducedMotion from "../utils/user-prefers-reduced-motion"
+
+const DocsSidebarCollapse = ({ expanded, children }) => {
+  const collapseClasses = {
+    container: "DocsSidebar--nav-item-collapse-container",
+    entered: "DocsSidebar--nav-item-collapse-entered",
+    hidden: "DocsSidebar--nav-item-collapse-hidden",
+    wrapper: "DocsSidebar--nav-item-collapse-wrapper",
+    wrapperInner: "DocsSidebar--nav-item-collapse-wrapperInner"
+  }
+
+  const prefersMotion = userPrefersReducedMotion()
+
+  if (userPrefersReducedMotion()) {
+    let className = collapseClasses.container + " "
+    className += expanded ? collapseClasses.entered : collapseClasses.hidden
+
+    return (
+      <div className={className} children={children}/>
+    )
+  }
+
+  return (
+    <Collapse
+      classes={collapseClasses}
+      in={expanded}
+      timeout={sidebarCollapseTransitionDuration}
+      children={children}/>
+  )
 }
 
 class DocsSidebarNavItem extends React.Component {
@@ -118,7 +142,7 @@ class DocsSidebarNavItem extends React.Component {
         </Link>
 
         {this.showChildren() && (
-          <Collapse classes={collapseClasses} in={expanded} timeout={400}>
+          <DocsSidebarCollapse expanded={expanded}>
             <div className="DocsSidebar--nav-item-collapse-content">
               <ul className="DocsSidebar--nav-subnav" depth={depth} style={{'--depth': depth}}>
                 {node.children.map(node => (
@@ -132,7 +156,7 @@ class DocsSidebarNavItem extends React.Component {
                 ))}
               </ul>
             </div>
-          </Collapse>
+          </DocsSidebarCollapse>
         )}
       </li>
     )
