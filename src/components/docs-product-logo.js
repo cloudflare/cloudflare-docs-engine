@@ -23,7 +23,7 @@ const ProductLogoPathD = () => {
 }
 
 const DocsProductLogo = () => (
-  <AccessibleSVG viewBox="0 0 48 48" title={"Cloudflare " + DocsTitle() + " dashboard logomark"}>
+  <AccessibleSVG viewBox="0 0 48 48" title={"Cloudflare " + DocsTitle() + " logo"}>
     <path d={ProductLogoPathD()}/>
   </AccessibleSVG>
 )
