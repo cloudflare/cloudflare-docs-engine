@@ -214,3 +214,43 @@ This is the end.
   </body>
 </html>
 ```
+
+--------------------------------
+
+## Keyboard commands
+
+When you want to display a keyboard command, use a `<kbd/>` element. For example:
+
+<div class="DocsMarkdown--example">
+
+Press <kbd>⌘</kbd> <kbd>F</kbd> (Command-F) to search for text within this document.
+
+</div>
+
+```markdown
+Press <kbd>⌘</kbd> <kbd>F</kbd> (Command-F) to
+search for text within this document.
+```
+
+--------------------------------
+
+## Details and summary
+
+> {warning} __Warning:__ This API is in active developement. Please don’t use until this notice is removed.
+
+There may be times when you want to provide additional information in context, but without clouding up the neighboring content for the “80% case”. For that you can use `<details/>` and `<summary/>`.
+
+<details>
+<summary>Details</summary>
+<p>Something small enough to escape casual notice.</p>
+</details>
+
+<details>
+<summary>Details</summary>
+<p>Something small enough to escape casual notice.</p>
+</details>
+
+<details>
+<summary>Details</summary>
+<p>Something small enough to escape casual notice.</p>
+</details>
