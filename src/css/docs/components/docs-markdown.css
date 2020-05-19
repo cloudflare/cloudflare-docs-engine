@@ -481,6 +481,38 @@ p.DocsMarkdown--small-header {
   border-bottom: 1px solid var(--border-color);
 }
 
+.DocsMarkdown details summary {
+  padding: 0 .8em;
+  line-height: 2;
+  background: rgba(var(--color-rgb), .05);
+  border-radius: .25em;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.DocsMarkdown details {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.DocsMarkdown details p {
+  padding-left: 1.9em;
+}
+
+@media (max-width: 414px) {
+  .DocsMarkdown details p {
+    padding-left: 0;
+  }
+}
+
+.DocsMarkdown details[open] {
+  margin-bottom: 1.5em;
+}
+
+.DocsMarkdown details[open] summary {
+  margin-bottom: .5em;
+}
+
 .DocsMarkdown kbd {
   font-family: inherit;
   font-size: .9em;
@@ -511,6 +543,7 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown ol > *:first-child,
 .DocsMarkdown li > *:first-child,
 .DocsMarkdown blockquote > *:first-child,
+.DocsMarkdown details > *:first-child,
 .DocsMarkdown--example > *:first-child,
 .DocsMarkdown--custom-block > *:first-child,
 .DocsMarkdown > div > *:first-child {
@@ -522,6 +555,7 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown ol > *:last-child,
 .DocsMarkdown li > *:last-child,
 .DocsMarkdown blockquote > *:last-child ,
+.DocsMarkdown details > *:last-child ,
 .DocsMarkdown--example > *:last-child,
 .DocsMarkdown--custom-block > *:last-child,
 .DocsMarkdown > div > *:last-child {
