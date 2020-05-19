@@ -14,44 +14,71 @@ The Cloudflare Docs engine uses its own custom MDX/Markdown parsing to generate 
 
 ## Links
 
-For both internal and external links, use the regular Markdown syntax.
+For links that you want to display as regular paragraph-style text links, use the regular Markdown syntax `[link text](url)`.
 
-- __External links__ (matching `/^https?:/`), will be rendered as regular `<a/>` elements.
+<div class="DocsMarkdown--example">
+
+Visit [example.com](https://example.com).
+
+</div>
+
+```markdown
+Visit [example.com](https://example.com).
+
+View the [Tutorials](/tutorials) tutorials.
+
+Learn how [V8:Isolates power Workers](/how-workers-works#isolates).
+```
+
 - __Internal links__ will use the [Gatsby’s `<Link/>` component](https://www.gatsbyjs.org/docs/gatsby-link/), which means they will be routed through `@reach/router` using `pushState`.
+- __External links__ (matching `/^https?:/`) and __hash links__ (`.indexOf("#") === 0`), will be rendered as regular `<a/>` elements.
 
-_Example:_ Here’s a link to [example.com](https://example.com).
-
-```markdown
-Here’s a link to [example.com](https://example.com).
-```
-
-While it shouldn’t ever be necessary, you may also explicitly use a `<Link/>` component.
-
-_Example:_ Here’s a link to <Link to="/tutorials">Tutorials</Link>.
+If you need to take advantage of Gatsby’s routing but you want control over the presentation of the link yourself, you can use `<Link/>` directly.
 
 ```markdown
-Here’s a link to <Link to="/tutorials">Tutorials</Link>.
+<Link to="/examples" className="Button Button-is-secondary">
+  View examples
+</Link>
 ```
 
-> {note}
-> __Tip:__ When linking to a section of a page, you can signal that to the user by displaying the hash in the link text itself, e.g. like this: [HTMLRewriter#selectors](/reference/html-rewriter#selectors).
+<div class="DocsMarkdown--example">
+<Link to="/examples" className="Button Button-is-secondary">
+  View examples
+</Link>
+</div>
 
 --------------------------------
 
 ## Blockquotes
 
-> This is a standard Markdown blockquote.
-> It supports [links](https://example.com)
-> and `<code/>`, and other nested markdown.
->
-> Multiple paragraphs can be added as well.
+Use blockquotes when quoting someone. For example, here’s a translation of a quote commonly attributed to Antoine de Saint-Exupéry:
+
+> A goal without a plan is just a wish.
 
 ```markdown
-> This is a standard Markdown blockquote.
-> It supports [links](https://example.com)
-> and `<code/>`, and other nested markdown.
+> A goal without a plan is just a wish.
+```
+
+> If you want to get fancy with it you can use
+> [links](https://example.com) and `<code/>`, and
+> really just about any another inline markdown.
 >
-> Multiple paragraphs can be added as well.
+> Multiple paragraphs can be added as well. And of
+> course you can use **bold** or _italics_. And
+> don’t forget to `<cite/>`.
+>
+> <cite>Adam Schwartz</cite>
+
+```markdown
+> If you want to get fancy with it you can use
+> [links](https://example.com) and `<code/>`, and
+> really just about any another inline markdown.
+>
+> Multiple paragraphs can be added as well. And of
+> course you can use **bold** or _italics_. And
+> don’t forget to `<cite/>`.
+>
+> <cite>Adam Schwartz</cite>
 ```
 
 --------------------------------
@@ -77,6 +104,16 @@ Custom blocks are useful for displaying a “Note” or “Warning”. To use on
 > __Warning__
 > This is a warning.
 
+```
+
+You can use whatever text you want inside the custom block, so for example, a `{note}` block could instead be used as a tip:
+
+> {note}
+> **Did you know?** you can use a _any Markdown you want_ inside of a custom block?
+
+```markdown
+> {note}
+> **Did you know?** you can use a _any Markdown you want_ inside of a custom block?
 ```
 
 --------------------------------
