@@ -53,8 +53,6 @@
 
 .CodeBlock > code::-webkit-scrollbar {
   height: 14px;
-  opacity: 0;
-  cursor: default;
 }
 
 .CodeBlock > code::-webkit-scrollbar-track-piece {
@@ -69,7 +67,6 @@
   background-clip: padding-box;
   border: 4px solid transparent;
   border-radius: calc(20 * var(--border-radius));
-  transition: all 1s ease;
 }
 
 [theme="dark"] .CodeBlock > code::-webkit-scrollbar-thumb {
