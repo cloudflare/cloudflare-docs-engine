@@ -169,7 +169,7 @@ Element handlers are attached to an `HTMLRewriter` instance using the [`.on`](#m
 <dd>The matching element node</dd>
 
 <dt><code class="InlineCode InlineCode-is-definition">text(text)</code></dt>
-<dd>Text nodes which are children of the matching <code class="InlineCode">element</code> are returned <a href="text-chunks">in chunks</a></dd>
+<dd>Text nodes which are children of the matching <code class="InlineCode">element</code> are returned <a href="#text-chunks">in chunks</a></dd>
 
 <dt><code class="InlineCode InlineCode-is-definition">comments(comments)</code></dt>
 <dd>HTML comment nodes which are children of the matching <code class="InlineCode">element</code> are returned</dd>
