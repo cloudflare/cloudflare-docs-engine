@@ -95,7 +95,7 @@
 
 [theme="dark"] .DocsSidebar--shadow::before {
   background: rgb(var(--shadow-color-rgb));
-  border-right: 1px solid rgba(255, 255, 255, .15);
+  border-right: 1px solid rgba(var(--color-rgb), .15);
 }
 
 [theme="dark"] .DocsSidebar--shadow::before {
