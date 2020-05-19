@@ -5,7 +5,7 @@
   --sidebar-background-color: var(--background-color);
   --content-indent: var(--docs-page-side-padding);
   --logo-size: 2.8235294118rem; /* 48 / 17 */
-  --text-indent: calc(var(--content-indent) + var(--logo-size) + .4rem + .1em); /* TODO .5rem sync with logo lockup gap */
+  --text-indent: calc(var(--content-indent) + var(--logo-size) + .4rem + .1em); /* TODO .4rem sync with logo lockup gap */
   width: var(--docs-sidebar-width);
   z-index: 2;
 }
