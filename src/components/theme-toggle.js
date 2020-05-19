@@ -61,17 +61,12 @@ const setTheme = theme => {
   document.documentElement.setAttribute("theme", theme)
 }
 
-const onMediaMatchChange = event => {
-  setTheme(event.matches ? "dark" : "light")
-}
-
 const storeTheme = theme => {
   localStorage.theme = JSON.stringify({
     theme: theme,
     updated: +new Date
   })
 }
-
 
 class ThemeToggle extends React.Component {
 
@@ -82,6 +77,26 @@ class ThemeToggle extends React.Component {
       loading: true,
       checked: false
     }
+
+    this.onCheckboxChange = this.onCheckboxChange.bind(this)
+    this.onMediaMatchChange = this.onMediaMatchChange.bind(this)
+  }
+
+  onCheckboxChange() {
+    const checked = !this.state.checked
+    this.setState({ checked })
+
+    const theme = checked ? "dark" : "light"
+    setTheme(theme)
+    storeTheme(theme)
+  }
+
+  onMediaMatchChange(event) {
+    const theme = event.matches ? "dark" : "light"
+    setTheme(theme)
+
+    const checked = theme === "dark"
+    this.setState({ checked })
   }
 
   componentDidMount() {
@@ -92,7 +107,7 @@ class ThemeToggle extends React.Component {
     this.setState({ checked, loading })
 
     this.query = window.matchMedia(colorSchemeQuery)
-    this.query.addListener(onMediaMatchChange)
+    this.query.addListener(this.onMediaMatchChange)
 
     this.interval = setIntervalVisible(() => {
       storeTheme(getTheme())
@@ -100,17 +115,8 @@ class ThemeToggle extends React.Component {
   }
 
   componentWillUnmount() {
-    this.query.removeListener(onMediaMatchChange)
+    this.query.removeListener(this.onMediaMatchChange)
     this.interval.clear()
-  }
-
-  onChange() {
-    const checked = !this.state.checked
-    this.setState({ checked })
-
-    const theme = checked ? "dark" : "light"
-    setTheme(theme)
-    storeTheme(theme)
   }
 
   render() {
@@ -128,7 +134,7 @@ class ThemeToggle extends React.Component {
             type="checkbox"
             id="ThemeToggle"
             className="ThemeToggle--input"
-            onChange={this.onChange.bind(this)}
+            onChange={this.onCheckboxChange}
             checked={this.state.checked} />
 
           <label className="ThemeToggle--toggle" htmlFor="ThemeToggle">
