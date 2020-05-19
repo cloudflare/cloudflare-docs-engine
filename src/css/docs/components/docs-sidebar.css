@@ -171,6 +171,7 @@
   display: flex;
   flex-shrink: 0;
   height: var(--docs-header-height);
+  z-index: 1;
 }
 
 .DocsSidebar--cloudflare-logo-link {
