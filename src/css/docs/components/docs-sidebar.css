@@ -280,8 +280,10 @@
 }
 
 [theme="dark"] .DocsSidebar--nav-section-shadow {
-  box-shadow: inset 0 1px #101010; /* TODO */
-  background: linear-gradient(rgba(0, 0, 0, .2), transparent);
+  box-shadow: inset 0 1px rgba(var(--shadow-color-rgb), .5);
+  background: linear-gradient(rgba(var(--shadow-color-rgb), .2), transparent);
+  height: .5em;
+  border-top: 1px solid #222;
 }
 
 .DocsSidebar--nav {
