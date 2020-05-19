@@ -1,8 +1,7 @@
 .InlineCode {
-  display: inline-block;
   font-family: var(--monospace-font-family);
-  --default-padding: .0625em .3em;
   font-size: var(--inline-code-font-size);
+  --default-padding: .2em;
   padding: var(--padding, var(--default-padding));
   --default-background: rgba(var(--color-rgb), .05);
   background: var(--background, var(--default-background));
@@ -14,15 +13,8 @@
   white-space: nowrap;
 }
 
-.InlineCode.InlineCode-is-definition {
-  font-size: .9em;
-  --padding: .125em .3em;
-}
-
 .InlineCode.InlineCode-is-type,
 .InlineCode--type {
-  display: inline-block;
-  vertical-align: middle;
   font-weight: 700;
   font-size: .666rem;
   border-radius: .2em;
