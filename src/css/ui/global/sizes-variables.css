@@ -29,8 +29,15 @@ html {
 
 @media (max-width: 414px) {
   html {
+    --html-font-size: 16px;
     --header-height: 4rem;
     --code-font-size: .8em;
     --inline-code-font-size: var(--code-font-size);
+  }
+}
+
+@media (max-width: 320px) {
+  html {
+    --html-font-size: 15px;
   }
 }
