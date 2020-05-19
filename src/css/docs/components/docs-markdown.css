@@ -527,12 +527,21 @@ p.DocsMarkdown--small-header {
 
 */
 
+.DocsMarkdown--example {
+  padding: 1em 1.25em;
+  margin: -.5em auto 1.25em;
+  border: 1px solid rgba(var(--color-rgb), .1);
+  border-radius: .125em;
+}
+
 .DocsMarkdown > *:first-child,
 .DocsMarkdown ul > *:first-child,
 .DocsMarkdown ol > *:first-child,
 .DocsMarkdown li > *:first-child,
 .DocsMarkdown blockquote > *:first-child,
-.DocsMarkdown .DocsMarkdown--custom-block > *:first-child {
+.DocsMarkdown--example > *:first-child,
+.DocsMarkdown--custom-block > *:first-child,
+.DocsMarkdown > div > *:first-child {
   margin-top: 0;
 }
 
@@ -541,6 +550,8 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown ol > *:last-child,
 .DocsMarkdown li > *:last-child,
 .DocsMarkdown blockquote > *:last-child ,
-.DocsMarkdown .DocsMarkdown--custom-block > *:last-child {
+.DocsMarkdown--example > *:last-child,
+.DocsMarkdown--custom-block > *:last-child,
+.DocsMarkdown > div > *:last-child {
   margin-bottom: 0;
 }
