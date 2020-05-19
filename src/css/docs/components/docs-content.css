@@ -1,5 +1,5 @@
 .DocsContent {
-  padding: 2.7em 3.7647058824em; /* 64 / 17 */
+  padding: 2.7rem 3.7647058824rem; /* 64 / 17 */
 }
 
 .DocsContent[page-type="document"] {
@@ -8,7 +8,7 @@
 
 @media (max-width: 768px) {
   .DocsContent {
-    padding: 2em 1em 1em;
+    padding: 2rem 1rem;
   }
 }
 
