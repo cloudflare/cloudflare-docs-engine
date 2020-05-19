@@ -13,7 +13,10 @@
   border-radius: var(--border-radius);
   background: var(--code-block-background-color);
   color: var(--code-block-color);
-  max-width: 100%;
+  --outdent: 0rem;
+  margin-left: calc(-1 * var(--outdent));
+  width: calc(100% + (2 * var(--outdent)));
+  max-width: calc(100% + (2 * var(--outdent)));
   cursor: text;
 }
 
