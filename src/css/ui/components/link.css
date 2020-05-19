@@ -20,8 +20,10 @@
 .Link-is-indigo { --accent-color: var(--indigo-6) }
 .Link-is-violet { --accent-color: var(--violet-6) }
 
-.Link:hover {
-  color: var(--accent-color);
+@media (hover: hover) {
+  .Link:hover {
+    color: var(--accent-color);
+  }
 }
 
 .Link-is-juicy {
@@ -30,11 +32,8 @@
 }
 
 .Link-without-underline,
-.Link-without-underline:hover,
 .Link-with-left-arrow,
-.Link-with-left-arrow:hover,
-.Link-with-right-arrow,
-.Link-with-right-arrow:hover {
+.Link-with-right-arrow {
   --underline-size: 0;
 }
 
