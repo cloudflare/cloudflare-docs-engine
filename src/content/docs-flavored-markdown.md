@@ -210,7 +210,7 @@ This is the end.
   </head>
 
   <body>
-    <!-- TODO -->
+    <!-- ... -->
   </body>
 </html>
 ```
