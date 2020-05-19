@@ -5,12 +5,11 @@
   display: flex;
   height: var(--docs-header-height);
   z-index: 2;
-  pointer-events: none; /* TODO - needed for higher z-index, find a way to avoid */
 }
 
 @media (max-width: 768px) {
   .DocsToolbar {
-    display: none; /* TODO */
+    display: none;
   }
 }
 
@@ -18,7 +17,6 @@
   flex: 1;
   max-width: var(--docs-body-width);
   margin-right: auto;
-  pointer-events: all;
 }
 
 .DocsToolbar--tools {
@@ -26,17 +24,4 @@
   align-items: center;
   justify-content: flex-end;
   padding: 0 var(--docs-page-side-padding);
-  pointer-events: all;
 }
-
-/* TODO */
-
-/*
-.DocsToolbar--notification-snack {
-  margin-right: var(--docs-page-side-padding);
-}
-
-.DocsToolbar--theme-toggle {
-
-}
-*/
