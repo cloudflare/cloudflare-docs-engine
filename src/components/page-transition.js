@@ -71,7 +71,11 @@ class PageTransition extends React.Component {
     if (isMobile() || userPrefersReducedMotion()) {
       return (
         <Location>
-          {({ location }) => children({ location })}
+          {({ location }) => (
+            <div>
+              {children({ location })}
+            </div>
+          )}
         </Location>
       )
     }
