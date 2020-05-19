@@ -29,8 +29,6 @@
   opacity: .75;
   --border-opacity: .4;
   box-shadow: 0 0 0 1px rgba(var(--color-rgb), var(--border-opacity));
-
-  /* TODO */
   -webkit-user-select: none;
   user-select: none;
   pointer-events: none;
