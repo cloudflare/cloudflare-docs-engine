@@ -267,13 +267,47 @@ p.DocsMarkdown--small-header {
 }
 
 .DocsMarkdown blockquote:not([class]) {
+  position: relative;
   margin: 1.5em 0;
-  padding-left: 1em;
-  border-left: .28125em solid rgba(var(--color-rgb), .5);
   font-style: italic;
 }
 
-.DocsMarkdown blockquote:not([class]) > em {
+.DocsMarkdown blockquote:not([class]) cite {
+  font-weight: bold;
+  font-style: normal;
+  font-size: .9em;
+}
+
+.DocsMarkdown blockquote:not([class]) cite::before {
+  content: "— ";
+}
+
+.DocsMarkdown blockquote:not([class])::after {
+  position: absolute;
+  content: "";
+  top: 1.5em;
+  bottom: 0;
+  left: -1rem;
+  width: 2px;
+  background: rgba(var(--color-rgb), .2);
+}
+
+.DocsMarkdown blockquote:not([class])::before {
+  quotes: "“" "”";
+  content: open-quote;
+  position: absolute;
+  top: .05em;
+  left: -.8em;
+  display: inline-block;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 2em;
+  line-height: 1;
+  height: .5em;
+  width: .7em;
+}
+
+.DocsMarkdown blockquote:not([class]) em {
   font-style: normal;
 }
 
