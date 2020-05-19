@@ -71,8 +71,7 @@ const DocsSearch = () => {
   return (
     <>
       <Helmet>
-        {/* TODO - include in source */}
-        <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.3/docsearch.min.js"/>
       </Helmet>
 
       <div className="DocsSearch">
