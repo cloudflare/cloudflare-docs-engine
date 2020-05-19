@@ -51,8 +51,8 @@ const NetworkMap = (props) => {
       <path className="NetworkMap--land" d={globePathD}/>
 
       <g className="NetworkMap--datacenters">
-        {points.map((point, i) => (
-          <circle r={props.datacentersRadius} cx={point[0]} cy={point[1]} key={i}/>
+        {points.map(([x, y], i) => (
+          <circle r={props.datacentersRadius} cx={x} cy={y} key={i}/>
         ))}
       </g>
     </AccessibleSVG>
