@@ -245,7 +245,6 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding-bottom: 1.5em; /* Prevent overlap of overlapping browser status bar */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
@@ -289,7 +288,10 @@
 .DocsSidebar--nav {
   list-style: none;
   font-size: 1.11em;
-  padding: 0 .5em 0 0;
+  padding-top: 0;
+  padding-right: .5em; /* Small gap to stay clear of .DocsSidebar--shadow */
+  padding-bottom: 2em; /* Prevent overlap with browser status bar */
+  padding-left: 0;
   word-break: break-word;
 }
 
