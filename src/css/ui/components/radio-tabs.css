@@ -66,7 +66,7 @@
 }
 
 .RadioTabs-pill-style .RadioTabs--input:checked + .RadioTabs--tab {
-  background: var(--green-4); /* TODO - move to theme colors? */
+  background: var(--green-4);
   --box-shadow-color: rgba(0, 0, 0, .2);
   color: #fff;
 }
