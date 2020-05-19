@@ -263,13 +263,6 @@ p.DocsMarkdown--small-header {
   }
 }
 
-/* TODO */
-@media (max-width: 414px) {
-  .DocsMarkdown pre {
-    font-size: .8em;
-  }
-}
-
 .DocsMarkdown blockquote,
 .DocsMarkdown dl,
 .DocsMarkdown p,

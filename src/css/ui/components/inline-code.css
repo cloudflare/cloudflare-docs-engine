@@ -1,8 +1,8 @@
 .InlineCode {
   display: inline-block;
   font-family: var(--monospace-font-family);
-  font-size: .85em;
   --default-padding: .0625em .3em;
+  font-size: var(--inline-code-font-size);
   padding: var(--padding, var(--default-padding));
   --default-background: rgba(var(--color-rgb), .05);
   background: var(--background, var(--default-background));
