@@ -2,20 +2,6 @@
   word-wrap: break-word;
 }
 
-.DocsMarkdown h1 {
-  font-size: 2.4em;
-  line-height: 1;
-  letter-spacing: -.03em;
-  font-weight: 600;
-  margin-bottom: .425em;
-}
-
-@-moz-document url-prefix() {
-  .DocsMarkdown h1 {
-    letter-spacing: 0;
-  }
-}
-
 .DocsMarkdown img {
   border-style: none;
   box-sizing: content-box;
@@ -157,6 +143,32 @@ p.DocsMarkdown--small-header {
   .DocsMarkdown h5,
   .DocsMarkdown h6 {
     margin-top: 2em;
+  }
+}
+
+.DocsMarkdown h1 {
+  font-size: 2.4em;
+  line-height: 1;
+  letter-spacing: -.03em;
+  font-weight: 600;
+  margin-bottom: .425em;
+}
+
+@-moz-document url-prefix() {
+  .DocsMarkdown h1 {
+    letter-spacing: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .DocsMarkdown h1 {
+    font-size: 2.25em;
+  }
+}
+
+@media (max-width: 374px) {
+  .DocsMarkdown h1 {
+    font-size: 2em;
   }
 }
 
