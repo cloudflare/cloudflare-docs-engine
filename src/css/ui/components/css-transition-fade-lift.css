@@ -34,3 +34,10 @@
   right: 0;
   transition: opacity .18s ease, transform .18s ease;
 }
+
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .CSSTransitionFadeLift-exit-active,
+  .CSSTransitionFadeLift-enter-active {
+    transition: none;
+  }
+}
