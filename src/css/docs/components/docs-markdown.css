@@ -362,13 +362,26 @@ p.DocsMarkdown--small-header {
 
 .DocsMarkdown h2[id]::before,
 .DocsMarkdown h3[id]::before,
-.DocsMarkdown h4[id]::before {
-  content: " ";
+.DocsMarkdown h4[id]::before,
+.DocsMarkdown h5[id]::before,
+.DocsMarkdown h6[id]::before {
+  content: "";
   display: block;
-  padding-top: 1.75em; /* TODO */
-  margin-top: -1.75em; /* TODO */
+  --offset: 2rem;
+  height: var(--offset);
+  margin-top: calc(-1 * var(--offset));
   visibility: hidden;
   pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .DocsMarkdown h2[id]::before,
+  .DocsMarkdown h3[id]::before,
+  .DocsMarkdown h4[id]::before,
+  .DocsMarkdown h5[id]::before,
+  .DocsMarkdown h6[id]::before {
+    --offset: calc(var(--docs-header-height) + 2rem);
+  }
 }
 
 .DocsMarkdown--header-anchor-positioner {
