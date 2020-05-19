@@ -481,51 +481,23 @@ p.DocsMarkdown--small-header {
   border-bottom: 1px solid var(--border-color);
 }
 
-/* TODO */
-
-/*
-
-.DocsMarkdown details {
-  display: block;
-}
-
-.DocsMarkdown summary {
-  display: list-item;
-}
-
-.DocsMarkdown details summary {
-  cursor: pointer;
-}
-
 .DocsMarkdown kbd {
-  background-color: #fafbfc;
-  border: 1px solid #c6cbd1;
-  border-bottom-color: #959da5;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #959da5;
-  color: #444d56;
-  display: inline-block;
-  font-size: 11px;
-  line-height: 10px;
-  padding: 3px 5px;
-  vertical-align: middle
+  font-family: inherit;
+  font-size: .9em;
+  padding: .3em .4em;
+  background: rgba(var(--color-rgb), .025);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--color-rgb), .2),
+    inset 0 -1px rgba(var(--color-rgb), .25),
+    0 1px rgba(var(--color-rgb), .4);
+  border-radius: .25em;
 }
 
-.DocsMarkdown kbd {
-  background-color: #fafbfc;
-  border: 1px solid #d1d5da;
-  border-bottom-color: #c6cbd1;
-  border-radius: 3px;
-  box-shadow: inset 0 -1px 0 #c6cbd1;
-  color: #444d56;
-  display: inline-block;
-  font: 11px SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-  line-height: 10px;
-  padding: 3px 5px;
-  vertical-align: middle
+[theme="dark"] .DocsMarkdown kbd {
+  background: rgba(var(--orange-rgb), .1);
+  box-shadow: inset 0 0 0 1px rgba(var(--orange-rgb), .5);
+  border-radius: .4em;
 }
-
-*/
 
 .DocsMarkdown--example {
   padding: 1em 1.25em;
