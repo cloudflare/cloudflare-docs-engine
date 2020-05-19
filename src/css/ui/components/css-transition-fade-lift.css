@@ -36,8 +36,13 @@
 }
 
 @media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .CSSTransitionFadeLift-enter,
+  .CSSTransitionFadeLift-exit-active {
+    transform: translate3d(0, 0, 0);
+  }
+
   .CSSTransitionFadeLift-exit-active,
   .CSSTransitionFadeLift-enter-active {
-    transition: none;
+    transition: opacity .01s ease;
   }
 }
