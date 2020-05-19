@@ -249,16 +249,12 @@ p.DocsMarkdown--small-header {
   color: var(--gray-7);
 }
 
-/* TODO */
-.DocsMarkdown pre {
-  margin-left: -1rem;
-  width: calc(100% + 2rem);
-  max-width: calc(100% + 2rem);
+.DocsMarkdown > pre {
+  --outdent: 1rem;
 }
 
 @media (max-width: 768px) {
-  /* TODO */
-  .DocsMarkdown pre {
+  .DocsMarkdown > pre {
     --border-radius: 0em;
   }
 }
