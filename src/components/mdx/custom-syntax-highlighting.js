@@ -17,13 +17,12 @@ const transformations = {
     },
     "class-name": {
       to: "api",
-      for: ["HTMLRewriter", "Request", "Response", "URL", "Error"] // TODO - apply these only to Workers-specific JS code blocks?
+      for: ["HTMLRewriter", "Request", "Response", "URL", "Error"]
     },
     "function": {
       to: "builtin",
       for: ["fetch", "console", "addEventListener"]
-    },
-    // TODO - plain => CodeBlock--object-property
+    }
   }
 }
 
