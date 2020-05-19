@@ -31,7 +31,17 @@
   transition: box-shadow .3s ease, opacity .2s ease, color .2s ease; /* TODO */
 }
 
-.DocsMobileHeader--cloudflare-logo-link:hover {
-  opacity: .75;
-  color: rgba(var(--color-rgb), .75); /* TODO - test */
+@media (hover: hover) {
+  .DocsMobileHeader--cloudflare-logo-link:hover {
+    opacity: .75;
+    color: rgba(var(--color-rgb), .75);
+  }
+}
+
+@media (hover: none) {
+  /* TODO - test */
+  .DocsMobileHeader--cloudflare-logo-link:active {
+    opacity: .75;
+    color: rgba(var(--color-rgb), .75);
+  }
 }
