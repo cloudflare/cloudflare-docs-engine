@@ -181,7 +181,13 @@ p.DocsMarkdown--small-header {
 }
 
 .DocsMarkdown h2 {
-  font-size: 1.5em;
+  font-size: 1.6666em;
+}
+
+@media (max-width: 768px) {
+  .DocsMarkdown h2 {
+    font-size: 1.5em;
+  }
 }
 
 .DocsMarkdown h3 {
