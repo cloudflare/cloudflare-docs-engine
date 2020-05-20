@@ -1,5 +1,6 @@
 import React from "react"
 
+import * as frontMatterParser from "gray-matter"
 import Highlight, { defaultProps } from "prism-react-renderer"
 
 import { transformToken, languageMappings, shellLanguages } from "./custom-syntax-highlighting"
@@ -44,28 +45,54 @@ const CodeBlock = props => {
     }
   }
 
+  let codeFrontmatter = {}
+
+  // For now, we don’t support code frontmatter
+  // in markdown code blocks because markdown
+  // itself can contain frontmatter.
+
+  // TODO - find workaround for this limitation
+  if (language !== "markdown") {
+    const parsed = frontMatterParser(code)
+
+    if (Object.keys(parsed.data).length) {
+      code = parsed.content
+      codeFrontmatter = parsed.data
+    }
+  }
+
   return (
     <Highlight {...defaultProps} code={code} language={language}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={codeBlockClassName + " CodeBlock--language-" + language} language={language}>
+          {codeFrontmatter.header && (
+            <span className="CodeBlock--header">{codeFrontmatter.header}</span>
+          )}
+          {codeFrontmatter.filename && !codeFrontmatter.header && (
+            <span className="CodeBlock--filename">{codeFrontmatter.filename}</span>
+          )}
           <code>
-            <span className="CodeBlock--line-number-rows" style={{display:"none"}}> {/* TODO - optionally display line numbers */}
-              {tokens.map((line, i) => (
-                <span className="CodeBlock--line-number-row" data-line-number={i + 1} key={i}></span>
-              ))}
-            </span>
-
             <span className="CodeBlock--rows">
-              {tokens.map((line, i) => (
-                <span className="CodeBlock--row" data-line-number={i + 1} key={i}>
-                  <span className="CodeBlock--row-indicator"></span>
-                  <span className="CodeBlock--row-content">
-                    {addNewlineToEmptyLine(line).map((token, key) => (
-                      <span key={key} {...tokenProps(getTokenProps({ token, key }))} />
-                    ))}
+              <span className="CodeBlock--rows-content">
+                {tokens.map((line, i) => (
+                  <span
+                    key={i}
+                    className={"CodeBlock--row" + (
+                      codeFrontmatter.highlight &&
+                      codeFrontmatter.highlight.length &&
+                      codeFrontmatter.highlight.includes(i + 1) ?
+                        " CodeBlock--row-is-highlighted" : ""
+                    )}
+                  >
+                    <span className="CodeBlock--row-indicator"></span>
+                    <span className="CodeBlock--row-content">
+                      {addNewlineToEmptyLine(line).map((token, key) => (
+                        <span key={key} {...tokenProps(getTokenProps({ token, key }))} />
+                      ))}
+                    </span>
                   </span>
-                </span>
-              ))}
+                ))}
+              </span>
             </span>
           </code>
         </pre>

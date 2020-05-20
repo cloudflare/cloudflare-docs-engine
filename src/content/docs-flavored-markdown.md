@@ -127,18 +127,23 @@ npm install -g @cloudflare/wrangler
 wrangler config
 ```
 
-
-### JavaScript code
+### JavaScript code with filename
 
 ```js
+---
+filename: worker.js
+---
 addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 ```
 
-### CSS code
+### CSS code with highlighted lines
 
 ```css
+---
+highlight: [12, 13, 18]
+---
 :root {
   --color-rgb: 8, 10, 60;
   --color: rgb(var(--color-rgb));

@@ -100,6 +100,7 @@
 
 .CodeBlock--header,
 .CodeBlock--filename {
+  display: block;
   background: rgba(var(--color-rgb), .05);
   box-shadow: 0 1px rgba(var(--shadow-color-rgb), .12);
   padding: .4em var(--padding-horizontal);
@@ -155,7 +156,7 @@
 /* CodeBlock with rows */
 
 .CodeBlock.CodeBlock-with-rows.CodeBlock-scrolls-horizontally > code {
-  display: flex;
+  display: block;
 }
 
 .CodeBlock.CodeBlock-with-rows,
@@ -169,6 +170,10 @@
 }
 
 .CodeBlock-with-rows .CodeBlock--rows {
+  display: inline;
+}
+
+.CodeBlock-with-rows .CodeBlock--rows-content {
   display: inline-block;
   min-width: 100%;
 }
@@ -188,6 +193,10 @@
 
 .CodeBlock-with-rows.CodeBlock-scrolls-horizontally .CodeBlock--row-content {
   white-space: pre;
+}
+
+.CodeBlock--row-is-highlighted {
+  background: rgba(var(--color-rgb), .05);
 }
 
 .CodeBlock--row-diff-add {
