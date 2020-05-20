@@ -26,6 +26,8 @@ const generateNavTree = pages => {
   pages.forEach((page, i) => {
     const parentPath = getParentPath(page.path)
     if (!parentPath) return
+    const parentNode = pagesByPath[parentPath]
+    if (!parentNode) return
     pages[i].parentId = pagesByPath[parentPath].id
   })
 
@@ -47,8 +49,10 @@ const generateNavTree = pages => {
   for (let i = 0; i < pages.length; i += 1) {
     const node = pages[i]
     if (node.depth > 0) {
-      if (!pages[map[node.parentId]].children) pages[map[node.parentId]].children = []
-      pages[map[node.parentId]].children.push(formatNode(node))
+      if (node.parentId) {
+        if (!pages[map[node.parentId]].children) pages[map[node.parentId]].children = []
+        pages[map[node.parentId]].children.push(formatNode(node))
+      }
     } else {
       tree.push(formatNode(node))
     }
