@@ -17,4 +17,6 @@ Cloudflare Workers provides a serverless execution environment that allows you t
 
 ## Learn how to use these docs
 
-- [Docs-flavored Markdown](/docs-flavored-markdown)
+- [Cloudflare Docs engine overview](/docs-engine)
+- [Docs-flavored Markdown](/docs-engine/docs-flavored-markdown)
+- [Code blocks examples](/docs-engine/code-blocks-examples)
