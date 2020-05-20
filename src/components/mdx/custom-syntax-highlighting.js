@@ -21,7 +21,7 @@ const transformations = {
     },
     "function": {
       to: "builtin",
-      for: ["fetch", "console", "addEventListener"]
+      for: ["fetch", "console", "addEventListener", "atob", "btoa", "setInterval", "clearInterval", "setTimeout", "clearTimeout"]
     }
   }
 }
