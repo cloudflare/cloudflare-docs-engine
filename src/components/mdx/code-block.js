@@ -19,6 +19,10 @@ const addNewlineToEmptyLine = line => {
 const CodeBlock = props => {
   const { className, children } = props.children.props
 
+  if (props.className) {
+    return (<pre {...props}/>)
+  }
+
   let language = className ? className.split("-")[1] : "js"
   const mappedLanguage = languageMappings[language]
   if (mappedLanguage) language = mappedLanguage
