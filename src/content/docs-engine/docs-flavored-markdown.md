@@ -228,8 +228,6 @@ workers config
 
 ### Workers-JavaScript
 
-Syntax highlighting in the Workers docs is implemented on top of [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer), with custom
-
 On top of regular JavaScript, Workers-specific APIs are automatically detected and rendered in true Cloudflare spirit—in [orange](https://cloudflare.com).
 
 ```js
