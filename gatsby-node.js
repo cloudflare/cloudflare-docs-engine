@@ -95,3 +95,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     })
   })
 }
+
+// TODO - implement `createSchemaCustomization`
+// We should be adding a custom schema to make improve build performance
+// and make the project more forgiving to work with.
+// - Performance improvements come from GraphQL not having to do type
+//   inference on frontmatter properties.
+// - Without implementing type definitions, if a frontmatter propery
+//   is excluded from all .md pages, the build will actually break.
+//   This is not currently a problem as Workers docs uses all of the
+//   possible frontmatter props. But when future products use these
+//   docs, they may not need to use a prop. They shouldn’t be penalized
+//   (read: having their build break) for being minimalist or removing
+//   unused code.
+// https://www.gatsbyjs.org/docs/schema-customization/#creating-type-definitions
+// exports.createSchemaCustomization = ({ actions }) => {}
