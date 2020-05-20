@@ -490,6 +490,20 @@ p.DocsMarkdown--small-header {
   font-weight: 600;
 }
 
+.DocsMarkdown details summary {
+  cursor: pointer;
+  box-shadow: 0 0 0 var(--focus-size) var(--focus-color);
+  transition: box-shadow .3s ease;
+}
+
+[js-focus-visible-polyfill-available] .DocsMarkdown details summary:focus {
+  outline: none;
+}
+
+.DocsMarkdown details summary:not([is-focus-visible]) {
+  --focus-size: 0em;
+}
+
 .DocsMarkdown details {
   margin-top: 1em;
   margin-bottom: 1em;
