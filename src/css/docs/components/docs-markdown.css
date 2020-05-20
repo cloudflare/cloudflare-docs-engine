@@ -292,6 +292,12 @@ p.DocsMarkdown--small-header {
   background: rgba(var(--color-rgb), .2);
 }
 
+@media (max-width: 768px) {
+  .DocsMarkdown blockquote:not([class]) {
+    margin-left: 1rem;
+  }
+}
+
 .DocsMarkdown blockquote:not([class])::before {
   quotes: "“" "”";
   content: open-quote;
