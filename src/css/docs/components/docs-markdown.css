@@ -126,8 +126,8 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown h6,
 p.DocsMarkdown--small-header {
   line-height: 1.25;
-  margin-bottom: .5em;
   margin-top: 1.75em;
+  margin-bottom: .5em;
 }
 
 .DocsMarkdown h2 {
