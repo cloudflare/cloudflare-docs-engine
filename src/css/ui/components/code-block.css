@@ -170,7 +170,7 @@
 }
 
 .CodeBlock-with-rows .CodeBlock--rows {
-  display: inline;
+  display: block;
 }
 
 .CodeBlock-with-rows .CodeBlock--rows-content {
@@ -180,9 +180,8 @@
 
 .CodeBlock-with-rows .CodeBlock--row {
   position: relative;
-  display: flex;
+  display: block;
   width: 100%;
-  height: 1.43333em; /* TODO */
 }
 
 .CodeBlock-with-rows .CodeBlock--row-content {
