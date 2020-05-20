@@ -12,13 +12,16 @@ import blockquote from "./mdx/blockquote"
 
 import DirectoryListing from "./mdx/directory-listing"
 
+// https://mdxjs.com/table-of-components
 // https://www.gatsbyjs.org/docs/mdx/customizing-components/
 const components = {
   a,
   ...headers,
   inlineCode,
-  pre, // TODO - figure out why `code:` didn’t work here
+  pre,
   blockquote,
+  // img, // TODO - img
+  // thematicBreak, // TODO - consider custom thematicBreak `***` implementation
   Link,
   DirectoryListing
 }
