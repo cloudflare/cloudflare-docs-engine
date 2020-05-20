@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.CSSTransitionFadeLift---root > div {
+.CSSTransitionFadeLift {
   will-change: transform, opacity;
 }
 
@@ -33,16 +33,4 @@
   left: 0;
   right: 0;
   transition: opacity .18s ease, transform .18s ease;
-}
-
-@media (max-width: 768px), (prefers-reduced-motion: reduce) {
-  .CSSTransitionFadeLift-enter,
-  .CSSTransitionFadeLift-exit-active {
-    transform: translate3d(0, 0, 0);
-  }
-
-  .CSSTransitionFadeLift-exit-active,
-  .CSSTransitionFadeLift-enter-active {
-    transition: opacity .01s ease;
-  }
 }

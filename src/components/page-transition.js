@@ -68,19 +68,31 @@ class PageTransition extends React.Component {
   render() {
     const { children } = this.props
 
+    const className = "CSSTransitionFadeLift"
+
+    if (isMobile() || userPrefersReducedMotion()) {
+      return (
+        <div className={`${className}---root-mimic`}>{/* TransitionGroup mimic */}
+          <div className={`${className}-mimic`}>{/* CSSTransition mimic */}
+            {children({ location })}
+          </div>
+        </div>
+      )
+    }
+
     return (
       <Location>
         {({ location }) => (
-          <TransitionGroup className="CSSTransitionFadeLift---root">
+          <TransitionGroup className={`${className}---root`}>
             <CSSTransition
               key={location.pathname}
               addEndListener={(node, done) => {
                 node.addEventListener("transitionend", done, false)
               }}
-              classNames="CSSTransitionFadeLift"
+              classNames={className}
             >
               <PageTransitionHandler location={location}>
-                <div>
+                <div className={className}>
                   {children({ location })}
                 </div>
               </PageTransitionHandler>
