@@ -1,5 +1,4 @@
 ---
-title: Docs-flavored Markdown
 hidden: true
 breadcrumbs: false
 ---
