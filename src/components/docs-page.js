@@ -38,12 +38,14 @@ const DocsPage = ({ pageContext, children }) => {
 
         <PageTransition>
           {({ location }) => (
-            <div className="DocsBody">
+            <main className="DocsBody">
               {pageType === "document" && tableOfContents && (
                 <div className="DocsBody--sidebar" with-styled-webkit-scrollbars="">
                   <div className="DocsBody--sidebar-content-scroll-fade"></div>
                   <div className="DocsBody--sidebar-content">
-                    <DocsTableOfContents items={tableOfContents}/>
+                    <nav>
+                      <DocsTableOfContents items={tableOfContents}/>
+                    </nav>
                   </div>
                 </div>
               )}
@@ -53,11 +55,11 @@ const DocsPage = ({ pageContext, children }) => {
                   <Breadcrumbs className="DocsContent--breadcrumbs" location={location}/>
                 )}
 
-                <div className="DocsMarkdown">
+                <article className="DocsMarkdown">
                   {children}
-                </div>
+                </article>
               </div>
-            </div>
+            </main>
           )}
         </PageTransition>
       </div>
