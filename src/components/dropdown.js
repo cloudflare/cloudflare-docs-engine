@@ -17,6 +17,7 @@ class Dropdown extends React.Component {
 
     this.onExpandButtonClick = this.onExpandButtonClick.bind(this)
     this.handleClickOutside = this.handleClickOutside.bind(this)
+    this.handleBlur = this.handleBlur.bind(this)
     this.handleEscapeKey = this.handleEscapeKey.bind(this)
   }
 
@@ -33,15 +34,38 @@ class Dropdown extends React.Component {
   }
 
   handleClickOutside(event) {
-    if (this.state.expanded && this.container.current && !this.container.current.contains(event.target)) {
-      this.setState({
-        expanded: false
-      })
+    if (!this.state.expanded) return
+    if (!this.container.current) return
+    if (this.container.current.contains(event.target)) return
+
+    this.setState({
+      expanded: false
+    })
+  }
+
+  handleBlur(event) {
+    if (this.willEscape) return
+    if (!this.state.expanded) return
+    if (!this.button.current || !this.container.current) return
+
+    const activeElement = event.relatedTarget
+
+    if (activeElement === this.button.current) {
+      event.preventDefault()
+      const focusIndex = this.focusGroup.getMembers().length - 1
+      this.focusGroup.focusNodeAtIndex(focusIndex)
+    }
+
+    else if (!this.container.current.contains(event.relatedTarget)) {
+      event.preventDefault()
+      this.focusGroup.focusNodeAtIndex(0)
     }
   }
 
   handleEscapeKey(event) {
     if (event.key !== "Escape") return
+
+    this.willEscape = true
 
     if (this.button.current) {
       this.button.current.focus()
@@ -70,6 +94,7 @@ class Dropdown extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (!prevState.expanded && this.state.expanded) {
       this.focusGroup.activate()
+      this.willEscape = false
       document.addEventListener("click", this.handleClickOutside)
       document.addEventListener("keyup", this.handleEscapeKey)
     }
@@ -93,7 +118,7 @@ class Dropdown extends React.Component {
     buttonClassName += (className ? " " : "") + "Button"
 
     return (
-      <div className={className} ref={this.container} data-expanded={expanded}>
+      <div className={className} ref={this.container} data-expanded={expanded} onBlur={this.handleBlur}>
         <button
           ref={this.button}
           className={buttonClassName}
