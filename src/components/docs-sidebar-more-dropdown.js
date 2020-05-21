@@ -1,29 +1,12 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+
+import getCloudflareDocsConfig from "../utils/get-cloudflare-docs-config"
 
 import DocsTitle from "./docs-title"
 import Dropdown from "./dropdown"
 
 const ExternalLinks = ({ children }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            cloudflareDocs {
-              externalLinks {
-                title
-                url
-              }
-            }
-          }
-        }
-      }
-    `
-  )
-
-  const externalLinks = site.siteMetadata.cloudflareDocs.externalLinks
-
+  const { externalLinks } = getCloudflareDocsConfig()
   return children(externalLinks)
 }
 
