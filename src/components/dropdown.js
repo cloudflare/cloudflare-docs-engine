@@ -81,13 +81,7 @@ class Dropdown extends React.Component {
     this.focusGroup = createFocusGroup({
       members: members,
       wrap: true,
-      stringSearch: true,
-      keybindings: {
-        next: [{ keyCode: 40 }, { keyCode: 39 }],
-        prev: [{ keyCode: 38 }, { keyCode: 37 }],
-        first: { keyCode: 74, metaKey: true },
-        last: { keyCode: 75, metaKey: true }
-      }
+      stringSearch: true
     })
   }
 
