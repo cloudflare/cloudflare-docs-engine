@@ -48,6 +48,8 @@ class DocsSidebarNavItem extends React.Component {
     this.state = {
       expanded: this.isExpanded()
     }
+
+    this.onExpandCollapseClick = this.onExpandCollapseClick.bind(this)
   }
 
   showChildren() {
@@ -133,7 +135,7 @@ class DocsSidebarNavItem extends React.Component {
         {...props}
       >
         {this.showChildren() && (
-          <button onClick={this.onExpandCollapseClick.bind(this)} className="Button DocsSidebar--nav-expand-collapse-button" {...buttonProps}>
+          <button onClick={this.onExpandCollapseClick} className="Button DocsSidebar--nav-expand-collapse-button" {...buttonProps}>
             <span className="DocsSidebar--nav-expand-collapse-button-content"></span>
           </button>
         )}
