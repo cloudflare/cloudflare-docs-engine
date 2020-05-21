@@ -1,68 +1,75 @@
 import React from "react"
 import { Location } from "@reach/router"
-import { useStaticQuery, graphql } from "gatsby"
 
+import createFocusGroup from "focus-group"
+
+import DocsSidebarNavData from "./docs-sidebar-nav-data"
 import DocsSidebarNavItem from "./docs-sidebar-nav-item"
 
-import generateNavTree from "../utils/generate-nav-tree"
+class DocsSidebarNav extends React.Component {
 
-let navTree
-const getCachedNavTree = pages => {
-  if (navTree) return navTree
-  navTree = generateNavTree(pages)
-  return navTree
-}
+  constructor(props) {
+    super(props)
 
-const DocsSidebarNav = () => {
-  const query = useStaticQuery(graphql`
-    query {
-      allMdx {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              type
-              order
-              hidden
-              hideChildren
-              breadcrumbs
-            }
-            headings(depth: h1) {
-              value
-              depth
-            }
-          }
-        }
-      }
-    }
-  `)
+    this.ref = React.createRef()
+  }
 
-  const pages = query.allMdx.edges
-    .map(({ node }) => node)
-    .filter(page => !page.frontmatter.hidden)
+  componentDidMount() {
+    const el = this.ref.current
 
-  const data = getCachedNavTree(pages)
+    const getMembers = () => (el.querySelectorAll([
+      `a[href]:not([tabindex="-1"])`,
+      `button:not([tabindex="-1"])`
+    ].join(", ")))
 
-  return (
-    <Location>
-      {({ location }) => (
-        <ul className="DocsSidebar--nav">
-          {data.map(node => (
-            <DocsSidebarNavItem
-              key={node.id}
-              node={node}
-              location={location}
-              depth={0}
-            />
-          ))}
-        </ul>
-      )}
-    </Location>
-  )
+    this.focusGroup = createFocusGroup({
+      members: getMembers(),
+      stringSearch: true
+    })
+
+    this.observer = new MutationObserver(mutationList => {
+      mutationList.forEach(mutation => {
+        if (mutation.type !== "attributes") return
+
+        this.focusGroup.setMembers(getMembers())
+      })
+    })
+
+    this.observer.observe(el, {
+      attributeFilter: ["tabindex"],
+      subtree: true
+    })
+
+    this.focusGroup.activate()
+  }
+
+  componentWillUnmount() {
+    this.focusGroup.deactivate()
+    this.observer.disconnect()
+  }
+
+  render() {
+    return (
+      <DocsSidebarNavData>
+        {({ data }) => (
+          <Location>
+            {({ location }) => (
+              <ul className="DocsSidebar--nav" ref={this.ref}>
+                {data.map(node => (
+                  <DocsSidebarNavItem
+                    key={node.id}
+                    node={node}
+                    location={location}
+                    depth={0}
+                  />
+                ))}
+              </ul>
+            )}
+          </Location>
+        )}
+      </DocsSidebarNavData>
+    )
+  }
 }
 
 export default DocsSidebarNav
