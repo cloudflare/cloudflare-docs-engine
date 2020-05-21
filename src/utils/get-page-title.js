@@ -1,4 +1,4 @@
-export default page => {
-  return (!page || !page.frontmatter) ? "Not found" :
-    page.frontmatter.title || (page.headings.length && page.headings[0].value)
+export default ({ frontmatter, headings }) => {
+  if (!frontmatter) return "Not found"
+  return frontmatter.title || (headings.length && headings[0].value)
 }
