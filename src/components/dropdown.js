@@ -27,6 +27,7 @@ class Dropdown extends React.Component {
   }
 
   componentDidMount() {
+    // TODO - implement focus/blur behavior
     document.addEventListener("click", this.handleClickOutside.bind(this))
   }
 
