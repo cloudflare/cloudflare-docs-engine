@@ -1,3 +1,7 @@
+.Dropdown {
+  position: relative;
+}
+
 .Dropdown--dropdown {
   position: absolute;
   top: 100%;
