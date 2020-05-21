@@ -102,8 +102,9 @@ class DocsSidebarNavItem extends React.Component {
   }
 
   onExpandCollapseClick() {
-    const expanded = this.state.expanded
-    this.setState({ expanded: !expanded })
+    this.setState(state => ({
+      expanded: !state.expanded
+    }))
   }
 
   render() {

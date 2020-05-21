@@ -83,13 +83,16 @@ class ThemeToggle extends React.Component {
     this.onMediaMatchChange = this.onMediaMatchChange.bind(this)
   }
 
-  onCheckboxChange() {
-    const checked = !this.state.checked
-    this.setState({ checked })
+  onCheckboxChange(event) {
+    this.setState(state => {
+      const checked = !state.checked
 
-    const theme = checked ? "dark" : "light"
-    setTheme(theme)
-    storeTheme(theme)
+      const theme = checked ? "dark" : "light"
+      setTheme(theme)
+      storeTheme(theme)
+
+      return { checked }
+    })
   }
 
   onMediaMatchChange(event) {
