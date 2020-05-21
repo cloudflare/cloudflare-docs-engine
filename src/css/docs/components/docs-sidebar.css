@@ -289,7 +289,6 @@
   list-style: none;
   font-size: 1.11em;
   padding-top: 0;
-  padding-right: .5em; /* Small gap to stay clear of .DocsSidebar--shadow */
   padding-bottom: 2em; /* Prevent overlap with browser status bar */
   padding-left: 0;
   word-break: break-word;
@@ -308,12 +307,6 @@
 
 .DocsSidebar--nav-item + .DocsSidebar--nav-item {
   margin-top: .333em;
-}
-
-.DocsSidebar--nav-link {
-  position: relative;
-  display: block;
-  padding-left: var(--text-indent);
 }
 
 .DocsSidebar--nav-expand-collapse-button {
@@ -449,6 +442,14 @@ won’t transition properly */
   margin-top: .0625em;
 }
 
+.DocsSidebar--nav-link {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  padding-left: var(--text-indent);
+}
+
 .DocsSidebar--nav-subnav .DocsSidebar--nav-link {
   padding-left: calc(var(--text-indent) + (var(--depth) * 1rem));
 }
@@ -517,4 +518,23 @@ won’t transition properly */
 [theme="dark"] .DocsSidebar--nav-link:hover .DocsSidebar--nav-link-text::before,
 [theme="dark"] .DocsSidebar--nav-link[is-active] .DocsSidebar--nav-link-text::before {
   background: rgba(var(--orange-rgb), .08);
+}
+
+.DocsSidebar--nav-link .DocsSidebar--nav-link-text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  border-radius: .25em;
+}
+
+[js-focus-visible-polyfill-available] .DocsSidebar--nav-link:focus {
+  outline: none;
+}
+
+.DocsSidebar--nav-link[is-focus-visible]:focus .DocsSidebar--nav-link-text::after {
+  box-shadow: 0 0 0 var(--focus-size) var(--focus-color);
 }

@@ -140,7 +140,7 @@ class DocsSidebarNavItem extends React.Component {
           </button>
         )}
 
-        <Link className="DocsSidebar--nav-link DocsSidebar--link" to={node.href} {...linkProps}>
+        <Link className="DocsSidebar--nav-link" to={node.href} {...linkProps}>
           <span className="DocsSidebar--nav-link-highlight"></span>
           <span className="DocsSidebar--nav-link-text">{node.title}</span>
         </Link>
