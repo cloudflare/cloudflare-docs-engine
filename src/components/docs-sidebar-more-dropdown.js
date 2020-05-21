@@ -3,6 +3,7 @@ import React from "react"
 import getCloudflareDocsConfig from "../utils/get-cloudflare-docs-config"
 
 import DocsTitle from "./docs-title"
+import AccessibleSVG from "./accessible-svg"
 import Dropdown from "./dropdown"
 
 const ExternalLinks = ({ children }) => {
@@ -18,9 +19,9 @@ const DocsSidebarMoreDropdown = () => {
 
   props.buttonChildren = (
     <div className={buttonIconClassName}>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 16" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <AccessibleSVG title="Dropdown icon" viewBox="0 0 4 16" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M2,2v0m0,6v0m0,6v0z"/>
-      </svg>
+      </AccessibleSVG>
       <span is-visually-hidden=""><DocsTitle/> menu</span>
     </div>
   )

@@ -141,12 +141,12 @@ class ThemeToggle extends React.Component {
           <label className="ThemeToggle--toggle" htmlFor="ThemeToggle">
             <div className="ThemeToggle--toggle-handle"></div>
             <div className="ThemeToggle--toggle-handle-icon ThemeToggle--sun">
-              <AccessibleSVG viewBox="0 0 16 16" title="Light theme icon (depiction of a sun)">
+              <AccessibleSVG title="Light theme icon (depiction of a sun)" viewBox="0 0 16 16">
                 <path d="M7.5 11.465a3.482 3.482 0 01-1.596-.662L4.11 12.596a.5.5 0 01-.707-.707l1.793-1.793A3.482 3.482 0 014.535 8.5H2a.5.5 0 010-1h2.535a3.482 3.482 0 01.662-1.596L3.404 4.11a.5.5 0 01.707-.707l1.793 1.793A3.482 3.482 0 017.5 4.535V2a.5.5 0 011 0v2.535a3.482 3.482 0 011.596.662l1.793-1.793a.5.5 0 01.707.707l-1.793 1.793c.343.458.577 1.003.662 1.596H14a.5.5 0 110 1h-2.535a3.482 3.482 0 01-.662 1.596l1.793 1.793a.5.5 0 01-.707.707l-1.793-1.793a3.482 3.482 0 01-1.596.662V14a.5.5 0 11-1 0v-2.535z"/>
               </AccessibleSVG>
             </div>
             <div className="ThemeToggle--toggle-handle-icon ThemeToggle--moon">
-              <AccessibleSVG viewBox="0 0 16 16" title="Dark theme icon (depiction of a moon)">
+              <AccessibleSVG title="Dark theme icon (depiction of a moon)" viewBox="0 0 16 16">
                 <path d="M7.067 3.087a5 5 0 005.466 7.026 5 5 0 11-5.466-7.026z"/>
               </AccessibleSVG>
             </div>

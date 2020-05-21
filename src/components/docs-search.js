@@ -79,7 +79,7 @@ const DocsSearch = () => {
         <div className="DocsSearch--input-wrapper">
           <input id="DocsSearch--input" className="DocsSearch--input" type="text" spellCheck="false" autoComplete="false" placeholder={"Search " + DocsTitle() + " docs..."}/>
           <div className="DocsSearch--input-icon">
-            <AccessibleSVG viewBox="0 0 16 16" title="Search icon (depiction of a magnifying glass)">
+            <AccessibleSVG title="Search icon (depiction of a magnifying glass)" viewBox="0 0 16 16">
               <path d="M11.999 10.585l3.458 3.458a1 1 0 01-1.414 1.414L10.585 12a6.5 6.5 0 111.414-1.414zM6.75 11.5a4.75 4.75 0 100-9.5 4.75 4.75 0 000 9.5z"/>
             </AccessibleSVG>
           </div>
