@@ -1,10 +1,6 @@
-export default page => {
-  let out = []
+export default ({ tableOfContents: toc }) => {
+  if (!toc || !toc.items || !toc.items.length)
+    return []
 
-  try {
-    const { tableOfContents } = page
-    out = tableOfContents.items[0].items
-  } catch (error) {}
-
-  return out
+  return toc.items[0].items
 }
