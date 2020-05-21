@@ -362,7 +362,7 @@
   border: solid transparent;
   border-width: .3333em .6em;
   border-left-color: currentColor;
-  margin-left: 37%; /* TODO */
+  margin-left: 37%;
   will-change: transform;
   transform: translate3d(0, 0, 0);
   transform-origin: .2em .4em;
