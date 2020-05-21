@@ -15,16 +15,12 @@ import DocsTableOfContents from "./docs-table-of-contents"
 import getPageTitle from "../utils/get-page-title"
 import getPageType from "../utils/get-page-type"
 import getTableOfContents from "../utils/get-table-of-contents"
+import hasBreadcrumbs from "../utils/has-breadcrumbs"
 
 const DocsPage = ({ pageContext, children }) => {
   const title = getPageTitle(pageContext)
   const pageType = getPageType(pageContext)
   const tableOfContents = getTableOfContents(pageContext)
-
-  let showBreadcrumbs = true
-  const { frontmatter } = pageContext
-  if (frontmatter && frontmatter.breadcrumbs === false)
-    showBreadcrumbs = false
 
   return (
     <>
@@ -53,7 +49,7 @@ const DocsPage = ({ pageContext, children }) => {
               )}
 
               <div className="DocsContent" page-type={pageType}>
-                {showBreadcrumbs && (
+                {hasBreadcrumbs(pageContext) && (
                   <Breadcrumbs className="DocsContent--breadcrumbs" location={location}/>
                 )}
 
