@@ -9,12 +9,13 @@ import getNormalizedPath from "../utils/get-normalized-path"
 import userPrefersReducedMotion from "../utils/user-prefers-reduced-motion"
 
 const DocsSidebarCollapse = ({ expanded, children }) => {
+  const base = "DocsSidebar--nav-item-collapse-"
   const collapseClasses = {
-    container: "DocsSidebar--nav-item-collapse-container",
-    entered: "DocsSidebar--nav-item-collapse-entered",
-    hidden: "DocsSidebar--nav-item-collapse-hidden",
-    wrapper: "DocsSidebar--nav-item-collapse-wrapper",
-    wrapperInner: "DocsSidebar--nav-item-collapse-wrapperInner"
+    container: `${base}container`,
+    entered: `${base}entered`,
+    hidden: `${base}hidden`,
+    wrapper: `${base}wrapper`,
+    wrapperInner: `${base}wrapperInner`
   }
 
   const prefersMotion = userPrefersReducedMotion()
