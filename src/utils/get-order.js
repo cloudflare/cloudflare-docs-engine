@@ -1,9 +1,9 @@
-export default node => {
-  if (node.frontmatter && (node.frontmatter.order || node.frontmatter.order === 0)) {
-    return node.frontmatter.order
+export default ({ frontmatter }) => {
+  if (frontmatter && (frontmatter.order || frontmatter.order === 0)) {
+    return frontmatter.order
   }
 
-  // Avoid `Infinity` to be able to use simple
-  // subtraction-based sort method
+  // Use a large number instead of `Infinity` to be able to
+  // use subtraction-based sort comparison method
   return 10e6
 }

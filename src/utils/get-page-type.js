@@ -1,4 +1,5 @@
-export default page => {
-  return (!page || !page.frontmatter) ? '' :
-    page.frontmatter.type || "document"
+export default ({ frontmatter }) => {
+  if (!frontmatter) return "error"
+
+  return frontmatter.type || "document"
 }

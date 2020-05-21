@@ -1,3 +1,5 @@
+import getNormalizedPath from "./get-normalized-path"
+
 export default path => {
-  return path.replace(/\/[^/]*$/, '')
+  return getNormalizedPath(path).replace(/\/[^/]*$/, '')
 }
