@@ -69,7 +69,6 @@
   text-overflow: ellipsis;
   --focus-size: 3px;
   box-shadow: 0 0 0 var(--focus-size) var(--focus-color);
-  transition: box-shadow .3s ease;
 }
 
 .Dropdown--link:hover {

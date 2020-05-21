@@ -34,7 +34,6 @@
 .DocsSidebar--link {
   color: inherit;
   text-decoration: none;
-  transition: box-shadow .3s ease;
 }
 
 [js-focus-visible-polyfill-available] .DocsSidebar--link:focus {
@@ -196,7 +195,7 @@
 
 .DocsSidebar--cloudflare-logo-link,
 .DocsSidebar--docs-title-logo-link {
-  transition: box-shadow .3s ease, opacity .2s ease, color .2s ease;
+  transition: opacity .2s ease, color .2s ease;
 }
 
 .DocsSidebar--cloudflare-logo-link:hover,

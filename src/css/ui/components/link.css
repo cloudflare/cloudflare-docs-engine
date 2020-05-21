@@ -8,7 +8,6 @@
   --focus-size: 3px;
   --focus-shadow: 0 0 0 var(--focus-size) var(--focus-color);
   box-shadow: var(--focus-shadow), var(--underline-shadow);
-  transition: box-shadow .3s ease;
 }
 
 .Link-is-blue   { --accent-color: var(--blue-6)   }

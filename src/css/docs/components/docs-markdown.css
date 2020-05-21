@@ -29,7 +29,6 @@
 
   --focus-shadow: 0 0 0 var(--focus-size) var(--focus-color);
   box-shadow: var(--focus-shadow);
-  transition: border .3s ease, box-shadow .3s ease;
 }
 
 [js-focus-visible-polyfill-available] .DocsMarkdown--link:focus {
@@ -513,7 +512,6 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown details summary {
   cursor: pointer;
   box-shadow: 0 0 0 var(--focus-size) var(--focus-color);
-  transition: box-shadow .3s ease;
 }
 
 [js-focus-visible-polyfill-available] .DocsMarkdown details summary:focus {

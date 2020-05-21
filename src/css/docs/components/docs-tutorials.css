@@ -53,7 +53,6 @@
   --underline-opacity: .75;
   text-decoration-color: rgba(var(--orange-rgb), var(--underline-opacity));
   box-shadow: 0 0 0 var(--focus-size) var(--focus-color);
-  transition: box-shadow .3s ease;
 }
 
 [theme="dark"] .DocsTutorials--link {

@@ -78,6 +78,10 @@
   outline: none;
 }
 
+.Button[is-focus-visible] {
+  --box-shadow-transition-duration: 0s;
+}
+
 .Button:not([is-focus-visible]) {
   --focus-size: 0;
 }

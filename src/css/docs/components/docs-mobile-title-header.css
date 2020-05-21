@@ -28,7 +28,7 @@
   align-items: center;
   padding-left: var(--content-indent);
   padding-right: var(--content-indent);
-  transition: box-shadow .3s ease, opacity .2s ease, color .2s ease; /* TODO */
+  transition: opacity .2s ease, color .2s ease;
 }
 
 @media (hover: hover) {
