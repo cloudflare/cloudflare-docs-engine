@@ -173,7 +173,7 @@ class ThemeToggle extends React.Component {
               </div>
             </label>
 
-            <span className="Tooltip" role="tooltip" position="left">
+            <span className="Tooltip" role="tooltip" position="bottom-end">
               {`Set theme to ${this.state.checked ? "light" : "dark"} (⇧+D)`}
             </span>
           </div>

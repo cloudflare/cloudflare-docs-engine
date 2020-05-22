@@ -27,43 +27,62 @@ span.Tooltip---root {
   z-index: 10;
 }
 
-.Tooltip:not([position]),
-.Tooltip[position="top"],
-.Tooltip[position="bottom"] {
-  left: 50%;
-  transform: translate3d(-50%, 0, 0);
+@media (hover: hover) {
+  .Tooltip---root:hover .Tooltip {
+    opacity: 1;
+    transition-delay: .75s;
+  }
 }
 
 .Tooltip:not([position]),
 .Tooltip[position="top"] {
   bottom: 100%;
   margin-bottom: var(--gap);
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
 }
 
 .Tooltip[position="bottom"] {
   top: 100%;
   margin-top: var(--gap);
-}
-
-.Tooltip[position="left"],
-.Tooltip[position="right"] {
-  top: 50%;
-  transform: translate3d(0, -50%, 0);
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
 }
 
 .Tooltip[position="left"] {
   right: 100%;
   margin-right: var(--gap);
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
 }
 
 .Tooltip[position="right"] {
   left: 100%;
   margin-left: var(--gap);
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
 }
 
-@media (hover: hover) {
-  .Tooltip---root:hover .Tooltip {
-    opacity: 1;
-    transition-delay: .75s;
-  }
+.Tooltip[position="top-start"] {
+  bottom: 100%;
+  margin-bottom: var(--gap);
+  left: 0;
+}
+
+.Tooltip[position="bottom-start"] {
+  top: 100%;
+  margin-top: var(--gap);
+  left: 0;
+}
+
+.Tooltip[position="top-end"] {
+  bottom: 100%;
+  margin-bottom: var(--gap);
+  right: 0;
+}
+
+.Tooltip[position="bottom-end"] {
+  top: 100%;
+  margin-top: var(--gap);
+  right: 0;
 }
