@@ -1,5 +1,5 @@
 .DocsContent {
-  padding: 2.7rem 3.7647058824rem; /* 64 / 17 */
+  padding: 2.7rem 3.7647058824rem 3.5rem; /* 64 / 17 */ /* TODO */
 }
 
 .DocsContent[page-type="document"] {

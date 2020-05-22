@@ -15,7 +15,7 @@
   position: absolute;
   right: 0;
   top: calc(var(--docs-header-height) + 2.7em - 1em);
-  bottom: 2.7em;
+  bottom: 1em;
   width: var(--docs-body-sidebar-width);
 }
 

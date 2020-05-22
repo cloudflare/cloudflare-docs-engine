@@ -75,6 +75,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               depth
             }
             tableOfContents
+            parent {
+              ... on File {
+                modifiedTime(formatString: "YYYY-MM-DD")
+                relativePath
+              }
+            }
           }
         }
       }
