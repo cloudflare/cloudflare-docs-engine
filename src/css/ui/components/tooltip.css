@@ -22,7 +22,7 @@ span.Tooltip---root {
   background: var(--color);
   pointer-events: none;
   opacity: 0;
-  transition: opacity .2s ease;
+  transition: opacity .25s ease;
   border-radius: .25em;
   z-index: 10;
 }
@@ -30,7 +30,6 @@ span.Tooltip---root {
 @media (hover: hover) {
   .Tooltip---root:hover .Tooltip {
     opacity: 1;
-    transition-delay: .75s;
   }
 }
 
