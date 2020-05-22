@@ -25,3 +25,24 @@
   justify-content: flex-end;
   padding: 0 var(--docs-page-side-padding);
 }
+
+.DocsToolbar--tools-spacer {
+  display: inline-flex;
+  height: 1em;
+  width: 1em;
+}
+
+.DocsToolbar--tools-icon-item {
+  display: inline-flex;
+  height: 1.647058823rem;
+  width: 1.647058823rem;
+  color: rgba(var(--color-rgb), .7);
+}
+
+[theme="light"] .DocsToolbar--tools-icon-item {
+  color: var(--gray-3);
+}
+
+.DocsToolbar--tools-icon-item-content {
+  padding: .1em;
+}
