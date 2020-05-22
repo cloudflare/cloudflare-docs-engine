@@ -22,7 +22,7 @@ span.Tooltip---root {
   background: var(--color);
   pointer-events: none;
   opacity: 0;
-  transition: opacity .075s ease;
+  transition: opacity .2s ease;
   border-radius: .25em;
   z-index: 10;
 }
