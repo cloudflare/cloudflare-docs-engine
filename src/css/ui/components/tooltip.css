@@ -1,0 +1,69 @@
+.Tooltip---root {
+  position: relative;
+}
+
+span.Tooltip---root {
+  display: inline-block;
+}
+
+.Tooltip {
+  --gap: .75em;
+  position: absolute;
+  font-size: .925em;
+  font-weight: normal;
+  font-style: normal;
+  line-height: var(--line-height);
+  text-transform: none;
+  letter-spacing: normal;
+  padding: .3em .85em;
+  white-space: nowrap;
+  max-width: calc(100vw - 1em);
+  color: var(--background-color);
+  background: var(--color);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .075s ease;
+  border-radius: .25em;
+  z-index: 10;
+}
+
+.Tooltip:not([position]),
+.Tooltip[position="top"],
+.Tooltip[position="bottom"] {
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.Tooltip:not([position]),
+.Tooltip[position="top"] {
+  bottom: 100%;
+  margin-bottom: var(--gap);
+}
+
+.Tooltip[position="bottom"] {
+  top: 100%;
+  margin-top: var(--gap);
+}
+
+.Tooltip[position="left"],
+.Tooltip[position="right"] {
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+}
+
+.Tooltip[position="left"] {
+  right: 100%;
+  margin-right: var(--gap);
+}
+
+.Tooltip[position="right"] {
+  left: 100%;
+  margin-left: var(--gap);
+}
+
+@media (hover: hover) {
+  .Tooltip---root:hover .Tooltip {
+    opacity: 1;
+    transition-delay: .75s;
+  }
+}

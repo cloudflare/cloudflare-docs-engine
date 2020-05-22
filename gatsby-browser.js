@@ -36,6 +36,7 @@ import "./src/css/ui/components/network-map.css"
 import "./src/css/ui/components/scrollbars.css"
 import "./src/css/ui/components/stream-video.css"
 import "./src/css/ui/components/superscript.css"
+import "./src/css/ui/components/tooltip.css"
 
 // TODO - should these be imported by their respective components?
 import "./src/css/docs/components/docs-noscript.css"
