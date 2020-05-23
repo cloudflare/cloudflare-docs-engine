@@ -1,8 +1,6 @@
 import React from "react"
 
-import { navigate, globalHistory } from "@reach/router"
-
-import userPrefersReducedMotion from "../utils/user-prefers-reduced-motion"
+import { navigate } from "@reach/router"
 
 class Item extends React.Component {
 

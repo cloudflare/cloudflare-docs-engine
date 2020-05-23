@@ -3,7 +3,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import SEO from "./seo"
 
-import PageTransition from "./page-transition"
+import SmoothScrollHashChanges from "./smooth-scroll-hash-changes"
 import Breadcrumbs from "./breadcrumbs"
 
 import DocsMobileHeader from "./docs-mobile-header"
@@ -18,7 +18,7 @@ import getPageType from "../utils/get-page-type"
 import getTableOfContents from "../utils/get-table-of-contents"
 import hasBreadcrumbs from "../utils/has-breadcrumbs"
 
-const DocsPage = ({ pageContext: page, children }) => {
+const DocsPage = ({ pageContext: page, children, location }) => {
   const title = getPageTitle(page)
   const pageType = getPageType(page)
   const tableOfContents = getTableOfContents(page)
@@ -31,45 +31,41 @@ const DocsPage = ({ pageContext: page, children }) => {
         <html is-docs-page=""/>
       </Helmet>
 
+      <SmoothScrollHashChanges/>
+
       <div className="DocsPage">
         <DocsMobileHeader/>
         <DocsMobileTitleHeader/>
         <DocsSidebar/>
         <DocsToolbar/>
 
-        <PageTransition>
-          {({ location }) => (
-            <>
-              <main className="DocsBody">
-                {pageType === "document" && tableOfContents && (
-                  <div className="DocsBody--sidebar" with-styled-webkit-scrollbars="">
-                    <div className="DocsBody--sidebar-content-scroll-fade"></div>
-                    <div className="DocsBody--sidebar-content">
-                      <nav>
-                        <DocsTableOfContents items={tableOfContents}/>
-                      </nav>
-                    </div>
-                  </div>
-                )}
-
-                <div className="DocsContent" page-type={pageType}>
-                  {hasBreadcrumbs(page) && (
-                    <Breadcrumbs className="DocsContent--breadcrumbs" location={location}/>
-                  )}
-
-                  <article className="DocsMarkdown">
-                    {children}
-                  </article>
-                </div>
-              </main>
-
-              {/* TODO */}
-              {page && page.parent && (
-                <DocsFooter page={page}/>
-              )}
-            </>
+        <main className="DocsBody">
+          {pageType === "document" && tableOfContents && (
+            <div className="DocsBody--sidebar" with-styled-webkit-scrollbars="">
+              <div className="DocsBody--sidebar-content-scroll-fade"></div>
+              <div className="DocsBody--sidebar-content">
+                <nav>
+                  <DocsTableOfContents items={tableOfContents}/>
+                </nav>
+              </div>
+            </div>
           )}
-        </PageTransition>
+
+          <div className="DocsContent" page-type={pageType}>
+            {hasBreadcrumbs(page) && (
+              <Breadcrumbs className="DocsContent--breadcrumbs" location={location}/>
+            )}
+
+            <article className="DocsMarkdown">
+              {children}
+            </article>
+          </div>
+        </main>
+
+        {/* TODO */}
+        {page && page.parent && (
+          <DocsFooter page={page}/>
+        )}
       </div>
     </>
   )

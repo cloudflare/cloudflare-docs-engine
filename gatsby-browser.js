@@ -21,7 +21,6 @@ import "./src/css/ui/helpers/is-visually-hidden.css"
 import "./src/css/ui/helpers/with-styled-webkit-scrollbars.css"
 
 // TODO - should these be imported by their respective components?
-import "./src/css/ui/components/css-transition-fade-lift.css"
 import "./src/css/ui/components/aspect-ratio.css"
 import "./src/css/ui/components/breadcrumbs.css"
 import "./src/css/ui/components/button.css"
