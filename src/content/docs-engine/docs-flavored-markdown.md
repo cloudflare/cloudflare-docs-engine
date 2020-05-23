@@ -296,7 +296,7 @@ workers config
 
 ### Workers-JavaScript
 
-Workers-specific APIs are automatically detected and rendered with true Cloudflare spirit—in [orange](https://cloudflare.com).
+Workers-specific APIs are automatically highlighted in true Cloudflare spirit—in [orange](https://cloudflare.com).
 
 ```js
 const instance = new RegularClass()
