@@ -406,14 +406,16 @@
   transition: transform .4s ease, opacity .4s ease;
 }
 
-/*
-This is a bit of an annoyance, but if we don’t
-use > selectors all the way down, nested subnavs
-won’t transition properly */
+/* Use > selectors as not to trigger subnavs */
 .DocsSidebar--nav-item[is-expanded] >
 .DocsSidebar--nav-item-collapse-container >
 .DocsSidebar--nav-item-collapse-wrapper >
 .DocsSidebar--nav-item-collapse-wrapperInner >
+.DocsSidebar--nav-item-collapse-content,
+
+/* Handle prefers-reduced-motion case */
+.DocsSidebar--nav-item[is-expanded] >
+.DocsSidebar--nav-item-collapse-container >
 .DocsSidebar--nav-item-collapse-content {
   opacity: 1;
   transform: translate3d(0, 0, 0);
