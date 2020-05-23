@@ -43,6 +43,9 @@
   color: var(--gray-3);
 }
 
-.DocsToolbar--tools-icon-item-content {
+.DocsToolbar--tools-icon-item-content > a {
+  display: block;
+  height: 100%;
+  width: 100%;
   padding: .1em;
 }
