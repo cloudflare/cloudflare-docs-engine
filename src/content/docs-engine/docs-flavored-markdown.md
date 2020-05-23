@@ -99,7 +99,7 @@ View the [Tutorials](/tutorials) tutorials.
 Learn how [V8:Isolates power Workers](/how-workers-works#isolates).
 ```
 
-- __Internal links__ will use the [Gatsby’s `<Link/>` component](https://www.gatsbyjs.org/docs/gatsby-link/), which means they will be routed through `@reach/router` using `pushState`.
+- __Internal links__ will use [Gatsby’s `<Link/>` component](https://www.gatsbyjs.org/docs/gatsby-link/), which means they will be routed through `@reach/router` using `pushState`.
 - __External links__ (matching `/^https?:/`) and __hash links__ (`.indexOf("#") === 0`), will be rendered as regular `<a/>` elements.
 
 If you need to take advantage of Gatsby’s routing but you want control over the presentation of the link yourself, you can use `<Link/>` directly.
@@ -154,7 +154,7 @@ Use blockquotes when quoting someone. For example, here’s a translation of a q
 
 ## Custom blocks
 
-Custom blocks are useful for displaying a “Note” or “Warning”. To use one, simply use a standard Markdown blockquote, but prefix it with additional blockquote line containing either `{note}` or `{warning}`.
+Custom blocks are useful for displaying a “Note” or “Warning”. To use one, simply use a standard Markdown blockquote, but prefix it with a line of either `> {note}` or `> {warning}`.
 
 > {note}
 > __Note:__ This is a note.
@@ -175,7 +175,7 @@ Custom blocks are useful for displaying a “Note” or “Warning”. To use on
 
 ```
 
-You can use whatever text you want inside the custom block, so for example, a `{note}` block could instead be used as a tip:
+You can use any text as the label/header, so for example, a `{note}` block could be used as a tip:
 
 > {note}
 > **Did you know?** you can use a _any Markdown you want_ inside of a custom block?
@@ -259,12 +259,9 @@ async function handleRequest(request) {
 }
 ```
 
-Here’s what that example looks like in Markdown... with the relevant row highlighted. ;)
+Here’s what that example looks like:
 
 ``````txt
----
-highlight: [3]
----
 ```
 ---
 filename: hello-worker.js
@@ -299,7 +296,7 @@ workers config
 
 ### Workers-JavaScript
 
-On top of regular JavaScript, Workers-specific APIs are automatically detected and rendered in true Cloudflare spirit—in [orange](https://cloudflare.com).
+Workers-specific APIs are automatically detected and rendered with true Cloudflare spirit—in [orange](https://cloudflare.com).
 
 ```js
 const instance = new RegularClass()
@@ -351,7 +348,7 @@ search for text within this document.
 
 > {warning} __Warning:__ This API is in active developement. Please don’t use until this notice is removed.
 
-There may be times when you want to provide additional information in context, but without clouding up the neighboring content for the “80% case”. For that you can use `<details/>` and `<summary/>`.
+When you want to provide additional information in context, but you don’t want it to clutter up the more important content, use `<details/>` and `<summary/>`.
 
 <details>
 <summary>Details</summary>
