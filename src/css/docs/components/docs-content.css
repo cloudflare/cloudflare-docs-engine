@@ -1,5 +1,6 @@
 .DocsContent {
   padding: 2.7rem 3.7647058824rem 3.5rem; /* 64 / 17 */ /* TODO */
+  min-height: calc(100vh - 12.5em); /* TODO */
 }
 
 .DocsContent[page-type="document"] {
@@ -9,6 +10,7 @@
 @media (max-width: 768px) {
   .DocsContent {
     padding: 2rem 1rem;
+    min-height: 1em; /* TODO */
   }
 }
 
