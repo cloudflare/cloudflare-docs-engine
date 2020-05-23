@@ -9,6 +9,7 @@ import headers from "./mdx/headers"
 import inlineCode from "./mdx/inline-code"
 import pre from "./mdx/code-block"
 import blockquote from "./mdx/blockquote"
+import YouTube from "./mdx/youtube"
 
 import DirectoryListing from "./mdx/directory-listing"
 
@@ -23,7 +24,8 @@ const components = {
   // img, // TODO - img
   // thematicBreak, // TODO - consider custom thematicBreak `***` implementation
   Link,
-  DirectoryListing
+  DirectoryListing,
+  YouTube,
 }
 
 const MDXCustomRenderer = ({ data: { mdx } }) => {
