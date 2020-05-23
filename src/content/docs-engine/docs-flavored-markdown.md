@@ -61,9 +61,9 @@ By default, all pages have breadcrumbs generated. But stylistically, breadcrumbs
 >
 > In the case of these docs, the relevant parent information is shown clearly in the sidebar. On mobile devices, the sidebar isn’t visible, so we show the breadcrumbs there. This is a design decision that we may revisit as we see the content develop.
 
-### Additional properties for Tutorials pages
+### Additional properties for tutorials
 
-Tutorials pages additionally have three properties which are used to sort and display the tutorials in the [Tutorials](/tutorials) overview page.
+Tutorials additionally have three properties which are used to sort and display them inside the [Tutorials](/tutorials) overview page.
 
 ```txt
 frontmatter {
