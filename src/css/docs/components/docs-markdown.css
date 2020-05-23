@@ -125,7 +125,6 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown h6,
 p.DocsMarkdown--small-header {
   line-height: 1.25;
-  margin-top: 1.75em;
   margin-bottom: .5em;
 }
 
@@ -143,6 +142,13 @@ p.DocsMarkdown--small-header {
 p.DocsMarkdown--small-header {
   margin-top: 1.5em;
   margin-bottom: .75em;
+}
+
+.DocsMarkdown h2 + h3,
+.DocsMarkdown h3 + h4,
+.DocsMarkdown h4 + h5,
+.DocsMarkdown h5 + h6 {
+  margin-top: 1em;
 }
 
 @media (min-width: 1440px) {
@@ -220,11 +226,11 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown ol ul,
 .DocsMarkdown ul ol,
 .DocsMarkdown ul ul {
-  margin-bottom: 0;
+  margin-bottom: .75em;
 }
 
-.DocsMarkdown li > p {
-  margin-top: 1em
+.DocsMarkdown li > p:nth-last-child(2) {
+  margin-bottom: .5em;
 }
 
 .DocsMarkdown dl {
@@ -585,7 +591,7 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown > *:last-child,
 .DocsMarkdown ul > *:last-child,
 .DocsMarkdown ol > *:last-child,
-.DocsMarkdown li > *:last-child,
+.DocsMarkdown li > *:not(ul):not(ol):last-child,
 .DocsMarkdown blockquote > *:last-child ,
 .DocsMarkdown details > *:last-child ,
 .DocsMarkdown--example > *:last-child,
