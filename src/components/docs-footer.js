@@ -20,7 +20,7 @@ export default ({ page }) => {
 
           {" "}&nbsp; · &nbsp;{" "}
 
-          Last updated{" "}
+          Updated{" "}
           <TimeAgo date={modifiedTime} minPeriod={60}/>
         </div>
       </div>
