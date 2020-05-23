@@ -378,7 +378,7 @@ You can display a page listing of any depth by simplying including the `<Directo
 
 For example, here’s a directory listing for the docs engine part of the site.
 
-<DirectoryListing path="../docs-engine"/>
+<DirectoryListing path="/docs-engine"/>
 
 ```md
 <DirectoryListing path="/docs-engine"/>
