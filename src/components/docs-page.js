@@ -62,10 +62,7 @@ const DocsPage = ({ pageContext: page, children, location }) => {
           </div>
         </main>
 
-        {/* TODO */}
-        {page && page.parent && (
-          <DocsFooter page={page}/>
-        )}
+        <DocsFooter page={page}/>
       </div>
     </>
   )

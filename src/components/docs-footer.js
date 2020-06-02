@@ -1,11 +1,14 @@
 import React from "react"
 import TimeAgo from "react-timeago"
 
+import AnchorLink from "./mdx/anchor-link"
 import getCloudflareDocsConfig from "../utils/get-cloudflare-docs-config"
 
 export default ({ page }) => {
-  const { contentRepo }  = getCloudflareDocsConfig()
+  if (!page || !page.parent) return null
+
   const { modifiedTime, relativePath } = page.parent
+  const { contentRepo }  = getCloudflareDocsConfig()
 
   const editOnGithubURL = `https://github.com/${contentRepo}/blob/master/src/content/${relativePath}`
 
@@ -13,13 +16,8 @@ export default ({ page }) => {
     <footer className="DocsFooter">
       <div className="DocsFooter--content">
         <div>
-          {/* TODO - refactor .DocsMarkdown--link */}
-          <a className="DocsMarkdown--link" href={editOnGithubURL}>
-            Edit on Github
-          </a>
-
+          <AnchorLink href={editOnGithubURL}>Edit on Github</AnchorLink>
           {" "}&nbsp; · &nbsp;{" "}
-
           Updated{" "}
           <TimeAgo date={modifiedTime} minPeriod={60}/>
         </div>
