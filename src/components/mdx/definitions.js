@@ -1,7 +1,8 @@
 import React from "react"
 
 export default props => (
-  <code className="InlineCode">
+  <div className="DocsMarkdown--definitions">
     {props.children}
-  </code>
+  </div>
 )
+

@@ -1,7 +1,7 @@
 import React from "react"
 
 export default props => (
-  <code className="InlineCode">
+  <span className="InlineCode--type">
     {props.children}
-  </code>
+  </span>
 )

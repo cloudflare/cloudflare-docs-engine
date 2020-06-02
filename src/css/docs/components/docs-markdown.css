@@ -104,7 +104,6 @@
 .DocsMarkdown li pre,
 .DocsMarkdown li figure,
 .DocsMarkdown li table {
-  margin-top: 1em;
   margin-bottom: 1em;
 }
 
@@ -229,8 +228,8 @@ p.DocsMarkdown--small-header {
   margin-bottom: .75em;
 }
 
-.DocsMarkdown li > p:nth-last-child(2) {
-  margin-bottom: .5em;
+.DocsMarkdown li > p + ul {
+  margin-top: -.5em;
 }
 
 .DocsMarkdown dl {
@@ -247,6 +246,21 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown dl dd {
   margin-bottom: 1.25em;
   padding: .25em 0 0 2em;
+}
+
+.DocsMarkdown--definitions {
+  margin: 1.25em 0;
+}
+
+.DocsMarkdown--definitions > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.DocsMarkdown--definitions > ul > li > ul {
+  list-style: none;
+  padding-left: 2em;
 }
 
 .DocsMarkdown hr {
@@ -288,7 +302,14 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown blockquote:not([class]) {
   position: relative;
   margin: 1.5em 0;
+}
+
+.DocsMarkdown blockquote:not([class]) > p {
   font-style: italic;
+}
+
+.DocsMarkdown blockquote:not([class]) > p > em {
+  font-style: normal;
 }
 
 .DocsMarkdown blockquote:not([class]) cite {
@@ -330,10 +351,6 @@ p.DocsMarkdown--small-header {
   line-height: 1;
   height: .5em;
   width: .7em;
-}
-
-.DocsMarkdown blockquote:not([class]) em {
-  font-style: normal;
 }
 
 .DocsMarkdown--custom-block {
@@ -411,6 +428,10 @@ p.DocsMarkdown--small-header {
 
 .DocsMarkdown--header-anchor-positioner {
   position: absolute;
+}
+
+blockquote .DocsMarkdown--header-anchor-positioner {
+  display: none;
 }
 
 .DocsMarkdown--header-anchor {
@@ -591,7 +612,7 @@ p.DocsMarkdown--small-header {
 .DocsMarkdown > *:last-child,
 .DocsMarkdown ul > *:last-child,
 .DocsMarkdown ol > *:last-child,
-.DocsMarkdown li > *:not(ul):not(ol):last-child,
+.DocsMarkdown li > *:not(ul):not(ol):not(pre):not(figure):not(:table):last-child,
 .DocsMarkdown blockquote > *:last-child ,
 .DocsMarkdown details > *:last-child ,
 .DocsMarkdown--example > *:last-child,

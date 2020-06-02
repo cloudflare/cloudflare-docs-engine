@@ -9,13 +9,17 @@ import headers from "./mdx/headers"
 import inlineCode from "./mdx/inline-code"
 import pre from "./mdx/code-block"
 import blockquote from "./mdx/blockquote"
-import YouTube from "./mdx/youtube"
-
+import Definitions from "./mdx/definitions"
+import Code from "./mdx/code"
+import ParamType from "./mdx/param-type"
+import Type from "./mdx/type"
 import DirectoryListing from "./mdx/directory-listing"
+import YouTube from "./mdx/youtube"
 
 // https://mdxjs.com/table-of-components
 // https://www.gatsbyjs.org/docs/mdx/customizing-components/
 const components = {
+  // Replace markdown
   a,
   ...headers,
   inlineCode,
@@ -23,7 +27,17 @@ const components = {
   blockquote,
   // img, // TODO - img
   // thematicBreak, // TODO - consider custom thematicBreak `***` implementation
+
+  // Gatsby components
   Link,
+
+  // Custom components for composing reference docs
+  Definitions,
+  Code,
+  ParamType,
+  Type,
+
+  // Miscellaneous custom components
   DirectoryListing,
   YouTube,
 }
