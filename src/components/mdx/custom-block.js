@@ -19,6 +19,8 @@ const getCustomBlockType = props => {
     }
   }
 
+  if (typeof testChild !== "string") return false
+
   const match = testChild.trim().match(matchRegExp)
 
   if (match && match.length === 2) {
