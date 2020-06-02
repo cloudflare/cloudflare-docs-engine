@@ -46,6 +46,8 @@ class DocsSidebarNavSectionContent extends React.Component {
   }
 
   scrollToActiveNavItemIfHidden(shouldAnimate) {
+    if (!this.refs || !this.refs.scrollbars || !this.refs.scrollbars.refs) return
+
     const { scrollbars } = this.refs.scrollbars.refs
     const { container } = scrollbars
 
