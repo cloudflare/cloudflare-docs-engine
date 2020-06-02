@@ -612,9 +612,9 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 .DocsMarkdown > *:last-child,
 .DocsMarkdown ul > *:last-child,
 .DocsMarkdown ol > *:last-child,
-.DocsMarkdown li > *:not(ul):not(ol):not(pre):not(figure):not(:table):last-child,
-.DocsMarkdown blockquote > *:last-child ,
-.DocsMarkdown details > *:last-child ,
+.DocsMarkdown li > *:not(ul):not(ol):not(pre):not(figure):not(table):last-child,
+.DocsMarkdown blockquote > *:last-child,
+.DocsMarkdown details > *:last-child,
 .DocsMarkdown--example > *:last-child,
 .DocsMarkdown--custom-block > *:last-child,
 .DocsMarkdown > div > *:last-child {
