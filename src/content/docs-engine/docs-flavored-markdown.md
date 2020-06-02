@@ -171,75 +171,52 @@ Here’s the code for this set of definitions.
 </Definitions>
 ```
 
-Let’s break down the construction.
+Instructions for composing reference documention:
 
-First you wrap everything in `<Definitions/>`. Note that MDX requires that you include a new line before and after each block-style MDX tag.
+1. First wrap everything inside of `<Definitions>`. Note that MDX requires that you include a new line before and after each block-style MDX tag.
 
-```markup
----
-highlight: [1,3]
----
+  ```markup
+  ---
+  highlight: [1,3]
+  ---
 
-<Definitions>
+  <Definitions>
 
-...
-```
-
-Within the definitions block, you include an unordered list, with the following structure.
-
-- Each term is specifid in an inline code element inside each list item.
-
-  - For property definitions, you can use two backticks.
-
-    ```markdown
-      - `property`
-        - ...
-    ```
-  - For method definitions in which you need to specify a param type inside the inline code block, use the `<Code/>` component with child `<ParamType/>` components.
-
-    ```markdown
-      - <Code>method(param<ParamType>type</ParamType>)</Code>
-        - ...
-    ```
-
-- After the code block, optionally include a `<Type/>`.
-  - For propeties, this represents the type of the property.
-  - For methods, this represents the type of the return value.
-  - For style, you may optionally leave these off if the types are clear from context or `null`ish for the entire set of methods.
-
-  ```markdown
-    - `property` <Type>type</Type>
-      - ...
+  ...
   ```
 
-- After the term, indent and add an unordered list, containing only one list item which contains the definition of the term.
+2. Within the definitions block, include an unordered list, with the following structure:
 
-Finally, here’s an abbreviated example from HTMLRewriter documentation which puts this all together:
+    - Each term is specifid in an inline code element inside each list item.
 
-> ```js
-> const rewriter = new HTMLRewriter()
-> ```
->
-> ### Properties
->
-> <Definitions>
->
-> - `tagName` <Type>String</Type>
->
->   - A string representing the name of the tag, such as `"h1"` or `"div"`. This property can be assigned > different values, to modify an element’s tag.
->
-> - `attributes` <Type>Iterator</Type>
->
->   - Returns a `[name, value]` pair of the tag’s attributes. This property is read-only.
->
-> - `removed` <Type>Boolean</Type>
->
->   - A boolean indicating whether the element has been removed or replaced by one of the previous handlers.
->
-> </Definitions>
->
-> ### Methods
->
+      - For property definitions, you can use two backticks.
+
+        ```markdown
+          - `property`
+            - ...
+        ```
+
+      - For method definitions in which you need to specify a param type inside the inline code block, use the `<Code/>` component with child `<ParamType/>` components.
+
+        ```markdown
+          - <Code>method(param<ParamType>type</ParamType>)</Code>
+            - ...
+        ```
+
+    - After the code block, optionally include a `<Type/>`.
+      - For propeties, this represents the type of the property.
+      - For methods, this represents the type of the return value.
+      - For style, you may optionally leave these off if the types are clear from context or `null`ish for the entire set of methods.
+
+      ```markdown
+        - `property` <Type>type</Type>
+          - ...
+      ```
+
+    - After the term, indent and add an unordered list, containing only one list item which contains the definition of the term.
+
+Here’s an actual example from the HTMLRewriter docs which puts this all together:
+
 > <Definitions>
 >
 > - <Code>getAttribute(name<ParamType>String</ParamType>)</Code> <Type>String | null</Type>
