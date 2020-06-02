@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 import getUniqueReadableID from "../utils/get-unique-readable-id"
 
-const AccessibleSVG = (props) => {
+const AccessibleSVG = props => {
   const titleID = getUniqueReadableID("title")
   const { title, children, ...svgProps } = props
 
