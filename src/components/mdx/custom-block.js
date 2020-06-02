@@ -1,6 +1,6 @@
 import React from "react"
 
-const classNamePrefix = "DocsMarkdown" // TODO - get from MDX parent component
+import { className } from "./root"
 const matchRegExp = /^\{(.+)\}/
 
 const getCustomBlockType = props => {
@@ -35,7 +35,7 @@ export const shouldUseCustomBlock = props => {
 }
 
 const CustomBlockHeader = props => (
-  <div className={classNamePrefix + "--custom-block-header"}>
+  <div className={className("custom-block-header")}>
     {props.children}
   </div>
 )
@@ -81,7 +81,7 @@ export const CustomBlock = props => {
   const children = getChildrenWithFirstChildLeafStripped(props)
 
   return (
-    <div className={classNamePrefix + "--custom-block"} data-type={type}>
+    <div className={className("custom-block")} data-type={type}>
       {children}
     </div>
   )

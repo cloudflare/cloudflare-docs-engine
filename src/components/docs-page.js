@@ -11,6 +11,7 @@ import DocsMobileTitleHeader from "./docs-mobile-title-header"
 import DocsSidebar from "./docs-sidebar"
 import DocsToolbar from "./docs-toolbar"
 import DocsTableOfContents from "./docs-table-of-contents"
+import { className as docsMarkdownClassName } from "./mdx/root"
 import DocsFooter from "./docs-footer"
 
 import getPageTitle from "../utils/get-page-title"
@@ -56,7 +57,7 @@ const DocsPage = ({ pageContext: page, children, location }) => {
               <Breadcrumbs className="DocsContent--breadcrumbs" location={location}/>
             )}
 
-            <article className="DocsMarkdown">
+            <article className={docsMarkdownClassName()}>
               {children}
             </article>
           </div>
