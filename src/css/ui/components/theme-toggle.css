@@ -60,6 +60,11 @@
   height: 16px;
 }
 
+.ThemeToggle--sun,
+.ThemeToggle--moon {
+  pointer-events: none;
+}
+
 .ThemeToggle--sun {
   left: 6px;
 }
