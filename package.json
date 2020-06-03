@@ -9,6 +9,7 @@
     "@material-ui/core": "^4.9.14",
     "@mdx-js/mdx": "^1.6.1",
     "@mdx-js/react": "^1.6.1",
+    "@reach/skip-nav": "^0.10.3",
     "animejs": "^3.2.0",
     "focus-group": "^0.3.1",
     "focus-visible-polyfill": "^1.0.0",

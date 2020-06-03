@@ -1,4 +1,5 @@
 import React from "react"
+import { SkipNavLink, SkipNavContent } from "@reach/skip-nav"
 
 import Helmet from "react-helmet"
 import SEO from "./seo"
@@ -34,6 +35,8 @@ const DocsPage = ({ pageContext: page, children, location }) => {
 
       <SmoothScrollHashChanges/>
 
+      <SkipNavLink contentId="docs-content" className="SkipNavLink"/>
+
       <div className="DocsPage">
         <DocsMobileHeader/>
         <DocsMobileTitleHeader/>
@@ -51,6 +54,8 @@ const DocsPage = ({ pageContext: page, children, location }) => {
               </div>
             </div>
           )}
+
+          <SkipNavContent id="docs-content"/>
 
           <div className="DocsContent" page-type={pageType}>
             {hasBreadcrumbs(page) && (
