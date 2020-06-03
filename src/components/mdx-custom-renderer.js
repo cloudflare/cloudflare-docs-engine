@@ -25,8 +25,6 @@ const components = {
   ...headers,
   inlineCode,
   pre,
-  // img, // TODO - img
-  // thematicBreak, // TODO - consider custom thematicBreak `***` implementation
 
   // Add custom components
   Link,
