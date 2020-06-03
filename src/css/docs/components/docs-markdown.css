@@ -319,7 +319,7 @@ p.DocsMarkdown--small-header {
 }
 
 .DocsMarkdown blockquote cite::before {
-  content: "— ";
+  content: "— " / "Quotee";
 }
 
 .DocsMarkdown blockquote::after {
@@ -445,7 +445,7 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 }
 
 .DocsMarkdown--header-anchor::before {
-  content: "#";
+  content: "#" / "Anchor link";
 }
 
 @media (max-width: 768px) {

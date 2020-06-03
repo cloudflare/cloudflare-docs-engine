@@ -266,7 +266,7 @@
 }
 
 .DocsSearch .algolia-docsearch-suggestion:not(.algolia-docsearch-suggestion__main) .algolia-docsearch-suggestion--content:not(.algolia-docsearch-suggestion--no-results)::before {
-  content: "›";
+  content: "›" / "Page content: ";
   opacity: .15;
   padding: 0 .333em;
   display: inline-block;
@@ -274,7 +274,7 @@
 }
 
 .DocsSearch .algolia-docsearch-suggestion:not(.algolia-docsearch-suggestion__main) .algolia-docsearch-suggestion--content:not(.algolia-docsearch-suggestion--no-results) .algolia-docsearch-suggestion--title::before {
-  content: "#";
+  content: "#" / "Section: ";
   padding-right: .25em;
   opacity: .5;
 }
