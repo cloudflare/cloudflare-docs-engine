@@ -28,12 +28,12 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
-    // "gatsby-plugin-postcss",
+    "gatsby-plugin-remove-trailing-slashes",
+
     // Sets page.updatedAt to the author time of last commit (https://git.io/JfPCj)
     "saber-plugin-git-modification-time",
-    "gatsby-plugin-remove-trailing-slashes",
-    // Prevent nav from (un)mounting on page navigations
-    // https://git.io/JfOKn
+
+    // Prevent nav from (un)mounting on page navigations (https://git.io/JfOKn)
     {
       resolve: "gatsby-plugin-layout",
       options: {
@@ -41,12 +41,10 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-plugin-material-ui",
+      resolve: "gatsby-source-filesystem",
       options: {
-        stylesProvider: {
-          disableGeneration: true
-        },
-      },
+        path: `${__dirname}/src/content/`
+      }
     },
     {
       resolve: "gatsby-plugin-mdx",
@@ -64,10 +62,12 @@ module.exports = {
       }
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: "gatsby-plugin-material-ui",
       options: {
-        path: `${__dirname}/src/content/`
-      }
+        stylesProvider: {
+          disableGeneration: true
+        },
+      },
     },
     {
       resolve: "gatsby-plugin-manifest",
@@ -78,11 +78,11 @@ module.exports = {
         background_color: "#f38020",
         theme_color: "#f38020",
         display: "minimal-ui",
-        icon: "src/images/gatsby-icon.png" // This path is relative to the root of the site.
+        icon: "src/images/gatsby-icon.png"
       }
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
+    // Consider enabling for PWA + offline functionality
+    // https://gatsby.dev/offline
     // 'gatsby-plugin-offline',
   ],
 }
