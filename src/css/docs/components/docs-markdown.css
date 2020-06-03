@@ -299,30 +299,30 @@ p.DocsMarkdown--small-header {
   max-width: 100%;
 }
 
-.DocsMarkdown blockquote:not([class]) {
+.DocsMarkdown blockquote {
   position: relative;
   margin: 1.5em 0;
 }
 
-.DocsMarkdown blockquote:not([class]) > p {
+.DocsMarkdown blockquote > p {
   font-style: italic;
 }
 
-.DocsMarkdown blockquote:not([class]) > p > em {
+.DocsMarkdown blockquote > p > em {
   font-style: normal;
 }
 
-.DocsMarkdown blockquote:not([class]) cite {
+.DocsMarkdown blockquote cite {
   font-weight: bold;
   font-style: normal;
   font-size: .9em;
 }
 
-.DocsMarkdown blockquote:not([class]) cite::before {
+.DocsMarkdown blockquote cite::before {
   content: "— ";
 }
 
-.DocsMarkdown blockquote:not([class])::after {
+.DocsMarkdown blockquote::after {
   position: absolute;
   content: "";
   top: 1.5em;
@@ -333,12 +333,12 @@ p.DocsMarkdown--small-header {
 }
 
 @media (max-width: 768px) {
-  .DocsMarkdown blockquote:not([class]) {
+  .DocsMarkdown blockquote {
     margin-left: 1rem;
   }
 }
 
-.DocsMarkdown blockquote:not([class])::before {
+.DocsMarkdown blockquote::before {
   quotes: "“" "”";
   content: open-quote;
   position: absolute;
