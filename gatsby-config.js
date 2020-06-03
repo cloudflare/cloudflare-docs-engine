@@ -78,7 +78,7 @@ module.exports = {
         background_color: "#f38020",
         theme_color: "#f38020",
         display: "minimal-ui",
-        icon: "src/images/gatsby-icon.png"
+        icon: "src/images/cloudflare-icon.png"
       }
     },
     // Consider enabling for PWA + offline functionality
