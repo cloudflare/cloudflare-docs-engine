@@ -372,6 +372,7 @@ p.DocsMarkdown--small-header {
 }
 
 .DocsMarkdown--aside-header {
+  font-weight: 600;
   margin-bottom: .25em;
 }
 
