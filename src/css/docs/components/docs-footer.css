@@ -17,14 +17,3 @@
 .DocsFooter--content {
   display: flex;
 }
-
-@media (hover: hover) {
-  .DocsFooter--content {
-    opacity: .5;
-    transition: opacity .3s ease;
-  }
-
-  .DocsFooter:hover .DocsFooter--content {
-    opacity: 1;
-  }
-}
