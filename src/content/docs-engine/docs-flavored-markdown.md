@@ -128,6 +128,18 @@ If you need to take advantage of Gatsby’s routing but you want control over th
 
 --------------------------------
 
+## Images
+
+Images are added by simply using the markdown syntax.
+
+```markdown
+![Wall of entropy](./wall-of-entropy.jpg)
+```
+
+![Wall of entropy](./wall-of-entropy.jpg)
+
+--------------------------------
+
 ## Asides
 
 Asides are used for displaying notes and warnings. They render as an `<aside/>` element with `aria-role="note"`. To use one, simply use the `<Aside/>` component.
