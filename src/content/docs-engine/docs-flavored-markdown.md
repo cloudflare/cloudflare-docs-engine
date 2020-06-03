@@ -4,7 +4,11 @@ order: 0
 
 # Docs-flavored Markdown
 
-> {warning} __Warning:__ These APIs are a work in progress, and may change substantially before release.
+<Aside type="warning">
+
+__Warning:__ These APIs are a work in progress, and may change substantially before release.
+
+</Aside>
 
 The Cloudflare Docs engine uses its own custom MDX/Markdown parsing to generate consistent and manageable markup, while offering flexibility to content authors.
 
@@ -35,9 +39,17 @@ If you would like to use a different title in these places—for example, if you
 
 All pages you write will by default have the `"document"` type. This is used mainly by the layout engine to determine if the page needs a sidebar and should have a table of contents automatically generated.
 
-> {note} __Note:__ A planned feature will allow content authors to disable the table of contents.
+<Aside>
 
-> {note} __Note:__ A planned feature will allow content authors to replace the table of contents with other content.
+__Note:__ A planned feature will allow content authors to disable the table of contents.
+
+</Aside>
+
+<Aside>
+
+__Note:__ A planned feature will allow content authors to replace the table of contents with other content.
+
+</Aside>
 
 ### Order
 
@@ -57,9 +69,7 @@ Setting `hideChildren` to `true` will hide all children of a page from the sideb
 
 By default, all pages have breadcrumbs generated. But stylistically, breadcrumbs are currently only shown on mobile.
 
-> {note}
->
-> In the case of these docs, the relevant parent information is shown clearly in the sidebar. On mobile devices, the sidebar isn’t visible, so we show the breadcrumbs there. This is a design decision that we may revisit as we see the content develop.
+<Aside>In the case of these docs, the relevant parent information is shown clearly in the sidebar. On mobile devices, the sidebar isn’t visible, so we show the breadcrumbs there. This is a design decision that we may revisit as we see the content develop.</Aside>
 
 ### Additional properties for tutorials
 
@@ -85,11 +95,11 @@ The `length` property is meant to be an indication of how long it takes to compl
 
 For links that you want to display as regular paragraph-style text links, use the regular Markdown syntax `[link text](url)`.
 
-<div class="DocsMarkdown--example">
+<Example>
 
 Visit [example.com](https://example.com).
 
-</div>
+</Example>
 
 ```markdown
 Visit [example.com](https://example.com).
@@ -110,11 +120,51 @@ If you need to take advantage of Gatsby’s routing but you want control over th
 </Link>
 ```
 
-<div class="DocsMarkdown--example">
+<Example>
 <Link to="/examples" className="Button Button-is-secondary">
   View examples
 </Link>
-</div>
+</Example>
+
+--------------------------------
+
+## Asides
+
+Asides are used for displaying notes and warnings. They render as an `<aside/>` element with `aria-role="note"`. To use one, simply use the `<Aside/>` component.
+
+<Aside>
+
+__Note:__ This is a note.
+
+</Aside>
+
+```markdown
+<Aside>
+
+__Note:__ This is a note.
+
+</Aside>
+```
+
+You can use any MDX inside the component.
+
+By default, an `Aside` will be of type `"note"`, meaning it will show in the friendly color of blue. However, if you’d like to show a warning stylization, simply add `type="warning"`.
+
+You can also optionally specify a `header`.
+
+<Aside type="warning" header={(<strong>Warning</strong>)}>
+
+This is a warning.
+
+</Aside>
+
+```markdown
+<Aside type="warning" header={(<strong>Warning</strong>)}>
+
+This is a warning.
+
+</Aside>
+```
 
 --------------------------------
 
@@ -122,8 +172,11 @@ If you need to take advantage of Gatsby’s routing but you want control over th
 
 When writing reference documentation, there are four MDX components that you use `Definitions`, `Code`, `Type`, and `ParamType` in conjuction with eachother. All of these components are added to the global scope, so you do not need to import them.
 
-> {note}
-> __Note:__ You may also use `<Definitions/>` for definition lists that are not specifically for code (read: defining properties or methods), however depending on your use case, it may be more appropriate to simply use `<dl/>`, `<dt/>` and `<dd/>`.
+<Aside>
+
+__Note:__ You may also use `<Definitions/>` for definition lists that are not specifically for code (read: defining properties or methods), however depending on your use case, it may be more appropriate to simply use `<dl/>`, `<dt/>` and `<dd/>`.
+
+</Aside>
 
 Here are some self-exemplifying definitions:
 
@@ -269,41 +322,6 @@ Use blockquotes when quoting someone. For example, here’s a translation of a q
 
 --------------------------------
 
-## Custom blocks
-
-Custom blocks are useful for displaying a “Note” or “Warning”. To use one, simply use a standard Markdown blockquote, but prefix it with a line of either `> {note}` or `> {warning}`.
-
-> {note}
-> __Note:__ This is a note.
-
-> {warning}
-> __Warning__
->
-> This is a warning.
-
-
-```markdown
-> {note}
-> __Note:__ This is a note.
-
-> {warning}
-> __Warning__
-> This is a warning.
-
-```
-
-You can use any text as the label/header, so for example, a `{note}` block could be used as a tip:
-
-> {note}
-> **Did you know?** you can use a _any Markdown you want_ inside of a custom block?
-
-```markdown
-> {note}
-> **Did you know?** you can use a _any Markdown you want_ inside of a custom block?
-```
-
---------------------------------
-
 ## Code blocks
 
 Code blocks are implemented on top of [prism-react-renderer](https://github.com/FormidableLabs/prism-react-renderer), with a few customizations.
@@ -423,8 +441,11 @@ const rewriter = new HTMLRewriter()
 
 ### Terminals
 
-> {warning}
-> __Warning__: The API for custom terminal displays is currently in flux.
+<Aside type="warning">
+
+__Warning:__ The API for custom terminal displays is currently in flux.
+
+</Aside>
 
 Custom syntax highlighting for terminal code and output, similar to what’s currently on [workers.cloudflare.com](http://workers.cloudflare.com) and [workers.cloudflare.com/sites](http://workers.cloudflare.com/sites), is in active development.
 
@@ -448,11 +469,11 @@ Check out the dedicated [code block examples](/docs-engine/code-block-examples) 
 
 When you want to display a keyboard command, use a `<kbd/>` element. For example:
 
-<div class="DocsMarkdown--example">
+<Example>
 
 Press <kbd>⌘</kbd> <kbd>F</kbd> (Command-F) to search for text within this document.
 
-</div>
+</Example>
 
 ```markdown
 Press <kbd>⌘</kbd> <kbd>F</kbd> (Command-F) to
@@ -463,36 +484,52 @@ search for text within this document.
 
 ## Details and summary
 
-> {warning} __Warning:__ This API is in active developement. Please don’t use until this notice is removed.
+<Aside type="warning">
+
+__Warning:__ This API is in active developement. Please don’t use until this notice is removed.
+
+</Aside>
 
 When you want to provide additional information in context, but you don’t want it to clutter up the more important content, use `<details/>` and `<summary/>`.
 
 <details>
 <summary>Details</summary>
-<p>Something small enough to escape casual notice.</p>
+
+Something _small enough_ to escape `casual` notice.
+
 </details>
 
 <details>
 <summary>Details</summary>
-<p>Something small enough to escape casual notice.</p>
+
+Something _small enough_ to escape `casual` notice.
+
 </details>
 
 <details>
 <summary>Details</summary>
-<p>Something small enough to escape casual notice.</p>
+
+Something _small enough_ to escape `casual` notice.
+
 </details>
 
 --------------------------------
 
 ## Directory
 
-> {warning} __Warning:__ This API is in active developement. Please don’t use until this notice is removed.
+<Aside type="warning">
+
+__Warning:__ This API is in active developement. Please don’t use until this notice is removed.
+
+</Aside>
 
 You can display a page listing of any depth by simplying including the `<DirectoryListing/>` component.
 
 For example, here’s a directory listing for the docs engine part of the site.
 
+<Example>
 <DirectoryListing path="/docs-engine"/>
+</Example>
 
 ```md
 <DirectoryListing path="/docs-engine"/>
@@ -503,6 +540,8 @@ For example, here’s a directory listing for the docs engine part of the site.
 ## YouTube
 
 To add a responsive YouTube video player to the page, include the `<YouTube/>` component.
+
+<YouTube src="https://www.youtube.com/watch?v=oHg5SJYRHA0"/>
 
 ```md
 <YouTube src="https://www.youtube.com/watch?v=oHg5SJYRHA0"/>

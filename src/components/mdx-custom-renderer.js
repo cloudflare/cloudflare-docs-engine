@@ -8,7 +8,8 @@ import a from "./mdx/anchor-link"
 import headers from "./mdx/headers"
 import inlineCode from "./mdx/inline-code"
 import pre from "./mdx/code-block"
-import blockquote from "./mdx/blockquote"
+import Aside from "./mdx/aside"
+import Example from "./mdx/example"
 import Definitions from "./mdx/definitions"
 import Code from "./mdx/code"
 import ParamType from "./mdx/param-type"
@@ -24,20 +25,19 @@ const components = {
   ...headers,
   inlineCode,
   pre,
-  blockquote,
   // img, // TODO - img
   // thematicBreak, // TODO - consider custom thematicBreak `***` implementation
 
   // Gatsby components
   Link,
 
-  // Custom components for composing reference docs
+  // Custom components
+  Aside,
+  Example,
   Definitions,
   Code,
   ParamType,
   Type,
-
-  // Miscellaneous custom components
   DirectoryListing,
   YouTube,
 }

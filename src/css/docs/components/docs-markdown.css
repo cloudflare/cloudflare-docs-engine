@@ -353,7 +353,7 @@ p.DocsMarkdown--small-header {
   width: .7em;
 }
 
-.DocsMarkdown--custom-block {
+.DocsMarkdown--aside {
   font-size: .9em;
   margin: 1.5em 0;
   padding: 1em 1.3333em;
@@ -362,43 +362,43 @@ p.DocsMarkdown--small-header {
   border-radius: 0 .5em .5em 0;
 }
 
-.DocsMarkdown--custom-block-header {
+.DocsMarkdown--aside-header {
   margin-bottom: .25em;
 }
 
-.DocsMarkdown--custom-block[data-type="warning"] {
+.DocsMarkdown--aside[data-type="warning"] {
   border-left-color: rgba(var(--orange-5-rgb), .5);
   background-color: rgba(var(--orange-5-rgb), .125);
 }
 
-[theme="dark"] .DocsMarkdown--custom-block[data-type="warning"] {
+[theme="dark"] .DocsMarkdown--aside[data-type="warning"] {
   border-left-color: rgba(var(--orange-5-rgb), .7);
   background-color: rgba(var(--orange-6-rgb), .04);
 }
 
-.DocsMarkdown--custom-block[data-type="note"] {
+.DocsMarkdown--aside[data-type="note"] {
   border-left-color: rgba(var(--blue-4-rgb), .4);
   background-color: rgba(var(--blue-4-rgb), .1);
 }
 
-.DocsMarkdown--custom-block[data-type="note"] .DocsMarkdown--link {
+.DocsMarkdown--aside[data-type="note"] .DocsMarkdown--link {
   --background-color-rgb: var(--blue-4-rgb);
   --border-bottom-color-rgb: var(--blue-2-rgb);
 }
 
-[theme="dark"] .DocsMarkdown--custom-block[data-type="note"] {
+[theme="dark"] .DocsMarkdown--aside[data-type="note"] {
   border-left-color: rgba(var(--blue-4-rgb), .8);
   background-color: rgba(var(--blue-6-rgb), .05);
 }
 
-[theme="dark"] .DocsMarkdown--custom-block[data-type="note"] .DocsMarkdown--link {
+[theme="dark"] .DocsMarkdown--aside[data-type="note"] .DocsMarkdown--link {
   color: inherit;
   --background-color-rgb: var(--blue-6-rgb);
   --background-color-alpha: .1;
   --border-bottom-color-rgb: var(--blue-7-rgb);
 }
 
-[theme="dark"] .DocsMarkdown--custom-block[data-type="note"] .DocsMarkdown--link:hover {
+[theme="dark"] .DocsMarkdown--aside[data-type="note"] .DocsMarkdown--link:hover {
   --background-color-alpha: .2;
 }
 
@@ -604,7 +604,7 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 .DocsMarkdown blockquote > *:first-child,
 .DocsMarkdown details > *:first-child,
 .DocsMarkdown--example > *:first-child,
-.DocsMarkdown--custom-block > *:first-child,
+.DocsMarkdown--aside > *:first-child,
 .DocsMarkdown > div > *:first-child {
   margin-top: 0;
 }
@@ -616,7 +616,7 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 .DocsMarkdown blockquote > *:last-child,
 .DocsMarkdown details > *:last-child,
 .DocsMarkdown--example > *:last-child,
-.DocsMarkdown--custom-block > *:last-child,
+.DocsMarkdown--aside > *:last-child,
 .DocsMarkdown > div > *:last-child {
   margin-bottom: 0;
 }
