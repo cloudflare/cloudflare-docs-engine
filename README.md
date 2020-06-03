@@ -8,11 +8,11 @@ While this project is currently called Workers Docs, it will soon be broken out 
 
 - Workers Docs (content) – Either [@cloudflare/workers-docs](https://github.com/cloudflare/workers-docs) or (-content)
 
-Soon after that, Workers Docs engine will be renamed [@cloudflare/cloudflare-docs-engine](https://github.com/cloudflare/cloudflare-docs-engine), and other Cloudflare products besides Workers will begin using it.
+Soon after that, Workers Docs engine will be renamed [@cloudflare/cloudflare-docs-engine](https://github.com/cloudflare/cloudflare-docs-engine), and other Cloudflare products in addition to Workers will begin using it.
 
 ## Developing locally
 
-For now, please see the instructions for Gatsby’s default starter](https://github.com/gatsbyjs/gatsby-starter-default).
+For now, please see the instructions for [Gatsby’s default starter](https://github.com/gatsbyjs/gatsby-starter-default).
 
 ## Documentation (for the documentation)
 
