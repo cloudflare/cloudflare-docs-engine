@@ -13,12 +13,12 @@ Cloudflare Workers provides a serverless execution environment that allows you t
 
 ## Popular pages
 
-- [Installing and updating the Workers CLI](/learning)
+- [Installing and updating the Workers CLI](#)
 - [Learning: How Workers works](/learning/how-workers-works) – learn how Cloudflare’s global network powers Workers
-- [Learning: Limits](/learning/limits)
-- [Learning: Pricing](/learning/pricing)
+- [Learning: Limits](#)
+- [Learning: Pricing](#)
 - [Reference: HTMLRewriter](/reference/html-rewriter) – parse and transform HTML from inside a Worker
-- [Reference: Workers KV](/reference/kv) – high performance key-value store
+- [Reference: Workers KV](#) – high performance key-value store
 
 --------------------------------
 
