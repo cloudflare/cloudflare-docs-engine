@@ -1,5 +1,8 @@
 import React from "react"
 import { SkipNavLink, SkipNavContent } from "@reach/skip-nav"
+// These are overridden by our SkipNavLink styles
+// but included here to quiet console warnings
+import "@reach/skip-nav/styles.css"
 
 import Helmet from "react-helmet"
 import SEO from "./seo"
