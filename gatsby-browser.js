@@ -4,7 +4,6 @@
 // https://caniuse.com/#search=focus-visible
 import "focus-visible-polyfill"
 
-// TODO - move these to @cloudflare/ui or similar
 import "@cloudflare/workers-brand-assets/css/global/box-sizing.css"
 import "@cloudflare/workers-brand-assets/css/global/element-normalization.css"
 import "@cloudflare/workers-brand-assets/css/global/sizes-variables.css"
