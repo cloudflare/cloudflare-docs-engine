@@ -7,7 +7,7 @@ order: 0
 
 Cloudflare Workers provides a serverless execution environment that allows you to create entirely new applications or augment existing ones without configuring or maintaining infrastructure.
 
-<Link to="/tutorials" className="Button Button-is-primary">Get started</Link> &nbsp;&nbsp; <Link to="/tutorials" className="Button Button-is-secondary">Take the tutorial</Link>
+<Link to="/tutorials" className="Button Button-is-secondary-orange">Get started</Link> &nbsp;&nbsp; <Link to="/tutorials" className="Button Button-is-secondary">Take the tutorial</Link>
 
 --------------------------------
 
