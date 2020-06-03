@@ -164,14 +164,14 @@ By default, an `Aside` will be of type `"note"`, meaning it will show in the fri
 
 You can also optionally specify a `header`.
 
-<Aside type="warning" header={(<strong>Warning</strong>)}>
+<Aside type="warning" header="Warning">
 
 This is a warning.
 
 </Aside>
 
 ```markdown
-<Aside type="warning" header={(<strong>Warning</strong>)}>
+<Aside type="warning" header="Warning">
 
 This is a warning.
 
