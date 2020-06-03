@@ -137,7 +137,7 @@ class DocsSidebarNavItem extends React.Component {
         {this.showChildren() && (
           <button onClick={this.onExpandCollapseClick} className="Button DocsSidebar--nav-expand-collapse-button" {...buttonProps}>
             <span className="DocsSidebar--nav-expand-collapse-button-content" aria-hidden="true"></span>
-            <span is-visually-hidden="">{expanded ? "Collapse" : "Expand"} menu</span>
+            <span is-visually-hidden="">{expanded ? "Collapse" : "Expand"}: {node.title}</span>
           </button>
         )}
 
