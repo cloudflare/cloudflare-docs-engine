@@ -20,7 +20,7 @@ import YouTube from "./mdx/youtube"
 // https://mdxjs.com/table-of-components
 // https://www.gatsbyjs.org/docs/mdx/customizing-components/
 const components = {
-  // Replace markdown
+  // Replace native DOM elements
   a,
   ...headers,
   inlineCode,
@@ -28,10 +28,8 @@ const components = {
   // img, // TODO - img
   // thematicBreak, // TODO - consider custom thematicBreak `***` implementation
 
-  // Gatsby components
+  // Add custom components
   Link,
-
-  // Custom components
   Aside,
   Example,
   Definitions,
