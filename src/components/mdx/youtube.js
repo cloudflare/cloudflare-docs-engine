@@ -12,7 +12,7 @@ export default props => {
       <div className="AspectRatio" style={style}>
         <iframe
           className="AspectRatio--content"
-          src={props.src}
+          src={`https://www.youtube.com/embed/${props.id}`}
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen/>

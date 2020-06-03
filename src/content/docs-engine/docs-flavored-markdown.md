@@ -579,8 +579,8 @@ For example, here’s a directory listing for the docs engine part of the site.
 
 To add a responsive YouTube video player to the page, include the `<YouTube/>` component.
 
-<YouTube src="https://www.youtube.com/watch?v=oHg5SJYRHA0"/>
+<YouTube id="kdwfIrRJ4DE"/>
 
 ```md
-<YouTube src="https://www.youtube.com/watch?v=oHg5SJYRHA0"/>
+<YouTube id="kdwfIrRJ4DE"/>
 ```
