@@ -67,7 +67,7 @@ Setting `hideChildren` to `true` will hide all children of a page from the sideb
 
 ### Breadcrumbs
 
-By default, all pages have breadcrumbs generated. But stylistically, breadcrumbs are currently only shown on mobile.
+By default, all pages (not at the top level of nav tree) will have breadcrumbs generated. But stylistically, breadcrumbs are currently only shown on mobile.
 
 <Aside>In the case of these docs, the relevant parent information is shown clearly in the sidebar. On mobile devices, the sidebar isn’t visible, so we show the breadcrumbs there. This is a design decision that we may revisit as we see the content develop.</Aside>
 
