@@ -29,6 +29,8 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     // "gatsby-plugin-postcss",
+    // Sets page.updatedAt to the author time of last commit (https://git.io/JfPCj)
+    "saber-plugin-git-modification-time",
     "gatsby-plugin-remove-trailing-slashes",
     // Prevent nav from (un)mounting on page navigations
     // https://git.io/JfOKn

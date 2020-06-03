@@ -35,6 +35,7 @@
     "react-timeago": "^4.4.0",
     "react-transition-group": "^4.4.1",
     "remark-slug": "^6.0.0",
+    "saber-plugin-git-modification-time": "^0.1.3",
     "set-interval-visible": "^2.0.0"
   },
   "engines": {
