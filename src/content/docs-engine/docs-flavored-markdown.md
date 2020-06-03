@@ -168,6 +168,32 @@ This is a warning.
 
 --------------------------------
 
+## Example (MDX component)
+
+The `<Example/>` component is used to simply add a box around some content. This can be useful when simply trying to demonstrate something that could otherwise be mistaken as the explaination of the same thing.
+
+<Example>
+
+Here’s an example:
+
+<Example>
+
+This is an example _of an example_.
+
+</Example>
+
+</Example>
+
+```markdown
+<Example>
+
+This is an example _of an example_.
+
+</Example>
+```
+
+--------------------------------
+
 ## Definitions, Code, Type, ParamType
 
 When writing reference documentation, there are four MDX components that you use `Definitions`, `Code`, `Type`, and `ParamType` in conjuction with eachother. All of these components are added to the global scope, so you do not need to import them.
