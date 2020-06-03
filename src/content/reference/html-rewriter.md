@@ -194,26 +194,6 @@ async function handleRequest(request) {
 }
 ```
 
-```js
-async function handle(request) {
-  const oldResponse = await fetch(request)
-  const newResponse = new HTMLRewriter()
-    .on('*', {
-      element(element) {
-        throw new Error('A really bad error.')
-      },
-    })
-    .transform(oldResponse)
+--------------------------------
 
-  /**
-   * At this point, an expression like `await newResponse.text()`
-   * will throw `new Error("A really bad error.")`. Thereafter,
-   * any use of `newResponse.body` will throw the same error,
-   * and `oldResponse.body` will be closed.
-   *
-   * Alternatively, this will produce a truncated response to
-   * the client:
-   */
-  return newResponse
-}
-```
+Coming soon...
