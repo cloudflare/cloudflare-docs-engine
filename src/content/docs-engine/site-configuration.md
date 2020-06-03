@@ -1,6 +1,10 @@
 # Site configuration
 
-> {warning} __Warning:__ These APIs are a work in progress, and may change substantially before release.
+<Aside type="warning">
+
+__Warning:__ These APIs are a work in progress, and may change substantially before release.
+
+</Aside>
 
 The Cloudflare Docs engine uses is designed to allow customization by each Cloudflare product team. Though this API will likely change, this page documents how site configuration is currently applied.
 

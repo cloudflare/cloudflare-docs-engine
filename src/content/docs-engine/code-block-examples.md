@@ -1,6 +1,10 @@
 # Code block examples
 
-> {warning} __Warning:__ These APIs are a work in progress, and may change substantially before release.
+<Aside type="warning">
+
+__Warning:__ These APIs are a work in progress, and may change substantially before release.
+
+</Aside>
 
 Code blocks inside Cloudflare [Docs-flavored Markdown](/docs-engine/docs-flavored-markdown) offer a variety of custom presention mechanisms. This page contains practical examples for inspiration.
 
