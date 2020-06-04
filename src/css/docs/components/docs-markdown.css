@@ -614,8 +614,7 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 .DocsMarkdown blockquote > *:first-child,
 .DocsMarkdown details > *:first-child,
 .DocsMarkdown--example > *:first-child,
-.DocsMarkdown--aside > *:first-child,
-.DocsMarkdown > div > *:first-child {
+.DocsMarkdown--aside > *:first-child {
   margin-top: 0;
 }
 
@@ -626,7 +625,6 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 .DocsMarkdown blockquote > *:last-child,
 .DocsMarkdown details > *:last-child,
 .DocsMarkdown--example > *:last-child,
-.DocsMarkdown--aside > *:last-child,
-.DocsMarkdown > div > *:last-child {
+.DocsMarkdown--aside > *:last-child {
   margin-bottom: 0;
 }
