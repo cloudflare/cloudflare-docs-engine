@@ -1,5 +1,15 @@
 # Class
 
+## Background
+
+The `Class` class is used whenever you’re trying to create an instance. It’s particularly useful when you’re trying to create multiple instances. Here are some common uses:
+
+- [Tutorial which uses Class](#)
+- [Example which uses Class](#)
+- [Another example which uses Class](#)
+
+--------------------------------
+
 ## Constructor
 
 ```js
@@ -24,11 +34,11 @@ const instance = new Class()
 
 <Definitions>
 
-- <p><Code>setTitle(newTitle<ParamType>String</ParamType>)</Code></p>
+- <Code>setTitle(newTitle<ParamType>String</ParamType>)</Code>
 
   - Sets the title to `newTitle`.
 
-- <p><Code>hide()</Code> <Type>Boolean</Type></p>
+- <Code>hide()</Code> <Type>Boolean</Type>
 
   - Attempts to hide the instance. Returns a boolean whether hiding was successful.
 
@@ -36,4 +46,15 @@ const instance = new Class()
 
 --------------------------------
 
-Coming soon...
+## Common issues
+
+Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
+
+--------------------------------
+
+## See also
+
+- [`RelatedClass`](#)
+- [`OtherRelatedClass`](#)
+- [An external link to relevant documentation, e.g. on MDN](https://example.com)
+- [A page about writing JS in general](#)
