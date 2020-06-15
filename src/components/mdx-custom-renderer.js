@@ -14,6 +14,8 @@ import Definitions from "./mdx/definitions"
 import Code from "./mdx/code"
 import ParamType from "./mdx/param-type"
 import Type from "./mdx/type"
+import TypeLink from "./mdx/type-link"
+import PropMeta from "./mdx/prop-meta"
 import DirectoryListing from "./mdx/directory-listing"
 import YouTube from "./mdx/youtube"
 
@@ -34,6 +36,8 @@ const components = {
   Code,
   ParamType,
   Type,
+  TypeLink,
+  PropMeta,
   DirectoryListing,
   YouTube,
 }
