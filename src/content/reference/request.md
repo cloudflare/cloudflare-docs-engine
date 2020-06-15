@@ -55,7 +55,7 @@ For example:
 fetch(event.request, { cf: { scrapeShield: false } })
 ```
 
-Invalid or incorrectly-named keys in the `cf` object will be silently ignored. Consider using TypeScript and [`@cloudflare/workers-types`](https://github.com/cloudflare/workers-types) to ensure you're using the `cf` object properly. 
+Invalid or incorrectly-named keys in the `cf` object will be silently ignored. Consider using TypeScript and [`@cloudflare/workers-types`](https://github.com/cloudflare/workers-types) to ensure you're using the `cf` object properly.
 
 <Definitions>
 
@@ -264,7 +264,7 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
   - **Note:** default `redirect` value for requests generated from the incoming `fetchEvent` from the event handler is `manual`. Default for newly constructed Requests (i.e. `new Request(url)` ) is `follow`. Valid `redirect` values:
     - `follow: boolean`: If a redirect reponse is returned to the fetch, another fetch will be fired based on the `Location` header in the response until a non-redirect code is returned. (i.e. `await fetch(..)` could never return a `301` redirect)
     - `manual: boolean`: redirect responses will return from a fetch
-    
+
 ### Random `RequestInitCfProperties` object Notes
 
 - `cacheTtl` <Type>number</Type>
