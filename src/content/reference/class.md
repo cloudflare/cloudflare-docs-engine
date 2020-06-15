@@ -20,11 +20,11 @@ const instance = new Class()
 
 <Definitions>
 
-- `instance.title` <Type>String</Type>
+- `instance.title` <Type>string</Type>
 
   - The title of the instance
 
-- `instance.visible` <Type>Boolean</Type>
+- `instance.visible` <Type>boolean</Type>
 
   - Boolean indicating if the instance is visible
 
@@ -34,11 +34,11 @@ const instance = new Class()
 
 <Definitions>
 
-- <Code>setTitle(newTitle<ParamType>String</ParamType>)</Code>
+- <Code>setTitle(newTitle<ParamType>string</ParamType>)</Code>
 
   - Sets the title to `newTitle`.
 
-- <Code>hide()</Code> <Type>Boolean</Type>
+- <Code>hide()</Code> <Type>boolean</Type>
 
   - Attempts to hide the instance. Returns a boolean whether hiding was successful.
 
