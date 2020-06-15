@@ -247,26 +247,29 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
 ## Examples
 
-* [Modify Request Property](/templates/pages/modify_req_props)
-* [Aggregate Requests](/templates/pages/aggregate_requests)
-* [Signed Request/Response](/templates/pages/signed_request)
+- [Modify Request Property](/templates/pages/modify_req_props)
+- [Aggregate Requests](/templates/pages/aggregate_requests)
+- [Signed Request/Response](/templates/pages/signed_request)
 
 --------------------------------
 
 ## TODO
 
-* The "Random Notes" below need a home somewhere else, or a decision to punt.
-* Is my approach to e.g. the RequestInit, RequestInitCfProperties, IncomingRequestCfProperties sensible? Previously, these were just furhter-indented lists. This feels like it scales better.
-* Is it OK for Types to be links too? Does that need design tweaking?
-* Should we include inline examples?
-
+- The "Random Notes" below need a home somewhere else, or a decision to punt.
+- Is my approach to e.g. the RequestInit, RequestInitCfProperties, IncomingRequestCfProperties sensible? Previously, these were just furhter-indented lists. This feels like it scales better.
+- Is it OK for Types to be links too? Does that need design tweaking?
+- Should we include inline examples?
 
 ### Random Constructor Notes
 
 - Note that the `url` property is immutable, so when [modifying a request](/templates/pages/modify_req_props/) and changing the URL, you must pass the new URL in this parameter.
+
 - If you expect Unicode values in your headers, URL or Base64 encode your header values before adding them to a Headers object.
+
 - `CF-Connecting-IP`: A Cloudflare specific header to specify the client IP
+
   - **Note:** Requests using the `GET` or `HEAD` methods cannot have a body.
+
   - **Note:** default `redirect` value for requests generated from the incoming `fetchEvent` from the event handler is `manual`. Default for newly constructed Requests (i.e. `new Request(url)` ) is `follow`. Valid `redirect` values:
     - `follow: boolean`: If a redirect reponse is returned to the fetch, another fetch will be fired based on the `Location` header in the response until a non-redirect code is returned. (i.e. `await fetch(..)` could never return a `301` redirect)
     - `manual: boolean`: redirect responses will return from a fetch
