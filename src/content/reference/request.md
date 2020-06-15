@@ -14,7 +14,7 @@ let request = new Request(input [, init])
 
   - Either a String that contains a URL, or an existing `Request` object.
 
-- `init` [<Type>RequestInit</Type>](#requestinit) <Type>Optional</Type>
+- `init` <TypeLink href="#requestinit">RequestInit</TypeLink> <PropMeta>optional</PropMeta>
 
   - Optional options object that contains settings to apply to the `Request`. [Valid keys are listed below](#init-object).
 
@@ -24,23 +24,23 @@ let request = new Request(input [, init])
 
 <Definitions>
 
-- `cf` [<Type>RequestInitCfProperties</Type>](#requestinitcfproperties) <Type>Optional</Type>
+- `cf` <TypeLink href="#requestinitcfproperties">RequestInitCfProperties</TypeLink> <PropMeta>optional</PropMeta>
 
   - Cloudflare-specific properties that can be set on the `Request` that control how Cloudflare's edge handles the request.
 
-- `method` <Type>string</Type> <Type>Optional</Type>
+- `method` <Type>string</Type> <PropMeta>optional</PropMeta>
 
   - The HTTP request method. The default is `GET`.
 
-- `headers` <Type>Headers</Type> <Type>Optional</Type>
+- `headers` <Type>Headers</Type> <PropMeta>optional</PropMeta>
 
   - A [`Headers` object](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
 
-- `body` <Type>string | ReadableStream | FormData | URLSearchParams</Type> <Type>Optional</Type>
+- `body` <Type>string | ReadableStream | FormData | URLSearchParams</Type> <PropMeta>optional</PropMeta>
 
   - The request body, if any.
 
-- `redirect` <Type>string</Type> <Type>Optional</Type>
+- `redirect` <Type>string</Type> <PropMeta>optional</PropMeta>
 
   - The redirect mode to use: `follow`, `error`, or `manual`. The default is `follow`.
 
@@ -109,31 +109,31 @@ All properties of an incoming `Request` object (i.e. `event.request`) are read o
 
 <Definitions>
 
-- `body` <Type>ReadableStream</Type> <Type>Read only</Type>
+- `body` <Type>ReadableStream</Type> <PropMeta>read-only</PropMeta>
 
   - Stream of the body contents.
 
-- `bodyUsed` <Type>Boolean</Type> <Type>Read only</Type>
+- `bodyUsed` <Type>Boolean</Type> <PropMeta>read-only</PropMeta>
 
   - Declares whether the body has been used in a response yet.
 
-- `cf` [<Type>IncomingRequestCfProperties</Type>](#incomingrequestcfproperties) <Type>Read only</Type>
+- `cf` <TypeLink href="#incomingrequestcfproperties">IncomingRequestCfProperties</TypeLink> <PropMeta>read-only</PropMeta>
 
   - An object containing properties about the incoming request provided by Cloudflare's edge network.
 
-- `headers` <Type>Headers</Type> <Type>Read only</Type>
+- `headers` <Type>Headers</Type> <PropMeta>read-only</PropMeta>
 
   - A [`Headers` object](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
 
-- `method` <Type>string</Type> <Type>Read only</Type>
+- `method` <Type>string</Type> <PropMeta>read-only</PropMeta>
 
   - Contains the request's method, e.g. `GET`, `POST`, etc.
 
-- `redirect` <Type>string</Type> <Type>Read only</Type>
+- `redirect` <Type>string</Type> <PropMeta>read-only</PropMeta>
 
   - Contains the mode for how redirects are handled. It may be one of `follow`, `error`, or `manual`.
 
-- `url` <Type>string</Type> <Type>Read only</Type>
+- `url` <Type>string</Type> <PropMeta>read-only</PropMeta>
 
   - Contains the URL of the request.
 
