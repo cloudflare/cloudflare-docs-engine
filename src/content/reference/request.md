@@ -218,23 +218,23 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
 <Definitions>
 
-- `Request.clone()` <Type>`Promise<Request>`</Type>
+- `Request.clone()` <Type>Promise&lt;Request></Type>
 
   - Creates a copy of the current `Request` object.
 
-- `arrayBuffer()` <Type>`Promise<ArrayBuffer>`</Type>
+- `arrayBuffer()` <Type>Promise&lt;ArrayBuffer></Type>
 
   - Returns a promise that resolves with an [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/ArrayBuffer) representation of the request body.
 
-- `formData()`<Type>`Promise<FormData>`</Type>
+- `formData()` <Type>Promise&lt;FormData></Type>
 
   - Returns a promise that resolves with a [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) representation of the request body.
 
-- `json()`<Type>`Promise<Object>`</Type>
+- `json()` <Type>Promise&lt;Object></Type>
 
   - Returns a promise that resolves with a JSON representation of the request body.
 
-- `text()`<Type>`Promise<string>`</Type>
+- `text()` <Type>Promise&lt;string></Type>
 
   - Returns a promise that resolves with a string (text) representation of the request body.
 
