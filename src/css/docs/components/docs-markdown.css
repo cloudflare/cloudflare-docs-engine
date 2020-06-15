@@ -281,6 +281,13 @@ p.DocsMarkdown--small-header {
   margin-bottom: 3em;
 }
 
+.DocsMarkdown--prop-meta {
+  color: rgba(var(--color-rgb), .8);
+  font-size: .75em;
+  font-weight: 500;
+  padding: 0 1px;
+}
+
 [theme="dark"] .DocsMarkdown blockquote,
 [theme="dark"] .DocsMarkdown dl,
 [theme="dark"] .DocsMarkdown ol,
