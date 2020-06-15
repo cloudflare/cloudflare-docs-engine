@@ -24,7 +24,8 @@
   --background-color-alpha: .08;
   --border-bottom-color-rgb: var(--orange-3-rgb);
   --border-bottom-color-alpha: .3;
-  background-color: rgba(var(--background-color-rgb), var(--background-color-alpha));
+  --background-color: rgba(var(--background-color-rgb), var(--background-color-alpha));
+  background-color: var(--background-color);
   border-bottom: 1px solid rgba(var(--border-bottom-color-rgb), var(--border-bottom-color-alpha));
 
   --focus-shadow: 0 0 0 var(--focus-size) var(--focus-color);
@@ -50,6 +51,16 @@
 .DocsMarkdown--link > code {
   --padding: 0;
   --background: transparent;
+}
+
+.DocsMarkdown--link[data-is-type-link="true"] {
+  background: transparent;
+  border: none;
+}
+
+.DocsMarkdown--link[data-is-type-link="true"] > code {
+  --color-rgb: var(--orange-3-rgb);
+  --background: var(--background-color);
 }
 
 [theme="dark"] .DocsMarkdown--link {
