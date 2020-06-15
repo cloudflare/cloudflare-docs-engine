@@ -101,6 +101,8 @@ Invalid or incorrectly-named keys in the `cf` object will be silently ignored. C
 
 </Definitions>
 
+--------------------------------
+
 ## Properties
 
 All properties of an incoming `Request` object (i.e. `event.request`) are read only. To [modify a request](/templates/pages/modify_req_props/), you must create a new `Request` object and pass the options to modify to its [constructor](#constructor).
@@ -213,6 +215,7 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
 </Definitions>
 
+--------------------------------
 
 ## Methods
 
@@ -240,12 +243,15 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
 </Definitions>
 
+--------------------------------
+
 ## Examples
 
 * [Modify Request Property](/templates/pages/modify_req_props)
 * [Aggregate Requests](/templates/pages/aggregate_requests)
 * [Signed Request/Response](/templates/pages/signed_request)
 
+--------------------------------
 
 ## TODO
 
