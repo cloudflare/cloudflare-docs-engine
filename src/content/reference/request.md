@@ -1,5 +1,49 @@
 # Request
 
+The `Request` interface represents an HTTP request, and is part of the Fetch API.
+
+The most common way you'll encounter `Request` objects is as a property of an incoming `FetchEvent`.
+
+```javascript
+---
+highlight: [2,3]
+---
+addEventListener('fetch', event => {
+  // event.request fulfills the Request interface
+  let request = event.request
+  // ...
+})
+```
+
+You may also want to construct a `Request` object yourself when you need to modify a request object, because a `FetchEvent`'s `request` property is immutable.
+
+```javascript
+addEventListener('fetch', event => {
+  let request = event.request
+  let url = "https://example.com"
+  let modifiedRequest = new Request(
+    url,
+    {
+      body: request.body,
+      headers: request.headers,
+      method: request.method,
+      redirect: request.redirect
+    }
+  )
+  // ...
+})
+```
+
+The global `fetch` method itself invokes the `Request` constructor, thus the [`RequestInit`](#requestinit) and [`RequestInitCfProperties`](#requestinitcfproperties) types defined below also describe the valid parameters that can be passed to `fetch`.
+
+<Aside header="Learn More">
+
+You can gain a higher-level understanding of the underlying concepts in
+[Understanding the FetchEvent Lifecycle](../learning/understanding-the-fetch-event-lifecycle) and
+[Understanding the Request Context](../learning/understanding-the-request-context).
+
+</Aside>
+
 ## Constructor
 
 ```javascript
@@ -42,7 +86,7 @@ let request = new Request(input [, init])
 
 - `redirect` <Type>string</Type> <PropMeta>optional</PropMeta>
 
-  - The redirect mode to use: `follow`, `error`, or `manual`. The default is `follow`.
+  - The redirect mode to use: `follow`, `error`, or `manual`. The default  for a new `Request` object is `follow`. Note, however, that the incoming `Request` property of a `FetchEvent` will have redirect mode `manual`.
 
 </Definitions>
 
@@ -59,43 +103,43 @@ Invalid or incorrectly-named keys in the `cf` object will be silently ignored. C
 
 <Definitions>
 
-- `apps` <Type>boolean</Type>
+- `apps` <Type>boolean</Type> <PropMeta>optional</PropMeta>
 
   - Whether [Cloudflare Apps](https://www.cloudflare.com/apps/) should be enabled for this request. Defaults to `true`.
 
-- `cacheEverything` <Type>boolean</Type>
+- `cacheEverything` <Type>boolean</Type> <PropMeta>optional</PropMeta>
 
   - This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting the page rule ["Cache Level" (to "Cache Everything")](https://support.cloudflare.com/hc/en-us/articles/200172266). Defaults to `false`.
 
-- `cacheKey` <Type>string</Type>
+- `cacheKey` <Type>string</Type> <PropMeta>optional</PropMeta>
 
   - A request's cache key is what determines if two requests are "the same" for caching purposes. If a request has the same cache key as some previous request, then we can serve the same cached response for both.
 
-- `cacheTtl` <Type>number</Type>
+- `cacheTtl` <Type>number</Type> <PropMeta>optional</PropMeta>
 
   - This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting two page rules: ["Edge Cache TTL"](https://support.cloudflare.com/hc/en-us/articles/200168376-What-does-edge-cache-expire-TTL-mean-) and ["Cache Level" (to "Cache Everything")](https://support.cloudflare.com/hc/en-us/articles/200172266).
 
-- `cacheTtlByStatus` <Type>{ [key: string]: number }</Type>
+- `cacheTtlByStatus` <Type>{ [key: string]: number }</Type> <PropMeta>optional</PropMeta>
 
   - This option is a version of the `cacheTtl` feature which chooses a TTL based on the response's status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time, and override cache instructives sent by the origin. For example: `{ "200-299": 86400, 404: 1, "500-599": 0 }`.
 
-- `minify` <Type>{ javascript?: boolean; css?: boolean; html?: boolean; }</Type>
+- `minify` <Type>{ javascript?: boolean; css?: boolean; html?: boolean; }</Type> <PropMeta>optional</PropMeta>
 
   - Enables or disables [AutoMinify](https://www.cloudflare.com/website-optimization/) for various file types. For example: `{ javascript: true, css: true, html: false }`.
 
-- `mirage` <Type>boolean</Type>
+- `mirage` <Type>boolean</Type> <PropMeta>optional</PropMeta>
 
   - Whether [Mirage](https://www.cloudflare.com/website-optimization/mirage/) should be enabled for this request, if otherwise configured for this zone. Defaults to `true`.
 
-- `polish` <Type>string</Type>
+- `polish` <Type>string</Type> <PropMeta>optional</PropMeta>
 
   - Sets [Polish](https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati/) mode. The possible values are `lossy`, `lossless` or `off`.
 
-- `resolveOverride` <Type>string</Type>
+- `resolveOverride` <Type>string</Type> <PropMeta>optional</PropMeta>
 
   - Redirects the request to an alternate origin server.
 
-- `scrapeShield` <Type>boolean</Type>
+- `scrapeShield` <Type>boolean</Type> <PropMeta>optional</PropMeta>
 
   - Whether [ScrapeShield](https://blog.cloudflare.com/introducing-scrapeshield-discover-defend-dete/) should be enabled for this request, if otherwise configured for this zone. Defaults to `true`.
 
@@ -157,7 +201,7 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
   - The cipher for the connection to Cloudflare, e.g. `"AEAD-AES128-GCM-SHA256"`.
 
-- `country` <Type>string</Type>
+- `country` <Type>string | null</Type>
 
   - Country of the incoming request. The two-letter country code in the request. This is the same value as that provided in the `CF-IPCountry` header, e.g. `"US"`.
 
@@ -169,7 +213,7 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
   - The TLS version of the connection to Cloudflare, e.g. `TLSv1.3`.
 
-- `requestPriority` <Type>string</Type>
+- `requestPriority` <Type>string | null</Type>
 
   - The browser-requested prioritization information in the request object, e.g. `“weight=192;exclusive=0;group=3;group-weight=127”`.
 
@@ -177,7 +221,7 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
   - City of the incoming request, e.g. `"Austin"`.
 
-- `continent` <Type>string</Type>
+- `continent` <Type>string | null</Type>
 
   - Continent of the incoming request, e.g. `"NA"`.
 
@@ -205,7 +249,7 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
   - If known, the [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) name for the first level region associated with the IP address of the incoming request, e.g. `"Texas"`.
 
-- `regionCode` <Type>string</Type>
+- `regionCode` <Type>string | null</Type>
 
   - If known, the [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) code for the first level region associated with the IP address of the incoming request, e.g. `"TX"`.
 
@@ -219,11 +263,15 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
 ## Methods
 
+### Instance methods
+
+These methods are only available on an instance of a `Request` object or through its prototype.
+
 <Definitions>
 
-- `Request.clone()` <Type>Promise&lt;Request></Type>
+- `clone()` <Type>Promise&lt;Request></Type>
 
-  - Creates a copy of the current `Request` object.
+  - Creates a copy of the `Request` object.
 
 - `arrayBuffer()` <Type>Promise&lt;ArrayBuffer></Type>
 
@@ -256,13 +304,8 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 ## TODO
 
 - The "Random Notes" below need a home somewhere else, or a decision to punt.
-- Is my approach to e.g. the RequestInit, RequestInitCfProperties, IncomingRequestCfProperties sensible? Previously, these were just furhter-indented lists. This feels like it scales better.
-- Is it OK for Types to be links too? Does that need design tweaking?
-- Should we include inline examples?
 
 ### Random Constructor Notes
-
-- Note that the `url` property is immutable, so when [modifying a request](/templates/pages/modify_req_props/) and changing the URL, you must pass the new URL in this parameter.
 
 - If you expect Unicode values in your headers, URL or Base64 encode your header values before adding them to a Headers object.
 
@@ -270,7 +313,7 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
   - **Note:** Requests using the `GET` or `HEAD` methods cannot have a body.
 
-  - **Note:** default `redirect` value for requests generated from the incoming `fetchEvent` from the event handler is `manual`. Default for newly constructed Requests (i.e. `new Request(url)` ) is `follow`. Valid `redirect` values:
+  -  Valid `redirect` values:
     - `follow: boolean`: If a redirect reponse is returned to the fetch, another fetch will be fired based on the `Location` header in the response until a non-redirect code is returned. (i.e. `await fetch(..)` could never return a `301` redirect)
     - `manual: boolean`: redirect responses will return from a fetch
 
