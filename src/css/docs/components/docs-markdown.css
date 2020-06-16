@@ -213,6 +213,14 @@ p.DocsMarkdown--small-header {
   font-size: 1em;
 }
 
+.DocsMarkdown h3 code,
+.DocsMarkdown h4 code,
+.DocsMarkdown h5 code {
+  --inline-code-font-size: 1em;
+  --background: transparent;
+  --padding: 0;
+}
+
 .DocsMarkdown h5,
 .DocsMarkdown h6,
 p.DocsMarkdown--small-header {
@@ -270,11 +278,16 @@ p.DocsMarkdown--small-header {
 }
 
 .DocsMarkdown--definitions > ul > li:not(:last-child) {
-  margin-bottom: .25em;
+  margin-bottom: 1.5em;
 }
 
 .DocsMarkdown--definitions > ul > li > p:first-child {
   margin: 0;
+}
+
+.DocsMarkdown--definitions > ul > li > code:first-child,
+.DocsMarkdown--definitions > ul > li > p > code:first-child {
+  font-weight: 600;
 }
 
 .DocsMarkdown--definitions > ul > li > ul {
@@ -293,10 +306,10 @@ p.DocsMarkdown--small-header {
 }
 
 .DocsMarkdown--prop-meta {
-  color: rgba(var(--color-rgb), .8);
+  color: rgba(var(--color-rgb), .85);
   font-size: .75em;
   font-weight: 500;
-  padding: 0 1px;
+  padding: 0 2px;
 }
 
 [theme="dark"] .DocsMarkdown blockquote,
