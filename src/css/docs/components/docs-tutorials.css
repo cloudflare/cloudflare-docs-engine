@@ -116,7 +116,7 @@
 }
 
 .DocsTutorials--column[data-column="difficulty"] {
-  width: 6.5em;
+  width: 7.5em;
   padding-left: calc(var(--gap) / 2);
   padding-right: calc(var(--gap) / 2);
   flex-shrink: 0;
