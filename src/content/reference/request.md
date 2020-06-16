@@ -16,7 +16,7 @@ let request = new Request(input [, init])
 
 - `init` <TypeLink href="#requestinit">RequestInit</TypeLink> <PropMeta>optional</PropMeta>
 
-  - Optional options object that contains settings to apply to the `Request`. [Valid keys are listed below](#init-object).
+  - Optional options object that contains settings to apply to the `Request`.
 
 </Definitions>
 
