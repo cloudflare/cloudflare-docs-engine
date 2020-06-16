@@ -187,7 +187,7 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
 - `latitude` <Type>string | null</Type>
 
-- Latitude of the incoming request, e.g. `"30.27130"`.
+  - Latitude of the incoming request, e.g. `"30.27130"`.
 
 - `longitude` <Type>string | null</Type>
 
