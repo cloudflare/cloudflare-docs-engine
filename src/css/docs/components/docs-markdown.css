@@ -25,11 +25,36 @@
   --border-bottom-color-rgb: var(--orange-3-rgb);
   --border-bottom-color-alpha: .3;
   --background-color: rgba(var(--background-color-rgb), var(--background-color-alpha));
-  background-color: var(--background-color);
-  border-bottom: 1px solid rgba(var(--border-bottom-color-rgb), var(--border-bottom-color-alpha));
 
   --focus-shadow: 0 0 0 var(--focus-size) var(--focus-color);
   box-shadow: var(--focus-shadow);
+}
+
+.DocsMarkdown--link-content {
+  background-color: var(--background-color);
+  border-bottom: 1px solid rgba(var(--border-bottom-color-rgb), var(--border-bottom-color-alpha));
+}
+
+.DocsMarkdown--link-external-icon {
+  /* For pixel-fitted SVG */
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  margin-left: 4px;
+  opacity: .7;
+}
+
+.DocsMarkdown--link:focus .DocsMarkdown--link-external-icon {
+  opacity: 1;
+}
+
+@supports (hover: hover) {
+  .DocsMarkdown--link:hover .DocsMarkdown--link-external-icon {
+    opacity: 1;
+  }
 }
 
 [js-focus-visible-polyfill-available] .DocsMarkdown--link:focus {
@@ -48,17 +73,26 @@
   --background-color-alpha: .15;
 }
 
-.DocsMarkdown--link > code {
+.DocsMarkdown--link-content > code {
   --padding: 0;
   --background: transparent;
 }
 
 .DocsMarkdown--link[data-is-type-link="true"] {
+  display: inline-block;
+  height: .8em;
+}
+
+.DocsMarkdown--link[data-is-type-link="true"] .DocsMarkdown--link-content {
   background: transparent;
   border: none;
 }
 
-.DocsMarkdown--link[data-is-type-link="true"] > code {
+.DocsMarkdown--link[data-is-type-link="true"] .DocsMarkdown--link-external-icon {
+  top: 0;
+}
+
+.DocsMarkdown--link[data-is-type-link="true"] .DocsMarkdown--link-content > code {
   --color-rgb: var(--orange-3-rgb);
   --background: var(--background-color);
 }
