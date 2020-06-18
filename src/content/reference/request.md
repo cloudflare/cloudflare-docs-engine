@@ -2,51 +2,51 @@
 
 The `Request` interface represents an HTTP request, and is part of the Fetch API.
 
-The most common way you'll encounter `Request` objects is as a property of an incoming `FetchEvent`.
+## Background
 
-```javascript
+The most common way you’ll encounter a `Request` object is as a property of an incoming `FetchEvent`.
+
+```js
 ---
 highlight: [2,3]
 ---
-addEventListener('fetch', event => {
-  // event.request fulfills the Request interface
+addEventListener("fetch", event => {
+  // event.request is a Request object
   let request = event.request
+
   // ...
 })
 ```
 
-You may also want to construct a `Request` object yourself when you need to modify a request object, because a `FetchEvent`'s `request` property is immutable.
+You may also want to construct a `Request` yourself when you need to modify a request object, because a `FetchEvent`’s `request` property is immutable.
 
-```javascript
-addEventListener('fetch', event => {
-  let request = event.request
-  let url = "https://example.com"
-  let modifiedRequest = new Request(
-    url,
-    {
-      body: request.body,
-      headers: request.headers,
-      method: request.method,
-      redirect: request.redirect
-    }
-  )
+```js
+addEventListener("fetch", event => {
+  const request = event.request
+  const url = "https://example.com"
+
+  const modifiedRequest = new Request(url, {
+    body: request.body,
+    headers: request.headers,
+    method: request.method,
+    redirect: request.redirect
+  })
+
   // ...
 })
 ```
 
 The global `fetch` method itself invokes the `Request` constructor, thus the [`RequestInit`](#requestinit) and [`RequestInitCfProperties`](#requestinitcfproperties) types defined below also describe the valid parameters that can be passed to `fetch`.
 
-<Aside header="Learn More">
+<Aside header="Learn more">
 
-You can gain a higher-level understanding of the underlying concepts in
-[Understanding the FetchEvent Lifecycle](../learning/understanding-the-fetch-event-lifecycle) and
-[Understanding the Request Context](../learning/understanding-the-request-context).
+Read [Understanding the FetchEvent Lifecycle](../learning/understanding-the-fetch-event-lifecycle) and [Understanding the Request Context](../learning/understanding-the-request-context) for a deeper understanding of these fundamental Workers concepts.
 
 </Aside>
 
 ## Constructor
 
-```javascript
+```js
 let request = new Request(input [, init])
 ```
 
@@ -70,7 +70,7 @@ let request = new Request(input [, init])
 
 - `cf` <TypeLink href="#requestinitcfproperties">RequestInitCfProperties</TypeLink> <PropMeta>optional</PropMeta>
 
-  - Cloudflare-specific properties that can be set on the `Request` that control how Cloudflare's edge handles the request.
+  - Cloudflare-specific properties that can be set on the `Request` that control how Cloudflare’s edge handles the request.
 
 - `method` <Type>string</Type> <PropMeta>optional</PropMeta>
 
@@ -91,15 +91,14 @@ let request = new Request(input [, init])
 </Definitions>
 
 #### `RequestInitCfProperties`
-An object containing Cloudflare-specific properties that can be set on the `Request` object.
+An object containing Cloudflare-specific properties that can be set on the `Request` object. For example:
 
-For example:
-```javascript
+```js
 // Disable ScrapeShield for this request.
 fetch(event.request, { cf: { scrapeShield: false } })
 ```
 
-Invalid or incorrectly-named keys in the `cf` object will be silently ignored. Consider using TypeScript and [`@cloudflare/workers-types`](https://github.com/cloudflare/workers-types) to ensure you're using the `cf` object properly.
+Invalid or incorrectly-named keys in the `cf` object will be silently ignored. Consider using TypeScript and [`@cloudflare/workers-types`](https://github.com/cloudflare/workers-types) to ensure proper use of the `cf` object.
 
 <Definitions>
 
@@ -109,19 +108,19 @@ Invalid or incorrectly-named keys in the `cf` object will be silently ignored. C
 
 - `cacheEverything` <Type>boolean</Type> <PropMeta>optional</PropMeta>
 
-  - This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting the page rule ["Cache Level" (to "Cache Everything")](https://support.cloudflare.com/hc/en-us/articles/200172266). Defaults to `false`.
+  - This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting the page rule [“Cache Level” (to “Cache Everything”)](https://support.cloudflare.com/hc/en-us/articles/200172266). Defaults to `false`.
 
 - `cacheKey` <Type>string</Type> <PropMeta>optional</PropMeta>
 
-  - A request's cache key is what determines if two requests are "the same" for caching purposes. If a request has the same cache key as some previous request, then we can serve the same cached response for both.
+  - A request’s cache key is what determines if two requests are “the same” for caching purposes. If a request has the same cache key as some previous request, then we can serve the same cached response for both.
 
 - `cacheTtl` <Type>number</Type> <PropMeta>optional</PropMeta>
 
-  - This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting two page rules: ["Edge Cache TTL"](https://support.cloudflare.com/hc/en-us/articles/200168376-What-does-edge-cache-expire-TTL-mean-) and ["Cache Level" (to "Cache Everything")](https://support.cloudflare.com/hc/en-us/articles/200172266).
+  - This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting two page rules: [“Edge Cache TTL”](https://support.cloudflare.com/hc/en-us/articles/200168376-What-does-edge-cache-expire-TTL-mean-) and [“Cache Level” (to “Cache Everything”)](https://support.cloudflare.com/hc/en-us/articles/200172266).
 
 - `cacheTtlByStatus` <Type>{ [key: string]: number }</Type> <PropMeta>optional</PropMeta>
 
-  - This option is a version of the `cacheTtl` feature which chooses a TTL based on the response's status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time, and override cache instructives sent by the origin. For example: `{ "200-299": 86400, 404: 1, "500-599": 0 }`.
+  - This option is a version of the `cacheTtl` feature which chooses a TTL based on the response’s status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time, and override cache instructives sent by the origin. For example: `{ "200-299": 86400, 404: 1, "500-599": 0 }`.
 
 - `minify` <Type>{ javascript?: boolean; css?: boolean; html?: boolean; }</Type> <PropMeta>optional</PropMeta>
 
@@ -163,7 +162,7 @@ All properties of an incoming `Request` object (i.e. `event.request`) are read o
 
 - `cf` <TypeLink href="#incomingrequestcfproperties">IncomingRequestCfProperties</TypeLink> <PropMeta>read-only</PropMeta>
 
-  - An object containing properties about the incoming request provided by Cloudflare's edge network.
+  - An object containing properties about the incoming request provided by Cloudflare’s edge network.
 
 - `headers` <Type>Headers</Type> <PropMeta>read-only</PropMeta>
 
@@ -171,7 +170,7 @@ All properties of an incoming `Request` object (i.e. `event.request`) are read o
 
 - `method` <Type>string</Type> <PropMeta>read-only</PropMeta>
 
-  - Contains the request's method, e.g. `GET`, `POST`, etc.
+  - Contains the request’s method, e.g. `GET`, `POST`, etc.
 
 - `redirect` <Type>string</Type> <PropMeta>read-only</PropMeta>
 
@@ -185,7 +184,7 @@ All properties of an incoming `Request` object (i.e. `event.request`) are read o
 
 ### `IncomingRequestCfProperties`
 
-In addition to the properties on the standard [`Request`](/reference/apis/request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare's edge.
+In addition to the properties on the standard [`Request`](/reference/apis/request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare’s edge.
 
 <Definitions>
 
@@ -215,7 +214,7 @@ In addition to the properties on the standard [`Request`](/reference/apis/reques
 
 - `requestPriority` <Type>string | null</Type>
 
-  - The browser-requested prioritization information in the request object, e.g. `“weight=192;exclusive=0;group=3;group-weight=127”`.
+  - The browser-requested prioritization information in the request object, e.g. `"weight=192;exclusive=0;group=3;group-weight=127"`.
 
 - `city` <Type>string | null</Type>
 
@@ -295,19 +294,19 @@ These methods are only available on an instance of a `Request` object or through
 
 ## Examples
 
-- [Modify Request Property](/templates/pages/modify_req_props)
-- [Aggregate Requests](/templates/pages/aggregate_requests)
-- [Signed Request/Response](/templates/pages/signed_request)
+- [Modify request property](/templates/pages/modify_req_props)
+- [Aggregate requests](/templates/pages/aggregate_requests)
+- [Signed `Request`/`Response`](/templates/pages/signed_request)
 
 --------------------------------
 
 ## TODO
 
-- The "Random Notes" below need a home somewhere else, or a decision to punt.
+- The “Random Notes” below need a home somewhere else, or a decision to punt.
 
 ### Random Constructor Notes
 
-- If you expect Unicode values in your headers, URL or Base64 encode your header values before adding them to a Headers object.
+- If you expect Unicode values in your headers, URL- or Base64-encode your header values before adding them to a Headers object.
 
 - `CF-Connecting-IP`: A Cloudflare specific header to specify the client IP
 
@@ -321,11 +320,11 @@ These methods are only available on an instance of a `Request` object or through
 
 - `cacheTtl` <Type>number</Type>
 
-  - This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting two page rules: ["Edge Cache TTL"](https://support.cloudflare.com/hc/en-us/articles/200168376-What-does-edge-cache-expire-TTL-mean-) and ["Cache Level" (to "Cache Everything")](https://support.cloudflare.com/hc/en-us/articles/200172266).
+  - This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting two page rules: [“Edge Cache TTL”](https://support.cloudflare.com/hc/en-us/articles/200168376-What-does-edge-cache-expire-TTL-mean-) and [“Cache Level” (to “Cache Everything”)](https://support.cloudflare.com/hc/en-us/articles/200172266).
 
 - `cacheTtlByStatus` <Type>{ [key: string]: number }</Type>
 
-  - This option is a version of the `cacheTtl` feature which chooses a TTL based on the response's status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time, and override cache instructives sent by the origin. (e.g. `{ "200-299": 86400, 404: 1, "500-599": 0 }`) _Note - Cloudflare will still adhere to [standard cache levels](https://support.cloudflare.com/hc/en-us/articles/202775670-How-Do-I-Tell-Cloudflare-What-to-Cache-), so by default this will override cache behavior for static files. If you wish to cache non-static assets, you will need to set a [Cache Level of Cache Everything](https://support.cloudflare.com/hc/en-us/articles/200172266-What-do-the-custom-caching-options-mean-in-Page-Rules-) using a Page Rule._
+  - This option is a version of the `cacheTtl` feature which chooses a TTL based on the response’s status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time, and override cache instructives sent by the origin. (e.g. `{ "200-299": 86400, 404: 1, "500-599": 0 }`) _Note - Cloudflare will still adhere to [standard cache levels](https://support.cloudflare.com/hc/en-us/articles/202775670-How-Do-I-Tell-Cloudflare-What-to-Cache-), so by default this will override cache behavior for static files. If you wish to cache non-static assets, you will need to set a [Cache Level of Cache Everything](https://support.cloudflare.com/hc/en-us/articles/200172266-What-do-the-custom-caching-options-mean-in-Page-Rules-) using a Page Rule._
 
 - `resolveOverride` <Type>string</Type>
 
