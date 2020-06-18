@@ -51,7 +51,7 @@
   opacity: 1;
 }
 
-@supports (hover: hover) {
+@media (hover: hover) {
   .DocsMarkdown--link:hover .DocsMarkdown--link-external-icon {
     opacity: 1;
   }
