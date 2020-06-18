@@ -17,15 +17,11 @@
 .DocsMarkdown--link {
   text-decoration: none;
   color: inherit;
-
-  /* TODO */
-  /*color: rgb(3, 102, 214);*/
   --background-color-rgb: var(--orange-rgb);
   --background-color-alpha: .08;
   --border-bottom-color-rgb: var(--orange-3-rgb);
   --border-bottom-color-alpha: .3;
   --background-color: rgba(var(--background-color-rgb), var(--background-color-alpha));
-
   --focus-shadow: 0 0 0 var(--focus-size) var(--focus-color);
   box-shadow: var(--focus-shadow);
 }
@@ -98,7 +94,7 @@
   --background-color-alpha: .03;
   --border-bottom-color-rgb: var(--orange-rgb);
   --border-bottom-color-alpha: .35;
-  color: var(--code-orange); /* TODO */
+  color: var(--code-orange);
 }
 
 [theme="dark"] .DocsMarkdown--link:hover {
