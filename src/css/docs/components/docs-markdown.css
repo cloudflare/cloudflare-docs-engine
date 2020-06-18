@@ -78,11 +78,6 @@
   --background: transparent;
 }
 
-.DocsMarkdown--link[data-is-type-link="true"] {
-  display: inline-block;
-  height: .8em;
-}
-
 .DocsMarkdown--link[data-is-type-link="true"] .DocsMarkdown--link-content {
   background: transparent;
   border: none;
