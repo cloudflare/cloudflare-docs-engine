@@ -20,11 +20,11 @@ const instance = new Class()
 
 <Definitions>
 
-- `instance.title` <Type>string</Type>
+- `instance.title` <Type>string</Type> <PropMeta>read-only</PropMeta>
 
   - The title of the instance
 
-- `instance.visible` <Type>boolean</Type>
+- `instance.visible` <Type>boolean</Type> <PropMeta>read-only</PropMeta>
 
   - Boolean indicating if the instance is visible
 
