@@ -84,7 +84,7 @@
 }
 
 .DocsMarkdown--link[data-is-type-link="true"] .DocsMarkdown--link-external-icon {
-  top: 0;
+  top: 1px;
 }
 
 .DocsMarkdown--link[data-is-type-link="true"] .DocsMarkdown--link-content > code {
@@ -315,8 +315,11 @@ p.DocsMarkdown--small-header {
 }
 
 .DocsMarkdown--definitions > ul > li > code:first-child,
-.DocsMarkdown--definitions > ul > li > p > code:first-child {
+.DocsMarkdown--definitions > ul > li > p:first-child > code:first-child {
+  display: inline-block;
+  vertical-align: middle;
   font-weight: 600;
+  --padding: 0 .3em;
 }
 
 .DocsMarkdown--definitions > ul > li > ul {
