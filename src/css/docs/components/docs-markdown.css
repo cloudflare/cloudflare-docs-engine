@@ -83,8 +83,10 @@
   border: none;
 }
 
-.DocsMarkdown--link[data-is-type-link="true"] .DocsMarkdown--link-external-icon {
-  top: 1px;
+@media (min-width: 1025px) {
+  .DocsMarkdown--link[data-is-type-link="true"] .DocsMarkdown--link-external-icon {
+    top: 1px;
+  }
 }
 
 .DocsMarkdown--link[data-is-type-link="true"] .DocsMarkdown--link-content > code {
