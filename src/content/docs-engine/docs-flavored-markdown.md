@@ -206,7 +206,7 @@ This is an example _of an example_.
 
 --------------------------------
 
-## Definitions, Code, Type, ParamType
+## Definitions, Code, Type, ... PropMeta
 
 When writing reference documentation, there are four MDX components that you use `Definitions`, `Code`, `Type`, and `ParamType` in conjuction with eachother. All of these components are added to the global scope, so you do not need to import them.
 
@@ -230,11 +230,19 @@ Here are some self-exemplifying definitions:
 
 - `<Type/>` <Type>MDXComponent</Type>
 
-  - Displays a type `MDXComponent`, meant to be optionally used after a code block.
+  - Displays a type, meant to be optionally used after a `<Code/>` inside a definition.
 
-- <Code>{"<"}ParamType<ParamType>{"{children}"}</ParamType>{"/>"}</Code> <Type>MDXComponent</Type>
+- `<TypeLink href/>` <TypeLink href="https://mdxjs.com/advanced/typescript">MDXComponent</TypeLink>
 
-  - How you describe the type of a param inside of code block.
+  - Same as `Type`, but wrapped in a link.
+
+- <Code>{"<"}ParamType{" {children"}<ParamType>JSX | Markdown</ParamType>{"}"}/></Code> <Type>MDXComponent</Type>
+
+  - How you describe the types inside `<Code/>` blocks.
+
+- `<PropMeta/>` <Type>MDXComponent</Type> <PropMeta>optional</PropMeta>
+
+  - Used for displaying “optional” or “required” or other meta-information related to a prop inside a definition.
 
 </Definitions>
 
@@ -253,16 +261,24 @@ Here’s the code for this set of definitions.
 
 - `<Type/>` <Type>MDXComponent</Type>
 
-  - Displays a type `MDXComponent`, meant to be optionally used after a code block.
+  - Displays a type, meant to be optionally used after a `<Code/>` inside a definition.
 
-- <Code>{"<"}ParamType<ParamType>{"{children}"}</ParamType>{"/>"}</Code> <Type>MDXComponent</Type>
+- `<TypeLink href/>` <TypeLink href="https://mdxjs.com/advanced/typescript">MDXComponent</TypeLink>
 
-  - How you describe the type of a param inside of code block.
+  - Same as `Type`, but wrapped in a link.
+
+- <Code>{"<"}ParamType{" {children"}<ParamType>JSX | Markdown</ParamType>{"}"}/></Code> <Type>MDXComponent</Type>
+
+  - How you describe the types inside `<Code/>` blocks.
+
+- `<PropMeta/>` <Type>MDXComponent</Type> <PropMeta>optional</PropMeta>
+
+  - Used for displaying “optional” or “required” or other meta-information related to a prop inside a definition.
 
 </Definitions>
 ```
 
-Instructions for composing reference documention:
+Instructions for composing reference documentation:
 
 1. First wrap everything inside of `<Definitions>`. Note that MDX requires that you include a new line before and after each block-style MDX tag.
 
@@ -304,21 +320,25 @@ Instructions for composing reference documention:
           - ...
       ```
 
+    - After an optional `<Type/>`, optionally include a `<PropMeta/>`.
+      - Used for displaying “optional” or “required” when describing constructor parameters.
+      - Can also be used for displaying other single-word meta-information about a property, e.g. “read-only”.
+
     - After the term, indent and add an unordered list, containing only one list item which contains the definition of the term.
 
 Here’s an actual example from the HTMLRewriter docs which puts this all together:
 
 > <Definitions>
 >
-> - <Code>getAttribute(name<ParamType>String</ParamType>)</Code> <Type>String | null</Type>
+> - <Code>getAttribute(name<ParamType>string</ParamType>)</Code> <Type>string | null</Type>
 >
 >   - Returns the value for a given attribute name on the element, or `null` if it isn’t found.
 >
-> - <Code>hasAttribute(name<ParamType>String</ParamType>)</Code> <Type>Boolean</Type>
+> - <Code>hasAttribute(name<ParamType>string</ParamType>)</Code> <Type>boolean</Type>
 >
 >   - Returns a boolean indicating whether an attribute exists on the element.
 >
-> - <Code>removeAttribute(name<ParamType>String</ParamType>)</Code> <Type>Element</Type>
+> - <Code>removeAttribute(name<ParamType>string</ParamType>)</Code> <Type>Element</Type>
 >
 >   - Removes the attribute.
 >
