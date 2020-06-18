@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Cloudflare <github@cloudflare.com>",
   "dependencies": {
-    "@cloudflare/workers-brand-assets": "1.2.0",
+    "@cloudflare/workers-brand-assets": "1.3.0",
     "@material-ui/core": "^4.9.14",
     "@mdx-js/mdx": "^1.6.1",
     "@mdx-js/react": "^1.6.1",
