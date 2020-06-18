@@ -56,7 +56,7 @@ let request = new Request(input [, init])
 
 - `input` <Type>string | Request</Type>
 
-  - Either a String that contains a URL, or an existing `Request` object.
+  - Either a string that contains a URL, or an existing `Request` object.
 
 - `init` <TypeLink href="#requestinit">RequestInit</TypeLink> <PropMeta>optional</PropMeta>
 
