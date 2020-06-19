@@ -8,11 +8,10 @@ The most common way you’ll encounter a `Request` object is as a property of an
 
 ```js
 ---
-highlight: [2,3]
+highlight: [2]
 ---
 addEventListener("fetch", event => {
-  // event.request is a Request object
-  let request = event.request
+  let request = event.request // Request object
 
   // ...
 })
