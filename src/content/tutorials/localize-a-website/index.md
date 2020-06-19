@@ -27,19 +27,13 @@ If you’d like to deploy your own version of the site, you can find the source 
 
 To generate a new project, we’ll use `wrangler generate --site` to create a new application, calling it `i18n-example`:
 
-```sh
-$ wrangler generate i18n-example --site
-$ cd i18n-example
-```
+<pre class="CodeBlock CodeBlock-scrolls-horizontally" language="sh"><code><u><b class="CodeBlock--token-directory">~/</b> <b class="CodeBlock--token-prompt">$</b> </u>wrangler generate i18n-example --site<br/><u><b class="CodeBlock--token-directory">~/</b> <b class="CodeBlock--token-prompt">$</b> </u>cd i18n-example<br/><u><b class="CodeBlock--token-directory">~/i18n-example</b> <b class="CodeBlock--token-prompt">$</b></u></code></pre>
 
 The `--site` flag indicates to Wrangler that we want to build a [Workers Sites](/sites) project—this means that there will be both a “site” component, the static HTML that we want to serve to the user, and a Workers script. Inside the Workers script we can customize the HTML response using `HTMLRewriter`.
 
 The newly generated `i18n-example` project will contain two folders: `public`, which is our static HTML, and `workers-site`:
 
-```sh
-$ ls i18n-example
-public		workers-site	wrangler.toml
-```
+<pre class="CodeBlock CodeBlock-scrolls-horizontally" language="sh"><code><u><b class="CodeBlock--token-directory">~/i18n-example</b> <b class="CodeBlock--token-prompt">$</b> </u>ls<br/><u><b class="CodeBlock--token-value">public    workers-site  wrangler.toml</b></u></code></pre>
 
 Inside of `public`, we should replace the default generated HTML code with the HTML5 UP template seen in the demo screenshot: you can download a [release](https://github.com/signalnerve/i18n-example-workers/archive/v1.0.zip) (ZIP link) of the code for this project and copy the `public` folder to your own project to get started.
 
@@ -160,9 +154,7 @@ To implement this, we’ll update the `strings` object, adding a second layer of
 
 To parse the `Accept-Language` header, we’ll install the [`accept-language-parser`](https://www.npmjs.com/package/accept-language-parser) NPM package:
 
-```sh
-$ npm i accept-language-parser
-```
+<pre class="CodeBlock CodeBlock-scrolls-horizontally" language="sh"><code><u><b class="CodeBlock--token-directory">~/i18n-example</b> <b class="CodeBlock--token-prompt">$</b> </u>npm i accept-language-parser</code></pre>
 
 Once imported into our code, we can use it to parse the most relevant language for a client based on `Accept-Language` header, and pass it to `ElementHandler`. Our final code for the project, with an included sample translation for Germany (using Google Translate) looks like this:
 
@@ -278,9 +270,7 @@ entry-point = "workers-site"
 
 With that, it’s time to publish your application! Using `wrangler`, we can publish to Cloudflare’s entire network almost instantly, using the `publish` command:
 
-```sh
-$ wrangler publish
-```
+<pre class="CodeBlock CodeBlock-scrolls-horizontally" language="sh"><code><u><b class="CodeBlock--token-directory">~/i18n-example</b> <b class="CodeBlock--token-prompt">$</b> </u>wrangler publish</code></pre>
 
 [![Demo Image](./media/i18n.jpg)](https://i18n-example.workers-tooling.cf)
 
