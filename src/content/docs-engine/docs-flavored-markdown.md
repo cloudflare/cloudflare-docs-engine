@@ -31,7 +31,7 @@ frontmatter {
 
 ### Title
 
-By default the title used in the sidebar and for the document title will automatically be generated from the page’s `h1` (set with `# Title` in Markdown.
+By default the title used in the sidebar and for the document title will automatically be generated from the page’s `h1` (set with `# Title` in Markdown).
 
 If you would like to use a different title in these places—for example, if you want to use a shortened title in the sidebar for space reasons—you may do so by setting the optional `title` frontmatter property, and it will override the `h1`.
 
