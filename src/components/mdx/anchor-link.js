@@ -9,6 +9,8 @@ const externalIconClassName = `${linkClassName}-external-icon`
 import ExternalLinkIcon from "../icons/external-link"
 
 export default ({ href, className, children, ...props }) => {
+  if (!href || !children) return (<a {...props}/>)
+
   const isExternal = !!href.match(/^https?:/)
   const isHash = href.indexOf("#") === 0
 
