@@ -643,6 +643,24 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   margin-bottom: .5em;
 }
 
+.DocsMarkdown sup {
+  font-size: .8em;
+  vertical-align: baseline;
+  position: relative;
+  top: -.35em;
+}
+
+.DocsMarkdown sub {
+  font-size: .8em;
+  vertical-align: baseline;
+  position: relative;
+  top: .35em;
+}
+
+.DocsMarkdown var {
+  font-style: italic;
+}
+
 .DocsMarkdown kbd {
   font-family: inherit;
   font-size: .9em;
@@ -666,6 +684,11 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   margin: -.5em auto 1.25em;
   border: 1px solid rgba(var(--color-rgb), .1);
   border-radius: .125em;
+}
+
+.DocsMarkdown--example hr {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .DocsMarkdown > *:first-child,
