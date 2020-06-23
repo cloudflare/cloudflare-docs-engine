@@ -523,6 +523,60 @@ Check out the dedicated [code block examples](/docs-engine/code-block-examples) 
 
 --------------------------------
 
+## Subscript, superscript, variables
+
+Just use `<sub/>`, `<sup/>`, and `<var/>` as expected.
+
+Use `<sub/>` for mathatical bases or in chemical formulas.
+
+<Example>
+
+<center>1111 = 10001010111<sub>2</sub></center>
+
+</Example>
+
+```markdown
+<center>1111 = 10001010111<sub>2</sub></center>
+```
+
+<Example>
+
+Don’t consume too much C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>.
+
+</Example>
+
+```markdown
+Don’t consume too much C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>.
+```
+
+You can use `<var/>` and `<sup/>` to construct an equations.
+
+<Example>
+
+<center><var>a</var><sup>2</sup> + <var>b</var><sup>2</sup> = <var>c</var><sup>2</sup></center>
+
+</Example>
+
+```markup
+<center><var>a</var><sup>2</sup> + <var>b</var><sup>2</sup> = <var>c</var><sup>2</sup></center>
+```
+
+Use `<sup/>` with links to manually construct footnotes.
+
+<Example>
+
+It’s almost always<sup><a href="#footnote-1">1</a></sup> the case that things work out.
+
+----------------
+
+__Footnotes:__
+
+1. <a name="footnote-1"></a> Well, not always.
+
+</Example>
+
+--------------------------------
+
 ## Keyboard commands
 
 When you want to display a keyboard command, use a `<kbd/>` element. For example:
