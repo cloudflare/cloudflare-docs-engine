@@ -529,7 +529,8 @@ When you want to display a keyboard command, use a `<kbd/>` element. For example
 
 <Example>
 
-Press <kbd>⌘</kbd> <kbd>F</kbd> (Command-F) to search for text within this document.
+Press <kbd>⌘</kbd> <kbd>F</kbd> (Command-F) to
+search for text within this document.
 
 </Example>
 
