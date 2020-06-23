@@ -643,18 +643,18 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   margin-bottom: .5em;
 }
 
-.DocsMarkdown sup {
-  font-size: .8em;
-  vertical-align: baseline;
-  position: relative;
-  top: -.35em;
-}
-
 .DocsMarkdown sub {
   font-size: .8em;
   vertical-align: baseline;
   position: relative;
   top: .35em;
+}
+
+.DocsMarkdown sup {
+  font-size: .8em;
+  vertical-align: baseline;
+  position: relative;
+  top: -.35em;
 }
 
 .DocsMarkdown var {
