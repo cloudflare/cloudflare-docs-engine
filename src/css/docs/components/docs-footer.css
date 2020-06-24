@@ -17,3 +17,14 @@
 .DocsFooter--content {
   display: flex;
 }
+
+@media (max-width: 414px) {
+  .DocsFooter--edit-on-gh-link-wrapper {
+    display: block;
+    margin-bottom: .5em;
+  }
+
+  .DocsFooter--content-dot-spacer {
+    display: none;
+  }
+}
