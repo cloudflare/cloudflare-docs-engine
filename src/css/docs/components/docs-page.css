@@ -58,4 +58,8 @@ html[is-docs-page] body {
     --docs-header-height: 3rem;
     padding-top: var(--docs-header-height);
   }
+
+  html[is-docs-page][is-mobile-sidebar-open] {
+    overflow: hidden;
+  }
 }

@@ -7,6 +7,7 @@ import "@reach/skip-nav/styles.css"
 import Helmet from "react-helmet"
 import SEO from "./seo"
 
+import HandleMobilePageNavigations from "./handle-mobile-page-navigations"
 import SmoothScrollHashChanges from "./smooth-scroll-hash-changes"
 import Breadcrumbs from "./breadcrumbs"
 
@@ -36,6 +37,7 @@ const DocsPage = ({ pageContext: page, children, location }) => {
         <html is-docs-page=""/>
       </Helmet>
 
+      <HandleMobilePageNavigations/>
       <SmoothScrollHashChanges/>
 
       <SkipNavLink contentId="docs-content" className="SkipNavLink"/>
@@ -43,6 +45,7 @@ const DocsPage = ({ pageContext: page, children, location }) => {
       <div className="DocsPage">
         <DocsMobileHeader/>
         <DocsMobileTitleHeader/>
+        <div className="DocsMobileNavBackdrop"/>
         <DocsSidebar/>
         <DocsToolbar/>
 
