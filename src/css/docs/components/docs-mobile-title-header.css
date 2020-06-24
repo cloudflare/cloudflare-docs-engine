@@ -40,7 +40,6 @@
 }
 
 @media (hover: none) {
-  /* TODO - test */
   .DocsMobileTitleHeader--logo-link:active {
     opacity: .75;
     color: rgba(var(--color-rgb), .75);
