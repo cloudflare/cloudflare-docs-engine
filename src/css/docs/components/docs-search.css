@@ -125,6 +125,7 @@
   box-shadow: var(--box-shadow), var(--backdrop-box-shadow);
 
   border-radius: 0 0 .5em .5em;
+  will-change: opacity;
   transition: opacity .15s ease;
 }
 
