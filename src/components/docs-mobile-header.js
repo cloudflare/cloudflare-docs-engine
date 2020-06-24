@@ -7,6 +7,7 @@ const DocsMobileHeader = () => (
   <div className="DocsMobileHeader">
     <a className="DocsMobileHeader--cloudflare-logo-link Link Link-without-underline" href="https://docs.cloudflare.com">
       <DocsNavLogoLockup
+        small={true}
         logo={<CloudflareLogo/>}
         text={(
           <>

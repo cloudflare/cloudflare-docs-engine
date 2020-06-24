@@ -1,7 +1,11 @@
 import React from "react"
+import PropTypes from "prop-types"
 
-const DocsNavLogoLockup = ({ logo, text }) => (
-  <div className="DocsNavLogoLockup">
+const DocsNavLogoLockup = ({ logo, text, small }) => (
+  <div className={
+    "DocsNavLogoLockup" +
+    (small ? " DocsNavLogoLockup-with-small-gap" : "")
+   }>
     <div className="DocsNavLogoLockup--logo">
       {logo}
     </div>
@@ -10,5 +14,9 @@ const DocsNavLogoLockup = ({ logo, text }) => (
     </span>
   </div>
 )
+
+DocsNavLogoLockup.defaultProps = {
+  small: false
+}
 
 export default DocsNavLogoLockup
