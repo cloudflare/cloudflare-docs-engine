@@ -54,11 +54,11 @@
 }
 
 .DocsMobileTitleHeader--sidebar-toggle-button {
-  margin-left: auto;
-  padding: 0;
   /* For pixel-fitted SVG */
   width: 40px;
   height: 40px;
+  margin-left: auto;
+  padding: 0;
 }
 
 .DocsMobileTitleHeader--sidebar-toggle-button path {
