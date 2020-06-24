@@ -10,7 +10,7 @@
   background: var(--background-color);
   box-shadow: 0 1px rgba(var(--shadow-color-rgb), .075), 0 .2em .3em -.1em rgba(var(--shadow-color-rgb), .075);
   z-index: 10;
-  --content-indent: .75em;
+  --content-indent: .666em;
 }
 
 [theme="dark"] .DocsMobileTitleHeader {
