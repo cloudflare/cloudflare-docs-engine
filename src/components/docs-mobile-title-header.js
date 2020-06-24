@@ -15,6 +15,8 @@ const DocsMobileTitleHeader = () => (
       <DocsNavLogoLockup
         small={true}
         logo={<DocsProductLogo/>}
+        scaleTextClassName="DocsMobileTitleHeader--text-scaler"
+        textLength={DocsTitle().length}
         text={<DocsTitle/>}
       />
     </Link>

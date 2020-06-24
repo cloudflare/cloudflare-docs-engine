@@ -47,6 +47,13 @@
   }
 }
 
+.DocsMobileTitleHeader--text-scaler {
+  /* --length set by React */
+  --font-size: 1em * (1 - ((var(--length) - 10) / 50));
+  font-size: clamp(.7em, var(--font-size), 1em);
+  display: inherit;
+}
+
 .DocsMobileTitleHeader--sidebar-toggle-button {
   margin-left: auto;
   padding: 0;

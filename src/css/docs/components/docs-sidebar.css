@@ -198,6 +198,13 @@
   color: rgba(var(--color-rgb), .75);
 }
 
+.DocsSidebar--docs-title-text-scaler {
+  /* --length set by React */
+  --font-size: 1em * (1 - ((var(--length) - 10) / 20));
+  font-size: clamp(.7em, var(--font-size), 1em);
+  display: inherit;
+}
+
 .DocsSidebar--section-more {
   position: absolute;
   right: .75em;
