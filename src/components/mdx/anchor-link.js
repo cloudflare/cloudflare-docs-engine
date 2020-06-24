@@ -6,7 +6,7 @@ const linkClassName = className("link")
 const contentClassName = `${ linkClassName }-content`
 const externalIconClassName = `${linkClassName}-external-icon`
 
-import ExternalLinkIcon from "../icons/external-link"
+import IconExternalLink from "../icons/external-link"
 
 export default ({ href, className, children, ...props }) => {
   if (!href || !children) return (<a {...props}/>)
@@ -20,7 +20,7 @@ export default ({ href, className, children, ...props }) => {
     isExternal ? (
       <a href={href} className={className || linkClassName} {...props}>
         <span className={contentClassName}>{children}</span>
-        <ExternalLinkIcon className={externalIconClassName}/>
+        <IconExternalLink className={externalIconClassName}/>
       </a>
     ) : (
       <a href={href} className={className || linkClassName} {...props}>
