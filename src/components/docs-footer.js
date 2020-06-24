@@ -16,10 +16,18 @@ export default ({ page }) => {
     <footer className="DocsFooter">
       <div className="DocsFooter--content">
         <div>
-          <AnchorLink href={editOnGithubURL}>Edit on Github</AnchorLink>
-          {" "}&nbsp; · &nbsp;{" "}
-          Updated{" "}
-          <TimeAgo date={modifiedTime} minPeriod={60}/>
+          <span className="DocsFooter--edit-on-gh-link-wrapper">
+            <AnchorLink href={editOnGithubURL}>Edit on Github</AnchorLink>
+          </span>
+
+          <span className="DocsFooter--content-dot-spacer">
+            {" "}&nbsp; · &nbsp;{" "}
+          </span>
+
+          <span className="DocsFooter--content-time">
+            Updated{" "}
+            <TimeAgo date={modifiedTime} minPeriod={60}/>
+          </span>
         </div>
       </div>
     </footer>
