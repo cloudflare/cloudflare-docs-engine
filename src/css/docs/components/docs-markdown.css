@@ -473,6 +473,7 @@ p.DocsMarkdown--small-header {
   --background-color-alpha: .2;
 }
 
+.DocsMarkdown a[name]:not([href])::before,
 .DocsMarkdown h2[id]::before,
 .DocsMarkdown h3[id]::before,
 .DocsMarkdown h4[id]::before,
@@ -488,6 +489,7 @@ p.DocsMarkdown--small-header {
 }
 
 @media (max-width: 768px) {
+  .DocsMarkdown a[name]:not([href])::before,
   .DocsMarkdown h2[id]::before,
   .DocsMarkdown h3[id]::before,
   .DocsMarkdown h4[id]::before,
