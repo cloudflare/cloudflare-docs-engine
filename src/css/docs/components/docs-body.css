@@ -8,6 +8,12 @@
   .DocsBody {
     padding-top: 0;
     padding-left: 0;
+    will-change: opacity;
+    transition: opacity .3s ease;
+  }
+
+  [is-mobile-sidebar-open] .DocsBody {
+    opacity: .3;
   }
 }
 
