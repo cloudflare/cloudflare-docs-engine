@@ -14,6 +14,8 @@ const DocsSidebarTitleSection = () => (
     <Link className="DocsSidebar--docs-title-logo-link DocsSidebar--link" to="/">
       <DocsNavLogoLockup
         logo={<DocsProductLogo/>}
+        scaleTextClassName="DocsSidebar--docs-title-text-scaler"
+        textLength={DocsTitle().length}
         text={<DocsTitle/>}
       />
     </Link>
