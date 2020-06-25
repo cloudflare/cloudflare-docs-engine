@@ -60,7 +60,11 @@ const getTheme = () => {
 }
 
 const setTheme = theme => {
+  document.documentElement.setAttribute("theme-is-changing", "")
   document.documentElement.setAttribute("theme", theme)
+  requestAnimationFrame(() => {
+    document.documentElement.removeAttribute("theme-is-changing")
+  })
 }
 
 const storeTheme = theme => {
