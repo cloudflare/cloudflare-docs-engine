@@ -8,6 +8,7 @@ import Helmet from "react-helmet"
 import SEO from "./seo"
 
 import HandleMobilePageNavigations from "./handle-mobile-page-navigations"
+import BrowserResizeTracking from "./browser-resize-tracking"
 import SmoothScrollHashChanges from "./smooth-scroll-hash-changes"
 import Breadcrumbs from "./breadcrumbs"
 
@@ -38,6 +39,7 @@ const DocsPage = ({ pageContext: page, children, location }) => {
       </Helmet>
 
       <HandleMobilePageNavigations/>
+      <BrowserResizeTracking/>
       <SmoothScrollHashChanges/>
 
       <SkipNavLink contentId="docs-content" className="SkipNavLink"/>
