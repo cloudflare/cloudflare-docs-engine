@@ -30,6 +30,8 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-remove-trailing-slashes",
 
+    
+
     // Sets page.updatedAt to the author time of last commit (https://git.io/JfPCj)
     "saber-plugin-git-modification-time",
 
@@ -57,6 +59,8 @@ module.exports = {
               maxWidth: 1382,
             },
           },
+          // Copies linked files from Markdown to public directory (ie for gifs)
+          `gatsby-remark-copy-linked-files`,
         ],
         remarkPlugins: [require("remark-slug")]
       }
