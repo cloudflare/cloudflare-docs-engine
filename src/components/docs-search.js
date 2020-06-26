@@ -64,6 +64,17 @@ const DocsSearch = () => {
       search.autocomplete.on("autocomplete:closed", event => {
         autocompleteWrapper.setAttribute("data-expanded", false)
       })
+
+      const input = search.input[0]
+      const wrapper = input.closest(".DocsSearch")
+
+      input.addEventListener("focus", () => {
+        wrapper.setAttribute("is-focused", "")
+      })
+
+      input.addEventListener("blur", () => {
+        wrapper.removeAttribute("is-focused")
+      })
     }
 
     init()
