@@ -279,3 +279,60 @@
   padding-right: .25em;
   opacity: .5;
 }
+
+@media (max-width: 768px) {
+  .DocsSearch {
+    pointer-events: all;
+  }
+
+  .DocsSearch--input:not(:focus) {
+    padding: 0;
+    opacity: 0;
+  }
+
+  .DocsSearch[is-focused] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    --text-indent: 3rem;
+    z-index: 2;
+  }
+
+  .DocsSearch--input-icon {
+    left: 15px;
+    height: 15px;
+    width: 15px;
+  }
+
+  .DocsSearch--input-wrapper:focus-within .DocsSearch--input-icon {
+    left: 19px;
+  }
+
+  .DocsSearch[is-focused] .DocsSearch--input-wrapper {
+    background: var(--background-color);
+    height: var(--docs-header-height);
+  }
+
+  .DocsSearch--input-bottom-border {
+    display: none;
+  }
+
+  .DocsSearch .algolia-autocomplete {
+    position: fixed;
+    top: var(--docs-header-height);
+    width: 100% !important;
+  }
+
+  @supports ((-webkit-backdrop-filter: blur(1em)) or (backdrop-filter: blur(1em))) {
+    .DocsSearch .algolia-autocomplete {
+      background: var(--background-color);
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+
+    [theme="dark"] .DocsSearch .algolia-autocomplete {
+      background: var(--background-color);
+    }
+  }
+}
