@@ -2,8 +2,7 @@
 
 Debugging is a critical part of developing a new application — whether running code in the initial stages of development, or trying to understand an issue occurring in production. In this article, we will walk you through how to effectively debug your Workeres application, as well as provide some code samples to help you get up and running:
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8iPmy7ePYDE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<YouTube id="8iPmy7ePYDE"/>
 
 
 ## Local testing with `wrangler dev`
