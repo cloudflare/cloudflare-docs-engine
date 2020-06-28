@@ -122,7 +122,9 @@ A Worker can make HTTP requests to any HTTP service on the public internet. You 
 When logging using this strategy, remember that outstanding asynchronous tasks are canceled as soon as a Worker finishes sending its main response body to the client. To ensure that a logging subrequest completes, you can pass the request promise to [`event.waitUntil()`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil). For example:
 
 ```javascript
-   ...
+addEventListener("fetch", event => {
+  // ...
+
   // Without event.waitUntil(), our fetch() to our logging service may
   // or may not complete.
   event.waitUntil(postLog(stack))
@@ -130,8 +132,8 @@ When logging using this strategy, remember that outstanding asynchronous tasks a
 }
 
 function postLog(data) {
-  return fetch('https://log-service.example.com/', {
-    method: 'POST',
+  return fetch("https://log-service.example.com/", {
+    method: "POST",
     body: data,
   })
 }
@@ -142,7 +144,7 @@ function postLog(data) {
 By using `event.passThroughOnException`, your Workers application will pass requests to your origin if it throws an exception. This allows you to add logging, tracking, or other features with Workers, without degrading your website's functionality.
 
 ```javascript
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.passThroughOnException()
 
   event.respondWith(handleRequest(event.request))
@@ -150,7 +152,7 @@ addEventListener('fetch', event => {
 
 async function handleRequest(request) {
   // An error here will return the origin response, as if the Worker wasn’t present.
-  ...
+  // ...
   return fetch(request)
 }
 ```
