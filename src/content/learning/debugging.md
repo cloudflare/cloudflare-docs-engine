@@ -110,13 +110,13 @@ Other 11xx errors generally indicate a problem with the Workers runtime itself â
 
 Additionally, you can find out whether your application is experiencing any downtime, or returning any errors by navigating to Workers Metrics in the dashboard. 
 
-// TO DO: include screenshots
+<!-- TODO: include screenshots -->
 
 ### Debugging exceptions
 
 Once you've identified your Workers application is returning exceptions, you can use `wrangler tail` to inspect, and fix the exceptions. 
 
-// TO DO: include example. 
+<!-- TODO: include example -->
 
 Exceptions will show up under the `exceptions` field in the JSON returned by `wrangler tail`. Once you've identified the exception that is causing errors, you may redeploy your code with a fix, and continue trailing the logs to confirm that it is indeed fixed. 
 
