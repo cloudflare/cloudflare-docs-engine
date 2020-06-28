@@ -4,6 +4,7 @@ Debugging is a critical part of developing a new application — whether running
 
 <YouTube id="8iPmy7ePYDE"/>
 
+--------------------------------
 
 ## Local testing with `wrangler dev`
 
@@ -49,6 +50,8 @@ Inserting `console.log` lines throughout your code can help you understand the s
 
 You can customize how `wrangler dev` works to fit your needs: see [the docs](/tooling/wrangler/commands/#dev-alpha-) for available configuration options.
 
+--------------------------------
+
 ## Accessing production logs with `wrangler tail`
 
 With your Workers application deployed, you may want to inspect incoming traffic. This can be useful for situations where a user is running into issues or errors that you can't reproduce. `wrangler tail` allows developers to "tail" their Workers application's logs, giving you real-time access to information about incoming requests.
@@ -85,6 +88,8 @@ $ wrangler tail | jq .event.request.url
 ```
 
 You can customize how `wrangler tail` works to fit your needs: see [the docs](/tooling/wrangler/commands/#tail) for available configuration options.
+
+--------------------------------
 
 ## Identifying and handling errors and exceptions
 
