@@ -8,7 +8,7 @@ Debugging is a critical part of developing a new application — whether running
 
 ## Local testing with `wrangler dev`
 
-When you're developing your Workers application, `wrangler dev` can significantly reduce the time it takes to testing and debugging new features. It can help you get feedback quickly while iterating, by easily exposing logs on localhost, and allows you to experiment easily without deploying to production.
+When you’re developing your Workers application, `wrangler dev` can significantly reduce the time it takes to testing and debugging new features. It can help you get feedback quickly while iterating, by easily exposing logs on localhost, and allows you to experiment easily without deploying to production.
 
 To get started, run `wrangler dev` in your Workers project directory. `wrangler` will deploy your application to our preview service, and make it available for access on `localhost`:
 
@@ -54,7 +54,7 @@ You can customize how `wrangler dev` works to fit your needs: see [the docs](/to
 
 ## Accessing production logs with `wrangler tail`
 
-With your Workers application deployed, you may want to inspect incoming traffic. This can be useful for situations where a user is running into issues or errors that you can't reproduce. `wrangler tail` allows developers to "tail" their Workers application's logs, giving you real-time access to information about incoming requests.
+With your Workers application deployed, you may want to inspect incoming traffic. This can be useful for situations where a user is running into issues or errors that you can’t reproduce. `wrangler tail` allows developers to “tail” their Workers application’s logs, giving you real-time access to information about incoming requests.
 
 To get started, run `wrangler tail` in your Workers project directory. This will log any incoming requests to your application available in your local terminal.
 
@@ -122,7 +122,7 @@ Exceptions will show up under the `exceptions` field in the JSON returned by `wr
 
 ### Setup a logging service
 
-A Worker can make HTTP requests to any HTTP service on the public internet. You can use a service like [Sentry](https://sentry.io/) to collect error logs from your Worker, by making an HTTP request to the service to report the error. Refer to your service's API documentation for details on what kind of request to make.
+A Worker can make HTTP requests to any HTTP service on the public internet. You can use a service like [Sentry](https://sentry.io/) to collect error logs from your Worker, by making an HTTP request to the service to report the error. Refer to your service’s API documentation for details on what kind of request to make.
 
 When logging using this strategy, remember that outstanding asynchronous tasks are canceled as soon as a Worker finishes sending its main response body to the client. To ensure that a logging subrequest completes, you can pass the request promise to [`event.waitUntil()`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil). For example:
 
@@ -146,7 +146,7 @@ function postLog(data) {
 
 ### Go to Origin on Error
 
-By using `event.passThroughOnException`, your Workers application will pass requests to your origin if it throws an exception. This allows you to add logging, tracking, or other features with Workers, without degrading your website's functionality.
+By using `event.passThroughOnException`, your Workers application will pass requests to your origin if it throws an exception. This allows you to add logging, tracking, or other features with Workers, without degrading your website’s functionality.
 
 ```javascript
 addEventListener("fetch", event => {
