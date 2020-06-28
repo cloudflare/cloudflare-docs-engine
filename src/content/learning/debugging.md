@@ -29,9 +29,10 @@ In the output above, you can begin to see log lines for the URLs being requested
 To help you further debug your code, `wrangler dev` also supports `console.log` statements, so you can see output from your application in your local terminal:
 
 ```javascript
-// index.js
-
-addEventListener('fetch', event => {
+---
+filename: index.js
+---
+addEventListener("fetch", event => {
   console.log(`Received new request: ${event.request.url}`)
   event.respondWith(handleEvent(event))
 })
