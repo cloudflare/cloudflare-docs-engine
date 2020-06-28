@@ -46,7 +46,7 @@ $ wrangler dev
 Received new request to url: https://example.com/
 ```
 
-Inserting `console.log` lines throughout your code can help you understand the state of your application in various stages until you reach the desired output. 
+Inserting `console.log` lines throughout your code can help you understand the state of your application in various stages until you reach the desired output.
 
 You can customize how `wrangler dev` works to fit your needs: see [the docs](/tooling/wrangler/commands/#dev-alpha-) for available configuration options.
 
@@ -108,17 +108,17 @@ Other 11xx errors generally indicate a problem with the Workers runtime itself �
 
 ### Identifying error: Workers Metrics
 
-Additionally, you can find out whether your application is experiencing any downtime, or returning any errors by navigating to Workers Metrics in the dashboard. 
+Additionally, you can find out whether your application is experiencing any downtime, or returning any errors by navigating to Workers Metrics in the dashboard.
 
 <!-- TODO: include screenshots -->
 
 ### Debugging exceptions
 
-Once you've identified your Workers application is returning exceptions, you can use `wrangler tail` to inspect, and fix the exceptions. 
+Once you’ve identified your Workers application is returning exceptions, you can use `wrangler tail` to inspect, and fix the exceptions.
 
 <!-- TODO: include example -->
 
-Exceptions will show up under the `exceptions` field in the JSON returned by `wrangler tail`. Once you've identified the exception that is causing errors, you may redeploy your code with a fix, and continue trailing the logs to confirm that it is indeed fixed. 
+Exceptions will show up under the `exceptions` field in the JSON returned by `wrangler tail`. Once you’ve identified the exception that is causing errors, you may redeploy your code with a fix, and continue trailing the logs to confirm that it is indeed fixed.
 
 ### Setup a logging service
 
