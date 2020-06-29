@@ -1,7 +1,7 @@
 ---
 updated: 2020-06-05
 difficulty: Intermediate
-length: 60%
+length: 75%
 ---
 
 # Localize a Website

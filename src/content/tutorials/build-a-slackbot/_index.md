@@ -1,7 +1,7 @@
 ---
 updated: 2020-06-29
 difficulty: Beginner
-length: 80%
+length: 100%
 ---
 
 # Build a Slackbot

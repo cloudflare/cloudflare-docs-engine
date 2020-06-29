@@ -1,7 +1,7 @@
 ---
 updated: 2020-06-29
 difficulty: Beginner
-length: 40%
+length: 50%
 ---
 
 # Build a Serverless Function
