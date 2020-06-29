@@ -68,7 +68,7 @@ When your webhook is created, it will attempt to send a test payload to your app
 
 ## Generate
 
-Cloudflare’s command-line tool for managing Worker projects, Wrangler, has great support for templates – pre-built collections of code that make it easy to get started writing Workers. In this tutorial, you’ll use the [router template](https://github.com/cloudflare/worker-template-router) to generate a Workers project with a built-in router, so you can take incoming requests, and route them to the appropriate JavaScript code.
+Cloudflare’s command-line tool for managing Worker projects, Wrangler, has great support for templates — pre-built collections of code that make it easy to get started writing Workers. In this tutorial, you’ll use the [router template](https://github.com/cloudflare/worker-template-router) to generate a Workers project with a built-in router, so you can take incoming requests, and route them to the appropriate JavaScript code.
 
 In the command line, generate your Worker project, passing in a project name (e.g. “slack-bot”), and the [template](/templates) URL to base your project on:
 
@@ -143,7 +143,7 @@ async function handleRequest(request) {
 
 First, import the `Router` class from `router.js`. In `handleRequest`, instantiate a new instance of `Router`, setting it to the variable `r`. The `Router` class makes use of a few functions to allow you to quickly and easily set up request handling: the `post` method, as you might expect, takes in a path string, and a function handler, to say “when a client sends an HTTP `POST` to the path `/lookup`, call the `lookup` function”.
 
-There are two `POST` routes to handle: `/lookup` and `/webhook`. These new routes will point to corresponding functions, `lookup` and `webhook` – the two _function handlers_ that you’ll set up soon.
+There are two `POST` routes to handle: `/lookup` and `/webhook`. These new routes will point to corresponding functions, `lookup` and `webhook` — the two _function handlers_ that you’ll set up soon.
 
 Once your routes are set up, you need to actually handle the incoming request, which is available under the variable `request`. The `route` function on the router takes in a `request` argument, and returns a `response`. Note that you’re able to use great JS features like async/await inside of your Workers application, thanks to Workers’ V8 runtime: since `r.route` returns a Promise, you can write `await r.route(request)` to set `response` to the result of the resolved Promise..
 
@@ -226,7 +226,7 @@ With Slack slash commands, you can respond to a slash command by returning struc
 
 #### Parsing slash commands
 
-To begin, let’s parse the incoming data from a Slack message inside of the `lookup` handler. As previously mentioned, the Slack API sends an HTTP POST in URL Encoded format. To parse this, you need to add the first (and only) NPM package dependency to your project – a popular query string parser package called [`qs`](https://github.com/ljharb/qs):
+To begin, let’s parse the incoming data from a Slack message inside of the `lookup` handler. As previously mentioned, the Slack API sends an HTTP POST in URL Encoded format. To parse this, you need to add the first (and only) NPM package dependency to your project — a popular query string parser package called [`qs`](https://github.com/ljharb/qs):
 
 ```sh
 npm install --save qs
@@ -661,7 +661,7 @@ export default async request => {
 
 ## Publish
 
-And with that, you’re finished writing the code for your Slack bot! Pat yourself on the back – it was a lot of code, but now we can move on to the final steps of this tutorial: actually publishing your application.
+And with that, you’re finished writing the code for your Slack bot! Pat yourself on the back — it was a lot of code, but now we can move on to the final steps of this tutorial: actually publishing your application.
 
 Wrangler has built-in support for bundling, uploading, and releasing your Cloudflare Workers application. To do this, we’ll run `wrangler publish`, which will _build_ and _publish_ your code:
 

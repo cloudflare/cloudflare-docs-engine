@@ -29,7 +29,7 @@ You’ll need to get your Cloudflare API keys to deploy code to Cloudflare Worke
 
 ## Generate
 
-Cloudflare’s command-line tool for managing Worker projects, Wrangler, has great support for templates – pre-built collections of code that make it easy to get started writing Workers. We’ll make use of the default JavaScript template to start building your project.
+Cloudflare’s command-line tool for managing Worker projects, Wrangler, has great support for templates — pre-built collections of code that make it easy to get started writing Workers. We’ll make use of the default JavaScript template to start building your project.
 
 In the command line, generate your Worker project, using Wrangler’s [worker-template](https://github.com/cloudflare/worker-template), and pass the project name “qr-code-generator”:
 
