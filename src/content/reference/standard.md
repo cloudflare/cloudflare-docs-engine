@@ -1,7 +1,7 @@
 ---
-title: Web Standards
 order: 1
 ---
+
 # Web Standards
 The Workers Runtime provides the following standardized APIs for use by scripts running at the Edge.
 
@@ -20,25 +20,60 @@ The following methods are available per the [Worker Global Scope](https://develo
 
 ### Base64 Utility Methods
 
-[`atob()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob) - Decodes a string of data which has been encoded using base-64 encoding.
+<Definitions>
 
-[`btoa()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa) - Creates a base-64 encoded ASCII string from a string of binary data.
+- <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">atob()</TypeLink>
+  
+  - Decodes a string of data which has been encoded using base-64 encoding.
+- <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">btoa()</TypeLink>
+  
+  - Creates a base-64 encoded ASCII string from a string of binary data.
+
+</Definitions>
 
 ### Timers
 
-[`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval) - Schedules a function to execute every time a given number of milliseconds elapses.
+<Definitions>
 
-[`clearInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval) - Cancels the repeated execution set using [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval).
+- <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval">setInterval()</TypeLink>
+  
+  - Schedules a function to execute every time a given number of milliseconds elapses.
 
-[`setTimeout()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) - Schedules a function to execute in a given amount of time.
+- <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval">clearInterval()</TypeLink>
 
-[`clearTimeout()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout) - Cancels the delayed execution set using [`setTimeout()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout).
+  - Cancels the repeated execution set using [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval).
 
-\*_Note: Timers are only available inside of [the Request Context](/about/tips/request-context)._
 
-### Fetch global
+- <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">setTimeout()</TypeLink>
 
-[`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch) - Starts the process of fetching a resource from the network. See [FetchAPI](/reference/apis/fetch/). \*_Note: The Fetch API is only available inside of [the Request Context](/about/tips/request-context)._
+  - Schedules a function to execute in a given amount of time.
+- <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout">clearTimeout()</TypeLink>
+
+  - Cancels the delayed execution set using [`setTimeout()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout).
+
+</Definitions>
+
+<Aside>
+
+__Note__: Timers are only available inside of [the Request Context](/about/tips/request-context).
+
+</Aside>
+
+### Fetch Global
+
+<Definitions>
+
+- <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch">fetch()</TypeLink>
+  
+  - Starts the process of fetching a resource from the network. See [FetchAPI](/reference/apis/fetch/). 
+
+</Definitions>
+
+<Aside>
+
+__Note__: The Fetch API is only available inside of [the Request Context](/about/tips/request-context).
+
+</Aside>
 
 --------------------------------
 
@@ -56,9 +91,8 @@ The URL API supports urls conforming to http and https schemes.
 
 [Go to the docs](https://developer.mozilla.org/en-US/docs/Web/API/URL)
 
-_Note: The Workers’ Runtime’s URL class behavior differs from the URL Spec documented above. If you’d like to use another URL implementation, you can [shim the URL class using webpack](/tooling/wrangler/webpack/#shimming-globals)._
+<Aside>
 
+__Note__: The Workers’ Runtime’s URL class behavior differs from the URL Spec documented above. If you’d like to use another URL implementation, you can [shim the URL class using webpack](/tooling/wrangler/webpack/#shimming-globals).
 
-## To DO
-- fix http://localhost:8000/about/tips/request-context
-http://localhost:8000/tooling/wrangler/webpack/#shimming-globals
+</Aside>
