@@ -1,8 +1,7 @@
 ---
-title: FetchEvent
 order: 2
 ---
-# Fetch Event
+# FetchEvent
 The event type for HTTP requests dispatched to a Worker (i.e the `Object` passed through as `event` in [`addEventListener()`](/reference/apis/addEventListener).
 
 ## Usage
@@ -31,7 +30,7 @@ When a Workers script receives a request, the Workers runtime triggers a FetchEv
 
 <Definitions>
 
--  <Code>event.respondWith(response <TypeLink href="/reference/request">Request</TypeLink> | <Type>Promise</Type>)</Code> <Type>Void</Type>
+-  <Code>event.respondWith(response <TypeLink href="/reference/request">Request</TypeLink> | <Type>Promise</Type>)</Code> <Type>void</Type>
 
     - Intercept the request and send a custom response. _If no event handler calls `respondWith()` the runtime attempts to request the origin as if no Worker script exists. If no origin is setup (e.g. workers.dev sites), then the Workers script must call `respondWith()` for a valid response._
 
@@ -46,7 +45,3 @@ When a Workers script receives a request, the Workers runtime triggers a FetchEv
 </Definitions>
 
 To learn more about using the `FetchEvent`, see [FetchEvent LifeCycle](/about/tips/fetch-event-lifecycle).
-
-
-### ToDO:
-- Add http://localhost:8000/about/tips/fetch-event-lifecycle
