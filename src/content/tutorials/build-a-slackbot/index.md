@@ -73,8 +73,11 @@ Cloudflare’s command-line tool for managing Worker projects, Wrangler, has gre
 In the command line, generate your Worker project, passing in a project name (e.g. “slack-bot”), and the [template](/templates) URL to base your project on:
 
 ```sh
-wrangler generate slack-bot https://github.com/cloudflare/worker-template-router
-cd slack-bot
+---
+header: Generate a new project
+---
+$ wrangler generate slack-bot https://github.com/cloudflare/worker-template-router
+$ cd slack-bot
 ```
 
 Wrangler templates are just Git repositories, so if you want to create your own templates, or use one from our [Template Gallery](/templates), there’s a ton of options to help you get started.
@@ -145,7 +148,11 @@ First, import the `Router` class from `router.js`. In `handleRequest`, instantia
 
 There are two `POST` routes to handle: `/lookup` and `/webhook`. These new routes will point to corresponding functions, `lookup` and `webhook` — the two _function handlers_ that you’ll set up soon.
 
-Once your routes are set up, you need to actually handle the incoming request, which is available under the variable `request`. The `route` function on the router takes in a `request` argument, and returns a `response`. Note that you’re able to use great JS features like async/await inside of your Workers application, thanks to Workers’ V8 runtime: since `r.route` returns a Promise, you can write `await r.route(request)` to set `response` to the result of the resolved Promise..
+Once your routes are set up, you need to actually handle the incoming request, which is available under the variable `request`. The `route` function on the router takes in a `request` argument, and returns a `response`.
+
+<Aside>
+Note that you’re able to use great JS features like async/await inside of your Workers application, thanks to Workers’ V8 runtime: since <code>r.route</code> returns a Promise, you can write <code>await r.route(request)</code> to set <code>response</code> to the result of the resolved Promise.
+</Aside>
 
 If there is no matching route (for instance, if someone requests the path `/admin`), the function should return a response with a status code of 404. `handleRequest` checks to see if `response` is `undefined`, and if it is, it sets `response` to a new `Response` with the body text “Not found”, and a status code of 404.
 
@@ -154,6 +161,9 @@ Finally, the function returns the `response`, whether it’s a match from the ro
 This request/response pattern makes it really straightforward to understand _how_ requests are routed in your Workers application. You’re _almost_ done with this file: to complete it, you need to actually define the corresponding function handlers for your routes. In this tutorial, you’ll define those handlers in `src/handlers`:
 
 ```sh
+---
+header: Create new folders and files
+---
 $ mkdir -p src/handlers
 $ touch src/handlers/lookup.js
 $ touch src/handlers/webhook.js
@@ -229,6 +239,9 @@ With Slack slash commands, you can respond to a slash command by returning struc
 To begin, let’s parse the incoming data from a Slack message inside of the `lookup` handler. As previously mentioned, the Slack API sends an HTTP POST in URL Encoded format. To parse this, you need to add the first (and only) NPM package dependency to your project — a popular query string parser package called [`qs`](https://github.com/ljharb/qs):
 
 ```sh
+---
+header: Install the qs package
+---
 npm install --save qs
 ```
 
@@ -545,7 +558,7 @@ export default async request => {
 }
 ```
 
-Note that the usage of `constructGhIssueSlackMessage` in this handler adds one additional argument to the function, `prefix_text`. Update the corresponding function inside of `src/utils/slack.js`, adding `prefix_text` to the collection of `text_lines` in the message block, if it has been passed in to the function.
+Importantly, the usage of `constructGhIssueSlackMessage` in this handler adds one additional argument to the function, `prefix_text`. Update the corresponding function inside of `src/utils/slack.js`, adding `prefix_text` to the collection of `text_lines` in the message block, if it has been passed in to the function.
 
 Add a simple utility function, `compact`, which takes an array, and filters out any `null` or `undefined` values from it. This function will be used to remove `prefix_text` from `text_lines` if it hasn’t actually been passed in to the function, such as when called from `src/handlers/lookup.js`. The full (and final) version of the `src/utils/slack.js` looks like this:
 
@@ -618,6 +631,9 @@ export default async request => {
 The constant `SLACK_WEBHOOK_URL` represents the Slack Webhook URL that you created all the way back in the “Incoming Webhook” section of this guide. **This webhook allows developers to post directly to your Slack channel, so it should be kept secret!** To use this constant inside of your codebase, you can use Wrangler’s [Secrets](/tooling/wrangler/secrets) feature:
 
 ```sh
+---
+header: Set the SLACK_WEBHOOK_URL secret
+---
 $ wrangler secret create SLACK_WEBHOOK_URL
 Enter the secret text you'd like assigned to the variable name on the script named slack-bot-ENVIRONMENT_NAME: https://hooks.slack.com/services/abc123
 ```
