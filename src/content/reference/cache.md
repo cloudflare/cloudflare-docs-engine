@@ -1,5 +1,4 @@
 ---
-title: Cache
 order: 6
 ---
 
@@ -7,7 +6,13 @@ order: 6
 
 The Cache API allows fine grained control of reading and writing from cache, and deciding exactly when to fetch data from your origin.
 
-For each individual zone, the Cloudflare Workers runtime exposes a single global cache object: `caches.default`. Though this cache object persists on all of Cloudflare’s data centers, objects are not replicated to any other data centers. Note this individualized zone cache object differs from Cloudflare’s Global CDN, for details see: [Using the Cache](/about/using-cache).
+For each individual zone, the Cloudflare Workers runtime exposes a single global cache object: `caches.default`. Though this cache object persists on all of Cloudflare’s data centers, objects are not replicated to any other data centers.
+
+<Aside>
+
+__Note__: This individualized zone cache object differs from Cloudflare’s Global CDN, for details see: [Using the Cache](/about/using-cache).
+
+</Aside>
 
 ## Syntax
 
@@ -42,29 +47,30 @@ Our implementation of the Cache API respects the following HTTP headers on the r
 
 This differs from the web browser Cache API as they do not honor any headers on the request or response.
 
-**Note:** Responses with `Set-Cookie` headers are never cached, because this sometimes indicates that the response contains unique data. To store a response with a `Set-Cookie` header, either delete that header or set `Cache-Control: private=Set-Cookie` on the response before calling `cache.put()`.
+
+<Aside>
+
+__Note:__ Responses with `Set-Cookie` headers are never cached, because this sometimes indicates that the response contains unique data. To store a response with a `Set-Cookie` header, either delete that header or set `Cache-Control: private=Set-Cookie` on the response before calling `cache.put()`.
 
 Use the `Cache-Control` method to store the response without the `Set-Cookie` header.
+
+</Aside>
 
 ## Methods
 
 ### Put
 
-#### Syntax
-
 ```javascript
 cache.put(request, response)
 ```
 
-
 <Definitions>
 
-- <Code>put(request <TypeLink href="/reference/request">Request</TypeLink>|<Type>string</Type>, response <TypeLink href="/reference/request">Response</TypeLink>)</Code> <Type>Promise</Type>
+- <Code>put(request, response)</Code> <Type>Promise</Type>
 
     - Adds to the cache a response keyed to the given request. Returns a promise that resolves to `undefined` once the cache stores the response. 
 
 </Definitions>
-
 
 #### Parameters
 
@@ -85,12 +91,7 @@ cache.put(request, response)
   - the `response` passed is a `status` of [`206 Partial Content`](https://httpstatuses.com/206)
   - the `response` passed contains the header `Vary: *` (required by the Cache API specification)
 
-
-
-
 ### `Match`
-
-##### Syntax
 
 ```javascript
 cache.match(request, options)
@@ -98,13 +99,13 @@ cache.match(request, options)
 
 <Definitions>
 
-- <Code>match(request <TypeLink href="/reference/request">Request</TypeLink>|<Type>string</Type>, options)</Code> <TypeLink href="/reference/response">Promise{`<Response>`}</TypeLink>
+- <Code>match(request, options)</Code> <TypeLink href="/reference/response">Promise{`<Response>`}</TypeLink>
 
     - Returns a promise wrapping the response object keyed to that request. 
 
 </Definitions>
 
-##### Parameters
+#### Parameters
 
 <Definitions>
 
@@ -116,8 +117,6 @@ cache.match(request, options)
     -  Can contain one possible property: `ignoreMethod` (Boolean) Consider the request method a GET regardless of its actual value.
 
 </Definitions>
-
-
 
 Unlike the browser Cache API, Cloudflare Workers do not support the `ignoreSearch` or `ignoreVary` options on `match()`. You can accomplish this behavior by removing query strings or HTTP headers at `put()` time.
 
@@ -141,17 +140,13 @@ Our implementation of the Cache API respects the following HTTP headers on the r
 
 ### `Delete`
 
-
-##### Syntax
-
 ```javascript
 cache.delete(request, options)
 ```
 
-
 <Definitions>
 
-- <Code>delete(request <TypeLink href="/reference/request">Request</TypeLink>|<Type>string</Type>, options)</Code> <TypeLink href="/reference/response">Promise{`<boolean>`}</TypeLink>
+- <Code>delete(request, options)</Code> <TypeLink href="/reference/response">Promise{`<boolean>`}</TypeLink>
 
 </Definitions>
 
@@ -160,8 +155,7 @@ Deletes the `Response` object from the cache and returns a `Promise` for a Boole
 - `true`: The response was cached but is now deleted
 - `false`: The response was not in the cache at the time of deletion.
 
-
-##### Parameters
+#### Parameters
 
 <Definitions>
 
@@ -169,18 +163,12 @@ Deletes the `Response` object from the cache and returns a `Promise` for a Boole
 
     - The string or [`Request`](/reference/apis/request) object used as the lookup key. Strings are interpreted as the URL for a new `Request` object.
 
+<!-- What type is this? -->
 - `options`
     -  Can contain one possible property: `ignoreMethod` (Boolean) Consider the request method a GET regardless of its actual value.
 
 </Definitions>
 
-
 ## More Information
 
 [Using Cache](/about/using-cache)
-
-
-## To DO:
-- Fix Using the Cache link
-- Add type for match function options parameter
-- Fix using cache link
