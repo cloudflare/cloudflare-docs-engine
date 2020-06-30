@@ -308,6 +308,11 @@ p.DocsMarkdown--small-header {
   margin: 1.25em 0;
 }
 
+.DocsMarkdown h3 + .DocsMarkdown--definitions,
+.DocsMarkdown h4 + .DocsMarkdown--definitions {
+  margin-top: 1em;
+}
+
 .DocsMarkdown--definitions > ul {
   list-style: none;
   margin: 0;
