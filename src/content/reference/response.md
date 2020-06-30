@@ -1,18 +1,18 @@
 ---
-title: Response
 order: 5
 ---
+
 # Response
 
-### Constructor
+## Constructor
 
-#### Syntax
+### Syntax
 
 ```javascript
 new Response(body, init)
 ```
 
-#### Parameters
+### Parameters
 
 <Definitions>
 
@@ -40,7 +40,7 @@ new Response(body, init)
 
 </Definitions>
 
-### Properties
+## Properties
 
 <Definitions>
 
@@ -60,12 +60,14 @@ new Response(body, init)
     - The status message corresponding to the status code (for example, `OK` for `200`).
 - `url` <Type>string</Type>
     - The URL of the response. The value is the final URL obtained after any redirects.
-- `webSocket`
+
+<!-- What type is this? WebSocket? -->
+- `webSocket` 
     - This is present in successful WebSocket handshake responses. For example, if a client sends a WebSocket upgrade request to an origin and a worker intercepts the request and then forwards it to the origin and the origin replies with a successful WebSocket upgrade response, the worker sees `response.webSocket`. This establishes a WebSocket connection proxied through a worker. Note that you cannot intercept data flowing over a WebSocket connection.
 
 </Definitions>
 
-### Methods
+## Methods
 
 <Definitions>
 
@@ -97,18 +99,8 @@ new Response(body, init)
 
   
   
-  ## Examples
-  
-  * [Modify Response](/templates/pages//modify_res_props)
-  * [Conditional Responses](/templates/pages/conditional_responses)
-  * [Signed Request/Response](/templates/pages/signed_request)
+## Examples
 
-
-## To DO
-- Fix Readable Stream Link /reference/apis/streams
-- Fix Headers link /reference/apis/request#constructor-parameters
-- Add type for webSocket
-- Fix these links too
 * [Modify Response](/templates/pages//modify_res_props)
-  * [Conditional Responses](/templates/pages/conditional_responses)
-  * [Signed Request/Response](/templates/pages/signed_request)
+* [Conditional Responses](/templates/pages/conditional_responses)
+* [Signed Request/Response](/templates/pages/signed_request)
