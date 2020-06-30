@@ -4,7 +4,7 @@ difficulty: Beginner
 length: 100%
 ---
 
-# User Auth with Auth0
+# Authorize users with Auth0
 
 In this tutorial you’ll integrate Auth0, an identity management platform, into a Cloudflare Workers application. Adding authorization and authentication to an application is a common task for developers. By implementing it using Cloudflare Workers, you can take advantage of Workers’ unique platform advantages to simplify how and when your application needs user data.
 
@@ -39,6 +39,9 @@ Inside of our application’s settings, the client ID and client secret are keys
 Using wrangler’s `generate` command, we can begin building a new application using a Workers template. For this tutorial, we’ll heavily modify the default template for [Workers Sites](https://developers.cloudflare.com/workers/sites), which deploys a static HTML application:
 
 ```sh
+---
+header: Generate a new project
+---
 $ wrangler generate --site my-auth-example
 ```
 
@@ -515,6 +518,9 @@ With our application persisting authentication data in Workers KV and associatin
 To begin, install the NPM package [`cookie`](https://www.npmjs.com/package/cookie), which we’ll use to simplify parsing the `Cookie` header in the `request`:
 
 ```sh
+---
+header: Install cookie package
+---
 $ cd workers-site && npm install cookie
 ```
 
@@ -723,7 +729,11 @@ In your Workers Site, you can add a “Log out” link, which will send users to
 <a href="/logout">Log out</a>
 ```
 
-Note that by design, the placement of the `LOGOUT CODE BLOCK` in `workers-site/index.js` is placed _after_ the `WORKERS SITES CODE BLOCK`. This is intentional: it allows users to continue to your application’s deployed Workers Site code, meaning that you can provide a corresponding `logout/index.html` template with a “You’re logged out!” message, or something similar. Here’s an example you can use:
+<Aside>
+By design, the placement of the `LOGOUT CODE BLOCK` in `workers-site/index.js` is placed _after_ the `WORKERS SITES CODE BLOCK`. This is intentional: it allows users to continue to your application’s deployed Workers Site code, meaning that you can provide a corresponding `logout/index.html` template with a “You’re logged out!” message, or something similar. 
+</Aside>
+
+An example logout HTML page could look like this:
 
 ```html
 ---
@@ -835,6 +845,9 @@ account_id = "$accountId"
 In the code for this tutorial, we’ve used the constant `AUTH_STORE` to refer to a Workers KV namespace where we store authorization info for our users. Before we can deploy this project, we need to create a Workers KV namespace and attach it to our Workers application. Using wrangler, we can create this Workers KV namespace directly from the command-line:
 
 ```sh
+---
+header: Create a new KV namespace with Wrangler
+---
 $ wrangler kv:namespace create AUTH_STORE
 ```
 
@@ -882,6 +895,9 @@ let AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, AUTH0_CALLBACK_URL, SALT
 With these constants stubbed, you can publish your application:
 
 ```sh
+---
+header: Publish your project
+---
 $ wrangler publish
 ```
 
@@ -898,6 +914,9 @@ filename: workers-site/auth0.js
 Using `wrangler secret`, you can now set each secret directly in the command-line:
 
 ```sh
+---
+header: Set secret values
+---
 $ wrangler secret put AUTH0_DOMAIN
 $ wrangler secret put AUTH0_CLIENT_ID
 $ wrangler secret put AUTH0_CLIENT_SECRET
@@ -928,6 +947,9 @@ To generate a salt, we’ll simply make a new, random string, and save it as a �
 With a random string generated, you can set it using `wrangler secret`:
 
 ```sh
+---
+header: Set the SALT secret
+---
 $ wrangler secret put SALT
 ```
 
@@ -947,6 +969,9 @@ Note that Auth0 has great security defaults and any callback URLs or origins tha
 With your `wrangler.toml` successfully configured, you can now use wrangler’s `publish` command to deploy your application:
 
 ```sh
+---
+header: Publish your project
+---
 $ wrangler publish
 ```
 
