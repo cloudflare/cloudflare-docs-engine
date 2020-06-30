@@ -240,12 +240,22 @@ p.DocsMarkdown--small-header {
   font-size: 1em;
 }
 
+.DocsMarkdown h2 code,
 .DocsMarkdown h3 code,
 .DocsMarkdown h4 code,
 .DocsMarkdown h5 code {
-  --inline-code-font-size: 1em;
   --background: transparent;
   --padding: 0;
+}
+
+.DocsMarkdown h2 code,
+.DocsMarkdown h3 code {
+  --inline-code-font-size: .9375em;
+}
+
+.DocsMarkdown h4 code,
+.DocsMarkdown h5 code {
+  --inline-code-font-size: 1em;
 }
 
 .DocsMarkdown h5,
