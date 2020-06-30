@@ -49,7 +49,10 @@ With an export ready of our site, it’s time to get to work deploying it. To do
 Once Wrangler is installed and configured, we can create a new project for deploying our static WordPress site to Workers. To generate a new project run:
 
 ```sh
-wrangler generate --site wp-static
+---
+header: Generate a new project
+---
+$ wrangler generate --site wp-static
 ```
 
 the [`--site`](/tooling/wrangler/sites/#commands) flag indicates that we want to deploy a static site, namely, our static WordPress site.
@@ -67,13 +70,19 @@ When deploying a website using Workers Sites, your static code – your HTML, CS
 Open the ZIP file downloaded from your WordPress static export, and extract the contents of the ZIP into the `public` folder:
 
 ```sh
-cp -R ~/Downloads/wp-static-html-output-<some-tag>/ ./public
+---
+header: Copy files into the public directory
+---
+$ cp -R ~/Downloads/wp-static-html-output-<some-tag>/ ./public
 ```
 
 Your directory structure should look something like this:
 
 ```sh
-wp-static
+---
+header: Listing the files in wp-static
+---
+$ tree wp-static
 ├── public
 │   ├── 2018
 │   ├── 2019
@@ -98,7 +107,7 @@ When your site looks correct in Wrangler’s preview, you can move onto publishi
 
 ## Limitations
 
-Note that there are some features available in WordPress sites that will not be supported in a static site environment:
+There are some features available in WordPress sites that will not be supported in a static site environment:
 
 - WordPress Forms
 - WordPress Comments
