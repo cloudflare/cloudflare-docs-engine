@@ -6,13 +6,18 @@ length: 25%
 
 # Managing multiple Workers projects with Lerna
 
-_Note: this integration tutorial assumes the usage of [`wrangler`](https://github.com/cloudflare/wrangler), our open-source CLI tool, for building and deploying your projects._
+<Aside>
+This integration tutorial assumes the usage of <a href="https://github.com/cloudflare/wrangler">wrangler</a> for building and deploying your projects.
+</Aside>
 
 Using [`lerna`](https://github.com/lerna/lerna), a tool for managing multiple JavaScript codebases inside a single "monorepo", developers can work with multiple Wrangler projects and share dependencies between them. If your codebase is already managed with `lerna`, you can also add a new Wrangler project into your existing monorepo without disrupting your workflow.
 
 Begin by installing `lerna`, and creating a new project in the folder `workers-monorepo`:
 
-```bash
+```sh
+---
+header: Install lerna and init a new project
+---
 $ npm install -g lerna
 $ mkdir workers-monorepo && cd workers-monorepo
 $ lerna init
@@ -20,7 +25,10 @@ $ lerna init
 
 Inside of `packages`, where `lerna` will look for your projects, you can generate multiple new Wrangler codebases, or even `git clone` your existing Workers codebase to migrate it into a `lerna` monorepo:
 
-```bash
+```sh
+---
+header: Generate projects using Wrangler
+---
 $ cd packages
 $ wrangler generate my-api
 $ wrangler generate my-site --site
@@ -31,7 +39,10 @@ $ git clone https://github.com/signalnerve/my-cool-project.git
 
 This approach to managing your Workers projects can become incredibly powerful when you begin to share dependencies between the projects. Imagine that your codebase has a pre-defined set of API handlers that you want to re-use between our public and private APIs, in the packages `public-api` and `private-api`:
 
-```bash
+```sh
+---
+header: Generate projects using Wrangler
+---
 $ cd packages
 $ wrangler generate public-api
 $ wrangler generate private-api
@@ -39,7 +50,10 @@ $ wrangler generate private-api
 
 Adjacent to your API projects, you can create a new package `handlers`, which can be imported into each project:
 
-```bash
+```sh
+---
+header: Create a new lerna package
+---
 $ lerna create handlers
 ```
 
@@ -57,6 +71,9 @@ filename: packages/public-api/package.json
 Using the `bootstrap` command, you can link the packages together and use them inside of your code:
 
 ```js
+---
+header: Link packages using lerna bootstrap
+---
 $ lerna bootstrap
 ```
 
@@ -102,7 +119,10 @@ filename: packages/private-api/package.json
 
 `lerna run publish` will look for the `publish` script defined in each package's `project.json`, and if the project defines it, it will run the script inside of that project's directory:
 
-```bash
+```sh
+---
+header: Publish packages using lerna run
+---
 workers-monorepo$ lerna run publish
 lerna info Executing command in 2 packages: "npm run publish"
 lerna info run Ran npm script 'publish' in 'public-api' in 4.8s:
