@@ -371,6 +371,10 @@ p.DocsMarkdown--small-header {
   --outdent: 1rem;
 }
 
+[page-type="example"] .DocsMarkdown > pre {
+  --outdent: 0px;
+}
+
 @media (max-width: 768px) {
   .DocsMarkdown > pre {
     --border-radius: 0em;

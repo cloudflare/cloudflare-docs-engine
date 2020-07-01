@@ -64,7 +64,13 @@ export const query = graphql`
       id
       body
       frontmatter {
+        demo
+        difficulty
+        summary
+        tags
         title
+        type
+        updated(formatString: "YYYY-MM-DD")
       }
     }
   }

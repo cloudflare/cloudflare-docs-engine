@@ -38,6 +38,7 @@ import "@cloudflare/workers-brand-assets/css/components/tooltip.css"
 
 // TODO - should these be imported by their respective components?
 import "./src/css/docs/components/skip-nav-link.css"
+import "./src/css/docs/components/tags-filter.css"
 import "./src/css/docs/components/docs-noscript.css"
 import "./src/css/docs/components/docs-nav-logo-lockup.css"
 import "./src/css/docs/components/docs-page.css"
@@ -52,4 +53,5 @@ import "./src/css/docs/components/docs-mobile-header.css"
 import "./src/css/docs/components/docs-mobile-title-header.css"
 import "./src/css/docs/components/docs-mobile-nav-backdrop.css"
 import "./src/css/docs/components/docs-footer.css"
+import "./src/css/docs/components/docs-workers-examples.css"
 import "./src/css/docs/components/docs-tutorials.css"
