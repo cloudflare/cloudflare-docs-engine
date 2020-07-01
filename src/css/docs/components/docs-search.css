@@ -1,5 +1,5 @@
 .DocsSearch {
-  --text-indent: calc(3.7647058824rem + 1px); /* 64 / 17 (+1) */
+  --text-indent: calc(var(--docs-content-gap) + 1px);
   height: var(--docs-header-height);
 }
 
