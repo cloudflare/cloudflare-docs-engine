@@ -4,7 +4,7 @@ difficulty: Intermediate
 length: 25%
 ---
 
-# Hosting Static WordPress Sites
+# Deploy a Static WordPress Site
 
 - [Prerequisites](#prerequisites)
 - [Setup](#setup)
