@@ -49,7 +49,9 @@ const components = {
 const MDXCustomRenderer = ({ data: { mdx } }) => {
   return (
     <MDXProvider components={components}>
-      <MDXRenderer>{mdx.body}</MDXRenderer>
+      <MDXRenderer frontmatter={mdx.frontmatter}>
+        {mdx.body}
+      </MDXRenderer>
     </MDXProvider>
   )
 }
