@@ -520,6 +520,23 @@ wrangler config
 
 Check out the dedicated [code block examples](/docs-engine/code-block-examples) page for more.
 
+--------------------------------
+
+## ContentColumn
+
+By default, all Markdown/MDX files are categorized as the `“document”` [type](#type). If you specify any other [frontmatter](#frontmatter) `type`, the page contents will flow to the maximum width of the docs page excluding the left sidebar—in other words, without the right sidebar normally reserved for the table of contents (visible on this page on desktop, e.g.).
+
+This is particularly useful on so-called “overview” pages, the top level pages in the nav.
+
+If within one of these pages, you need some portion of that page’s content to be constrained to the column width normally reserved for “document”-type pages, use the `<ContentColumn/>` MDX component.
+
+```markdown
+<ContentColumn>
+
+This content will wrap to the column width of a standard “document”-type docs page.
+
+</ContentColumn>
+```
 
 --------------------------------
 
