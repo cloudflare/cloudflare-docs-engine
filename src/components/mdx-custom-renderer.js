@@ -9,6 +9,7 @@ import headers from "./mdx/headers"
 import inlineCode from "./mdx/inline-code"
 import pre from "./mdx/code-block"
 import Aside from "./mdx/aside"
+import ContentColumn from "./mdx/content-column"
 import Example from "./mdx/example"
 import Definitions from "./mdx/definitions"
 import Code from "./mdx/code"
@@ -31,6 +32,7 @@ const components = {
   // Add custom components
   Link,
   Aside,
+  ContentColumn,
   Example,
   Definitions,
   Code,
