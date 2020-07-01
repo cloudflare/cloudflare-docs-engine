@@ -70,29 +70,37 @@ new Response(body, init)
 
 ## Methods
 
+### Instance methods
+
 <Definitions>
 
 - `clone()` <TypeLink href="#response">Response</TypeLink>
-  - Creates a clone of a <TypeLink href="#response">Response</TypeLink> object.
+  - Creates a clone of a [`Response`]("#response") object.
 
 - `redirect()` <TypeLink href="#response">Response</TypeLink>
   - Creates a new response with a different URL.
 
-- [`Response`](#response): Implements [`Body`](https://developer.mozilla.org/en-US/docs/Web/API/Body) and has the following methods available:
+</Definitions>
 
-- <Code>Body.arrayBuffer(<TypeLink href="#response">Response</TypeLink>)</Code> <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/ArrayBuffer">Promise{`<ArrayBuffer>`}</TypeLink>
+### Additional instance methods
+
+`Response` implements the [`Body`](https://developer.mozilla.org/en-US/docs/Web/API/Body) mixin of the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), and therefore `Response` instances additionally have the following methods available:
+
+<Definitions>
+
+- <Code>arrayBuffer()</Code> <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/ArrayBuffer">Promise{`<ArrayBuffer>`}</TypeLink>
 
   - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with an [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/ArrayBuffer).
 
-- <Code>Body.formData(<TypeLink href="#response">Response</TypeLink>)</Code> <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/FormData">Promise{`<FormData>`}</TypeLink>
+- <Code>formData()</Code> <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/FormData">Promise{`<FormData>`}</TypeLink>
 
   - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with a [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) object.
 
-- <Code>Body.json(<TypeLink href="#response">Response</TypeLink>)</Code> <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/">Promise{`<JSON>`}</TypeLink>
+- <Code>json()</Code> <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/">Promise{`<JSON>`}</TypeLink>
 
   - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with the result of parsing the body text as [`JSON`](https://developer.mozilla.org/en-US/docs/Web/)
 
-- <Code>Body.text(<TypeLink href="#response">Response</TypeLink>)</Code> <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/USVString">Promise{`<USVString>`}</TypeLink>
+- <Code>text()</Code> <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/USVString">Promise{`<USVString>`}</TypeLink>
 
   - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with a [`USVString`](https://developer.mozilla.org/en-US/docs/Web/API/USVString) (text).
 
@@ -100,6 +108,6 @@ new Response(body, init)
 
 ## Examples
 
-* [Modify Response](/templates/pages//modify_res_props)
-* [Conditional Responses](/templates/pages/conditional_responses)
-* [Signed Request/Response](/templates/pages/signed_request)
+- [Modifing a Response](#)
+- [Implementing a conditional Response](#)
+- [Signing a Request/Response](#)
