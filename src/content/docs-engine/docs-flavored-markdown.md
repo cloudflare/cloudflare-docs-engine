@@ -55,7 +55,7 @@ __Note:__ A planned feature will allow content authors to replace the table of c
 
 By default, all pages will be ordered in the sidebar alphabetically within their depth.
 
-If you’d like to modify that order, set the `order` property to an intenger on any pages you’d like. Lower integers will display visually higher. It is recommended that you order them starting at `0`.
+If you’d like to modify that order, set the `order` property to an integer on any pages you’d like. Lower integers will display visually higher. It is recommended that you order them starting at `0`.
 
 If you only set `order` on some of your pages, all of the additional pages will end up below it, sorted alphabetically. If you set more than one page to the same order, they will also be sorted alphabetically.
 
@@ -182,7 +182,7 @@ This is a warning.
 
 ## Example (MDX component)
 
-The `<Example/>` component is used to simply add a box around some content. This can be useful when simply trying to demonstrate something that could otherwise be mistaken as the explaination of the same thing.
+The `<Example/>` component is used to simply add a box around some content. This can be useful when simply trying to demonstrate something that could otherwise be mistaken as the explanation of the same thing.
 
 <Example>
 
@@ -208,7 +208,7 @@ This is an example _of an example_.
 
 ## Definitions, Code, Type, ... PropMeta
 
-When writing reference documentation, there are four MDX components that you use `Definitions`, `Code`, `Type`, and `ParamType` in conjuction with eachother. All of these components are added to the global scope, so you do not need to import them.
+When writing reference documentation, there are four MDX components that you use `Definitions`, `Code`, `Type`, and `ParamType` in conjunction with each other. All of these components are added to the global scope, so you do not need to import them.
 
 <Aside>
 
@@ -294,7 +294,7 @@ Instructions for composing reference documentation:
 
 2. Within the definitions block, include an unordered list, with the following structure:
 
-    - Each term is specifid in an inline code element inside each list item.
+    - Each term is specified in an inline code element inside each list item.
 
       - For property definitions, you can use two backticks.
 
@@ -311,7 +311,7 @@ Instructions for composing reference documentation:
         ```
 
     - After the code block, optionally include a `<Type/>`.
-      - For propeties, this represents the type of the property.
+      - For properties, this represents the type of the property.
       - For methods, this represents the type of the return value.
       - For style, you may optionally leave these off if the types are clear from context or `null`ish for the entire set of methods.
 
@@ -471,7 +471,7 @@ async function handleRequest(request) {
 
 ### Headers
 
-Header content other than [filenames](#filenames) can be specyfied with `header: ______`.
+Header content other than [filenames](#filenames) can be specified with `header: ______`.
 
 ```sh
 ---
@@ -544,7 +544,7 @@ This content will wrap to the column width of a standard “document”-type doc
 
 Just use `<sub/>`, `<sup/>`, and `<var/>` as expected.
 
-Use `<sub/>` for mathatical bases or in chemical formulas.
+Use `<sub/>` for mathematical bases or in chemical formulas.
 
 <Example>
 
@@ -616,7 +616,7 @@ search for text within this document.
 
 <Aside type="warning">
 
-__Warning:__ This API is in active developement. Please don’t use until this notice is removed.
+__Warning:__ This API is in active development. Please don’t use until this notice is removed.
 
 </Aside>
 
@@ -649,7 +649,7 @@ Something _small enough_ to escape `casual` notice.
 
 <Aside type="warning">
 
-__Warning:__ This API is in active developement. Please don’t use until this notice is removed.
+__Warning:__ This API is in active development. Please don’t use until this notice is removed.
 
 </Aside>
 
