@@ -4,7 +4,7 @@ difficulty: Beginner
 length: 25%
 ---
 
-# Deploy a React App
+# Deploy a React App with create-react-app
 
 In this tutorial, we'll use [Wrangler](https://github.com/cloudflare/wrangler) and [Cloudflare Workers](https://workers.cloudflare.com) to deploy and serve a static site. With the rise of architectures like [JAMStack](https://jamstack.org/), static sites have become a simple, streamlined way to combine highly-available static assets with performant backend code, especially when deployed with serverless. Workers in particular is a great platform to deploy static sites: your application will be distributed to over 190+ locations around the world, and served directly from Cloudflare’s powerful CDN at a server incredibly close to your users.
 
