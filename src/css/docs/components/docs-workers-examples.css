@@ -1,5 +1,5 @@
 .DocsWorkersExamples {
-  margin: 2.3rem 0;
+  margin: 2.5rem 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-gap: var(--docs-content-gap);
