@@ -715,11 +715,12 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   right: 0;
   bottom: 0;
   left: 0;
-  box-shadow: 0 0 0 1px rgba(var(--color-rgb), .15);
+  box-shadow: inset 0 0 0 1px rgba(var(--color-rgb), .15);
   pointer-events: none;
 }
 
 .DocsMarkdown--demo iframe {
+  background: #fff;
   height: 100%;
   width: 100%;
 }
