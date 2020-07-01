@@ -1,5 +1,4 @@
 ---
-title: Examples
 type: overview
 hideChildren: true
 order: 2
