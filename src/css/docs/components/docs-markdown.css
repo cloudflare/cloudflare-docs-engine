@@ -696,6 +696,30 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   border-radius: .4em;
 }
 
+.DocsMarkdown--demo {
+  position: relative;
+}
+
+.DocsMarkdown--demo:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+.DocsMarkdown--demo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 0 0 1px rgba(var(--color-rgb), .15);
+  pointer-events: none;
+}
+
+.DocsMarkdown--demo iframe {
+  height: 100%;
+  width: 100%;
+}
+
 .DocsMarkdown--content-column {
   width: calc(100% - var(--docs-body-sidebar-width));
 }
