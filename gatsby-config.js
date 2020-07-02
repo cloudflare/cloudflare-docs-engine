@@ -58,6 +58,8 @@ module.exports = {
               maxWidth: 1382,
             },
           },
+          // Copies linked files from Markdown to public directory (ie for gifs)
+          `gatsby-remark-copy-linked-files`,
         ],
         remarkPlugins: [require("remark-slug")]
       }
