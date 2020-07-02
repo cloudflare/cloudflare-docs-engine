@@ -3,7 +3,20 @@ order: 1
 ---
 
 # Web Standards
+
+## Background
+
 The Workers Runtime provides the following standardized APIs for use by scripts running at the Edge.
+
+The `Class` class is used whenever you’re trying to create an instance. It’s particularly useful when you’re trying to create multiple instances. Here are some common uses:
+
+- [Tutorial which uses Class](#)
+- [Example which uses Class](#)
+- [Another example which uses Class](#)
+
+<!-- Which standards are these specifically? -->
+
+--------------------------------
 
 ## JavaScript Standards
 
@@ -96,3 +109,18 @@ The URL API supports urls conforming to http and https schemes.
 __Note__: The Workers’ Runtime’s URL class behavior differs from the URL Spec documented above. If you’d like to use another URL implementation, you can [shim the URL class using webpack](/tooling/wrangler/webpack/#shimming-globals).
 
 </Aside>
+
+--------------------------------
+
+## Common issues
+
+Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
+
+--------------------------------
+
+## See also
+
+- [`RelatedClass`](#)
+- [`OtherRelatedClass`](#)
+- [An external link to relevant documentation, e.g. on MDN](https://example.com)
+- [A page about writing JS in general](#)
