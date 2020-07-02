@@ -6,10 +6,8 @@ order: 5
 
 ## Constructor
 
-### Syntax
-
 ```javascript
-new Response(body, init)
+let response = new Response(body, init)
 ```
 
 ### Parameters
@@ -106,7 +104,15 @@ new Response(body, init)
 
 </Definitions>
 
-## Examples
+--------------------------------
+
+## Common issues
+
+Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
+
+--------------------------------
+
+## See also
 
 - [Modifing a Response](#)
 - [Implementing a conditional Response](#)
