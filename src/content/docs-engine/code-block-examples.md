@@ -6,7 +6,7 @@ __Warning:__ These APIs are a work in progress, and may change substantially bef
 
 </Aside>
 
-Code blocks inside Cloudflare [Docs-flavored Markdown](/docs-engine/docs-flavored-markdown) offer a variety of custom presention mechanisms. This page contains practical examples for inspiration.
+Code blocks inside Cloudflare [Docs-flavored Markdown](/docs-engine/docs-flavored-markdown) offer a variety of custom presentation mechanisms. This page contains practical examples for inspiration.
 
 Learn more about [using code blocks inside docs-flavored Markdown](/docs-engine/docs-flavored-markdown#codeblocks).
 
