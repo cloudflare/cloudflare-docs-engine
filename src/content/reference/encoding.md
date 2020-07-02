@@ -13,6 +13,8 @@ The `Class` class is used whenever you’re trying to create an instance. It’s
 - [Tutorial which uses Class](#)
 - [Example which uses Class](#)
 - [Another example which uses Class](#)
+  
+--------------------------------
 
 ## TextEncoder
 
