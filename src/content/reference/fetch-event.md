@@ -1,10 +1,21 @@
 ---
 order: 2
 ---
+
 # FetchEvent
+
+## Background
+
 The event type for HTTP requests dispatched to a Worker (i.e the `Object` passed through as `event` in [`addEventListener()`](/reference/apis/addEventListener).
 
-## Usage
+The `Class` class is used whenever you’re trying to create an instance. It’s particularly useful when you’re trying to create multiple instances. Here are some common uses:
+
+- [Tutorial which uses Class](#)
+- [Example which uses Class](#)
+- [Another example which uses Class](#)
+
+
+## Constructor
 
 ```js
 addEventListener('fetch', (event) => {
@@ -30,7 +41,7 @@ When a Workers script receives a request, the Workers runtime triggers a FetchEv
 
 <Definitions>
 
--  <Code>event.respondWith(response <TypeLink href="/reference/request">Request</TypeLink> | <Type>Promise</Type>)</Code> <Type>void</Type>
+-  <Code>event.respondWith(response<TypeLink href="/reference/request">Request</TypeLink>|<ParamType>Promise</ParamType>)</Code> <Type>void</Type>
 
     - Intercept the request and send a custom response. _If no event handler calls `respondWith()` the runtime attempts to request the origin as if no Worker script exists. If no origin is setup (e.g. workers.dev sites), then the Workers script must call `respondWith()` for a valid response._
 
@@ -38,10 +49,25 @@ When a Workers script receives a request, the Workers runtime triggers a FetchEv
 
     - Prevents requests from failing due to an unhandled exception thrown by the Worker, causing it instead to [“fail open”](https://community.microfocus.com/t5/Security-Blog/Security-Fundamentals-Part-1-Fail-Open-vs-Fail-Closed/ba-p/283747). Instead of returning an error response, the runtime will proxy the request to the origin server as though the Worker was never invoked.
 
-- <Code>event.waitUntil(promise <Type>Promise</Type>) </Code> <Type>void</Type>
+- <Code>event.waitUntil(promise<ParamType>Promise</ParamType>)</Code> <Type>void</Type>
 
     - Extend the lifetime of the event without blocking the `response` from being sent. Use this method to notify the runtime to wait for tasks (e.g. logging, analytics to third-party services, streaming and caching) that need to run longer than the usual time it takes to send a response.
 
 </Definitions>
+
+--------------------------------
+
+## Common issues
+
+Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
+
+--------------------------------
+
+## See also
+
+- [`RelatedClass`](#)
+- [`OtherRelatedClass`](#)
+- [An external link to relevant documentation, e.g. on MDN](https://example.com)
+- [A page about writing JS in general](#)
 
 To learn more about using the `FetchEvent`, see [FetchEvent LifeCycle](/about/tips/fetch-event-lifecycle).
