@@ -81,25 +81,27 @@
   opacity: .5;
 }
 
-[theme="dark"] .DocsSidebar--shadow {
-  left: calc(100% + 2px);
-  right: auto;
-}
+@media (min-width: 769px) {
+  [theme="dark"] .DocsSidebar--shadow {
+    left: calc(100% + 2px);
+    right: auto;
+  }
 
-[theme="dark"] .DocsSidebar--shadow::before {
-  background: rgb(var(--shadow-color-rgb));
-  border-right: 1px solid rgba(var(--color-rgb), .15);
-}
+  [theme="dark"] .DocsSidebar--shadow::before {
+    background: rgb(var(--shadow-color-rgb));
+    border-right: 1px solid rgba(var(--color-rgb), .15);
+  }
 
-[theme="dark"] .DocsSidebar--shadow::before {
-  width: 1px;
-  opacity: 1;
-}
+  [theme="dark"] .DocsSidebar--shadow::before {
+    width: 1px;
+    opacity: 1;
+  }
 
-[theme="dark"] .DocsSidebar--shadow::after {
-  opacity: 1;
-  width: 14px;
-  right: 1px;
+  [theme="dark"] .DocsSidebar--shadow::after {
+    opacity: 1;
+    width: 14px;
+    right: 1px;
+  }
 }
 
 .DocsSidebar--section {
@@ -573,10 +575,39 @@
   .DocsSidebar {
     z-index: 20;
     background: var(--sidebar-background-color);
-    width: calc(100% - 4rem); /* TODO — why not just 100%? */
+    width: calc(100% - 3.5rem);
     transform: translate3d(-100%, 0, 0);
     will-change: transform;
     transition: transform .3s ease;
+  }
+
+  [theme="dark"] .DocsSidebar {
+    --sidebar-background-color: var(--background-color);
+  }
+
+  .DocsSidebar--shadow {
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+
+  .DocsSidebar--shadow,
+  .DocsSidebar--shadow::before,
+  .DocsSidebar--shadow::after {
+    right: auto;
+    left: 100%;
+  }
+
+  .DocsSidebar--shadow::before,
+  .DocsSidebar--shadow::after {
+    background:
+      linear-gradient(to left,
+        rgba(var(--shadow-color-rgb), 0),
+        rgba(var(--shadow-color-rgb), .2)
+      );
+  }
+
+  .DocsSidebar--shadow::before {
+    width: .3125em;
   }
 
   [is-resizing] .DocsSidebar {
@@ -585,6 +616,10 @@
 
   [is-mobile-sidebar-open] .DocsSidebar {
     transform: translate3d(0, 0, 0);
+  }
+
+  [is-mobile-sidebar-open] .DocsSidebar--shadow {
+    opacity: 1;
   }
 
   .DocsSidebar--header-section,
