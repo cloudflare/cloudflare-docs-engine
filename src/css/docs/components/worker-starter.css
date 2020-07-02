@@ -44,7 +44,7 @@
 
 .WorkerStarter--command-copy-button-wrapper {
   position: absolute;
-  width: calc(var(--copy-button-width));
+  width: calc(var(--copy-button-width) - 2px);
   height: var(--height);
 }
 
@@ -53,12 +53,12 @@
   height: 100%;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  font-weight: 500;
-  background: var(--gray-7);
+  font-weight: 600;
+  background: var(--code-block-background-color);
 }
 
-[theme="dark"] .WorkerStarter--command-copy-button-wrapper button {
-  background: var(--gray-1);
+[theme="light"] .WorkerStarter--command-copy-button-wrapper button {
+  background: var(--code-block-background-color-light-theme);
 }
 
 .WorkerStarter--command-codeblock-wrapper {
