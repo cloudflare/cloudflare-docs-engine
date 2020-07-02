@@ -85,16 +85,27 @@
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1152px) {
   .DocsWorkersExamples {
     margin-left: 0;
     margin-right: 0;
     grid-template-columns: 100%;
   }
 
+  .DocsWorkersExamples--example-description {
+    --lines: 1;
+  }
+}
+
+@media (max-width: 768px) {
   .DocsWorkersExamples--example-title {
     font-size: 1.375em;
     margin-bottom: .5rem;
+  }
+
+  .DocsWorkersExamples--example-description {
+    --lines: 2;
+    height: auto;
   }
 
   .DocsWorkersExamples--example-codeblock-link {
