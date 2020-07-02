@@ -74,7 +74,7 @@ Finally, it’s shockingly easy to introduce one more cool feature into this pro
 
 To start, let’s look at `workers-site/index.js`: our Workers application in this tutorial will live entirely in this file, so it’s important to be familiar with it.
 
-Inside of this file, the default code for running a [Workers Site](/sites) has been provided. The crucial part of the generated code lives in the `handleEvent` function. The`getAssetFromKV` function retrieves a website asset uploaded from your local `./public` foldler, runs some magic to make it live on Workers KV, and returns it to the user. For now, we can ignore much of `getAssetFromKV` (though if you’d like to learn more, check out [the docs](/sites/start-from-worker) .
+Inside of this file, the default code for running a [Workers Site](/sites) has been provided. The crucial part of the generated code lives in the `handleEvent` function. The`getAssetFromKV` function retrieves a website asset uploaded from your local `./public` folder, runs some magic to make it live on Workers KV, and returns it to the user. For now, we can ignore much of `getAssetFromKV` (though if you’d like to learn more, check out [the docs](/sites/start-from-worker) .
 
 To implement translations on the site, we’ll take the HTML response retrieved from KV and pass it into a new instance of `HTMLRewriter`. When instantiating `HTMLRewriter`, we can also attach handlers using the `on` function: in our case, we’ll use the `[data-i18n-key]` selector (see the [documentation](/reference/apis/html-rewriter) for more advanced usage) to parse all elements that require translation with a single class, `ElementHandler`. With the created instance of `HTMLRewriter`, the `transform` function takes a `response` and can be returned to the client:
 
@@ -278,4 +278,4 @@ With that, it’s time to publish your application! Using `wrangler`, we can pub
 
 In this tutorial, you built and published an i18n tool using `HTMLRewriter`. If you’d like to see the full source code for this application, visit the [repo on GitHub](https://github.com/signalnerve/i18n-example-workers).
 
-If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/templates).
+If you want to get started building your own projects, check out the [templates](/templates).

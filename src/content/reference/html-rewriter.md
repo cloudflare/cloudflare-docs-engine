@@ -17,6 +17,8 @@ Here are some common uses:
 - [Example which uses Class](#)
 - [Another example which uses Class](#)
 
+--------------------------------
+
 ## Constructor
 
 
@@ -28,6 +30,7 @@ new HTMLRewriter()
 
 HTMLRewriter does not take any parameters to initialize and has no properties or methods (I don’t know if this is true or not but it seems like there is no properties / methods section for the HTMLRewriter object). We chain handlers together to customize HTMLRewriter.
 
+--------------------------------
 
 ## Global Types
 
@@ -44,6 +47,8 @@ Throughout the HTMLRewriter API, there are a few consistent types that many prop
   - `{ html: Boolean }` Controls the way the HTMLRewriter treats inserted content. If the `html` boolean is set to true, content is treated as raw HTML. If the `html` boolean is set to false or not provided, content will be treated as text and proper HTML escaping will be applied to it.
   
 </Definitions>
+
+--------------------------------
 
 ## Handlers
 
