@@ -14,7 +14,7 @@ tags:
 </ContentColumn>
 
 ```js
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   return event.respondWith(
     fetch("https://example.com")
   )
