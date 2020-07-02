@@ -161,7 +161,7 @@ class ThemeToggle extends React.Component {
               id="ThemeToggle"
               className="ThemeToggle--input"
               onChange={this.onCheckboxChange}
-              checked={this.state.checked} />
+              checked={this.state.checked}/>
 
             <label className="ThemeToggle--toggle" htmlFor="ThemeToggle">
               <div className="ThemeToggle--toggle-handle"></div>

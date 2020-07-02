@@ -240,12 +240,22 @@ p.DocsMarkdown--small-header {
   font-size: 1em;
 }
 
+.DocsMarkdown h2 code,
 .DocsMarkdown h3 code,
 .DocsMarkdown h4 code,
 .DocsMarkdown h5 code {
-  --inline-code-font-size: 1em;
   --background: transparent;
   --padding: 0;
+}
+
+.DocsMarkdown h2 code,
+.DocsMarkdown h3 code {
+  --inline-code-font-size: .9375em;
+}
+
+.DocsMarkdown h4 code,
+.DocsMarkdown h5 code {
+  --inline-code-font-size: 1em;
 }
 
 .DocsMarkdown h5,
@@ -296,6 +306,11 @@ p.DocsMarkdown--small-header {
 
 .DocsMarkdown--definitions {
   margin: 1.25em 0;
+}
+
+.DocsMarkdown h3 + .DocsMarkdown--definitions,
+.DocsMarkdown h4 + .DocsMarkdown--definitions {
+  margin-top: 1em;
 }
 
 .DocsMarkdown--definitions > ul {
@@ -354,6 +369,10 @@ p.DocsMarkdown--small-header {
 
 .DocsMarkdown > pre {
   --outdent: 1rem;
+}
+
+[page-type="example"] .DocsMarkdown > pre {
+  --outdent: 0px;
 }
 
 @media (max-width: 768px) {
@@ -681,6 +700,39 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   border-radius: .4em;
 }
 
+.DocsMarkdown--demo {
+  position: relative;
+}
+
+.DocsMarkdown--demo:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+.DocsMarkdown--demo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-rgb), .15);
+  pointer-events: none;
+}
+
+.DocsMarkdown--demo iframe {
+  background: #fff;
+  height: 100%;
+  width: 100%;
+}
+
+.DocsMarkdown--content-column {
+  width: calc(100% - var(--docs-body-sidebar-width));
+}
+
+.DocsMarkdown--content-column:not(:last-child) {
+  margin-bottom: 1em;
+}
+
 .DocsMarkdown--example {
   padding: 1em 1.25em;
   margin: -.5em auto 1.25em;
@@ -699,6 +751,7 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 .DocsMarkdown li > *:first-child,
 .DocsMarkdown blockquote > *:first-child,
 .DocsMarkdown details > *:first-child,
+.DocsMarkdown--content-column > *:first-child,
 .DocsMarkdown--example > *:first-child,
 .DocsMarkdown--aside > *:first-child {
   margin-top: 0;
@@ -710,6 +763,7 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 .DocsMarkdown li > *:not(ul):not(ol):not(pre):not(figure):not(table):last-child,
 .DocsMarkdown blockquote > *:last-child,
 .DocsMarkdown details > *:last-child,
+.DocsMarkdown--content-column > *:last-child,
 .DocsMarkdown--example > *:last-child,
 .DocsMarkdown--aside > *:last-child {
   margin-bottom: 0;

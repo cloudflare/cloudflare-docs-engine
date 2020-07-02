@@ -11,13 +11,17 @@ import IconExternalLink from "../icons/external-link"
 export default ({ href, className, children, ...props }) => {
   if (!href || !children) return (<a {...props}/>)
 
+  const isImageLink = typeof children === "object" &&
+    children.props &&
+    children.props.className === "gatsby-resp-image-wrapper"
+
   const isExternal = !!href.match(/^https?:/)
   const isHash = href.indexOf("#") === 0
 
-  const useRegularLink = isExternal || isHash
+  const useRegularLink = isImageLink || isExternal || isHash
 
   return useRegularLink ? (
-    isExternal ? (
+    (isExternal && !isImageLink) ? (
       <a href={href} className={className || linkClassName} {...props}>
         <span className={contentClassName}>{children}</span>
         <IconExternalLink className={externalIconClassName}/>

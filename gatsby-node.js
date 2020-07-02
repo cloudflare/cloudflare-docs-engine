@@ -116,15 +116,18 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Frontmatter {
-      title: String
-      type: String
-      order: Int
+      demo: String
+      breadcrumbs: Boolean
+      difficulty: String
       hidden: Boolean
       hideChildren: Boolean
-      breadcrumbs: Boolean
-      updated: Date @dateformat
-      difficulty: String
       length: String
+      order: Int
+      summary: String
+      tags: [String]
+      title: String
+      type: String
+      updated: Date @dateformat
     }
   `
 
