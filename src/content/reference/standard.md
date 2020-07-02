@@ -38,6 +38,7 @@ The following methods are available per the [Worker Global Scope](https://develo
 - <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob">atob()</TypeLink>
   
   - Decodes a string of data which has been encoded using base-64 encoding.
+  
 - <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa">btoa()</TypeLink>
   
   - Creates a base-64 encoded ASCII string from a string of binary data.
@@ -60,6 +61,7 @@ The following methods are available per the [Worker Global Scope](https://develo
 - <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">setTimeout()</TypeLink>
 
   - Schedules a function to execute in a given amount of time.
+  
 - <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout">clearTimeout()</TypeLink>
 
   - Cancels the delayed execution set using [`setTimeout()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout).
