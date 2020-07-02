@@ -1,0 +1,44 @@
+.WorkerStarter {
+  display: block;
+  margin-top: 2.5rem;
+  width: calc(100% - var(--docs-body-sidebar-width));
+}
+
+.WorkerStarter + .WorkerStarter {
+  margin-top: 3rem;
+}
+
+.WorkerStarter--title {
+  font-size: 1.35em;
+  line-height: 1.2;
+  font-weight: 500;
+  margin-bottom: .3125em;
+}
+
+.WorkerStarter--title .Link { /* TODO */
+  color: inherit;
+  --underline-opacity: .75;
+  text-decoration: underline;
+  text-decoration-color: rgba(var(--orange-rgb), var(--underline-opacity));
+  box-shadow: 0 0 0 var(--focus-size) var(--focus-color);
+}
+
+@media (max-width: 768px) {
+  .WorkerStarter--title {
+    font-size: 1.375em;
+    margin-bottom: .5rem;
+  }
+}
+
+.WorkerStarter--description {
+  display: block;
+  margin-bottom: .4375rem;
+}
+
+.WorkerStarter--command {
+  display: block;
+}
+
+.WorkerStarter .WorkerStarter--command pre {
+  margin-bottom: 0;
+}
