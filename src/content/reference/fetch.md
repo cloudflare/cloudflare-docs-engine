@@ -4,9 +4,9 @@ order: 3
 
 # Fetch
 
-The [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) provides an interface for asynchronously fetching resources via HTTP requests inside of a Worker.
+## Background
 
-## Global
+The [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) provides an interface for asynchronously fetching resources via HTTP requests inside of a Worker.
 
 The `fetch` method is implemented on the ServiceWorkerGlobalScope. See [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch) for more information.
 
@@ -16,8 +16,15 @@ __Note:__ Asynchronous tasks such as `fetch` are not executed at the top level i
 
 </Aside>
 
+The `Class` class is used whenever you’re trying to create an instance. It’s particularly useful when you’re trying to create multiple instances. Here are some common uses:
 
-## Usage
+- [Tutorial which uses Class](#)
+- [Example which uses Class](#)
+- [Another example which uses Class](#)
+
+--------------------------------
+
+## Constructor
 <!-- This code example needs more work -->
 ```js
 ---
@@ -43,9 +50,10 @@ async function eventHandler(event) {
   - Fetch returns a promise to a Response.
   
 </Definitions>
-  
 
-### Parameters
+--------------------------------
+
+## Properties
 
 <Definitions>
 
@@ -55,10 +63,26 @@ async function eventHandler(event) {
 - `init` <TypeLink href="/reference/apis/request#requestinit">RequestInit</TypeLink>
   - The content of the request.
 
-
 </Definitions>
 
-## Examples
+--------------------------------
+
+## Methods
+
+--------------------------------
+
+## Common issues
+
+Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
+
+--------------------------------
+
+## See also
+
+- [`RelatedClass`](#)
+- [`OtherRelatedClass`](#)
+- [An external link to relevant documentation, e.g. on MDN](https://example.com)
+- [A page about writing JS in general](#)
 
 - [Fetch HTML](/templates/pages/fetch_html)
 - [Fetch JSON](/templates/pages/fetch_json)
