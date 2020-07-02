@@ -4,6 +4,8 @@ weight: 5
 
 # Streams
 
+## Background
+
 Workers scripts don’t need to prepare an entire response body before delivering it to `event.respondWith()`. You can use `TransformStream` to stream a response body _after_ sending the front matter (that is, HTTP status line and headers). This allows you to minimize:
 
 - The visitor’s time-to-first-byte.
@@ -18,6 +20,8 @@ By default, the Cloudflare Workers service streams. Only use these APIs for _mod
 __Note:__ The Streams API is only available inside of [the Request Context](/about/tips/request-context).
 
 </Aside>
+
+--------------------------------
 
 ## Streaming Passthrough
 
@@ -50,6 +54,8 @@ Note that we call `response.body.pipeTo(writable)` but do _not_ `await` it. This
 
 The runtime can continue running a function (`response.body.pipeTo(writable)`) after a response is returned to the client. This example just pumps the subrequest response body to the final response body; however, you can use more complicated logic, such as adding a prefix or a suffix to the body or to process it somehow.
 
+--------------------------------
+
 ## Types
 
 ### TransformStream
@@ -65,6 +71,7 @@ The runtime can continue running a function (`response.body.pipeTo(writable)`) a
 
 </Definitions>
 
+--------------------------------
 
 ### ReadableStream
 
@@ -117,6 +124,7 @@ Gets an instance of `ReadableStreamDefaultReader` and locks the `ReadableStream`
 
 </Definitions>
 
+--------------------------------
 
 ### ReadableStreamDefaultReader
 
@@ -170,6 +178,8 @@ __Note:__ An instance of `ReadableStreamBYOBReader` created by passing the `byob
 
 </Definitions>
 
+--------------------------------
+
 ### WritableStream
 
 <Aside>
@@ -211,6 +221,8 @@ __Note:__ A `WritableStream` returns as the `writable` property inside `Transfor
   - Gets an instance of `WritableStreamDefaultWriter` and locks the `WritableStream` to that writer instance.
 
 </Definitions>
+
+--------------------------------
 
 ### WritableStreamDefaultWriter
 
@@ -274,3 +286,18 @@ await someResponse.body.pipeTo(writable)
     - The chunk of data to be written.
 
 </Definitions>
+
+--------------------------------
+
+## Common issues
+
+Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
+
+--------------------------------
+
+## See also
+
+- [`RelatedClass`](#)
+- [`OtherRelatedClass`](#)
+- [An external link to relevant documentation, e.g. on MDN](https://example.com)
+- [A page about writing JS in general](#)
