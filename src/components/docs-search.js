@@ -12,7 +12,7 @@ const DocsSearch = () => {
     const init = () => {
       frames += 1
 
-      // Sadly this is needed because of the way Helmet works in local developement
+      // Sadly this is needed because of the way Helmet works in local development
       if (!window.docsearch && frames < 60) {
         return requestAnimationFrame(() => init())
       }

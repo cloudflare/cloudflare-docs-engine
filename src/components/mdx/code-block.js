@@ -91,7 +91,7 @@ const CodeBlock = props => {
                     <span className="CodeBlock--row-indicator"></span>
                     <span className="CodeBlock--row-content">
                       {addNewlineToEmptyLine(line).map((token, key) => (
-                        <span key={key} {...tokenProps(getTokenProps({ token, key }))} />
+                        <span key={key} {...tokenProps(getTokenProps({ token, key }))}/>
                       ))}
                     </span>
                   </span>
