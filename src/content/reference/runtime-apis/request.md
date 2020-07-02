@@ -147,7 +147,7 @@ Invalid or incorrectly-named keys in the `cf` object will be silently ignored. C
 
 ## Properties
 
-All properties of an incoming `Request` object (i.e. `event.request`) are read only. To [modify a request](/templates/pages/modify_req_props/), you must create a new `Request` object and pass the options to modify to its [constructor](#constructor).
+All properties of an incoming `Request` object (i.e. `event.request`) are read only. To modify a request, you must create a new `Request` object and pass the options to modify to its [constructor](#constructor).
 
 <Definitions>
 
@@ -293,38 +293,6 @@ These methods are only available on an instance of a `Request` object or through
 
 ## Examples
 
-- [Modify request property](/templates/pages/modify_req_props)
-- [Aggregate requests](/templates/pages/aggregate_requests)
-- [Signed `Request`/`Response`](/templates/pages/signed_request)
-
---------------------------------
-
-## TODO
-
-- The “Random Notes” below need a home somewhere else, or a decision to punt.
-
-### Random Constructor Notes
-
-- If you expect Unicode values in your headers, URL- or Base64-encode your header values before adding them to a Headers object.
-
-- `CF-Connecting-IP`: A Cloudflare specific header to specify the client IP
-
-  - **Note:** Requests using the `GET` or `HEAD` methods cannot have a body.
-
-  -  Valid `redirect` values:
-    - `follow: boolean`: If a redirect reponse is returned to the fetch, another fetch will be fired based on the `Location` header in the response until a non-redirect code is returned. (i.e. `await fetch(..)` could never return a `301` redirect)
-    - `manual: boolean`: redirect responses will return from a fetch
-
-### Random `RequestInitCfProperties` object Notes
-
-- `cacheTtl` <Type>number</Type>
-
-  - This option forces Cloudflare to cache the response for this request, regardless of what headers are seen on the response. This is equivalent to setting two page rules: [“Edge Cache TTL”](https://support.cloudflare.com/hc/en-us/articles/200168376-What-does-edge-cache-expire-TTL-mean-) and [“Cache Level” (to “Cache Everything”)](https://support.cloudflare.com/hc/en-us/articles/200172266).
-
-- `cacheTtlByStatus` <Type>{ [key: string]: number }</Type>
-
-  - This option is a version of the `cacheTtl` feature which chooses a TTL based on the response’s status code. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time, and override cache instructives sent by the origin. (e.g. `{ "200-299": 86400, 404: 1, "500-599": 0 }`) _Note - Cloudflare will still adhere to [standard cache levels](https://support.cloudflare.com/hc/en-us/articles/202775670-How-Do-I-Tell-Cloudflare-What-to-Cache-), so by default this will override cache behavior for static files. If you wish to cache non-static assets, you will need to set a [Cache Level of Cache Everything](https://support.cloudflare.com/hc/en-us/articles/200172266-What-do-the-custom-caching-options-mean-in-Page-Rules-) using a Page Rule._
-
-- `resolveOverride` <Type>string</Type>
-
-  - Redirects the request to an alternate origin server. You can use this, for example, to implement load balancing across several origins. (e.g.`us-east.example.com`). _Note - For security reasons, the hostname set in `resolveOverride` must be proxied on the same Cloudflare zone of the incoming request. Otherwise, the setting is ignored. CNAME hosts are allowed, so to resolve to a host under a different domain or a DNS only domain first declare a CNAME record within your own zone’s DNS mapping to the external hostname, set proxy on Cloudflare, then set resolveOverride to point to that CNAME record._
+- [Modify request property](#)
+- [Aggregate requests](#)
+- [Signed `Request`/`Response`](#)

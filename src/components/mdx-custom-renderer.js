@@ -9,7 +9,9 @@ import headers from "./mdx/headers"
 import inlineCode from "./mdx/inline-code"
 import pre from "./mdx/code-block"
 import Aside from "./mdx/aside"
+import ContentColumn from "./mdx/content-column"
 import Example from "./mdx/example"
+import Demo from "./mdx/demo"
 import Definitions from "./mdx/definitions"
 import Code from "./mdx/code"
 import ParamType from "./mdx/param-type"
@@ -31,7 +33,9 @@ const components = {
   // Add custom components
   Link,
   Aside,
+  ContentColumn,
   Example,
+  Demo,
   Definitions,
   Code,
   ParamType,
@@ -45,7 +49,9 @@ const components = {
 const MDXCustomRenderer = ({ data: { mdx } }) => {
   return (
     <MDXProvider components={components}>
-      <MDXRenderer>{mdx.body}</MDXRenderer>
+      <MDXRenderer frontmatter={mdx.frontmatter}>
+        {mdx.body}
+      </MDXRenderer>
     </MDXProvider>
   )
 }
@@ -58,7 +64,13 @@ export const query = graphql`
       id
       body
       frontmatter {
+        demo
+        difficulty
+        summary
+        tags
         title
+        type
+        updated(formatString: "YYYY-MM-DD")
       }
     }
   }
