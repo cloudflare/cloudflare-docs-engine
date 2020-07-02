@@ -1,5 +1,5 @@
 .DocsContent {
-  padding: 2.7rem 3.7647058824rem 3.5rem; /* 64 / 17 */ /* TODO */
+  padding: 2.7rem var(--docs-content-gap) 3.5rem; /* TODO */
   min-height: calc(100vh - 12.5em); /* TODO */
 }
 
