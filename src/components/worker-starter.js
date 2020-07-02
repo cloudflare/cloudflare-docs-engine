@@ -6,7 +6,7 @@ import CodeBlock from "./code-block"
 const WorkerStarter = props => {
   const { title, description, repo } = props
   const repoLink = `https://github.com/${repo}`
-  const command = `wrangler generate my-worker ${repoLink}`
+  const command = `wrangler generate my-app ${repoLink}`
 
   return (
     <div className="WorkerStarter">

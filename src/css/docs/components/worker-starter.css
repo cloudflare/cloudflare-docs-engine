@@ -36,7 +36,7 @@
 }
 
 .WorkerStarter--command {
-  display: block;
+  font-size: .9em;
 }
 
 .WorkerStarter .WorkerStarter--command pre {
