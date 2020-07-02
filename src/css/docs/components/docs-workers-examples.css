@@ -10,13 +10,16 @@
 }
 
 .DocsWorkersExamples--example-title {
-  font-weight: 500;
   font-size: 1.5em;
   line-height: 1.2;
+  font-weight: 500;
   margin-bottom: .625em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
-.DocsWorkersExamples--example-title .Link {
+.DocsWorkersExamples--example-title .Link { /* TODO */
   color: inherit;
   --underline-opacity: .75;
   text-decoration: underline;
