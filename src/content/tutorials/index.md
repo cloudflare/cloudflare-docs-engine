@@ -1,5 +1,4 @@
 ---
-title: Tutorials
 type: overview
 hideChildren: true
 order: 1
