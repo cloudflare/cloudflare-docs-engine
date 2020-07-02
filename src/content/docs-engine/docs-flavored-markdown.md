@@ -79,15 +79,12 @@ Tutorials additionally have three properties which are used to sort and display 
 frontmatter {
   updated
   difficulty
-  length
 }
 ```
 
 The `updated` property sets the updated date. This is currently used to sort the table.
 
 Currently `difficulty` is only set to one of `"Beginner"`, `"Advanced"`, or `"Expert"`, but any short string value is fine.
-
-The `length` property is meant to be an indication of how long it takes to complete the tutorial _relative to the others_. As such, it is currently set as a percentage 0–100, like `50%`. This is a design/API decision we will want to revisit.
 
 --------------------------------
 

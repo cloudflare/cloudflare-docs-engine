@@ -25,6 +25,9 @@ const DocsTutorials = () => {
             headings(depth: h1) {
               value
             }
+            wordCount {
+              words
+            }
           }
         }
       }
@@ -39,10 +42,23 @@ const DocsTutorials = () => {
       url: page.fields.slug,
       updated: page.frontmatter.updated,
       difficulty: page.frontmatter.difficulty,
-      length: page.frontmatter.length,
+      wordCount: page.wordCount.words,
       new: (+new Date - +new Date(page.frontmatter.updated)) < oneWeekInMS
     }))
     .sort((a, b) => +new Date(b.updated) - +new Date(a.updated))
+
+  let i = 0
+  let longestWordCount = 0
+
+  for (i = 0; i < tutorials.length; i += 1) {
+    if (tutorials[i].wordCount > longestWordCount) {
+      longestWordCount = tutorials[i].wordCount
+    }
+  }
+
+  for (i = 0; i < tutorials.length; i += 1) {
+    tutorials[i].length = ((tutorials[i].wordCount / longestWordCount) * 100) + "%"
+  }
 
   return (
     <div className="DocsTutorials">
