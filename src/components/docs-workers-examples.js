@@ -22,6 +22,7 @@ const DocsWorkersData = props => {
               slug
             }
             frontmatter {
+              order
               title
               summary
               demo
@@ -46,6 +47,7 @@ const DocsWorkersData = props => {
     .map(({ node }) => node)
     .filter(page => page.fields.slug.match(/^\/examples\/.+/))
     .map(page => ({
+      order: page.frontmatter.order,
       title: getPageTitle(page),
       url: page.fields.slug,
       summary: page.frontmatter.summary,
