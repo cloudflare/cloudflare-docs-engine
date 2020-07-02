@@ -1,7 +1,6 @@
 .WorkerStarter {
   display: block;
   margin-top: 2.5rem;
-  width: calc(100% - var(--docs-body-sidebar-width));
 }
 
 .WorkerStarter + .WorkerStarter {
@@ -33,12 +32,44 @@
 .WorkerStarter--description {
   display: block;
   margin-bottom: .4375rem;
+  width: calc(100% - var(--docs-body-sidebar-width));
 }
 
 .WorkerStarter--command {
+  position: relative;
   font-size: .9em;
+  --copy-button-width: 4rem;
+  --height: 2.5rem;
 }
 
-.WorkerStarter .WorkerStarter--command pre {
+.WorkerStarter--command-copy-button-wrapper {
+  position: absolute;
+  width: calc(var(--copy-button-width));
+  height: var(--height);
+}
+
+.WorkerStarter--command-copy-button-wrapper button {
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  font-weight: 500;
+  background: var(--gray-7);
+}
+
+[theme="dark"] .WorkerStarter--command-copy-button-wrapper button {
+  background: var(--gray-1);
+}
+
+.WorkerStarter--command-codeblock-wrapper {
+  padding-left: var(--copy-button-width);
+}
+
+.WorkerStarter--command .WorkerStarter--command-codeblock-wrapper pre {
+  height: var(--height);
+  line-height: 1.4;
   margin-bottom: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  overflow: hidden;
 }

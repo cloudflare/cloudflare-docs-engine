@@ -1,5 +1,7 @@
 import React from "react"
 
+import { CopyToClipboard } from "react-copy-to-clipboard"
+
 import AnchorLink from "./mdx/anchor-link"
 import CodeBlock from "./code-block"
 
@@ -15,7 +17,14 @@ const WorkerStarter = props => {
       </div>
       <div className="WorkerStarter--description">{description}</div>
       <div className="WorkerStarter--command">
-        <CodeBlock lang="sh">{command}</CodeBlock>
+        <div className="WorkerStarter--command-copy-button-wrapper">
+          <CopyToClipboard text={command}>
+            <button className="Button">Copy</button>
+          </CopyToClipboard>
+        </div>
+        <div className="WorkerStarter--command-codeblock-wrapper">
+          <CodeBlock lang="sh">{command}</CodeBlock>
+        </div>
       </div>
     </div>
   )
