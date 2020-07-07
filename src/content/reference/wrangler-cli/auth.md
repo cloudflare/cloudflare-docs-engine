@@ -1,8 +1,8 @@
 # Authentication
 
 ## Background
-In Cloudflare's system, you have a User that can have multiple Accounts and Zones. As a result, your User is configured globally on your machine via a single Cloudflare Token. Your Account(s) and Zone(s) will be configured per project, but will use your Cloudflare Token to authenticate all API calls. A config file is created in a `.wrangler`
-directory in your computer's home directory.
+In Cloudflare’s system, you have a User that can have multiple Accounts and Zones. As a result, your User is configured globally on your machine via a single Cloudflare Token. Your Account(s) and Zone(s) will be configured per project, but will use your Cloudflare Token to authenticate all API calls. A config file is created in a `.wrangler`
+directory in your computer’s home directory.
 
 --------------------------------
 
