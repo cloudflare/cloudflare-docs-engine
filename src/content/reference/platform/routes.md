@@ -3,15 +3,7 @@
 
 ## Background
 
-The mechanics for if and what script should run on a request based on the URL.
-
-## Workers.dev
-
-For workers.dev zones, scripts are managed by the name of the script. A request to your `script-name.subdomain.workers.dev` subdomain will run through the active script with corresponding name, `script-name`.
-
-All the logic for routing must be done in the script itself. For example, you can use the [router template](/templates/boilerplates/router).
-
-Each script that runs must have a script name, so there is currently no way to run a script on `subdomain.workers.dev`.
+Routes allow users to map a URL pattern to a Worker script to enable Workers to run on custom domains.
 
 ## Custom Zones
 
