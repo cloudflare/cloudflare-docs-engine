@@ -3,18 +3,15 @@
 
 ## Background
 
-There are three levels of configuration that `wrangler` uses: global user, project and environment.
-
 Your project will need some configuration before you can publish your worker. These values are stored in a `wrangler.toml` file. You will need to manually edit this file to add these values before you can publish.
 
 For all configurable fields, see the [table](#keys) below.
 
 --------------------------------
 
-## Config Level
+## Environments
 
 Top level configuration: the configuration values you specify at the top of your `wrangler.toml` will be applied to all environments if not otherwise specified in the environment.
-
 
 Environment configuration <PropMeta>(optional)</PropMeta>: the configuration values you specify under an `[env.name]` in your `wrangler.toml`
 
