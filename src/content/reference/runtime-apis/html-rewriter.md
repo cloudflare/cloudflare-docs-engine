@@ -1,6 +1,3 @@
----
-order: 8
----
 
 # HTMLRewriter
 
@@ -10,12 +7,6 @@ The `HTMLRewriter` class allows developers to build comprehensive and expressive
 
 
 The `HTMLRewriter` class should be instantiated once in your Workers script, with a number of handlers attached using the `on` and `onDocument` functions.
-
-Here are some common uses:
-
-- [Tutorial which uses Class](#)
-- [Example which uses Class](#)
-- [Another example which uses Class](#)
 
 --------------------------------
 
@@ -27,8 +18,6 @@ new HTMLRewriter()
   .on('*', new ElementHandler())
   .onDocument(new DocumentHandler())
 ```
-
-HTMLRewriter does not take any parameters to initialize and has no properties or methods (I don’t know if this is true or not but it seems like there is no properties / methods section for the HTMLRewriter object). We chain handlers together to customize HTMLRewriter.
 
 --------------------------------
 
@@ -356,8 +345,6 @@ This is what selecters are and what they are used for.
 
 ## Common issues
 
-Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
-
 If a handler throws an exception, parsing is immediately halted, the transformed response body is errored with the thrown exception, and the untransformed response body is canceled (closed). If the transformed response body was already partially streamed back to the client, the client will see a truncated response.
 
 ```js
@@ -383,10 +370,10 @@ async function handle(request) {
 
 --------------------------------
 
-## See also
+<!-- To Do: ## See also
 
 - [`RelatedClass`](#)
 - [`OtherRelatedClass`](#)
 - [An external link to relevant documentation, e.g. on MDN](https://example.com)
-- [A page about writing JS in general](#)
+- [A page about writing JS in general](#) -->
 

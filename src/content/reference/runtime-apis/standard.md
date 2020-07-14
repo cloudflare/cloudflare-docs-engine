@@ -1,6 +1,3 @@
----
-order: 1
----
 
 # Web Standards
 

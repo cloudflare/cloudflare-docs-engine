@@ -1,88 +1,62 @@
----
-order: 9
----
 
 # KV
 
 ## Background
 
-The `Class` class is used whenever you’re trying to create an instance. It’s particularly useful when you’re trying to create multiple instances. Here are some common uses:
+Workers KV is a global, low-latency, key-value data store. It supports
+exceptionally high read volumes with low-latency, making it possible to build
+highly dynamic APIs and websites which respond as quickly as a cached static
+file would.
 
-- [Tutorial which uses Class](#)
-- [Example which uses Class](#)
-- [Another example which uses Class](#)
+Workers KV is generally good for use-cases where you need to write relatively
+infrequently, but read quickly and frequently. It is optimized for these
+high-read applications, only reaching its full performance when data is being
+frequently read. Very infrequently read values are stored centrally, while
+more popular values are maintained in all of our data centers around the
+world.
 
---------------------------------
+KV achieves this performance by being eventually-consistent. Changes may take
+up to 60 seconds to propagate. Workers KV isn't ideal for situations where
+you need support for atomic operations or where values must be read and
+written in a single transaction.
 
-## Constructor
+All values are encrypted at rest with 256-bit AES-GCM, and only decrypted by
+the process executing your Worker scripts or responding to your API requests.
 
-```js
-const instance = new Class()
-```
+Workers KV is an account-level feature, and comes with your Workers Unlimited
+subscription.
 
-### Properties
-
-<Definitions>
-
-- `instance.title` <Type>string</Type> <PropMeta>read-only</PropMeta>
-
-  - The title of the instance
-
-- `instance.visible` <Type>boolean</Type> <PropMeta>read-only</PropMeta>
-
-  - Boolean indicating if the instance is visible
-
-</Definitions>
-
-### Methods
-
-<Definitions>
-
-- <Code>setTitle(newTitle<ParamType>string</ParamType>)</Code>
-
-  - Sets the title to `newTitle`.
-
-- <Code>hide()</Code> <Type>boolean</Type>
-
-  - Attempts to hide the instance. Returns a boolean whether hiding was successful.
-
-</Definitions>
+- [Use cases](/reference/storage/use-cases)
+- [Limits](/about/limits#kv)
+- [Pricing](/about/pricing#kv)
 
 --------------------------------
 
-## Common issues
+## Methods
 
-Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
-
---------------------------------
-
-## See also
-
-- [`RelatedClass`](#)
-- [`OtherRelatedClass`](#)
-- [An external link to relevant documentation, e.g. on MDN](https://example.com)
-- [A page about writing JS in general](#)
-
-
---------------------------------
-
-# This is all old content from the old docs below. It's written as a  "learn more" post instead of the technical reference format we have.
-
-# Writing key-value pairs
+### Writing key-value pairs
 
 To create a new key-value pair, or to update the value for a particular key,
 you can call the `put` method on any namespace you've bound to your script.
 The basic form of this method looks like this:
 
-`await NAMESPACE.put(key, value)`
+```js
+await NAMESPACE.put(key, value)
+```
 
-The type is automatically inferred from value, and can be any of:
+#### Parameters
 
-- `string`
-- `ReadableStream`
-- `ArrayBuffer`
+<Definitions>
 
-This method returns a promise that you should `await` on in order to verify
+  - `key` <Type>string</Type>
+    - The key to associate with the value
+  
+  - `value` <Type>string</Type> | <Type>ReadableStream</Type> | <Type>ArrayBuffer</Type>
+    -  The value to store. The type is inferred.
+
+</Definitions>
+
+This method returns a `Promise` that you should `await` on in order to verify
 a successful update.
 
 You can also [write key-value pairs from the command line with
@@ -94,14 +68,14 @@ API](https://api.cloudflare.com/#workers-kv-namespace-write-key-value-pair).
 Due to the eventually consistent nature of Workers KV, it's a common pattern
 to write data via Wrangler or the API, but read the data from within a worker.
 
-## Writing Data in Bulk
+#### Writing Data in Bulk
 
 You can [write more than one key-value pair at a time with
 wrangler](/tooling/wrangler/kv_commands/#kv-bulk) or [via the
 API](https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs), up to 10,000 KV pairs. A `key` and `value` are required for each KV pair. The entire request size must be less than 100 megabytes.
 We do not support this from within a Worker script at this time.
 
-## Expiring Keys
+#### Expiring Keys
 
 Many common uses of Workers KV involve writing keys that are only meant to be
 valid for a certain amount of time. Rather than requiring applications to
@@ -131,7 +105,7 @@ writing keys using the API.
 Note that expiration times of less than 60 seconds in the future or
 expiration TTLs of less than 60 seconds are not supported at this time.
 
-### Creating expiring keys
+#### Creating expiring keys
 
 We talked about the basic form of the `put` method above, but this call also
 has an optional third parameter. It accepts an object with optional fields
@@ -141,9 +115,14 @@ to specify the key's expiration time. In other words, you'd run one of the
 two commands below to set an expiration when writing a key from within a
 Worker:
 
-`NAMESPACE.put(key, value, {expiration: secondsSinceEpoch})`
+<Definitions>
 
-`NAMESPACE.put(key, value, {expirationTtl: secondsFromNow})`
+- `NAMESPACE.put(key, value, {expiration: secondsSinceEpoch})`<Type>Promise</Type>
+
+
+- `NAMESPACE.put(key, value, {expirationTtl: secondsFromNow})`<Type>Promise</Type>
+
+</Definitions>
 
 These assume that `secondsSinceEpoch` and `secondsFromNow` are variables
 defined elsewhere in your Worker code.
@@ -152,7 +131,7 @@ You can also [write with an expiration on the command line via
 Wrangler](/tooling/wrangler/kv_commands/#kv-key) or [via the
 API](https://api.cloudflare.com/#workers-kv-namespace-write-key-value-pair).
 
-## Metadata
+#### Metadata
 
 To associate some metadata with a key-value pair
 set `metadata` to any arbitrary object (must serialize to JSON) in the put
@@ -163,7 +142,7 @@ options object on a `put` call. Usage in Worker script:
 The serialized JSON representation of the metadata object must be no more than
 1024 bytes in length.
 
-# Reading key-value pairs
+### Reading key-value pairs
 
 To get the value for a given key, you can call the `get` method on any
 namespace you've bound to your script:
@@ -198,7 +177,7 @@ wrangler](/tooling/wrangler/kv_commands/#kv-key).
 Finally, you can also [read from the
 API](https://api.cloudflare.com/#workers-kv-namespace-read-key-value-pair).
 
-## Types
+#### Types
 
 You can pass an optional `type` parameter to the `get` method as well:
 
@@ -221,7 +200,7 @@ For large values, the choice of `type` can have a noticeable effect on latency
 and CPU usage. For reference, the `type`s can be ordered from fastest to slowest
 as `"stream"`, `"arrayBuffer"`, `"text"`, and `"json"`.
 
-## Metadata
+#### Metadata
 
 You can get the metadata associated with a key-value pair alongside its value
 by calling the `getWithMetadata` method on a namespace you've bound in your
@@ -232,7 +211,7 @@ script:
 If there's no metadata associated with the requested key-value pair, `null`
 will be returned for metadata.
 
-# Deleting key-value pairs
+### Deleting key-value pairs
 
 To delete a key-value pair, you can call the `delete` method on any
 namespace you've bound to your script:
@@ -251,7 +230,7 @@ Wrangler](/tooling/wrangler/kv_commands/#kv-key)
 or [via the
 API](https://api.cloudflare.com/#workers-kv-namespace-delete-key-value-pair).
 
-# Listing keys
+### Listing keys
 
 You can use a list operation to see all of the keys that live in a given
 namespace. Here's a basic example:
@@ -272,7 +251,7 @@ You can also [list keys on the command line with Wrangler](/tooling/wrangler/kv_
 
 Changes may take up to 60 seconds to be visible when listing keys.
 
-## More detail
+#### More detail
 
 The `list` method has this signature (in TypeScript):
 
@@ -311,7 +290,7 @@ You'll use the `cursor` property to get more keys. See the [Pagination section](
 
 below for more details.
 
-## Listing by prefix
+#### Listing by prefix
 
 You can also list all of the keys starting with a particular prefix. For
 example, say you've structured your keys with a user, a user id, and then
@@ -332,11 +311,11 @@ async function handleRequest(request) {
 
 This will return all of the keys that start with `"user:1:"`.
 
-## Ordering
+#### Ordering
 
 Keys are always returned in lexicographically sorted order according to their UTF-8 bytes.
 
-## Pagination
+#### Pagination
 
 If you have more keys than the `limit` value, only that many will be returned. Additionally, the
 `list_complete` key will be set to `false`, and a `cursor` will also be returned. In this case,

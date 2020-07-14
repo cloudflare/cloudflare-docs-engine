@@ -1,20 +1,7 @@
----
-weight: 6
----
-
-<!-- Status: Needs Rewrite -->
 
 # Encoding
 
-## Background
-
-The `Class` class is used whenever you’re trying to create an instance. It’s particularly useful when you’re trying to create multiple instances. Here are some common uses:
-
-- [Tutorial which uses Class](#)
-- [Example which uses Class](#)
-- [Another example which uses Class](#)
-  
---------------------------------
+<!-- ToDo: Add ## Background -->
 
 ## TextEncoder
 
@@ -23,12 +10,6 @@ The `Class` class is used whenever you’re trying to create an instance. It’s
 The TextEncoder takes a stream of code points as input and emits a stream of bytes. Encoding types passed to the constructor are ignored and a UTF-8 TextEncoder is created.
 
 [`TextEncoder()`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/TextEncoder) returns a newly constructed `TextEncoder` that generates a byte stream with UTF-8 encoding. `TextEncoder` takes no parameters and throws no exceptions.
-
-The `Class` class is used whenever you’re trying to create an instance. It’s particularly useful when you’re trying to create multiple instances. Here are some common uses:
-
-- [Tutorial which uses Class](#)
-- [Example which uses Class](#)
-- [Another example which uses Class](#)
 
 ### Constructor
 
@@ -59,24 +40,17 @@ let encoder = new TextEncoder()
 --------------------------------
 
 ## TextDecoder
+
 ### Background 
 
 The **TextDecoder** interface represents a UTF-8 decoder. Decoders take a stream of bytes as input and emit a stream of code points.
 
 [`TextDecoder()`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/TextDecoder) returns a newly constructed `TextDecoder` that generates a code-point stream.
 
-The `Class` class is used whenever you’re trying to create an instance. It’s particularly useful when you’re trying to create multiple instances. Here are some common uses:
-
-- [Tutorial which uses Class](#)
-- [Example which uses Class](#)
-- [Another example which uses Class](#)
-
-
 ### Constructor
 ```js
 let decoder = new TextDecoder()
 ```
-
 
 ### Properties
 
@@ -102,7 +76,7 @@ let decoder = new TextDecoder()
 
 </Definitions>
 
---------------------------------
+<!-- To Do: --------------------------------
 
 ## Common issues
 
@@ -115,4 +89,4 @@ Sometimes you’ll find that when you create instances of `Class`, unexpected th
 - [`RelatedClass`](#)
 - [`OtherRelatedClass`](#)
 - [An external link to relevant documentation, e.g. on MDN](https://example.com)
-- [A page about writing JS in general](#)
+- [A page about writing JS in general](#) -->

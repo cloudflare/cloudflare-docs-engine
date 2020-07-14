@@ -1,19 +1,9 @@
----
-order: 2
----
 
 # FetchEvent
 
 ## Background
 
 The event type for HTTP requests dispatched to a Worker (i.e the `Object` passed through as `event` in [`addEventListener()`](/reference/apis/addEventListener).
-
-The `Class` class is used whenever you’re trying to create an instance. It’s particularly useful when you’re trying to create multiple instances. Here are some common uses:
-
-- [Tutorial which uses Class](#)
-- [Example which uses Class](#)
-- [Another example which uses Class](#)
-
 
 ## Constructor
 
@@ -55,7 +45,7 @@ When a Workers script receives a request, the Workers runtime triggers a FetchEv
 
 </Definitions>
 
---------------------------------
+<!-- To Do: --------------------------------
 
 ## Common issues
 
@@ -70,4 +60,4 @@ Sometimes you’ll find that when you create instances of `Class`, unexpected th
 - [An external link to relevant documentation, e.g. on MDN](https://example.com)
 - [A page about writing JS in general](#)
 
-To learn more about using the `FetchEvent`, see [FetchEvent LifeCycle](/about/tips/fetch-event-lifecycle).
+To learn more about using the `FetchEvent`, see [FetchEvent LifeCycle](/about/tips/fetch-event-lifecycle). -->

@@ -1,8 +1,3 @@
----
-title: Configuration
-weight: 2
-alwaysopen: true
----
 
 # Configuration
 

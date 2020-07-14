@@ -1,6 +1,3 @@
----
-order: 6
----
 
 # Cache
 
@@ -9,13 +6,7 @@ The Cache API allows fine grained control of reading and writing from cache, and
 
 For each individual zone, the Cloudflare Workers runtime exposes a single global cache object: `caches.default`. Though this cache object persists on all of Cloudflare’s data centers, objects are not replicated to any other data centers.
 
-The Service Workers Cache API is currently unimplemented in the Cloudflare Workers Preview. Cache API operations in the previewer will have no impact. To test, one must deploy the Worker on a zone.
-
-The `Class` class is used whenever you’re trying to create an instance. It’s particularly useful when you’re trying to create multiple instances. Here are some common uses:
-
-- [Tutorial which uses Class](#)
-- [Example which uses Class](#)
-- [Another example which uses Class](#)
+The Service Workers Cache API is currently unimplemented in the Cloudflare Workers Preview. Cache API operations in the preview will have no impact. You must deploy the Worker on a zone to test cache operations.
 
 <Aside>
 
@@ -178,7 +169,7 @@ Deletes the `Response` object from the cache and returns a `Promise` for a Boole
 </Definitions>
 
 
---------------------------------
+<!-- To Do: --------------------------------
 
 ## Common issues
 
@@ -192,4 +183,4 @@ Sometimes you’ll find that when you create instances of `Class`, unexpected th
 - [`OtherRelatedClass`](#)
 - [An external link to relevant documentation, e.g. on MDN](https://example.com)
 - [A page about writing JS in general](#)
-- [Using Cache](/about/using-cache)
+- [Using Cache](/about/using-cache) -->

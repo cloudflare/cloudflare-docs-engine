@@ -1,6 +1,3 @@
----
-order: 3
----
 
 # Fetch
 
@@ -15,12 +12,6 @@ The `fetch` method is implemented on the ServiceWorkerGlobalScope. See [MDN docu
 __Note:__ Asynchronous tasks such as `fetch` are not executed at the top level in a Worker script and must be executed within a FetchEvent handler such as [`respondWith`](/reference/fetch-event#methods). Learn more about [Request Contexts](/about/tips/request-context).
 
 </Aside>
-
-The `Class` class is used whenever you’re trying to create an instance. It’s particularly useful when you’re trying to create multiple instances. Here are some common uses:
-
-- [Tutorial which uses Class](#)
-- [Example which uses Class](#)
-- [Another example which uses Class](#)
 
 --------------------------------
 
