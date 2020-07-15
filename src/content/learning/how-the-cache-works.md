@@ -6,10 +6,6 @@ By allowing developers to write to the cache, Workers provide a way to customize
 
 Since Cloudflare's Workers can run before, and after the cache, a Worker can also be utilized to modify assets once they are returned from the cache, to sign or personalize responses, while reducing load on an origin, or latency to the end user by serving assets from a nearby location. 
 
-## Life of a cached request
-
-TO DO: 
-
 ## Interacting with the Cloudflare Cache
 
 Conceptually, there are two ways to interact with Cloudflare's Cache using a Worker:
