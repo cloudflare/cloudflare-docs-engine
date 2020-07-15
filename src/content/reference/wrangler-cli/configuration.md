@@ -23,50 +23,6 @@ Environments is a feature that allows you to deploy the same project to multiple
 
 Some environment properties can be [*inherited*](#keys) from the top level configuration, but values in an environment will always override those at the top level. 
 
-## Example
-
-To illustrate how these levels are applied, here is a wrangler.toml using multiple environments:
-
-```toml
-# top level configuration
-type = "webpack"
-name = "my-worker-dev"
-account_id = "12345678901234567890"
-zone_id = "09876543210987654321"
-route = "dev.example.com/*"
-kv_namespaces = [
-    { binding = "FOO", id = "b941aabb520e61dcaaeaa64b4d8f8358", preview_id = "03c8c8dd3b032b0528f6547d0e1a83f3" },
-    { binding = "BAR", id = "90e6f6abd5b4f981c748c532844461ae", preview_id = "e5011a026c5032c09af62c55ecc3f438" }
-]
-
-[site]
-bucket = "./public"
-entry-point = "workers-site"
-
-# environment configuration
-[env.staging]
-name = "my-worker-staging"
-route = "staging.example.com/*"
-kv_namespaces = [
-    { binding = "FOO", id = "0f2ac74b498b48028cb68387c421e279" },
-    { binding = "BAR", id = "068c101e168d03c65bddf4ba75150fb0" }
-]
-
-# environment configuration
-[env.production]
-workers_dev= true
-kv_namespaces = [
-    { binding = "FOO", id = "0d2ac74b498b48028cb68387c421e233" },
-    { binding = "BAR", id = "0d8c101e168d03c65bddf4ba75150f33" }
-]
-```
-
-<Aside>
-
-__Note:__ Global user was configured with the `wrangler config` command or environment variables.
-
-</Aside>
-
 --------------------------------
 
 ## Keys
@@ -220,3 +176,49 @@ You can learn more about the standard patterns used for include and exclude in t
 #### Customizing your Build
 
 Workers Sites projects use webpack by default. You can [bring your own webpack config](/tooling/wrangler/webpack/#using-with-workers-sites), however it is important to be cognizant of your `entry` and `context` settings.
+
+
+--------------
+## Example
+
+To illustrate how these levels are applied, here is a wrangler.toml using multiple environments:
+
+```toml
+# top level configuration
+type = "webpack"
+name = "my-worker-dev"
+account_id = "12345678901234567890"
+zone_id = "09876543210987654321"
+route = "dev.example.com/*"
+kv_namespaces = [
+    { binding = "FOO", id = "b941aabb520e61dcaaeaa64b4d8f8358", preview_id = "03c8c8dd3b032b0528f6547d0e1a83f3" },
+    { binding = "BAR", id = "90e6f6abd5b4f981c748c532844461ae", preview_id = "e5011a026c5032c09af62c55ecc3f438" }
+]
+
+[site]
+bucket = "./public"
+entry-point = "workers-site"
+
+# environment configuration
+[env.staging]
+name = "my-worker-staging"
+route = "staging.example.com/*"
+kv_namespaces = [
+    { binding = "FOO", id = "0f2ac74b498b48028cb68387c421e279" },
+    { binding = "BAR", id = "068c101e168d03c65bddf4ba75150fb0" }
+]
+
+# environment configuration
+[env.production]
+workers_dev= true
+kv_namespaces = [
+    { binding = "FOO", id = "0d2ac74b498b48028cb68387c421e233" },
+    { binding = "BAR", id = "0d8c101e168d03c65bddf4ba75150f33" }
+]
+```
+
+<Aside>
+
+__Note:__ Global user was configured with the `wrangler config` command or environment variables.
+
+</Aside>
