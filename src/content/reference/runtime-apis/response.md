@@ -23,16 +23,21 @@ let response = new Response(body, init)
 
 - `init` <PropMeta>optional</PropMeta>
 
-  - An `options` object that contains custom settings to apply to the response. Valid options are:
+  - An `options` object that contains custom settings to apply to the response. 
 
-    - `status` <Type>int</Type>
-      - The status code for the response, such as `200`.
+</Definitions>
 
-    - `statusText` <Type>string</Type>
-      - The status message associated with the status code, like, `OK`.
+Valid options for the `options` object include: 
+<Definitions>
 
-    - `headers` <TypeLink href="/reference/apis/request#constructor-parameters">Headers</TypeLink> | <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/ByteString">ByteString</TypeLink>
-      - Any headers to add to your response that are contained within a [`Headers`](/reference/apis/request#constructor-parameters) object or object literal of [`ByteString`](https://developer.mozilla.org/en-US/docs/Web/API/ByteString) key/value pairs.
+  - `status` <Type>int</Type>
+    - The status code for the response, such as `200`.
+
+  - `statusText` <Type>string</Type>
+    - The status message associated with the status code, like, `OK`.
+
+  - `headers` <TypeLink href="/reference/apis/request#constructor-parameters">Headers</TypeLink> | <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/ByteString">ByteString</TypeLink>
+    - Any headers to add to your response that are contained within a [`Headers`](/reference/apis/request#constructor-parameters) object or object literal of [`ByteString`](https://developer.mozilla.org/en-US/docs/Web/API/ByteString) key/value pairs.
 
 </Definitions>
 
@@ -100,12 +105,6 @@ let response = new Response(body, init)
   - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with a [`USVString`](https://developer.mozilla.org/en-US/docs/Web/API/USVString) (text).
 
 </Definitions>
-
---------------------------------
-
-## Common issues
-
-Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
 
 --------------------------------
 

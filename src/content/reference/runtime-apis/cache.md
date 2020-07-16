@@ -168,19 +168,7 @@ Deletes the `Response` object from the cache and returns a `Promise` for a Boole
 
 </Definitions>
 
-
-<!-- To Do: --------------------------------
-
-## Common issues
-
-Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
-
---------------------------------
-
 ## See also
 
-- [`RelatedClass`](#)
-- [`OtherRelatedClass`](#)
-- [An external link to relevant documentation, e.g. on MDN](https://example.com)
-- [A page about writing JS in general](#)
-- [Using Cache](/about/using-cache) -->
+- [`How the Cache Works`](/learning/how-the-cache-works)
+- [`Configure your CDN`](/tutorials/configure-your-cdn)

@@ -58,10 +58,6 @@ async function eventHandler(event) {
 
 --------------------------------
 
-## Methods
-
---------------------------------
-
 ## Common issues
 
 Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
@@ -70,17 +66,6 @@ Sometimes you’ll find that when you create instances of `Class`, unexpected th
 
 ## See also
 
-- [`RelatedClass`](#)
-- [`OtherRelatedClass`](#)
-- [An external link to relevant documentation, e.g. on MDN](https://example.com)
-- [A page about writing JS in general](#)
-
-- [Fetch HTML](/templates/pages/fetch_html)
-- [Fetch JSON](/templates/pages/fetch_json)
-- [Cache using Fetch](/templates/pages/cache_ttl/) 
-
-<!-- ## ToDo:
-- Fix http://localhost:8000/reference/apis/fetch-event#methods and http://localhost:8000/about/tips/request-context links
-[Fetch HTML](/templates/pages/fetch_html)
-- [Fetch JSON](/templates/pages/fetch_json)
-- [Cache using Fetch](/templates/pages/cache_ttl/)  -->
+- [`Fetch HTML`](/examples)
+- [`Fetch JSON`](/examples)
+- [`Cache using Fetch`](/examples)

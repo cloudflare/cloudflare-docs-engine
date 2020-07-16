@@ -45,19 +45,8 @@ When a Workers script receives a request, the Workers runtime triggers a FetchEv
 
 </Definitions>
 
-<!-- To Do: --------------------------------
 
-## Common issues
-
-Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
-
---------------------------------
 
 ## See also
 
-- [`RelatedClass`](#)
-- [`OtherRelatedClass`](#)
-- [An external link to relevant documentation, e.g. on MDN](https://example.com)
-- [A page about writing JS in general](#)
-
-To learn more about using the `FetchEvent`, see [FetchEvent LifeCycle](/about/tips/fetch-event-lifecycle). -->
+To learn more about using the `FetchEvent`, see [FetchEvent LifeCycle](learning/fetch-event-lifecycle).

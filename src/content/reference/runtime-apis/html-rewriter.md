@@ -317,33 +317,77 @@ class DocumentHandler {
 
 This is what selecters are and what they are used for.
 
-| Pattern                        | Represents                                                                                                            |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
-| `*`                            | any element                                                                                                           |
-| `E`                            | any element of type E                                                                                                 |
-| `E:nth-child(n)`               | an E element, the n-th child of its parent                                                                            |
-| `E:first-child`                | an E element, first child of its parent                                                                               |
-| `E:nth-of-type(n)`             | an E element, the n-th sibling of its type                                                                            |
-| `E:first-of-type`              | an E element, first sibling of its type                                                                               |
-| `E:not(s)`                     | an E element that does not match either compound selector s                                                           |
-| `E.warning`                    | an E element belonging to the class warning                                                                           |
-| `E#myid`                       | an E element with ID equal to myid.                                                                                   |
-| `E[foo]`                       | an E element with a foo attribute                                                                                     |
-| `E[foo="bar"]`                 | an E element whose foo attribute value is exactly equal to bar                                                        |
-| `E[foo="bar" i]`               | an E element whose foo attribute value is exactly equal to any (ASCII-range) case-permutation of bar                  |
-| `E[foo="bar" s]`               | an E element whose foo attribute value is exactly and case-sensitively equal to bar                                   |
-| `E[foo~="bar"]`                | an E element whose foo attribute value is a list of whitespace-separated values, one of which is exactly equal to bar |
-| `E[foo^="bar"]`                | an E element whose foo attribute value begins exactly with the string bar                                             |
-| `E[foo$="bar"]`                | an E element whose foo attribute value ends exactly with the string bar                                               |
-| `E[foo*="bar"]`                | an E element whose foo attribute value contains the substring bar                                                     |
-| <code>E[foo&#124;="en"]</code> | an E element whose foo attribute value is a hyphen-separated list of values beginning with en                         |
-| `E F`                          | an F element descendant of an E element                                                                               |
-| `E > F`                        | an F element child of an E element                                                                                    |
+<Definitions>
 
+  - `*` 
+    - any element
+
+  - `E` 
+    - any element of type E
+
+  - `E:nth-child(n)` 
+    - an E element, the n-th child of its parent
+
+  - `E:first-child` 
+    - an E element, first child of its parent
+
+  - `E:nth-of-type(n)`  
+    - an E element, the n-th sibling of its type
+
+  - `E:first-of-type` 
+    - an E element, first sibling of its type
+
+  - `E:not(s)` 
+    - an E element that does not match either compound selectors
+
+  - `E.warning` 
+    - an E element belonging to the class warning
+
+  - `E#myid`
+    - an E element with ID equal to myid.    
+
+  - `E[foo]`
+    - an E element with a foo attribute
+
+  - `E[foo="bar"]`  
+    - an E element whose foo attribute value is exactly equal to bar
+
+  - `E[foo="bar" i]`
+    - an E element whose foo attribute value is exactly equal to any (ASCII-range) case-permutation of bar
+
+  - `E[foo="bar" s]`
+    - an E element whose foo attribute value is exactly and case-sensitively equal to bar
+
+  - `E[foo~="bar"]` 
+    - an E element whose foo attribute value is a list of whitespace-separated values, one of which is exactly equal to bar
+
+  - `E[foo^="bar"]` 
+    -  an E element whose foo attribute value begins exactly with the string bar 
+
+  - `E[foo$="bar"]` 
+    - an E element whose foo attribute value ends exactly with the string bar
+
+  - `E[foo*="bar"]`  
+    - an E element whose foo attribute value contains the substring bar
+
+  - <code>E[foo&#124;="en"]</code> 
+
+    - an E element whose foo attribute value is a hyphen-separated list of values beginning with en
+
+  - `E F` 
+    - an F element descendant of an E element 
+
+  - `E > F` 
+    - an F element child of an E element
+
+
+
+
+</Definitions>
 
 --------------------------------
 
-## Common issues
+## Errors
 
 If a handler throws an exception, parsing is immediately halted, the transformed response body is errored with the thrown exception, and the untransformed response body is canceled (closed). If the transformed response body was already partially streamed back to the client, the client will see a truncated response.
 
@@ -370,10 +414,8 @@ async function handle(request) {
 
 --------------------------------
 
-<!-- To Do: ## See also
+## See also
+- [`Introducing HTMLRewriter`](https://blog.cloudflare.com/introducing-htmlrewriter/tml)
+- [`Tutorial: Localize a Website`](tutorials/localize-a-website)
 
-- [`RelatedClass`](#)
-- [`OtherRelatedClass`](#)
-- [An external link to relevant documentation, e.g. on MDN](https://example.com)
-- [A page about writing JS in general](#) -->
 
