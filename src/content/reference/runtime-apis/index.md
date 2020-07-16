@@ -1,4 +1,4 @@
 
-# Runtime APIs
+# Runtime
 
 <DirectoryListing path="/reference/runtime-apis"/>

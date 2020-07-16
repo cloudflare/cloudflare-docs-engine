@@ -1,4 +1,4 @@
 
-# Streams API
+# Streams
 
 <DirectoryListing path="/reference/streams"/>

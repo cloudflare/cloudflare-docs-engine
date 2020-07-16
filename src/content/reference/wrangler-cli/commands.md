@@ -1,7 +1,7 @@
 
 # Commands
 
-### generate
+## generate
 
 Scaffold a Cloudflare Workers project from a public GitHub repository.
 
@@ -25,28 +25,28 @@ wrangler generate [$NAME] [$TEMPLATE] [--type=$TYPE] [--site]
 
 </Definitions>
 
-|             |                                                              | Optional | Default value                                                |
-| ----------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
-| `$NAME`     | Name of Worker                                               | Optional | "worker"                                                     |
-| `$TEMPLATE` | GitHub URL of the template to base new project off of        | Optional | [`worker-template`](https://github.com/cloudflare/worker-template) |
-| `--type`    | Type of project. Acceptable values:"webpack", "javascript", or "rust"  | Optional | "webpack"                                                    |
-| `--site`    | Same of `template` but based off of default [site template](https://github.com/cloudflare/worker-sites-template) | Optional | N/A                                                          |
-
-### init
+## init
 
 Creates a skeleton `wrangler.toml` in an existing directory. This can be used as an alternative to `generate` if you prefer to clone a template repository yourself, or you already have a JavaScript project and you'd like to use Wrangler.
 
 ```bash
 wrangler init [$NAME] [--type=$TYPE] [--site]
 ```
+<Definitions>
 
-|          |                                          | Optional | Default value                 |
-| -------- | ---------------------------------------- | -------- | ----------------------------- |
-| `$NAME`  | Name of Worker                           | Optional | The name of working directory |
-| `--type` | Type of project. Acceptable values:"webpack", "javascript", or "rust"  | Optional | "webpack"                     |
-| `--site` | Initiates the project to a Workers site. | Optional | N/A                           |
+- `$NAME` <Type>default="name of working directory"</Type> <PropMeta>optional</PropMeta>
+  - Name of Worker 
 
-### build
+- `--type` <Type>default="webpack"</Type> <PropMeta>optional</PropMeta>
+  - Type of project. Acceptable values:"webpack", "javascript", or "rust"
+  
+- `--site` <Type>default=n/a</Type> <PropMeta>optional</PropMeta>
+  - Initializes the project to a Workers site.
+
+</Definitions>
+
+
+## build
 
 Build your project. This command looks at your `wrangler.toml` file and runs the build steps associated
 with the`"type"` declared in your `wrangler.toml`.
@@ -55,11 +55,14 @@ with the`"type"` declared in your `wrangler.toml`.
 wrangler build [--env $ENVIRONMENT_NAME]
 ```
 
-|         |                                                                                                                    | Required |
-| ------- | ------------------------------------------------------------------------------------------------------------------ | -------- |
-| `--env` | Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME` | Optional |
+<Definitions>
 
-### config
+- `--env` <PropMeta>optional</PropMeta>
+  - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`
+
+</Definitions>
+
+## config
 
 Configure your global Cloudflare user. This is an interactive command that will prompt you for your API token.
 
@@ -67,13 +70,16 @@ Configure your global Cloudflare user. This is an interactive command that will 
 wrangler config [--api-key]
 ```
 
-|             |                                                                                                             | Optional |
-| ----------- | ----------------------------------------------------------------------------------------------------------- | -------- |
-| `--api-key` | To provide your email and global API key (this is not recommended for security reasons) instead of a token. | Optional |
+<Definitions>
+
+- `--api-key` <PropMeta>optional</PropMeta>
+  - To provide your email and global API key (this is not recommended for security reasons) instead of a token.
+
+</Definitions>
 
 You can also [use environment variables](/tooling/wrangler/configuration/) to authenticate.
 
-### publish
+## publish
 
 Publish your Worker to Cloudflare. Several keys in your `wrangler.toml` determine whether you are publishing to a workers.dev subdomain or your own registered domain, proxied through Cloudflare.
 
@@ -81,21 +87,33 @@ Publish your Worker to Cloudflare. Several keys in your `wrangler.toml` determin
 wrangler publish [--env $ENVIRONMENT_NAME]
 ```
 
-|         |                                                              | Required |
-| ------- | ------------------------------------------------------------ | -------- |
-| `--env` | Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME` | Optional |
+<Definitions>
+
+- `--env` <PropMeta>optional</PropMeta>
+  - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`
+
+</Definitions>
+
 
 To use this command, the following fields are required in your `wrangler.toml`.
 
-| Key          | Value                                                        | Example                                          |
-| ------------ | ------------------------------------------------------------ | ------------------------------------------------ |
-| `name`       | the name of your worker                                      | `name = "your-worker"`                           |
-| `type`       | build type (webpack, rust, or javascript)                    | `type = "webpack"`                               |
-| `account_id` | your Cloudflare account ID, this can be found in the Cloudflare dashboard | `account_id = "a655bacaf2b4cad0e2b51c5236a6b974" |
+
+<Definitions>
+
+- `name`
+  - Name of Worker 
+
+- `type`
+  - Type of project. Acceptable values:"webpack", "javascript", or "rust"
+  
+- `account_id`
+  - your Cloudflare account ID, this can be found in the Cloudflare dashboard
+
+</Definitions>
 
 From here, you have two options, you can choose to publish to your own domain or you can choose to publish to [\<your-worker\>.\<your-subdomain\>.workers.dev](https://workers.dev).
 
-#### Publishing to workers.dev
+### Publishing to workers.dev
 
 If you want to publish to [workers.dev](https://workers.dev), you will first need to have a subdomain registered. You can register a subdomain by executing the [subdomain](#subdomain) command.
 
@@ -105,7 +123,7 @@ After you have registered a subdomain, add `workers_dev` to your `wrangler.toml`
 | ------------- | ----- | -------------------- |
 | `workers_dev` | true  | `workers_dev = true` |
 
-#### Publishing to your own domain
+### Publishing to your own domain
 
 If you would like to publish to your own domain, you will need to specify these three fields in your `wrangler.toml`.
 

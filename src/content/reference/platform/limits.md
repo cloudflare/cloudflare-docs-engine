@@ -1,23 +1,29 @@
 
 # Limits
 
-## Background
+## Overview
 
-| Plan                        | [CPU Limit](/about/limits/#cpu-execution-time-limit) | [Daily Request Limit](/about/limits/#daily-request-limit) | [Burst Rate Limit](/about/limits/#burst-rate-limit) |
-| --------------------------- | ---------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------- |
-| Free                        | 10ms                                                 | 100,000                                                   | 1000 requests per minute                            |
-| [Unlimited](/about/pricing) | 50ms                                                 | none                                                      | none                                                |
-| Additional\*                | -                                                    | -                                                         | -                                                   |
+|           | Feature                     | Free                                             | Unlimited  |
+|-----------|-----------------------------|--------------------------------------------------|------------|
+| Worker    | [Request Limit](#request-limits)               | 100,000 requests/day <br></br> 1000 requests/min | none  |
+|           | [Worker Memory](#memory)               | 128 MB                                           | 128 MB     |
+|           | [CPU Runtime](#cpuexecution-time-limit)                 | 10 ms                                            | 50 ms      |
+|           | [Subreqests](#subrequests)                  | 50                                               | 50         |
+|           | [Simultaneous Connections](#simultaneous-open-connections)    | 6                                                | 6          |
+|           | [Env Variables](#environment-variables)              | 32/worker                                        | 32/worker  |
+|           | [Env Variable Size](#environment-variables)           | 5 KB                                             | 5 KB       |
+|           | [Script Size](#script-size) | 1 MB                                             | 1 MB       |
+|           | [# of Scripts](#number-of-scripts)                | 30                                               | 30         |
+| KV        | [Reads/Second](#kv)               | unlimited                                        | unlimited  |
+|           | [Writes/Second](#kv)              | 1                                                | 1          |
+|           | [Namespaces](#kv)                  | 100                                              | 100        |
+|           | [Keys/Namespace](#kv)            | unlimited                                        | unlimited  |
+|           | [Key Size](#kv)                    | 512 bytes                                        | 512 bytes  |
+|           | [Key Metadata](#kv)               | 1024 bytes                                       | 1024 bytes |
+| Cache API | [Max Obj Size](#cache-api)                | 512 MB                                           | 512 MB     |
+|           | [Calls/Request](#cache-api)                | 50                                               | 50         |
+|           | [Storage Limit](#cache-api)                | 5 GB                                             | 5 GB       |
 
-## Script Size
-
-A Workers script plus any [Asset Bindings](/tooling/api/bindings) can be up to 1MB in size after compression.
-
-## Number of Scripts
-
-Unless otherwise negotiated as a part of an enterprise level contract, all Workers accounts are limited to a maximum of 30 scripts at any given time.
-
-**Note:** app Workers scripts do not count towards this limit.
 
 ## Request Limits
 
@@ -43,17 +49,17 @@ Routes in fail open mode will bypass the failing Worker and prevent it from oper
 
 Routes in fail closed mode will display a Cloudflare 1027 error page to visitors, signifying the Worker has been temporarily disabled. We recommend this option if your Worker is performing security related tasks.
 
-## CPU/Execution Time Limit
-
-Most Workers requests consume less than a millisecond. It’s rare to find a normally operating Workers script that exceeds the CPU time limit. A Worker may consume up to 10ms on the free plan and 50ms on the Unlimited tier. The 10ms allowance on the free plan is enough execution time for most use cases including application hosting.
-
-There is no limit on the real runtime for a Workers script. As long as the client that sent the request remains connected, the Workers script can continue processing, making subrequests, and setting timeouts on behalf of that request. When the client disconnects, all tasks associated with that client request are canceled. You can use [`event.waitUntil()`](/reference/apis/fetch-event/) to delay cancellation for another 30 seconds or until the promise passed to `waitUntil()` completes.
-
 ## Memory
 
 Only one Workers instance runs on each of the many global Cloudflare edge servers. Each Workers instance can consume up to 128MB of memory. Use [global variables](/reference/apis/standard/) to persist data between requests on individual nodes; note however, that nodes are occasionally evicted from memory.
 
 Use the [TransformStream API](/reference/apis/streams/) to stream responses if you are concerned about memory usage. This avoids loading an entire response into memory.
+
+## CPU/Execution Time Limit
+
+Most Workers requests consume less than a millisecond. It’s rare to find a normally operating Workers script that exceeds the CPU time limit. A Worker may consume up to 10ms on the free plan and 50ms on the Unlimited tier. The 10ms allowance on the free plan is enough execution time for most use cases including application hosting.
+
+There is no limit on the real runtime for a Workers script. As long as the client that sent the request remains connected, the Workers script can continue processing, making subrequests, and setting timeouts on behalf of that request. When the client disconnects, all tasks associated with that client request are canceled. You can use [`event.waitUntil()`](/reference/apis/fetch-event/) to delay cancellation for another 30 seconds or until the promise passed to `waitUntil()` completes.
 
 ## Subrequests
 
@@ -64,10 +70,6 @@ Yes. Use the [Fetch API](/reference/apis/fetch/) to make arbitrary requests to o
 ### How many subrequests can I make?
 
 The limit for subrequests a Workers script can make is 50 per request. Each subrequest in a redirect chain counts against this limit. This means that the number of subrequests a Workers script makes could be greater than the number of `fetch(request)` calls in the script.
-
-### Can I make a subrequest after my Worker has responded to the user?
-
-Yes, you can use [`event.waitUntil()`](/reference/apis/fetch-event) to register asynchronous tasks that may continue after the response has been returned.
 
 ### How long can a subrequest take?
 
@@ -86,6 +88,28 @@ While handling a request, each Worker script is allowed to have up to six connec
 Once a Worker has six connections open, it can still attempt to open additional connections. However, these attempts are put in a pending queue - the connections won't be actually be initiated until one of the currently open connections has closed. Since earlier connections can delay later ones, if a Worker tries to make many simultaneous subrequests, its later subrequests may appear to take longer to start.
 
 If the system detects that a Worker is deadlocked on open connections - for instance, if the Worker has pending connection attempts but has no in-progress reads or writes on the connections that it already has open - then the least-recently-used open connection will be canceled to unblock the Worker. If the Worker later attempts to use a canceled connection, an exception will be thrown. These exceptions should rarely occur in practice, though, since it's uncommon for a Worker to open a connection that it doesn't have an immediate use for.
+
+
+# Environment Variables
+
+The maximum number of environment variables (secret and text combined) for a Worker is 32 variables. 
+There is no limit to the number of environment variables per account.
+
+Each environment variable has a size limitation of 5 KiB.
+
+## Script Size
+
+A Workers script plus any [Asset Bindings](/tooling/api/bindings) can be up to 1MB in size after compression.
+
+## Number of Scripts
+
+Unless otherwise negotiated as a part of an enterprise level contract, all Workers accounts are limited to a maximum of 30 scripts at any given time.
+
+<Aside>
+
+__Note:__ App Workers scripts do not count towards this limit. 
+
+</Aside>
 
 # KV 
 
@@ -109,29 +133,14 @@ sometimes reflect an older state of the system. While writes will often be
 visible globally immediately, it can take up to 60 seconds before reads in
 all edge locations are guaranteed to see the new value.
 
-# Environment Variables
-
-The maximum number of environment variables (secret and text combined) for a Worker is 32 variables. 
-There is no limit to the number of environment variables per account.
-
-Each environment variable has a size limitation of 5KiB.
-
-<span id="cache-api">
-
-# [Cache API](/reference/apis/cache/)
-
-</span>
+# Cache API
 
 - 50 total `put()`, `match()`, or `delete()` calls per-request, using the same quota as `fetch()`
 
 - 5 GBs total `put()` per-request
 
-Cached response size limits vary by plan:
+<Aside>
 
-| Plan                        | Response size |
-| --------------------------- | ----------------------- |
-| Free                        | 512MB                   |
-| [Unlimited](/about/pricing) | 512MB                   |
-| Enterprise                  | 5GBs                    |
+__Note:__ The size of chunked response bodies (`Transfer-Encoding: chunked`) is not known in advance. Then, `.put()`ing such responses will block subsequent `.put()`s from starting until the current `.put()` completes.
 
-Note that because the size of chunked response bodies (`Transfer-Encoding: chunked`) is not known in advance, `.put()`ing such responses will block subsequent `.put()`s from starting until the current `.put()` completes.
+</Aside>

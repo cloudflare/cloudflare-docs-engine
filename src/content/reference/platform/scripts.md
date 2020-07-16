@@ -2,6 +2,7 @@
 # Scripts
 
 ## Background
+Scripts are where the Workers code itself is stored and uploaded to the edge. 
 
 ## Object Specification
 
@@ -50,6 +51,10 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
   }
 }
 ```
+
+ https://api.cloudflare.com/#worker-script-delete-worker
+
+---
 
 ### With Resource Bindings
 
