@@ -529,7 +529,7 @@ Outputs a list of all KV namespaces associated with your account id.
 $ wrangler kv:namespace list
 ```
 
-#### Usage
+##### Usage
 The example below uses the `jq` command line tool to pretty-print output.
 
 ```console
