@@ -10,39 +10,38 @@ difficulty: Intermediate
 
 # Get texts about Github repo acitvity
 
-In this tutorial, you will create a text notification system for Github repository updates. Whenever anyone commits or pushes code to a repo, you’ll receive a text. 
+In this tutorial, you will build a SMS notification system on Workers to receive updates about one of your Github repos. Your worker will text you using Twilio whenever there is a new activity on your Github repo. 
 
 You’ll learn how to:
-- use Workers with webhooks
+- use Workers with Webhooks
 - Integrate Workers with Github and Twilio
 - use Worker secrets with wrangler
 
 
-[Prereqs + Serverless Benefits]
-
-You will need a Worker to get started. Check out the prerequisites for more instructions.
-
 ## Prerequisites
 
-To publish your application to Cloudflare Workers, you'll need a few things:
+You will need a Worker and a Github repository to get started.
+
+To setup a Worker, you should have a:
 
 - A Cloudflare account, and access to the API keys for that account
 - A Wrangler installation running locally on your machine, and access to the command-line
-- Private key authetication over HTTP
 
-You'll also need to get your Cloudflare API keys to deploy code to Cloudflare Workers: see [“Finding your Cloudflare API keys”](/quickstart/api-keys) for a brief guide on how to find them.
+Follow our [Workers Quickstart Guide](https://developers.cloudflare.com/workers/quickstart) to setup your local development environment and create a Cloudflare account.
 
-## Generate
+If you don't have a Github repo or account, you can create one on [Github](wwww.github.com) and [create a new repo](https://docs.github.com/en/github/getting-started-with-github/create-a-repo).
+
+### Generate
 
 Cloudflare’s command-line tool for managing Worker projects, Wrangler, has great support for templates — pre-built collections of code that make it easy to get started writing Workers. In this tutorial, you’ll use the default JavaScript template to generate a Workers project.
 
-In the command line, generate your Worker project, passing in a project name (e.g. “todos”):
+In the command line, generate your Worker project, passing in a project name (e.g. “github-sms-notifications”):
 
 ```sh
 ---
 header: Generate a project
 ---
-wrangler generate todos
+wrangler generate github-sms-notifications
 cd todos
 ```
 
@@ -70,6 +69,7 @@ async function handleRequest(request) {
 
 In your default `index.js` file, we can see that request/response pattern in action. The `handleRequest` constructs a new `Response` with the body text “Hello worker”, as well as an explicit status code of 200. When a `fetch` event comes into the worker, the script uses `event.respondWith` to return that new response back to the client. This means that your Cloudflare Worker script will serve new responses directly from Cloudflare's cloud network: instead of continuing to the origin, where a standard server would accept requests, and return responses, Cloudflare Workers allows you to respond quickly and efficiently by constructing responses directly on the edge.
 ---- 
+Awesome, you should now be ready to go after finishing the prequisites section.
 
 You can reference the finished code on this [Github repository](https://github.com/davidtsong/github-twilio-notifications/)
 
@@ -108,7 +108,7 @@ async function handleRequest(request) {
 }
 ```
 
-Let's start by refactoring the starter code to handle a POST response and renaming request handler. We can use the `request.method` property of [request](link to request) to check if the request is a `POST` request and send an error response if incorrect. The `simpleResponse` fucntion is an easy wrapper for you to send requests with your Worker.
+Let's start and refactor the starter code to handle a POST response and rename the request handler. We can use the `request.method` property of [request](link to request) to check if the request is a `POST` request and send an error response if incorrect. The `simpleResponse` fucntion is an easy wrapper for you to send requests with your Worker.
 
 ```javascript
 ---
@@ -201,7 +201,7 @@ Since our project relies on importing a library, we need to also update our `wra
 
 ## 3. Sending a Text with Twilio
 
-Finally, we will send a text message to you with the Github repo update info using Twilio. You'll need a Twilio account and number to send texts so follow [this guide to get setup](https://www.twilio.com/sms/api). 
+Finally, we will send a text message to you with the Github repo update info using Twilio. You'll need a Twilio account and number to send texts so follow [this guide to get setup](https://www.twilio.com/sms/api). FYI, Twilio has this [pretty awesome game](https://www.twilio.com/quest) where you can learn how to use their platform and get some free credits while you are at it.
 
 Then, we can create a helper function to send text messages for us by sending a post request to the Twilio API endpoint. [Refer to the Twilio reference here](https://www.twilio.com/docs/sms/api/message-resource#create-a-message-resource)
 
@@ -241,7 +241,7 @@ In order to make this work, we need to set some secrets to hide your account SID
 wrangler secret put accountSID
 ```
 
-Use this syntax to set your Twilio accountSID, recipient(your number), Twilio authToken, and SECRET_TOKEN (for Github).
+Use this syntax to set your Twilio accountSID, recipient(your number), Twilio authToken, and SECRET_TOKEN (for Github) to the respecive values.
 
 Finally, we modify our `githubWebhookHandler` to send a text at the end.
 
@@ -274,7 +274,7 @@ async function githubWebhookHandler(request) {
 }
 ```
 
-Congrats, you finished! Test it out and make a push to your repo and you should get a text message soon after. 
+Congrats, you finished this tutorial! Test it out and make a push to your repo and you should get a text message soon after. If you've never used Git before, here's a [quick guide](https://www.datacamp.com/community/tutorials/git-push-pull) to pushing to your repo. 
 
 You've learned how to:
 - use Workers with webhooks
@@ -283,4 +283,5 @@ You've learned how to:
 
 Next steps:
 - Auth0 tutorial
-- 
+- JAMStack tutorial
+- QR Tutorial
