@@ -1,32 +1,33 @@
 # Pricing
 
-## Background
+Workers is now free to enable for all, and are subject to some limits.
 
-Workers is now free to enable for all, and are subject to some limits. 
+## Unlimited
 
-## Unlimited 
-To avoid the limits and enable KV, you can subscribe to the Workers Unlimited plan for **$5 USD per month for an account**. 
+To avoid the limits and enable KV, you can subscribe to the Workers Unlimited plan for **$5 USD per month for an account**.
 
 With the Workers Unlimited plan, requests beyond the included quota will be charged at **$0.50/million requests**.
 
-
-## KV 
+## KV
 
 Enabling Workers KV requires the Unlimited plan.
 
-| Plan                            | Storage      | Reads/month       | Writes/month      | Deletes/month     | Lists/month       |
-|---------------------------------|--------------|-------------------|-------------------|-------------------|-------------------|
-| Included                        | 1 GB         | 10 million        | 1 million         | 1 million         | 1 million         |
-| + | $0.50/GB | $0.50/million | $5/million | $5/million | $5/million |
+<TableWrap>
 
+| Plan     | Storage  | Reads/month   | Writes/month | Deletes/month | Lists/month |
+|----------|----------|---------------|--------------|---------------|-------------|
+| Included | 1 GB     | 10 million    | 1 million    | 1 million     | 1 million   |
+| +        | $0.50/GB | $0.50/million | $5/million   | $5/million    | $5/million  |
+
+</TableWrap>
 
 Usage of all other features of Worker KV do not affect pricing.
 
-## Same features 
+## Same features
 
-  Script size, number of scripts, subrequests, and available memory are not affected by plan type.
+Script size, number of scripts, subrequests, and available memory are not affected by plan type.
 
-### Fine Print
+## Fine Print
 
 Workers Unlimited plan is separate from any other Cloudflare plan (Free, Professional, Business) you may have. If you are an Enterprise customer, reach out to your account team to confirm pricing details.
 
