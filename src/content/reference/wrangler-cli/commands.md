@@ -458,12 +458,12 @@ There are way more helpful Wrangler subcommands for interacting with Workers KV,
 Most `kv` commands require you to specify a namespace. A namespace can be specified in two ways:
 
 1. With a `--binding`:
-    ```sh
+    ```bash
     wrangler kv:key get --binding=MY_KV "my key"
     ```
     - This can be combined with `--preview` flag to interact with a preview namespace instead of a production namespace
 1. With a `--namespace_id`:
-    ```sh
+    ```bash
     wrangler kv:key get --namespace-id=06779da6940b431db6e566b4846d64db "my key"
     ```
 
