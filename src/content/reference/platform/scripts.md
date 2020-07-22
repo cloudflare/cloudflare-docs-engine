@@ -1,32 +1,44 @@
 # Scripts
 
-## Background
-Scripts are where the Workers code itself is stored and uploaded to the edge. 
+Scripts are where the Workers code itself is stored and uploaded to the edge.
 
-## Object Specification
+--------------------------------
 
-### Script
+## Script object specification
 
-- `id`: The name of the script. Must follow [script naming conventions](#script-naming-conventions).
-- `etag`: Hashed script content; can be used in an If-None-Match header on update.
-- `script`: Raw script content, as a string
-- `size`: [Size of script](/about/limits), in bytes.
-- `modified_on`: ISO_8601 timestamp of when the script was last modified.
+<Definitions>
 
-#### Script Naming Conventions
+- `id`
+  - The name of the script. Script names must:
 
-Script names must:
+    - start with a letter,
+    - end with a letter or digit,
+    - include only letters, digits, underscore, and hyphen,
+    - and be 63 or fewer characters.
 
-- start with a letter
-- end with a letter or digit
-- include only letters, digits, underscore, and hyphen
-- be 63 characters or less.
+- `etag`
+  - Hashed script content; can be used in an If-None-Match header on update.
 
-## Upload or Update a Workers Script
+- `script`
+  - Raw script content, as a string
 
-`PUT accounts/:account_id/workers/scripts/:script_name`
+- `size`
+  - [Size of script](/reference/platform/limits) in bytes.
 
-##### Sample Request:
+- `modified_on`
+  - ISO_8601 timestamp of when the script was last modified.
+
+</Definitions>
+
+--------------------------------
+
+## Upload or update a Workers script
+
+```txt
+PUT accounts/:account_id/workers/scripts/:script_name
+```
+
+Sample request:
 
 ```sh
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
@@ -35,7 +47,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
      --data "addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })"
 ```
 
-##### Sample Response:
+Sample response:
 
 ```json
 {
@@ -51,15 +63,13 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 }
 ```
 
- https://api.cloudflare.com/#worker-script-delete-worker
-
----
+https://api.cloudflare.com/#worker-script-delete-worker
 
 ### With Resource Bindings
 
-If you are including Resources in your Worker, you need to specify their Bindings as a part of your upload. This API uses a multipart form, rather than straight bytes, to send its data:
+If you are including Resources in your Worker, you need to specify their Bindings as a part of your upload. This API uses a multipart form, rather than straight bytes, to send its data.
 
-#### The basic multipart form (Script only)
+#### The basic multipart form (script only)
 
 ```sh
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
@@ -171,12 +181,12 @@ If your Worker uses plain text environment variables, you will want to add a `pl
 
 ##### URL Parameters
 
-- `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare Account ID](/quickstart/#configure)
+- `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare account ID →](/quickstart/#configure)
 - `script_name`: the name you want to assign to your script. Must follow the Workers [script naming conventions](#script-naming-conventions).
 
 ##### Headers
 
-[Find Your Auth Info](/quickstart/#configure)
+[Find your auth info →](/quickstart/#configure)
 
 - `Authorization`
 - `Content-Type` application/javascript
@@ -203,71 +213,71 @@ A multipart form containing a valid JavaScript file, a `metadata.json` file spec
 
 ###### Missing Account/Zone Identifier
 
-```
+```json
 status: 404
 error: {
-    code: 10005,
-    message: "workers.api.error.not_found"
+  code: 10005,
+  message: "workers.api.error.not_found"
 }
 ```
 
 ###### Exceeded [Script Limit](/about/limits)
 
-```
+```json
 status: 403
 error: {
-    code: 10037,
-    message: "workers.api.error.exceeded_allowed_number_of_scripts"
+  code: 10037,
+  message: "workers.api.error.exceeded_allowed_number_of_scripts"
 }
 ```
 
 ###### Invalid Script
 
-```
+```json
 status: 400
 error: {
-    code: 10021,
-    message: varies
+  code: 10021,
+  message: varies
 }
 ```
 
 ###### Etag Unsupported (w/ If-None-Match header)
 
-```
+```json
 status: 400
 error: {
-    code: 10029,
-    message: "workers.api.error.etag_unsupported"
+  code: 10029,
+  message: "workers.api.error.etag_unsupported"
 }
 ```
 
 ###### Etag Precondition Failed
 
-```
+```json
 status: 412
 error: {
-    code: 10018,
-    message: "workers.api.error.etag_precondition_failed"
+  code: 10018,
+  message: "workers.api.error.etag_precondition_failed"
 }
 ```
 
 ###### Script Too Large
 
-```
+```json
 status: 400
 error: {
-    code: 10027,
-    message: "workers.api.error.script_too_large"
+  code: 10027,
+  message: "workers.api.error.script_too_large"
 }
 ```
 
 ###### Internal Error
 
-```
+```json
 status: 500
 error: {
-    code: 10013,
-    message: "workers.api.error.unknown"
+  code: 10013,
+  message: "workers.api.error.unknown"
 }
 ```
 
@@ -304,7 +314,7 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 
 ##### URL Parameters
 
-- `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare Account ID](/quickstart/#configure)
+- `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare account ID →](/quickstart/#configure)
 
 ##### Query Parameters
 
@@ -312,7 +322,7 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 
 ##### Headers
 
-[Find Your Auth Info](/quickstart/#configure)
+[Find your auth info →](/quickstart/#configure)
 
 - `Authorization`
 
@@ -383,12 +393,12 @@ addEventListener('fetch', event => { event.respondWith(fetch(event.request) }))
 
 ##### URL Parameters
 
-- `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare Account ID](/quickstart/#configure)
+- `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare account ID →](/quickstart/#configure)
 - `script_name`: the name of the script to download
 
 ##### Headers
 
-[Find Your Auth Info](/quickstart/#configure)
+[Find your auth info →](/quickstart/#configure)
 
 - `Authorization`
 - `Accept` application/javascript
@@ -471,12 +481,12 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/wor
 
 ##### URL Parameters
 
-- `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare Account ID](/quickstart/#configure)
+- `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare account ID →](/quickstart/#configure)
 - `script_name`: the name of the script to be deleted.
 
 ##### Headers
 
-[Find Your Auth Info](/quickstart/#configure)
+[Find your auth info →](/quickstart/#configure)
 
 - `Authorization`
 
@@ -498,8 +508,8 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/wor
 ```
 status: 404
 error: {
-    code: 10005,
-    message: "workers.api.error.not_found"
+  code: 10005,
+  message: "workers.api.error.not_found"
 }
 ```
 
@@ -508,8 +518,8 @@ error: {
 ```
 status: 404
 error: {
-    code: 10005,
-    message: "workers.api.error.missing_script_name"
+  code: 10005,
+  message: "workers.api.error.missing_script_name"
 }
 ```
 
@@ -518,8 +528,8 @@ error: {
 ```
 status: 404
 error: {
-    code: 10007,
-    message: "workers.api.error.not_found"
+  code: 10007,
+  message: "workers.api.error.not_found"
 }
 ```
 
@@ -528,7 +538,7 @@ error: {
 ```
 status: 500
 error: {
-    code: 10013,
-    message: "workers.api.error.unknown"
+  code: 10013,
+  message: "workers.api.error.unknown"
 }
 ```
