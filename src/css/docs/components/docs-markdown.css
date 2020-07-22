@@ -725,6 +725,44 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   width: 100%;
 }
 
+.DocsMarkdown--table-wrap {
+  border: 1px solid rgba(var(--color-rgb), .15);
+  padding: .25em 0;
+  border-radius: .3125em;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.DocsMarkdown--table-wrap:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+.DocsMarkdown--table-wrap-inner {
+  display: flex;
+  padding-right: 1em;
+}
+
+.DocsMarkdown--table-wrap table {
+  margin: 0;
+}
+
+.DocsMarkdown--table-wrap table th {
+  word-break: initial;
+}
+
+.DocsMarkdown--table-wrap tr > *:first-child {
+  position: sticky;
+  left: 0;
+  white-space: nowrap;
+  padding-left: 1em;
+  background: var(--background-color);
+  box-shadow: 5px 0 5px -3px var(--background-color);
+}
+
+.DocsMarkdown--table-wrap tr > *:last-child {
+  padding-right: 1em;
+}
+
 .DocsMarkdown--content-column {
   width: calc(100% - var(--docs-body-sidebar-width));
 }
