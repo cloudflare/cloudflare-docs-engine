@@ -1,6 +1,4 @@
----
-title: The FetchEvent Lifecycle
----
+# FetchEvent Lifecycle
 
 When working with the [`fetch` event](/reference/apis/fetch-event) inside the Workers runtime, it helps to have a good idea of its lifecycle.
 
