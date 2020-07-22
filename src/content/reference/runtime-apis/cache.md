@@ -1,6 +1,7 @@
 # Cache
 
-## Background 
+## Background
+
 The Cache API allows fine grained control of reading and writing from cache, and deciding exactly when to fetch data from your origin.
 
 For each individual zone, the Cloudflare Workers runtime exposes a single global cache object: `caches.default`. Though this cache object persists on all of Cloudflare’s data centers, objects are not replicated to any other data centers.
@@ -23,6 +24,7 @@ let cache = caches.default
 
 This API is strongly influenced by the web browsers’ Cache API, but there are some important differences. For instance, Cloudflare Workers runtime exposes a single global cache object.
 
+--------------------------------
 
 ## Headers
 
@@ -45,7 +47,6 @@ Our implementation of the Cache API respects the following HTTP headers on the r
 
 This differs from the web browser Cache API as they do not honor any headers on the request or response.
 
-
 <Aside>
 
 __Note:__ Responses with `Set-Cookie` headers are never cached, because this sometimes indicates that the response contains unique data. To store a response with a `Set-Cookie` header, either delete that header or set `Cache-Control: private=Set-Cookie` on the response before calling `cache.put()`.
@@ -53,6 +54,8 @@ __Note:__ Responses with `Set-Cookie` headers are never cached, because this som
 Use the `Cache-Control` method to store the response without the `Set-Cookie` header.
 
 </Aside>
+
+--------------------------------
 
 ## Methods
 
@@ -66,7 +69,7 @@ cache.put(request, response)
 
 - <Code>put(request, response)</Code> <Type>Promise</Type>
 
-    - Adds to the cache a response keyed to the given request. Returns a promise that resolves to `undefined` once the cache stores the response. 
+    - Adds to the cache a response keyed to the given request. Returns a promise that resolves to `undefined` once the cache stores the response.
 
 </Definitions>
 
@@ -99,7 +102,7 @@ cache.match(request, options)
 
 - <Code>match(request, options)</Code> <TypeLink href="/reference/response">Promise{`<Response>`}</TypeLink>
 
-    - Returns a promise wrapping the response object keyed to that request. 
+    - Returns a promise wrapping the response object keyed to that request.
 
 </Definitions>
 
@@ -166,6 +169,8 @@ Deletes the `Response` object from the cache and returns a `Promise` for a Boole
     -  Can contain one possible property: `ignoreMethod` (Boolean) Consider the request method a GET regardless of its actual value.
 
 </Definitions>
+
+--------------------------------
 
 ## See also
 
