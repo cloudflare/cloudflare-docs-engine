@@ -1,4 +1,3 @@
-
 # WritableStream
 
 ## Background

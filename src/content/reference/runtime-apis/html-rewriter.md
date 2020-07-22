@@ -1,4 +1,3 @@
-
 # HTMLRewriter
 
 ## Background

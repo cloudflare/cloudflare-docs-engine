@@ -1,4 +1,3 @@
-
 # Encoding
 
 <!-- ToDo: Add ## Background -->

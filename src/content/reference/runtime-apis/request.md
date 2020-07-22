@@ -1,4 +1,3 @@
-
 # Request
 
 The `Request` interface represents an HTTP request, and is part of the Fetch API.
