@@ -158,6 +158,8 @@ MDN](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto#Methods).
 Workers implements a subset of the most common cryptographic algorithms, as shown in the following table.
 We are happy to add support for more algorithms – [let us know about your use case](https://community.cloudflare.com/c/developers/workers).
 
+<TableWrap>
+
 | Algorithm                                 | sign()<br/>verify() | encrypt()<br/>decrypt() | digest() | deriveBits()<br/>deriveKey() | generateKey() | wrapKey()<br/>unwrapKey() |
 | :---------------------------------------- | :------------------ | :---------------------- | :------- | :--------------------------- | :------------ | :------------------------ |
 | RSASSA-PKCS1-v1_5                         | ✓                   |                         |          |                              |               |                           |
@@ -171,6 +173,8 @@ We are happy to add support for more algorithms – [let us know about your use 
 | SHA-512                                   |                     |                         | ✓        |                              |               |                           |
 | MD5<sup><a href="#footnote-1">1</a></sup> |                     |                         | ✓        |                              |               |                           |
 | PBKDF2                                    |                     |                         |          | ✓                            |               |                           |
+
+</TableWrap>
 
 __Footnotes:__
 
