@@ -2,7 +2,7 @@
 order: 1
 ---
 
-# Runtime
+# Runtime APIs
 
 <DirectoryListing path="/reference/runtime-apis"/>
 
