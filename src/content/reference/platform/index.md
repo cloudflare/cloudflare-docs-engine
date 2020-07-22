@@ -4,4 +4,4 @@ order: 0
 
 # Platform
 
-<DirectoryListing path="/platform"/>
+<DirectoryListing path="/reference/platform"/>
