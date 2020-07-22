@@ -22,11 +22,11 @@ let response = new Response(body, init)
 
 - `init` <PropMeta>optional</PropMeta>
 
-  - An `options` object that contains custom settings to apply to the response. 
+  - An `options` object that contains custom settings to apply to the response.
 
 </Definitions>
 
-Valid options for the `options` object include: 
+Valid options for the `options` object include:
 <Definitions>
 
   - `status` <Type>int</Type>
