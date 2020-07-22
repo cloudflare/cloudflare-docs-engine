@@ -357,6 +357,15 @@ p.DocsMarkdown--small-header {
   padding: 0 2px;
 }
 
+code .DocsMarkdown--prop-meta {
+  font-family: var(--sans-serif-font-family);
+  font-size: .8125em;
+  margin-left: .4375em;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
 [theme="dark"] .DocsMarkdown blockquote,
 [theme="dark"] .DocsMarkdown dl,
 [theme="dark"] .DocsMarkdown ol,
