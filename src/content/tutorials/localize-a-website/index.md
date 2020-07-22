@@ -3,7 +3,7 @@ updated: 2020-06-05
 difficulty: Intermediate
 ---
 
-# Localize a Website
+# Localize a website
 
 The [`HTMLRewriter`](/reference/apis/html-rewriter) class (currently in beta) built into the Cloudflare Workers runtime allows for parsing and rewriting of HTML at the edge, giving developers the ability to efficiently and transparently customize their Workers applications.
 

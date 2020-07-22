@@ -4,7 +4,7 @@ difficulty: Intermediate
 length: 25%
 ---
 
-# Deploy a Static WordPress Site
+# Deploy a static WordPress site
 
 In this tutorial, we’ll migrate a WordPress site to Cloudflare Workers, making use of [Workers Sites](/sites). Serving a static version of your WordPress site has many advantages over directly exposing your WordPress site. While WordPress is extremely powerful and easy to use, the consistent discovery of new vulnerabilities make it an obvious target for hackers to attack. Because WordPress is built on PHP, each incoming request to your site regenerates a new response on the server – for most websites this isn’t necessary, and leads to scaling issues when your site receives a lot of traffic.
 

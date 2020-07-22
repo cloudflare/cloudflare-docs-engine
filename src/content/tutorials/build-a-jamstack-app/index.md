@@ -4,7 +4,7 @@ difficulty: Beginner
 length: 75%
 ---
 
-# Build a To-Do List JAMstack Application
+# Build a To-Do list JAMstack app
 
 In this tutorial, you’ll build a todo list application in HTML, CSS and JavaScript, with a twist: the data for the application will be stored in [Workers KV](/docs/reference/storage/overview/).
 
