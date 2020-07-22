@@ -24,7 +24,7 @@ const reader = readable.getReader({ mode: 'byob' })
 
 <Definitions>
 
-- <Code>read(buffer<ParamType>ArrayBufferView</ParamType>) <TypeLink href="https://streams.spec.whatwg.org/#dictdef-readablestreambyobreadresult">Promise&lt;ReadableStreamBYOBReadResult></TypeLink></Code>
+- <Code>read(buffer<ParamType>ArrayBufferView</ParamType>)</Code> <TypeLink href="https://streams.spec.whatwg.org/#dictdef-readablestreambyobreadresult">Promise&lt;ReadableStreamBYOBReadResult></TypeLink>
 
   - Returns a promise with the next available chunk of data read into a passed-in buffer.
 

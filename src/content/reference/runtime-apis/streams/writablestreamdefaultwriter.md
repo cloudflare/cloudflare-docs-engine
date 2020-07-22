@@ -40,8 +40,8 @@ writeArrayToStream([1, 2, 3, 4, 5], writableStream)
 
 <Definitions>
 
-- <Code>abort(reason<ParamType>string</ParamType> <PropMeta>optional</PropMeta>) <Type>Promise&lt;void></Type></Code>
-  
+- <Code>abort(reason<ParamType>string</ParamType><PropMeta>optional</PropMeta>)</Code> <Type>Promise&lt;void></Type>
+
     - Aborts the stream. This method returns a promise that fulfills with a response `undefined`. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying sink's abort algorithm. If this writable stream is one side of a [TransformStream](/reference/streams/transformstream), then its abort algorithm causes the transform's readable side to become errored with `reason`.
 
     <Aside type="warning" header="Warning">
@@ -67,8 +67,8 @@ writeArrayToStream([1, 2, 3, 4, 5], writableStream)
     await someResponse.body.pipeTo(writable)
     ```
 
-- <Code>write(chunk<ParamType>any</ParamType>) <Type>Promise&lt;void></Type></Code>
-  
+- <Code>write(chunk<ParamType>any</ParamType>)</Code> <Type>Promise&lt;void></Type>
+
   - Writes a chunk of data to the writer and returns a promise that resolves if the operation succeeds.
 
 </Definitions>

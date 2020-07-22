@@ -35,8 +35,8 @@ See the [WritableStreamDefaultWriter](/reference/streams/writablestreamdefaultwr
 
 <Definitions>
 
-- <Code>abort(reason<ParamType>string</ParamType> <PropMeta>optional</PropMeta>) <Type>Promise&lt;void></Type></Code>
-  
+- <Code>abort(reason<ParamType>string</ParamType><PropMeta>optional</PropMeta>)</Code> <Type>Promise&lt;void></Type>
+
   - Aborts the stream. This method returns a promise that fulfills with a response `undefined`. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying sink's abort algorithm. If this writable stream is one side of a [TransformStream](/reference/streams/transformstream), then its abort algorithm causes the transform's readable side to become errored with `reason`.
 
   <Aside type="warning" header="Warning">
