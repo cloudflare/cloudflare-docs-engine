@@ -46,7 +46,7 @@ See the [WritableStreamDefaultWriter](/reference/streams/writablestreamdefaultwr
   </Aside>
 
 - `getWriter()` <TypeLink href="/reference/streams/writablestreamdefaultwriter">WritableStreamDefaultWriter</TypeLink>
-  
+
   - Gets an instance of `WritableStreamDefaultWriter` and locks the `WritableStream` to that writer instance.
 
 </Definitions>

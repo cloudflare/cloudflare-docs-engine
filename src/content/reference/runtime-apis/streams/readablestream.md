@@ -2,7 +2,7 @@
 
 ## Background
 
-A `ReadableStream` is returned by the `readable` property inside [`TransformStream`](/reference/streams/transformstream). On the Workers platform, `ReadableStream` 
+A `ReadableStream` is returned by the `readable` property inside [`TransformStream`](/reference/streams/transformstream). On the Workers platform, `ReadableStream`
 cannot be created directly using the `ReadableStream` constructor.
 
 ## Properties
@@ -25,7 +25,7 @@ cannot be created directly using the `ReadableStream` constructor.
 - <Code>getReader(options<ParamType>Object</ParamType>)</Code> <TypeLink href="/reference/streams/readablestreamdefaultreader">ReadableStreamDefaultReader</TypeLink>
 
   - Gets an instance of `ReadableStreamDefaultReader` and locks the `ReadableStream` to that reader instance. This method accepts an object argument indicating _options_.  The only supported option is `mode`, which can be set to `byob` to create a [`ReadableStreamBYOBReader`](/reference/streams/readablestreambyobreader), as shown here:
-  
+
     ```javascript
     let reader = readable.getReader({ mode: 'byob' })
     ```

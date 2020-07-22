@@ -27,11 +27,11 @@ writeArrayToStream([1, 2, 3, 4, 5], writableStream)
 <Definitions>
 
 - `desiredSize` <Type>int</Type>
-  
+
   - The size needed to fill the stream’s internal queue, as an integer. Always returns 1, 0 (if the stream is closed), or `null` (if the stream has errors).
 
-- `closed`<Type>Promise&lt;void></Type>
- 
+- `closed` <Type>Promise&lt;void></Type>
+
   - A promise that indicates if the writer is closed. The promise is fulfilled when the writer stream is closed and rejected if there is an error in the stream.
 
 </Definitions>
@@ -55,7 +55,7 @@ writeArrayToStream([1, 2, 3, 4, 5], writableStream)
   - Attempts to close the writer. Remaining writes finish processing before the writer is closed. This method returns a promise fulfilled with `undefined` if the writer successfully closes and processes the remaining writes, or rejected on any error.
 
 - `releaseLock()` <Type>void</Type>
-  
+
   - Releases the writer’s lock on the stream. Once released, the writer is no longer active. You can call this method _before_ all pending `write(chunk)` calls are resolved. This allows you to queue a `write` operation, release the lock, and begin piping into the writable stream from another source, as shown in the example below.
 
     ```javascript

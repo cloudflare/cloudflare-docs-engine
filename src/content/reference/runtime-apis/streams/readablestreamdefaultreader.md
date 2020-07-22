@@ -39,7 +39,7 @@ const reader = readable.getReader()
   - Cancels the stream. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying source's cancel algorithm -- if this readable stream is one side of a [TransformStream](/reference/streams/transformstream), then its cancel algorithm causes the transform's writable side to become errored with `reason`.
 
     <Aside type="warning" header="Warning">
-    
+
     Any data not yet read is lost.
 
     </Aside>
@@ -47,7 +47,7 @@ const reader = readable.getReader()
 - `releaseLock()` <Type>void</Type>
 
   - Releases the lock on the readable stream. A lock can’t be released if the reader has pending read operations. A `TypeError` is thrown and the reader remains locked.
- 
+
 </Definitions>
 
 ## See also
