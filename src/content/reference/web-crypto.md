@@ -20,7 +20,7 @@ const myDigest = await crypto.subtle.digest(
   {
     name: 'SHA-256',
   },
-  myText, //The data you want to hash as an ArrayBuffer
+  myText, // The data you want to hash as an ArrayBuffer
 )
 
 console.log(new Uint8Array(myDigest))
@@ -158,19 +158,19 @@ MDN](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto#Methods).
 Workers implements a subset of the most common cryptographic algorithms, as shown in the following table.
 We are happy to add support for more algorithms – [let us know about your use case](https://community.cloudflare.com/c/developers/workers).
 
-| Algorithm         | sign()<br/>verify() | encrypt()<br/>decrypt() | digest() | deriveBits()<br/>deriveKey() | generateKey() | wrapKey()<br/>unwrapKey() |
-| :---------------- | :------------------ | :---------------------- | :------- | :--------------------------- | :------------ | :------------------------ |
-| RSASSA-PKCS1-v1_5 | ✓                   |                         |          |                              |               |                           |
-| ECDSA             | ✓                   |                         |          |                              |               |                           |
-| HMAC              | ✓                   |                         |          |                              | ✓             |                           |
-| AES-CBC           |                     | ✓                       |          |                              |               | ✓                         |
-| AES-GCM           |                     | ✓                       |          |                              | ✓             | ✓                         |
-| SHA-1             |                     |                         | ✓        |                              |               |                           |
-| SHA-256           |                     |                         | ✓        |                              |               |                           |
-| SHA-384           |                     |                         | ✓        |                              |               |                           |
-| SHA-512           |                     |                         | ✓        |                              |               |                           |
-| MD5<sup><a href="#footnote-1">1</a></sup>           |                     |                         | ✓        |                              |               |                           |
-| PBKDF2            |                     |                         |          | ✓                            |               |                           |
+| Algorithm                                 | sign()<br/>verify() | encrypt()<br/>decrypt() | digest() | deriveBits()<br/>deriveKey() | generateKey() | wrapKey()<br/>unwrapKey() |
+| :---------------------------------------- | :------------------ | :---------------------- | :------- | :--------------------------- | :------------ | :------------------------ |
+| RSASSA-PKCS1-v1_5                         | ✓                   |                         |          |                              |               |                           |
+| ECDSA                                     | ✓                   |                         |          |                              |               |                           |
+| HMAC                                      | ✓                   |                         |          |                              | ✓             |                           |
+| AES-CBC                                   |                     | ✓                       |          |                              |               | ✓                         |
+| AES-GCM                                   |                     | ✓                       |          |                              | ✓             | ✓                         |
+| SHA-1                                     |                     |                         | ✓        |                              |               |                           |
+| SHA-256                                   |                     |                         | ✓        |                              |               |                           |
+| SHA-384                                   |                     |                         | ✓        |                              |               |                           |
+| SHA-512                                   |                     |                         | ✓        |                              |               |                           |
+| MD5<sup><a href="#footnote-1">1</a></sup> |                     |                         | ✓        |                              |               |                           |
+| PBKDF2                                    |                     |                         |          | ✓                            |               |                           |
 
 __Footnotes:__
 
