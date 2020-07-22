@@ -587,20 +587,6 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   vertical-align: top;
 }
 
-@media (max-width: 768px) {
-  .DocsMarkdown table {
-    display: block;
-    overflow-x: auto;
-    max-width: 100%;
-  }
-
-  .DocsMarkdown th,
-  .DocsMarkdown td {
-    padding-left: .5em;
-    padding-right: .5em;
-  }
-}
-
 .DocsMarkdown th:first-child,
 .DocsMarkdown td:first-child {
   padding-left: 0;
@@ -739,14 +725,14 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 
 .DocsMarkdown--table-wrap-inner {
   display: flex;
-  padding-right: 1em;
 }
 
 .DocsMarkdown--table-wrap table {
+  min-width: 100%;
   margin: 0;
 }
 
-.DocsMarkdown--table-wrap table th {
+.DocsMarkdown--table-wrap table {
   word-break: initial;
 }
 
