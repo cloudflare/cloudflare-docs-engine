@@ -1,31 +1,53 @@
-
 # Limits
 
-## Overview
+## Worker limits
 
-|           | Feature                     | Free                                             | Unlimited  |
-|-----------|-----------------------------|--------------------------------------------------|------------|
-| Worker    | [Request Limit](#request-limits)               | 100,000 requests/day <br></br> 1000 requests/min | none  |
-|           | [Worker Memory](#memory)               | 128 MB                                           | 128 MB     |
-|           | [CPU Runtime](#cpuexecution-time-limit)                 | 10 ms                                            | 50 ms      |
-|           | [Subreqests](#subrequests)                  | 50                                               | 50         |
-|           | [Simultaneous Connections](#simultaneous-open-connections)    | 6                                                | 6          |
-|           | [Env Variables](#environment-variables)              | 32/worker                                        | 32/worker  |
-|           | [Env Variable Size](#environment-variables)           | 5 KB                                             | 5 KB       |
-|           | [Script Size](#script-size) | 1 MB                                             | 1 MB       |
-|           | [# of Scripts](#number-of-scripts)                | 30                                               | 30         |
-| KV        | [Reads/Second](#kv)               | unlimited                                        | unlimited  |
-|           | [Writes/Second](#kv)              | 1                                                | 1          |
-|           | [Namespaces](#kv)                  | 100                                              | 100        |
-|           | [Keys/Namespace](#kv)            | unlimited                                        | unlimited  |
-|           | [Key Size](#kv)                    | 512 bytes                                        | 512 bytes  |
-|           | [Key Metadata](#kv)               | 1024 bytes                                       | 1024 bytes |
-| Cache API | [Max Obj Size](#cache-api)                | 512 MB                                           | 512 MB     |
-|           | [Calls/Request](#cache-api)                | 50                                               | 50         |
-|           | [Storage Limit](#cache-api)                | 5 GB                                             | 5 GB       |
+<TableWrap>
 
+| Feature                                                             | Free                                                 | Unlimited |
+|---------------------------------------------------------------------|------------------------------------------------------|-----------|
+| [Request](#request)                                                 | 100,000&nbsp;requests/day<br/>1000&nbsp;requests/min | none      |
+| [Worker memory](#memory)                                            | 128 MB                                               | 12 MB     |
+| [CPU runtime](#cpu-runtime)                                         | 10 ms                                                | 50 ms     |
+| [Subreqests](#subrequests)                                          | 50                                                   | 50        |
+| [Simultaneous open<br/>connections](#simultaneous-open-connections) | 6                                                    | 6         |
+| [Environment variables](#environment-variables)                     | 32/worker                                            | 32/worker |
+| [Environment variable<br/>size](#environment-variables)             | 5 KB                                                 | 5 KB      |
+| [Script size](#script-size)                                         | 1 MB                                                 | 1 MB      |
+| [Number of scripts](#number-of-scripts)                             | 30                                                   | 30        |
 
-## Request Limits
+</TableWrap>
+
+## KV limits
+
+<TableWrap>
+
+| Feature                      | Free       | Unlimited  |
+|------------------------------|------------|------------|
+| [Reads/Second](#kv-limits)   | unlimited  | unlimited  |
+| [Writes/Second](#kv-limits)  | 1          | 1          |
+| [Namespaces](#kv-limits)     | 100        | 100        |
+| [Keys/Namespace](#kv-limits) | unlimited  | unlimited  |
+| [Key Size](#kv-limits)       | 512 bytes  | 512 bytes  |
+| [Key Metadata](#kv-limits)   | 1024 bytes | 1024 bytes |
+
+</TableWrap>
+
+## Cache API limits
+
+<TableWrap>
+
+| Feature                     | Free    | Unlimited |
+|-----------------------------|---------|-----------|
+| [Max Obj Size](#cache-api)  | 512 MB  | 512 MB    |
+| [Calls/Request](#cache-api) | 50      | 50        |
+| [Storage Limit](#cache-api) | 5 GB    | 5 GB      |
+
+</TableWrap>
+
+--------------------------------
+
+## Request
 
 Unlimited (Paid) Workers scripts automatically scale onto thousands of Cloudflare edge servers around the world; there is no general limit to the number of requests per second Workers can handle.
 
@@ -33,21 +55,23 @@ Cloudflare's abuse protection methods do not affect well-intentioned traffic. Ho
 
 The burst rate and daily request limits apply at the account level, meaning that requests on your workers.dev subdomain count toward the same limit as your zones. Upgrade to a [paid plan](https://dash.cloudflare.com/?account=workers/plans) to automatically lift these limits.
 
-### Burst Rate Limit
+### Burst rate
 
 Accounts using the Workers free plan are subject to a burst rate limit of 1000 requests per minute. Users visiting a rate limited site will receive a Cloudflare 1015 error page. However if you are calling your script programmatically, you can detect the rate limit page and handle it yourself by looking for HTTP status code 429.
 
-### Daily Request Limit
+### Daily request
 
 Accounts using the Workers free plan are subject to a daily request limit of 100,000 requests. Free plan daily requests counts reset at midnight UTC. A Worker that fails as a result of daily request limit errors can be configured by toggling its corresponding [route](/about/routes/) in two modes: _Fail open_ and _Fail closed_.
 
-#### Fail Open
+#### Fail open
 
 Routes in fail open mode will bypass the failing Worker and prevent it from operating on incoming traffic. Incoming requests will behave as if there was no Worker.
 
-#### Fail Closed
+#### Fail closed
 
 Routes in fail closed mode will display a Cloudflare 1027 error page to visitors, signifying the Worker has been temporarily disabled. We recommend this option if your Worker is performing security related tasks.
+
+--------------------------------
 
 ## Memory
 
@@ -55,11 +79,15 @@ Only one Workers instance runs on each of the many global Cloudflare edge server
 
 Use the [TransformStream API](/reference/apis/streams/) to stream responses if you are concerned about memory usage. This avoids loading an entire response into memory.
 
-## CPU/Execution Time Limit
+--------------------------------
+
+## CPU runtime
 
 Most Workers requests consume less than a millisecond. It’s rare to find a normally operating Workers script that exceeds the CPU time limit. A Worker may consume up to 10ms on the free plan and 50ms on the Unlimited tier. The 10ms allowance on the free plan is enough execution time for most use cases including application hosting.
 
 There is no limit on the real runtime for a Workers script. As long as the client that sent the request remains connected, the Workers script can continue processing, making subrequests, and setting timeouts on behalf of that request. When the client disconnects, all tasks associated with that client request are canceled. You can use [`event.waitUntil()`](/reference/apis/fetch-event/) to delay cancellation for another 30 seconds or until the promise passed to `waitUntil()` completes.
+
+--------------------------------
 
 ## Subrequests
 
@@ -77,7 +105,9 @@ There is no hard limit on the amount of real time a Worker may use. As long as t
 
 When the client disconnects, all tasks associated with that client’s request are proactively canceled. If the Worker passed a promise to [`event.waitUntil()`](/reference/apis/fetch-event), cancellation will be delayed until the promise has completed or until an additional 30 seconds have elapsed, whichever happens first.
 
-## Simultaneous Open Connections
+--------------------------------
+
+## Simultaneous open connections
 
 While handling a request, each Worker script is allowed to have up to six connections open simultaneously. The connections opened by the following API calls all count toward this limit:
 
@@ -89,29 +119,32 @@ Once a Worker has six connections open, it can still attempt to open additional 
 
 If the system detects that a Worker is deadlocked on open connections - for instance, if the Worker has pending connection attempts but has no in-progress reads or writes on the connections that it already has open - then the least-recently-used open connection will be canceled to unblock the Worker. If the Worker later attempts to use a canceled connection, an exception will be thrown. These exceptions should rarely occur in practice, though, since it's uncommon for a Worker to open a connection that it doesn't have an immediate use for.
 
+--------------------------------
 
-# Environment Variables
+## Environment variables
 
-The maximum number of environment variables (secret and text combined) for a Worker is 32 variables. 
+The maximum number of environment variables (secret and text combined) for a Worker is 32 variables.
 There is no limit to the number of environment variables per account.
 
 Each environment variable has a size limitation of 5 KiB.
 
-## Script Size
+### Script size
 
 A Workers script plus any [Asset Bindings](/tooling/api/bindings) can be up to 1MB in size after compression.
 
-## Number of Scripts
+### Number of scripts
 
 Unless otherwise negotiated as a part of an enterprise level contract, all Workers accounts are limited to a maximum of 30 scripts at any given time.
 
 <Aside>
 
-__Note:__ App Workers scripts do not count towards this limit. 
+__Note:__ App Workers scripts do not count towards this limit.
 
 </Aside>
 
-# KV 
+--------------------------------
+
+## KV
 
 After subscription to a Workers Unlimited plan, KV is enabled. Workers KV supports:
 
@@ -133,7 +166,9 @@ sometimes reflect an older state of the system. While writes will often be
 visible globally immediately, it can take up to 60 seconds before reads in
 all edge locations are guaranteed to see the new value.
 
-# Cache API
+--------------------------------
+
+## Cache API
 
 - 50 total `put()`, `match()`, or `delete()` calls per-request, using the same quota as `fetch()`
 
