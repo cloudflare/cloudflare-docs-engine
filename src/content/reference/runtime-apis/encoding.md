@@ -1,10 +1,8 @@
 # Encoding
 
-<!-- ToDo: Add ## Background -->
-
 ## TextEncoder
 
-### Background 
+### Background
 
 The TextEncoder takes a stream of code points as input and emits a stream of bytes. Encoding types passed to the constructor are ignored and a UTF-8 TextEncoder is created.
 
@@ -25,14 +23,13 @@ let encoder = new TextEncoder()
 
 </Definitions>
 
-
 ### Methods
 
 <Definitions>
 
 - <Code>encode(input <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/USVString">USVString</TypeLink>)</Code> <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Typed_arrays/Uint8Array">Uint8Array</TypeLink>
-  
-  - Encodes a string input. 
+
+  - Encodes a string input.
 
 </Definitions>
 
@@ -40,7 +37,7 @@ let encoder = new TextEncoder()
 
 ## TextDecoder
 
-### Background 
+### Background
 
 The **TextDecoder** interface represents a UTF-8 decoder. Decoders take a stream of bytes as input and emit a stream of code points.
 
@@ -56,7 +53,7 @@ let decoder = new TextDecoder()
 <Definitions>
 
 - `encoding` <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/DOMString">DOMString</TypeLink> <PropMeta>read-only</PropMeta>
-  - The name of the decoder that describes the method the `TextDecoder` uses. 
+  - The name of the decoder that describes the method the `TextDecoder` uses.
 
 - `fatal` <Type>boolean</Type> <PropMeta>read-only</PropMeta>
   - Indicates if the error mode is fatal.
@@ -70,12 +67,13 @@ let decoder = new TextDecoder()
 
 <Definitions>
 
-- `decode()` <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/DOMString">DOMString</TypeLink> 
+- `decode()` <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/DOMString">DOMString</TypeLink>
   - Decodes using the method specified in the `TextDecoder` object. Learn more [here](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
 
 </Definitions>
 
-<!-- To Do: --------------------------------
+<!-- TODO -->
+<!--
 
 ## Common issues
 
@@ -88,4 +86,6 @@ Sometimes you’ll find that when you create instances of `Class`, unexpected th
 - [`RelatedClass`](#)
 - [`OtherRelatedClass`](#)
 - [An external link to relevant documentation, e.g. on MDN](https://example.com)
-- [A page about writing JS in general](#) -->
+- [A page about writing JS in general](#)
+
+-->
