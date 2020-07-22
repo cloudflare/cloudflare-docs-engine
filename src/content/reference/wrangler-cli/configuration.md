@@ -18,7 +18,7 @@ Environments is a feature that allows you to deploy the same project to multiple
 - `preview`
 - `publish`
 
-Some environment properties can be [*inherited*](#keys) from the top level configuration, but values in an environment will always override those at the top level. 
+Some environment properties can be [*inherited*](#keys) from the top level configuration, but values in an environment will always override those at the top level.
 
 --------------------------------
 
@@ -28,14 +28,14 @@ Keys to configure per project in your `wrangler.toml`.
 
 **Top level only**: required to be configured at the top level of your wrangler.toml only; multiple environments on the same project must share this property
 
-**Inherited** : Can be configured at the top level and/or environment. If the property is defined *only* at the top level, the environment will use the property value from the top level. If the property is defined in the environment, the environment value will override the top level value. 
+**Inherited**: Can be configured at the top level and/or environment. If the property is defined *only* at the top level, the environment will use the property value from the top level. If the property is defined in the environment, the environment value will override the top level value.
 
-**Not inherited**: Must be defined for every environment individually. 
+**Not inherited**: Must be defined for every environment individually.
 
 <Definitions>
 
   - `name` <Type>inherited</Type> <PropMeta>required</PropMeta>
-    -  The name of your Worker script.  If inherited, your environment name with be appended to the top level. 
+    -  The name of your Worker script. If inherited, your environment name with be appended to the top level.
 
   - `type` <Type>top level</Type> <PropMeta>required</PropMeta>
     -  Specifies how `wrangler build` will build your project. There are currently three options (`webpack`, `javascript`, and `rust`).
@@ -44,10 +44,10 @@ Keys to configure per project in your `wrangler.toml`.
     - This is the ID of the "zone" or domain you want to run your script on. It can also be specified through the `CF_ZONE_ID` environment variable. This key is optional if you are using only a [workers.dev](https://workers.dev) subdomain.
 
   - `account_id` <Type>inherited</Type> <PropMeta>required</PropMeta>
-    - This is the ID of the account associated with your zone. You might have more than one account, so make sure to use the ID of the account associated with the `zone_id` you provide, if you provide one. It can also be specified through the `CF_ACCOUNT_ID` environment variable. 
+    - This is the ID of the account associated with your zone. You might have more than one account, so make sure to use the ID of the account associated with the `zone_id` you provide, if you provide one. It can also be specified through the `CF_ACCOUNT_ID` environment variable.
 
   - `workers_dev` <Type>inherited</Type> <PropMeta>optional</PropMeta>
-    - This is a boolean flag that specifies if your worker will be deployed to your [workers.dev](https://workers.dev) subdomain. If omitted defaults to false. 
+    - This is a boolean flag that specifies if your worker will be deployed to your [workers.dev](https://workers.dev) subdomain. If omitted defaults to false.
 
   - `route` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
     - A list of routes you'd like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
