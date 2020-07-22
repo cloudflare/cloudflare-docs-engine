@@ -19,6 +19,8 @@ Cloudflare Site routes are comprised of:
 - Worker script to execute on matching requests
 - Failure mode for rate-limited accounts on the free plan (see [Daily Request Limits](/about/limits#request-limits))
 
+The Routes REST API documentation can be found [here](https://api.cloudflare.com/#worker-routes-properties)
+
 \* _A zone that you have registered with some registrar (not workers.dev) and setup Cloudflare to serve as [a reverse proxy](https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/)._
 
 ### Matching Behavior

@@ -60,9 +60,9 @@ You can also specify or override the Zone ID used by `wrangler publish` with the
 1. Click **Get your API token** below the _CLI and API_ section to jump to your _Profile_ page.
 2. Scroll to _API Keys_, and click **View** to copy your Global API Key **\***.
 
-<Aside>
+<Aside type="warning">
 
-__IMPORTANT:Treat your Global API Key like a password!__ 
+__Important__:Treat your Global API Key like a password! 
 It should not be stored in version control or in your code, use environment variables if possible.
 
 </Aside>

@@ -5,8 +5,6 @@
 
 Your project will need some configuration before you can publish your worker. These values are stored in a `wrangler.toml` file. You will need to manually edit this file to add these values before you can publish.
 
-For all configurable fields, see the [table](#keys) below.
-
 --------------------------------
 
 ## Environments
@@ -59,13 +57,13 @@ Keys to configure per project in your `wrangler.toml`.
     - A list of routes you'd like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
 
   - `webpack_config` <Type>inherited</Type> <PropMeta>optional</PropMeta>
-    - This is the path to a custom webpack configuration file for your worker. You must specify this field to use a custom webpack configuration, otherwise Wrangler will use a default configuration for you. You can read more [here](/tooling/wrangler/webpack).
+    - This is the path to a custom webpack configuration file for your worker. You must specify this field to use a custom webpack configuration, otherwise Wrangler will use a default configuration for you. You can read more [here](/reference/wrangler-cli/webpack).
 
   - `vars` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-    - An object containing text variables that can be directly accessed in a Worker script. See [environment variables](TODO:link).
+    - An object containing text variables that can be directly accessed in a Worker script.
 
   - `kv_namespaces` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-    - These specify any [Workers KV](/reference/storage/) Namespaces you want to access from inside your Worker.
+    - These specify any [Workers KV](#kv_namespaces) Namespaces you want to access from inside your Worker.
 
   - `site` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
     - Determines the local folder to upload and serve from a Worker | Optional
@@ -74,7 +72,7 @@ Keys to configure per project in your `wrangler.toml`.
 
 ### vars
 
-Values to use in your Worker script as a text [environment variable](/reference/apis/environment-variables/).
+Values to use in your Worker script as a text environment variables.
 
 Usage:
 
@@ -94,13 +92,13 @@ vars = { FOO = "some value", BAR = "some other string" }
 
 <Aside>
 
-__Note:__ Using secrets should be handled using [wrangler secret](/tooling/wrangler/secret/). The `vars` definition in your `wrangler.toml` must not contain newlines in order to be valid TOML.
+__Note:__ Using secrets should be handled using [wrangler secret](/reference/wrangler-cli/commands#secret). The `vars` definition in your `wrangler.toml` must not contain newlines in order to be valid TOML.
 
 </Aside>
 
 ### kv_namespaces
 
-[KV namespaces](/reference/apis/kv) to bind to your Worker and reference in your script.
+KV namespaces bind to your Worker and reference in your script.
 
 Usage:
 
@@ -126,7 +124,7 @@ kv_namespaces = [
 
 <Aside>
 
-__Note:__ Creating your KV Namespaces can be handled using Wrangler's [KV Commands](/tooling/wrangler/kv_commands).
+__Note:__ Creating your KV Namespaces can be handled using Wrangler's [KV Commands](/reference/wrangler-cli/commands#kv).
 
 You can also define your `kv_namespaces` using [alternative TOML syntax](https://github.com/toml-lang/toml#user-content-table).
 
@@ -134,7 +132,7 @@ You can also define your `kv_namespaces` using [alternative TOML syntax](https:/
 
 ### site
 
-A [Workers Site](/sites) generated with [`wrangler generate --site`](/tooling/wrangler/commands/#generate) or [`wrangler init --site`](/tooling/wrangler/commands/#init).
+A Workers Site generated with [`wrangler generate --site`](/reference/wrangler-cli/commands#generate) or [`wrangler init --site`](/reference/wrangler-cli/commands#init).
 
 Usage:
 
@@ -160,7 +158,7 @@ entry-point = "workers-site"
 
 </Definitions>
 
-To learn more about the optional `include` and `exclude` fields, visit [Ignoring Subsets of Static Assets](/tooling/wrangler/sites/#ignoring-subsets-of-static-assets).
+To learn more about the optional `include` and `exclude` fields, visit [Ignoring Subsets of Static Assets](#ignoring-subsets-of-static-assets).
 
 You can also define your `site` using [alternative TOML syntax](https://github.com/toml-lang/toml#user-content-inline-table).
 
@@ -170,7 +168,7 @@ For very exceptionally large pages, Workers Sites might not work for you. There 
 
 #### Ignoring Subsets of Static Assets
 
-Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) - make sure to be on the [latest version](/quickstart/#updating-the-cli) - and the Workers [Unlimited plan](https://workers.cloudflare.com/sites#plans).
+Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) - make sure to be on the [latest version](/reference/wrangler-cli/install-update) - and the Workers [Unlimited plan](https://workers.cloudflare.com/sites#plans).
 
 There are cases where users may not want to upload certain static assets to their Workers Sites.
 In this case, Workers Sites can also be configured to ignore certain files or directories using logic
@@ -223,7 +221,7 @@ You can learn more about the standard patterns used for include and exclude in t
 
 #### Customizing your Build
 
-Workers Sites projects use webpack by default. You can [bring your own webpack config](/tooling/wrangler/webpack/#using-with-workers-sites), however it is important to be cognizant of your `entry` and `context` settings.
+Workers Sites projects use webpack by default. You can [bring your own webpack config](/reference/wrangler-cli/webpack#using-with-workers-sites), however it is important to be cognizant of your `entry` and `context` settings.
 
 
 --------------

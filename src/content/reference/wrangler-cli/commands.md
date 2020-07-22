@@ -58,7 +58,7 @@ wrangler build [--env $ENVIRONMENT_NAME]
 <Definitions>
 
 - `--env` <PropMeta>optional</PropMeta>
-  - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`
+  - Perform on a specific environment specified as `$ENVIRONMENT_NAME`
 
 </Definitions>
 
@@ -77,7 +77,7 @@ wrangler config [--api-key]
 
 </Definitions>
 
-You can also [use environment variables](/tooling/wrangler/configuration/) to authenticate.
+You can also use environment variables to authenticate.
 
 ## publish
 
@@ -90,7 +90,7 @@ wrangler publish [--env $ENVIRONMENT_NAME]
 <Definitions>
 
 - `--env` <PropMeta>optional</PropMeta>
-  - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`
+  - Perform on a specific environment specified as `$ENVIRONMENT_NAME`
 
 </Definitions>
 
@@ -149,8 +149,7 @@ __Note:__ Your Cloudflare Zone ID can be found in the [Cloudflare dashboard](htt
 
 ### Publishing the same code to multiple places
 
-If you would like to be able to publish your code to multiple places, please see the documentation for [environments](/tooling/wrangler/environments).
-
+If you would like to be able to publish your code to multiple places, please see the documentation for environments.
 ## dev (alpha)
 
 <Aside type="warning">
@@ -171,7 +170,7 @@ If you have feedback about `wrangler dev` or general questions, we will respond 
 
 ### kv_namespaces
 
-If you are using [kv_namespaces](/tooling/wrangler/configuration/#kv_namespaces) with `wrangler dev`, you will need to specify a `preview_id` in your `wrangler.toml` before you can start the session. This is so that you do not accidentally write changes to your production namespace while you are developing. You may make `preview_id` equal to `id` if you would like to preview with your production namespace, but you should make sure that you are not writing things to KV that would break your production Worker.
+If you are using [kv_namespaces](/reference/wrangler-cli/configuration#kv_namespaces) with `wrangler dev`, you will need to specify a `preview_id` in your `wrangler.toml` before you can start the session. This is so that you do not accidentally write changes to your production namespace while you are developing. You may make `preview_id` equal to `id` if you would like to preview with your production namespace, but you should make sure that you are not writing things to KV that would break your production Worker.
 
 ## tail
 
@@ -210,7 +209,7 @@ wrangler preview [--watch] [--env $ENVIRONMENT_NAME] [ --url $URL] [$METHOD] [$B
 <Definitions>
 
   - `--env` <Type>default="top lvl env"</Type> <PropMeta>optional</PropMeta>
-    - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`.
+    - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
   
   - `--watch` <PropMeta>recommended</PropMeta>
     - Enable live preview, so on changes Wrangler will continually update the preview service with the newest version of your project. By default, `wrangler preview` will only bundle your project a single time.
@@ -226,7 +225,7 @@ wrangler preview [--watch] [--env $ENVIRONMENT_NAME] [ --url $URL] [$METHOD] [$B
 
 ### kv_namespaces
 
-If you are using [kv_namespaces](/tooling/wrangler/configuration/#kv_namespaces) with `wrangler preview`, you will need to specify a `preview_id` in your `wrangler.toml` before you can start the session. This is so that you do not accidentally write changes to your production namespace while you are developing. You may make `preview_id` equal to `id` if you would like to preview with your production namespace, but you should make sure that you are not writing things to KV that would break your production Worker.
+If you are using [kv_namespaces](/reference/wrangler-cli/configuration#kv_namespaces) with `wrangler preview`, you will need to specify a `preview_id` in your `wrangler.toml` before you can start the session. This is so that you do not accidentally write changes to your production namespace while you are developing. You may make `preview_id` equal to `id` if you would like to preview with your production namespace, but you should make sure that you are not writing things to KV that would break your production Worker.
 
 ### Previewing on Windows Subsystem for Linux (WSL 1/2)
 
@@ -259,11 +258,11 @@ wrangler route list [--env $ENVIRONMENT_NAME]
 <Definitions>
 
   - `--env` <Type>default="top lvl env"</Type> <PropMeta>optional</PropMeta>
-    - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`.
+    - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
 </Definitions> 
 
-Will return a json response from the [List Routes API](/tooling/api/routes/#list-routes). Each entry includes the route id, pattern, and associated Worker name for a route. Piping this through a tool such as `jq` will pretty up the output.
+Will return a json response from the [List Routes API](https://api.cloudflare.com/#worker-routes-list-routes). Each entry includes the route id, pattern, and associated Worker name for a route. Piping this through a tool such as `jq` will pretty up the output.
 
 ```bash
 wrangler route delete $ID [--env $ENVIRONMENT_NAME]
@@ -272,7 +271,7 @@ wrangler route delete $ID [--env $ENVIRONMENT_NAME]
 <Definitions>
 
   - `--env` <Type>default="top lvl env"</Type> <PropMeta>optional</PropMeta>
-    - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`.
+    - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
   - `$ID` <PropMeta>required</PropMeta>
     - The hash of the route ID to delete
 
@@ -288,7 +287,7 @@ wrangler subdomain <name>
 
 ## secret
 
-Interact with your secrets. [Check out the docs.](/tooling/wrangler/secrets)
+Interact with your secrets.
 
 ### `put`
 
@@ -304,7 +303,7 @@ Enter the secret text you'd like assigned to the variable name on the script nam
   - `name` 
     - The variable name to be accessible in the script
   - `--env` <PropMeta>optional</PropMeta>
-    - Binds the secret to the script of the specific [environment](/tooling/wrangler/environments/)
+    - Binds the secret to the script of the specific environment
 
 </Definitions> 
 
@@ -321,7 +320,7 @@ wrangler secret delete <name> --env ENVIRONMENT_NAME
   - `name` 
     - The variable name to be accessible in the script
   - `--env` <PropMeta>optional</PropMeta>
-    - Binds the secret to the script of the specific [environment](/tooling/wrangler/environments/)
+    - Binds the secret to the script of the specific environment
 
 </Definitions> 
 
@@ -336,14 +335,14 @@ wrangler secret list --env ENVIRONMENT_NAME
 <Definitions>
 
   - `--env` <PropMeta>optional</PropMeta>
-    - Binds the secret to the script of the specific [environment](/tooling/wrangler/environments/)
+    - Binds the secret to the script of the specific environment
 
 </Definitions> 
 
 
 ## kv
 
-Interact with your Cloudflare Workers KV store. [Check out the docs.](/tooling/wrangler/kv_commands)
+Interact with your Cloudflare Workers KV store. 
 
 If you've already selected a workers.dev subdomain, running `wrangler subdomain <name>` will update all your currently running Workers to run on the new subdomain (e.g. `hello.world.workers.dev` will now run on `hello.new-world.workers.dev`).
 
@@ -388,8 +387,6 @@ access it from a Worker with code like:
 let value = await MY_KV.get("my-key");
 ```
 
-The full KV API for Workers can be found [here](/reference/storage/).
-
 To put a value to your KV namespace via Wrangler, use the `kv:key put` subcommand.
 
 ```console
@@ -404,7 +401,7 @@ $ wrangler kv:key put --namespace-id=e29b263ab50e42ce9b637fa8370175e8 "key" "val
 ✨  Success
 ```
 
-Additionally, KV namespaces can be used with [environments](/tooling/wrangler/environments)! This is useful for when you have code that refers to
+Additionally, KV namespaces can be used with environments! This is useful for when you have code that refers to
 a KV binding like `MY_KV`, and you want to be able to have these bindings point to different namespaces (like
 one for staging and one for production). So, if you have a `wrangler.toml` with two environments:
 
@@ -471,7 +468,7 @@ With the wrangler.toml above, you can specify `--env production` when you want t
 wrangler kv:key get --binding "MY_KV" --env=production "my key"
 ```
 
-To learn more about environments, check out the [environments documentation](/tooling/wrangler/environments).
+To learn more about environments, check out the environments documentation.
 
 <span id="kv-namespace"></span>
 
@@ -490,7 +487,7 @@ wrangler kv:namespace create $NAME [--env=$ENVIRONMENT_NAME] [--preview]
     - The name of the new namespace
   
   - `--env` <PropMeta>optional</PropMeta>
-    - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`.
+    - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
     - Interact with a preview namespace instead of production.
@@ -565,7 +562,7 @@ $ wrangler kv:namespace delete --binding= [--namespace-id=]
     - The id of the namespace to delete. 
 
   - `--env` <PropMeta>optional</PropMeta>
-    - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`.
+    - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
     - Interact with a preview namespace instead of production.
@@ -619,7 +616,7 @@ $ wrangler kv:key put --binding= [--namespace-id=] $KEY $VALUE
     - The id of the namespace to write to. 
 
   - `--env` <PropMeta>optional</PropMeta>
-    - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`.
+    - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
     - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`'s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
@@ -677,7 +674,7 @@ $ wrangler kv:key list --binding= [--namespace-id=] [--prefix] [--env]
     - The name of the namespace to delete. 
 
   - `--env` <PropMeta>optional</PropMeta>
-    - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`.
+    - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--prefix` <PropMeta>optional</PropMeta>
     - A prefix to filter listed keys.
@@ -723,7 +720,7 @@ $ wrangler kv:key get --binding= [--env=] [--preview] [--namespace-id=] "$KEY"
     - The id of the namespace to get from. 
 
   - `--env` <PropMeta>optional</PropMeta>
-    - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`.
+    - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
     - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`'s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
@@ -757,7 +754,7 @@ $ wrangler kv:key delete --binding= [--env=] [--preview] [--namespace-id=] "$KEY
     - The id of the namespace to delete from. 
 
   - `--env` <PropMeta>optional</PropMeta>
-    - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`.
+    - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
     - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`'s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
@@ -799,7 +796,7 @@ $ wrangler kv:key put --binding= [--env=] [--preview] [--namespace-id=] $FILENAM
     - The id of the namespace to put to.
   
   - `--env` <PropMeta>optional</PropMeta>
-    - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`.
+    - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
     - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`'s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
@@ -874,7 +871,7 @@ $ wrangler kv:key delete --binding= [--env=] [--preview] [--namespace-id=] $FILE
     - The id of the namespace to put to.
   
   - `--env` <PropMeta>optional</PropMeta>
-    - Perform on a specific [environment](/tooling/wrangler/environments) specified as `$ENVIRONMENT_NAME`.
+    - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
     - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`'s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
