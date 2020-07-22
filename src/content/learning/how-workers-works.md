@@ -8,6 +8,4 @@ The differences between JavaScript written for the browser or Node.js happen at 
 
 <figure><NetworkMap/></figure>
 
---------------------------------
-
-Coming soon...
+<!-- TODO: ... -->

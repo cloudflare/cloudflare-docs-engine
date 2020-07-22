@@ -1,4 +1,4 @@
-# Security Model 
+# Security Model
 
 Since the very start of the Workers project, security has been a high priority  — we were concerned early on that when hosting a large number of tenants on shared infrastructure, side channels of various kinds would pose a threat. The Cloudflare Workers runtime is carefully designed to defend against side channel attacks.
 

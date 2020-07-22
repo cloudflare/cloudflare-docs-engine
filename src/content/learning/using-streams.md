@@ -44,6 +44,8 @@ Note that we call `response.body.pipeTo(writable)` but do _not_ `await` it. This
 
 The runtime can continue running a function (`response.body.pipeTo(writable)`) after a response is returned to the client. This example just pumps the subrequest response body to the final response body; however, you can use more complicated logic, such as adding a prefix or a suffix to the body or to process it somehow.
 
+--------------------------------
+
 ## Common issues
 
 <Aside type="warning" header="Warning">
@@ -52,6 +54,8 @@ The runtime can continue running a function (`response.body.pipeTo(writable)`) a
 The Streams API is only available inside of the Request context, i.e. inside the `fetch` event listener callback.
 
 </Aside>
+
+--------------------------------
 
 ## See also
 

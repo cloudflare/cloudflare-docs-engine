@@ -2,11 +2,13 @@
 
 There are two graphical sources of information about your Workers traffic at at given time: Workers Metrics and zone-based Workers analytics. Workers metrics can help you diagnose issues and understand your Workers workloads by showing performance and usage of your Workers. If your Worker runs on a route on a zone, or on a few zones, the Workers tab in the zone can help you understand on a per-zone basis how much traffic your Worker is handling, and how many requests your site is getting.
 
+--------------------------------
+
 ## Workers Metrics
 
 Workers metrics aggregate request data for an individual Worker script (if your Worker is running across multiple domains, and on workers.dev, metrics will aggregate requests across them). You can click on any Worker to view its metrics in your [Workers dashboard](https://dash.cloudflare.com/?account=workers/overview).
 
-There are two metrics that can help you understand the health of your Worker in a given moment: requests success and error metrics, and invocation statuses. 
+There are two metrics that can help you understand the health of your Worker in a given moment: requests success and error metrics, and invocation statuses.
 
 ### Requests
 
@@ -45,6 +47,8 @@ The CPU time chart shows historical CPU time data broken down into relevant quan
 
 Worker script metrics can be inspected for up to 3 months in the past in maximum increments of 1 week. The dashboard includes the charts and information described below.
 
+--------------------------------
+
 ## Zone Analytics
 
 Aggregates request data for all scripts assigned to any [routes](/about/routes/) defined for a zone. You’ll find Zone Metrics on the [analytics tab](https://dash.cloudflare.com/?zone=analytics/workers) of your Cloudflare dashboard.
@@ -69,6 +73,8 @@ This chart shows historical requests for all scripts on a zone broken down by HT
 ### Total Requests
 
 This chart shows historical data for all scripts on a zone broken down by successful requests, failed requests, and subrequests. These request types are categorized by HTTP status code where 200-level requests are successful and 400 to 500-level requests are failed.
+
+--------------------------------
 
 ## GraphQL
 
