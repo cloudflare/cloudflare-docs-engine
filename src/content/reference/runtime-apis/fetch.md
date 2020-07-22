@@ -35,10 +35,10 @@ async function eventHandler(event) {
 <!-- Where do we have the return type in this format? -->
 <Definitions>
 
-- <Code>fetch()</Code><TypeLink href="/reference/apis/response">Promise{`<Response>`}</TypeLink>
-  
+- <Code>fetch()</Code> <TypeLink href="/reference/apis/response">Promise{`<Response>`}</TypeLink>
+
   - Fetch returns a promise to a Response.
-  
+
 </Definitions>
 
 --------------------------------
