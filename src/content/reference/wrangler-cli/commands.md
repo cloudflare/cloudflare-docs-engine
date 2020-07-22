@@ -1,5 +1,9 @@
 # Commands
 
+Complete list of all commands available for [`wrangler`](https://github.com/cloudflare/wrangler), the Workers CLI.
+
+--------------------------------
+
 ## generate
 
 Scaffold a Cloudflare Workers project from a public GitHub repository.
