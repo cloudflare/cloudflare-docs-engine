@@ -495,8 +495,6 @@ wrangler kv:key get --binding "MY_KV" --env=production "my key"
 
 To learn more about environments, check out the environments documentation.
 
-<span id="kv-namespace"></span>
-
 ### `kv:namespace`
 
 #### `create`
@@ -541,8 +539,6 @@ kv_namespaces = [
 ]
 ```
 
-<span id="kv-list">
-
 #### `list`
 
 Outputs a list of all KV namespaces associated with your account id.
@@ -567,8 +563,6 @@ $ wrangler kv:namespace list | jq '.'
     }
 ]
 ```
-</span>
-<span id="kv-delete">
 
 #### `delete`
 
@@ -611,9 +605,6 @@ yes
 🌀  Deleting namespace 15137f8edf6c09742227e99b08aaf273
 ✨  Success
 ```
-
-</span>
-<span id="kv-key">
 
 #### `kv:key`
 
@@ -679,9 +670,6 @@ $ wrangler kv:key put --binding=MY_KV "key" value.txt --path
 ✨  Success
 ```
 
-</span>
-<span id="kv-list">
-
 #### `list`
 
 Outputs a list of all keys in a given namespace.
@@ -722,8 +710,6 @@ $ wrangler kv:key list --binding=MY_KV --prefix="public" | jq '.'
     }
 ]
 ```
-</span>
-<span id="kv-get">
 
 #### `get`
 
@@ -795,9 +781,6 @@ yes
 🌀  Deleting key "key"
 ✨  Success
 ```
-
-</span>
-<span id="kv-bulk">
 
 #### `kv:bulk`
 
@@ -871,9 +854,6 @@ $ wrangler kv:bulk put --binding=MY_KV allthethingsupload.json
 ✨  Success
 ```
 
-</span>
-<span id="=kv-delete">
-
 #### `delete`
 
 Deletes all specified keys within a given namespace.
@@ -931,5 +911,3 @@ y
 🌀  deleting 1 key value pairs
 ✨  Success
 ```
-
-</span>
