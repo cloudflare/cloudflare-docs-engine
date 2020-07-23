@@ -1,4 +1,3 @@
-
 # Start from existing
 
 Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) - make sure to be on the [latest version](/quickstart/#updating-the-cli) - and the Workers [Unlimited plan](https://workers.cloudflare.com/sites#plans).
@@ -15,46 +14,52 @@ Once you have a site generated, follow these steps:
 
 1. Run this Wrangler command in the root of your project's directory:
 
-    ```
-    $ wrangler init --site my-static-site
-    ```
-    This command creates a few things: `wrangler.toml` and a `workers-site` directory.
-2. Add your site's build directory to the `wrangler.toml`:
+  ```sh
+  $ wrangler init --site my-static-site
   ```
+
+  This command creates a few things: `wrangler.toml` and a `workers-site` directory.
+
+2. Add your site's build directory to the `wrangler.toml`:
+  
+  ```toml
   [site]
   bucket = "./public" # <-- Add your build directory name here!
   entry-point = "workers-site"
   ```
-The default directories for the most popular static site generators are listed below:
 
-  - Hugo: `public`
-  - Gatsby: `public`
-  - Jekyll: `_site`
-  - Eleventy: `_site`
+  The default directories for the most popular static site generators are listed below:
+
+     - Hugo: `public`
+     - Gatsby: `public`
+     - Jekyll: `_site`
+     - Eleventy: `_site`
 
 3.  Add your `account_id` to your `wrangler.toml`. You can find your `account_id` on the right sidebar of the Workers or Overview Dashboard. Note: You may need to scroll down! For more details on finding your `account_id` click [here](/quickstart/#account-id-and-zone-id).
 
 4.  You can preview your site by running:
 
-    ```
-    wrangler preview --watch
-    ```
+  ```sh
+  $ wrangler preview --watch
+  ```
 
 5.  Decide where you'd like to publish your site to: [a workers.dev subdomain](/quickstart#publish-to-workers-dev) or your [personal domain](/quickstart#publish-to-your-domain) registered with Cloudflare.
-    Then, update your `wrangler.toml`:
 
-    - **Personal Domain**: Add your `zone_id` and a `route`.
+  Then, update your `wrangler.toml`:
 
-    ```
-    zone_id = "42ef.."
-    route = "example.com/*"
-    ```
+  **Personal Domain**: Add your `zone_id` and a `route`.
 
-  - **workers.dev**: Set `workers_dev` to true. This is the default.
+  ```toml
+  zone_id = "42ef.."
+  route = "example.com/*"
+  ```
 
-    You can learn more about configuring your project [here](/quickstart/#configure).
+  **workers.dev**: Set `workers_dev` to true. This is the default.
+
+  You can learn more about configuring your project [here](/quickstart/#configure).
   
-6. Run:
-   ```
-   wrangler publish
-   ```
+1. Run:
+
+```sh
+$ wrangler publish
+```
