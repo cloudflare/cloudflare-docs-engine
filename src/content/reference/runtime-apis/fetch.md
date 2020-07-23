@@ -58,12 +58,6 @@ async function eventHandler(event) {
 
 --------------------------------
 
-## Common issues
-
-Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
-
---------------------------------
-
 ## See also
 
 - [`Fetch HTML`](/examples)
