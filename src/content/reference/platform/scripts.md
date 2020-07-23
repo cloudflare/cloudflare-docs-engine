@@ -341,11 +341,11 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 
 ###### Missing Account/Zone Identifier
 
-```
+```json
 status: 404
 error: {
-    code: 10005,
-    message: "workers.api.error.not_found"
+  code: 10005,
+  message: "workers.api.error.not_found"
 }
 ```
 
@@ -353,21 +353,21 @@ error: {
 
 Occurs when query param (e.g. `include_subdomain_availability`) is not parsable as the correct type
 
-```
+```json
 status: 400
 error: {
-    code: 10006,
-    message: "workers.api.error.malformed_param"
+  code: 10006,
+  message: "workers.api.error.malformed_param"
 }
 ```
 
 ###### Internal Error
 
-```
+```json
 status: 500
 error: {
-    code: 10013,
-    message: "workers.api.error.unknown"
+  code: 10013,
+  message: "workers.api.error.unknown"
 }
 ```
 
@@ -415,41 +415,41 @@ Raw script content, as a string
 
 ###### Missing Account/Zone Identifier
 
-```
+```json
 status: 404
 error: {
-    code: 10005,
-    message: "workers.api.error.not_found"
+  code: 10005,
+  message: "workers.api.error.not_found"
 }
 ```
 
 ###### Missing Script Name
 
-```
+```json
 status: 404
 error: {
-    code: 10005,
-    message: "workers.api.error.missing_script_name"
+  code: 10005,
+  message: "workers.api.error.missing_script_name"
 }
 ```
 
 ###### Script Not Found
 
-```
+```json
 status: 404
 error: {
-    code: 10007,
-    message: "workers.api.error.not_found"
+  code: 10007,
+  message: "workers.api.error.not_found"
 }
 ```
 
 ###### Internal Error
 
-```
+```json
 status: 500
 error: {
-    code: 10013,
-    message: "workers.api.error.unknown"
+  code: 10013,
+  message: "workers.api.error.unknown"
 }
 ```
 
