@@ -45,7 +45,7 @@ const getThemeFromStorage = () => {
   try {
     const theme = JSON.parse(localStorage.theme)
     const themeIsValid = ["dark", "light"].includes(theme.theme)
-    const themeWasRecentlySet = theme.updated > +new Date - storeExpiration
+    const themeWasRecentlySet = theme.updated > +new Date() - storeExpiration
 
     if (themeIsValid && themeWasRecentlySet) {
       storedTheme = theme.theme
@@ -70,7 +70,7 @@ const setTheme = theme => {
 const storeTheme = theme => {
   localStorage.theme = JSON.stringify({
     theme: theme,
-    updated: +new Date
+    updated: +new Date()
   })
 }
 

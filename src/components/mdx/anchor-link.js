@@ -8,6 +8,7 @@ const contentClassName = `${ linkClassName }-content`
 const externalIconClassName = `${linkClassName}-external-icon`
 
 export default ({ href, className, children, ...props }) => {
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
   if (!href || !children) return (<a {...props}/>)
 
   const isImageLink = typeof children === "object" &&
