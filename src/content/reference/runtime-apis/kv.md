@@ -46,14 +46,14 @@ API](https://api.cloudflare.com/#workers-kv-namespace-write-key-value-pair).
 Due to the eventually consistent nature of Workers KV, it's a common pattern
 to write data via Wrangler or the API, but read the data from within a worker.
 
-#### Writing Data in Bulk
+#### Writing data in bulk
 
 You can [write more than one key-value pair at a time with
 wrangler](/tooling/wrangler/kv_commands/#kv-bulk) or [via the
 API](https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs), up to 10,000 KV pairs. A `key` and `value` are required for each KV pair. The entire request size must be less than 100 megabytes.
 We do not support this from within a Worker script at this time.
 
-#### Expiring Keys
+#### Expiring keys
 
 Many common uses of Workers KV involve writing keys that are only meant to be
 valid for a certain amount of time. Rather than requiring applications to
@@ -306,7 +306,6 @@ const cursor = value.cursor
 
 const next_value = await NAMESPACE.list({"cursor": cursor})
 ```
-
 
 ## See Also
 
