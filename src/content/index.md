@@ -1,7 +1,10 @@
 ---
 title: Welcome
 order: 0
+type: overview
 ---
+
+<ContentColumn>
 
 # Cloudflare Workers documentation
 
@@ -11,15 +14,21 @@ Cloudflare Workers provides a serverless execution environment that allows you t
 
 --------------------------------
 
+## Installing the Workers CLI
+
+To install [`wrangler`](https://github.com/cloudflare/wrangler), the Workers CLI, ensure you have [`npm` installed](https://www.npmjs.com/get-npm), then run:
+
+<pre class="CodeBlock CodeBlock-scrolls-horizontally CodeBlock--language-sh" language="sh"><code><u><b class="CodeBlock--token-prompt">$</b> </u>npm install -g @cloudflare/wrangler</code></pre>
+
 ## Popular pages
 
-- [Installing and updating the Workers CLI](#)
 - [Learning: How Workers works](/learning/how-workers-works) – learn how Cloudflare’s global network powers Workers
-- [Learning: Limits](#)
-- [Learning: Pricing](#)
-- [Reference: HTMLRewriter](/reference/html-rewriter) – parse and transform HTML from inside a Worker
-- [Reference: Workers KV](#) – high performance key-value store
+- [Pricing](/reference/platform/pricing) – learn about the Free and Unlimited plans
+- [Reference: HTMLRewriter](/reference/runtime-apis/html-rewriter) – parse and transform HTML from inside a Worker
+- [Limits](/reference/platform/limits) – learn about plan limits (e.g. free plans get 100,000 req/day)
 
 --------------------------------
 
 These docs are built with the [Cloudflare Docs engine](/docs-engine).
+
+</ContentColumn>
