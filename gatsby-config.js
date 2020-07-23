@@ -25,6 +25,7 @@ module.exports = {
   },
 
   plugins: [
+    "gatsby-plugin-eslint",
     "gatsby-plugin-no-sourcemaps",
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
