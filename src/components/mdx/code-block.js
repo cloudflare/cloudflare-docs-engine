@@ -3,7 +3,7 @@ import React from "react"
 import * as frontMatterParser from "gray-matter"
 import Highlight, { defaultProps } from "prism-react-renderer"
 
-import { transformToken, languageMappings, shellLanguages } from "./custom-syntax-highlighting"
+import { transformToken, languageMappings } from "./custom-syntax-highlighting"
 
 const codeBlockClassName = "CodeBlock CodeBlock-with-rows CodeBlock-scrolls-horizontally CodeBlock-is-light-in-light-theme"
 
