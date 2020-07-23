@@ -11,7 +11,7 @@ A reader is used when you want to read from a [ReadableStream](/reference/stream
 
 A `ReadableStreamDefaultReader` is not instantiated via its constructor. Rather, it is retrieved from a [`ReadableStream`](/reference/streams/readablestream):
 
-```javascript
+```js
 const { readable, writable } = new TransformStream()
 const reader = readable.getReader()
 ```

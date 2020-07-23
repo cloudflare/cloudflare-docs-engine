@@ -47,7 +47,7 @@ Cloudflare’s `worker-template` includes support for building and deploying Jav
 
 All Cloudflare Workers applications start by listening for `fetch` events, which are fired when a client makes a request to a Workers route. When that request occurs, you can construct responses and return them to the user. This tutorial will walk you through understanding how the request/response pattern works, and how we can use it to build fully-featured applications.
 
-```javascript
+```js
 ---
 filename: 'index.js'
 ---
@@ -78,7 +78,7 @@ The QR code generator we’ll build in this tutorial will be a serverless functi
 
 Currently, our Workers function receives requests, and returns a simple response with the text “Hello worker!”. To handle data coming _in_ to our serverless function, check if the incoming request is a `POST`:
 
-```javascript
+```js
 ---
 filename: 'index.js'
 highlight: [2, 3, 4]
@@ -92,7 +92,7 @@ async function handleRequest(request) {
 
 Currently, if an incoming request isn’t a POST, `response` will be undefined. Since we only care about incoming `POST` requests, populate `response` with a new `Response` with a [405 status code](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/405), if the incoming request isn’t a `POST`:
 
-```javascript
+```js
 ---
 filename: 'index.js'
 highlight: [5, 6, 7, 8]
@@ -110,7 +110,7 @@ async function handleRequest(request) {
 
 With the basic flow of `handleRequest` established, it’s time to think about how to handle incoming _valid_ requests: if a `POST` request comes in, the function should generate a QR code. To start, move the “Hello worker!” response into a new function, `generate`, which will ultimately contain the bulk of our function’s logic:
 
-```javascript
+```js
 ---
 filename: 'index.js'
 highlight: [1, 2, 3, 8]
@@ -140,7 +140,7 @@ $ npm install --save qr-image
 
 In `index.js`, require the `qr-image` package as the variable `qr`. In the `generate` function, parse the incoming request as JSON, using `request.json`, and use the `text` to generate a QR code using `qr.imageSync`:
 
-```javascript
+```js
 ---
 filename: 'index.js'
 highlight: [1, 2, 3, 4, 5, 6, 7]
@@ -156,7 +156,7 @@ const generate = async request => {
 
 By default, the QR code is generated as a PNG. Construct a new instance of `Response`, passing in the PNG data as the body, and a `Content-Type` header of `image/png`: this will allow browsers to properly parse the data coming back from your serverless function, as an image:
 
-```javascript
+```js
 ---
 filename: 'index.js'
 highlight: [5]
@@ -171,7 +171,7 @@ const generate = async request => {
 
 With the `generate` function filled out, we can simply wait for the generation to finish in `handleRequest`, and return it to the client as `response`:
 
-```javascript
+```js
 ---
 filename: 'index.js'
 highlight: [4]
@@ -188,7 +188,7 @@ async function handleRequest(request) {
 
 The serverless function will work if a user sends a `POST` request to a route, but it would be great to _also_ be able to test it with a proper interface. At the moment, if any request is received by your function that _isn’t_ a `POST`, a `500` response is returned. The new version of `handleRequest` should return a new `Response` with a static HTML body, instead of the `500` error:
 
-```javascript
+```js
 ---
 filename: 'index.js'
 highlight: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 23]
@@ -227,7 +227,7 @@ The `landing` variable, which is a static HTML string, sets up an `input` tag an
 
 With that, your serverless function is complete! The full version of the code looks like this:
 
-```javascript
+```js
 ---
 filename: 'index.js'
 ---

@@ -6,7 +6,7 @@ A `WritableStream` is the `writable` property of a [`TransformStream`](/referenc
 
 A typical way to write to a `WritableStream` is to simply pipe a [`ReadableStream`](/reference/streams/readablestream) to it.
 
-```javascript
+```js
 readableStream.pipeTo(writableStream)
   .then(() => console.log("All data successfully written!"))
   .catch(e => console.error("Something went wrong!", e));
@@ -14,7 +14,7 @@ readableStream.pipeTo(writableStream)
 
 To write to a `WritableStream` directly, you must use its writer.
 
-```javascript
+```js
 const writer = writableStream.getWriter()
 writer.write(data)
 ```

@@ -19,7 +19,7 @@ The two primitives developers use to perform active streaming are [`TransformStr
 
 A basic pass-through usage of streams looks like this:
 
-```javascript
+```js
 addEventListener('fetch', event => {
   event.respondWith(fetchAndStream(event.request))
 })

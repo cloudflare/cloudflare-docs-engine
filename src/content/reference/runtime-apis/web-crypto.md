@@ -13,7 +13,7 @@ consider using the Web Crypto API.
 The Web Crypto API is implemented through the `SubtleCrypto` interface, accessible via the global
 `crypto.subtle` binding. A simple example of calculating a digest (also known as a hash) is:
 
-```javascript
+```js
 const myText = new TextEncoder().encode('Hello world!')
 
 const myDigest = await crypto.subtle.digest(
@@ -133,7 +133,7 @@ MDN](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto#Methods).
     or a `CryptoKeyPair`, containing two newly generated keys, for asymmetrical algorithms. For
     example, to generate a new AES-GCM key:
 
-    ```javascript
+    ```js
     let keyPair = crypto.subtle.generateKey(
       {
         name: "AES-GCM",

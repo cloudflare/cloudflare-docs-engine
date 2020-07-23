@@ -47,7 +47,7 @@ Wrangler’s default template includes support for building and deploying JavaSc
 
 All Cloudflare Workers applications start by listening for `fetch` events, which are fired when a client makes a request to a Workers route. When that request occurs, you can construct responses and return them to the user. This tutorial will walk you through understanding how the request/response pattern works, and how we can use it to build fully-featured applications.
 
-```javascript
+```js
 ---
 filename: index.js
 ---
@@ -465,7 +465,7 @@ So far, we’ve designed the client-side part of this code to take an array of t
 
 To start, it would be useful to signify the ID of each todo in the HTML. By doing this, we can then refer to the element later, in order to correspond it to the todo in the JavaScript part of our code. Data attributes, and the corresponding `dataset` method in JavaScript, are a perfect way to implement this. When we generate our `div` element for each todo, we can attach a data attribute called todo to each `div`:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [11]
@@ -497,7 +497,7 @@ Inside our HTML, each `div` for a todo now has an attached data attribute, which
 
 Now we can generate a checkbox for each todo element. This checkbox will default to unchecked for new todos, of course, but we can mark it as checked as the element is rendered in the window:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [13, 14, 15, 17]
@@ -528,7 +528,7 @@ const html = todos => `
 
 The checkbox is set up to correctly reflect the value of completed on each todo, but it doesn’t yet update when we actually check the box! To do this, we’ll add an event listener on the `click` event, calling `completeTodo`. Inside the function, we’ll inspect the checkbox element, finding its parent (the todo div), and using the `todo` data attribute on it to find the corresponding todo in our data. Given that todo, we can toggle the value of completed, update our data, and re-render the UI:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [9, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
@@ -567,7 +567,7 @@ With this, we’ve created a pretty remarkable project: an almost entirely stati
 
 One interesting and fairly trivial addition is implementing per-user caching. Of course, right now, the cache key is simply “data”: anyone visiting the site will share a todo list with any other user. Because we have the request information inside of our worker, it’s easy to make this data user-specific. For instance, implementing per-user caching by generating the cache key based on the requesting IP:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [2, 3, 5, 20, 21, 24]
@@ -607,7 +607,7 @@ One more deploy of our Workers project, and we have a full todo list application
 
 The final version of our Workers script looks like this:
 
-```javascript
+```js
 ---
 filename: index.js
 ---

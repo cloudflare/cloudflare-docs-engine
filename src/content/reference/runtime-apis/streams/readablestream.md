@@ -26,7 +26,7 @@ cannot be created directly using the `ReadableStream` constructor.
 
   - Gets an instance of `ReadableStreamDefaultReader` and locks the `ReadableStream` to that reader instance. This method accepts an object argument indicating _options_.  The only supported option is `mode`, which can be set to `byob` to create a [`ReadableStreamBYOBReader`](/reference/streams/readablestreambyobreader), as shown here:
 
-    ```javascript
+    ```js
     let reader = readable.getReader({ mode: 'byob' })
     ```
 

@@ -29,7 +29,7 @@ In the output above, you can begin to see log lines for the URLs being requested
 
 To help you further debug your code, `wrangler dev` also supports `console.log` statements, so you can see output from your application in your local terminal:
 
-```javascript
+```js
 ---
 filename: index.js
 ---
@@ -126,7 +126,7 @@ A Worker can make HTTP requests to any HTTP service on the public internet. You 
 
 When logging using this strategy, remember that outstanding asynchronous tasks are canceled as soon as a Worker finishes sending its main response body to the client. To ensure that a logging subrequest completes, you can pass the request promise to [`event.waitUntil()`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil). For example:
 
-```javascript
+```js
 addEventListener("fetch", event => {
   // ...
 
@@ -148,7 +148,7 @@ function postLog(data) {
 
 By using `event.passThroughOnException`, your Workers application will pass requests to your origin if it throws an exception. This allows you to add logging, tracking, or other features with Workers, without degrading your website’s functionality.
 
-```javascript
+```js
 addEventListener("fetch", event => {
   event.passThroughOnException()
 

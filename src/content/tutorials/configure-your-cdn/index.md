@@ -60,7 +60,7 @@ Cloudflare’s `worker-template` includes support for building and deploying Jav
 
 All Cloudflare Workers applications start by listening for `fetch` events, which are fired when a client makes a request to a Workers route. When that request occurs, you can construct responses and return them to the user. This tutorial will walk you through understanding how the request/response pattern works, and how we can use it to build fully-featured applications.
 
-```javascript
+```js
 ---
 filename: index.js
 ---
@@ -91,7 +91,7 @@ The Cloudflare Workers project built in this tutorial will be a serverless funct
 
 Currently, the Workers function receives requests, and returns a simple response with the text “Hello worker!”. Begin configuring the function by adding an additional check — requests coming in to the function should **only** be `GET` requests. If it receives other requests, like `POST`s or `DELETE`s, it should return an error response, with a status code of [405](https://httpstatuses.com/405). Using `event.request.method`, the resulting code is below:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [2, 3, 4, 5, 6]
@@ -107,7 +107,7 @@ async function handleRequest(event) {
 
 Given that the incoming request to the function _is_ a `GET`, it should be clear that the bulk of our implementation will happen inside of that conditional, replacing the “Hello worker!” response. Create a separate function, `serveAsset`, which will house the majority of the implementation for the remainder of the tutorial:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [1, 2, 3, 7]
@@ -127,7 +127,7 @@ async function handleRequest(event) {
 
 Looking back at the original definition of this project, at the beginning of the “Build” section, the `serveAsset` function should parse the URL, find what asset is being requested, and serve it from the configured Cloud Storage bucket. To do this, the `event.request.url` field should be parsed using the `URL` library, and set to `url`. Given an instance of the `URL` class, `url`, there are a number of useful properties that can be used to query the incoming request. `serveAsset` should check the `pathname`, which contains the part of the URL _after_ the `host`: for instance, given the URL `https://assets.mysite.com/faces/1.jpg`, the pathname will be `/faces/1.jpg`:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [2, 3]
@@ -140,7 +140,7 @@ function serveAsset(event) {
 
 With that `path` available, the function can simply request the corresponding path from our Cloud Storage bucket. Given a constant `BUCKET_NAME` (we’ll set it in this tutorial to “my-bucket”), set a `BUCKET_URL` constant, append `url.pathname` to the end of it, and `fetch` it to get your function’s `response`:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [1, 2, 6]
@@ -168,7 +168,7 @@ The `Cache-Control` header is a common way that HTML responses indicate _how_ th
 
 When you add something to the cache, it’s important to note that an HTML response is designed to only be processed once in your code, according to the Service Worker spec that Cloudflare Workers implements. To get around this, we’ll clone the asset response, using `response.clone()`, and pass that cloned response to the Cache API, and return the original `response` back from the function. The final code looks like this:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [ 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -190,7 +190,7 @@ async function serveAsset(event) {
 
 Before building and publishing your Workers script, there’s one more thing to be added. Currently, if an asset is requested that doesn’t exist, or if your bucket policy doesn’t include public access to an asset, `serveAsset` will pass back the corresponding error page directly to the client. Instead of doing this, the returned response should be checked in `handleRequest`: if the status code is higher than `399` (where 200-level status codes indicate “success”, and 399-level status codes indicate “redirection”), we can return a truncated `response` with just the `status` and `statusText` from response:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [3, 4, 5, 6, 7]
@@ -210,7 +210,7 @@ async function handleRequest(event) {
 
 And with that, you’re finished writing the code for this tutorial! The final version of your script should like this:
 
-```javascript
+```js
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event))
 })

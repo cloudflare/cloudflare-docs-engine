@@ -8,7 +8,7 @@ The Workers platform currently only implements an â€œidentity transform streamâ€
 
 ## Constructor
 
-```javascript
+```js
 let { readable, writable } = new TransformStream()
 ```
 

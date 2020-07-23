@@ -18,7 +18,7 @@ __Note__: This individualized zone cache object differs from Cloudflare’s Glob
 
 ## Constructor
 
-```javascript
+```js
 let cache = caches.default
 ```
 
@@ -61,7 +61,7 @@ Use the `Cache-Control` method to store the response without the `Set-Cookie` he
 
 ### Put
 
-```javascript
+```js
 cache.put(request, response)
 ```
 
@@ -94,7 +94,7 @@ cache.put(request, response)
 
 ### `Match`
 
-```javascript
+```js
 cache.match(request, options)
 ```
 
@@ -141,7 +141,7 @@ Our implementation of the Cache API respects the following HTTP headers on the r
 
 ### `Delete`
 
-```javascript
+```js
 cache.delete(request, options)
 ```
 

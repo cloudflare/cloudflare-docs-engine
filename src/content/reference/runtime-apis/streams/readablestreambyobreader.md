@@ -15,7 +15,7 @@ An instance of `ReadableStreamBYOBReader` is functionally identical to [`Readabl
 
 A `ReadableStreamBYOBReader` is not instantiated via its constructor. Rather, it is retrieved from a [`ReadableStream`](/reference/streams/readablestream):
 
-```javascript
+```js
 const { readable, writable } = new TransformStream()
 const reader = readable.getReader({ mode: 'byob' })
 ```

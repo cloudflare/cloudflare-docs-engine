@@ -2,7 +2,7 @@
 
 ## Constructor
 
-```javascript
+```js
 let response = new Response(body, init)
 ```
 

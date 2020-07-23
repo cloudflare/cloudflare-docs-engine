@@ -9,7 +9,7 @@ title: WritableStream DefaultWriter
 
 A writer is used when you want to write directly to a [`WritableStream`](/reference/streams/writablestream), rather than piping data to it from a [`ReadableStream`](/reference/streams/readablestream). For example:
 
-```javascript
+```js
 function writeArrayToStream(array, writableStream) {
   const writer = writableStream.getWriter();
   array.forEach(chunk => writer.write(chunk).catch(() => {}));
@@ -58,7 +58,7 @@ writeArrayToStream([1, 2, 3, 4, 5], writableStream)
 
   - Releases the writer’s lock on the stream. Once released, the writer is no longer active. You can call this method _before_ all pending `write(chunk)` calls are resolved. This allows you to queue a `write` operation, release the lock, and begin piping into the writable stream from another source, as shown in the example below.
 
-    ```javascript
+    ```js
     let writer = writable.getWriter()
     // Write a preamble.
     writer.write(new TextEncoder().encode('foo bar'))

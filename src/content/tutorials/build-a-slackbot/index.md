@@ -86,7 +86,7 @@ Cloudflare’s `worker-template` includes support for building and deploying Jav
 
 All Cloudflare Workers applications start by listening for `fetch` events, which are fired when a client makes a request to a Workers route. When that request occurs, you can construct responses and return them to the user. This tutorial will walk you through understanding how the request/response pattern works, and how we can use it to build fully-featured applications.
 
-```javascript
+```js
 ---
 filename: index.js
 ---
@@ -118,7 +118,7 @@ The router template includes a class, `Router`, that we’ve included to help de
 
 Inside of `index.js`, you should import the `Router` class, and use it to update the `handleRequest` function:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [1, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
@@ -171,7 +171,7 @@ $ touch src/handlers/webhook.js
 
 With those files created (you’ll fill them in soon), let’s import them at the top of `index.js`. The final version of the code looks like this:
 
-```javascript
+```js
 ---
 filename: index.js
 highlight: [1, 2, 11, 12]
@@ -203,7 +203,7 @@ async function handleRequest(request) {
 
 In `src/handlers/lookup.js`, you’ll define your first route handler. The `lookup` handler is a function with one argument, the `request` being passed from the `fetch` event in `index.js`:
 
-```javascript
+```js
 ---
 filename: src/handlers/lookup.js
 ---
@@ -214,7 +214,7 @@ To understand how you should design this function, you need to understand how Sl
 
 According to the [documentation for Slack slash commands](https://api.slack.com/slash-commands), Slack sends an HTTP POST request to your specified URL, with a `application/x-www-form-urlencoded` content type. For instance, if someone were to type `/issue cloudflare/wrangler#1`, you could expect a data payload in the format:
 
-```
+```txt
 token=gIkuvaNzQIHg97ATvDxqgjtO
 &team_id=T0001
 &team_domain=example
@@ -247,7 +247,7 @@ npm install --save qs
 
 In `src/handlers/lookup.js`, import `qs`, and use it to parse the `request` body, and get the `text` value from it:
 
-```javascript
+```js
 ---
 filename: src/handlers/lookup.js
 highlight: [1, 2, 3, 4, 5, 6, 7]
@@ -263,7 +263,7 @@ export default async request => {
 
 Given a `text` variable, that contains text like `cloudflare/wrangler#1`, you should parse that text, and get the individual parts from it for use with GitHub’s API: `owner`, `repo`, and `issue_number`. To do this, create a new file in your application, at `src/utils/github.js`. This file will contain a number of “utility” functions for working with GitHub’s API. The first of these will be a string parser, called `parseGhIssueString`:
 
-```javascript
+```js
 ---
 filename: src/utils/github.js
 ---
@@ -276,7 +276,7 @@ export const parseGhIssueString = text => {
 
 `parseGhIssueString` takes in a `text` input, matches it against `ghIssueRegex`, and if a match is found, returns the `groups` object from that match, making use of the `owner`, `repo`, and `issue_number` capture groups defined in the regex. By exporting this function from `src/utils/github.js`, you can make use of it back in `src/handlers/lookup.js`:
 
-```javascript
+```js
 ---
 filename: src/handlers/lookup.js
 highlight: [3, 9]
@@ -297,7 +297,7 @@ export default async request => {
 
 With this data, you can make your first API lookup to GitHub. Again, make a new function in `src/utils/github.js`, to make a `fetch` request to the GitHub API for the issue data:
 
-```javascript
+```js
 ---
 filename: src/utils/github.js
 highlight: [7, 8, 9, 10, 11]
@@ -317,7 +317,7 @@ export const fetchGithubIssue = (owner, repo, issue_number) => {
 
 Back in `src/handlers/lookup.js`, use `fetchGithubIssue` to make a request to GitHub’s API, and parse the response:
 
-```javascript
+```js
 ---
 filename: src/handlers/lookup.js
 highlight: [3, 11, 12]
@@ -354,7 +354,7 @@ The previously mentioned [Block Kit](https://api.slack.com/block-kit) framework 
 
 Create another file, `src/utils/slack.js`, to contain the function `constructGhIssueSlackMessage`, a function for taking issue data, and turning it into a collection of _blocks_: simple JavaScript objects that Slack will use to format the message:
 
-```javascript
+```js
 ---
 filename: src/utils/slack.js
 ---
@@ -383,7 +383,7 @@ With those variables in place, `text_lines` is an array of each line of text for
 
 With the text constructed, you can finally construct our Slack message, returning an array of _blocks_ for Slack’s [Block Kit](https://api.slack.com/block-kit). In this case, there’s only have one block: a _[section](https://api.slack.com/reference/messaging/blocks#section)_ block with Markdown text, and an _accessory_ image of the user who created the issue. Return that single block inside of an array, to complete the `constructGhIssueSlackMessage` function:
 
-```javascript
+```js
 ---
 filename: src/utils/slack.js
 highlight: [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
@@ -420,7 +420,7 @@ export const constructGhIssueSlackMessage = (issue, issue_string) => {
 
 In `src/handlers/lookup.js`, use `constructGhIssueSlackMessage` to construct `blocks`, and return them as a new response when the _slash command_ is called:
 
-```javascript
+```js
 ---
 filename: src/handlers/lookup.js
 highlight: [4, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
@@ -457,7 +457,7 @@ A brief note: one additional parameter passed into the response is `response_typ
 
 The `lookup` function is almost complete, but there’s a number of things that _could_ go wrong in the course of this function, such as parsing the body from Slack, getting the issue from GitHub, or constructing the Slack message itself. To handle this, wrap the majority of this function in a try/catch block, and return simple error text to the user in Slack if something goes wrong. With that, the final version of `src/handlers/lookup.js` looks like this:
 
-```javascript
+```js
 ---
 filename: src/handlers/lookup.js
 highlight: [7, 25, 26, 27, 28, 29]
@@ -502,7 +502,7 @@ At the beginning of this tutorial, you configured a GitHub webhook to track any 
 
 In `src/handlers/webhook.js`, define an async function that takes in a `request`, and make it the default export for this file:
 
-```javascript
+```js
 ---
 filename: src/handlers/webhook.js
 ---
@@ -519,7 +519,7 @@ Comparing this message format to the format returned when a user uses the `/issu
 
 To start filling out the function, take in the `request` body, parse it into an object, and construct some helper variables:
 
-```javascript
+```js
 ---
 filename: src/handlers/webhook.js
 highlight: [1, 2, 3, 4, 5, 6, 7, 8]
@@ -542,7 +542,7 @@ Use `JSON.parse` to convert the payload body of the request from JSON into a pla
 
 The messages your Slack bot sends back to your Slack channel from the `lookup` and `webhook` function handlers are incredibly similar: thanks to this, you can re-use the existing `constructGhIssueSlackMessage` to continue populating `src/handlers/webhook.js`. Import the function from `src/utils/slack.js`, and pass the issue data into it:
 
-```javascript
+```js
 ---
 filename: src/handlers/webhook.js
 highlight: [8]
@@ -562,7 +562,7 @@ Importantly, the usage of `constructGhIssueSlackMessage` in this handler adds on
 
 Add a simple utility function, `compact`, which takes an array, and filters out any `null` or `undefined` values from it. This function will be used to remove `prefix_text` from `text_lines` if it hasn’t actually been passed in to the function, such as when called from `src/handlers/lookup.js`. The full (and final) version of the `src/utils/slack.js` looks like this:
 
-```javascript
+```js
 ---
 filename: src/utils/slack.js
 highlight: [1, 24]
@@ -604,7 +604,7 @@ export const constructGhIssueSlackMessage = (
 
 Back in `src/handlers/webhook.js`, the `blocks` that are returned from `constructGhIssueSlackMessage` become the body in a new `fetch` request, an HTTP POST request to a Slack webhook URL. Once that request completes, return a simple response with status code 200, and the body text “OK”:
 
-```javascript
+```js
 ---
 filename: src/handlers/webhook.js
 highlight: [10, 11, 12, 13, 14, 15, 16]
@@ -642,7 +642,7 @@ Enter the secret text you'd like assigned to the variable name on the script nam
 
 Similarly to the `lookup` function handler, the `webhook` function handler should include some basic error handling. Unlike `lookup`, which sends responses directly back into Slack, if something goes wrong with your webhook, it may be useful to actually generate an erroneous response, and return it to GitHub. To do this, wrap the majority of the `webhook` function handler in a try/catch block, and construct a new response with a status code of 500, and return it. The final version of `src/handlers/webhook.js` looks like this:
 
-```javascript
+```js
 ---
 filename: src/handlers/webhook.js
 highlight: [4, 22, 23, 24, 25]
