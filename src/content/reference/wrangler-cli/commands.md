@@ -892,10 +892,10 @@ Takes as an argument a JSON file with a list of key-value pairs to delete (see J
 
 ```json
 [
-    {
-        "key": "test_key",
-        "value": ""
-    }
+  {
+    "key": "test_key",
+    "value": ""
+  }
 ]
 ```
 
