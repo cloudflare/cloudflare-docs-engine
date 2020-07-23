@@ -20,6 +20,8 @@ To install [`wrangler`](https://github.com/cloudflare/wrangler), the Workers CLI
 
 <pre class="CodeBlock CodeBlock-scrolls-horizontally CodeBlock-is-light-in-light-theme CodeBlock--language-sh" language="sh"><code><u><b class="CodeBlock--token-prompt">$</b> </u>npm install -g @cloudflare/wrangler</code></pre>
 
+--------------------------------
+
 ## Popular pages
 
 - [Learning: How Workers works](/learning/how-workers-works) – learn how Cloudflare’s global network powers Workers
