@@ -23,7 +23,7 @@ Note: request traffic data may display a "drop off" near the last few minutes di
 
 ### Invocation statuses
 
-Worker invocation statuses indicate whether a Worker script executed successfully or failed to generate a response in the Workers runtime. Invocation statuses differ from HTTP status codes. In some cases, a Worker script invocation succeeds but does not generate a successful HTTP status because of another error encountered outside of the Workers runtime. Some invocation statuses result in a [Workers error code](/about/tips/debugging/#error-pages-generated-by-workers) being returned to the client.
+Worker invocation statuses indicate whether a Worker script executed successfully or failed to generate a response in the Workers runtime. Invocation statuses differ from HTTP status codes. In some cases, a Worker script invocation succeeds but does not generate a successful HTTP status because of another error encountered outside of the Workers runtime. Some invocation statuses result in a [Workers error code](/learning/debugging-workers#error-pages-generated-by-workers) being returned to the client.
 
 | Invocation status      | Definition                                                               | Workers Error code | GraphQL field          |
 | ---------------------- | ------------------------------------------------------------------------ | ------------------ | ---------------------- |
@@ -37,11 +37,11 @@ _¹ The Exceeded Resources status may appear when the Worker exceeds a [runtime 
 
 _² The Internal Error status may appear when the Workers runtime fails to process a request due to an internal failure in our system. These errors are not caused by any issue with the Worker code nor any resource limit. While requests with Internal Error status are rare, we expect that some may appear during normal operation. These requests are not counted towards usage for billing purposes. If you notice an elevated rate of requests with Internal Error status, please check www.cloudflarestatus.com._
 
-To further investagate exceptions, you can use [wrangler tail](/reference/cli/commands/#tail)
+To further investagate exceptions, you can use [wrangler tail](/reference/wrangler-cli/commands#tail)
 
 ### CPU Time
 
-The CPU time chart shows historical CPU time data broken down into relevant quantiles using [reservoir sampling](https://en.wikipedia.org/wiki/Reservoir_sampling). You can learn more about interpreting quantiles [here](https://www.statisticshowto.com/quantile-definition-find-easy-steps/). In some cases, higher quantiles may appear to exceed [CPU time limits](/reference/platform/limits/#cpu-execution-time-limit) without generating invocation errors because of a mechanism in the Workers runtime that allows rollover CPU time for requests below the CPU limit.
+The CPU time chart shows historical CPU time data broken down into relevant quantiles using [reservoir sampling](https://en.wikipedia.org/wiki/Reservoir_sampling). You can learn more about interpreting quantiles [here](https://www.statisticshowto.com/quantile-definition-find-easy-steps/). In some cases, higher quantiles may appear to exceed [CPU time limits](/reference/platform/limits#cpu-runtime) without generating invocation errors because of a mechanism in the Workers runtime that allows rollover CPU time for requests below the CPU limit.
 
 ### Metrics retention
 
@@ -51,7 +51,7 @@ Worker script metrics can be inspected for up to 3 months in the past in maximum
 
 ## Zone Analytics
 
-Aggregates request data for all scripts assigned to any [routes](/about/routes/) defined for a zone. You’ll find Zone Metrics on the [analytics tab](https://dash.cloudflare.com/?zone=analytics/workers) of your Cloudflare dashboard.
+Aggregates request data for all scripts assigned to any [routes](/reference/platform/routes) defined for a zone. You’ll find Zone Metrics on the [analytics tab](https://dash.cloudflare.com/?zone=analytics/workers) of your Cloudflare dashboard.
 
 Zone data can be scoped by time range within the last 30 days. The dashboard includes charts and information described below.
 

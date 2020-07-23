@@ -108,7 +108,7 @@ The `namespace_id` value should correspond to the identifier associated with the
 
 #### Add a Wasm Module
 
-If your Worker uses a [Wasm Module](/templates/boilerplates/rustwasm/), you will want to add a `wasm_module` binding object to the `"bindings"` array in metadata.json:
+If your Worker uses a [Wasm Module](/examples/boilerplates/rustwasm/), you will want to add a `wasm_module` binding object to the `"bindings"` array in metadata.json:
 
 ```json
 {
@@ -206,7 +206,7 @@ A multipart form containing a valid JavaScript file, a `metadata.json` file spec
 
 - `success`: Boolean
 - `result`: A [Script Object](#object-specification) of the resulting script. Empty if success is false
-- `errors`: An array of [Error Objects](/tooling/api/requests#error-object). Empty if success is true
+- `errors`: An array of [Error Objects](#errors). Empty if success is true
 - `messages`: An array of strings (unused)
 
 ##### Errors
@@ -221,7 +221,7 @@ error: {
 }
 ```
 
-###### Exceeded [Script Limit](/about/limits)
+###### Exceeded [Script Limit](/reference/platform/limits)
 
 ```json
 status: 403
@@ -334,7 +334,7 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 
 - `success`: Boolean
 - `result`: An array of [Script Objects](#object-specification). Empty if success is false; does not include raw script text.
-- `errors`: An array of [Error Objects](/tooling/api/requests#error-object). Empty if success is true
+- `errors`: An array of [Error Objects](#errors-1). Empty if success is true
 - `messages`: An array of strings (unused)
 
 ##### Errors
@@ -498,7 +498,7 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/wor
 
 - `success`: Boolean
 - `result`: An object containing the id (etag) of the deleted script
-- `errors`: An array of [Error Objects](/tooling/api/requests#error-object). Empty if success is true
+- `errors`: An array of [Error Objects](#errors-3). Empty if success is true
 - `messages`: An array of strings (unused)
 
 ##### Errors

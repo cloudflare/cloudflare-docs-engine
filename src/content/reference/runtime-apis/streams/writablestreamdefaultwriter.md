@@ -7,7 +7,7 @@ title: WritableStream DefaultWriter
 
 ## Background
 
-A writer is used when you want to write directly to a [`WritableStream`](/reference/streams/writablestream), rather than piping data to it from a [`ReadableStream`](/reference/streams/readablestream). For example:
+A writer is used when you want to write directly to a [`WritableStream`](/reference/runtime-apis/streams/writablestream), rather than piping data to it from a [`ReadableStream`](/reference/runtime-apis/streams/readablestream). For example:
 
 ```js
 function writeArrayToStream(array, writableStream) {
@@ -42,7 +42,7 @@ writeArrayToStream([1, 2, 3, 4, 5], writableStream)
 
 - <Code>abort(reason<ParamType>string</ParamType><PropMeta>optional</PropMeta>)</Code> <Type>Promise&lt;void></Type>
 
-    - Aborts the stream. This method returns a promise that fulfills with a response `undefined`. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying sink's abort algorithm. If this writable stream is one side of a [TransformStream](/reference/streams/transformstream), then its abort algorithm causes the transform's readable side to become errored with `reason`.
+    - Aborts the stream. This method returns a promise that fulfills with a response `undefined`. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying sink's abort algorithm. If this writable stream is one side of a [TransformStream](/reference/runtime-apis/streams/transformstream), then its abort algorithm causes the transform's readable side to become errored with `reason`.
 
     <Aside type="warning" header="Warning">
 

@@ -8,7 +8,8 @@ The `fetch` method is implemented on the ServiceWorkerGlobalScope. See [MDN docu
 
 <Aside>
 
-__Note:__ Asynchronous tasks such as `fetch` are not executed at the top level in a Worker script and must be executed within a FetchEvent handler such as [`respondWith`](/reference/fetch-event#methods). Learn more about [Request Contexts](/about/tips/request-context).
+<!-- TODO(soon): Broken link. -->
+__Note:__ Asynchronous tasks such as `fetch` are not executed at the top level in a Worker script and must be executed within a FetchEvent handler such as [`respondWith`](/reference/runtime-apis/fetch-event#methods). Learn more about [Request Contexts](/about/tips/request-context).
 
 </Aside>
 
@@ -35,7 +36,7 @@ async function eventHandler(event) {
 <!-- Where do we have the return type in this format? -->
 <Definitions>
 
-- <Code>fetch()</Code> <TypeLink href="/reference/apis/response">Promise{`<Response>`}</TypeLink>
+- <Code>fetch()</Code> <TypeLink href="/reference/runtime-apis/response">Promise{`<Response>`}</TypeLink>
 
   - Fetch returns a promise to a Response.
 
@@ -47,10 +48,10 @@ async function eventHandler(event) {
 
 <Definitions>
 
-- `request` <TypeLink href="/reference/apis/request">Request</TypeLink> | <Type>string</Type>
-  - The <TypeLink href="/reference/apis/request">Request</TypeLink> object or a string represents the URL to fetch.
+- `request` <TypeLink href="/reference/runtime-apis/request">Request</TypeLink> | <Type>string</Type>
+  - The <TypeLink href="/reference/runtime-apis/request">Request</TypeLink> object or a string represents the URL to fetch.
 
-- `init` <TypeLink href="/reference/apis/request#requestinit">RequestInit</TypeLink>
+- `init` <TypeLink href="/reference/runtime-apis/request#requestinit">RequestInit</TypeLink>
   - The content of the request.
 
 </Definitions>

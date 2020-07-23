@@ -21,7 +21,7 @@ One more thing before you start the tutorial: if you just want to jump straight 
 To publish your QR Code Generator function to Cloudflare Workers, you’ll need a few things:
 
 - A Cloudflare account, and access to the API keys for that account
-- [A Wrangler installation](/tooling/wrangler/install) running locally on your machine, and access to the command-line
+- [A Wrangler installation](/reference/wrangler-cli/install-update) running locally on your machine, and access to the command-line
 
 If you don’t have those things quite yet, don’t worry. We’ll walk through each of them and make sure we’re ready to go, before you start creating your application.
 
@@ -41,7 +41,7 @@ $ wrangler generate qr-code-generator
 $ cd qr-code-generator
 ```
 
-Wrangler templates are just Git repositories, so if you want to create your own templates, or use one from our [Template Gallery](/templates), there’s a ton of options to help you get started.
+Wrangler templates are just Git repositories, so if you want to create your own templates, or use one from our [Template Gallery](/examples), there’s a ton of options to help you get started.
 
 Cloudflare’s `worker-template` includes support for building and deploying JavaScript-based projects. Inside of your new `qr-code-generator` directory, `index.js` represents the entry-point to your Cloudflare Workers application.
 
@@ -70,7 +70,7 @@ When a `fetch` event comes into the worker, the script uses `event.respondWith` 
 
 ## Build
 
-Any project you publish to Cloudflare Workers can make use of modern JS tooling like ES modules, NPM packages, and [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) functions to put together your application. In addition, simple serverless functions aren’t the only thing you can publish on Cloudflare Workers: you can [build full applications](/tutorials/build-an-application) using the same tooling and process as what we’ll be building today.
+Any project you publish to Cloudflare Workers can make use of modern JS tooling like ES modules, NPM packages, and [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) functions to put together your application. In addition, simple serverless functions aren’t the only thing you can publish on Cloudflare Workers: you can [build full applications](/tutorials/build-a-slackbot) using the same tooling and process as what we’ll be building today.
 
 The QR code generator we’ll build in this tutorial will be a serverless function that runs at a single route and receives requests. Given text sent inside of that request (such as URLs, or strings), the function will encode the text into a QR code, and serve the QR code as a PNG response.
 
@@ -289,6 +289,6 @@ $ wrangler publish
 
 In this tutorial, you built and published a serverless function to Cloudflare Workers for generating QR codes. If you’d like to see the full source code for this application, you can find it [on GitHub](https://github.com/signalnerve/workers-qr-code-generator).
 
-If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/templates).
+If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/examples).
 
 
