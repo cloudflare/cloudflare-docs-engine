@@ -43,7 +43,7 @@ const DocsTutorials = () => {
       updated: page.frontmatter.updated,
       difficulty: page.frontmatter.difficulty,
       wordCount: page.wordCount.words,
-      new: (+new Date - +new Date(page.frontmatter.updated)) < oneWeekInMS
+      new: (+new Date() - +new Date(page.frontmatter.updated)) < oneWeekInMS
     }))
     .sort((a, b) => +new Date(b.updated) - +new Date(a.updated))
 
