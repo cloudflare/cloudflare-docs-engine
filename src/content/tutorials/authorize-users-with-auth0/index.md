@@ -347,7 +347,7 @@ const validateToken = token => {
 
 const persistAuth = async exchange => {
   // Previous code
-  
+
   const decoded = JSON.parse(decodeJWT(body.id_token))
   const validToken = validateToken(decoded)
   if (!validToken) {

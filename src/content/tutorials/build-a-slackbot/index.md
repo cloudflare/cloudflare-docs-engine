@@ -242,7 +242,7 @@ To begin, let’s parse the incoming data from a Slack message inside of the `lo
 ---
 header: Install the qs package
 ---
-npm install --save qs
+$ npm install --save qs
 ```
 
 In `src/handlers/lookup.js`, import `qs`, and use it to parse the `request` body, and get the `text` value from it:
@@ -423,7 +423,7 @@ In `src/handlers/lookup.js`, use `constructGhIssueSlackMessage` to construct `bl
 ```js
 ---
 filename: src/handlers/lookup.js
-highlight: [4, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+highlight: [4, 15, 16, 17, 18, 19, 20, 21, 22, 23]
 ---
 import qs from 'qs'
 
