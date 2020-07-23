@@ -5,13 +5,13 @@
 ### Install with `npm`
 
 ```sh
-npm i @cloudflare/wrangler -g
+$ npm i @cloudflare/wrangler -g
 ```
 
 ### Install with `cargo`
 
 ```sh
-cargo install wrangler
+$ cargo install wrangler
 ```
 
 If you don’t have `cargo` or `npm` installed, you will need to follow these [additional instructions](#additional-installation-instructions).
@@ -28,9 +28,9 @@ Wrangler can be installed both through [npm](https://www.npmjs.com/get-npm) and 
 
 2. Install Wrangler by running:
 
-   ```sh
-   npm i @cloudflare/wrangler -g
-   ```
+    ```sh
+    $ npm i @cloudflare/wrangler -g
+    ```
 
 ### Using `cargo`
 
@@ -39,21 +39,21 @@ Wrangler can be installed both through [npm](https://www.npmjs.com/get-npm) and 
     Rustup, a tool for installing Rust, will also install Cargo. On Linux and macOS systems, `rustup` can be installed as follows:
 
     ```sh
-    curl https://sh.rustup.rs -sSf | sh
+    $ curl https://sh.rustup.rs -sSf | sh
     ```
 
     Additional installation methods are available [here](https://forge.rust-lang.org/other-installation-methods.html).
 
 2. Install `wrangler`:
 
-   ```sh
-   cargo install wrangler
-   ```
+    ```sh
+    $ cargo install wrangler
+    ```
 
     Installing wrangler on linux requires some [OpenSSL-related packages](https://docs.rs/openssl/0.10.24/openssl/#automatic) to be installed. If you don’t want to deal with this, you can use vendored OpenSSL.
 
     ```sh
-    cargo install wrangler --features vendored-openssl
+    $ cargo install wrangler --features vendored-openssl
     ```
 
 ### Manual Install
@@ -62,7 +62,6 @@ Wrangler can be installed both through [npm](https://www.npmjs.com/get-npm) and 
 
 2. Unpack the tarball and place the binary `wrangler` somewhere on your `PATH`, preferably `/usr/local/bin` for linux/macOS or `Program Files` for windows.
 
-
 ## Update
 
 To update [Wrangler](https://github.com/cloudflare/wrangler), follow the below instructions (customized for either an NPM or Cargo install):
@@ -70,11 +69,11 @@ To update [Wrangler](https://github.com/cloudflare/wrangler), follow the below i
 **Updating Wrangler with NPM:**
 
 ```sh
-npm uninstall -g @cloudflare/wrangler && npm install -g @cloudflare/wrangler
+$ npm uninstall -g @cloudflare/wrangler && npm install -g @cloudflare/wrangler
 ```
 
 **Updating Wrangler with Cargo:**
 
 ```sh
-cargo install wrangler --force
+$ cargo install wrangler --force
 ```

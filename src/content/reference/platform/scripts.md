@@ -40,7 +40,7 @@ PUT accounts/:account_id/workers/scripts/:script_name
 
 Sample request:
 
-```sh
+```bash
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
      -H  "Authorization: Bearer $CF_API_TOKEN" \
      -H "Content-Type: application/javascript" \
@@ -71,7 +71,7 @@ If you are including Resources in your Worker, you need to specify their Binding
 
 #### The basic multipart form (script only)
 
-```sh
+```bash
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
      -H  "Authorization: Bearer $CF_API_TOKEN" \
      -F "metadata=@metadata.json;type=application/json" \
@@ -127,7 +127,7 @@ The `name` value should correspond to the global variable you will use to access
 
 You will also need to add your Wasm module as a file part to your request, and name it the same as the `part` field in the binding. This will change the above request to:
 
-```sh
+```bash
 curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
      -H  "Authorization: Bearer $CF_API_TOKEN" \
      -F "metadata=@metadata.json;type=application/json" \
@@ -287,7 +287,7 @@ error: {
 
 ##### Sample Request:
 
-```sh
+```bash
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts" \
      -H "Authorization: Bearer $CF_API_TOKEN"
 ```
@@ -377,7 +377,7 @@ error: {
 
 ##### Sample Request:
 
-```sh
+```bash
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
      -H "Authorization: Bearer $CF_API_TOKEN" \
      -H "Accept: application/javascript"
@@ -459,7 +459,7 @@ error: {
 
 ##### Sample Request:
 
-```sh
+```bash
 curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
      -H "Authorization: Bearer $CF_API_TOKEN"
 ```

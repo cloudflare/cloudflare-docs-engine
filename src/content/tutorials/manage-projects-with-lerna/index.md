@@ -123,7 +123,8 @@ filename: packages/private-api/package.json
 ---
 header: Publish packages using lerna run
 ---
-workers-monorepo$ lerna run publish
+~/workers-monorepo $ lerna run publish
+
 lerna info Executing command in 2 packages: "npm run publish"
 lerna info run Ran npm script 'publish' in 'public-api' in 4.8s:
 

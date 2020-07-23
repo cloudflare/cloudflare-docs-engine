@@ -1,5 +1,4 @@
 export const languageMappings = {
-  "bash": "sh",
   "shell": "sh",
   "javascript": "js",
   "markup": "html"
@@ -19,9 +18,15 @@ const transformations = {
       to: "api",
       for: ["HTMLRewriter", "Request", "Response", "URL", "Error"]
     },
-    "function": {
+    function: {
       to: "builtin",
       for: ["fetch", "console", "addEventListener", "atob", "btoa", "setInterval", "clearInterval", "setTimeout", "clearTimeout"]
+    }
+  },
+  sh: {
+    "*": {
+      to: "comment",
+      for: s => s.match(/^\#/)
     }
   }
 }
@@ -34,15 +39,17 @@ export const transformToken = ({ token, children, language }) => {
   const lang = transformations[language]
   if (!lang) return token
 
-  const trans = transformations[language][token]
-  if (!trans) return token
-
-  if (trans.for.includes(children)) {
-    return trans.to
-  }
-
   const any = transformations[language]["*"]
-  if (any && any.for(children)) return any.to
+  const trans = transformations[language][token]
+
+  if (!any && !trans)
+    return token
+
+  if (trans && trans.for.includes(children))
+    return trans.to
+
+  if (any && any.for(children))
+    return any.to
 
   return token
 }

@@ -8,8 +8,8 @@ Complete list of all commands available for [`wrangler`](https://github.com/clou
 
 Scaffold a Cloudflare Workers project from a public GitHub repository.
 
-```bash
-wrangler generate [$NAME] [$TEMPLATE] [--type=$TYPE] [--site]
+```sh
+$ wrangler generate [$NAME] [$TEMPLATE] [--type=$TYPE] [--site]
 ```
 
 <Definitions>
@@ -34,8 +34,8 @@ wrangler generate [$NAME] [$TEMPLATE] [--type=$TYPE] [--site]
 
 Creates a skeleton `wrangler.toml` in an existing directory. This can be used as an alternative to `generate` if you prefer to clone a template repository yourself, or you already have a JavaScript project and you'd like to use Wrangler.
 
-```bash
-wrangler init [$NAME] [--type=$TYPE] [--site]
+```sh
+$ wrangler init [$NAME] [--type=$TYPE] [--site]
 ```
 
 <Definitions>
@@ -58,8 +58,8 @@ wrangler init [$NAME] [--type=$TYPE] [--site]
 Build your project. This command looks at your `wrangler.toml` file and runs the build steps associated
 with the`"type"` declared in your `wrangler.toml`.
 
-```bash
-wrangler build [--env $ENVIRONMENT_NAME]
+```sh
+$ wrangler build [--env $ENVIRONMENT_NAME]
 ```
 
 <Definitions>
@@ -75,8 +75,8 @@ wrangler build [--env $ENVIRONMENT_NAME]
 
 Configure your global Cloudflare user. This is an interactive command that will prompt you for your API token.
 
-```bash
-wrangler config [--api-key]
+```sh
+$ wrangler config [--api-key]
 ```
 
 <Definitions>
@@ -92,8 +92,8 @@ You can also use environment variables to authenticate.
 
 Publish your Worker to Cloudflare. Several keys in your `wrangler.toml` determine whether you are publishing to a workers.dev subdomain or your own registered domain, proxied through Cloudflare.
 
-```bash
-wrangler publish [--env $ENVIRONMENT_NAME]
+```sh
+$ wrangler publish [--env $ENVIRONMENT_NAME]
 ```
 
 <Definitions>
@@ -193,8 +193,8 @@ If you are using [kv_namespaces](/reference/wrangler-cli/configuration#kv_namesp
 
 Starts a log tailing session for a deployed Worker.
 
-```bash
-wrangler tail [--port  $PORT] [--metrics-port $PORT]
+```sh
+$ wrangler tail [--port  $PORT] [--metrics-port $PORT]
 ```
 
 <Definitions>
@@ -222,9 +222,10 @@ Wrangler tail uses cloudflared under the hood. If you are already using cloudfla
 
 Preview your project using the [Cloudflare Workers preview service](https://cloudflareworkers.com/).
 
-```bash
-wrangler preview [--watch] [--env $ENVIRONMENT_NAME] [ --url $URL] [$METHOD] [$BODY]
+```sh
+$ wrangler preview [--watch] [--env $ENVIRONMENT_NAME] [ --url $URL] [$METHOD] [$BODY]
 ```
+
 <Definitions>
 
   - `--env` <Type>default="top lvl env"</Type> <PropMeta>optional</PropMeta>
@@ -254,7 +255,7 @@ WSL is a Linux environment, so `wrangler` attempts to invoke `xdg-open` in order
 eg. `$ export BROWSER='/mnt/c/tools/firefox.exe'`
 Spaces in filepaths are not common in Linux, and some programs like `xdg-open` break on [paths with spaces](https://github.com/microsoft/WSL/issues/3632#issuecomment-432821522). You can work around this by linking the binary to your `/usr/local/bin` eg:
 
-```bash
+```sh
 $ ln -s '/mnt/c/Program Files/Mozilla Firefox/firefox.exe' firefox
 $ export BROWSER=firefox
 ```
@@ -271,8 +272,8 @@ If you're using WSL 2, you will need to install `wsl-open` via their [standalone
 
 List or delete a route associated with a zone:
 
-```bash
-wrangler route list [--env $ENVIRONMENT_NAME]
+```sh
+$ wrangler route list [--env $ENVIRONMENT_NAME]
 ```
 
 <Definitions>
@@ -284,8 +285,8 @@ wrangler route list [--env $ENVIRONMENT_NAME]
 
 Will return a json response from the [List Routes API](https://api.cloudflare.com/#worker-routes-list-routes). Each entry includes the route id, pattern, and associated Worker name for a route. Piping this through a tool such as `jq` will pretty up the output.
 
-```bash
-wrangler route delete $ID [--env $ENVIRONMENT_NAME]
+```sh
+$ wrangler route delete $ID [--env $ENVIRONMENT_NAME]
 ```
 
 <Definitions>
@@ -303,8 +304,8 @@ wrangler route delete $ID [--env $ENVIRONMENT_NAME]
 
 Create or change your [workers.dev](https://workers.dev) subdomain.
 
-```bash
-wrangler subdomain <name>
+```sh
+$ wrangler subdomain <name>
 ```
 
 --------------------------------
@@ -317,8 +318,8 @@ Interact with your secrets.
 
 Interactive command to create or replace a secret
 
-```bash
-wrangler secret put <name> --env ENVIRONMENT_NAME
+```sh
+$ wrangler secret put <name> --env ENVIRONMENT_NAME
 Enter the secret text you'd like assigned to the variable name on the script named my-worker-ENVIRONMENT_NAME:
 ```
 
@@ -335,8 +336,8 @@ Enter the secret text you'd like assigned to the variable name on the script nam
 
 Interactive command to delete a secret from a specific script
 
-```bash
-wrangler secret delete <name> --env ENVIRONMENT_NAME
+```sh
+$ wrangler secret delete <name> --env ENVIRONMENT_NAME
 ```
 
 <Definitions>
@@ -352,8 +353,8 @@ wrangler secret delete <name> --env ENVIRONMENT_NAME
 
 List all the secret names bound to a specific script
 
-```bash
-wrangler secret list --env ENVIRONMENT_NAME
+```sh
+$ wrangler secret list --env ENVIRONMENT_NAME
 ```
 
 <Definitions>
@@ -395,7 +396,7 @@ the `kv:namespace` subcommand.
 The `kv:namespace` subcommand takes as a new binding name as an argument. It will create a Worker KV namespace
 whose title is a concatenation of your Worker's name (from `wrangler.toml`) and the binding name you provide:
 
-```console
+```sh
 $ wrangler kv:namespace create "MY_KV"
 🌀  Creating namespace with title "my-site-MY_KV"
 ✨  Success!
@@ -414,14 +415,14 @@ let value = await MY_KV.get("my-key");
 
 To put a value to your KV namespace via Wrangler, use the `kv:key put` subcommand.
 
-```console
+```sh
 $ wrangler kv:key put --binding=MY_KV "key" "value"
 ✨  Success
 ```
 
 You can also specify which namespace to put your key-value pair into using `--namespace-id` instead of `--binding`:
 
-```console
+```sh
 $ wrangler kv:key put --namespace-id=e29b263ab50e42ce9b637fa8370175e8 "key" "value"
 ✨  Success
 ```
@@ -444,7 +445,7 @@ kv_namespaces = [
 
 To insert a value into a specific KV namespace, you can use
 
-```console
+```sh
 $ wrangler kv:key put --env=staging --binding=MY_MV "key" "value"
 ✨  Success
 ```
@@ -458,13 +459,17 @@ There are way more helpful Wrangler subcommands for interacting with Workers KV,
 Most `kv` commands require you to specify a namespace. A namespace can be specified in two ways:
 
 1. With a `--binding`:
-    ```bash
-    wrangler kv:key get --binding=MY_KV "my key"
+
+    ```sh
+    $ wrangler kv:key get --binding=MY_KV "my key"
     ```
+
     - This can be combined with `--preview` flag to interact with a preview namespace instead of a production namespace
+
 1. With a `--namespace_id`:
-    ```bash
-    wrangler kv:key get --namespace-id=06779da6940b431db6e566b4846d64db "my key"
+
+    ```sh
+    $ wrangler kv:key get --namespace-id=06779da6940b431db6e566b4846d64db "my key"
     ```
 
 Most `kv` subcommands also allow you to specify an environment with the optional `--env` flag. This allows you to publish workers running the same code but with different namespaces. For example, you could use separate staging and production namespaces for KV data in your `wrangler.toml`:
@@ -489,8 +494,8 @@ kv_namespaces = [
 
 With the wrangler.toml above, you can specify `--env production` when you want to perform a KV action on the namespace `MY_KV` under `env.production`. For example, with the wrangler.toml above, you can get a value out of a production KV instance with:
 
-```console
-wrangler kv:key get --binding "MY_KV" --env=production "my key"
+```sh
+$ wrangler kv:key get --binding "MY_KV" --env=production "my key"
 ```
 
 To learn more about environments, check out the environments documentation.
@@ -501,9 +506,10 @@ To learn more about environments, check out the environments documentation.
 
 Creates a new namespace.
 
-```bash
-wrangler kv:namespace create $NAME [--env=$ENVIRONMENT_NAME] [--preview]
+```sh
+$ wrangler kv:namespace create $NAME [--env=$ENVIRONMENT_NAME] [--preview]
 ```
+
 <Definitions>
 
   - `$NAME`
@@ -520,7 +526,7 @@ wrangler kv:namespace create $NAME [--env=$ENVIRONMENT_NAME] [--preview]
 
 ##### Usage
 
-```console
+```sh
 $ wrangler kv:namespace create "MY_KV"
 🌀  Creating namespace with title "worker-MY_KV"
 ✨  Add the following to your wrangler.toml:
@@ -529,7 +535,7 @@ kv_namespaces = [
 ]
 ```
 
-```console
+```sh
 $ wrangler kv:namespace create "MY_KV" --preview
 🌀  Creating namespace with title "my-site-MY_KV_preview"
 ✨  Success!
@@ -543,14 +549,14 @@ kv_namespaces = [
 
 Outputs a list of all KV namespaces associated with your account id.
 
-```bash
+```sh
 $ wrangler kv:namespace list
 ```
 
 ##### Usage
 The example below uses the `jq` command line tool to pretty-print output.
 
-```console
+```sh
 $ wrangler kv:namespace list | jq '.'
 [
     {
@@ -568,7 +574,7 @@ $ wrangler kv:namespace list | jq '.'
 
 Deletes a given namespace.
 
-```bash
+```sh
 $ wrangler kv:namespace delete --binding= [--namespace-id=]
 ```
 
@@ -590,7 +596,7 @@ $ wrangler kv:namespace delete --binding= [--namespace-id=]
 
 ##### Usage
 
-```console
+```sh
 $ wrangler kv:namespace delete --binding=MY_KV
 Are you sure you want to delete namespace f7b02e7fc70443149ac906dd81ec1791? [y/n]
 yes
@@ -598,7 +604,7 @@ yes
 ✨  Success
 ```
 
-```console
+```sh
 $ wrangler kv:namespace delete --binding=MY_KV --preview
 Are you sure you want to delete namespace 15137f8edf6c09742227e99b08aaf273? [y/n]
 yes
@@ -612,7 +618,7 @@ yes
 
 Writes a single key/value pair to the given namespace.
 
-```bash
+```sh
 $ wrangler kv:key put --binding= [--namespace-id=] $KEY $VALUE
 ✨  Success
 ```
@@ -650,22 +656,22 @@ $ wrangler kv:key put --binding= [--namespace-id=] $KEY $VALUE
 
 ##### Usage
 
-```console
+```sh
 $ wrangler kv:key put --binding=MY_KV "key" "value"
 ✨  Success
 ```
 
-```console
+```sh
 $ wrangler kv:key put --binding=MY_KV --preview "key" "value"
 ✨  Success
 ```
 
-```console
+```sh
 $ wrangler kv:key put --binding=MY_KV "key" "value" --ttl=10000
 ✨  Success
 ```
 
-```console
+```sh
 $ wrangler kv:key put --binding=MY_KV "key" value.txt --path
 ✨  Success
 ```
@@ -674,7 +680,7 @@ $ wrangler kv:key put --binding=MY_KV "key" value.txt --path
 
 Outputs a list of all keys in a given namespace.
 
-```bash
+```sh
 $ wrangler kv:key list --binding= [--namespace-id=] [--prefix] [--env]
 ```
 
@@ -698,7 +704,7 @@ $ wrangler kv:key list --binding= [--namespace-id=] [--prefix] [--env]
 
 The example below uses the `jq` command line tool to pretty-print output.
 
-```console
+```sh
 $ wrangler kv:key list --binding=MY_KV --prefix="public" | jq '.'
 [
     {
@@ -715,7 +721,7 @@ $ wrangler kv:key list --binding=MY_KV --prefix="public" | jq '.'
 
 Reads a single value by key from the given namespace.
 
-```bash
+```sh
 $ wrangler kv:key get --binding= [--env=] [--preview] [--namespace-id=] "$KEY"
 ```
 
@@ -740,7 +746,7 @@ $ wrangler kv:key get --binding= [--env=] [--preview] [--namespace-id=] "$KEY"
 
 ##### Usage
 
-```console
+```sh
 $ wrangler kv:key get --binding=MY_KV "key"
 value
 ```
@@ -749,7 +755,7 @@ value
 
 Removes a single key value pair from the given namespace.
 
-```bash
+```sh
 $ wrangler kv:key delete --binding= [--env=] [--preview] [--namespace-id=] "$KEY"
 ```
 
@@ -774,7 +780,7 @@ $ wrangler kv:key delete --binding= [--env=] [--preview] [--namespace-id=] "$KEY
 
 #### Usage
 
-```console
+```sh
 $ wrangler kv:key delete --binding=MY_KV "key"
 Are you sure you want to delete key "key"? [y/n]
 yes
@@ -788,7 +794,7 @@ yes
 
 Writes a file full of key/value pairs to the given namespace.
 
-```console
+```sh
 $ wrangler kv:key put --binding= [--env=] [--preview] [--namespace-id=] $FILENAME
 ```
 
@@ -848,7 +854,7 @@ If both `expiration` and `expiration_ttl` are specified for a given key, the API
 
 ##### Usage
 
-```console
+```sh
 $ wrangler kv:bulk put --binding=MY_KV allthethingsupload.json
 🌀  uploading 1 key value pairs
 ✨  Success
@@ -858,7 +864,7 @@ $ wrangler kv:bulk put --binding=MY_KV allthethingsupload.json
 
 Deletes all specified keys within a given namespace.
 
-```console
+```sh
 $ wrangler kv:key delete --binding= [--env=] [--preview] [--namespace-id=] $FILENAME
 ```
 
@@ -892,6 +898,7 @@ Takes as an argument a JSON file with a list of key-value pairs to delete (see J
     }
 ]
 ```
+
 <Definitions>
 
   - `key` <Type>string</Type> <PropMeta>required</PropMeta>
@@ -904,7 +911,7 @@ Takes as an argument a JSON file with a list of key-value pairs to delete (see J
 
 ##### Usage
 
-```console
+```sh
 $ wrangler kv:bulk delete --binding=MY_KV allthethingsdelete.json
 Are you sure you want to delete all keys in allthethingsdelete.json? [y/n]
 y

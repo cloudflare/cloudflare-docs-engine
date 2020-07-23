@@ -32,7 +32,7 @@ CF_API_TOKEN=superlongapitoken wrangler publish
 
 Or you can deploy with your email and your global API key:
 
-```sh
+```bash
 # e.g.
 CF_EMAIL=testuser@example.com CF_API_KEY=superlongapikey wrangler publish
 # where

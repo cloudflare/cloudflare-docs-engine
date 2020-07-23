@@ -474,14 +474,14 @@ Header content other than [filenames](#filenames) can be specified with `header:
 ---
 header: Install the Workers CLI
 ---
-npm install -g @cloudflare/workers-cli
+$ npm install -g @cloudflare/workers-cli
 ```
 
 ```sh
 ---
 header: Configure the Workers CLI
 ---
-workers config
+$ workers config
 ```
 
 ### Workers-JavaScript
@@ -509,8 +509,8 @@ Custom syntax highlighting for terminal code and output, similar to what’s cur
 For now, please simply use standard Markdown code fences (\`\`\`) with `sh`.
 
 ```sh
-npm install -g @cloudflare/wrangler
-wrangler config
+$ npm install -g @cloudflare/wrangler
+$ wrangler config
 ```
 
 ### Examples
