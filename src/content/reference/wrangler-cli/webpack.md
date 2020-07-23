@@ -100,7 +100,7 @@ module.exports = {
 
 Wrangler commands are run from the project root, so ensure your `entry` and `context` are set appropriately. For a project with structure:
 
-```console
+```txt
 .
 ├── public
 │   ├── 404.html

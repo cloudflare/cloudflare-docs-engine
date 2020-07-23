@@ -932,7 +932,7 @@ To correctly set the callback URL for your application, you will need to determi
 
 This tutorial assumes the usage of a `workers.dev` subdomain, which is provided for free to all developers using Workers. You can determine your callback URL by combining the name of your application (chosen during the `wrangler generate` phase -- in this tutorial, we picked `my-auth-example`) and your workers.dev subdomain, as seen below:
 
-```
+```txt
 https://$applicationName.$subdomain.workers.dev/auth
 ```
 
