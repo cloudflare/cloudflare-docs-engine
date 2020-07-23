@@ -385,8 +385,8 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 
 ##### Sample Response:
 
-```
-addEventListener('fetch', event => { event.respondWith(fetch(event.request) }))
+```js
+addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })
 ```
 
 #### Request
@@ -505,7 +505,7 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/wor
 
 ###### Missing Account/Zone Identifier
 
-```
+```json
 status: 404
 error: {
   code: 10005,
@@ -515,7 +515,7 @@ error: {
 
 ###### Missing Script Name
 
-```
+```json
 status: 404
 error: {
   code: 10005,
@@ -525,7 +525,7 @@ error: {
 
 ###### Script Not Found
 
-```
+```json
 status: 404
 error: {
   code: 10007,
@@ -535,7 +535,7 @@ error: {
 
 ###### Internal Error
 
-```
+```json
 status: 500
 error: {
   code: 10013,
