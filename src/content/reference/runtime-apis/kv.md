@@ -30,7 +30,8 @@ await NAMESPACE.put(key, value)
 
 This method returns a `Promise` that you should `await` on in order to verify a successful update.
 
-You can also [write key-value pairs from the command line with Wrangler](/reference/wrangler-cli/kv_commands/#kv-key).
+You can also [write key-value pairs from the command line with
+Wrangler](/reference/wrangler-cli/commands#kvkey).
 
 Finally, you can [write data via the API](https://api.cloudflare.com/#workers-kv-namespace-write-key-value-pair).
 
@@ -38,7 +39,10 @@ Due to the eventually consistent nature of Workers KV, it's a common pattern to 
 
 #### Writing data in bulk
 
-You can [write more than one key-value pair at a time with wrangler](/reference/wrangler-cli/kv_commands/#kv-bulk) or [via the API](https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs), up to 10,000 KV pairs. A `key` and `value` are required for each KV pair. The entire request size must be less than 100 megabytes. We do not support this from within a Worker script at this time.
+You can [write more than one key-value pair at a time with
+wrangler](/reference/wrangler-cli/commands#kvbulk) or [via the
+API](https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs), up to 10,000 KV pairs. A `key` and `value` are required for each KV pair. The entire request size must be less than 100 megabytes.
+We do not support this from within a Worker script at this time.
 
 #### Expiring keys
 
@@ -70,7 +74,9 @@ We talked about the basic form of the `put` method above, but this call also has
 
 These assume that `secondsSinceEpoch` and `secondsFromNow` are variables defined elsewhere in your Worker code.
 
-You can also [write with an expiration on the command line via Wrangler](/reference/wrangler-cli/kv_commands/#kv-key) or [via the API](https://api.cloudflare.com/#workers-kv-namespace-write-key-value-pair).
+You can also [write with an expiration on the command line via
+Wrangler](/reference/wrangler-cli/commands#kvkey) or [via the
+API](https://api.cloudflare.com/#workers-kv-namespace-write-key-value-pair).
 
 #### Metadata
 
@@ -107,7 +113,8 @@ async function handleRequest(request) {
 }
 ```
 
-You can also [read key-value pairs from the command line with wrangler](/reference/wrangler-cli/kv_commands/#kv-key).
+You can also [read key-value pairs from the command line with
+wrangler](/reference/wrangler-cli/commands#kvkey).
 
 Finally, you can also [read from the API](https://api.cloudflare.com/#workers-kv-namespace-read-key-value-pair).
 
@@ -164,7 +171,7 @@ async function handleRequest(request) {
 }
 ```
 
-You can also [list keys on the command line with Wrangler](/reference/wrangler-cli/kv_commands/#kv-key) or [via the API](https://api.cloudflare.com/#workers-kv-namespace-list-a-namespace-s-keys).
+You can also [list keys on the command line with Wrangler](/reference/wrangler-cli/commands#kvkey) or [via the API](https://api.cloudflare.com/#workers-kv-namespace-list-a-namespace-s-keys).
 
 Changes may take up to 60 seconds to be visible when listing keys.
 
