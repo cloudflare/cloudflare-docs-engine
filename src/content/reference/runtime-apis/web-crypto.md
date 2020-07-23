@@ -26,7 +26,7 @@ const myDigest = await crypto.subtle.digest(
 console.log(new Uint8Array(myDigest))
 ```
 
-<!-- TODO: Update links to relevant Examples. -->
+<!-- TODO(soon): Link does not exist. Update links to relevant Examples. -->
 Some common uses include:
 
 - [Signing requests.](/reference/write-workers/best-practices/signing-requests)

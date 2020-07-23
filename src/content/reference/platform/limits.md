@@ -61,7 +61,7 @@ Accounts using the Workers free plan are subject to a burst rate limit of 1000 r
 
 ### Daily request
 
-Accounts using the Workers free plan are subject to a daily request limit of 100,000 requests. Free plan daily requests counts reset at midnight UTC. A Worker that fails as a result of daily request limit errors can be configured by toggling its corresponding [route](/about/routes/) in two modes: _Fail open_ and _Fail closed_.
+Accounts using the Workers free plan are subject to a daily request limit of 100,000 requests. Free plan daily requests counts reset at midnight UTC. A Worker that fails as a result of daily request limit errors can be configured by toggling its corresponding [route](/reference/platform/routes) in two modes: _Fail open_ and _Fail closed_.
 
 #### Fail open
 
@@ -75,9 +75,9 @@ Routes in fail closed mode will display a Cloudflare 1027 error page to visitors
 
 ## Memory
 
-Only one Workers instance runs on each of the many global Cloudflare edge servers. Each Workers instance can consume up to 128MB of memory. Use [global variables](/reference/apis/standard/) to persist data between requests on individual nodes; note however, that nodes are occasionally evicted from memory.
+Only one Workers instance runs on each of the many global Cloudflare edge servers. Each Workers instance can consume up to 128MB of memory. Use [global variables](/reference/runtime-apis/web-standards) to persist data between requests on individual nodes; note however, that nodes are occasionally evicted from memory.
 
-Use the [TransformStream API](/reference/apis/streams/) to stream responses if you are concerned about memory usage. This avoids loading an entire response into memory.
+Use the [TransformStream API](/reference/runtime-apis/streams/transformstream) to stream responses if you are concerned about memory usage. This avoids loading an entire response into memory.
 
 --------------------------------
 
@@ -85,7 +85,7 @@ Use the [TransformStream API](/reference/apis/streams/) to stream responses if y
 
 Most Workers requests consume less than a millisecond. It’s rare to find a normally operating Workers script that exceeds the CPU time limit. A Worker may consume up to 10ms on the free plan and 50ms on the Unlimited tier. The 10ms allowance on the free plan is enough execution time for most use cases including application hosting.
 
-There is no limit on the real runtime for a Workers script. As long as the client that sent the request remains connected, the Workers script can continue processing, making subrequests, and setting timeouts on behalf of that request. When the client disconnects, all tasks associated with that client request are canceled. You can use [`event.waitUntil()`](/reference/apis/fetch-event/) to delay cancellation for another 30 seconds or until the promise passed to `waitUntil()` completes.
+There is no limit on the real runtime for a Workers script. As long as the client that sent the request remains connected, the Workers script can continue processing, making subrequests, and setting timeouts on behalf of that request. When the client disconnects, all tasks associated with that client request are canceled. You can use [`event.waitUntil()`](/reference/runtime-apis/fetch-event) to delay cancellation for another 30 seconds or until the promise passed to `waitUntil()` completes.
 
 --------------------------------
 
@@ -93,7 +93,7 @@ There is no limit on the real runtime for a Workers script. As long as the clien
 
 ### Can a Workers script make subrequests to load other sites on the Internet?
 
-Yes. Use the [Fetch API](/reference/apis/fetch/) to make arbitrary requests to other Internet resources.
+Yes. Use the [Fetch API](/reference/runtime-apis/fetch) to make arbitrary requests to other Internet resources.
 
 ### How many subrequests can I make?
 
@@ -103,7 +103,7 @@ The limit for subrequests a Workers script can make is 50 per request. Each subr
 
 There is no hard limit on the amount of real time a Worker may use. As long as the client which sent a request remains connected, the Worker may continue processing, making subrequests, and setting timeouts on behalf of that request.
 
-When the client disconnects, all tasks associated with that client’s request are proactively canceled. If the Worker passed a promise to [`event.waitUntil()`](/reference/apis/fetch-event), cancellation will be delayed until the promise has completed or until an additional 30 seconds have elapsed, whichever happens first.
+When the client disconnects, all tasks associated with that client’s request are proactively canceled. If the Worker passed a promise to [`event.waitUntil()`](/reference/runtime-apis/fetch-event), cancellation will be delayed until the promise has completed or until an additional 30 seconds have elapsed, whichever happens first.
 
 --------------------------------
 
@@ -111,9 +111,9 @@ When the client disconnects, all tasks associated with that client’s request a
 
 While handling a request, each Worker script is allowed to have up to six connections open simultaneously. The connections opened by the following API calls all count toward this limit:
 
-- the `fetch()` method of the [Fetch API](/reference/apis/fetch/)
-- `get()`, `put()`, `list()`, and `delete()` methods of [Workers KV namespace objects](/reference/apis/kv)
-- `put()`, `match()`, and `delete()` methods of [Cache objects](/reference/apis/cache/)
+- the `fetch()` method of the [Fetch API](/reference/runtime-apis/fetch)
+- `get()`, `put()`, `list()`, and `delete()` methods of [Workers KV namespace objects](/reference/runtime-apis/kv)
+- `put()`, `match()`, and `delete()` methods of [Cache objects](/reference/runtime-apis/cache)
 
 Once a Worker has six connections open, it can still attempt to open additional connections. However, these attempts are put in a pending queue - the connections won't be actually be initiated until one of the currently open connections has closed. Since earlier connections can delay later ones, if a Worker tries to make many simultaneous subrequests, its later subrequests may appear to take longer to start.
 
@@ -130,6 +130,7 @@ Each environment variable has a size limitation of 5 KiB.
 
 ### Script size
 
+<!-- TODO(soon): Broken link to Bindings API documentation. -->
 A Workers script plus any [Asset Bindings](/tooling/api/bindings) can be up to 1MB in size after compression.
 
 ### Number of scripts

@@ -18,7 +18,7 @@ In this tutorial you’ll integrate Auth0, an identity management platform, into
 
 To publish your Worker to Cloudflare, you’ll need a few things:
 
-- A Cloudflare account, the [Workers Unlimited Plan](/about/pricing), and access to an [API token](/quickstart#api-token) for that account
+- A Cloudflare account, the [Workers Unlimited Plan](/reference/platform/pricing), and access to an [API token](/quickstart#api-token) for that account
 - A Wrangler installation running locally on your machine, and access to the command-line
 - An Auth0 account
 
@@ -97,7 +97,7 @@ export const authorize = async event => {
 }
 ```
 
-The `auth0` object wraps several secrets, which are encrypted values that can be defined and used by your script. In the “Publish” section of this tutorial, we’ll define these secrets using the [`wrangler secret`](https://developers.cloudflare.com/workers/tooling/wrangler/secrets/) command.
+The `auth0` object wraps several secrets, which are encrypted values that can be defined and used by your script. In the “Publish” section of this tutorial, we’ll define these secrets using the [`wrangler secret`](https://developers.cloudflare.com/workers/reference/wrangler-cli/secrets/) command.
 
 The `generateStateParam` function will be used to prevent [Cross-Site Request Forgery attacks](https://auth0.com/docs/protocols/oauth2/mitigate-csrf-attacks). For now, we’ll return a string “stub”, but later in the tutorial, it will generate a random “state” parameter that we’ll store in Workers KV to verify incoming authorization requests.
 
@@ -990,6 +990,6 @@ Congrats! You’ve successfully built an application that authorizes and authent
 
 There’s a lot more that you can build with Workers: serve static and JAMstack-style apps using Workers Sites, transform HTML responses using HTMLRewriter, and more. Here are some more tutorials for you to check out next. Happy coding!
 
-- [Build a Slack bot](/tutorials/build-an-application)
-- [Deploy a React app using Workers Sites](/tutorials/deploy-a-react-app)
+- [Build a Slack bot](/tutorials/build-a-slackbot)
+- [Deploy a React app using Workers Sites](/tutorials/deploy-a-react-app-with-create-react-app)
 - [Localize a website using HTMLRewriter](/tutorials/localize-a-website)

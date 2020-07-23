@@ -2,9 +2,9 @@
 
 ## Background
 
-A `WritableStream` is the `writable` property of a [`TransformStream`](/reference/streams/transformstream). On the Workers platform, `WritableStream` can’t be directly created using the `WritableStream` constructor.
+A `WritableStream` is the `writable` property of a [`TransformStream`](/reference/runtime-apis/streams/transformstream). On the Workers platform, `WritableStream` can’t be directly created using the `WritableStream` constructor.
 
-A typical way to write to a `WritableStream` is to simply pipe a [`ReadableStream`](/reference/streams/readablestream) to it.
+A typical way to write to a `WritableStream` is to simply pipe a [`ReadableStream`](/reference/runtime-apis/streams/readablestream) to it.
 
 ```js
 readableStream.pipeTo(writableStream)
@@ -19,7 +19,7 @@ const writer = writableStream.getWriter()
 writer.write(data)
 ```
 
-See the [WritableStreamDefaultWriter](/reference/streams/writablestreamdefaultwriter) documentation for further detail.
+See the [WritableStreamDefaultWriter](/reference/runtime-apis/streams/writablestreamdefaultwriter) documentation for further detail.
 
 ## Properties
 
@@ -37,7 +37,7 @@ See the [WritableStreamDefaultWriter](/reference/streams/writablestreamdefaultwr
 
 - <Code>abort(reason<ParamType>string</ParamType><PropMeta>optional</PropMeta>)</Code> <Type>Promise&lt;void></Type>
 
-  - Aborts the stream. This method returns a promise that fulfills with a response `undefined`. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying sink's abort algorithm. If this writable stream is one side of a [TransformStream](/reference/streams/transformstream), then its abort algorithm causes the transform's readable side to become errored with `reason`.
+  - Aborts the stream. This method returns a promise that fulfills with a response `undefined`. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying sink's abort algorithm. If this writable stream is one side of a [TransformStream](/reference/runtime-apis/streams/transformstream), then its abort algorithm causes the transform's readable side to become errored with `reason`.
 
   <Aside type="warning" header="Warning">
 
@@ -45,7 +45,7 @@ See the [WritableStreamDefaultWriter](/reference/streams/writablestreamdefaultwr
 
   </Aside>
 
-- `getWriter()` <TypeLink href="/reference/streams/writablestreamdefaultwriter">WritableStreamDefaultWriter</TypeLink>
+- `getWriter()` <TypeLink href="/reference/runtime-apis/streams/writablestreamdefaultwriter">WritableStreamDefaultWriter</TypeLink>
 
   - Gets an instance of `WritableStreamDefaultWriter` and locks the `WritableStream` to that writer instance.
 

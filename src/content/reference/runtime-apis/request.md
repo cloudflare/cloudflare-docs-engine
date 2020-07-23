@@ -39,7 +39,8 @@ The global `fetch` method itself invokes the `Request` constructor, thus the [`R
 
 <Aside header="Learn more">
 
-Read [Understanding the FetchEvent Lifecycle](../learning/understanding-the-fetch-event-lifecycle) and [Understanding the Request Context](../learning/understanding-the-request-context) for a deeper understanding of these fundamental Workers concepts.
+<!-- TODO(soon): /learning/understanding-the-request-context does not exist. -->
+Read [Understanding the FetchEvent Lifecycle](/learning/fetch-event-lifecycle) and [Understanding the Request Context](/learning/understanding-the-request-context) for a deeper understanding of these fundamental Workers concepts.
 
 </Aside>
 
@@ -183,7 +184,7 @@ All properties of an incoming `Request` object (i.e. `event.request`) are read o
 
 ### `IncomingRequestCfProperties`
 
-In addition to the properties on the standard [`Request`](/reference/apis/request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare’s edge.
+In addition to the properties on the standard [`Request`](/reference/runtime-apis/request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare’s edge.
 
 <Definitions>
 

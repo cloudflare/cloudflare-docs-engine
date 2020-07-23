@@ -70,7 +70,7 @@ When your webhook is created, it will attempt to send a test payload to your app
 
 Cloudflare’s command-line tool for managing Worker projects, Wrangler, has great support for templates — pre-built collections of code that make it easy to get started writing Workers. In this tutorial, you’ll use the [router template](https://github.com/cloudflare/worker-template-router) to generate a Workers project with a built-in router, so you can take incoming requests, and route them to the appropriate JavaScript code.
 
-In the command line, generate your Worker project, passing in a project name (e.g. “slack-bot”), and the [template](/templates) URL to base your project on:
+In the command line, generate your Worker project, passing in a project name (e.g. “slack-bot”), and the [template](/examples) URL to base your project on:
 
 ```sh
 ---
@@ -80,7 +80,7 @@ $ wrangler generate slack-bot https://github.com/cloudflare/worker-template-rout
 $ cd slack-bot
 ```
 
-Wrangler templates are just Git repositories, so if you want to create your own templates, or use one from our [Template Gallery](/templates), there’s a ton of options to help you get started.
+Wrangler templates are just Git repositories, so if you want to create your own templates, or use one from our [Template Gallery](/examples), there’s a ton of options to help you get started.
 
 Cloudflare’s `worker-template` includes support for building and deploying JavaScript-based projects. Inside of your new `slack-bot` directory, `index.js` represents the entry-point to your Cloudflare Workers application.
 
@@ -628,7 +628,7 @@ export default async request => {
 }
 ```
 
-The constant `SLACK_WEBHOOK_URL` represents the Slack Webhook URL that you created all the way back in the “Incoming Webhook” section of this guide. **This webhook allows developers to post directly to your Slack channel, so it should be kept secret!** To use this constant inside of your codebase, you can use Wrangler’s [Secrets](/tooling/wrangler/secrets) feature:
+The constant `SLACK_WEBHOOK_URL` represents the Slack Webhook URL that you created all the way back in the “Incoming Webhook” section of this guide. **This webhook allows developers to post directly to your Slack channel, so it should be kept secret!** To use this constant inside of your codebase, you can use Wrangler’s [Secrets](/reference/wrangler-cli/commands#secret) feature:
 
 ```sh
 ---
@@ -691,6 +691,6 @@ Publishing your Workers application should now cause issue updates to start appe
 
 In this tutorial, you built and published a Cloudflare Workers application that can respond to GitHub webhook events, and allow GitHub API lookups within Slack. If you’d like to see the full source code for this application, you can find the repo [on GitHub](https://github.com/signalnerve/workers-slack-bot).
 
-If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/templates).
+If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/examples).
 
 

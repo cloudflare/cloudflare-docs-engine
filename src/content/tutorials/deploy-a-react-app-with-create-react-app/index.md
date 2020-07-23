@@ -111,4 +111,4 @@ After fetching assets from [Workers KV](https://developers.cloudflare.com/worker
 
 In this tutorial, you built and published a static site to Workers. If you’d like to see the full source code for this application, visit the [repo on GitHub](https://github.com/signalnerve/react-workers-template).
 
-If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/templates).
+If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/examples).

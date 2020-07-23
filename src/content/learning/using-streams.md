@@ -2,7 +2,7 @@
 
 The [Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) is a web standard API that allows JavaScript to programmatically access and process streams of data.
 
-Workers scripts don’t need to prepare an entire response body before delivering it to `event.respondWith()`. You can use [`TransformStream`](/reference/streams/transformstream) to stream a response body _after_ sending the front matter (that is, HTTP status line and headers). This allows you to minimize:
+Workers scripts don’t need to prepare an entire response body before delivering it to `event.respondWith()`. You can use [`TransformStream`](/reference/runtime-apis/streams/transformstream) to stream a response body _after_ sending the front matter (that is, HTTP status line and headers). This allows you to minimize:
 
 - The visitor’s time-to-first-byte.
 - The buffering done in the Workers script.
@@ -15,7 +15,7 @@ __Note:__ By default, the Cloudflare Workers service streams. Only use these API
 
 </Aside>
 
-The two primitives developers use to perform active streaming are [`TransformStream`](/reference/streams/transformstream) and the [`ReadableStream.pipeTo()`](/reference/streams/readablestream#pipetodestination-typepromisetype) method.
+The two primitives developers use to perform active streaming are [`TransformStream`](/reference/runtime-apis/streams/transformstream) and the [`ReadableStream.pipeTo()`](/reference/runtime-apis/streams/readablestream#methods) method.
 
 A basic pass-through usage of streams looks like this:
 
@@ -59,6 +59,6 @@ The Streams API is only available inside of the Request context, i.e. inside the
 
 ## See also
 
-- [Streams API Reference](/reference/streams/)
+- [Streams API Reference](/reference/runtime-apis/streams)
 - [MDN's Streams API documentation.](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)
 - [Streams API Specification](https://streams.spec.whatwg.org/)

@@ -11,9 +11,9 @@ title: ReadableStream BYOBReader
 
 `BYOB` is an abbreviation of "bring your own buffer." A `ReadableStreamBYOBReader` allows reading into a developer-supplied buffer, thus minimizing copies.
 
-An instance of `ReadableStreamBYOBReader` is functionally identical to [`ReadableStreamDefaultReader`](/reference/streams/readablestreamdefaultreader) with the exception of the `read` method.
+An instance of `ReadableStreamBYOBReader` is functionally identical to [`ReadableStreamDefaultReader`](/reference/runtime-apis/streams/readablestreamdefaultreader) with the exception of the `read` method.
 
-A `ReadableStreamBYOBReader` is not instantiated via its constructor. Rather, it is retrieved from a [`ReadableStream`](/reference/streams/readablestream):
+A `ReadableStreamBYOBReader` is not instantiated via its constructor. Rather, it is retrieved from a [`ReadableStream`](/reference/runtime-apis/streams/readablestream):
 
 ```js
 const { readable, writable } = new TransformStream()

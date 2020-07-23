@@ -19,11 +19,11 @@ Since Cloudflare's Workers can run before, and after the cache, a Worker can als
 
 Conceptually, there are two ways to interact with Cloudflare's Cache using a Worker:
 
-- Call to [`fetch()`](/reference/apis/fetch) in a Workers script. Requests proxied through Cloudflare are cached even without Workers according to a zone's default or configured behavior (e.g. static assets like files ending in .jpg are cached by default). Workers can further customize this behavior by:
+- Call to [`fetch()`](/reference/runtime-apis/fetch) in a Workers script. Requests proxied through Cloudflare are cached even without Workers according to a zone's default or configured behavior (e.g. static assets like files ending in .jpg are cached by default). Workers can further customize this behavior by:
 
-  - Setting Cloudflare cache rules (i.e. operating on the `cf` object of a [request](/reference/apis/request/)).
+  - Setting Cloudflare cache rules (i.e. operating on the `cf` object of a [request](/reference/runtime-apis/request)).
 
-- Store responses using the [Cache API](/reference/apis/cache) from a Workers script. This allows caching responses that did not come from an origin and also provides finer control by:
+- Store responses using the [Cache API](/reference/runtime-apis/cache) from a Workers script. This allows caching responses that did not come from an origin and also provides finer control by:
 
   - Customizing cache behavior of any asset by setting headers such as `Cache-Control` on the response passed to `cache.put()`
 
@@ -43,13 +43,13 @@ For requests where Workers are behaving as middleware (i.e. they are sending a s
 
 ### `fetch`
 
-In the context of Workers a [`fetch`](/reference/apis/fetch) provided by the runtime communicates with the Cloudflare cache. First, `fetch` checks to see if the URL matches a different zone. If it does, it reads through that zone's cache (or Worker!). Otherwise, it reads through its own zone's cache, even if the URL is for a non-Cloudflare site. Cache settings on `fetch` automatically apply caching rules based on your Cloudflare settings. `fetch` does not allow you to _modify or inspect objects_ before they reach the cache, but does allow you to modify _how it will cache_.
+In the context of Workers a [`fetch`](/reference/runtime-apis/fetch) provided by the runtime communicates with the Cloudflare cache. First, `fetch` checks to see if the URL matches a different zone. If it does, it reads through that zone's cache (or Worker!). Otherwise, it reads through its own zone's cache, even if the URL is for a non-Cloudflare site. Cache settings on `fetch` automatically apply caching rules based on your Cloudflare settings. `fetch` does not allow you to _modify or inspect objects_ before they reach the cache, but does allow you to modify _how it will cache_.
 
 When a response fills the cache, the response header contains `CF-Cache-Status: HIT`. You can tell an object is attempting to cache if one sees the `CF-Cache-Status` at all.
 
-This [template](/templates/pages/cache_ttl) shows ways to customize Cloudflare cache behavior on a given request using fetch.
+This [template](/examples/pages/cache_ttl) shows ways to customize Cloudflare cache behavior on a given request using fetch.
 
-### [Cache API](/reference/apis/cache)
+### [Cache API](/reference/runtime-apis/cache)
 
 The Cache API can be thought of as an ephemeral key-value store, whereby the `Request` object (or more specifically, the request URL) is the key, and the `Response` is the value.
 
@@ -63,4 +63,4 @@ When to use the Cache API:
 - When you need to read from cache without calling fetch. (i.e. send me the response from `slow.com/resource` if and only if it’s already a HIT on cache using `caches.default.match(..)`.
 - Explicitly store a response in the cache using `caches.default.put(..)` and explicitly delete `caches.default.delete(..)`. For example, say your origin is returning `max-age:0` and you can't figure out how to change that header at your origin. You can explicitly tell Cloudflare to cache this response by setting `cache-control: max-age=1000` on the response passed into `cache.put()`.
 
-This [template](/templates/pages/cache_api) shows ways to use the cache API. For limits of the cache API see [limits](/about/limits#cache-api).
+This [template](/examples/pages/cache_api) shows ways to use the cache API. For limits of the cache API see [limits](/reference/platform/limits#cache-api-limits).

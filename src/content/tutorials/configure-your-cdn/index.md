@@ -54,7 +54,7 @@ $ wrangler generate serve-cdn-assets
 $ cd serve-cdn-assets
 ```
 
-By default, Wrangler will use our [`worker-template`](https://github.com/cloudflare/worker-template). Wrangler templates are just Git repositories, so if you want to create your own templates, or use one from our [Template Gallery](/templates), there’s a ton of options to help you get started.
+By default, Wrangler will use our [`worker-template`](https://github.com/cloudflare/worker-template). Wrangler templates are just Git repositories, so if you want to create your own templates, or use one from our [Template Gallery](/examples), there’s a ton of options to help you get started.
 
 Cloudflare’s `worker-template` includes support for building and deploying JavaScript-based projects. Inside of your new `serve-cdn-assets` directory, `index.js` represents the entry-point to your Cloudflare Workers application.
 
@@ -83,7 +83,7 @@ When a `fetch` event comes into the worker, the script uses `event.respondWith` 
 
 ## Build
 
-Any project you publish to Cloudflare Workers can make use of modern JS tooling like ES modules, NPM packages, and [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) functions to put together your application. In addition, simple serverless functions aren’t the only thing you can publish on Cloudflare Workers: you can [build full applications](/tutorials/build-an-application), or [serverless functions](/tutorials/build-a-serverless-function) using the same tooling and process as what we’ll be building today.
+Any project you publish to Cloudflare Workers can make use of modern JS tooling like ES modules, NPM packages, and [async/await](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) functions to put together your application. In addition, simple serverless functions aren’t the only thing you can publish on Cloudflare Workers: you can [build full applications](/tutorials/build-a-slackbot), or [serverless functions](/tutorials/build-a-qr-code-generator) using the same tooling and process as what we’ll be building today.
 
 The Cloudflare Workers project built in this tutorial will be a serverless function that runs on a _wildcard_ route and receives requests. When the serverless function receives an incoming request, it should parse the URL, find what asset is being requested, and serve it from the configured Cloud Storage bucket. Because the asset will go through your Workers function, and through Cloudflare’s network, you can also make use of both Cloudflare’s _default_ caching behavior, as well as your own custom logic, to ensure that as much data can be cached at Cloudflare’s globally distributed data centers — the result is an easy-to-understand and highly performant CDN configuration, with the ability to customize it to your application’s specific needs.
 
@@ -156,7 +156,7 @@ function serveAsset(event) {
 
 ### Custom caching
 
-At this point in the tutorial, deploying this script would give you a fully-functional project you could use to retrieve assets from your Cloud Storage bucket. Instead of wrapping up the tutorial here, let’s continue to explore how configuring your CDN is really powerful with Workers, by making use of the [Cache API](/about/using-cache).
+At this point in the tutorial, deploying this script would give you a fully-functional project you could use to retrieve assets from your Cloud Storage bucket. Instead of wrapping up the tutorial here, let’s continue to explore how configuring your CDN is really powerful with Workers, by making use of the [Cache API](/learning/how-the-cache-works).
 
 To cache responses in a Workers function, the Cache API provides `cache.match`, to check for the presence of a cached asset, and `cache.put`, to cache a `response` for a given `request`. Given those two functions, the general flow will look like this:
 
@@ -266,6 +266,6 @@ After deploying your project, open up your browser to test retrieving your asset
 In this tutorial, you built and published a serverless function to Cloudflare Workers for serving assets from cloud storage. If you’d like to see the full source code for this application, visit the [repo on GitHub](https://github.com/signalnerve/assets-on-workers).
 
 
-If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/templates).
+If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/examples).
 
 
