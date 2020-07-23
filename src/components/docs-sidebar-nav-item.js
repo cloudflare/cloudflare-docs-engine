@@ -20,8 +20,6 @@ const DocsSidebarCollapse = ({ expanded, children }) => {
     wrapperInner: `${base}wrapperInner`
   }
 
-  const prefersMotion = userPrefersReducedMotion()
-
   if (userPrefersReducedMotion()) {
     let className = collapseClasses.container + " "
     className += expanded ? collapseClasses.entered : collapseClasses.hidden

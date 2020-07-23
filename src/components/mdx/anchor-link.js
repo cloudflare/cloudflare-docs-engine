@@ -2,11 +2,10 @@ import React from "react"
 import { Link } from "gatsby"
 
 import { className } from "./root"
+import IconExternalLink from "../icons/external-link"
 const linkClassName = className("link")
 const contentClassName = `${ linkClassName }-content`
 const externalIconClassName = `${linkClassName}-external-icon`
-
-import IconExternalLink from "../icons/external-link"
 
 export default ({ href, className, children, ...props }) => {
   if (!href || !children) return (<a {...props}/>)

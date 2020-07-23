@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 
 const DocsNavLogoLockup = ({ logo, text, small, scaleTextClassName, textLength }) => {
   const wrappedText = (scaleTextClassName && textLength) ? (
