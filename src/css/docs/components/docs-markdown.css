@@ -90,6 +90,10 @@
   --background: var(--background-color);
 }
 
+.DocsMarkdown code .DocsMarkdown--link[data-is-type-link="true"] {
+  margin-left: .5em;
+}
+
 [theme="dark"] .DocsMarkdown--link {
   --background-color-alpha: .03;
   --border-bottom-color-rgb: var(--orange-rgb);
