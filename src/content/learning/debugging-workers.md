@@ -97,12 +97,16 @@ You can customize how `wrangler tail` works to fit your needs: see [the docs](/r
 
 When a Worker running in production has an error that prevents it from returning a response, the client will receive an error page with an error code, defined as follows:
 
+<TableWrap>
+
 | Error code | Meaning                                                                            |
 | ---------- | ---------------------------------------------------------------------------------- |
 | 1101       | Worker threw a JavaScript exception.                                               |
 | 1102       | Worker exceeded CPU time limit. See: [Resource Limits](/reference/platform/limits)              |
 | 1015       | Your client IP is being rate limited.                                              |
 | 1027       | Worker exceeded free tier [daily request limit](/reference/platform/limits#daily-request) |
+
+</TableWrap>
 
 Other 11xx errors generally indicate a problem with the Workers runtime itself — please check our [status page](https://www.cloudflarestatus.com/) if you see one.
 
