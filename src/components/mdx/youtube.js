@@ -8,7 +8,7 @@ export default props => {
   }
 
   return (
-    <figure>
+    <figure data-type="youtube">
       <div className="AspectRatio" style={style}>
         <iframe
           className="AspectRatio--content"

@@ -720,6 +720,10 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   width: 100%;
 }
 
+.DocsMarkdown figure[data-type="youtube"] {
+  background: #000;
+}
+
 .DocsMarkdown--table-wrap {
   border: 1px solid rgba(var(--color-rgb), .15);
   padding: .25em 0;
