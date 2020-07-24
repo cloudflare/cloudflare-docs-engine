@@ -1,9 +1,4 @@
----
-title: Web standards
-order: 0
----
-
-# JavaScript and web standards
+# Web Standards
 
 The Workers runtime provides the following standardized APIs for use by scripts running at the edge.
 
