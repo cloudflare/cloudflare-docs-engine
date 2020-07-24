@@ -12,7 +12,7 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
   ---
   filename: wrangler.toml
   ---
-  
+
   account_id = "612bef.."
   [site]
   bucket = "./my-dir" # Add the directory with your static assets!
@@ -46,7 +46,7 @@ If you have a pre-existing Worker project, you can use Workers Sites to serve st
     }
   }
   ```
-  
+
   For more information on the configurable options of `getAssetFromKV` see [the template's source](https://github.com/cloudflare/worker-sites-template/blob/master/workers-site/index.js).
 
 4. You should now be all set you can run `preview` or `publish` as you would normally with your Worker project!

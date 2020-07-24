@@ -21,7 +21,7 @@ Once you have a site generated, follow these steps:
   This command creates a few things: `wrangler.toml` and a `workers-site` directory.
 
 2. Add your site's build directory to the `wrangler.toml`:
-  
+
   ```toml
   [site]
   bucket = "./public" # <-- Add your build directory name here!
@@ -30,20 +30,20 @@ Once you have a site generated, follow these steps:
 
   The default directories for the most popular static site generators are listed below:
 
-     - Hugo: `public`
-     - Gatsby: `public`
-     - Jekyll: `_site`
-     - Eleventy: `_site`
+    - Hugo: `public`
+    - Gatsby: `public`
+    - Jekyll: `_site`
+    - Eleventy: `_site`
 
-3.  Add your `account_id` to your `wrangler.toml`. You can find your `account_id` on the right sidebar of the Workers or Overview Dashboard. Note: You may need to scroll down! For more details on finding your `account_id` click [here](/quickstart/#account-id-and-zone-id).
+3. Add your `account_id` to your `wrangler.toml`. You can find your `account_id` on the right sidebar of the Workers or Overview Dashboard. Note: You may need to scroll down! For more details on finding your `account_id` click [here](/quickstart/#account-id-and-zone-id).
 
-4.  You can preview your site by running:
+4. You can preview your site by running:
 
   ```sh
   $ wrangler preview --watch
   ```
 
-5.  Decide where you'd like to publish your site to: [a workers.dev subdomain](/quickstart#publish-to-workers-dev) or your [personal domain](/quickstart#publish-to-your-domain) registered with Cloudflare.
+5. Decide where you'd like to publish your site to: [a workers.dev subdomain](/quickstart#publish-to-workers-dev) or your [personal domain](/quickstart#publish-to-your-domain) registered with Cloudflare.
 
   Then, update your `wrangler.toml`:
 
@@ -58,8 +58,8 @@ Once you have a site generated, follow these steps:
 
   You can learn more about configuring your project [here](/quickstart/#configure).
   
-1. Run:
+6. Run:
 
-```sh
-$ wrangler publish
-```
+  ```sh
+  $ wrangler publish
+  ```
