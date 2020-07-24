@@ -1,10 +1,10 @@
-# Understanding Workers Metrics and Analytics
+# Understanding Workers metrics and analytics
 
 There are two graphical sources of information about your Workers traffic at at given time: Workers Metrics and zone-based Workers analytics. Workers metrics can help you diagnose issues and understand your Workers workloads by showing performance and usage of your Workers. If your Worker runs on a route on a zone, or on a few zones, the Workers tab in the zone can help you understand on a per-zone basis how much traffic your Worker is handling, and how many requests your site is getting.
 
 --------------------------------
 
-## Workers Metrics
+## Workers metrics
 
 Workers metrics aggregate request data for an individual Worker script (if your Worker is running across multiple domains, and on workers.dev, metrics will aggregate requests across them). You can click on any Worker to view its metrics in your [Workers dashboard](https://dash.cloudflare.com/?account=workers/overview).
 
@@ -39,7 +39,7 @@ _² The Internal Error status may appear when the Workers runtime fails to proce
 
 To further investagate exceptions, you can use [wrangler tail](/reference/wrangler-cli/commands#tail)
 
-### CPU Time
+### CPU time
 
 The CPU time chart shows historical CPU time data broken down into relevant quantiles using [reservoir sampling](https://en.wikipedia.org/wiki/Reservoir_sampling). You can learn more about interpreting quantiles [here](https://www.statisticshowto.com/quantile-definition-find-easy-steps/). In some cases, higher quantiles may appear to exceed [CPU time limits](/reference/platform/limits#cpu-runtime) without generating invocation errors because of a mechanism in the Workers runtime that allows rollover CPU time for requests below the CPU limit.
 
@@ -49,7 +49,7 @@ Worker script metrics can be inspected for up to 3 months in the past in maximum
 
 --------------------------------
 
-## Zone Analytics
+## Zone analytics
 
 Aggregates request data for all scripts assigned to any [routes](/reference/platform/routes) defined for a zone. You’ll find Zone Metrics on the [analytics tab](https://dash.cloudflare.com/?zone=analytics/workers) of your Cloudflare dashboard.
 
@@ -66,11 +66,11 @@ This chart shows subrequests - requests triggered by calling `fetch` from within
 
 This chart shows historical bandwidth usage for all scripts on a zone broken down by cache status.
 
-### Status Codes
+### Status codes
 
 This chart shows historical requests for all scripts on a zone broken down by HTTP status code.
 
-### Total Requests
+### Total requests
 
 This chart shows historical data for all scripts on a zone broken down by successful requests, failed requests, and subrequests. These request types are categorized by HTTP status code where 200-level requests are successful and 400 to 500-level requests are failed.
 

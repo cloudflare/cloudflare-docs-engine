@@ -1,4 +1,4 @@
-# How the Cache Works
+# How the Cache works
 
 Since Workers was built atop Cloudflare's network, since its early days, it was designed to allow developers to interact directly with the Cloudflare cache. The cache can provide ephemeral, colo-local storage, as a convenient way to frequently accessed static or dynamic content.
 
@@ -31,7 +31,7 @@ Conceptually, there are two ways to interact with Cloudflare's Cache using a Wor
 
 --------------------------------
 
-## Edge vs. Browser caching
+## Edge vs. browser caching
 
 The browser cache is controlled through the `Cache-Control` header sent in the response to the eyeball (the response passed or promised to `event.respondWith()`). Workers can customize browser cache behavior by setting this header on the response.
 
