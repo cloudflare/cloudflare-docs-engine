@@ -25,4 +25,4 @@ addEventListener("fetch", event => {
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} aspectRatio={16/9}/>
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} aspectRatio={16/9}/>

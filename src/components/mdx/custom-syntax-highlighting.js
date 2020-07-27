@@ -26,7 +26,7 @@ const transformations = {
   sh: {
     "*": {
       to: "comment",
-      for: s => s.match(/^\#/)
+      for: s => s.match(/^#/)
     }
   }
 }
