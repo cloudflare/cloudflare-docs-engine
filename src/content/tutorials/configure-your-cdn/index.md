@@ -31,11 +31,11 @@ To follow along with this tutorial, using the data set we’ve provided, downloa
 
 ```sh
 your-bucket
-|- faces
-   |- 1.jpg
-   |- 2.jpg
-   |- ...
-   |- 199.jpg
+└─ faces
+   ├─ 1.jpg
+   ├─ 2.jpg
+   ├─ ...
+   └─ 99.jpg
 ```
 
 Finally, to ensure that you can access the objects from your Workers function, your Google Cloud Storage bucket should be publicly accessible. To ensure this, follow the “Making groups of objects publicly readable” guide in the Google Cloud Storage docs, which can be found [here](https://cloud.google.com/storage/docs/access-control/making-data-public#buckets).
