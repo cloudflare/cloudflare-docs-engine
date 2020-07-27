@@ -26,7 +26,7 @@ If you have an existing project or static assets that you want to deploy with Wo
 
 If you’re ready to start a brand new project, starting from scratch with Workers Sites will set up the infrastructure to deploy a simple HTML website to Workers.
 
-<Link to="/reference/platform/sites/start-from-existing" className="Button Button-is-docs-primary">Start from scratch →</Link>
+<Link to="/reference/platform/sites/start-from-scratch" className="Button Button-is-docs-primary">Start from scratch →</Link>
 
 --------------------------------
 
@@ -34,4 +34,4 @@ If you’re ready to start a brand new project, starting from scratch with Worke
 
 If you already have an application deployed to Workers, this guide will show you how to use Workers Sites in your existing codebase, allowing you to deploy your entire application as a single Workers project.
 
-<Link to="/reference/platform/sites/start-from-existing" className="Button Button-is-docs-primary">Start from a worker →</Link>
+<Link to="/reference/platform/sites/start-from-worker" className="Button Button-is-docs-primary">Start from a worker →</Link>
