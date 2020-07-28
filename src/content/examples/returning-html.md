@@ -2,7 +2,7 @@
 order: 1
 type: example
 summary: Deliver an HTML page from an HTML string directly inside the Worker script.
-demo: https://returning-html.workers-docs.workers.dev
+demo: https://returning-html.workers-sites-examples.workers.dev
 tags:
   - HTML
   - JAMstack
