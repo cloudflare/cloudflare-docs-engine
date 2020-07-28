@@ -1,6 +1,6 @@
-name = "docs"
+name = "workers"
 type = "webpack"
-account_id = "a0b64da0b7dede34403a37cebf946777"
+account_id = "7f899bda35ad499383f34c558b53d64f" # cloudflaredocs.workers.dev
 workers_dev = true
 
 [site]
