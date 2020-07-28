@@ -317,7 +317,7 @@ route = "staging.example.com/*"
 Wrangler will fail to publish to an environment where `route` is defined alongside `workers_dev = true`.
 
 ```sh
-~/ $ wrangler sh
+~/ $ wrangler publish
 Error: ⚠️  Your environment should only include `workers_dev` or `route`. If you are trying to publish to workers.dev, remove `route` from your wrangler.toml, if you are trying to publish to your own domain, remove `workers_dev`.
 ```
 
