@@ -14,7 +14,7 @@ For now, please see the instructions for [Gatsby’s default starter](https://gi
 
 ## Documentation (for the documentation)
 
-See https://workers-docs.ruthless.design/docs-engine.
+See https://workers.cloudflaredocs.workers.dev/docs-engine.
 
 ## Known issues
 
