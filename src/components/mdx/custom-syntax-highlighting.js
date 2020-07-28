@@ -35,9 +35,9 @@ transformations.html = {
   keyword: transformations.js.keyword
 }
 
-transformations.toml = {
-  "*": transformations.sh["*"]
-}
+// transformations.toml = {
+//   "*": transformations.sh["*"]
+// }
 
 export const transformToken = ({ token, children, language }) => {
   const lang = transformations[language]
