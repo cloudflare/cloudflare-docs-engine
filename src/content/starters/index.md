@@ -7,6 +7,8 @@ import WorkerStarter from "../../components/worker-starter"
 
 # Starters
 
+## JavaScript, TypeScript
+
 <WorkerStarter
   title="Hello World"
   description="A bare-bones starter in JavaScript."
@@ -17,48 +19,6 @@ import WorkerStarter from "../../components/worker-starter"
   title="Hello World (TypeScript)"
   description="A bare-bones starter in TypeScript."
   repo="EverlastingBugstopper/worker-typescript-template"
-/>
-
-<WorkerStarter
-  title="Hello World (Rust)"
-  description="A bare-bones starter in Rust."
-  repo="cloudflare/rustwasm-worker-template"
-/>
-
-<WorkerStarter
-  title="Hello World (Python)"
-  description="A bare-bones starter in Python."
-  repo="cloudflare/python-worker-hello-world"
-/>
-
-<WorkerStarter
-  title="Hello World (Scala)"
-  description="A bare-bones starter in Scala."
-  repo="cloudflare/scala-worker-hello-world"
-/>
-
-<WorkerStarter
-  title="Hello World (Reason)"
-  description="A bare-bones starter in Reason."
-  repo="cloudflare/reason-worker-hello-world"
-/>
-
-<WorkerStarter
-  title="Hello World (Dart)"
-  description="A bare-bones starter in Dart."
-  repo="cloudflare/dart-worker-hello-world"
-/>
-
-<WorkerStarter
-  title="Hello World (Kotlin)"
-  description="A bare-bones starter in Kotlin."
-  repo="cloudflare/kotlin-worker-hello-world"
-/>
-
-<WorkerStarter
-  title="Hello World (COBOL)"
-  description="A bare-bones starter in COBOL."
-  repo="cloudflare/cobol-worker-template"
 />
 
 <WorkerStarter
@@ -113,4 +73,48 @@ import WorkerStarter from "../../components/worker-starter"
   title="BinAST"
   description="Serve a JavaScript Binary AST via a Cloudflare Worker."
   repo="xtuc/binast-cf-worker-template"
+/>
+
+## Other languages
+
+<WorkerStarter
+  title="Hello World (Rust)"
+  description="A bare-bones starter in Rust."
+  repo="cloudflare/rustwasm-worker-template"
+/>
+
+<WorkerStarter
+  title="Hello World (Python)"
+  description="A bare-bones starter in Python."
+  repo="cloudflare/python-worker-hello-world"
+/>
+
+<WorkerStarter
+  title="Hello World (Scala)"
+  description="A bare-bones starter in Scala."
+  repo="cloudflare/scala-worker-hello-world"
+/>
+
+<WorkerStarter
+  title="Hello World (Reason)"
+  description="A bare-bones starter in Reason."
+  repo="cloudflare/reason-worker-hello-world"
+/>
+
+<WorkerStarter
+  title="Hello World (Dart)"
+  description="A bare-bones starter in Dart."
+  repo="cloudflare/dart-worker-hello-world"
+/>
+
+<WorkerStarter
+  title="Hello World (Kotlin)"
+  description="A bare-bones starter in Kotlin."
+  repo="cloudflare/kotlin-worker-hello-world"
+/>
+
+<WorkerStarter
+  title="Hello World (COBOL)"
+  description="A bare-bones starter in COBOL."
+  repo="cloudflare/cobol-worker-template"
 />
