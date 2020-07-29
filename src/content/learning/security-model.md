@@ -42,7 +42,7 @@ Aside from reading configuration, the other reason for the sandbox to talk to ot
 
 ### API Design
 
-There is a saying: "If a tree falls in the forest, but no one is there to hear it, does it make a sound?" I have a related saying: "If a Worker executes in a fully-isolated environment in which it is totally prevented from communicating with the outside world, does it actually run?"
+There is a saying: "If a tree falls in the forest, but no one is there to hear it, does it make a sound?" We have a related saying: "If a Worker executes in a fully-isolated environment in which it is totally prevented from communicating with the outside world, does it actually run?"
 
 Complete code isolation is, in fact, useless. In order for Workers to do anything useful, they have to be allowed to communicate with users. At the very least, a Worker needs to be able to receive requests and respond to them. It would also be nice if it could send requests to the world, safely. For that, we need APIs.
 
@@ -81,7 +81,7 @@ As a result, our patch gap is now under 24 hours. A patch published by V8's team
 ![Spectre-vulnerability-@2x](https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/Spectre-vulnerability-@2x.png)
 We get a lot of questions about Spectre. The V8 team at Google has stated in no uncertain terms that [V8 itself cannot defend against Spectre](https://arxiv.org/abs/1902.05178). Since Workers relies on V8 for sandboxing, many have asked if that leaves Workers vulnerable. However, we do not need to depend on V8 for this; the Workers environment presents many alternative approaches to mitigating Spectre.
 
-Spectre is complicated and nuanced, and there's no way I can cover everything there is to know about it or how Workers addresses it in a single blog post. But, hopefully I can clear up some of the confusion and concern.
+Spectre is complicated and nuanced, and there's no way we can cover everything there is to know about it or how Workers addresses it in a single article. But, hopefully we can clear up some of the confusion and concern.
 ### What is it?
 Spectre is a class of attacks in which a malicious program can trick the CPU into "speculatively" performing computation using data that the program is not supposed to have access to. The CPU eventually realizes the problem and does not allow the program to see the results of the speculative computation. However, the program may be able to derive bits of the secret data by looking at subtle side effects of the computation, such as the effects on cache.
 
@@ -201,7 +201,7 @@ Spectre attacks, you see, do a lot of "weird stuff" that you wouldn't usually ex
 
 Now, the usual problem with using performance metrics to detect Spectre attacks is that sometimes you get false positives. Sometimes, a legitimate program behaves really badly. You can't go around shutting down every app that has bad performance.
 
-Luckily, we don't have to. Instead, we can choose to reschedule any Worker with suspicious performance metrics into its own process. As I described above, we can't do this with every Worker, because the overhead would be too high. But, it's totally fine to process-isolate just a few Workers, defensively. If the Worker is legitimate, it will keep operating just fine, albeit with a little more overhead. Fortunately for us, the nature of our platform is such that we can reschedule a Worker into its own process at basically any time.
+Luckily, we don't have to. Instead, we can choose to reschedule any Worker with suspicious performance metrics into its own process. As we described above, we can't do this with every Worker, because the overhead would be too high. But, it's totally fine to process-isolate just a few Workers, defensively. If the Worker is legitimate, it will keep operating just fine, albeit with a little more overhead. Fortunately for us, the nature of our platform is such that we can reschedule a Worker into its own process at basically any time.
 
 In fact, fancy performance-counter based triggering may not even be necessary here. If a Worker merely uses a large amount of CPU time per event, then the overhead of isolating it in its own process is relatively less, because it switches context less often. So, we might as well use process isolation for any Worker that is CPU-hungry.
 
@@ -209,7 +209,7 @@ Once a Worker is isolated, then we can rely on the operating system's Spectre de
 
 Over the past year we've been working with the experts at Graz Technical University to develop this approach. (TU Graz's team co-discovered Spectre itself, and has been responsible for a huge number of the follow-on discoveries since then.) We have developed the ability to dynamically isolate workers, and we have identified metrics which reliably detect attacks. The whole system is currently undergoing testing to work out any remaining bugs, and we expect to roll it out fully within the next several weeks.
 
-But wait, didn't I say earlier that even process isolation isn't a complete defense, because it only addresses known vulnerabilities? Yes, this is still true. However, the trend over time is that new Spectre attacks tend to be slower and slower to carry out, and hence we can reasonably guess that by imposing process isolation we have further slowed down even attacks that we don't know about yet.
+But didn't we say earlier that even process isolation isn't a complete defense, because it only addresses known vulnerabilities? Yes, this is still true. However, the trend over time is that new Spectre attacks tend to be slower and slower to carry out, and hence we can reasonably guess that by imposing process isolation we have further slowed down even attacks that we don't know about yet.
 
 ### Step 3: Periodic Whole-Memory Shuffling
 
