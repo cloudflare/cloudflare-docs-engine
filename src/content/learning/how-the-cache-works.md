@@ -1,10 +1,10 @@
 # How the Cache works
 
-Since Workers was built atop Cloudflare's network, since its early days, it was designed to allow developers to interact directly with the Cloudflare cache. The cache can provide ephemeral, colo-local storage, as a convenient way to frequently accessed static or dynamic content.
+Since Workers was built atop Cloudflare’s network, since its early days, it was designed to allow developers to interact directly with the Cloudflare cache. The cache can provide ephemeral, colo-local storage, as a convenient way to frequently accessed static or dynamic content.
 
-By allowing developers to write to the cache, Workers provide a way to customize cache behavior on Cloudflare's CDN. To learn about the benefits of caching see our Learning Center's article on [What is Caching?](https://www.cloudflare.com/learning/cdn/what-is-caching/).
+By allowing developers to write to the cache, Workers provide a way to customize cache behavior on Cloudflare’s CDN. To learn about the benefits of caching see our Learning Center’s article on [What is Caching?](https://www.cloudflare.com/learning/cdn/what-is-caching/).
 
-Since Cloudflare's Workers can run before, and after the cache, a Worker can also be utilized to modify assets once they are returned from the cache, to sign or personalize responses, while reducing load on an origin, or latency to the end user by serving assets from a nearby location.
+Since Cloudflare’s Workers can run before, and after the cache, a Worker can also be utilized to modify assets once they are returned from the cache, to sign or personalize responses, while reducing load on an origin, or latency to the end user by serving assets from a nearby location.
 
 <!-- TODO -->
 <!--
@@ -17,9 +17,9 @@ Since Cloudflare's Workers can run before, and after the cache, a Worker can als
 
 ## Interacting with the Cloudflare Cache
 
-Conceptually, there are two ways to interact with Cloudflare's Cache using a Worker:
+Conceptually, there are two ways to interact with Cloudflare’s Cache using a Worker:
 
-- Call to [`fetch()`](/runtime-apis/fetch) in a Workers script. Requests proxied through Cloudflare are cached even without Workers according to a zone's default or configured behavior (e.g. static assets like files ending in .jpg are cached by default). Workers can further customize this behavior by:
+- Call to [`fetch()`](/runtime-apis/fetch) in a Workers script. Requests proxied through Cloudflare are cached even without Workers according to a zone’s default or configured behavior (e.g. static assets like files ending in .jpg are cached by default). Workers can further customize this behavior by:
 
   - Setting Cloudflare cache rules (i.e. operating on the `cf` object of a [request](/runtime-apis/request)).
 
@@ -35,7 +35,7 @@ Conceptually, there are two ways to interact with Cloudflare's Cache using a Wor
 
 The browser cache is controlled through the `Cache-Control` header sent in the response to the eyeball (the response passed or promised to `event.respondWith()`). Workers can customize browser cache behavior by setting this header on the response.
 
-We won't discuss in this article, but other means to control Cloudflare's cache include: Page rules and Cloudflare cache settings. I highly recommend the article [How to Control Cloudflare's cache](https://support.cloudflare.com/hc/en-us/articles/202775670) if you wish to avoid writing Javascript with still some granularity of control.
+We won’t discuss in this article, but other means to control Cloudflare’s cache include: Page rules and Cloudflare cache settings. I highly recommend the article [How to Control Cloudflare’s cache](https://support.cloudflare.com/hc/en-us/articles/202775670) if you wish to avoid writing Javascript with still some granularity of control.
 
 **What should I use: the Cache API or fetch for caching objects on Cloudflare?**
 
@@ -43,7 +43,7 @@ For requests where Workers are behaving as middleware (i.e. they are sending a s
 
 ### `fetch`
 
-In the context of Workers a [`fetch`](/runtime-apis/fetch) provided by the runtime communicates with the Cloudflare cache. First, `fetch` checks to see if the URL matches a different zone. If it does, it reads through that zone's cache (or Worker!). Otherwise, it reads through its own zone's cache, even if the URL is for a non-Cloudflare site. Cache settings on `fetch` automatically apply caching rules based on your Cloudflare settings. `fetch` does not allow you to _modify or inspect objects_ before they reach the cache, but does allow you to modify _how it will cache_.
+In the context of Workers a [`fetch`](/runtime-apis/fetch) provided by the runtime communicates with the Cloudflare cache. First, `fetch` checks to see if the URL matches a different zone. If it does, it reads through that zone’s cache (or Worker!). Otherwise, it reads through its own zone’s cache, even if the URL is for a non-Cloudflare site. Cache settings on `fetch` automatically apply caching rules based on your Cloudflare settings. `fetch` does not allow you to _modify or inspect objects_ before they reach the cache, but does allow you to modify _how it will cache_.
 
 When a response fills the cache, the response header contains `CF-Cache-Status: HIT`. You can tell an object is attempting to cache if one sees the `CF-Cache-Status` at all.
 
@@ -61,6 +61,6 @@ There are two types of cache namespaces available to the Cloudflare Cache:
 When to use the Cache API:
 
 - When you need to read from cache without calling fetch. (i.e. send me the response from `slow.com/resource` if and only if it’s already a HIT on cache using `caches.default.match(..)`.
-- Explicitly store a response in the cache using `caches.default.put(..)` and explicitly delete `caches.default.delete(..)`. For example, say your origin is returning `max-age:0` and you can't figure out how to change that header at your origin. You can explicitly tell Cloudflare to cache this response by setting `cache-control: max-age=1000` on the response passed into `cache.put()`.
+- Explicitly store a response in the cache using `caches.default.put(..)` and explicitly delete `caches.default.delete(..)`. For example, say your origin is returning `max-age:0` and you can’t figure out how to change that header at your origin. You can explicitly tell Cloudflare to cache this response by setting `cache-control: max-age=1000` on the response passed into `cache.put()`.
 
 This [template](/examples/pages/cache_api) shows ways to use the cache API. For limits of the cache API see [limits](/platform/limits#cache-api-limits).

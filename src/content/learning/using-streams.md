@@ -20,7 +20,7 @@ The two primitives developers use to perform active streaming are [`TransformStr
 A basic pass-through usage of streams looks like this:
 
 ```js
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(fetchAndStream(event.request))
 })
 
@@ -60,5 +60,5 @@ The Streams API is only available inside of the Request context, i.e. inside the
 ## See also
 
 - [Streams API Reference](/runtime-apis/streams)
-- [MDN's Streams API documentation.](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)
+- [MDN’s Streams API documentation.](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)
 - [Streams API Specification](https://streams.spec.whatwg.org/)

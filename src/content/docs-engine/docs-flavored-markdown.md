@@ -440,7 +440,7 @@ Filenames are applied by setting `filename: ______` in the code frontmatter.
 ---
 filename: hello-worker.js
 ---
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
@@ -456,7 +456,7 @@ Here’s what that example looks like:
 ---
 filename: hello-worker.js
 ---
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 

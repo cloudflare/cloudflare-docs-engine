@@ -68,8 +68,8 @@ highlight: [3, 4, 5]
 # ... previous wrangler config
 
 [site]
-bucket = './build'
-entry-point = 'workers-site'
+bucket = "./build"
+entry-point = "workers-site"
 ```
 
 With a configured `wrangler.toml` file, it’s time to build your project, and publish it to Workers. Run `npm run build` to tell `create-react-app` to build your site, and `wrangler publish` to deploy it to Workers:
@@ -98,7 +98,7 @@ Like all Workers scripts, the static site feature begins by listening for incomi
 ---
 filename: index.js
 ---
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 ```

@@ -49,9 +49,9 @@ All Cloudflare Workers applications start by listening for `fetch` events, which
 
 ```js
 ---
-filename: 'index.js'
+filename: "index.js"
 ---
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
@@ -60,7 +60,7 @@ addEventListener('fetch', event => {
  * @param {Request} request
  */
 async function handleRequest(request) {
-  return new Response('Hello worker!', { status: 200 })
+  return new Response("Hello worker!", { status: 200 })
 }
 ```
 
@@ -80,12 +80,12 @@ Currently, our Workers function receives requests, and returns a simple response
 
 ```js
 ---
-filename: 'index.js'
+filename: "index.js"
 highlight: [2, 3, 4]
 ---
 async function handleRequest(request) {
-  if (request.method === 'POST') {
-    return new Response('Hello worker!', { status: 200 })
+  if (request.method === "POST") {
+    return new Response("Hello worker!", { status: 200 })
   }
 }
 ```
@@ -94,15 +94,15 @@ Currently, if an incoming request isn’t a POST, `response` will be undefined. 
 
 ```js
 ---
-filename: 'index.js'
+filename: "index.js"
 highlight: [5, 6, 7, 8]
 ---
 async function handleRequest(request) {
   let response
-  if (request.method === 'POST') {
-    response = new Response('Hello worker!', { status: 200 })
+  if (request.method === "POST") {
+    response = new Response("Hello worker!", { status: 200 })
   } else {
-    response = new Response('Expected POST', { status: 405 })
+    response = new Response("Expected POST", { status: 405 })
   }
   return response
 }
@@ -112,16 +112,16 @@ With the basic flow of `handleRequest` established, it’s time to think about h
 
 ```js
 ---
-filename: 'index.js'
+filename: "index.js"
 highlight: [1, 2, 3, 8]
 ---
 const generate = async request => {
-  return new Response('Hello worker!', { status: 200 })
+  return new Response("Hello worker!", { status: 200 })
 }
 
 async function handleRequest(request) {
   // ...
-  if (request.method === 'POST') {
+  if (request.method === "POST") {
     response = await generate(request)
   // ...
 }
@@ -142,15 +142,15 @@ In `index.js`, require the `qr-image` package as the variable `qr`. In the `gene
 
 ```js
 ---
-filename: 'index.js'
+filename: "index.js"
 highlight: [1, 2, 3, 4, 5, 6, 7]
 ---
-const qr = require('qr-image')
+const qr = require("qr-image")
 
 const generate = async request => {
   const body = await request.json()
   const text = body.text
-  const qr_png = qr.imageSync(text || 'https://workers.dev')
+  const qr_png = qr.imageSync(text || "https://workers.dev")
 }
 ```
 
@@ -158,13 +158,13 @@ By default, the QR code is generated as a PNG. Construct a new instance of `Resp
 
 ```js
 ---
-filename: 'index.js'
+filename: "index.js"
 highlight: [5]
 ---
 const generate = async request => {
   const body = await request.json()
   const text = body.text
-  const qr_png = qr.imageSync(text || 'https://workers.dev')
+  const qr_png = qr.imageSync(text || "https://workers.dev")
   return new Response(qr_png, { headers })
 }
 ```
@@ -173,12 +173,12 @@ With the `generate` function filled out, we can simply wait for the generation t
 
 ```js
 ---
-filename: 'index.js'
+filename: "index.js"
 highlight: [4]
 ---
 async function handleRequest(request) {
   // ...
-  if (request.method === 'POST') {
+  if (request.method === "POST") {
     response = await generate(request)
   // ...
 }
@@ -190,20 +190,20 @@ The serverless function will work if a user sends a `POST` request to a route, b
 
 ```js
 ---
-filename: 'index.js'
+filename: "index.js"
 highlight: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 23]
 ---
 const landing = `
 <h1>QR Generator</h1>
 <p>Click the below button to generate a new QR code. This will make a request to your serverless function.</p>
 <input type="text" id="text" value="https://workers.dev"></input>
-<button onclick='generate()'>Generate QR Code</button>
-<p>Check the "Network" tab in your browser's developer tools to see the generated QR code.</p>
+<button onclick="generate()">Generate QR Code</button>
+<p>Check the "Network" tab in your browser’s developer tools to see the generated QR code.</p>
 <script>
   function generate() {
     fetch(window.location.pathname, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text: document.querySelector("#text").value })
     })
   }
@@ -212,10 +212,10 @@ const landing = `
 
 async function handleRequest(request) {
   let response
-  if (request.method === 'POST') {
+  if (request.method === "POST") {
     response = await generate(request)
   } else {
-    response = new Response(landing, { headers: { 'Content-Type': 'text/html' } })
+    response = new Response(landing, { headers: { "Content-Type": "text/html" } })
   }
   return response
 }
@@ -229,14 +229,14 @@ With that, your serverless function is complete! The full version of the code lo
 
 ```js
 ---
-filename: 'index.js'
+filename: "index.js"
 ---
-const qr = require('qr-image')
+const qr = require("qr-image")
 
 const generate = async request => {
   const { text } = await request.json()
-  const headers = { 'Content-Type': 'image/png' }
-  const qr_png = qr.imageSync(text || 'https://workers.dev')
+  const headers = { "Content-Type": "image/png" }
+  const qr_png = qr.imageSync(text || "https://workers.dev")
   return new Response(qr_png, { headers })
 }
 
@@ -244,13 +244,13 @@ const landing = `
 <h1>QR Generator</h1>
 <p>Click the below button to generate a new QR code. This will make a request to your serverless function.</p>
 <input type="text" id="text" value="https://workers.dev"></input>
-<button onclick='generate()'>Generate QR Code</button>
-<p>Check the "Network" tab in your browser's developer tools to see the generated QR code.</p>
+<button onclick="generate()">Generate QR Code</button>
+<p>Check the "Network" tab in your browser’s developer tools to see the generated QR code.</p>
 <script>
   function generate() {
     fetch(window.location.pathname, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text: document.querySelector("#text").value })
     })
   }
@@ -259,15 +259,15 @@ const landing = `
 
 async function handleRequest(request) {
   let response
-  if (request.method === 'POST') {
+  if (request.method === "POST") {
     response = await generate(request)
   } else {
-    response = new Response(landing, { headers: { 'Content-Type': 'text/html' } })
+    response = new Response(landing, { headers: { "Content-Type": "text/html" } })
   }
   return response
 }
 
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 ```

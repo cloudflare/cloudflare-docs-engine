@@ -14,16 +14,16 @@ To build this application, we’ll use [Wrangler](https://github.com/cloudflare/
 
 Before starting this project, you should have some experience with HTML, CSS, and JavaScript. If you’re new to writing web apps, Workers is a great place to get started. Building with Workers is a super easy to focus on writing code, and actually shipping projects! In particular, the addition of Workers KV makes this tutorial a great introduction to building full, data-driven applications.
 
-If you’d like to see the finished code for this project, find the project [on GitHub](https://github.com/signalnerve/cloudflare-workers-todos), and check out the [live demo](https://todos.signalnerve.workers.dev/) to see what you'll be building!
+If you’d like to see the finished code for this project, find the project [on GitHub](https://github.com/signalnerve/cloudflare-workers-todos), and check out the [live demo](https://todos.signalnerve.workers.dev/) to see what you’ll be building!
 
 ## Prerequisites
 
-To publish your application to Cloudflare Workers, you'll need a few things:
+To publish your application to Cloudflare Workers, you’ll need a few things:
 
 - A Cloudflare account, and access to the API keys for that account
 - A Wrangler installation running locally on your machine, and access to the command-line
 
-You'll also need to get your Cloudflare API keys to deploy code to Cloudflare Workers: see [“Finding your Cloudflare API keys”](/quickstart/api-keys) for a brief guide on how to find them.
+You’ll also need to get your Cloudflare API keys to deploy code to Cloudflare Workers: see [“Finding your Cloudflare API keys”](/quickstart/api-keys) for a brief guide on how to find them.
 
 _Note: Workers KV is only available to users with a paid Workers plan._
 
@@ -64,7 +64,7 @@ async function handleRequest(request) {
 }
 ```
 
-In your default `index.js` file, we can see that request/response pattern in action. The `handleRequest` constructs a new `Response` with the body text “Hello worker”, as well as an explicit status code of 200. When a `fetch` event comes into the worker, the script uses `event.respondWith` to return that new response back to the client. This means that your Cloudflare Worker script will serve new responses directly from Cloudflare's cloud network: instead of continuing to the origin, where a standard server would accept requests, and return responses, Cloudflare Workers allows you to respond quickly and efficiently by constructing responses directly on the edge.
+In your default `index.js` file, we can see that request/response pattern in action. The `handleRequest` constructs a new `Response` with the body text “Hello worker”, as well as an explicit status code of 200. When a `fetch` event comes into the worker, the script uses `event.respondWith` to return that new response back to the client. This means that your Cloudflare Worker script will serve new responses directly from Cloudflare’s cloud network: instead of continuing to the origin, where a standard server would accept requests, and return responses, Cloudflare Workers allows you to respond quickly and efficiently by constructing responses directly on the edge.
 
 ## Build
 
@@ -104,7 +104,7 @@ kv_namespaces = [
 
 The defined namespace, `TODOS`, will now be available inside of your codebase. With that, it’s time to understand the KV API. A KV namespace has three primary methods you can use to interface with your cache: `get`, `put`, and `delete`. Pretty straightforward!
 
-Let's start storing data by defining an initial set of data, which we’ll put inside of the cache using the `put` method. I’ve opted to define an object, `defaultData`, instead of a simple array of todos: we may want to store metadata and other information inside of this cache object later on. Given that data object, I’ll use `JSON.stringify` to put a simple string into the cache:
+Let’s start storing data by defining an initial set of data, which we’ll put inside of the cache using the `put` method. I’ve opted to define an object, `defaultData`, instead of a simple array of todos: we may want to store metadata and other information inside of this cache object later on. Given that data object, I’ll use `JSON.stringify` to put a simple string into the cache:
 
 ```js
 ---
@@ -260,7 +260,7 @@ const html = todos => `
   <!-- existing content -->
   <script>
     window.todos = ${todos}
-    var todoContainer = document.querySelector("#todos");
+    var todoContainer = document.querySelector("#todos")
     // ...
   <script>
 </html>
@@ -287,7 +287,7 @@ async function handleRequest(request) {
 
 At this point, we’ve built a Cloudflare Worker that takes data from Cloudflare KV and renders a static page based on it. That static page reads the data, and generates a todo list based on that data. Of course, the piece we’re missing is creating todos, from inside the UI. We know that we can add todos using the KV API — we could simply update the cache by saying `TODOS.put(newData)`, but how do we update it from inside the UI?
 
-To implement this, we'll add a second handler in our Workers script, designed to watch for `PUT` requests to `/`. When a body is received at that URL, the worker will send the new todo data to our KV store.
+To implement this, we’ll add a second handler in our Workers script, designed to watch for `PUT` requests to `/`. When a body is received at that URL, the worker will send the new todo data to our KV store.
 
 Add this new functionality in `handleRequest`: if the request method is a PUT, it will take the request body and update the cache.
 
@@ -541,7 +541,7 @@ const html = todos => `
     var populateTodos = function() {
       window.todos.forEach(todo => {
         // Existing todo element set up code
-        checkbox.addEventListener('click', completeTodo)
+        checkbox.addEventListener("click", completeTodo)
       })
     }
 
@@ -638,7 +638,7 @@ const html = todos => `
     window.todos = ${todos}
 
     var updateTodos = function() {
-      fetch("/", { method: 'PUT', body: JSON.stringify({ todos: window.todos }) })
+      fetch("/", { method: "PUT", body: JSON.stringify({ todos: window.todos }) })
       populateTodos()
     }
 
@@ -669,7 +669,7 @@ const html = todos => `
         checkbox.className = "mx-4"
         checkbox.type = "checkbox"
         checkbox.checked = todo.completed ? 1 : 0
-        checkbox.addEventListener('click', completeTodo)
+        checkbox.addEventListener("click", completeTodo)
 
         el.appendChild(checkbox)
         el.appendChild(name)
@@ -688,7 +688,7 @@ const html = todos => `
       }
     }
 
-    document.querySelector("#create").addEventListener('click', createTodo)
+    document.querySelector("#create").addEventListener("click", createTodo)
   </script>
 </html>
 `

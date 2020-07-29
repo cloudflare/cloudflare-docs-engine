@@ -32,7 +32,7 @@ $ wrangler generate [$NAME] [$TEMPLATE] [--type=$TYPE] [--site]
 
 ## init
 
-Creates a skeleton `wrangler.toml` in an existing directory. This can be used as an alternative to `generate` if you prefer to clone a template repository yourself, or you already have a JavaScript project and you'd like to use Wrangler.
+Creates a skeleton `wrangler.toml` in an existing directory. This can be used as an alternative to `generate` if you prefer to clone a template repository yourself, or you already have a JavaScript project and you’d like to use Wrangler.
 
 ```sh
 $ wrangler init [$NAME] [--type=$TYPE] [--site]
@@ -175,11 +175,11 @@ __Note:__ This feature is still in alpha! The way this tool works in the future 
 
 ### Usage
 
-`wrangler dev` will start a server on `localhost` that connects to Cloudflare's servers and executes your Worker on incoming HTTP requests. After starting `wrangler dev` in a directory with a project, you can send it HTTP requests to test your Worker with clients such as cURL, Postman, or your browser.
+`wrangler dev` will start a server on `localhost` that connects to Cloudflare’s servers and executes your Worker on incoming HTTP requests. After starting `wrangler dev` in a directory with a project, you can send it HTTP requests to test your Worker with clients such as cURL, Postman, or your browser.
 
 You should run `wrangler dev` from your Worker directory, and if your Worker makes any requests to a backend, you should specify the host with `--host example.com`.
 
-From here you can send HTTP requests to `localhost:8787` and your Worker should execute as expected. You will also see console.log messages and exceptions appearing in your terminal. If either of these things _don't_ happen, or you think the output is incorrect, please [file an issue](https://github.com/cloudflare/wrangler).
+From here you can send HTTP requests to `localhost:8787` and your Worker should execute as expected. You will also see console.log messages and exceptions appearing in your terminal. If either of these things _don’t_ happen, or you think the output is incorrect, please [file an issue](https://github.com/cloudflare/wrangler).
 
 If you have feedback about `wrangler dev` or general questions, we will respond [here](https://github.com/cloudflare/wrangler/issues/1047).
 
@@ -209,7 +209,7 @@ $ wrangler tail [--port  $PORT] [--metrics-port $PORT]
 
 After starting `wrangler tail` in a directory with a project, you will receive a live feed of console and exception logs for each request your Worker receives.
 
-Like all Wrangler commands, run `wrangler tail` from your Worker's root directory (i.e. the directory with your `wrangler.toml`).
+Like all Wrangler commands, run `wrangler tail` from your Worker’s root directory (i.e. the directory with your `wrangler.toml`).
 
 ### Dependencies
 
@@ -252,11 +252,11 @@ If you are using [kv_namespaces](/cli-wrangler/configuration#kv_namespaces) with
 
 WSL is a Linux environment, so `wrangler` attempts to invoke `xdg-open` in order to open your browser. To make `wrangler preview` work with WSL, you should set your `$BROWSER` to the path of your browser binary.
 
-eg. `$ export BROWSER='/mnt/c/tools/firefox.exe'`
+eg. `$ export BROWSER="/mnt/c/tools/firefox.exe"`
 Spaces in filepaths are not common in Linux, and some programs like `xdg-open` break on [paths with spaces](https://github.com/microsoft/WSL/issues/3632#issuecomment-432821522). You can work around this by linking the binary to your `/usr/local/bin` eg:
 
 ```sh
-$ ln -s '/mnt/c/Program Files/Mozilla Firefox/firefox.exe' firefox
+$ ln -s "/mnt/c/Program Files/Mozilla Firefox/firefox.exe" firefox
 $ export BROWSER=firefox
 ```
 
@@ -264,7 +264,7 @@ $ export BROWSER=firefox
 
 Another option is to install [wsl-open](https://github.com/4U6U57/wsl-open#standalone) and set the `$BROWSER` env variable to `wsl-open`, via `wsl-open -w`. This ensures that `xdg-open` uses `wsl-open` when it attempts to open your browser.
 
-If you're using WSL 2, you will need to install `wsl-open` via their [standalone method](https://github.com/4U6U57/wsl-open#standalone) rather than through `npm`. This is because their npm package has not yet been updated with WSL 2 support.
+If you’re using WSL 2, you will need to install `wsl-open` via their [standalone method](https://github.com/4U6U57/wsl-open#standalone) rather than through `npm`. This is because their npm package has not yet been updated with WSL 2 support.
 
 --------------------------------
 
@@ -320,7 +320,7 @@ Interactive command to create or replace a secret
 
 ```sh
 $ wrangler secret put <name> --env ENVIRONMENT_NAME
-Enter the secret text you'd like assigned to the variable name on the script named my-worker-ENVIRONMENT_NAME:
+Enter the secret text you’d like assigned to the variable name on the script named my-worker-ENVIRONMENT_NAME:
 ```
 
 <Definitions>
@@ -370,7 +370,7 @@ $ wrangler secret list --env ENVIRONMENT_NAME
 
 Interact with your Cloudflare Workers KV store.
 
-If you've already selected a workers.dev subdomain, running `wrangler subdomain <name>` will update all your currently running Workers to run on the new subdomain (e.g. `hello.world.workers.dev` will now run on `hello.new-world.workers.dev`).
+If you’ve already selected a workers.dev subdomain, running `wrangler subdomain <name>` will update all your currently running Workers to run on the new subdomain (e.g. `hello.world.workers.dev` will now run on `hello.new-world.workers.dev`).
 
 <Definitions>
 
@@ -394,7 +394,7 @@ To use Workers KV with your Worker, the first thing you must do is create a KV n
 the `kv:namespace` subcommand.
 
 The `kv:namespace` subcommand takes as a new binding name as an argument. It will create a Worker KV namespace
-whose title is a concatenation of your Worker's name (from `wrangler.toml`) and the binding name you provide:
+whose title is a concatenation of your Worker’s name (from `wrangler.toml`) and the binding name you provide:
 
 ```sh
 $ wrangler kv:namespace create "MY_KV"
@@ -410,7 +410,7 @@ Make sure to add the `kv_namespaces` output above to your `wrangler.toml`. You c
 access it from a Worker with code like:
 
 ```js
-let value = await MY_KV.get("my-key");
+let value = await MY_KV.get("my-key")
 ```
 
 To put a value to your KV namespace via Wrangler, use the `kv:key put` subcommand.
@@ -450,7 +450,7 @@ $ wrangler kv:key put --env=staging --binding=MY_MV "key" "value"
 ✨  Success
 ```
 
-Since `--namespace-id` is always unique (unlike binding names), you don't need to pass environment variables for them (they will be unused).
+Since `--namespace-id` is always unique (unlike binding names), you don’t need to pass environment variables for them (they will be unused).
 
 There are way more helpful Wrangler subcommands for interacting with Workers KV, like ones for bulk uploads and deletes--check them out below!
 
@@ -557,7 +557,7 @@ $ wrangler kv:namespace list
 The example below uses the `jq` command line tool to pretty-print output.
 
 ```sh
-$ wrangler kv:namespace list | jq '.'
+$ wrangler kv:namespace list | jq "."
 [
     {
         "id": "06779da6940b431db6e566b4846d64db",
@@ -641,10 +641,10 @@ $ wrangler kv:key put --binding= [--namespace-id=] $KEY $VALUE
     - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
-    - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`'s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
+    - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
 
   - `--ttl` <PropMeta>optional</PropMeta>
-    - Number of seconds for which the entries should be visible before they expire. At least 60. Takes precedence over 'expiration' option.
+    - Number of seconds for which the entries should be visible before they expire. At least 60. Takes precedence over `expiration` option.
 
   - `--expiration` <PropMeta>optional</PropMeta>
     - Number of seconds since the UNIX epoch, indicating when the key-value pair should expire.
@@ -705,7 +705,7 @@ $ wrangler kv:key list --binding= [--namespace-id=] [--prefix] [--env]
 The example below uses the `jq` command line tool to pretty-print output.
 
 ```sh
-$ wrangler kv:key list --binding=MY_KV --prefix="public" | jq '.'
+$ wrangler kv:key list --binding=MY_KV --prefix="public" | jq "."
 [
     {
         "name": "public_key"
@@ -740,7 +740,7 @@ $ wrangler kv:key get --binding= [--env=] [--preview] [--namespace-id=] "$KEY"
     - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
-    - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`'s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
+    - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
 
 </Definitions>
 
@@ -774,7 +774,7 @@ $ wrangler kv:key delete --binding= [--env=] [--preview] [--namespace-id=] "$KEY
     - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
-    - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`'s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
+    - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
 
 </Definitions>
 
@@ -813,7 +813,7 @@ $ wrangler kv:key put --binding= [--env=] [--preview] [--namespace-id=] $FILENAM
     - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
-    - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`'s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
+    - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
 
 </Definitions>
 
@@ -834,7 +834,7 @@ The schema below is the full schema for key-value entries uploaded via the bulk 
 <Definitions>
 
   - `key` <Type>string</Type> <PropMeta>required</PropMeta>
-    - A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
+    - A key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
 
   - `value` <Type>string</Type> <PropMeta>required</PropMeta>
     - A UTF-8 encoded string to be stored, up to 10 MB in length.
@@ -846,7 +846,7 @@ The schema below is the full schema for key-value entries uploaded via the bulk 
     - The number of seconds for which the key should be visible before it expires. At least 60.
 
   - `base64` <Type>bool</Type> <PropMeta>optional</PropMeta>
-    - Whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn't otherwise be valid JSON strings, such as images. Defaults to `false`.
+    - Whether or not the server should base64 decode the value before storing it. Useful for writing values that wouldn’t otherwise be valid JSON strings, such as images. Defaults to `false`.
 
 </Definitions>
 
@@ -883,7 +883,7 @@ $ wrangler kv:key delete --binding= [--env=] [--preview] [--namespace-id=] $FILE
     - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
 
   - `--preview` <PropMeta>optional</PropMeta>
-    - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`'s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
+    - Interact with a preview namespace instead of production. Pass this to use your `wrangler.toml`’s `kv_namespaces.preview_id` instead of `kv_namespaces.id`
 
 </Definitions>
 
@@ -902,7 +902,7 @@ Takes as an argument a JSON file with a list of key-value pairs to delete (see J
 <Definitions>
 
   - `key` <Type>string</Type> <PropMeta>required</PropMeta>
-    - A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
+    - A key’s name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid.
 
   - `value` <Type>string</Type> <PropMeta>required</PropMeta>
     - A UTF-8 encoded string to be stored, up to 10 MB in length.

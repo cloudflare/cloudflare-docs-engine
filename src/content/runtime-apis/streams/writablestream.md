@@ -9,7 +9,7 @@ A typical way to write to a `WritableStream` is to simply pipe a [`ReadableStrea
 ```js
 readableStream.pipeTo(writableStream)
   .then(() => console.log("All data successfully written!"))
-  .catch(e => console.error("Something went wrong!", e));
+  .catch(e => console.error("Something went wrong!", e))
 ```
 
 To write to a `WritableStream` directly, you must use its writer.
@@ -37,7 +37,7 @@ See the [WritableStreamDefaultWriter](/runtime-apis/streams/writablestreamdefaul
 
 - <Code>abort(reason<ParamType>string</ParamType><PropMeta>optional</PropMeta>)</Code> <Type>Promise&lt;void></Type>
 
-  - Aborts the stream. This method returns a promise that fulfills with a response `undefined`. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying sink's abort algorithm. If this writable stream is one side of a [TransformStream](/runtime-apis/streams/transformstream), then its abort algorithm causes the transform's readable side to become errored with `reason`.
+  - Aborts the stream. This method returns a promise that fulfills with a response `undefined`. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying sink’s abort algorithm. If this writable stream is one side of a [TransformStream](/runtime-apis/streams/transformstream), then its abort algorithm causes the transform’s readable side to become errored with `reason`.
 
   <Aside type="warning" header="Warning">
 

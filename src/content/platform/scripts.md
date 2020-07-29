@@ -137,7 +137,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 
 #### Add a secret text binding
 
-*Note: Secrets are persisted between deploys of a Worker. You only need to include secrets in API calls when you are adding or changing the secret's content.*
+*Note: Secrets are persisted between deploys of a Worker. You only need to include secrets in API calls when you are adding or changing the secret’s content.*
 
 <!-- TODO: migrate Environement Variables page https://git.io/JJuRR -->
 If your Worker script uses [secrets](reference/apis/environment-variables#secrets), add a corresponding `secret_text` binding to the `"bindings"` array in `metadata.json`:
@@ -391,7 +391,7 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 Response:
 
 ```js
-addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })
+addEventListener("fetch", event => { event.respondWith(fetch(event.request)) })
 ```
 
 ### Request

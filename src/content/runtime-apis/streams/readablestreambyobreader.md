@@ -5,7 +5,7 @@ title: ReadableStream BYOBReader
 
 # ReadableStreamBYOBReader
 
-<!-- TODO: See EW-2105. Should we document this if it isn't effectively using buffer space? -->
+<!-- TODO: See EW-2105. Should we document this if it isn’t effectively using buffer space? -->
 
 ## Background
 
@@ -17,7 +17,7 @@ A `ReadableStreamBYOBReader` is not instantiated via its constructor. Rather, it
 
 ```js
 const { readable, writable } = new TransformStream()
-const reader = readable.getReader({ mode: 'byob' })
+const reader = readable.getReader({ mode: "byob" })
 ```
 
 ## Methods

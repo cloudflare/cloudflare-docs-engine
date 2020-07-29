@@ -14,11 +14,11 @@ The Web Crypto API is implemented through the `SubtleCrypto` interface, accessib
 `crypto.subtle` binding. A simple example of calculating a digest (also known as a hash) is:
 
 ```js
-const myText = new TextEncoder().encode('Hello world!')
+const myText = new TextEncoder().encode("Hello world!")
 
 const myDigest = await crypto.subtle.digest(
   {
-    name: 'SHA-256',
+    name: "SHA-256",
   },
   myText, // The data you want to hash as an ArrayBuffer
 )
@@ -33,8 +33,8 @@ Some common uses include:
 
 <Aside type="warning" header="Warning">
 
-The Web Crypto API differs significantly from Node's Crypto API. If you want to port JavaScript
-that relies on Node's Crypto API, you'll need to invest in translating it to use Web Crypto
+The Web Crypto API differs significantly from Node’s Crypto API. If you want to port JavaScript
+that relies on Node’s Crypto API, you’ll need to invest in translating it to use Web Crypto
 primitives.
 
 </Aside>
@@ -141,7 +141,7 @@ MDN](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto#Methods).
       },
       true,
       ["encrypt", "decrypt"]
-    );
+    )
     ```
 
     __Parameters:__

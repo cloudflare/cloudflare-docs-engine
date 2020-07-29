@@ -8,7 +8,7 @@ __Note__: In order for Wrangler to use webpack to bundle your worker scripts, yo
 
 </Aside>
 
-If you're here because you're seeing warnings about specifying `webpack_config`, click [here](#backwards-compatibility)
+If you’re here because you’re seeing warnings about specifying `webpack_config`, click [here](#backwards-compatibility)
 
 ## Sensible Defaults
 
@@ -31,7 +31,7 @@ The `entry` field is taken directly from the `main` field in your `package.json`
 
 ## Bring your own configuration
 
-You can tell Wrangler to use a custom webpack configuration file by setting `webpack_config` in your `wrangler.toml`. You'll want to make sure that `target` is always `webworker`.
+You can tell Wrangler to use a custom webpack configuration file by setting `webpack_config` in your `wrangler.toml`. You’ll want to make sure that `target` is always `webworker`.
 
 ### Example
 
@@ -80,7 +80,7 @@ webpack_config = "webpack.production.js"
 ```js
 module.exports = {
   target: "webworker",
-  devtool: "cheap-module-source-map", // avoid 'eval': Workers environment doesn't allow it
+  devtool: "cheap-module-source-map", // avoid "eval": Workers environment doesn’t allow it
   entry: "./index.js",
   mode: "development"
 }
@@ -128,14 +128,14 @@ module.exports = {
 
 Sometimes you want to bring your own implementation of an existing global API. You can do this by [shimming](https://webpack.js.org/guides/shimming/#shimming-globals) a third party module in its place as a webpack plugin.
 
-For example, to replace the runtime global `URL` class with the npm package `url-polyfill` - or your choice of third party package - `npm i` the package to install it locally and add it to your worker's package.json, then add a plugin entry to your webpack config.
+For example, to replace the runtime global `URL` class with the npm package `url-polyfill` - or your choice of third party package - `npm i` the package to install it locally and add it to your worker’s package.json, then add a plugin entry to your webpack config.
 
 ### Example with webpack plugin
 
 `webpack.config.js`
 
 ```js
-+ const webpack = require('webpack');
++ const webpack = require("webpack")
 
   module.exports = {
     target: "webworker",
@@ -151,6 +151,6 @@ For example, to replace the runtime global `URL` class with the npm package `url
 
 ## Backwards Compatibility
 
-If you are using a version of Wrangler before 1.6.0, worker projects will simply use any `webpack.config.js` that is in the root of your project. This is not always obvious, so we plan to require that you specify `webpack_config` in your `wrangler.toml` if you would like to use it. If you're seeing this warning and would like to use your `webpack.config.js`, simply add `webpack_config = "webpack.config.js"` to your wrangler.toml.
+If you are using a version of Wrangler before 1.6.0, worker projects will simply use any `webpack.config.js` that is in the root of your project. This is not always obvious, so we plan to require that you specify `webpack_config` in your `wrangler.toml` if you would like to use it. If you’re seeing this warning and would like to use your `webpack.config.js`, simply add `webpack_config = "webpack.config.js"` to your wrangler.toml.
 
 If you are using Workers Sites and want to specify your own webpack configuration, you will always need to specify this. By default, Wrangler will not assume the `webpack.config.js` at the root of your project is meant to be used for building your Worker.

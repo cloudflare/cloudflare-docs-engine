@@ -2,7 +2,7 @@
 
 Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) - make sure to be on the [latest version](/quickstart/#updating-the-cli) - and the Workers [Unlimited plan](https://workers.cloudflare.com/sites#plans).
 
-To deploy a pre-existing static site project, you'll need to start with a pre-generated site. Workers Sites works well with all static site generators! For a quick-start, check out the following projects:
+To deploy a pre-existing static site project, you’ll need to start with a pre-generated site. Workers Sites works well with all static site generators! For a quick-start, check out the following projects:
 
 - [Hugo](https://gohugo.io/getting-started/quick-start/)
 - [Gatsby](https://www.gatsbyjs.org/docs/quick-start/), requires Node
@@ -12,7 +12,7 @@ To deploy a pre-existing static site project, you'll need to start with a pre-ge
 
 Once you have a site generated, follow these steps:
 
-1. Run this Wrangler command in the root of your project's directory:
+1. Run this Wrangler command in the root of your project’s directory:
 
   ```sh
   $ wrangler init --site my-static-site
@@ -20,7 +20,7 @@ Once you have a site generated, follow these steps:
 
   This command creates a few things: `wrangler.toml` and a `workers-site` directory.
 
-2. Add your site's build directory to the `wrangler.toml`:
+2. Add your site’s build directory to the `wrangler.toml`:
 
   ```toml
   [site]
@@ -43,7 +43,7 @@ Once you have a site generated, follow these steps:
   $ wrangler preview --watch
   ```
 
-5. Decide where you'd like to publish your site to: [a workers.dev subdomain](/quickstart#publish-to-workers-dev) or your [personal domain](/quickstart#publish-to-your-domain) registered with Cloudflare.
+5. Decide where you’d like to publish your site to: [a workers.dev subdomain](/quickstart#publish-to-workers-dev) or your [personal domain](/quickstart#publish-to-your-domain) registered with Cloudflare.
 
   Then, update your `wrangler.toml`:
 
@@ -57,7 +57,7 @@ Once you have a site generated, follow these steps:
   **workers.dev**: Set `workers_dev` to true. This is the default.
 
   You can learn more about configuring your project [here](/quickstart/#configure).
-  
+
 6. Run:
 
   ```sh

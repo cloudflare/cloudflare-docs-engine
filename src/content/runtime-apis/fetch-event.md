@@ -8,7 +8,7 @@ The event type for HTTP requests dispatched to a Worker (i.e the `Object` passed
 ## Constructor
 
 ```js
-addEventListener('fetch', (event) => {
+addEventListener("fetch", (event) => {
   event.respondWith(eventHandler(event))
 })
 ```
@@ -27,7 +27,7 @@ addEventListener('fetch', (event) => {
 
 ### Methods
 
-When a Workers script receives a request, the Workers runtime triggers a FetchEvent which may then be handled by any event listeners registered for the type `'fetch'`. The event handler can invoke any of the following methods of the `event` object to control what happens next:
+When a Workers script receives a request, the Workers runtime triggers a FetchEvent which may then be handled by any event listeners registered for the type `"fetch"`. The event handler can invoke any of the following methods of the `event` object to control what happens next:
 
 <Definitions>
 

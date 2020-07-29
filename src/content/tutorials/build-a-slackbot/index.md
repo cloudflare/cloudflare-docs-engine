@@ -90,7 +90,7 @@ All Cloudflare Workers applications start by listening for `fetch` events, which
 ---
 filename: index.js
 ---
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
@@ -99,7 +99,7 @@ addEventListener('fetch', event => {
  * @param {Request} request
  */
 async function handleRequest(request) {
-  return new Response('Hello worker!', { status: 200 })
+  return new Response("Hello worker!", { status: 200 })
 }
 ```
 
@@ -123,21 +123,21 @@ Inside of `index.js`, you should import the `Router` class, and use it to update
 filename: index.js
 highlight: [1, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 ---
-import Router from './router'
+import Router from "./router"
 
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
 async function handleRequest(request) {
   const r = new Router()
-  r.post('/lookup', lookup)
-  r.post('/webhook', webhook)
+  r.post("/lookup", lookup)
+  r.post("/webhook", webhook)
 
   let response = await r.route(request)
 
   if (!response) {
-    response = new Response('Not found', { status: 404 })
+    response = new Response("Not found", { status: 404 })
   }
 
   return response
@@ -176,23 +176,23 @@ With those files created (you’ll fill them in soon), let’s import them at th
 filename: index.js
 highlight: [1, 2, 11, 12]
 ---
-import lookup from './src/handlers/lookup'
-import webhook from './src/handlers/webhook'
-import Router from './router'
+import lookup from "./src/handlers/lookup"
+import webhook from "./src/handlers/webhook"
+import Router from "./router"
 
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
 async function handleRequest(request) {
   const r = new Router()
-  r.post('/lookup', lookup)
-  r.post('/webhook', webhook)
+  r.post("/lookup", lookup)
+  r.post("/webhook", webhook)
 
   let response = await r.route(request)
 
   if (!response) {
-    response = new Response('Not found', { status: 404 })
+    response = new Response("Not found", { status: 404 })
   }
 
   return response
@@ -252,12 +252,12 @@ In `src/handlers/lookup.js`, import `qs`, and use it to parse the `request` body
 filename: src/handlers/lookup.js
 highlight: [1, 2, 3, 4, 5, 6, 7]
 ---
-import qs from 'qs'
+import qs from "qs"
 
 export default async request => {
   const body = await request.text()
   const params = qs.parse(body)
-  const text = params['text'].trim()
+  const text = params["text"].trim()
 }
 ```
 
@@ -281,14 +281,14 @@ export const parseGhIssueString = text => {
 filename: src/handlers/lookup.js
 highlight: [3, 9]
 ---
-import qs from 'qs'
+import qs from "qs"
 
-import { parseGhIssueString } from '../utils/github'
+import { parseGhIssueString } from "../utils/github"
 
 export default async request => {
   const body = await request.text()
   const params = qs.parse(body)
-  const text = params['text'].trim()
+  const text = params["text"].trim()
   const { owner, repo, issue_number } = parseGhIssueString(text)
 }
 ```
@@ -310,7 +310,7 @@ export const parseGhIssueString = text => {
 
 export const fetchGithubIssue = (owner, repo, issue_number) => {
   const url = `https://api.github.com/repos/${owner}/${repo}/issues/${issue_number}`
-  const headers = { 'User-Agent': 'simple-worker-slack-bot' }
+  const headers = { "User-Agent": "simple-worker-slack-bot" }
   return fetch(url, { headers })
 }
 ```
@@ -322,14 +322,14 @@ Back in `src/handlers/lookup.js`, use `fetchGithubIssue` to make a request to Gi
 filename: src/handlers/lookup.js
 highlight: [3, 11, 12]
 ---
-import qs from 'qs'
+import qs from "qs"
 
-import { fetchGithubIssue, parseGhIssueString } from '../utils/github'
+import { fetchGithubIssue, parseGhIssueString } from "../utils/github"
 
 export default async request => {
   const body = await request.text()
   const params = qs.parse(body)
-  const text = params['text'].trim()
+  const text = params["text"].trim()
   const { owner, repo, issue_number } = parseGhIssueString(text)
 
   const response = await fetchGithubIssue(owner, repo, issue_number)
@@ -401,13 +401,13 @@ export const constructGhIssueSlackMessage = (issue, issue_string) => {
 
   return [
     {
-      type: 'section',
+      type: "section",
       text: {
-        type: 'mrkdwn',
-        text: text_lines.join('\n'),
+        type: "mrkdwn",
+        text: text_lines.join("\n"),
       },
       accessory: {
-        type: 'image',
+        type: "image",
         image_url: issue.user.avatar_url,
         alt_text: issue.user.login,
       },
@@ -425,15 +425,15 @@ In `src/handlers/lookup.js`, use `constructGhIssueSlackMessage` to construct `bl
 filename: src/handlers/lookup.js
 highlight: [4, 15, 16, 17, 18, 19, 20, 21, 22, 23]
 ---
-import qs from 'qs'
+import qs from "qs"
 
-import { fetchGithubIssue, parseGhIssueString } from '../utils/github'
-import { constructGhIssueSlackMessage } from '../utils/slack'
+import { fetchGithubIssue, parseGhIssueString } from "../utils/github"
+import { constructGhIssueSlackMessage } from "../utils/slack"
 
 export default async request => {
   const body = await request.text()
   const params = qs.parse(body)
-  const text = params['text'].trim()
+  const text = params["text"].trim()
   const { owner, repo, issue_number } = parseGhIssueString(text)
 
   const response = await fetchGithubIssue(owner, repo, issue_number)
@@ -444,9 +444,9 @@ export default async request => {
   return new Response(
     JSON.stringify({
       blocks,
-      response_type: 'in_channel',
+      response_type: "in_channel",
     }),
-    { headers: { 'Content-type': 'application/json' } },
+    { headers: { "Content-type": "application/json" } },
   )
 }
 ```
@@ -462,16 +462,16 @@ The `lookup` function is almost complete, but there’s a number of things that 
 filename: src/handlers/lookup.js
 highlight: [7, 25, 26, 27, 28, 29]
 ---
-import qs from 'qs'
+import qs from "qs"
 
-import { fetchGithubIssue, parseGhIssueString } from '../utils/github'
-import { constructGhIssueSlackMessage } from '../utils/slack'
+import { fetchGithubIssue, parseGhIssueString } from "../utils/github"
+import { constructGhIssueSlackMessage } from "../utils/slack"
 
 export default async request => {
   try {
     const body = await request.text()
     const params = qs.parse(body)
-    const text = params['text'].trim()
+    const text = params["text"].trim()
     const { owner, repo, issue_number } = parseGhIssueString(text)
 
     const response = await fetchGithubIssue(owner, repo, issue_number)
@@ -482,13 +482,13 @@ export default async request => {
     return new Response(
       JSON.stringify({
         blocks,
-        response_type: 'in_channel',
+        response_type: "in_channel",
       }),
-      { headers: { 'Content-type': 'application/json' } },
+      { headers: { "Content-type": "application/json" } },
     )
   } catch (err) {
     const errorText =
-      "Uh-oh! We couldn't find the issue you provided. We can only find public issues in the following format: `owner/repo#issue_number`."
+      "Uh-oh! We couldn’t find the issue you provided. We can only find public issues in the following format: `owner/repo#issue_number`."
     return new Response(errorText)
   }
 }
@@ -524,7 +524,7 @@ To start filling out the function, take in the `request` body, parse it into an 
 filename: src/handlers/webhook.js
 highlight: [1, 2, 3, 4, 5, 6, 7, 8]
 ---
-import { constructGhIssueSlackMessage } from '../utils/slack'
+import { constructGhIssueSlackMessage } from "../utils/slack"
 
 export default async request => {
   const body = await request.text()
@@ -547,7 +547,7 @@ The messages your Slack bot sends back to your Slack channel from the `lookup` a
 filename: src/handlers/webhook.js
 highlight: [8]
 ---
-import { constructGhIssueSlackMessage } from '../utils/slack'
+import { constructGhIssueSlackMessage } from "../utils/slack"
 
 export default async request => {
   const body = await request.text()
@@ -587,13 +587,13 @@ export const constructGhIssueSlackMessage = (
 
   return [
     {
-      type: 'section',
+      type: "section",
       text: {
-        type: 'mrkdwn',
-        text: compact(text_lines).join('\n'),
+        type: "mrkdwn",
+        text: compact(text_lines).join("\n"),
       },
       accessory: {
-        type: 'image',
+        type: "image",
         image_url: issue.user.avatar_url,
         alt_text: issue.user.login,
       },
@@ -609,7 +609,7 @@ Back in `src/handlers/webhook.js`, the `blocks` that are returned from `construc
 filename: src/handlers/webhook.js
 highlight: [10, 11, 12, 13, 14, 15, 16]
 ---
-import { constructGhIssueSlackMessage } from '../utils/slack'
+import { constructGhIssueSlackMessage } from "../utils/slack"
 
 export default async request => {
   const body = await request.text()
@@ -620,11 +620,11 @@ export default async request => {
 
   const postToSlack = await fetch(SLACK_WEBHOOK_URL, {
     body: JSON.stringify({ blocks }),
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
   })
 
-  return new Response('OK')
+  return new Response("OK")
 }
 ```
 
@@ -635,7 +635,7 @@ The constant `SLACK_WEBHOOK_URL` represents the Slack Webhook URL that you creat
 header: Set the SLACK_WEBHOOK_URL secret
 ---
 $ wrangler secret create SLACK_WEBHOOK_URL
-Enter the secret text you'd like assigned to the variable name on the script named slack-bot-ENVIRONMENT_NAME: https://hooks.slack.com/services/abc123
+Enter the secret text you’d like assigned to the variable name on the script named slack-bot-ENVIRONMENT_NAME: https://hooks.slack.com/services/abc123
 ```
 
 #### Handling errors
@@ -647,7 +647,7 @@ Similarly to the `lookup` function handler, the `webhook` function handler shoul
 filename: src/handlers/webhook.js
 highlight: [4, 22, 23, 24, 25]
 ---
-import { constructGhIssueSlackMessage } from '../utils/slack'
+import { constructGhIssueSlackMessage } from "../utils/slack"
 
 export default async request => {
   try {
@@ -663,13 +663,13 @@ export default async request => {
 
     const postToSlack = await fetch(SLACK_WEBHOOK_URL, {
       body: JSON.stringify({ blocks }),
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
     })
 
-    return new Response('OK')
+    return new Response("OK")
   } catch (err) {
-    const errorText = 'Unable to handle webhook'
+    const errorText = "Unable to handle webhook"
     return new Response(errorText, { status: 500 })
   }
 }

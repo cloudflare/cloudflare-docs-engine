@@ -81,7 +81,7 @@ const generateStateParam = () => "stub"
 
 const verify = async event => {
   // Verify a user based on an auth cookie and Workers KV data
-  return { accessToken: '123' }
+  return { accessToken: "123" }
 }
 
 // Returns an array with the format
@@ -113,9 +113,9 @@ In `workers-site/index.js`, we can import the `authorize` function from `./auth0
 filename: workers-site/index.js
 highlight: [1, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 ---
-import { authorize } from './auth0'
+import { authorize } from "./auth0"
 
-addEventListener('fetch', event => event.respondWith(handleEvent(event)))
+addEventListener("fetch", event => event.respondWith(handleEvent(event)))
 
 async function handleEvent(event) {
   let request = event.request
@@ -201,12 +201,12 @@ To begin, we’ll add a new block of code to `handleEvent`, which will parse the
 filename: workers-site/index.js
 highlight: [1, 5, 6, 7, 8, 9]
 ---
-import { authorize, handleRedirect } from './auth0'
+import { authorize, handleRedirect } from "./auth0"
 
 async function handleEvent(event) {
   try {
     // BEGINNING OF HANDLE AUTH REDIRECT CODE BLOCK
-    if (url.pathname === '/auth') {
+    if (url.pathname === "/auth") {
       const authorizedResponse = await handleRedirect(event)
     }
     // END OF HANDLE AUTH REDIRECT CODE BLOCK
@@ -225,7 +225,7 @@ filename: workers-site/auth0.js
 export const handleRedirect = async event => {
   const url = new URL(event.request.url)
 
-  const state = url.searchParams.get('state')
+  const state = url.searchParams.get("state")
   if (!state) {
     return null
   }
@@ -235,7 +235,7 @@ export const handleRedirect = async event => {
     return null
   }
 
-  const code = url.searchParams.get('code')
+  const code = url.searchParams.get("code")
   if (code) {
     return exchangeCode(code)
   }
@@ -251,18 +251,18 @@ filename: workers-site/auth0.js
 ---
 const exchangeCode = async code => {
   const body = JSON.stringify({
-    grant_type: 'authorization_code',
+    grant_type: "authorization_code",
     client_id: auth0.clientId,
     client_secret: auth0.clientSecret,
     code,
     redirect_uri: auth0.callbackUrl,
   })
 
-  // We'll define persistAuth in the next section
+  // We’ll define persistAuth in the next section
   return persistAuth(
-    await fetch(AUTH0_DOMAIN + '/oauth/token', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
+    await fetch(AUTH0_DOMAIN + "/oauth/token", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
       body,
     })
   )
@@ -284,7 +284,7 @@ const persistAuth = async exchange => {
     throw new Error(body.error)
   }
 
-  console.log(body) // { access_token: '...', id_token: '...', ... }
+  console.log(body) // { access_token: "...", id_token: "...", ... }
 }
 ```
 
@@ -298,20 +298,20 @@ highlight: [37]
 // https://github.com/pose/webcrypto-jwt/blob/master/workers-site/index.js
 const decodeJWT = function(token) {
   var output = token
-    .split('.')[1]
-    .replace(/-/g, '+')
-    .replace(/_/g, '/')
+    .split(".")[1]
+    .replace(/-/g, "+")
+    .replace(/_/g, "/")
   switch (output.length % 4) {
     case 0:
       break
     case 2:
-      output += '=='
+      output += "=="
       break
     case 3:
-      output += '='
+      output += "="
       break
     default:
-      throw 'Illegal base64url string!'
+      throw "Illegal base64url string!"
   }
 
   const result = atob(output)
@@ -379,17 +379,17 @@ const validateToken = token => {
 
     // ISS can include a trailing slash but should otherwise be identical to
     // the AUTH0_DOMAIN, so we should remove the trailing slash if it exists
-    iss = iss.endsWith('/') ? iss.slice(0, -1) : iss
+    iss = iss.endsWith("/") ? iss.slice(0, -1) : iss
 
     if (iss !== AUTH0_DOMAIN) {
       throw new Error(
-        `Token iss value (${iss}) doesn't match AUTH0_DOMAIN (${AUTH0_DOMAIN})`,
+        `Token iss value (${iss}) doesn’t match AUTH0_DOMAIN (${AUTH0_DOMAIN})`,
       )
     }
 
     if (token.aud !== AUTH0_CLIENT_ID) {
       throw new Error(
-        `Token aud value (${token.aud}) doesn't match AUTH0_CLIENT_ID (${AUTH0_CLIENT_ID})`,
+        `Token aud value (${token.aud}) doesn’t match AUTH0_CLIENT_ID (${AUTH0_CLIENT_ID})`,
       )
     }
 
@@ -422,7 +422,7 @@ const persistAuth = async exchange => {
   // ...
 
   const text = new TextEncoder().encode(`${SALT}-${decoded.sub}`)
-  const digest = await crypto.subtle.digest({ name: 'SHA-256' }, text)
+  const digest = await crypto.subtle.digest({ name: "SHA-256" }, text)
   const digestArray = new Uint8Array(digest)
   const id = btoa(String.fromCharCode.apply(null, digestArray))
 
@@ -439,7 +439,7 @@ This cookie will be used as we fill out the `verify` function defined earlier in
 filename: workers-site/auth0.js
 highlight: [1, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 ---
-const cookieKey = 'AUTH0-AUTH'
+const cookieKey = "AUTH0-AUTH"
 
 const persistAuth = async exchange => {
   // previous code
@@ -448,8 +448,8 @@ const persistAuth = async exchange => {
   date.setDate(date.getDate() + 1)
 
   const headers = {
-    Location: '/',
-    'Set-cookie': `${cookieKey}=${id}; Secure; HttpOnly; SameSite=Lax; Expires=${date.toUTCString()}`,
+    Location: "/",
+    "Set-cookie": `${cookieKey}=${id}; Secure; HttpOnly; SameSite=Lax; Expires=${date.toUTCString()}`,
   }
 
   return { headers, status: 302 }
@@ -466,7 +466,7 @@ highlight: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 async function handleEvent(event) {
   try {
     // BEGINNING OF HANDLE AUTH REDIRECT CODE BLOCK
-    if (url.pathname === '/auth') {
+    if (url.pathname === "/auth") {
       const authorizedResponse = await handleRedirect(event)
       if (!authorizedResponse) {
         return new Response("Unauthorized", { status: 401 })
@@ -532,10 +532,10 @@ In `workers-site/auth0.js`, we can begin to flesh out the contents of the `verif
 filename: workers-site/auth0.js
 highlight: [1, 4, 5, 6, 7, 8, 9, 10]
 ---
-import cookie from 'cookie'
+import cookie from "cookie"
 
 const verify = async event => {
-  const cookieHeader = event.request.headers.get('Cookie')
+  const cookieHeader = event.request.headers.get("Cookie")
   if (cookieHeader && cookieHeader.includes(cookieKey)) {
     const cookies = cookie.parse(cookieHeader)
     if (!cookies[cookieKey]) return {}
@@ -553,7 +553,7 @@ filename: workers-site/auth0.js
 highlight: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 ---
 const verify = async event => {
-  const cookieHeader = event.request.headers.get('Cookie')
+  const cookieHeader = event.request.headers.get("Cookie")
   if (cookieHeader && cookieHeader.includes(cookieKey)) {
     const cookies = cookie.parse(cookieHeader)
     if (!cookies[cookieKey]) return {}
@@ -561,14 +561,14 @@ const verify = async event => {
 
     const kvData = await AUTH_STORE.get(sub)
     if (!kvData) {
-      throw new Error('Unable to find authorization data')
+      throw new Error("Unable to find authorization data")
     }
 
     let kvStored
     try {
       kvStored = JSON.parse(kvData)
     } catch (err) {
-      throw new Error('Unable to parse auth information from Workers KV')
+      throw new Error("Unable to parse auth information from Workers KV")
     }
 
     const { access_token: accessToken, id_token: idToken } = kvStored
@@ -585,7 +585,7 @@ filename: workers-site/auth0.js
 highlight: [20, 21, 22, 24]
 ---
 const verify = async event => {
-  const cookieHeader = event.request.headers.get('Cookie')
+  const cookieHeader = event.request.headers.get("Cookie")
   if (cookieHeader && cookieHeader.includes(cookieKey)) {
     const cookies = cookie.parse(cookieHeader)
     if (!cookies[cookieKey]) return {}
@@ -593,14 +593,14 @@ const verify = async event => {
 
     const kvData = await AUTH_STORE.get(sub)
     if (!kvData) {
-      throw new Error('Unable to find authorization data')
+      throw new Error("Unable to find authorization data")
     }
 
     let kvStored
     try {
       kvStored = JSON.parse(kvData)
     } catch (err) {
-      throw new Error('Unable to parse auth information from Workers KV')
+      throw new Error("Unable to parse auth information from Workers KV")
     }
 
     const { access_token: accessToken, id_token: idToken } = kvStored
@@ -655,7 +655,7 @@ async function handleEvent(event) {
   try {
     // BEGINNING OF WORKERS SITES
     // Note the addition of the `await` keyword
-    response = await getAssetFromKV(event);
+    response = await getAssetFromKV(event)
     // END OF WORKERS SITES
 
     // Remove the line of code below
@@ -663,7 +663,7 @@ async function handleEvent(event) {
 
     // BEGINNING OF STATE HYDRATION CODE BLOCK
     return new HTMLRewriter()
-      .on('head', hydrateState(authorization.userInfo))
+      .on("head", hydrateState(authorization.userInfo))
       .transform(response)
     // END OF STATE HYDRATION CODE BLOCK
   }
@@ -684,11 +684,11 @@ While a user’s authentication cookie expires after a day, you may want to offe
 filename: workers-site/auth0.js
 ---
 export const logout = event => {
-  const cookieHeader = event.request.headers.get('Cookie')
+  const cookieHeader = event.request.headers.get("Cookie")
   if (cookieHeader && cookieHeader.includes(cookieKey)) {
     return {
       headers: {
-        'Set-cookie': `${cookieKey}=""; SameSize-Lax; Secure;`,
+        "Set-cookie": `${cookieKey}=""; SameSize-Lax; Secure;`,
       },
     }
   }
@@ -701,7 +701,7 @@ export const logout = event => {
 filename: workers-site/index.js
 highlight: [1, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 ---
-import { ..., logout } from './auth0.js'
+import { ..., logout } from "./auth0.js"
 
 async function handleEvent(event) {
   try {
@@ -709,13 +709,13 @@ async function handleEvent(event) {
 
     // BEGINNING OF LOGOUT CODE BLOCK
     if (url.pathname === "/logout") {
-      const { headers } = logout(event);
+      const { headers } = logout(event)
       return headers
         ? new Response(response.body, {
             ...response,
             headers: Object.assign({}, response.headers, headers)
           })
-        : Response.redirect(url.origin);
+        : Response.redirect(url.origin)
     }
     // END OF LOGOUT CODE BLOCK
 
@@ -740,7 +740,7 @@ An example logout HTML page could look like this:
 ---
 filename: public/logout/index.html
 ---
-<h1>You're logged out</h1>
+<h1>You’re logged out</h1>
 <div><a href="/">Log back in</a></div>
 ```
 
@@ -751,7 +751,7 @@ When the user refreshes the page, they’ll be identified as an unauthorized use
 filename: workers-site/auth0.js
 ---
 export const logout = event => {
-  const cookieHeader = event.request.headers.get("Cookie");
+  const cookieHeader = event.request.headers.get("Cookie")
   if (cookieHeader && cookieHeader.includes(cookieKey)) {
     return {
       headers: {
@@ -759,9 +759,9 @@ export const logout = event => {
         "Set-cookie": `${cookieKey}="";`
       },
       status: 302
-    };
+    }
   }
-  return {};
+  return {}
 };
 ```
 

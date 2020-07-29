@@ -50,10 +50,10 @@ Keys to configure per project in your `wrangler.toml`.
     - This is a boolean flag that specifies if your worker will be deployed to your [workers.dev](https://workers.dev) subdomain. If omitted defaults to false.
 
   - `route` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-    - A list of routes you'd like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
+    - A list of routes you’d like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
 
   - `routes` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-    - A list of routes you'd like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
+    - A list of routes you’d like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
 
   - `webpack_config` <Type>inherited</Type> <PropMeta>optional</PropMeta>
     - This is the path to a custom webpack configuration file for your worker. You must specify this field to use a custom webpack configuration, otherwise Wrangler will use a default configuration for you. You can read more [here](/cli-wrangler/webpack).
@@ -111,19 +111,19 @@ kv_namespaces = [
 <Definitions>
 
   - `binding` <PropMeta>required</PropMeta>
-    - After you've created a namespace, you must bind it to your Worker  so it is accessible from within the Worker script via a variable name you specify.
+    - After you’ve created a namespace, you must bind it to your Worker  so it is accessible from within the Worker script via a variable name you specify.
 
   - `id` <PropMeta>required</PropMeta>
-    - The ID of the namespace you wish to bind to the Worker's global scope when it is deployed. Required for `wrangler publish`.
+    - The ID of the namespace you wish to bind to the Worker’s global scope when it is deployed. Required for `wrangler publish`.
 
   - `preview_id` <PropMeta>required</PropMeta>
-    - The ID of the namespace you wish to bind to the Worker's global scope when it is previewed . Required for `wrangler dev` and `wrangler preview`.
+    - The ID of the namespace you wish to bind to the Worker’s global scope when it is previewed . Required for `wrangler dev` and `wrangler preview`.
 
 </Definitions>
 
 <Aside>
 
-__Note:__ Creating your KV Namespaces can be handled using Wrangler's [KV Commands](/cli-wrangler/commands#kv).
+__Note:__ Creating your KV Namespaces can be handled using Wrangler’s [KV Commands](/cli-wrangler/commands#kv).
 
 You can also define your `kv_namespaces` using [alternative TOML syntax](https://github.com/toml-lang/toml#user-content-table).
 
@@ -163,7 +163,7 @@ You can also define your `site` using [alternative TOML syntax](https://github.c
 
 #### Storage Limits
 
-For very exceptionally large pages, Workers Sites might not work for you. There is a 10MB limit per page or file. Additionally, Wrangler will create an asset manifest for your files that will count towards your script's size limit. If you have too many files, you may not be able to use Workers Sites.
+For very exceptionally large pages, Workers Sites might not work for you. There is a 10MB limit per page or file. Additionally, Wrangler will create an asset manifest for your files that will count towards your script’s size limit. If you have too many files, you may not be able to use Workers Sites.
 
 #### Ignoring Subsets of Static Assets
 
@@ -171,7 +171,7 @@ Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) - make 
 
 There are cases where users may not want to upload certain static assets to their Workers Sites.
 In this case, Workers Sites can also be configured to ignore certain files or directories using logic
-similar to [Cargo's optional include and exclude fields](https://doc.rust-lang.org/cargo/reference/manifest.html#the-exclude-and-include-fields-optional).
+similar to [Cargo’s optional include and exclude fields](https://doc.rust-lang.org/cargo/reference/manifest.html#the-exclude-and-include-fields-optional).
 This means that we use gitignore semantics when declaring which directory entries to include or ignore in uploads.
 
 #### Exclusively including files/directories

@@ -83,7 +83,7 @@ filename: packages/public-api/index.js
 ---
 // Omitting addEventListener and boilerplate code
 
-import { json } from 'handlers'
+import { json } from "handlers"
 const handler = request => {
   return json({ status: 200 })
 }
@@ -91,7 +91,7 @@ const handler = request => {
 
 After adding an identical `dependency` to `private-api/package.json`, you can run `lerna bootstrap` again, and begin sharing code between your projects.
 
-When you're ready to deploy your codebases, you can coordinate deploying them simultaneously by defining scripts in each package's `package.json` file, that can be read by `lerna run`:
+When you’re ready to deploy your codebases, you can coordinate deploying them simultaneously by defining scripts in each package’s `package.json` file, that can be read by `lerna run`:
 
 ```json
 ---
@@ -117,7 +117,7 @@ filename: packages/private-api/package.json
 }
 ```
 
-`lerna run publish` will look for the `publish` script defined in each package's `project.json`, and if the project defines it, it will run the script inside of that project's directory:
+`lerna run publish` will look for the `publish` script defined in each package’s `project.json`, and if the project defines it, it will run the script inside of that project’s directory:
 
 ```sh
 ---
@@ -126,19 +126,19 @@ header: Publish packages using lerna run
 ~/workers-monorepo $ lerna run publish
 
 lerna info Executing command in 2 packages: "npm run publish"
-lerna info run Ran npm script 'publish' in 'public-api' in 4.8s:
+lerna info run Ran npm script "publish" in "public-api" in 4.8s:
 
 > public-api@1.0.0 publish /workers-monorepo/packages/public-api
 > wrangler publish
 
-lerna info run Ran npm script 'publish' in 'private-api' in 6.5s:
+lerna info run Ran npm script "publish" in "private-api" in 6.5s:
 
 > private-api@1.0.0 publish /workers-monorepo/packages/private-api
 > wrangler publish
 
-lerna success run Ran npm script 'publish' in 2 packages in 6.5s:
+lerna success run Ran npm script "publish" in 2 packages in 6.5s:
 lerna success - public-api
 lerna success - private-api
 ```
 
-If you'd like to explore an example repository, check out the accompanying open-source codebase on [GitHub](https://github.com/signalnerve/lerna-wrangler-monorepo-example) for this tutorial.
+If you’d like to explore an example repository, check out the accompanying open-source codebase on [GitHub](https://github.com/signalnerve/lerna-wrangler-monorepo-example) for this tutorial.

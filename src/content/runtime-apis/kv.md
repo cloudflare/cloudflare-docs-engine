@@ -10,7 +10,7 @@ Workers KV is a global, low-latency, key-value data store. It supports exception
 
 ### Writing key-value pairs
 
-To create a new key-value pair, or to update the value for a particular key, you can call the `put` method on any namespace you've bound to your script. The basic form of this method looks like this:
+To create a new key-value pair, or to update the value for a particular key, you can call the `put` method on any namespace you’ve bound to your script. The basic form of this method looks like this:
 
 ```js
 await NAMESPACE.put(key, value)
@@ -35,7 +35,7 @@ Wrangler](/cli-wrangler/commands#kvkey).
 
 Finally, you can [write data via the API](https://api.cloudflare.com/#workers-kv-namespace-write-key-value-pair).
 
-Due to the eventually consistent nature of Workers KV, it's a common pattern to write data via Wrangler or the API, but read the data from within a worker.
+Due to the eventually consistent nature of Workers KV, it’s a common pattern to write data via Wrangler or the API, but read the data from within a worker.
 
 #### Writing data in bulk
 
@@ -48,11 +48,11 @@ We do not support this from within a Worker script at this time.
 
 Many common uses of Workers KV involve writing keys that are only meant to be valid for a certain amount of time. Rather than requiring applications to remember to delete such data at the appropriate time, Workers KV offers the ability to create keys that automatically expire, either at a particular point in time or after a certain amount of time has passed since the key was last modified.
 
-Once the expiration time of an expiring key is reached, it will be deleted from the system. After its deletion, attempts to read it will behave as if the key does not exist, and it will not count against the namespace's storage usage for billing purposes.
+Once the expiration time of an expiring key is reached, it will be deleted from the system. After its deletion, attempts to read it will behave as if the key does not exist, and it will not count against the namespace’s storage usage for billing purposes.
 
 You can choose one of two ways to specify when a key should expire:
 
-- Set its "expiration", using an absolute time specified in a number of [seconds since the UNIX epoch](https://en.wikipedia.org/wiki/Unix_time). For example, if you wanted a key to expire at 12:00AM UTC on April 1, 2019, you would set the key's expiration to 1554076800.
+- Set its "expiration", using an absolute time specified in a number of [seconds since the UNIX epoch](https://en.wikipedia.org/wiki/Unix_time). For example, if you wanted a key to expire at 12:00AM UTC on April 1, 2019, you would set the key’s expiration to 1554076800.
 
 - Set its "expiration TTL" (time to live), using a relative number of seconds from the current time. For example, if you wanted a key to expire 10 minutes after creating it, you would set its expiration TTL to 600.
 
@@ -62,7 +62,7 @@ Note that expiration times of less than 60 seconds in the future or expiration T
 
 #### Creating expiring keys
 
-We talked about the basic form of the `put` method above, but this call also has an optional third parameter. It accepts an object with optional fields that allow you to customize the behavior of the `put`. In particular, you can set either `expiration` or `expirationTtl`, depending on how you would like to specify the key's expiration time. In other words, you'd run one of the two commands below to set an expiration when writing a key from within a Worker:
+We talked about the basic form of the `put` method above, but this call also has an optional third parameter. It accepts an object with optional fields that allow you to customize the behavior of the `put`. In particular, you can set either `expiration` or `expirationTtl`, depending on how you would like to specify the key’s expiration time. In other words, you’d run one of the two commands below to set an expiration when writing a key from within a Worker:
 
 <Definitions>
 
@@ -88,7 +88,7 @@ The serialized JSON representation of the metadata object must be no more than 1
 
 ### Reading key-value pairs
 
-To get the value for a given key, you can call the `get` method on any namespace you've bound to your script:
+To get the value for a given key, you can call the `get` method on any namespace you’ve bound to your script:
 
 `NAMESPACE.get(key)`
 
@@ -99,7 +99,7 @@ Changes may take up to 60 seconds to be visible when reading key-value pairs.
 Here’s an example of reading a key from within a Worker:
 
 ```js
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
@@ -137,15 +137,15 @@ For large values, the choice of `type` can have a noticeable effect on latency a
 
 #### Metadata
 
-You can get the metadata associated with a key-value pair alongside its value by calling the `getWithMetadata` method on a namespace you've bound in your script:
+You can get the metadata associated with a key-value pair alongside its value by calling the `getWithMetadata` method on a namespace you’ve bound in your script:
 
-`const {value, metadata} = await NAMESPACE.getWithMetadata(key);`
+`const {value, metadata} = await NAMESPACE.getWithMetadata(key)`
 
-If there's no metadata associated with the requested key-value pair, `null` will be returned for metadata.
+If there’s no metadata associated with the requested key-value pair, `null` will be returned for metadata.
 
 ### Deleting key-value pairs
 
-To delete a key-value pair, you can call the `delete` method on any namespace you've bound to your script:
+To delete a key-value pair, you can call the `delete` method on any namespace you’ve bound to your script:
 
 `await NAMESPACE.delete(key)`
 
@@ -157,10 +157,10 @@ You can also [delete key-value pairs from the command line with Wrangler](/cli-w
 
 ### Listing keys
 
-You can use a list operation to see all of the keys that live in a given namespace. Here's a basic example:
+You can use a list operation to see all of the keys that live in a given namespace. Here’s a basic example:
 
 ```js
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
@@ -199,16 +199,16 @@ The `.list` method returns a promise which resolves with an object that looks li
 
 The `keys` property will contain an array of objects describing each key. That object will have one to three keys of its own: a `name` of the key, optionally its expiration value and optionally associated metadata. The name is a string, the expiration value is a number and metadata is whatever type was set initially. The expiration value will only be returned if the key has an expiration, and will be in the absolute value form, even if it was set in the TTL form. Metadata will also only be returned if the given key has non-null associated metadata.
 
-Additionally, if `list_complete` is `false`, there are more keys to fetch. You'll use the `cursor` property to get more keys. See the [Pagination section](#pagination)
+Additionally, if `list_complete` is `false`, there are more keys to fetch. You’ll use the `cursor` property to get more keys. See the [Pagination section](#pagination)
 
 below for more details.
 
 #### Listing by prefix
 
-You can also list all of the keys starting with a particular prefix. For example, say you've structured your keys with a user, a user id, and then some key names, separated by colons (e.g. ` user:1:<key>`). You could get the keys for user number one by doing this:
+You can also list all of the keys starting with a particular prefix. For example, say you’ve structured your keys with a user, a user id, and then some key names, separated by colons (e.g. ` user:1:<key>`). You could get the keys for user number one by doing this:
 
 ```js
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 

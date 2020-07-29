@@ -12,7 +12,7 @@ The `HTMLRewriter` class should be instantiated once in your Workers script, wit
 
 ```js
 new HTMLRewriter()
-  .on('*', new ElementHandler())
+  .on("*", new ElementHandler())
   .onDocument(new DocumentHandler())
 ```
 
@@ -63,7 +63,7 @@ class ElementHandler {
 async function handleRequest(req) {
   const res = await fetch(req)
 
-  return new HTMLRewriter().on('div', new ElementHandler()).transform(res)
+  return new HTMLRewriter().on("div", new ElementHandler()).transform(res)
 }
 ```
 
@@ -388,9 +388,9 @@ If a handler throws an exception, parsing is immediately halted, the transformed
 async function handle(request) {
   let oldResponse = await fetch(request)
   let newResponse = new HTMLRewriter()
-    .on('*', {
+    .on("*", {
       element(element) {
-        throw new Error('A really bad error.')
+        throw new Error("A really bad error.")
       },
     })
     .transform(oldResponse)
