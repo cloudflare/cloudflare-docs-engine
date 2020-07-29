@@ -87,7 +87,7 @@ Where the file `metadata.json` looks like this:
 }
 ```
 
-#### Add a KV Namespace Binding
+#### Add a KV namespace binding
 
 If your Worker uses a [KV namespace](/reference/storage/overview/), you will want to add a `kv_namespace` binding object to the `"bindings"` array in `metadata.json`:
 
@@ -106,7 +106,7 @@ If your Worker uses a [KV namespace](/reference/storage/overview/), you will wan
 
 The `namespace_id` value should correspond to the identifier associated with the namespace you want to use. The `name` value should correspond to the global variable you will use to access your namespace from your Worker code.
 
-#### Add a Wasm Module
+#### Add a Wasm module
 
 If your Worker uses a [Wasm Module](/examples/boilerplates/rustwasm/), you will want to add a `wasm_module` binding object to the `"bindings"` array in metadata.json:
 
@@ -135,7 +135,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
      -F "wasm=@module.wasm;type=application/wasm" # link your wasm module in place of module.wasm
 ```
 
-#### Add a Secret Text Binding
+#### Add a secret text binding
 
 *Note: Secrets are persisted between deploys of a Worker. You only need to include secrets in API calls when you are adding or changing the secret's content.*
 
@@ -157,7 +157,7 @@ If your Worker script uses [secrets](reference/apis/environment-variables#secret
 * `text` : the text you want to store
 * `name`:  the global variable to access your secret from your Worker code
 
-#### Add a Plain Text Binding
+#### Add a plain text binding
 
 If your Worker uses plain text environment variables, you will want to add a `plain_text` binding object for each one to the `"bindings"` array in `metadata.json`:
 
@@ -177,14 +177,14 @@ If your Worker uses plain text environment variables, you will want to add a `pl
 * `text` : the text you want to store
 * `name`:  the global variable to access your secret from your Worker code
 
-#### Request
+### Request
 
-##### URL Parameters
+#### URL Parameters
 
 - `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare account ID →](/quickstart/#configure)
 - `script_name`: the name you want to assign to your script. Must follow the Workers [script naming conventions](#script-naming-conventions).
 
-##### Headers
+#### Headers
 
 [Find your auth info →](/quickstart/#configure)
 
@@ -192,26 +192,26 @@ If your Worker uses plain text environment variables, you will want to add a `pl
 - `Content-Type` application/javascript
 - `If-None-Match` [Optional] a [Script Object](#object-specification) etag
 
-##### Payload (script only)
+#### Payload (script only)
 
 A valid JavaScript blob
 
-##### Payload (script and bindings)
+#### Payload (script and bindings)
 
 A multipart form containing a valid JavaScript file, a `metadata.json` file specifying any bindings, and any Wasm module files.
 
-#### Response
+### Response
 
-##### Body
+#### Body
 
 - `success`: Boolean
 - `result`: A [Script Object](#object-specification) of the resulting script. Empty if success is false
 - `errors`: An array of [Error Objects](#errors). Empty if success is true
 - `messages`: An array of strings (unused)
 
-##### Errors
+#### Errors
 
-###### Missing Account/Zone Identifier
+##### Missing Account/Zone Identifier
 
 ```json
 status: 404
@@ -221,7 +221,7 @@ error: {
 }
 ```
 
-###### Exceeded [Script Limit](/reference/platform/limits)
+##### Exceeded [Script Limit](/reference/platform/limits)
 
 ```json
 status: 403
@@ -231,7 +231,7 @@ error: {
 }
 ```
 
-###### Invalid Script
+##### Invalid Script
 
 ```json
 status: 400
@@ -241,7 +241,7 @@ error: {
 }
 ```
 
-###### Etag Unsupported (w/ If-None-Match header)
+##### Etag Unsupported (w/ If-None-Match header)
 
 ```json
 status: 400
@@ -251,7 +251,7 @@ error: {
 }
 ```
 
-###### Etag Precondition Failed
+##### Etag Precondition Failed
 
 ```json
 status: 412
@@ -261,7 +261,7 @@ error: {
 }
 ```
 
-###### Script Too Large
+##### Script Too Large
 
 ```json
 status: 400
@@ -271,7 +271,7 @@ error: {
 }
 ```
 
-###### Internal Error
+##### Internal Error
 
 ```json
 status: 500
@@ -281,18 +281,20 @@ error: {
 }
 ```
 
-## List all Scripts for an account
+## List all scripts for an account
 
 `GET accounts/:account_id/workers/scripts`
 
-##### Sample Request:
+### Example
+
+Request:
 
 ```bash
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts" \
      -H "Authorization: Bearer $CF_API_TOKEN"
 ```
 
-##### Sample Response:
+Response:
 
 ```json
 {
@@ -310,36 +312,36 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 }
 ```
 
-#### Request
+### Request
 
-##### URL Parameters
+#### URL parameters
 
 - `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare account ID →](/quickstart/#configure)
 
-##### Query Parameters
+#### Query parameters
 
 - `include_subdomain_availability`:
 
-##### Headers
+#### Headers
 
 [Find your auth info →](/quickstart/#configure)
 
 - `Authorization`
 
-##### Payload n/a
+#### Payload n/a
 
-#### Response
+### Response
 
-##### Body
+#### Body
 
 - `success`: Boolean
 - `result`: An array of [Script Objects](#object-specification). Empty if success is false; does not include raw script text.
 - `errors`: An array of [Error Objects](#errors-1). Empty if success is true
 - `messages`: An array of strings (unused)
 
-##### Errors
+#### Errors
 
-###### Missing Account/Zone Identifier
+##### Missing account/zone identifier
 
 ```json
 status: 404
@@ -349,7 +351,7 @@ error: {
 }
 ```
 
-###### Malformed Parameter
+##### Malformed parameter
 
 Occurs when query param (e.g. `include_subdomain_availability`) is not parsable as the correct type
 
@@ -361,7 +363,7 @@ error: {
 }
 ```
 
-###### Internal Error
+##### Internal error
 
 ```json
 status: 500
@@ -371,11 +373,13 @@ error: {
 }
 ```
 
-## Download a Script
+## Download a script
 
 `GET accounts/:account_id/workers/scripts/:script_name`
 
-##### Sample Request:
+### Example
+
+Request:
 
 ```bash
 curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
@@ -383,37 +387,37 @@ curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
      -H "Accept: application/javascript"
 ```
 
-##### Sample Response:
+Response:
 
 ```js
 addEventListener('fetch', event => { event.respondWith(fetch(event.request)) })
 ```
 
-#### Request
+### Request
 
-##### URL Parameters
+#### URL parameters
 
 - `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare account ID →](/quickstart/#configure)
 - `script_name`: the name of the script to download
 
-##### Headers
+#### Headers
 
 [Find your auth info →](/quickstart/#configure)
 
 - `Authorization`
 - `Accept` application/javascript
 
-##### Payload n/a
+#### Payload n/a
 
-#### Response
+### Response
 
-##### Body (Text Blob)
+#### Body (text blob)
 
 Raw script content, as a string
 
-##### Errors
+#### Errors
 
-###### Missing Account/Zone Identifier
+##### Missing account/zone identifier
 
 ```json
 status: 404
@@ -423,7 +427,7 @@ error: {
 }
 ```
 
-###### Missing Script Name
+##### Missing script name
 
 ```json
 status: 404
@@ -433,7 +437,7 @@ error: {
 }
 ```
 
-###### Script Not Found
+##### Script not found
 
 ```json
 status: 404
@@ -443,7 +447,7 @@ error: {
 }
 ```
 
-###### Internal Error
+##### Internal error
 
 ```json
 status: 500
@@ -453,18 +457,20 @@ error: {
 }
 ```
 
-## Delete a Script
+## Delete a script
 
 `DELETE accounts/:account_id/workers/scripts/:script_name`
 
-##### Sample Request:
+### Example
+
+Request:
 
 ```bash
 curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/scripts/$SCRIPT_NAME" \
      -H "Authorization: Bearer $CF_API_TOKEN"
 ```
 
-##### Sample Response:
+Response:
 
 ```json
 {
@@ -477,33 +483,31 @@ curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/wor
 }
 ```
 
-#### Request
+### Request
 
-##### URL Parameters
+#### URL parameters
 
 - `account_id`: the identifier associated with your Cloudflare account. [Find your Cloudflare account ID →](/quickstart/#configure)
 - `script_name`: the name of the script to be deleted.
 
-##### Headers
+#### Headers
 
 [Find your auth info →](/quickstart/#configure)
 
 - `Authorization`
 
-##### Payload n/a
+### Response
 
-#### Response
-
-##### Body
+#### Body
 
 - `success`: Boolean
 - `result`: An object containing the id (etag) of the deleted script
 - `errors`: An array of [Error Objects](#errors-3). Empty if success is true
 - `messages`: An array of strings (unused)
 
-##### Errors
+#### Errors
 
-###### Missing Account/Zone Identifier
+##### Missing account/zone identifier
 
 ```json
 status: 404
@@ -513,7 +517,7 @@ error: {
 }
 ```
 
-###### Missing Script Name
+##### Missing script name
 
 ```json
 status: 404
@@ -523,7 +527,7 @@ error: {
 }
 ```
 
-###### Script Not Found
+##### Script not found
 
 ```json
 status: 404
@@ -533,7 +537,7 @@ error: {
 }
 ```
 
-###### Internal Error
+##### Internal error
 
 ```json
 status: 500
