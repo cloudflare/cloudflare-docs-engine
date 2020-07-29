@@ -77,11 +77,11 @@ cache.put(request, response)
 
 <Definitions>
 
-- `request` <Type>string</Type>|<TypeLink href="/reference/runtime-apis/request">Request</TypeLink>
-    - Either a string or a [`Request`](/reference/runtime-apis/request) object to serve as the key. If a string is passed, it is interpreted as the URL for a new Request object.
+- `request` <Type>string</Type>|<TypeLink href="/runtime-apis/request">Request</TypeLink>
+    - Either a string or a [`Request`](/runtime-apis/request) object to serve as the key. If a string is passed, it is interpreted as the URL for a new Request object.
 
-- `response` <TypeLink href="/reference/runtime-apis/request">Request</TypeLink>
-    -  A [`Response`](/reference/runtime-apis/response) object to store under the given key.
+- `response` <TypeLink href="/runtime-apis/request">Request</TypeLink>
+    -  A [`Response`](/runtime-apis/response) object to store under the given key.
 
 </Definitions>
 
@@ -100,7 +100,7 @@ cache.match(request, options)
 
 <Definitions>
 
-- <Code>match(request, options)</Code> <TypeLink href="/reference/runtime-apis/response">Promise{`<Response>`}</TypeLink>
+- <Code>match(request, options)</Code> <TypeLink href="/runtime-apis/response">Promise{`<Response>`}</TypeLink>
 
     - Returns a promise wrapping the response object keyed to that request.
 
@@ -110,9 +110,9 @@ cache.match(request, options)
 
 <Definitions>
 
-- `request` <Type>string</Type>|<TypeLink href="/reference/runtime-apis/request">Request</TypeLink>
+- `request` <Type>string</Type>|<TypeLink href="/runtime-apis/request">Request</TypeLink>
 
-    - The string or [`Request`](/reference/runtime-apis/request) object used as the lookup key. Strings are interpreted as the URL for a new `Request` object.
+    - The string or [`Request`](/runtime-apis/request) object used as the lookup key. Strings are interpreted as the URL for a new `Request` object.
 
 - `options`
     -  Can contain one possible property: `ignoreMethod` (Boolean) Consider the request method a GET regardless of its actual value.
@@ -147,7 +147,7 @@ cache.delete(request, options)
 
 <Definitions>
 
-- <Code>delete(request, options)</Code> <TypeLink href="/reference/runtime-apis/response">Promise{`<boolean>`}</TypeLink>
+- <Code>delete(request, options)</Code> <TypeLink href="/runtime-apis/response">Promise{`<boolean>`}</TypeLink>
 
 </Definitions>
 
@@ -160,9 +160,9 @@ Deletes the `Response` object from the cache and returns a `Promise` for a Boole
 
 <Definitions>
 
-- `request` <Type>string</Type>|<TypeLink href="/reference/runtime-apis/request">Request</TypeLink>
+- `request` <Type>string</Type>|<TypeLink href="/runtime-apis/request">Request</TypeLink>
 
-    - The string or [`Request`](/reference/runtime-apis/request) object used as the lookup key. Strings are interpreted as the URL for a new `Request` object.
+    - The string or [`Request`](/runtime-apis/request) object used as the lookup key. Strings are interpreted as the URL for a new `Request` object.
 
 <!-- What type is this? -->
 - `options`

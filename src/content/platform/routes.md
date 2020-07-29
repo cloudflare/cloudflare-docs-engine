@@ -19,7 +19,7 @@ Cloudflare Site routes are comprised of:
 
 - Route URL (see [Matching Behavior](#matching-behavior))
 - Worker script to execute on matching requests
-- Failure mode for rate-limited accounts on the free plan (see [Daily Request Limits](/reference/platform/limits#request-limits))
+- Failure mode for rate-limited accounts on the free plan (see [Daily Request Limits](/platform/limits#request-limits))
 
 The Routes REST API documentation can be found [here](https://api.cloudflare.com/#worker-routes-properties)
 

@@ -35,8 +35,8 @@ Valid options for the `options` object include:
   - `statusText` <Type>string</Type>
     - The status message associated with the status code, like, `OK`.
 
-  - `headers` <TypeLink href="/reference/runtime-apis/request#parameters">Headers</TypeLink> | <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/ByteString">ByteString</TypeLink>
-    - Any headers to add to your response that are contained within a [`Headers`](/reference/runtime-apis/request#parameters) object or object literal of [`ByteString`](https://developer.mozilla.org/en-US/docs/Web/API/ByteString) key/value pairs.
+  - `headers` <TypeLink href="/runtime-apis/request#parameters">Headers</TypeLink> | <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/ByteString">ByteString</TypeLink>
+    - Any headers to add to your response that are contained within a [`Headers`](/runtime-apis/request#parameters) object or object literal of [`ByteString`](https://developer.mozilla.org/en-US/docs/Web/API/ByteString) key/value pairs.
 
 </Definitions>
 
@@ -44,11 +44,11 @@ Valid options for the `options` object include:
 
 <Definitions>
 
-- `body` <TypeLink href="/reference/apis/streams">Readable Stream</TypeLink>
+- `body` <TypeLink href="/apis/streams">Readable Stream</TypeLink>
   - A simple getter to get the body contents.
 - `bodyUsed` <Type>boolean</Type>
   - A boolean indicating if the body was used in the response.
-- `headers` <TypeLink href="/reference/runtime-apis/request#parameters">Headers</TypeLink>
+- `headers` <TypeLink href="/runtime-apis/request#parameters">Headers</TypeLink>
   - The headers for the request.
 - `ok` <Type>boolean</Type>
   - A boolean indicating if the response was successful (status in the range 200-299).
