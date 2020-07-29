@@ -29,13 +29,13 @@ This tutorial makes use of sample images to illustrate serving data through your
 
 To follow along with this tutorial, using the data set we’ve provided, download the sample image collection [here](https://storage.cloud.google.com/workers-docs-configure-your-cdn-tutorial/faces.zip), and upload the zipped folder “faces” to root of your bucket. The directory structure should look like this:
 
-```sh
+```txt
 your-bucket
-└─ faces
-   ├─ 1.jpg
-   ├─ 2.jpg
-   ├─ ...
-   └─ 99.jpg
+└── faces
+    ├── 1.jpg
+    ├── 2.jpg
+    ├── ...
+    └── 99.jpg
 ```
 
 Finally, to ensure that you can access the objects from your Workers function, your Google Cloud Storage bucket should be publicly accessible. To ensure this, follow the “Making groups of objects publicly readable” guide in the Google Cloud Storage docs, which can be found [here](https://cloud.google.com/storage/docs/access-control/making-data-public#buckets).
