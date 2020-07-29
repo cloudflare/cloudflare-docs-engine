@@ -628,7 +628,7 @@ export default async request => {
 }
 ```
 
-The constant `SLACK_WEBHOOK_URL` represents the Slack Webhook URL that you created all the way back in the “Incoming Webhook” section of this guide. **This webhook allows developers to post directly to your Slack channel, so it should be kept secret!** To use this constant inside of your codebase, you can use Wrangler’s [Secrets](/reference/wrangler-cli/commands#secret) feature:
+The constant `SLACK_WEBHOOK_URL` represents the Slack Webhook URL that you created all the way back in the “Incoming Webhook” section of this guide. **This webhook allows developers to post directly to your Slack channel, so it should be kept secret!** To use this constant inside of your codebase, you can use Wrangler’s [Secrets](/cli-wrangler/commands#secret) feature:
 
 ```sh
 ---

@@ -2,7 +2,7 @@
 
 ## Background
 
-A `ReadableStream` is returned by the `readable` property inside [`TransformStream`](/reference/runtime-apis/streams/transformstream). On the Workers platform, `ReadableStream`
+A `ReadableStream` is returned by the `readable` property inside [`TransformStream`](/runtime-apis/streams/transformstream). On the Workers platform, `ReadableStream`
 cannot be created directly using the `ReadableStream` constructor.
 
 ## Properties
@@ -22,9 +22,9 @@ cannot be created directly using the `ReadableStream` constructor.
 
   - Pipes the readable stream to a given writable stream `destination` and returns a promise that is fulfilled when the `write` operation succeeds or rejects it if the operation fails.
 
-- <Code>getReader(options<ParamType>Object</ParamType>)</Code> <TypeLink href="/reference/runtime-apis/streams/readablestreamdefaultreader">ReadableStreamDefaultReader</TypeLink>
+- <Code>getReader(options<ParamType>Object</ParamType>)</Code> <TypeLink href="/runtime-apis/streams/readablestreamdefaultreader">ReadableStreamDefaultReader</TypeLink>
 
-  - Gets an instance of `ReadableStreamDefaultReader` and locks the `ReadableStream` to that reader instance. This method accepts an object argument indicating _options_.  The only supported option is `mode`, which can be set to `byob` to create a [`ReadableStreamBYOBReader`](/reference/runtime-apis/streams/readablestreambyobreader), as shown here:
+  - Gets an instance of `ReadableStreamDefaultReader` and locks the `ReadableStream` to that reader instance. This method accepts an object argument indicating _options_.  The only supported option is `mode`, which can be set to `byob` to create a [`ReadableStreamBYOBReader`](/runtime-apis/streams/readablestreambyobreader), as shown here:
 
     ```js
     let reader = readable.getReader({ mode: 'byob' })

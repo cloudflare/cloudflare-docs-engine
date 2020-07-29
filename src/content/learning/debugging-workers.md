@@ -48,7 +48,7 @@ Received new request to url: https://example.com/
 
 Inserting `console.log` lines throughout your code can help you understand the state of your application in various stages until you reach the desired output.
 
-You can customize how `wrangler dev` works to fit your needs: see [the docs](/reference/wrangler-cli/commands#dev-alpha) for available configuration options.
+You can customize how `wrangler dev` works to fit your needs: see [the docs](/cli-wrangler/commands#dev-alpha) for available configuration options.
 
 --------------------------------
 
@@ -87,7 +87,7 @@ $ wrangler tail | jq .event.request.url
 "https://www.bytesized.xyz/page-data/app-data.json"
 ```
 
-You can customize how `wrangler tail` works to fit your needs: see [the docs](/reference/wrangler-cli/commands#tail) for available configuration options.
+You can customize how `wrangler tail` works to fit your needs: see [the docs](/cli-wrangler/commands#tail) for available configuration options.
 
 --------------------------------
 
@@ -102,9 +102,9 @@ When a Worker running in production has an error that prevents it from returning
 | Error code | Meaning                                                                            |
 | ---------- | ---------------------------------------------------------------------------------- |
 | 1101       | Worker threw a JavaScript exception.                                               |
-| 1102       | Worker exceeded CPU time limit. See: [Resource Limits](/reference/platform/limits)              |
+| 1102       | Worker exceeded CPU time limit. See: [Resource Limits](/platform/limits)              |
 | 1015       | Your client IP is being rate limited.                                              |
-| 1027       | Worker exceeded free tier [daily request limit](/reference/platform/limits#daily-request) |
+| 1027       | Worker exceeded free tier [daily request limit](/platform/limits#daily-request) |
 
 </TableWrap>
 

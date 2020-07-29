@@ -1,7 +1,7 @@
 ---
-order: 0
+order: 5
 ---
 
 # Platform
 
-<DirectoryListing path="/reference/platform"/>
+<DirectoryListing path="/platform"/>

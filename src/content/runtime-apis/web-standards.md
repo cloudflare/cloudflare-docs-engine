@@ -73,7 +73,7 @@ __Note__: Timers are only available inside of [the Request Context](/about/tips/
 
 - <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch">fetch()</TypeLink>
 
-  - Starts the process of fetching a resource from the network. See [FetchAPI](/reference/runtime-apis/fetch).
+  - Starts the process of fetching a resource from the network. See [FetchAPI](/runtime-apis/fetch).
 
 </Definitions>
 
@@ -102,6 +102,6 @@ The URL API supports urls conforming to http and https schemes.
 
 <Aside>
 
-__Note__: The Workers’ Runtime’s URL class behavior differs from the URL Spec documented above. If you’d like to use another URL implementation, you can [shim the URL class using webpack](/reference/wrangler-cli/webpack/#shimming-globals).
+__Note__: The Workers’ Runtime’s URL class behavior differs from the URL Spec documented above. If you’d like to use another URL implementation, you can [shim the URL class using webpack](/cli-wrangler/webpack/#shimming-globals).
 
 </Aside>

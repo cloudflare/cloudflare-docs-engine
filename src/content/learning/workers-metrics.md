@@ -33,15 +33,15 @@ Worker invocation statuses indicate whether a Worker script executed successfull
 | ¹ Exceeded Resources   | Worker script exceeded runtime limits                                    | 1102, 1027         | `exceededResources`    |
 | ² Internal Error       | Workers runtime encountered an error                                     |                    | `internalError`        |
 
-_¹ The Exceeded Resources status may appear when the Worker exceeds a [runtime limit](/reference/platform/limits#request-limits). The most common cause is excessive CPU time, but is also caused by a script exceeding startup time or free tier limits._
+_¹ The Exceeded Resources status may appear when the Worker exceeds a [runtime limit](/platform/limits#request-limits). The most common cause is excessive CPU time, but is also caused by a script exceeding startup time or free tier limits._
 
 _² The Internal Error status may appear when the Workers runtime fails to process a request due to an internal failure in our system. These errors are not caused by any issue with the Worker code nor any resource limit. While requests with Internal Error status are rare, we expect that some may appear during normal operation. These requests are not counted towards usage for billing purposes. If you notice an elevated rate of requests with Internal Error status, please check www.cloudflarestatus.com._
 
-To further investagate exceptions, you can use [wrangler tail](/reference/wrangler-cli/commands#tail)
+To further investagate exceptions, you can use [wrangler tail](/cli-wrangler/commands#tail)
 
 ### CPU time
 
-The CPU time chart shows historical CPU time data broken down into relevant quantiles using [reservoir sampling](https://en.wikipedia.org/wiki/Reservoir_sampling). You can learn more about interpreting quantiles [here](https://www.statisticshowto.com/quantile-definition-find-easy-steps/). In some cases, higher quantiles may appear to exceed [CPU time limits](/reference/platform/limits#cpu-runtime) without generating invocation errors because of a mechanism in the Workers runtime that allows rollover CPU time for requests below the CPU limit.
+The CPU time chart shows historical CPU time data broken down into relevant quantiles using [reservoir sampling](https://en.wikipedia.org/wiki/Reservoir_sampling). You can learn more about interpreting quantiles [here](https://www.statisticshowto.com/quantile-definition-find-easy-steps/). In some cases, higher quantiles may appear to exceed [CPU time limits](/platform/limits#cpu-runtime) without generating invocation errors because of a mechanism in the Workers runtime that allows rollover CPU time for requests below the CPU limit.
 
 ### Metrics retention
 
@@ -51,7 +51,7 @@ Worker script metrics can be inspected for up to 3 months in the past in maximum
 
 ## Zone analytics
 
-Aggregates request data for all scripts assigned to any [routes](/reference/platform/routes) defined for a zone. You’ll find Zone Metrics on the [analytics tab](https://dash.cloudflare.com/?zone=analytics/workers) of your Cloudflare dashboard.
+Aggregates request data for all scripts assigned to any [routes](/platform/routes) defined for a zone. You’ll find Zone Metrics on the [analytics tab](https://dash.cloudflare.com/?zone=analytics/workers) of your Cloudflare dashboard.
 
 Zone data can be scoped by time range within the last 30 days. The dashboard includes charts and information described below.
 

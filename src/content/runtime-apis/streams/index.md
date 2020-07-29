@@ -1,3 +1,3 @@
 # Streams
 
-<DirectoryListing path="/reference/runtime-apis/streams"/>
+<DirectoryListing path="/runtime-apis/streams"/>

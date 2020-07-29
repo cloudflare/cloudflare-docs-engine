@@ -21,7 +21,7 @@ One more thing before you start the tutorial: if you just want to jump straight 
 To publish your QR Code Generator function to Cloudflare Workers, you’ll need a few things:
 
 - A Cloudflare account, and access to the API keys for that account
-- [A Wrangler installation](/reference/wrangler-cli/install-update) running locally on your machine, and access to the command-line
+- [A Wrangler installation](/cli-wrangler/install-update) running locally on your machine, and access to the command-line
 
 If you don’t have those things quite yet, don’t worry. We’ll walk through each of them and make sure we’re ready to go, before you start creating your application.
 

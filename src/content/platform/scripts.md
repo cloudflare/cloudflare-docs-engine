@@ -23,7 +23,7 @@ Scripts are where the Workers code itself is stored and uploaded to the edge.
   - Raw script content, as a string
 
 - `size`
-  - [Size of script](/reference/platform/limits) in bytes.
+  - [Size of script](/platform/limits) in bytes.
 
 - `modified_on`
   - ISO_8601 timestamp of when the script was last modified.
@@ -89,7 +89,7 @@ Where the file `metadata.json` looks like this:
 
 #### Add a KV namespace binding
 
-If your Worker uses a [KV namespace](/reference/storage/overview/), you will want to add a `kv_namespace` binding object to the `"bindings"` array in `metadata.json`:
+If your Worker uses a [KV namespace](/storage/overview/), you will want to add a `kv_namespace` binding object to the `"bindings"` array in `metadata.json`:
 
 ```json
 {
@@ -139,6 +139,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 
 *Note: Secrets are persisted between deploys of a Worker. You only need to include secrets in API calls when you are adding or changing the secret's content.*
 
+<!-- TODO: migrate Environement Variables page https://git.io/JJuRR -->
 If your Worker script uses [secrets](reference/apis/environment-variables#secrets), add a corresponding `secret_text` binding to the `"bindings"` array in `metadata.json`:
 
 ```json
@@ -221,7 +222,7 @@ error: {
 }
 ```
 
-##### Exceeded [Script Limit](/reference/platform/limits)
+##### Exceeded [Script Limit](/platform/limits)
 
 ```json
 status: 403

@@ -184,7 +184,7 @@ All properties of an incoming `Request` object (i.e. `event.request`) are read o
 
 ### `IncomingRequestCfProperties`
 
-In addition to the properties on the standard [`Request`](/reference/runtime-apis/request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare’s edge.
+In addition to the properties on the standard [`Request`](/runtime-apis/request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare’s edge.
 
 <Definitions>
 

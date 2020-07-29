@@ -31,7 +31,7 @@ await NAMESPACE.put(key, value)
 This method returns a `Promise` that you should `await` on in order to verify a successful update.
 
 You can also [write key-value pairs from the command line with
-Wrangler](/reference/wrangler-cli/commands#kvkey).
+Wrangler](/cli-wrangler/commands#kvkey).
 
 Finally, you can [write data via the API](https://api.cloudflare.com/#workers-kv-namespace-write-key-value-pair).
 
@@ -40,7 +40,7 @@ Due to the eventually consistent nature of Workers KV, it's a common pattern to 
 #### Writing data in bulk
 
 You can [write more than one key-value pair at a time with
-wrangler](/reference/wrangler-cli/commands#kvbulk) or [via the
+wrangler](/cli-wrangler/commands#kvbulk) or [via the
 API](https://api.cloudflare.com/#workers-kv-namespace-write-multiple-key-value-pairs), up to 10,000 KV pairs. A `key` and `value` are required for each KV pair. The entire request size must be less than 100 megabytes.
 We do not support this from within a Worker script at this time.
 
@@ -75,7 +75,7 @@ We talked about the basic form of the `put` method above, but this call also has
 These assume that `secondsSinceEpoch` and `secondsFromNow` are variables defined elsewhere in your Worker code.
 
 You can also [write with an expiration on the command line via
-Wrangler](/reference/wrangler-cli/commands#kvkey) or [via the
+Wrangler](/cli-wrangler/commands#kvkey) or [via the
 API](https://api.cloudflare.com/#workers-kv-namespace-write-key-value-pair).
 
 #### Metadata
@@ -114,7 +114,7 @@ async function handleRequest(request) {
 ```
 
 You can also [read key-value pairs from the command line with
-wrangler](/reference/wrangler-cli/commands#kvkey).
+wrangler](/cli-wrangler/commands#kvkey).
 
 Finally, you can also [read from the API](https://api.cloudflare.com/#workers-kv-namespace-read-key-value-pair).
 
@@ -153,7 +153,7 @@ This will remove the key and value from your namespace. As with any operations, 
 
 This method returns a promise that you should `await` on in order to verify successful deletion.
 
-You can also [delete key-value pairs from the command line with Wrangler](/reference/wrangler-cli/kv_commands/#kv-key) or [via the API](https://api.cloudflare.com/#workers-kv-namespace-delete-key-value-pair).
+You can also [delete key-value pairs from the command line with Wrangler](/cli-wrangler/kv_commands/#kv-key) or [via the API](https://api.cloudflare.com/#workers-kv-namespace-delete-key-value-pair).
 
 ### Listing keys
 
@@ -171,7 +171,7 @@ async function handleRequest(request) {
 }
 ```
 
-You can also [list keys on the command line with Wrangler](/reference/wrangler-cli/commands#kvkey) or [via the API](https://api.cloudflare.com/#workers-kv-namespace-list-a-namespace-s-keys).
+You can also [list keys on the command line with Wrangler](/cli-wrangler/commands#kvkey) or [via the API](https://api.cloudflare.com/#workers-kv-namespace-list-a-namespace-s-keys).
 
 Changes may take up to 60 seconds to be visible when listing keys.
 
@@ -239,6 +239,6 @@ const next_value = await NAMESPACE.list({"cursor": cursor})
 
 ## See Also
 
-- [Use cases](/reference/storage/use-cases)
-- [Limits](/reference/platform/limits)
-- [Pricing](/reference/platform/pricing)
+- [Use cases](/storage/use-cases)
+- [Limits](/platform/limits)
+- [Pricing](/platform/pricing)

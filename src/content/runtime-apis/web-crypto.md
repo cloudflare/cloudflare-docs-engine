@@ -29,7 +29,7 @@ console.log(new Uint8Array(myDigest))
 <!-- TODO(soon): Link does not exist. Update links to relevant Examples. -->
 Some common uses include:
 
-- [Signing requests.](/reference/write-workers/best-practices/signing-requests)
+- [Signing requests.](/write-workers/best-practices/signing-requests)
 
 <Aside type="warning" header="Warning">
 

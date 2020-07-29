@@ -25,9 +25,9 @@ To install [`wrangler`](https://github.com/cloudflare/wrangler), the Workers CLI
 ## Popular pages
 
 - [Learning: How Workers works](/learning/how-workers-works) – learn how Cloudflare’s global network powers Workers
-- [Pricing](/reference/platform/pricing) – learn about the Free and Unlimited plans
-- [Reference: HTMLRewriter](/reference/runtime-apis/html-rewriter) – parse and transform HTML from inside a Worker
-- [Limits](/reference/platform/limits) – learn about plan limits (e.g. free plans get 100,000 req/day)
+- [Pricing](/platform/pricing) – learn about the Free and Unlimited plans
+- [Reference: HTMLRewriter](/runtime-apis/html-rewriter) – parse and transform HTML from inside a Worker
+- [Limits](/platform/limits) – learn about plan limits (e.g. free plans get 100,000 req/day)
 
 --------------------------------
 

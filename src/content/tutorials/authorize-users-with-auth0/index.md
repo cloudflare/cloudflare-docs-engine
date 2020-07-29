@@ -18,7 +18,7 @@ In this tutorial you’ll integrate Auth0, an identity management platform, into
 
 To publish your Worker to Cloudflare, you’ll need a few things:
 
-- A Cloudflare account, the [Workers Unlimited Plan](/reference/platform/pricing), and access to an [API token](/quickstart#api-token) for that account
+- A Cloudflare account, the [Workers Unlimited Plan](/platform/pricing), and access to an [API token](/quickstart#api-token) for that account
 - A Wrangler installation running locally on your machine, and access to the command-line
 - An Auth0 account
 
@@ -97,7 +97,8 @@ export const authorize = async event => {
 }
 ```
 
-The `auth0` object wraps several secrets, which are encrypted values that can be defined and used by your script. In the “Publish” section of this tutorial, we’ll define these secrets using the [`wrangler secret`](https://developers.cloudflare.com/workers/reference/wrangler-cli/secrets/) command.
+<!-- TODO: migrate Secrets page https://git.io/JJuR2 -->
+The `auth0` object wraps several secrets, which are encrypted values that can be defined and used by your script. In the “Publish” section of this tutorial, we’ll define these secrets using the [`wrangler secret`](https://developers.cloudflare.com/workers/reference/cli-wrangler/secrets/) command.
 
 The `generateStateParam` function will be used to prevent [Cross-Site Request Forgery attacks](https://auth0.com/docs/protocols/oauth2/mitigate-csrf-attacks). For now, we’ll return a string “stub”, but later in the tutorial, it will generate a random “state” parameter that we’ll store in Workers KV to verify incoming authorization requests.
 

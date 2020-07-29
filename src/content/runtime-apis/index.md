@@ -1,7 +1,7 @@
 ---
-order: 1
+order: 6
 ---
 
 # Runtime APIs
 
-<DirectoryListing path="/reference/runtime-apis"/>
+<DirectoryListing path="/runtime-apis"/>
