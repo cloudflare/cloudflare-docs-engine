@@ -42,7 +42,7 @@ cannot be created directly using the `ReadableStream` constructor.
 
 - `preventAbort` <Type>bool</Type>
 
-  - When `true`, errors in the source `ReadableStream` will no longer abort the destination `WritableStream`. `pipeTo` will return a rejected promise with the error from the source or any error that occured while aborting the destination.
+  - When `true`, errors in the source `ReadableStream` will no longer abort the destination `WritableStream`. `pipeTo` will return a rejected promise with the error from the source or any error that occurred while aborting the destination.
 
 </Definitions>
 
