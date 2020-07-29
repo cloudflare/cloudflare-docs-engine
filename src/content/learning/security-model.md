@@ -222,7 +222,3 @@ We can also reschedule Workers across physical machines or cordons, so that the 
 In general, because Workers are fundamentally preemptible (unlike containers or VMs), we have a lot of freedom to frustrate attacks.
 
 Once we have dynamic process isolation fully deployed, we plan to develop these ideas next. We see this as an ongoing investment, not something that will ever be "done".
-
-## Conclusion
-
-Phew. You just read _twelve pages_ about Workers security. Hopefully I've convinced you that designing a secure sandbox is only the beginning of building a secure compute platform, and the real work is never done. Popular security culture often dwells on clever hacks and clean fixes. But for the difficult real-world problems, often there is no right answer or simple fix, only the hard work of building defenses thicker and thicker.
