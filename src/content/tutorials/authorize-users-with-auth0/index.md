@@ -36,7 +36,7 @@ Inside of our application’s settings, the client ID and client secret are keys
 
 ## Generate a new project
 
-Using wrangler’s `generate` command, we can begin building a new application using a Workers template. For this tutorial, we’ll heavily modify the default template for [Workers Sites](https://developers.cloudflare.com/workers/sites), which deploys a static HTML application:
+Using wrangler’s `generate` command, we can begin building a new application using a Workers template. For this tutorial, we’ll heavily modify the default template for [Workers Sites](/platform/sites), which deploys a static HTML application:
 
 ```sh
 ---
@@ -635,7 +635,7 @@ This tutorial introduces concepts for implementing authentication in Workers usi
 
 ### Using user data in our application
 
-In the previous section of the tutorial, we made a request to Auth0’s `/userinfo` endpoint, which provides information such as name and email address for use in our application. Using Workers’ [HTML Rewriter](https://developers.cloudflare.com/workers/reference/apis/html-rewriter/), we can embed the `userInfo` object that we’ve received from Auth0 directly into our site, by creating an instance of the `HTMLRewriter` class, and attaching a handler `hydrateState` to any found `head` tags that pass through the rewriter. The `hydrateState` handler will add a new `script` tag with an ID of `edge_state`, which we can parse and utilize in any front-end JavaScript code we’ll deploy with our application. Instead of simply returning `response` in `handleEvent`, we can replace it with the HTML rewriter code, and return a transformed version of `response`:
+In the previous section of the tutorial, we made a request to Auth0’s `/userinfo` endpoint, which provides information such as name and email address for use in our application. Using Workers’ [HTML Rewriter](/runtime-apis/html-rewriter), we can embed the `userInfo` object that we’ve received from Auth0 directly into our site, by creating an instance of the `HTMLRewriter` class, and attaching a handler `hydrateState` to any found `head` tags that pass through the rewriter. The `hydrateState` handler will add a new `script` tag with an ID of `edge_state`, which we can parse and utilize in any front-end JavaScript code we’ll deploy with our application. Instead of simply returning `response` in `handleEvent`, we can replace it with the HTML rewriter code, and return a transformed version of `response`:
 
 ```js
 ---
