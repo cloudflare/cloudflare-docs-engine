@@ -174,5 +174,5 @@ Deletes the `Response` object from the cache and returns a `Promise` for a Boole
 
 ## See also
 
-- [`How the Cache works`](/learning/how-the-cache-works)
-- [`Configure your CDN`](/tutorials/configure-your-cdn)
+- [How the Cache works](/learning/how-the-cache-works)
+- [Configure your CDN](/tutorials/configure-your-cdn)
