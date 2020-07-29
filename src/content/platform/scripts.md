@@ -139,7 +139,7 @@ curl -X PUT "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/worker
 
 *Note: Secrets are persisted between deploys of a Worker. You only need to include secrets in API calls when you are adding or changing the secret’s content.*
 
-<!-- TODO: migrate Environement Variables page https://git.io/JJuRR -->
+<!-- TODO: migrate Environment Variables page https://git.io/JJuRR -->
 If your Worker script uses [secrets](reference/apis/environment-variables#secrets), add a corresponding `secret_text` binding to the `"bindings"` array in `metadata.json`:
 
 ```json

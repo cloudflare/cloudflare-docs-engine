@@ -109,6 +109,6 @@ Valid options for the `options` object include:
 
 ## See also
 
-- [Modifing a Response](#)
+- [Modifying a Response](#)
 - [Implementing a conditional Response](#)
 - [Signing a Request/Response](#)

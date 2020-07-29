@@ -37,7 +37,7 @@ _¹ The Exceeded Resources status may appear when the Worker exceeds a [runtime 
 
 _² The Internal Error status may appear when the Workers runtime fails to process a request due to an internal failure in our system. These errors are not caused by any issue with the Worker code nor any resource limit. While requests with Internal Error status are rare, we expect that some may appear during normal operation. These requests are not counted towards usage for billing purposes. If you notice an elevated rate of requests with Internal Error status, please check www.cloudflarestatus.com._
 
-To further investagate exceptions, you can use [wrangler tail](/cli-wrangler/commands#tail)
+To further investigate exceptions, you can use [wrangler tail](/cli-wrangler/commands#tail)
 
 ### CPU time
 
