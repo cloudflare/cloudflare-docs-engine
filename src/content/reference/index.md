@@ -1,3 +1,0 @@
-# Reference
-
-<DirectoryListing path="/reference"/>
