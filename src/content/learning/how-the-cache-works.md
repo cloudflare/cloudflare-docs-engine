@@ -1,3 +1,5 @@
+import NetworkMap from "../../components/network-map"
+
 # How the Cache works
 
 Since Workers was built atop Cloudflare’s network, since its early days, it was designed to allow developers to interact directly with the Cloudflare cache. The cache can provide ephemeral, colo-local storage, as a convenient way to frequently accessed static or dynamic content.
@@ -5,13 +7,6 @@ Since Workers was built atop Cloudflare’s network, since its early days, it wa
 By allowing developers to write to the cache, Workers provide a way to customize cache behavior on Cloudflare’s CDN. To learn about the benefits of caching see our Learning Center’s article on [What is Caching?](https://www.cloudflare.com/learning/cdn/what-is-caching/).
 
 Since Cloudflare’s Workers can run before, and after the cache, a Worker can also be utilized to modify assets once they are returned from the cache, to sign or personalize responses, while reducing load on an origin, or latency to the end user by serving assets from a nearby location.
-
-<!-- TODO -->
-<!--
-## Life of a cached request
-
-...
--->
 
 --------------------------------
 
