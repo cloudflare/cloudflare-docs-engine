@@ -2,8 +2,8 @@ name = "workers"
 type = "webpack"
 account_id = "7f899bda35ad499383f34c558b53d64f" # cloudflaredocs.workers.dev
 workers_dev = true
+kv-namespaces = [{ binding = "REDIRECTS", id = "7df3fe779d0048d1bacc5d753c1153d0", preview_id = "7df3fe779d0048d1bacc5d753c1153d0" }]
 
 [site]
 bucket = "./public"
 entry-point = "workers-site"
-kv-namespaces = [{ binding = "REDIRECTS", id = "7df3fe779d0048d1bacc5d753c1153d0", preview_id = "7df3fe779d0048d1bacc5d753c1153d0" }]
