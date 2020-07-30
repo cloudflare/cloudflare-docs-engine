@@ -47,7 +47,7 @@ async function eventHandler(event) {
 <Definitions>
 
 - `request` <TypeLink href="/runtime-apis/request">Request</TypeLink> | <Type>string</Type>
-  - The <TypeLink href="/runtime-apis/request">Request</TypeLink> object or a string represents the URL to fetch.
+  - The [`Request`](/runtime-apis/request) object or a string represents the URL to fetch.
 
 - `init` <TypeLink href="/runtime-apis/request#requestinit">RequestInit</TypeLink>
   - The content of the request.
