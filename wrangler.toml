@@ -6,3 +6,4 @@ workers_dev = true
 [site]
 bucket = "./public"
 entry-point = "workers-site"
+kv-namespaces = [{ binding = "REDIRECTS", id = "7df3fe779d0048d1bacc5d753c1153d0", preview_id = "7df3fe779d0048d1bacc5d753c1153d0" }]
