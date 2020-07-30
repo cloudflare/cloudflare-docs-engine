@@ -103,8 +103,8 @@ Usage:
 
 ```toml
 kv_namespaces = [
-    { binding = "FOO", id = "0f2ac74b498b48028cb68387c421e279", preview_id = "6a1ddb03f3ec250963f0a1e46820076f" },
-    { binding = "BAR", id = "068c101e168d03c65bddf4ba75150fb0", preview_id = "fb69528dbc7336525313f2e8c3b17db0" }
+  { binding = "FOO", id = "0f2ac74b498b48028cb68387c421e279", preview_id = "6a1ddb03f3ec250963f0a1e46820076f" },
+  { binding = "BAR", id = "068c101e168d03c65bddf4ba75150fb0", preview_id = "fb69528dbc7336525313f2e8c3b17db0" }
 ]
 ```
 
@@ -236,8 +236,8 @@ account_id = "12345678901234567890"
 zone_id = "09876543210987654321"
 route = "dev.example.com/*"
 kv_namespaces = [
-    { binding = "FOO", id = "b941aabb520e61dcaaeaa64b4d8f8358", preview_id = "03c8c8dd3b032b0528f6547d0e1a83f3" },
-    { binding = "BAR", id = "90e6f6abd5b4f981c748c532844461ae", preview_id = "e5011a026c5032c09af62c55ecc3f438" }
+  { binding = "FOO", id = "b941aabb520e61dcaaeaa64b4d8f8358", preview_id = "03c8c8dd3b032b0528f6547d0e1a83f3" },
+  { binding = "BAR", id = "90e6f6abd5b4f981c748c532844461ae", preview_id = "e5011a026c5032c09af62c55ecc3f438" }
 ]
 
 [site]
@@ -249,16 +249,16 @@ entry-point = "workers-site"
 name = "my-worker-staging"
 route = "staging.example.com/*"
 kv_namespaces = [
-    { binding = "FOO", id = "0f2ac74b498b48028cb68387c421e279" },
-    { binding = "BAR", id = "068c101e168d03c65bddf4ba75150fb0" }
+  { binding = "FOO", id = "0f2ac74b498b48028cb68387c421e279" },
+  { binding = "BAR", id = "068c101e168d03c65bddf4ba75150fb0" }
 ]
 
 # environment configuration
 [env.production]
 workers_dev= true
 kv_namespaces = [
-    { binding = "FOO", id = "0d2ac74b498b48028cb68387c421e233" },
-    { binding = "BAR", id = "0d8c101e168d03c65bddf4ba75150f33" }
+  { binding = "FOO", id = "0d2ac74b498b48028cb68387c421e233" },
+  { binding = "BAR", id = "0d8c101e168d03c65bddf4ba75150f33" }
 ]
 ```
 

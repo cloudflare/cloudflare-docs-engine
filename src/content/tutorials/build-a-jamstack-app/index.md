@@ -98,7 +98,7 @@ Namespaces can be added to your application by defining them inside your Wrangle
 filename: wrangler.toml
 ---
 kv_namespaces = [
-    {binding = "TODOS", id = "abcdef123"}
+  {binding = "TODOS", id = "abcdef123"}
 ]
 ```
 

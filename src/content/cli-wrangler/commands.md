@@ -402,7 +402,7 @@ $ wrangler kv:namespace create "MY_KV"
 ✨  Success!
 Add the following to your wrangler.toml:
 kv_namespaces = [
-         { binding = "MY_KV", id = "e29b263ab50e42ce9b637fa8370175e8" }
+  { binding = "MY_KV", id = "e29b263ab50e42ce9b637fa8370175e8" }
 ]
 ```
 
@@ -434,12 +434,12 @@ one for staging and one for production). So, if you have a `wrangler.toml` with 
 ```toml
 [env.staging]
 kv_namespaces = [
-         { binding = "MY_KV", id = "e29b263ab50e42ce9b637fa8370175e8" }
+  { binding = "MY_KV", id = "e29b263ab50e42ce9b637fa8370175e8" }
 ]
 
 [env.production]
 kv_namespaces = [
-         { binding = "MY_KV", id = "a825455ce00f4f7282403da85269f8ea" }
+  { binding = "MY_KV", id = "a825455ce00f4f7282403da85269f8ea" }
 ]
 ```
 
@@ -482,13 +482,13 @@ route = "staging.example.com/*"
 workers_dev = false
 
 kv_namespaces = [
-    { binding = "MY_KV", id = "06779da6940b431db6e566b4846d64db" }
+  { binding = "MY_KV", id = "06779da6940b431db6e566b4846d64db" }
 ]
 
 [env.production]
 route = "example.com/*"
 kv_namespaces = [
-    { binding = "MY_KV", id = "07bc1f3d1f2a4fd8a45a7e026e2681c6" }
+  { binding = "MY_KV", id = "07bc1f3d1f2a4fd8a45a7e026e2681c6" }
 ]
 ```
 
@@ -531,7 +531,7 @@ $ wrangler kv:namespace create "MY_KV"
 🌀  Creating namespace with title "worker-MY_KV"
 ✨  Add the following to your wrangler.toml:
 kv_namespaces = [
-    { binding = "MY_KV", id = "e29b263ab50e42ce9b637fa8370175e8" }
+  { binding = "MY_KV", id = "e29b263ab50e42ce9b637fa8370175e8" }
 ]
 ```
 
@@ -541,7 +541,7 @@ $ wrangler kv:namespace create "MY_KV" --preview
 ✨  Success!
 Add the following to your wrangler.toml:
 kv_namespaces = [
-    { binding = "MY_KV", preview_id = "15137f8edf6c09742227e99b08aaf273" }
+  { binding = "MY_KV", preview_id = "15137f8edf6c09742227e99b08aaf273" }
 ]
 ```
 
