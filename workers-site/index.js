@@ -1,4 +1,5 @@
 import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
+import redirector from 'lilredirector'
 
 /**
  * The DEBUG flag will do two things that help during development:
@@ -35,6 +36,9 @@ async function handleEvent(event) {
   // options.mapRequestToAsset = handlePrefix(/^\/docs/)
 
   try {
+    const { response } = await redirector(event)
+    if (response) return response
+
     if (DEBUG) {
       // customize caching
       options.cacheControl = {
