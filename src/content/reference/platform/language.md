@@ -2,7 +2,7 @@
 
 ## Background
 
-Workers is a polyglot platform. You can likely write code on Workers with a language you already know. We originally built Workers to operate on JavaScript and WASM and over time we’ve added support for new languages. We are excited to support and deepen integrations with popular languages like Python for Workers.
+Workers is a polyglot platform. You can likely write code on Workers with a language you already know. We originally built Workers to operate on JavaScript and WASM and over time we've added support for new languages. We are excited to support and deepen integrations with popular languages like Python for Workers.
 
 ## JavaScript / TypeScript
 
@@ -26,7 +26,7 @@ JavaScript is fully supported on the Workers platform. We recommend using JS. Yo
 
 ## WASM-supported
 
-WebAssembly — often abbreviated as “WASM” — is a technology that extends the web platform to support compiled languages like C, C++, Rust, and more. Since these languages can be compiled to a special WASM binary format and then loaded in a browser, you can use them on the Workers platform!  Learn more by checking out the example projects.
+WebAssembly -- often abbreviated as "WASM" -- is a technology that extends the web platform to support compiled languages like C, C++, Rust, and more. Since these languages can be compiled to a special WASM binary format and then loaded in a browser, you can use them on the Workers platform!  Learn more by checking out the example projects.
 
 <TableWrap>
 
