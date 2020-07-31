@@ -1,5 +1,3 @@
-import NetworkMap from "../../components/network-map"
-
 # How the Cache works
 
 Since Workers was built atop Cloudflare’s network, since its early days, it was designed to allow developers to interact directly with the Cloudflare cache. The cache can provide ephemeral, colo-local storage, as a convenient way to frequently accessed static or dynamic content.
