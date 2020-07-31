@@ -761,7 +761,7 @@ export const logout = event => {
     }
   }
   return {}
-};
+}
 ```
 
 #### Deploying to origin/originless

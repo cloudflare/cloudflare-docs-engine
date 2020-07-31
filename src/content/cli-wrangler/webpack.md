@@ -22,7 +22,7 @@ This is the default webpack configuration that Wrangler uses to build your worke
 module.exports = {
   target: "webworker",
   entry: "./index.js" // inferred from "main" in package.json
-};
+}
 ```
 
 Our default configuration sets `target` to `webworker`. From the [webpack docs](https://webpack.js.org/concepts/targets/):
