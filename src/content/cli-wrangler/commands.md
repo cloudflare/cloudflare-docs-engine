@@ -118,7 +118,7 @@ To use this command, the following fields are required in your `wrangler.toml`.
 
 </Definitions>
 
-From here, you have two options, you can choose to publish to your own domain or you can choose to publish to [\<your-worker\>.\<your-subdomain\>.workers.dev](https://workers.dev).
+From here, you have two options, you can choose to publish to your own domain or you can choose to publish to [&lt;your-worker&gt;.&lt;your-subdomain&gt;.workers.dev](https://workers.dev).
 
 ### Publishing to workers.dev
 
@@ -140,7 +140,7 @@ If you would like to publish to your own domain, you will need to specify these 
 <Definitions>
 
 - `zone_id` <Type>string</Type>
-  - Your Cloudflare zone ID, e.g. `zone_id = "b6558acaf2b4cad1f2b51c5236a6b972"`.
+  - Your Cloudflare zone ID, e.g. `zone_id = "b6558acaf2b4cad1f2b51c5236a6b972"`, which can be found in the [Cloudflare dashboard](https://dash.cloudflare.com).
 
 - `route` <Type>string</Type>
   - The route you would like to publish to, e.g. `route = "example.com/my-worker/*"`.
@@ -152,13 +152,7 @@ If you would like to publish to your own domain, you will need to specify these 
 
 <Aside>
 
-Make sure to use only `route` or `routes`, not both.
-
-</Aside>
-
-<Aside>
-
-__Note:__ Your Cloudflare Zone ID can be found in the [Cloudflare dashboard](https://dash.cloudflare.com).
+__Note:__ Make sure to use only `route` or `routes`, not both.
 
 </Aside>
 
