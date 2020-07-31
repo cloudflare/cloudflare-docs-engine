@@ -1,3 +1,4 @@
+
 # Languages
 
 ## Background
@@ -10,10 +11,10 @@ JavaScript is fully supported on the Workers platform. We recommend using JS. Yo
 
 <TableWrap>
 
-| Language   | Example project                                                                                                         |
-|------------|-------------------------------------------------------------------------------------------------------------------------|
-| JavaScript | [cloudflare/worker-template](https://github.com/cloudflare/worker-template)                                             |
-| TypeScript | [EverlastingBugstopper/worker-typescript-template](https://github.com/EverlastingBugstopper/worker-typescript-template) |
+| Language     | Example Project | 
+|--------------|--------|
+| JavaScript   |   https://github.com/cloudflare/worker-template |
+| TypeScript   |   https://github.com/EverlastingBugstopper/worker-typescript-template     |
 
 </TableWrap>
 
@@ -30,18 +31,17 @@ WebAssembly -- often abbreviated as "WASM" -- is a technology that extends the w
 
 <TableWrap>
 
-| Language | Example project                                                                                   |
-|----------|---------------------------------------------------------------------------------------------------|
-| Rust     | [cloudflare/rustwasm-worker-template](https://github.com/cloudflare/rustwasm-worker-template)     |
-| C        | [cloudflare/worker-emscripten-template](https://github.com/cloudflare/worker-emscripten-template) |
-| Cobol    | [cloudflare/cobol-worker-template](https://github.com/cloudflare/cobol-worker-template)           |
+| Language     | Example Project |
+|--------------|--------|
+| Rust         | https://github.com/cloudflare/rustwasm-worker-template   |
+| C            | https://github.com/cloudflare/worker-emscripten-template   |
+| Cobol        | https://github.com/cloudflare/cobol-worker-template   |
 
 </TableWrap>
 
-### See Also
-
-- [Serverless Rust with Cloudflare Workers](https://blog.cloudflare.com/cloudflare-workers-as-a-serverless-rust-platform/)
-- [WebAssembly on Cloudflare Workers](https://blog.cloudflare.com/webassembly-on-cloudflare-workers/)
+### See Also:
+- [`Serverless Rust with Cloudflare Workers`](https://blog.cloudflare.com/cloudflare-workers-as-a-serverless-rust-platform/)
+- [`WebAssembly on Cloudflare Workers`](https://blog.cloudflare.com/webassembly-on-cloudflare-workers/)
 
 ## Compiled to JavaScript
 
@@ -49,16 +49,15 @@ Since Workers runs off of JS, you can also program on Workers with any language 
 
 <TableWrap>
 
-| Language     | Example project                                                                                 |
-|--------------|-------------------------------------------------------------------------------------------------|
-| Kotlin       | [cloudflare/kotlin-worker-hello-world](https://github.com/cloudflare/kotlin-worker-hello-world) |
-| Dart         | [cloudflare/dart-worker-hello-world](https://github.com/cloudflare/dart-worker-hello-world)     |
-| Python       | [cloudflare/python-worker-hello-world](https://github.com/cloudflare/python-worker-hello-world) |
-| Scala        | [cloudflare/scala-worker-hello-world](https://github.com/cloudflare/scala-worker-hello-world)   |
-| Reason/OCaml | [cloudflare/reason-worker-hello-world](https://github.com/cloudflare/reason-worker-hello-world) |
+| Language     | Example Project | 
+|--------------|--------|
+| Kotlin       |    https://github.com/cloudflare/kotlin-worker-hello-world    |
+| Dart         |    https://github.com/cloudflare/dart-worker-hello-world    |
+| Python       |    https://github.com/cloudflare/python-worker-hello-world    |
+| Scala        |     https://github.com/cloudflare/scala-worker-hello-world   |
+| Reason/OCaml |    https://github.com/cloudflare/reason-worker-hello-world    |
 
 </TableWrap>
 
-### See Also
-
-- [Cloudflare Workers announces broad language support](https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support/)
+### See Also:
+- [`Cloudflare Workers Announces Broad Language Support`](https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support/)
