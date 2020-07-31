@@ -3,23 +3,13 @@
 
 ## Background
 
-Workers is a polyglot platform. You can likely write code on Workers with a language you already know. We originally built Workers to operate on JavaScript and WASM and over time we've added support for new languages. We are excited to support and deepen integrations with popular languages like Python for Workers.
+Workers is a polyglot platform. You can likely write code on Workers with a language you already know. We originally built Workers to use JS/TS and over time we've added support for new languages. We plan to add popular languages like Python and continue to deepen support for added languages.
 
-## JavaScript / TypeScript
+## Javascript
 
-JavaScript is fully supported on the Workers platform. We recommend using JS. You can also use TypeScript on the platform and can find the [type definitions here](https://github.com/cloudflare/workers-types).
-
-<TableWrap>
-
-| Language     | Example Project | 
-|--------------|--------|
-| JavaScript   |   https://github.com/cloudflare/worker-template |
-| TypeScript   |   https://github.com/EverlastingBugstopper/worker-typescript-template     |
-
-</TableWrap>
+Javascript is fully supported on the Workers platform. We recommend using JS.
 
 ### See Also:
-- [`TypeScript Type Definitions`](https://github.com/cloudflare/workers-types)
 - [`Hello World for Workers in JS`](https://github.com/cloudflare/worker-template)
 - [`Javascript and Webstandard APIs`](/reference/runtime-apis/web-standards)
 - [`Starters - Code snippets`](/starters)
@@ -51,6 +41,7 @@ Since Workers runs off of JS, you can also program on Workers with any language 
 
 | Language     | Example Project | 
 |--------------|--------|
+| TypeScript   |   https://github.com/EverlastingBugstopper/worker-typescript-template     |
 | Kotlin       |    https://github.com/cloudflare/kotlin-worker-hello-world    |
 | Dart         |    https://github.com/cloudflare/dart-worker-hello-world    |
 | Python       |    https://github.com/cloudflare/python-worker-hello-world    |
