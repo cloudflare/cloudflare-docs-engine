@@ -3,7 +3,7 @@
 ## Background
 
 <!-- TODO(soon): The linked addEventListener reference does not exist in the new docs. -->
-The event type for HTTP requests dispatched to a Worker (i.e the `Object` passed through as `event` in [`addEventListener()`](/apis/addEventListener).
+The event type for HTTP requests dispatched to a Worker (i.e the `Object` passed through as `event` in [`addEventListener()`](/runtime-apis/add-event-listener).
 
 ## Constructor
 
