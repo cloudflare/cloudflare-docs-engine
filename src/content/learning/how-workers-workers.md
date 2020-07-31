@@ -1,4 +1,5 @@
-import NetworkMap from "../../../components/network-map"
+import NetworkMap from "../../components/network-map"
+import ArchitectureDiagram from "../../components/architecture-diagram"
 
 # How Workers Works
 
@@ -18,7 +19,7 @@ V8 orchestrates isolates: lightweight contexts that group variables with the cod
 
 A single runtime can run hundreds or thousands of isolates, seamlessly switching between them. Each isolate's memory is completely isolated, so each piece of code is protected from other untrusted or user-written code on the runtime. Isolates are also designed to start very quickly. Instead of creating a virtual machine for each function, an isolate is created within an existing environment. This model eliminates the cold starts of the virtual machine model.
 
-![process-vs-isolate](./media/isolates.png)
+<figure><ArchitectureDiagram/></figure>
 
 Unlike other serverless providers which use containerized processes each running an instance of a language runtime, Workers pays the overhead of a JavaScript runtime once on the start of an edge container. Workers processes are able to run essentially limitless scripts with almost no individual overhead by creating an isolate for each Workers function call. Any given isolate can start around a hundred times faster than a Node process on a container or virtual machine. Notably, on startup isolates consume an order of magnitude less memory.
 
