@@ -17,12 +17,13 @@ JavaScript is fully supported on the Workers platform. We recommend using JS. Yo
 
 </TableWrap>
 
-### See Also:
-- [`TypeScript Type Definitions`](https://github.com/cloudflare/workers-types)
-- [`Hello World for Workers in JS`](https://github.com/cloudflare/worker-template)
-- [`Javascript and Webstandard APIs`](/reference/runtime-apis/web-standards)
-- [`Starters - Code snippets`](/starters)
-- [`Tutorials`](/tutorials)
+### See Also
+
+- [TypeScript Type Definitions](https://github.com/cloudflare/workers-types)
+- [Hello World for Workers in JS](https://github.com/cloudflare/worker-template)
+- [Javascript and Webstandard APIs](/reference/runtime-apis/web-standards)
+- [Starters - Code snippets](/starters)
+- [Tutorials](/tutorials)
 
 ## WASM-supported
 
