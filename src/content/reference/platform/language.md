@@ -27,7 +27,7 @@ JavaScript is fully supported on the Workers platform. We recommend using JS. Yo
 
 ## WASM-supported
 
-WebAssembly -- often abbreviated as "WASM" -- is a technology that extends the web platform to support compiled languages like C, C++, Rust, and more. Since these languages can be compiled to a special WASM binary format and then loaded in a browser, you can use them on the Workers platform!  Learn more by checking out the example projects.
+WebAssembly -- often abbreviated as "WASM" -- is a technology that extends the web platform to support compiled languages like C, C++, Rust, Go, and more. Since these languages can be compiled to a special WASM binary format and then loaded in a browser, you can use them on the Workers platform!  Learn more by checking out the example projects.
 
 <TableWrap>
 
