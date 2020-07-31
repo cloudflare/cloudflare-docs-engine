@@ -1,4 +1,4 @@
-import NetworkMap from "../../components/network-map"
+import NetworkMap from "../../../components/network-map"
 
 # How Workers Works
 
