@@ -38,16 +38,12 @@ If you're interested in how we handle security with the Workers runtime, you can
 Most Workers scripts are a variation on the default Workers flow:
 
 ```js
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
-/**
- * Fetch and log a request
- * @param {Request} request
- */
 async function handleRequest(request) {
-  return new Response('Hello worker!', { status: 200 })
+  return new Response("Hello worker!", { status: 200 })
 }
 ```
 
