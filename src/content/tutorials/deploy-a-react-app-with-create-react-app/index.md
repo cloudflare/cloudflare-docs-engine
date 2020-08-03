@@ -105,7 +105,7 @@ addEventListener("fetch", event => {
 
 When the script receives an incoming [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request), it looks at the `pathname`, such as `/workers`, and looks up an associated file uploaded to Workers KV. If that file is found, a new [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) is generated, with a matching [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) in the `Content-Type` header of the response — for instance, if the path `/workers.jpg` is requested, a new response is returned with the header `Content-type: image/jpg`.
 
-After fetching assets from [Workers KV](https://developers.cloudflare.com/workers/reference/storage), the static site template will cache them in Cloudflare’s powerful CDN. When subsequent users request `/index.html`, Cloudflare’s CDN will transparently serve a cached version.
+After fetching assets from [Workers KV](/runtime-apis/kv), the static site template will cache them in Cloudflare’s powerful CDN. When subsequent users request `/index.html`, Cloudflare’s CDN will transparently serve a cached version.
 
 ## Resources
 
