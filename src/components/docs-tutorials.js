@@ -19,7 +19,6 @@ const DocsTutorials = () => {
               title
               updated
               difficulty
-              hidden
             }
             headings(depth: h1) {
               value
