@@ -11,7 +11,9 @@ import WorkerStarter from "../../components/worker-starter"
 
 Starters are essentially Github repos that are designed to be a starting point for building a new Cloudflare Workers project. For the projects below, you simply run:
 
-<pre class="CodeBlock CodeBlock-scrolls-horizontally CodeBlock-is-light-in-light-theme CodeBlock--language-sh" language="sh"><code><u><b class="CodeBlock--token-prompt">$</b> </u>wrangler generate &lt;new-project-name&gt; &lt;github-repo-url&gt;</code></pre>
+```sh
+$ wrangler generate <new-project-name> <github-repo-url>
+```
 
 <Definitions>
 

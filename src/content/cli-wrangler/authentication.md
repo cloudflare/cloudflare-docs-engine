@@ -22,7 +22,7 @@ You can also configure your global user with environment variables. This is the 
 
 You can deploy with authentication tokens (recommended):
 
-```bash
+```sh
 # e.g.
 CF_ACCOUNT_ID=youraccountid
 CF_API_TOKEN=superlongapitoken wrangler publish
@@ -32,7 +32,7 @@ CF_API_TOKEN=superlongapitoken wrangler publish
 
 Or you can deploy with your email and your global API key:
 
-```bash
+```sh
 # e.g.
 CF_EMAIL=testuser@example.com CF_API_KEY=superlongapikey wrangler publish
 # where

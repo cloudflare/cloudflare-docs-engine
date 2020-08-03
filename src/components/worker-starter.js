@@ -23,7 +23,7 @@ const WorkerStarter = props => {
           </CopyToClipboard>
         </div>
         <div className="WorkerStarter--command-codeblock-wrapper">
-          <CodeBlock lang="sh">{command}</CodeBlock>
+          <CodeBlock lang="txt">{command}</CodeBlock>
         </div>
       </div>
     </div>

@@ -26,7 +26,14 @@ If you’d like to deploy your own version of the site, you can find the source 
 
 To generate a new project, we’ll use `wrangler generate --site` to create a new application, calling it `i18n-example`:
 
-<pre class="CodeBlock CodeBlock-scrolls-horizontally" language="sh"><code><u><b class="CodeBlock--token-directory">~/</b> <b class="CodeBlock--token-prompt">$</b> </u>wrangler generate i18n-example --site<br/><u><b class="CodeBlock--token-directory">~/</b> <b class="CodeBlock--token-prompt">$</b> </u>cd i18n-example<br/><u><b class="CodeBlock--token-directory">~/i18n-example</b> <b class="CodeBlock--token-prompt">$</b></u></code></pre>
+```sh
+---
+theme: dark
+---
+~/ $ wrangler generate i18n-example --site
+~/ $ cd i18n-example
+~/i18n-example $
+```
 
 The `--site` flag indicates to Wrangler that we want to build a [Workers Sites](/sites) project—this means that there will be both a “site” component, the static HTML that we want to serve to the user, and a Workers script. Inside the Workers script we can customize the HTML response using `HTMLRewriter`.
 
@@ -153,7 +160,12 @@ To implement this, we’ll update the `strings` object, adding a second layer of
 
 To parse the `Accept-Language` header, we’ll install the [`accept-language-parser`](https://www.npmjs.com/package/accept-language-parser) NPM package:
 
-<pre class="CodeBlock CodeBlock-scrolls-horizontally" language="sh"><code><u><b class="CodeBlock--token-directory">~/i18n-example</b> <b class="CodeBlock--token-prompt">$</b> </u>npm i accept-language-parser</code></pre>
+```sh
+---
+theme: dark
+---
+~/i18n-example $ npm i accept-language-parser
+```
 
 Once imported into our code, we can use it to parse the most relevant language for a client based on `Accept-Language` header, and pass it to `ElementHandler`. Our final code for the project, with an included sample translation for Germany (using Google Translate) looks like this:
 
@@ -269,7 +281,12 @@ entry-point = "workers-site"
 
 With that, it’s time to publish your application! Using `wrangler`, we can publish to Cloudflare’s entire network almost instantly, using the `publish` command:
 
-<pre class="CodeBlock CodeBlock-scrolls-horizontally" language="sh"><code><u><b class="CodeBlock--token-directory">~/i18n-example</b> <b class="CodeBlock--token-prompt">$</b> </u>wrangler publish</code></pre>
+```sh
+---
+theme: dark
+---
+~/i18n-example $ wrangler publish
+```
 
 [![Demo Image](./media/i18n.jpg)](https://i18n-example.workers-tooling.cf)
 
