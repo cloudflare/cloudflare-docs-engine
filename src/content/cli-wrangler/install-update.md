@@ -42,7 +42,7 @@ Wrangler can be installed both through [npm](https://www.npmjs.com/get-npm) and 
     $ curl https://sh.rustup.rs -sSf | sh
     ```
 
-    Additional installation methods are available [here](https://forge.rust-lang.org/other-installation-methods.html).
+    Additional installation methods are available [on the Rust site](https://forge.rust-lang.org/other-installation-methods.html).
 
 2. Install `wrangler`:
 
