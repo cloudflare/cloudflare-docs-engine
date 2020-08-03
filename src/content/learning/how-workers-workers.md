@@ -51,7 +51,7 @@ When a request to your workers.dev subdomain or to your Cloudflare-managed domai
 
 ## Distributed Execution
 
-Isolates are resilient and continuously available for the duration of a request, but in rare instances isolates may be evicted. When a script hits our [limits](/reference/platform/limits) or when resources are exceptionally tight on the machine the request is running on, the runtime will selectively evict isolates _after_ their events are properly resolved.
+Isolates are resilient and continuously available for the duration of a request, but in rare instances isolates may be evicted. When a script hits our [limits](/platform/limits) or when resources are exceptionally tight on the machine the request is running on, the runtime will selectively evict isolates _after_ their events are properly resolved.
 
 Like all other JavaScript platforms, a single Workers instance may handle multiple requests including concurrent requests in a single-threaded event loop. There's no guarantee whatsoever whether any two requests will land in the same instance; therefore it is _inadvisable to set or mutate global state within the event handler_.
 
