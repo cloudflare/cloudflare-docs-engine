@@ -74,6 +74,24 @@ The `updated` property sets the updated date. This is currently used to sort the
 
 Currently `difficulty` is only set to one of `"Beginner"`, `"Advanced"`, or `"Expert"`, but any short string value is fine.
 
+### Additional properties for examples
+
+Examples additionally have three properties which are used on both the [Examples](/examples) listing view as well as on an individual example page.
+
+```txt
+frontmatter {
+  summary
+  demo
+  tags
+}
+```
+
+The `summary` should be a summary of the example, no longer than \~100 characters in length.
+
+The `demo` property is for a URL to a working demo of the example.
+
+The `tags` property is for a list of tags to use for filtering on the Examples overview page.
+
 --------------------------------
 
 ## Links
