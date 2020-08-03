@@ -1,5 +1,4 @@
 ---
-order: 4
 hidden: true
 ---
 
