@@ -73,7 +73,7 @@ By default, all pages (not at the top level of nav tree) will have breadcrumbs g
 
 ### Additional properties for tutorials
 
-Tutorials additionally have three properties which are used to sort and display them inside the [Tutorials](/tutorials) overview page.
+Tutorials additionally have two properties which are used to sort and display them inside the [Tutorials](/tutorials) overview page.
 
 ```txt
 frontmatter {

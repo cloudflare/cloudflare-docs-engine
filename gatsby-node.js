@@ -121,7 +121,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       difficulty: String
       hidden: Boolean
       hideChildren: Boolean
-      length: String
       order: Int
       summary: String
       tags: [String]

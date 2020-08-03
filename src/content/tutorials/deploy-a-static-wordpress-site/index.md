@@ -1,7 +1,6 @@
 ---
 updated: 2020-06-29
 difficulty: Intermediate
-length: 25%
 ---
 
 # Deploy a static WordPress site

@@ -1,7 +1,6 @@
 ---
 updated: 2020-06-26
 difficulty: Beginner
-length: 75%
 ---
 
 # Build a To-Do list JAMstack app

@@ -1,7 +1,6 @@
 ---
 updated: 2020-06-29
 difficulty: Beginner
-length: 50%
 ---
 
 # Configure your CDN
