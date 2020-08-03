@@ -4,13 +4,7 @@ order: 0
 
 # Docs-flavored Markdown
 
-<Aside type="warning">
-
-__Warning:__ These APIs are a work in progress, and may change substantially before release.
-
-</Aside>
-
-The Cloudflare Docs engine uses its own custom MDX/Markdown parsing to generate consistent and manageable markup, while offering flexibility to content authors.
+The Cloudflare Docs engine renders pages with [MDX](https://mdxjs.com/), and includes a number of custom MDX components in the global context, allowing authors to use them on any page without requiring them to be explicitly imported.
 
 --------------------------------
 
@@ -41,13 +35,7 @@ All pages you write will by default have the `"document"` type. This is used mai
 
 <Aside>
 
-__Note:__ A planned feature will allow content authors to disable the table of contents.
-
-</Aside>
-
-<Aside>
-
-__Note:__ A planned feature will allow content authors to replace the table of contents with other content.
+__Note:__ In the future, we plan to allow content authors to disable the table of contents with a custom frontmatter property, and/or replace them with other MDX content.
 
 </Aside>
 
