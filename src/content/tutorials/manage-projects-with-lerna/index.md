@@ -69,7 +69,7 @@ filename: packages/public-api/package.json
 
 Using the `bootstrap` command, you can link the packages together and use them inside of your code:
 
-```js
+```sh
 ---
 header: Link packages using lerna bootstrap
 ---
