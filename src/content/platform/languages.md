@@ -17,11 +17,11 @@ JavaScript is fully supported on the Workers platform. We recommend using JS. Yo
 
 </TableWrap>
 
-### See Also
+### See also
 
 - [TypeScript Type Definitions](https://github.com/cloudflare/workers-types)
 - [Hello World for Workers in JS](https://github.com/cloudflare/worker-template)
-- [Javascript and Webstandard APIs](/reference/runtime-apis/web-standards)
+- [JavaScript and web standard APIs](/runtime-apis/web-standards)
 - [Starters - Code snippets](/starters)
 - [Tutorials](/tutorials)
 
@@ -39,7 +39,7 @@ WebAssembly — often abbreviated as “WASM” — is a technology that extends
 
 </TableWrap>
 
-### See Also
+### See also
 
 - [Serverless Rust with Cloudflare Workers](https://blog.cloudflare.com/cloudflare-workers-as-a-serverless-rust-platform/)
 - [WebAssembly on Cloudflare Workers](https://blog.cloudflare.com/webassembly-on-cloudflare-workers/)
@@ -60,6 +60,6 @@ Since Workers runs off of JS, you can also program on Workers with any language 
 
 </TableWrap>
 
-### See Also
+### See also
 
 - [Cloudflare Workers announces broad language support](https://blog.cloudflare.com/cloudflare-workers-announces-broad-language-support/)
