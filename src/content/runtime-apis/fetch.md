@@ -19,7 +19,7 @@ __Note:__ Asynchronous tasks such as `fetch` are not executed at the top level i
 ---
 highlight: [8]
 ---
-addEventListener("fetch", (event) => {
+addEventListener("fetch", event => {
   // NOTE: can’t use fetch here, as we’re not in an async scope yet
   event.respondWith(eventHandler(event))
 })
