@@ -25,13 +25,17 @@ Note: request traffic data may display a "drop off" near the last few minutes di
 
 Worker invocation statuses indicate whether a Worker script executed successfully or failed to generate a response in the Workers runtime. Invocation statuses differ from HTTP status codes. In some cases, a Worker script invocation succeeds but does not generate a successful HTTP status because of another error encountered outside of the Workers runtime. Some invocation statuses result in a [Workers error code](/learning/debugging-workers#error-pages-generated-by-workers) being returned to the client.
 
-| Invocation status      | Definition                                                               | Workers Error code | GraphQL field          |
+<TableWrap>
+
+| Invocation status      | Definition                                                               | Workers error code | GraphQL field          |
 | ---------------------- | ------------------------------------------------------------------------ | ------------------ | ---------------------- |
 | Success                | Worker script executed successfully                                      |                    | `success`              |
-| Client Disconnected    | HTTP client (i.e. the browser) disconnected before the request completed |                    | `clientDisconnected`   |
-| Script Threw Exception | Worker script threw an unhandled Javascript exception                    | 1101               | `scriptThrewException` |
-| ¹ Exceeded Resources   | Worker script exceeded runtime limits                                    | 1102, 1027         | `exceededResources`    |
-| ² Internal Error       | Workers runtime encountered an error                                     |                    | `internalError`        |
+| Client disconnected    | HTTP client (i.e. the browser) disconnected before the request completed |                    | `clientDisconnected`   |
+| Script threw exception | Worker script threw an unhandled JavaScript exception                    | 1101               | `scriptThrewException` |
+| Exceeded resources¹    | Worker script exceeded runtime limits                                    | 1102, 1027         | `exceededResources`    |
+| Internal error²        | Workers runtime encountered an error                                     |                    | `internalError`        |
+
+</TableWrap>
 
 _¹ The Exceeded Resources status may appear when the Worker exceeds a [runtime limit](/platform/limits#request-limits). The most common cause is excessive CPU time, but is also caused by a script exceeding startup time or free tier limits._
 
