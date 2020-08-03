@@ -8,7 +8,7 @@ Routes allow users to map a URL pattern to a Worker script to enable Workers to 
 
 For zones proxied on Cloudflare\*, route patterns decide what (if any) script is matched based on the URL of that request. Requests are routed through a Workers script when the URL matches a route pattern assigned to that script.
 
-Route patterns can be added using the Cloudflare API or by going to the [Workers tab](https://dash.cloudflare.com/?zone=workers) after selecting a zone.
+Route patterns can be added with the Cloudflare API or on the [Workers tab](https://dash.cloudflare.com/?zone=workers) in the Cloudflare dashboard (after selecting a zone).
 
 <!-- TODO -->
 <!--
@@ -19,9 +19,9 @@ Cloudflare Site routes are comprised of:
 
 - Route URL (see [Matching Behavior](#matching-behavior))
 - Worker script to execute on matching requests
-- Failure mode for rate-limited accounts on the free plan (see [Daily Request Limits](/platform/limits#request-limits))
+- Failure mode for rate-limited accounts on the free plan (see [daily request limits](/platform/limits#request-limits))
 
-The Routes REST API documentation can be found [here](https://api.cloudflare.com/#worker-routes-properties)
+The Routes REST API documentation can be found [in the Workers API docs](https://api.cloudflare.com/#worker-routes-properties).
 
 \* _A zone that you have registered with some registrar (not workers.dev) and setup Cloudflare to serve as [a reverse proxy](https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/)._
 
