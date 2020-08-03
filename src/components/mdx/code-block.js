@@ -12,7 +12,10 @@ import Prism from "prism-react-renderer/prism"
 require("prismjs/components/prism-toml")
 Prism.languages.sh = prismLanguages.sh
 
-const codeBlockClassName = "CodeBlock CodeBlock-with-rows CodeBlock-scrolls-horizontally CodeBlock-is-light-in-light-theme"
+const codeBlockClassName = theme => {
+  const themeClassName = theme === "dark" ? "" : " CodeBlock-is-light-in-light-theme"
+  return `CodeBlock CodeBlock-with-rows CodeBlock-scrolls-horizontally${themeClassName}`
+}
 
 const addNewlineToEmptyLine = line => {
   if (line && line.length === 1 && line[0].empty) {
@@ -72,10 +75,12 @@ const CodeBlock = props => {
     }
   }
 
+  const theme = codeFrontmatter.theme || "light"
+
   return (
     <Highlight {...defaultProps} code={code} language={language}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={codeBlockClassName + " CodeBlock--language-" + language} language={language}>
+        <pre className={codeBlockClassName(theme) + " CodeBlock--language-" + language} language={language}>
           {codeFrontmatter.header && (
             <span className="CodeBlock--header">{codeFrontmatter.header}</span>
           )}

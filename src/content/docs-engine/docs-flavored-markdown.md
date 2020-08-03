@@ -484,6 +484,28 @@ header: Configure the Workers CLI
 $ workers config
 ```
 
+### Theme
+
+By default, code blocks use a light theme when the page uses a light theme, and a dark theme when the page uses a dark theme. To force a dark theme all the time, you can do this by setting `theme: dark` in the frontmatter.
+
+Currently, we only recommend doing this for `sh`-type code blocks, and only when doing so helps differentiate it from neighboring `js` (other other non-`sh`) code blocks.
+
+```sh
+---
+theme: dark
+---
+~/my-worker $ wrangler publish
+```
+
+``````txt
+```sh
+---
+theme: dark
+---
+~/my-worker $ wrangler publish
+```
+``````
+
 ### Workers-JavaScript
 
 Workers-specific APIs are automatically highlighted in true Cloudflare spirit—in [orange](https://cloudflare.com).
