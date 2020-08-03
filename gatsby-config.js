@@ -57,6 +57,7 @@ module.exports = {
             resolve: "gatsby-remark-images",
             options: {
               maxWidth: 1382,
+              disableBgImageOnAlpha: true
             },
           },
           // Copies linked files from Markdown to public directory (ie for gifs)
