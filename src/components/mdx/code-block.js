@@ -4,12 +4,13 @@ import * as frontMatterParser from "gray-matter"
 
 import Highlight, { defaultProps } from "prism-react-renderer"
 
-import { transformToken, languageMappings } from "./custom-syntax-highlighting"
+import { languageMappings, prismLanguages, transformToken } from "./custom-syntax-highlighting"
 
 // Additional language support (See https://git.io/JJuZX)
 import Prism from "prism-react-renderer/prism"
 (typeof global !== "undefined" ? global : window).Prism = Prism
 require("prismjs/components/prism-toml")
+Prism.languages.sh = prismLanguages.sh
 
 const codeBlockClassName = "CodeBlock CodeBlock-with-rows CodeBlock-scrolls-horizontally CodeBlock-is-light-in-light-theme"
 

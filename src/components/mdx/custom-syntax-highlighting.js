@@ -4,6 +4,31 @@ export const languageMappings = {
   "markup": "html"
 }
 
+export const prismLanguages = {
+  sh: {
+    comment: {
+      pattern: /(^|[^"{\\$])#.*/,
+      alias: "unselectable",
+      lookbehind: true
+    },
+
+    directory: {
+      pattern: /^[^\r\n$*!]+(?=[$])/m,
+      alias: "unselectable"
+    },
+
+    command: {
+      pattern: /[$](?:[^\r\n])+/,
+      inside: {
+        prompt: {
+          pattern: /^[$] /,
+          alias: "unselectable"
+        }
+      }
+    }
+  }
+}
+
 const transformations = {
   js: {
     keyword: {
@@ -21,12 +46,6 @@ const transformations = {
     function: {
       to: "builtin",
       for: ["fetch", "console", "addEventListener", "atob", "btoa", "setInterval", "clearInterval", "setTimeout", "clearTimeout"]
-    }
-  },
-  sh: {
-    "*": {
-      to: "comment",
-      for: s => s.match(/^#/)
     }
   }
 }
