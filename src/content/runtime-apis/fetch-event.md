@@ -2,13 +2,15 @@
 
 ## Background
 
-The event type for HTTP requests dispatched to a Worker (i.e the `Object` passed through as `event` in [`addEventListener()`](/runtime-apis/add-event-listener).
+The event type for HTTP requests dispatched to a Worker.
 
-## Constructor
+The `Object` passed through as `event` in [`addEventListener()`](/runtime-apis/add-event-listener).
+
+## Context
 
 ```js
-addEventListener("fetch", (event) => {
-  event.respondWith(eventHandler(event))
+addEventListener("fetch", event => {
+  event.respondWith(handleRequest(event))
 })
 ```
 
@@ -44,8 +46,6 @@ When a Workers script receives a request, the Workers runtime triggers a FetchEv
 
 </Definitions>
 
-
-
 ## See also
 
-To learn more about using the `FetchEvent`, see [FetchEvent LifeCycle](learning/fetch-event-lifecycle).
+To learn more about using the `FetchEvent`, see [`FetchEvent` LifeCycle](/learning/fetch-event-lifecycle).
