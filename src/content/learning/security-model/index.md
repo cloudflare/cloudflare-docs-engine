@@ -16,7 +16,7 @@ For more details, please refer to [this talk](https://www.infoq.com/presentation
 
 Let's start with a quick overview of the Workers Runtime architecture.
 
-![Workers-architecture](https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/Workers-architecture.svg)
+![Workers-architecture](./media/Workers-architecture.svg)
 
 There are two fundamental parts of designing a code sandbox: secure isolation and API design.
 
@@ -78,7 +78,7 @@ As a result, our patch gap is now under 24 hours. A patch published by V8's team
 
 ## Spectre: Introduction
 
-![Spectre-vulnerability-@2x](https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/Spectre-vulnerability-@2x.png)
+![Spectre-vulnerability-@2x](./media/Spectre-vulnerability-@2x.png)
 We get a lot of questions about Spectre. The V8 team at Google has stated in no uncertain terms that [V8 itself cannot defend against Spectre](https://arxiv.org/abs/1902.05178). Since Workers relies on V8 for sandboxing, many have asked if that leaves Workers vulnerable. However, we do not need to depend on V8 for this; the Workers environment presents many alternative approaches to mitigating Spectre.
 
 Spectre is complicated and nuanced, and there's no way we can cover everything there is to know about it or how Workers addresses it in a single article. But, hopefully we can clear up some of the confusion and concern.
@@ -145,7 +145,7 @@ So, what do we do to slow down Spectre attacks to the point of meaninglessness?
 
 ## Freezing a Spectre Attack
 
-![freeze-Spectre@2x](https://blog-cloudflare-com-assets.storage.googleapis.com/2020/07/freeze-Spectre@2x.png)
+![freeze-Spectre@2x](./media/freeze-Spectre@2x.png)
 
 ### Step 0: Don't allow native code
 
