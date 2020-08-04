@@ -16,7 +16,17 @@ For more details, please refer to [this talk](https://www.infoq.com/presentation
 
 Let’s start with a quick overview of the Workers Runtime architecture.
 
-![Workers-architecture](./media/Workers-architecture.svg)
+<div className="security-page-workers-architecture-diagram">
+
+![Workers architecture diagram](./media/Workers-architecture.svg)
+
+</div>
+<style dangerouslySetInnerHTML={{__html: `
+  [theme="dark"] .security-page-workers-architecture-diagram {
+    filter: invert(1);
+    -webkit-filter: invert(1);
+  }
+`}}/>
 
 There are two fundamental parts of designing a code sandbox: secure isolation and API design.
 
