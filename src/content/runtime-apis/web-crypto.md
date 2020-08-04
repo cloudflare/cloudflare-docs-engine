@@ -1,4 +1,4 @@
-# Web Crypto API
+# Web Crypto
 
 ## Background
 
@@ -29,7 +29,7 @@ console.log(new Uint8Array(myDigest))
 <!-- TODO(soon): Link does not exist. Update links to relevant Examples. -->
 Some common uses include:
 
-- [Signing requests.](/write-workers/best-practices/signing-requests)
+- [Signing requests.](/examples/signing-requests)
 
 <Aside type="warning" header="Warning">
 

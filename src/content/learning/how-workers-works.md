@@ -59,6 +59,14 @@ Like all other JavaScript platforms, a single Workers instance may handle multip
 
 Learn more about:
 
+<<<<<<< HEAD:src/content/learning/how-workers-works.md
 - [FetchEvents](/runtime-apis/fetch-event)
 - [Request context](/runtime-apis/request)
 - [Runtime limitations](/platform/limits)
+=======
+- [More about the Request Context](/runtime-apis/request)
+
+- [More about Runtime Limitations](/platform/limits)
+
+- [More about the Workers security model](/learning/security-model)
+>>>>>>> fix links:src/content/learning/how-workers-works/index.md
