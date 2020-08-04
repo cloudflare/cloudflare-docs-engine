@@ -122,6 +122,20 @@ Specifically, please make sure to:
 
 - **Use sentence casing for headlines.**
 
+- **For longer pages, use a separator between h2 sections.** Written as an `<hr/>` in Markdown (`--------`):
+
+  ```markdown
+  ## Some heading
+
+  Imagine several paragraphs of text here.
+
+  --------------------------------
+
+  ## Some other heading
+
+  <!-- ... -->
+  ```
+
 - **Always add a language hint to code blocks.** If you don’t want any syntax highlighting, explicitly use `txt`:
 
   ``````markdown
@@ -143,20 +157,6 @@ Specifically, please make sure to:
   console.log(foo)
   ```
   ``````
-
-- **For longer pages, use a separator between h2 sections.** Written as an `<hr/>` in Markdown (`--------`):
-
-  ```markdown
-  ## Some heading
-
-  Imagine several paragraphs of text here.
-
-  --------------------------------
-
-  ## Some other heading
-
-  <!-- ... -->
-  ```
 
 --------------------------------
 
