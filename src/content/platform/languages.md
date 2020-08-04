@@ -19,10 +19,9 @@ JavaScript is fully supported on the Workers platform. We recommend using JS. Yo
 
 ### See also
 
+- [Starters](/starters) – More example repos to use as a basis for your projects
 - [TypeScript Type Definitions](https://github.com/cloudflare/workers-types)
-- [Hello World for Workers in JS](https://github.com/cloudflare/worker-template)
 - [JavaScript and web standard APIs](/runtime-apis/web-standards)
-- [Starters - Code snippets](/starters)
 - [Tutorials](/tutorials)
 
 ## WASM-supported
