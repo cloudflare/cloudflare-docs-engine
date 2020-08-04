@@ -239,6 +239,5 @@ const next_value = await NAMESPACE.list({"cursor": cursor})
 
 ## See Also
 
-- [Use cases](/storage/use-cases)
-- [Limits](/platform/limits)
-- [Pricing](/platform/pricing)
+- [Limits](/platform/limits#kv-limits)
+- [Pricing](/pricing#kv)
