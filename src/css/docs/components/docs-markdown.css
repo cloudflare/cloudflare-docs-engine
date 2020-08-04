@@ -653,12 +653,6 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   border-bottom-right-radius: .25em;
 }
 
-@media (max-width: 414px) {
-  .DocsMarkdown details summary + div {
-    padding-left: 0;
-  }
-}
-
 .DocsMarkdown details[open] {
   margin-bottom: 1.5em;
 }
