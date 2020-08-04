@@ -118,7 +118,9 @@ Specifically, please make sure to:
 
 --------------------------------
 
-## General formatting rules
+## General formatting
+
+- **Use sentence casing for headlines.**
 
 - **Always add a language hint to code blocks.** If you don’t want any syntax highlighting, explitly use `txt`:
 
