@@ -58,6 +58,6 @@ async function eventHandler(event) {
 
 ## See also
 
-- [Fetch HTML](/examples)
+- [Fetch URL](/examples/respond-with-another-site)
 - [Fetch JSON](/examples)
 - [Cache using Fetch](/examples)
