@@ -122,7 +122,7 @@ Specifically, please make sure to:
 
 - **Use sentence casing for headlines.**
 
-- **Always add a language hint to code blocks.** If you don’t want any syntax highlighting, explitly use `txt`:
+- **Always add a language hint to code blocks.** If you don’t want any syntax highlighting, explicitly use `txt`:
 
   ``````markdown
   ```txt
@@ -144,7 +144,7 @@ Specifically, please make sure to:
   ```
   ``````
 
-- **For longer pages, use a separator between h2 sections.** Authored as an `<hr/>` in Markdown (`--------`):
+- **For longer pages, use a separator between h2 sections.** Written as an `<hr/>` in Markdown (`--------`):
 
   ```markdown
   ## Some heading
