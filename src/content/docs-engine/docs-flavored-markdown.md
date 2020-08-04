@@ -639,33 +639,29 @@ search for text within this document.
 
 ## Details and summary
 
-<Aside type="warning">
-
-__Warning:__ This API is in active development. Please don’t use until this notice is removed.
-
-</Aside>
-
 When you want to provide additional information in context, but you don’t want it to clutter up the more important content, use `<details/>` and `<summary/>`.
 
+To ensure proper layout and styling, wrap all contains of the `<details/>` element, except the `<summary/>` element, in a single `<div/>`:
+
+
+``````markdown
 <details>
 <summary>Details</summary>
+<div>
 
-Something _small enough_ to escape `casual` notice.
+Here are the details.
 
+</div>
 </details>
+``````
 
 <details>
 <summary>Details</summary>
+<div>
 
-Something _small enough_ to escape `casual` notice.
+Here are the details.
 
-</details>
-
-<details>
-<summary>Details</summary>
-
-Something _small enough_ to escape `casual` notice.
-
+</div>
 </details>
 
 --------------------------------
