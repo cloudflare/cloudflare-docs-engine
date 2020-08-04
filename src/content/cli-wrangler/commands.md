@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 # Commands
 
 Complete list of all commands available for [`wrangler`](https://github.com/cloudflare/wrangler), the Workers CLI.
