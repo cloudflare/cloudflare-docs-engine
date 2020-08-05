@@ -1,14 +1,12 @@
 ---
 type: example
-summary: Send a request to a remote server, read HTML from the response, and serve that HTML.
-demo: https://returning-json.workers-sites-examples.workers.dev
+summary: Send a POST request with JSON data.
+demo: https://redirect.workers-sites-examples.workers.dev
 tags:
-  - JSON
-  - API
   - Originless
 ---
 
-# Fetch HTML
+# Post JSON
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>
@@ -16,11 +14,18 @@ tags:
 
 ```js
 /**
- * Example someHost at url is set up to respond with HTML
+ * Example someHost is set up to take in a JSON request
  * Replace url with the host you wish to send requests to
+ * @param {string} url the URL to send the request to
+ * @param {BodyInit} body the JSON data to send in the request
  */
 const someHost = "https://workers-tooling.cf/demos"
-const url = someHost + "/static/html"
+const url = someHost + "/requests/json"
+const body = {
+  results: ["default data to send"],
+  errors: null,
+  msg: "I sent this to the fetch",
+}
 
 /**
  * gatherResponse awaits and returns a response body as a string.
@@ -46,15 +51,16 @@ async function gatherResponse(response) {
 
 async function handleRequest() {
   const init = {
+    body: JSON.stringify(body),
+    method: "POST",
     headers: {
-      "content-type": "text/html;charset=UTF-8",
+      "content-type": "application/json;charset=UTF-8",
     },
   }
   const response = await fetch(url, init)
   const results = await gatherResponse(response)
   return new Response(results, init)
 }
-
 addEventListener("fetch", event => {
   return event.respondWith(handleRequest())
 })
@@ -64,4 +70,4 @@ addEventListener("fetch", event => {
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="80"/>
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="150"/>

@@ -1,6 +1,6 @@
 ---
 type: example
-summary: Send a request to a remote server, read HTML from the response, and serve that HTML.
+summary: Send two GET request to two urls and aggregates the responses into one response.
 demo: https://returning-json.workers-sites-examples.workers.dev
 tags:
   - JSON
@@ -8,7 +8,7 @@ tags:
   - Originless
 ---
 
-# Fetch HTML
+# Aggregate requests
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>
@@ -16,11 +16,14 @@ tags:
 
 ```js
 /**
- * Example someHost at url is set up to respond with HTML
- * Replace url with the host you wish to send requests to
+ * someHost is set up to return JSON responses
+ * Replace url1 and url2 with the hosts you wish to send requests to
+ * @param {string} url the URL to send the request to
  */
 const someHost = "https://workers-tooling.cf/demos"
-const url = someHost + "/static/html"
+const url1 = someHost + "/requests/json"
+const url2 = someHost + "/requests/json"
+const type = "application/json;charset=UTF-8"
 
 /**
  * gatherResponse awaits and returns a response body as a string.
@@ -47,12 +50,15 @@ async function gatherResponse(response) {
 async function handleRequest() {
   const init = {
     headers: {
-      "content-type": "text/html;charset=UTF-8",
+      "content-type": type,
     },
   }
-  const response = await fetch(url, init)
-  const results = await gatherResponse(response)
-  return new Response(results, init)
+  const responses = await Promise.all([fetch(url1, init), fetch(url2, init)])
+  const results = await Promise.all([
+    gatherResponse(responses[0]),
+    gatherResponse(responses[1]),
+  ])
+  return new Response(results.join(), init)
 }
 
 addEventListener("fetch", event => {
