@@ -318,6 +318,8 @@ type = "webpack"
 workers_dev = true
 ```
 
+When deploying to a workers.dev subdomain, the **name** field will be used as the secondary subdomain for the deployed script, e.g. `my-worker.my-subdomain.workers.dev`.
+
 #### (Optional) Configure for deploying to a registered domain
 
 To publish your application on a domain you own, and not a workers.dev subdomain, you can add a `route` key to your `wrangler.toml`.
@@ -361,8 +363,13 @@ header: Publish to workers.dev
 $ wrangler publish
 ```
 
-To deploy to our “production” environment we set in our `wrangler.toml`, we can pass the `--env` flag to the command:
+<Aside>
 
+__Note:__ When pushing to workers.dev project for the first time, you may initially see **523 errors** while DNS is propagating. It should work after a minute or so.
+
+</Aside>
+
+To deploy to our “production” environment we set in our `wrangler.toml`, we can pass the `--env` flag to the command:
 
 ```sh
 ---
