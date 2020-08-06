@@ -1,7 +1,7 @@
 ---
 type: example
 summary: Push static assests to a client's browser without waiting for HTML to render.
-demo: https://redirect.workers-sites-examples.workers.dev
+demo: https://http2-server-push.workers-sites-examples.workers.dev
 tags:
   - Originless
 ---
@@ -53,8 +53,8 @@ addEventListener("fetch", event => {
 })
 ```
 
-## Demo
+<!-- ## Demo
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="150"/>
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="150"/> -->

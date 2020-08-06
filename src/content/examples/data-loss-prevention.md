@@ -1,7 +1,7 @@
 ---
 type: example
 summary: Prevent access to personal and sensitive data by inspecting response data from an origin server.
-demo: www.google.com
+demo: https://data-loss-prevention.workers-sites-examples.workers.dev
 tags:
   - API
   - JSON
@@ -93,11 +93,8 @@ addEventListener("fetch", event => {
 })
 ```
 
-
-```
-
-## Demo
+<!-- ## Demo
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="395"/>
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="395"/> -->

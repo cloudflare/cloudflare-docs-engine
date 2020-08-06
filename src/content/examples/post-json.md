@@ -1,7 +1,7 @@
 ---
 type: example
 summary: Send a POST request with JSON data.
-demo: https://redirect.workers-sites-examples.workers.dev
+demo: https://post-json.workers-sites-examples.workers.dev
 tags:
   - Originless
 ---
@@ -66,8 +66,8 @@ addEventListener("fetch", event => {
 })
 ```
 
-## Demo
+<!-- ## Demo
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="150"/>
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="150"/> -->

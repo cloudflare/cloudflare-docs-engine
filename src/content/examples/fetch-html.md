@@ -1,12 +1,14 @@
 ---
 type: example
-summary: Sends a GET request and reads in JSON from the response.
-demo: https://fetch-json.workers-sites-examples.workers.dev
+summary: Send a request to a remote server, read HTML from the response, and serve that HTML.
+demo: https://fetch-html.workers-sites-examples.workers.dev
 tags:
+  - JSON
+  - API
   - Originless
 ---
 
-# Post JSON
+# Fetch HTML
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>
@@ -14,13 +16,11 @@ tags:
 
 ```js
 /**
- * Example someHost is set up to take in a JSON request
+ * Example someHost at url is set up to respond with HTML
  * Replace url with the host you wish to send requests to
- * @param {string} someHost the host to send the request to
- * @param {string} url the URL to send the request to
  */
 const someHost = "https://workers-tooling.cf/demos"
-const url = someHost + "/static/json"
+const url = someHost + "/static/html"
 
 /**
  * gatherResponse awaits and returns a response body as a string.
@@ -47,7 +47,7 @@ async function gatherResponse(response) {
 async function handleRequest() {
   const init = {
     headers: {
-      "content-type": "application/json;charset=UTF-8",
+      "content-type": "text/html;charset=UTF-8",
     },
   }
   const response = await fetch(url, init)
@@ -64,4 +64,4 @@ addEventListener("fetch", event => {
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="150"/> -->
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="80"/> -->

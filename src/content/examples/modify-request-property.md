@@ -1,7 +1,7 @@
 ---
 type: example
 summary: Form a request based off of an incoming request.
-demo: https://redirect.workers-sites-examples.workers.dev
+demo: https://modify-request-property.workers-sites-examples.workers.dev
 tags:
   - Originless
 ---
@@ -70,8 +70,8 @@ addEventListener('fetch', event => {
 })
 ```
 
-## Demo
+<!-- ## Demo
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="150"/>
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="150"/> -->

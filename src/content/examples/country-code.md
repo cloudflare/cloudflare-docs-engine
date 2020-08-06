@@ -1,7 +1,7 @@
 ---
 type: example
 summary: Redirect a response based on the country code of the visitor.
-demo: https://accessing-the-cloudflare-object.workers-sites-examples.workers.dev
+demo: https://country-code.workers-sites-examples.workers.dev
 tags:
   - API
   - JSON
@@ -50,8 +50,8 @@ addEventListener("fetch", event => {
 })
 ```
 
-## Demo
+<!-- ## Demo
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="395"/>
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="395"/> -->
