@@ -904,7 +904,6 @@ $ wrangler kv:key delete --binding= [--env=] [--preview] [--namespace-id=] $FILE
 
 </Definitions>
 
-
 Takes as an argument a JSON file with a list of key-value pairs to delete (see JSON spec above). An example of JSON input:
 
 ```json
