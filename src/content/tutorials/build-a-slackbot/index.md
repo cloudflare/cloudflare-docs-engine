@@ -3,7 +3,13 @@ updated: 2020-06-29
 difficulty: Beginner
 ---
 
+import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start.md"
+
 # Build a Slackbot
+
+<TutorialsBeforeYouStart/>
+
+## Overview
 
 In this tutorial, you’ll build a [Slack](https://slackhq.com) bot using [Cloudflare Workers](https://workers.cloudflare.com). Your bot will make use of GitHub webhooks to send messages to a Slack channel when issues are updated or created, and allow users to write a command to look up GitHub issues from inside Slack.
 
@@ -15,17 +21,9 @@ This tutorial is recommended for people who are familiar with writing web applic
 
 One more thing before you start the tutorial: if you’d like to see the code, or how the bot works in an actual Slack channel, we’ve made the final version of the codebase [available on GitHub](https://github.com/signalnerve/workers-slack-bot). From there, you can add your own Slack API keys, and deploy it to your own Slack channels for testing.
 
-## Prerequisites
+## Set up Slack
 
-To publish your Worker to Cloudflare, and configure it with a Slack channel, you’ll need a few things:
-
-- A Cloudflare account, and access to the API keys for that account
-- A Slack channel, and the ability to create and manage Slack applications
-- A Wrangler installation running locally on your machine, and access to the command-line
-
-If you don’t have those things quite yet, don’t worry. We’ll walk through each of them and make sure we’re ready to go, before you start creating your application.
-
-You’ll need to get your Cloudflare API keys to deploy code to Cloudflare Workers: see [“Finding your Cloudflare API keys”](/quickstart/#configure) for a brief guide on how to find them.
+This tutorial assumes that you already have a Slack account, and the ability to create and manage Slack applications.
 
 ### Configure a Slack application
 

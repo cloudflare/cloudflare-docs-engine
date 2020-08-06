@@ -3,7 +3,13 @@ updated: 2020-06-29
 difficulty: Intermediate
 ---
 
+import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start.md"
+
 # Deploy a static WordPress site
+
+<TutorialsBeforeYouStart/>
+
+## Overview
 
 In this tutorial, we’ll migrate a WordPress site to Cloudflare Workers, making use of [Workers Sites](/sites). Serving a static version of your WordPress site has many advantages over directly exposing your WordPress site. While WordPress is extremely powerful and easy to use, the consistent discovery of new vulnerabilities make it an obvious target for hackers to attack. Because WordPress is built on PHP, each incoming request to your site regenerates a new response on the server – for most websites this isn’t necessary, and leads to scaling issues when your site receives a lot of traffic.
 
@@ -11,8 +17,10 @@ We’ll use the free WordPress plugin [WP2Static](https://wordpress.org/plugins/
 
 ## Prerequisites
 
-- Administrator account on your WordPress Site
-- Able to install WordPress Plugins
+This tutorial assumes that you are:
+
+- the Administrator account on your WordPress site, and
+- able to install WordPress Plugins on the site.
 
 ## Setup
 

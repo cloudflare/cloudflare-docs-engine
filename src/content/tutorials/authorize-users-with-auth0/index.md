@@ -3,27 +3,31 @@ updated: 2020-06-29
 difficulty: Beginner
 ---
 
+import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start.md"
+
 # Authorize users with Auth0
 
-In this tutorial you’ll integrate Auth0, an identity management platform, into a Cloudflare Workers application. Adding authorization and authentication to an application is a common task for developers. By implementing it using Cloudflare Workers, you can take advantage of Workers’ unique platform advantages to simplify how and when your application needs user data.
+<Aside header="Workers Bundled plan required">
 
-## What you’ll learn
+This tutorials requires Workers KV which is only available to users with [a paid Workers plan](/platform/pricing).
 
-- How to authorize and authenticate users in Workers
-- How to persist authorization credentials inside of Workers KV
-- How to use Auth0 user info inside of your Workers application
+</Aside>
 
-## Prerequisites
+<TutorialsBeforeYouStart/>
 
-To publish your Worker to Cloudflare, you’ll need a few things:
+## Overview
 
-- A Cloudflare account, the [Workers Unlimited Plan](/platform/pricing), and access to an [API token](/quickstart#api-token) for that account
-- A Wrangler installation running locally on your machine, and access to the command-line
-- An Auth0 account
+In this tutorial you’ll integrate [Auth0](https://auth0.com), an identity management platform, into a Cloudflare Workers application. Adding authorization and authentication to an application is a common task for developers. By implementing it using Cloudflare Workers, you can take advantage of Workers’ unique platform advantages to simplify how and when your application needs user data.
 
-Topics like configuring your Cloudflare account, API keys, and Wrangler installation are covered extensively in the [Workers Quick Start](/quickstart). Completing that guide is mandatory before following this tutorial!
+### What you’ll learn
 
-If you don’t already have an Auth0 account, you can sign up for a free account at [auth0.com](https://www.auth0.com). This tutorial doesn’t require a Workers Unlimited plan and supports integration with Auth0’s free tier.
+- How to authorize and authenticate users in Workers.
+- How to persist authorization credentials inside of Workers KV.
+- How to use Auth0 user info inside of your Workers application.
+
+## Set up Auth0
+
+If you don’t already have an Auth0 account, you can sign up for a free account at [auth0.com](https://www.auth0.com). This tutorial supports integration with Auth0’s free tier.
 
 ### Configure an Auth0 application
 

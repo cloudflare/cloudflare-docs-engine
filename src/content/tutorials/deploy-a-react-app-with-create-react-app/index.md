@@ -3,26 +3,28 @@ updated: 2020-06-29
 difficulty: Beginner
 ---
 
-# Deploy a React app with create-react-app
+import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start.md"
+
+<!-- Use non-breaking hyphens &#8209; instead of - to improve layout -->
+# Deploy a React app with create&#8209;react&#8209;app
+
+<Aside header="Workers Bundled plan required">
+
+This tutorials requires Workers KV which is only available to users with [a paid Workers plan](/platform/pricing).
+
+</Aside>
+
+<TutorialsBeforeYouStart/>
+
+## Overview
 
 In this tutorial, we’ll use [Wrangler](https://github.com/cloudflare/wrangler) and [Cloudflare Workers](https://workers.cloudflare.com) to deploy and serve a static site. With the rise of architectures like [JAMStack](https://jamstack.org/), static sites have become a simple, streamlined way to combine highly-available static assets with performant backend code, especially when deployed with serverless. Workers in particular is a great platform to deploy static sites: your application will be distributed to over 190+ locations around the world, and served directly from Cloudflare’s powerful CDN at a server incredibly close to your users.
 
 <YouTube id="6YC3MgVwCGA"/>
 
-This tutorial makes use of [Wrangler](https://github.com/cloudflare/wrangler), our command-line tool for generating, building, and publishing projects on the Cloudflare Workers platform. If you haven’t used Wrangler, we recommend checking out the [“Installing the CLI”](/quickstart/#installing-the-cli) part of our [Quick Start guide](/quickstart), which will get you set up with Wrangler, and familiarize you with the basic commands.
-
 One more thing before you start the tutorial: if you just want to jump straight to the code, we’ve made the final version of the codebase [available on GitHub](https://github.com/signalnerve/react-workers-template). You can take that code, customize it, and deploy it for use in your own projects. Happy coding!
 
 ## Prerequisites
-
-To publish your project to Cloudflare Workers, you’ll need a few things:
-
-- A Cloudflare account, and access to the API keys for that account
-- A subscription to the Workers Unlimited plan
-- Wrangler 1.4.0 or above, running locally on your machine (see the [Quick Start](https://developers.cloudflare.com/workers/quickstart/#installing-the-cli) for instructions on installing and updating Wrangler)
-- Access to the command-line
-
-If you don’t have those things quite yet, don’t worry. We’ll walk through each of them and make sure we’re ready to go before you start creating your application.
 
 In addition, we’ll be using [create-react-app](https://github.com/facebook/create-react-app) to create the example project for this tutorial. No experience with React is needed, and you can easily take what you learn in this tutorial and apply it to other frameworks, such as [Vue](https://vuejs.org) or [Angular](https://angular.io), and even static site frameworks like [Gatsby](https://gatsbyjs.org), [Hugo](https://gohugo.io), and more.
 

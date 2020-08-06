@@ -3,7 +3,13 @@ updated: 2020-06-05
 difficulty: Intermediate
 ---
 
+import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start.md"
+
 # Localize a website
+
+<TutorialsBeforeYouStart/>
+
+## Overview
 
 The [`HTMLRewriter`](/runtime-apis/html-rewriter) class (currently in beta) built into the Cloudflare Workers runtime allows for parsing and rewriting of HTML at the edge, giving developers the ability to efficiently and transparently customize their Workers applications.
 
@@ -11,14 +17,9 @@ In this tutorial, we’ll build an example internationalization and localization
 
 [![Demo Image](./media/i18n.jpg)](https://i18n-example.workers-tooling.cf)
 
-## Prerequisites
+## Setup
 
-To publish your project to Cloudflare Workers, you’ll need a few things:
-
-- A Wrangler installation running locally on your machine, and access to the command-line. If you haven’t used Wrangler, we recommend checking out the [“Installing the CLI”](/quickstart/#installing-the-cli) part of our Quick Start guide.
-- A Cloudflare account, and access to the API keys for that account. Make sure to run [`wrangler config`](/quickstart#configure).
-
-This tutorial is designed to use an existing website. To simplify this process, we’ll use a free HTML5 template from [HTML5 UP](https://html5up.net/). With this website as the base, we’ll use the `HTMLRewriter` functionality in the Workers platform to overlay an i18n layer, automatically translating the site based on the user’s language.
+This tutorial is designed to use an existing website. To simplify this process, we’ll use a free HTML5 template from [HTML5 UP](https://html5up.net). With this website as the base, we’ll use the `HTMLRewriter` functionality in the Workers platform to overlay an i18n layer, automatically translating the site based on the user’s language.
 
 If you’d like to deploy your own version of the site, you can find the source [on GitHub](https://github.com/signalnerve/i18n-example-workers). Instructions on how to deploy this application can be found in the project’s README.
 

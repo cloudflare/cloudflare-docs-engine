@@ -3,7 +3,13 @@ updated: 2020-06-29
 difficulty: Beginner
 ---
 
+import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start.md"
+
 # Configure your CDN
+
+<TutorialsBeforeYouStart/>
+
+## Overview
 
 In this tutorial, you’ll build and publish a Cloudflare Workers function that serves assets from a storage platform (in this example, [Google Cloud Storage](https://cloud.google.com/storage/)) to your users. This approach, called “white-labelling”, often takes the form of complex DNS configuration – thanks to Cloudflare Workers, and Cloudflare’s CDN, we can build a powerful (and fast) solution to this problem in just a few lines of code.
 
@@ -14,13 +20,6 @@ If you’re interested in building and publishing a Cloudflare Workers function 
 One more thing before you start the tutorial: if you just want to jump straight to the code, we’ve made the final version of the codebase [available on GitHub](https://github.com/signalnerve/assets-on-workers). You can take that code, customize it, and deploy it for use in your own projects. Happy coding!
 
 ## Prerequisites
-
-To publish your project to Cloudflare Workers, you’ll need a few things:
-
-- A Cloudflare account, and access to the API keys for that account
-- A Wrangler installation running locally on your machine, and access to the command-line
-
-If you don’t have those things quite yet, don’t worry. We’ll walk through each of them and make sure we’re ready to go, before you start creating your application.
 
 This tutorial assumes that you have a _public_ bucket on Google Cloud Storage, which you’ll use to serve assets through your Cloudflare Workers function. If you don’t have a Google Cloud Storage bucket to use with this project, we recommend going through Google Cloud’s “Cloud Storage Quickstart” guide, which can be found [here](https://cloud.google.com/storage/docs/quickstart-console).
 
