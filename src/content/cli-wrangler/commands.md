@@ -79,9 +79,20 @@ $ wrangler build [--env $ENVIRONMENT_NAME]
 
 --------------------------------
 
+## login
+
+```sh
+$ wrangler login
+```
+
+Authenticate Wrangler with your Cloudflare login. This will prompt you with a Cloudflare account login page and is the alternative to `wrangler config`.
+
+--------------------------------
+
 ## config
 
-Configure your global Cloudflare user. This is an interactive command that will prompt you for your API token.
+An interactive command that will authenticate Wrangler by prompting you for a Cloudflare API Token or Global API key.
+
 
 ```sh
 $ wrangler config [--api-key]
@@ -94,7 +105,7 @@ $ wrangler config [--api-key]
 
 </Definitions>
 
-You can also use environment variables to authenticate.
+You can also use `wrangler login` or environment variables to authenticate.
 
 --------------------------------
 

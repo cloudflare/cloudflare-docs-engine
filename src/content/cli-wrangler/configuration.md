@@ -268,6 +268,6 @@ kv_namespaces = [
 
 <Aside>
 
-__Note:__ Global user was configured with the `wrangler config` command or environment variables.
+__Note:__ Global user was configured with the `wrangler login`, `wrangler config`, or environment variables.
 
 </Aside>
