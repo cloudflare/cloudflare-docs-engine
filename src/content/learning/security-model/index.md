@@ -2,9 +2,9 @@
 
 This article includes an overview of our security architecture, and then addresses two specific issues that we are frequently asked about: V8 bugs, and Spectre.
 
-Since the very start of the Workers project, security has been a high priority  — we were concerned early on that when hosting a large number of tenants on shared infrastructure, side channels of various kinds would pose a threat. The Cloudflare Workers runtime is carefully designed to defend against side channel attacks.
+Since the very start of the Workers project, security has been a high priority — we were concerned early on that when hosting a large number of tenants on shared infrastructure, side channels of various kinds would pose a threat. The Cloudflare Workers runtime is carefully designed to defend against side channel attacks.
 
-To this end, Workers is designed to make it impossible for code to measure its own execution time locally. For example, the value returned by Date.now() is locked in place while code is executing. No other timers are provided. Moreover, we provide no access to concurrency (e.g. multi-threading), as it could allow attackers to construct ad hoc timers. These design choices cannot be introduced retroactively into other platforms - such as web browsers - because they remove APIs that existing applications depend on. They were possible in Workers only because we made these choices from the start.
+To this end, Workers is designed to make it impossible for code to measure its own execution time locally. For example, the value returned by Date.now() is locked in place while code is executing. No other timers are provided. Moreover, we provide no access to concurrency (e.g. multi-threading), as it could allow attackers to construct ad hoc timers. These design choices cannot be introduced retroactively into other platforms — such as web browsers — because they remove APIs that existing applications depend on. They were possible in Workers only because we made these choices from the start.
 
 While these early design decisions have proven effective, we are continuing to add defense-in-depth, including techniques to disrupt attacks by rescheduling workers, creating additional layers of isolation between suspicious workers and high-value workers, and more.
 
@@ -34,17 +34,17 @@ There are two fundamental parts of designing a code sandbox: secure isolation an
 
 First, we need to create an execution environment where code can’t access anything it’s not supposed to.
 
-For this, our primary tool is V8, the JavaScript engine developed by Google for use in Chrome. V8 executes code inside "isolates", which prevent that code from accessing memory outside the isolate — even within the same process. Importantly, this means we can run many isolates within a single process. This is essential for an edge compute platform like Workers where we must host many thousands of guest apps on every machine, and rapidly switch between these guests thousands of times per second with minimal overhead. If we had to run a separate process for every guest, the number of tenants we could support would be drastically reduced, and we’d have to limit edge compute to a small number of big enterprise customers who could pay a lot of money. With isolate technology, we can make edge compute available to everyone.
+For this, our primary tool is V8, the JavaScript engine developed by Google for use in Chrome. V8 executes code inside “isolates”, which prevent that code from accessing memory outside the isolate — even within the same process. Importantly, this means we can run many isolates within a single process. This is essential for an edge compute platform like Workers where we must host many thousands of guest apps on every machine, and rapidly switch between these guests thousands of times per second with minimal overhead. If we had to run a separate process for every guest, the number of tenants we could support would be drastically reduced, and we’d have to limit edge compute to a small number of big enterprise customers who could pay a lot of money. With isolate technology, we can make edge compute available to everyone.
 
 Sometimes, though, we do decide to schedule a worker in its own private process. We do this if it uses certain features that we feel need an extra layer of isolation. For example, when a developer uses the devtools debugger to inspect their worker, we run that worker in a separate process. This is because historically, in the browser, the inspector protocol has only been usable by the browser’s trusted operator, and therefore has not received as much security scrutiny as the rest of V8. In order to hedge against the increased risk of bugs in the inspector protocol, we move inspected workers into a separate process with a process-level sandbox. We also use process isolation as an extra defense against Spectre, which I’ll describe later in this post.
 
-Additionally, even for isolates that run in a shared process with other isolates, we run multiple instances of the whole runtime on each machine, which we call "cordons". Workers are distributed among cordons by assigning each worker a level of trust and separating low-trusted workers from those we trust more highly. As one example of this in operation: a customer who signs up for our free plan will not be scheduled in the same process as an enterprise customer. This provides some defense-in-depth in the case a zero-day security vulnerability is found in V8. But I’ll talk more about V8 bugs, and how we address them, later in this post.
+Additionally, even for isolates that run in a shared process with other isolates, we run multiple instances of the whole runtime on each machine, which we call “cordons”. Workers are distributed among cordons by assigning each worker a level of trust and separating low-trusted workers from those we trust more highly. As one example of this in operation: a customer who signs up for our free plan will not be scheduled in the same process as an enterprise customer. This provides some defense-in-depth in the case a zero-day security vulnerability is found in V8. But I’ll talk more about V8 bugs, and how we address them, later in this post.
 
-At the whole-process level, we apply another layer of sandboxing for defense in depth. The "layer 2" sandbox uses Linux namespaces and seccomp to prohibit all access to the filesystem and network. Namespaces and seccomp are commonly used to implement containers. However, our use of these technologies is much stricter than what is usually possible in container engines, because we configure namespaces and seccomp after the process has started (but before any isolates have been loaded). This means, for example, we can (and do) use a totally empty filesystem (mount namespace) and use seccomp to block absolutely all filesystem-related system calls. Container engines can’t normally prohibit all filesystem access because doing so would make it impossible to use `exec()` to start the guest program from disk; in our case, our guest programs are not native binaries, and the Workers runtime itself has already finished loading before we block filesystem access.
+At the whole-process level, we apply another layer of sandboxing for defense in depth. The “layer 2” sandbox uses Linux namespaces and seccomp to prohibit all access to the filesystem and network. Namespaces and seccomp are commonly used to implement containers. However, our use of these technologies is much stricter than what is usually possible in container engines, because we configure namespaces and seccomp after the process has started (but before any isolates have been loaded). This means, for example, we can (and do) use a totally empty filesystem (mount namespace) and use seccomp to block absolutely all filesystem-related system calls. Container engines can’t normally prohibit all filesystem access because doing so would make it impossible to use `exec()` to start the guest program from disk; in our case, our guest programs are not native binaries, and the Workers runtime itself has already finished loading before we block filesystem access.
 
 The layer 2 sandbox also totally prohibits network access. Instead, the process is limited to communicating only over local Unix domain sockets, to talk to other processes on the same system. Any communication to the outside world must be mediated by some other local process outside the sandbox.
 
-One such process in particular, which we call the "supervisor", is responsible for fetching worker code and configuration from disk or from other internal services. The supervisor ensures that the sandbox process cannot read any configuration except that which is relevant to the workers that it should be running.
+One such process in particular, which we call the “supervisor”, is responsible for fetching worker code and configuration from disk or from other internal services. The supervisor ensures that the sandbox process cannot read any configuration except that which is relevant to the workers that it should be running.
 
 For example, when the sandbox process receives a request for a worker it hasn’t seen before, that request includes the encryption key for that worker’s code (including attached secrets). The sandbox can then pass that key to the supervisor in order to request the code. The sandbox cannot request any worker for which it has not received the appropriate key. It cannot enumerate known workers. It also cannot request configuration it doesn’t need; for example, it cannot request the TLS key used for HTTPS traffic to the worker.
 
@@ -52,7 +52,7 @@ Aside from reading configuration, the other reason for the sandbox to talk to ot
 
 ### API design
 
-There is a saying: "If a tree falls in the forest, but no one is there to hear it, does it make a sound?" We have a related saying: "If a Worker executes in a fully-isolated environment in which it is totally prevented from communicating with the outside world, does it actually run?"
+There is a saying: “If a tree falls in the forest, but no one is there to hear it, does it make a sound?” We have a related saying: “If a Worker executes in a fully-isolated environment in which it is totally prevented from communicating with the outside world, does it actually run?”
 
 Complete code isolation is, in fact, useless. In order for Workers to do anything useful, they have to be allowed to communicate with users. At the very least, a Worker needs to be able to receive requests and respond to them. It would also be nice if it could send requests to the world, safely. For that, we need APIs.
 
@@ -62,7 +62,7 @@ Let’s dig into the easier example first. Currently, Workers does not allow any
 
 But, imagine if we did want to support local filesystem access in the future. How would we do that? We obviously wouldn’t want Workers to see the whole filesystem. Imagine, though, that we wanted each Worker to have its own private directory on the filesystem where it can store whatever it wants.
 
-To do this, we would use a design based on [capability-based security](https://en.wikipedia.org/wiki/Capability-based_security). Capabilities are a big topic, but in this case, what it would mean is that we would give the worker an object of type `Directory`, representing a directory on the filesystem. This object would have an API that allows creating and opening files and subdirectories, but does not permit traversing "up" the tree to the parent directory. Effectively, each worker would see its private `Directory` as if it were the root of their own filesystem.
+To do this, we would use a design based on [capability-based security](https://en.wikipedia.org/wiki/Capability-based_security). Capabilities are a big topic, but in this case, what it would mean is that we would give the worker an object of type `Directory`, representing a directory on the filesystem. This object would have an API that allows creating and opening files and subdirectories, but does not permit traversing “up” the tree to the parent directory. Effectively, each worker would see its private `Directory` as if it were the root of their own filesystem.
 
 How would such an API be implemented? As described above, the sandbox process cannot access the real filesystem, and we’d prefer to keep it that way. Instead, file access would be mediated by the supervisor process. The sandbox talks to the supervisor using [Cap’n Proto RPC](https://capnproto.org/rpc.html), a capability-based RPC protocol. (Cap’n Proto is an open source project currently maintained by the Cloudflare Workers team.) This protocol makes it very easy to implement capability-based APIs, so that we can strictly limit the sandbox to accessing only the files that belong to the Workers it is running.
 
@@ -72,15 +72,15 @@ As mentioned before, the sandbox process cannot connect directly to the network.
 
 Similarly, inbound HTTP requests do not go directly to the Workers Runtime. They are first received by an inbound proxy service. That service is responsible for TLS termination (the Workers Runtime never sees TLS keys), as well as identifying the correct Worker script to run for a particular request URL. Once everything is in order, the request is passed over a Unix domain socket to the sandbox process.
 
-## V8 bugs and the "patch gap"
+## V8 bugs and the “patch gap”
 
 Every non-trivial piece of software has bugs, and sandboxing technologies are no exception. Virtual machines have bugs, containers have bugs, and yes, isolates (which we use) also have bugs. We can’t live life pretending that no further bugs will ever be discovered; instead, we must assume they will and plan accordingly.
 
-We rely heavily on isolation provided by V8, the JavaScript engine built by Google for use in Chrome. This has good sides and bad sides. On one hand, V8 is an extraordinarily complicated piece of technology, creating a wider "attack surface" than virtual machines. More complexity means more opportunities for something to go wrong. On the bright side, though, an extraordinary amount of effort goes into finding and fixing V8 bugs, owing to its position as arguably the most popular sandboxing technology in the world. Google regularly pays out 5-figure bounties to anyone finding a V8 sandbox escape. Google also operates fuzzing infrastructure that automatically finds bugs faster than most humans can. Google’s investment does a lot to minimize the danger of V8 "zero-days" — bugs that are found by the bad guys and not known to Google.
+We rely heavily on isolation provided by V8, the JavaScript engine built by Google for use in Chrome. This has good sides and bad sides. On one hand, V8 is an extraordinarily complicated piece of technology, creating a wider “attack surface” than virtual machines. More complexity means more opportunities for something to go wrong. On the bright side, though, an extraordinary amount of effort goes into finding and fixing V8 bugs, owing to its position as arguably the most popular sandboxing technology in the world. Google regularly pays out 5-figure bounties to anyone finding a V8 sandbox escape. Google also operates fuzzing infrastructure that automatically finds bugs faster than most humans can. Google’s investment does a lot to minimize the danger of V8 “zero-days” — bugs that are found by the bad guys and not known to Google.
 
 But, what happens after a bug is found and reported by the good guys? V8 is open source, so fixes for security bugs are developed in the open and released to everyone at the same time — good guys and bad guys. It’s important that any patch be rolled out to production as fast as possible, before the bad guys can develop an exploit.
 
-The time between publishing the fix and deploying it is known as the "patch gap". Earlier this year, [Google announced that Chrome’s patch gap had been reduced from 33 days to 15 days](https://www.zdnet.com/article/google-cuts-chrome-patch-gap-in-half-from-33-to-15-days/).
+The time between publishing the fix and deploying it is known as the “patch gap”. Earlier this year, [Google announced that Chrome’s patch gap had been reduced from 33 days to 15 days](https://www.zdnet.com/article/google-cuts-chrome-patch-gap-in-half-from-33-to-15-days/).
 
 Fortunately, we have an advantage here, in that we directly control the machines on which our system runs. We have automated almost our entire build and release process, so the moment a V8 patch is published, our systems automatically build a new release of the Workers Runtime and, after one-click sign-off from the necessary (human) reviewers, automatically push that release out to production.
 
@@ -95,7 +95,7 @@ Spectre is complicated and nuanced, and there’s no way we can cover everything
 
 ### What is it?
 
-Spectre is a class of attacks in which a malicious program can trick the CPU into "speculatively" performing computation using data that the program is not supposed to have access to. The CPU eventually realizes the problem and does not allow the program to see the results of the speculative computation. However, the program may be able to derive bits of the secret data by looking at subtle side effects of the computation, such as the effects on cache.
+Spectre is a class of attacks in which a malicious program can trick the CPU into “speculatively” performing computation using data that the program is not supposed to have access to. The CPU eventually realizes the problem and does not allow the program to see the results of the speculative computation. However, the program may be able to derive bits of the secret data by looking at subtle side effects of the computation, such as the effects on cache.
 
 [For more background about Spectre, check out our Learning Center page on the topic.](https://www.cloudflare.com/learning/security/threats/meltdown-spectre/)
 
@@ -103,9 +103,9 @@ Spectre is a class of attacks in which a malicious program can trick the CPU int
 
 Spectre encompasses a wide variety of vulnerabilities present in modern CPUs. The specific vulnerabilities vary by architecture and model, and it is likely that many vulnerabilities exist which haven’t yet been discovered.
 
-These vulnerabilities are a problem for every cloud compute platform. Any time you have more than one tenant running code on the same machine, Spectre attacks come into play. However, the "closer together" the tenants are, the more difficult it can be to mitigate specific vulnerabilities. Many of the known issues can be mitigated at the kernel level (protecting processes from each other) or at the hypervisor level (protecting VMs), often with the help of CPU microcode updates and various tricks (many of which, unfortunately, come with serious performance impact).
+These vulnerabilities are a problem for every cloud compute platform. Any time you have more than one tenant running code on the same machine, Spectre attacks come into play. However, the “closer together” the tenants are, the more difficult it can be to mitigate specific vulnerabilities. Many of the known issues can be mitigated at the kernel level (protecting processes from each other) or at the hypervisor level (protecting VMs), often with the help of CPU microcode updates and various tricks (many of which, unfortunately, come with serious performance impact).
 
-In Cloudflare Workers, we isolate tenants from each other using V8 isolates — not processes nor VMs. This means that we cannot necessarily rely on OS or hypervisor patches to "solve" Spectre for us. We need our own strategy.
+In Cloudflare Workers, we isolate tenants from each other using V8 isolates — not processes nor VMs. This means that we cannot necessarily rely on OS or hypervisor patches to “solve” Spectre for us. We need our own strategy.
 
 ### Why not use process isolation?
 
@@ -125,7 +125,7 @@ In order to keep Workers inexpensive, fast, and accessible to everyone, we must 
 
 ### There is no “fix” for Spectre
 
-A dirty secret that the industry doesn’t like to admit: no one has "fixed" Spectre. Not even when using heavyweight virtual machines. Everyone is still vulnerable.
+A dirty secret that the industry doesn’t like to admit: no one has “fixed” Spectre. Not even when using heavyweight virtual machines. Everyone is still vulnerable.
 
 The current approach being taken by most of the industry is essentially a game of whack-a-mole. Every couple months, researchers uncover a new Spectre vulnerability. CPU vendors release some new microcode, OS vendors release kernel patches, and everyone has to update.
 
@@ -137,7 +137,7 @@ To truly defend against Spectre, we need to take a different approach. It’s no
 
 ### We can’t stop it, but we can slow it down
 
-Unfortunately, it’s unlikely that any catch-all "fix" for Spectre will be found. But for the sake of argument, let’s try.
+Unfortunately, it’s unlikely that any catch-all “fix” for Spectre will be found. But for the sake of argument, let’s try.
 
 Fundamentally, all Spectre vulnerabilities use side channels to detect hidden processor state. Side channels, by definition, involve observing some non-deterministic behavior of a system. Conveniently, most software execution environments try hard to eliminate non-determinism, because non-deterministic execution makes applications unreliable.
 
@@ -152,7 +152,7 @@ We find that, actually, measures that slow down an attack can be powerful.
 
 Our key insight is this: as an attack becomes slower, new techniques become practical to make it even slower still. The goal, then, is to chain together enough techniques that an attack becomes so slow as to be uninteresting.
 
-Much of cryptography, after all, is technically vulnerable to "brute force" attacks — technically, with enough time, you can break it. But when the time required is thousands (or even billions) of years, we decide that this is good enough.
+Much of cryptography, after all, is technically vulnerable to “brute force” attacks — technically, with enough time, you can break it. But when the time required is thousands (or even billions) of years, we decide that this is good enough.
 
 So, what do we do to slow down Spectre attacks to the point of meaninglessness?
 
@@ -192,13 +192,13 @@ This is a measure we actually implemented in mid-2017, long before Spectre was a
 
 </Aside>
 
-Related to our taming of `Date`, we also do not permit multi-threading or shared memory in Workers. Everything related to the processing of one event happens on the same thread — otherwise, it would be possible to "race" threads in order to "MacGyver" an implicit timer. We don’t even allow multiple Workers operating on the same request to run concurrently. For example, if you have installed a Cloudflare App on your zone which is implemented using Workers, and your zone itself also uses Workers, then a request to your zone may actually be processed by two Workers in sequence. These run in the same thread.
+Related to our taming of `Date`, we also do not permit multi-threading or shared memory in Workers. Everything related to the processing of one event happens on the same thread — otherwise, it would be possible to “race” threads in order to ”MacGyver” an implicit timer. We don’t even allow multiple Workers operating on the same request to run concurrently. For example, if you have installed a Cloudflare App on your zone which is implemented using Workers, and your zone itself also uses Workers, then a request to your zone may actually be processed by two Workers in sequence. These run in the same thread.
 
 So, we have prevented code execution time from being measured _locally_. However, that doesn’t actually prevent it from being measured: it can still be measured remotely. For example, the HTTP client that is sending a request to trigger the execution of the Worker can measure how long it takes for the Worker to respond. Of course, such a measurement is likely to be very noisy, since it would have to traverse the Internet. Such noise can be overcome, in theory, by executing the attack many times and taking an average.
 
 <Aside>
 
-Some people have suggested that if a serverless platform like Workers were to completely reset an application’s state between requests, so that every request "starts fresh", this would make attacks harder. That is, imagine that a Worker’s global variables were reset after every request, meaning you cannot store state in globals in one request and then read that state in the next. Then, doesn’t that mean the attack has to start over from scratch for every request? If each request is limited to, say, 50ms of CPU time, does that mean that a Spectre attack isn’t possible, because there’s not enough time to carry it out? Unfortunately, it’s not so simple. State doesn’t have to be stored in the Worker; it could instead be stored in a conspiring client. The server can return its state to the client in each response, and the client can send it back to the server in the next request.
+Some people have suggested that if a serverless platform like Workers were to completely reset an application’s state between requests, so that every request “starts fresh”, this would make attacks harder. That is, imagine that a Worker’s global variables were reset after every request, meaning you cannot store state in globals in one request and then read that state in the next. Then, doesn’t that mean the attack has to start over from scratch for every request? If each request is limited to, say, 50ms of CPU time, does that mean that a Spectre attack isn’t possible, because there’s not enough time to carry it out? Unfortunately, it’s not so simple. State doesn’t have to be stored in the Worker; it could instead be stored in a conspiring client. The server can return its state to the client in each response, and the client can send it back to the server in the next request.
 
 </Aside>
 
@@ -210,7 +210,7 @@ However, we don’t feel the lack of a working attack means we should stop build
 
 We know that if an attack is possible at all, it would take a very long time to run — hours at the very least, maybe as long as weeks. But once an attack has been running even for a second, we have a huge amount of new data that we can use to trigger further measures.
 
-Spectre attacks, you see, do a lot of "weird stuff" that you wouldn’t usually expect to see in a normal program. These attacks intentionally try to create pathological performance scenarios in order to amplify microarchitectural effects. This is especially true when the attack has already been forced to run billions of times in a loop in order to overcome other mitigations, like those discussed above. This tends to show up in metrics like CPU performance counters.
+Spectre attacks, you see, do a lot of “weird stuff” that you wouldn’t usually expect to see in a normal program. These attacks intentionally try to create pathological performance scenarios in order to amplify microarchitectural effects. This is especially true when the attack has already been forced to run billions of times in a loop in order to overcome other mitigations, like those discussed above. This tends to show up in metrics like CPU performance counters.
 
 Now, the usual problem with using performance metrics to detect Spectre attacks is that sometimes you get false positives. Sometimes, a legitimate program behaves really badly. You can’t go around shutting down every app that has bad performance.
 
@@ -234,4 +234,4 @@ We can also reschedule Workers across physical machines or cordons, so that the 
 
 In general, because Workers are fundamentally preemptible (unlike containers or VMs), we have a lot of freedom to frustrate attacks.
 
-Once we have dynamic process isolation fully deployed, we plan to develop these ideas next. We see this as an ongoing investment, not something that will ever be "done".
+Once we have dynamic process isolation fully deployed, we plan to develop these ideas next. We see this as an ongoing investment, not something that will ever be “done”.
