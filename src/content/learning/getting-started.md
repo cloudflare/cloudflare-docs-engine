@@ -75,7 +75,7 @@ Visit the [Starters](/starters) page to see a complete list of our recommended s
 For example, to build a Workers project in TypeScript, you would instead run:
 
 ```sh
-$ wrangler generate my-app https://github.com/EverlastingBugstopper/worker-typescript-template
+~/ $ wrangler generate my-typescript-worker https://github.com/EverlastingBugstopper/worker-typescript-template
 ```
 
 To start a project from your own code—rather than a starter—use [`wrangler init`](/cli-wrangler/commands#init).
@@ -165,7 +165,7 @@ In addition to standard request properties, the Workers platform populates the r
 For more complex routing, it can be helpful to use a library. The [Workers router starter](https://github.com/cloudflare/worker-template-router) template provides an API similar to ExpressJS for handling requests based on HTTP methods and paths:
 
 ```sh
-$ wrangler generate my-worker-with-router https://github.com/cloudflare/worker-template-router
+~/ $ wrangler generate my-worker-with-router https://github.com/cloudflare/worker-template-router
 ```
 
 This starter is used in the tutorial for [building a Slack Bot](/tutorials/build-a-slackbot).
@@ -183,7 +183,7 @@ For inspiration, visit [Built with Workers](https://workers.cloudflare.com/built
 When you’re ready to preview your code, run Wrangler’s `preview` command:
 
 ```sh
-$ wrangler preview --watch
+~/my-worker $ wrangler preview --watch
 ```
 
 This command will build your project, upload it to a unique URL, and open a tab in your browser to view it. This allows you to quickly test your project running on the actual Workers runtime, and optionally, even share it with others too.
@@ -257,7 +257,7 @@ For domains that you have registered on Cloudflare, you need both IDs:
 Set up your default credentials on your local machine with `wrangler config`. This is an interactive command that will prompt you for your **API token**:
 
 ```sh
-~/ $ wrangler config
+$ wrangler config
 Enter API token:
 superlongapitoken
 ```
@@ -265,7 +265,7 @@ superlongapitoken
 Use the `--api-key` flag to instead configure with **email** and **global API key**:
 
 ```sh
-~/ $ wrangler config --api-key
+$ wrangler config --api-key
 Enter email:
 testuser@example.com
 Enter global API key:
@@ -360,7 +360,7 @@ To deploy to our workers.dev subdomain, we can run:
 ---
 header: Publish to workers.dev
 ---
-$ wrangler publish
+~/my-worker $ wrangler publish
 ```
 
 <Aside>
@@ -375,7 +375,7 @@ To deploy to our “production” environment we set in our `wrangler.toml`, we 
 ---
 header: Publish to example.com
 ---
-~/ $ wrangler publish --env production
+~/my-worker $ wrangler publish --env production
 ```
 
 For more information on environments, check out the [Wrangler documentation](/cli-wrangler/configuration#environments).
