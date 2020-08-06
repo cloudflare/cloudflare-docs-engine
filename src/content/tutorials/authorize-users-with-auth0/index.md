@@ -286,7 +286,7 @@ const persistAuth = async exchange => {
 }
 ```
 
-The `body` object - assuming no errors -  will contain an `access_token`, `id_token`, and [other fields](https://auth0.com/docs/flows/guides/auth-code/add-login-auth-code#request-tokens) that we should persist inside of Workers KV, a key-value store that we can access inside of our Workers scripts. When we store data inside Workers KV we need to persist it using a key. The `id_token` field, which is returned by Auth0, is a [JSON Web Token](https://jwt.io/) that contains a `sub` field, a unique identifier for each user. We’ll decode the JSON Web Token and parse it into an object:
+The `body` object - assuming no errors -  will contain an `access_token`, `id_token`, and [other fields](https://auth0.com/docs/flows/guides/auth-code/add-login-auth-code#request-tokens) that we should persist inside of Workers KV, a key-value store that we can access inside of our Workers scripts. When we store data inside Workers KV we need to persist it using a key. The `id_token` field, which is returned by Auth0, is a [JSON Web Token](https://jwt.io) that contains a `sub` field, a unique identifier for each user. We’ll decode the JSON Web Token and parse it into an object:
 
 ```js
 ---
@@ -822,7 +822,7 @@ Deploying an “origin” version of this code can be a great approach for users
 
 #### Using the open-source version of this package
 
-[The open-source example repository for this tutorial](https://github.com/signalnerve/workers-auth0-example/) showcases all the functionality outlined in this tutorial — originless/origin deploys, edge state hydration, and more. If you want to get started with this project, we recommend you check it out!
+[The open-source example repository for this tutorial](https://github.com/signalnerve/workers-auth0-example) showcases all the functionality outlined in this tutorial — originless/origin deploys, edge state hydration, and more. If you want to get started with this project, we recommend you check it out!
 
 ## Publish
 

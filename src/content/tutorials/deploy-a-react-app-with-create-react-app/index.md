@@ -24,7 +24,7 @@ To publish your project to Cloudflare Workers, you’ll need a few things:
 
 If you don’t have those things quite yet, don’t worry. We’ll walk through each of them and make sure we’re ready to go before you start creating your application.
 
-In addition, we’ll be using [create-react-app](https://github.com/facebook/create-react-app) to create the example project for this tutorial. No experience with React is needed, and you can easily take what you learn in this tutorial and apply it to other frameworks, such as [Vue](https://vuejs.org/) or [Angular](https://angular.io), and even static site frameworks like [Gatsby](https://gatsbyjs.org), [Hugo](https://gohugo.io), and more.
+In addition, we’ll be using [create-react-app](https://github.com/facebook/create-react-app) to create the example project for this tutorial. No experience with React is needed, and you can easily take what you learn in this tutorial and apply it to other frameworks, such as [Vue](https://vuejs.org) or [Angular](https://angular.io), and even static site frameworks like [Gatsby](https://gatsbyjs.org), [Hugo](https://gohugo.io), and more.
 
 ## Create a static site
 
