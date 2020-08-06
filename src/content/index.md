@@ -24,6 +24,24 @@ $ npm install -g @cloudflare/wrangler
 
 --------------------------------
 
+## Playground
+
+View this “Hello World” example in the Workers playground:
+
+```javascript
+addEventListener("fetch", event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  return new Response("Hello world")
+}
+```
+
+<Link to="https://cloudflareworkers.com/#36ebe026bf3510a2e5acace89c09829f:https://tutorial.cloudflareworkers.com" className="Button Button-is-docs-primary">Launch playground</Link> &nbsp;&nbsp; <Link to="/learning/playground" className="Button Button-is-docs-secondary">Learn about the playground</Link>
+
+--------------------------------
+
 ## Popular pages
 
 - [Learning: How Workers works](/learning/how-workers-works) – learn how Cloudflare’s global network powers Workers
