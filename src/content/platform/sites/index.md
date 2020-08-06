@@ -2,13 +2,13 @@
 
 <Aside>
 
-__Note__: Workers Sites requires the Workers [Unlimited plan](https://workers.cloudflare.com/sites#plans). As Workers Sites use Workers and Workers KV, their is taken into account when calculating your monthly bill.
+__Note:__ Workers Sites requires the Workers [Bundled plan](https://workers.cloudflare.com/sites#plans). As Workers Sites use Workers and Workers KV, their is taken into account when calculating your monthly bill.
 
 </Aside>
 
 Workers Sites enables developers to deploy __static applications__ directly to Workers.
 
-It’s perfect for deploying applications built with or static site generators like [Hugo](https://gohugo.io/) and [Gatsby](https://www.gatsbyjs.org/), or frontend frameworks like [Vue](https://vuejs.org/) and [React](https://reactjs.org).
+It’s perfect for deploying applications built with or static site generators like [Hugo](https://gohugo.io) and [Gatsby](https://www.gatsbyjs.org), or frontend frameworks like [Vue](https://vuejs.org) and [React](https://reactjs.org).
 
 To deploy with Workers Sites, select from one of these __three routes__ depending on the state of your target project:
 

@@ -1,4 +1,8 @@
-# Understanding Workers metrics and analytics
+---
+order: 8
+---
+
+# Workers metrics and analytics
 
 There are two graphical sources of information about your Workers traffic at at given time: Workers Metrics and zone-based Workers analytics. Workers metrics can help you diagnose issues and understand your Workers workloads by showing performance and usage of your Workers. If your Worker runs on a route on a zone, or on a few zones, the Workers tab in the zone can help you understand on a per-zone basis how much traffic your Worker is handling, and how many requests your site is getting.
 
@@ -61,7 +65,7 @@ Zone data can be scoped by time range within the last 30 days. The dashboard inc
 
 ### Subrequests
 
-This chart shows subrequests - requests triggered by calling `fetch` from within a Worker script - broken down by cache status.
+This chart shows subrequests — requests triggered by calling `fetch` from within a Worker script — broken down by cache status.
 
 - **Uncached**: requests answered directly by your origin server or other servers responding to subrequests
 - **Cached**: requests answered by Cloudflare’s [cache](https://www.cloudflare.com/learning/cdn/what-is-caching/). As Cloudflare caches more of your content, it accelerates content delivery and reduces load on your origin.

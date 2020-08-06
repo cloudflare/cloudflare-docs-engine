@@ -52,20 +52,22 @@ You can also specify or override the Zone ID used by `wrangler publish` with the
 
 ## Generate Tokens
 
-### API Token
+### API token
 
-1. Click **Get your API token** below the _CLI and API_ section to jump to your _Profile_ page.
-2. Click **Create Token**.
-3. Under the _API token templates_ section, find the **Edit Cloudflare Workers** template and click **Use template**.
-4. Fill out the rest of the fields and then click **Continue to Summary**, where you can click **Create Token** and issue your token for use.
+1. Continuing, also on the right side, click **Get your API token**.
+2. You’ll be taken to your **Profile** page.
+3. Click **Create token**.
+4. Under the **API token templates** section, find the **Edit Cloudflare Workers** template and click **Use template**.
+5. Fill out the rest of the fields and then click **Continue to Summary**, where you can click **Create Token** and issue your token for use.
 
 ### Global API Key
 
-1. Click **Get your API token** below the _CLI and API_ section to jump to your _Profile_ page.
-2. Scroll to _API Keys_, and click **View** to copy your Global API Key **\***.
+1. Continuing, also on the right side, click **Get your API token**.
+2. You’ll be taken to your **Profile** page.
+3. Scroll to **API Keys**, and click **View** to copy your **Global API Key**.\*
 
 <Aside type="warning">
 
-__Important__: Treat your Global API Key like a password! It should not be stored in version control or in your code, use environment variables if possible.
+\* __Warning:__ Treat your Global API Key like a password. It should not be stored in version control or in your code, use environment variables if possible.
 
 </Aside>

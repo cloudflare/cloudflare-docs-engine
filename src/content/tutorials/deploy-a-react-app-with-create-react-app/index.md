@@ -1,30 +1,32 @@
 ---
-updated: 2020-06-29
+updated: 2020-06-01
 difficulty: Beginner
 ---
 
-# Deploy a React app with create-react-app
+import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start.md"
+
+<!-- Use non-breaking hyphens &#8209; instead of - to improve layout -->
+# Deploy a React app with create&#8209;react&#8209;app
+
+<Aside header="Workers Bundled plan required">
+
+This tutorials requires Workers KV which is only available to users with [a paid Workers plan](/platform/pricing).
+
+</Aside>
+
+<TutorialsBeforeYouStart/>
+
+## Overview
 
 In this tutorial, we’ll use [Wrangler](https://github.com/cloudflare/wrangler) and [Cloudflare Workers](https://workers.cloudflare.com) to deploy and serve a static site. With the rise of architectures like [JAMStack](https://jamstack.org/), static sites have become a simple, streamlined way to combine highly-available static assets with performant backend code, especially when deployed with serverless. Workers in particular is a great platform to deploy static sites: your application will be distributed to over 190+ locations around the world, and served directly from Cloudflare’s powerful CDN at a server incredibly close to your users.
 
 <YouTube id="6YC3MgVwCGA"/>
 
-This tutorial makes use of [Wrangler](https://github.com/cloudflare/wrangler), our command-line tool for generating, building, and publishing projects on the Cloudflare Workers platform. If you haven’t used Wrangler, we recommend checking out the [“Installing the CLI”](/quickstart/#installing-the-cli) part of our [Quick Start guide](/quickstart), which will get you set up with Wrangler, and familiarize you with the basic commands.
-
 One more thing before you start the tutorial: if you just want to jump straight to the code, we’ve made the final version of the codebase [available on GitHub](https://github.com/signalnerve/react-workers-template). You can take that code, customize it, and deploy it for use in your own projects. Happy coding!
 
 ## Prerequisites
 
-To publish your project to Cloudflare Workers, you’ll need a few things:
-
-- A Cloudflare account, and access to the API keys for that account
-- A subscription to the Workers Unlimited plan
-- Wrangler 1.4.0 or above, running locally on your machine (see the [Quick Start](https://developers.cloudflare.com/workers/quickstart/#installing-the-cli) for instructions on installing and updating Wrangler)
-- Access to the command-line
-
-If you don’t have those things quite yet, don’t worry. We’ll walk through each of them and make sure we’re ready to go before you start creating your application.
-
-In addition, we’ll be using [create-react-app](https://github.com/facebook/create-react-app) to create the example project for this tutorial. No experience with React is needed, and you can easily take what you learn in this tutorial and apply it to other frameworks, such as [Vue](https://vuejs.org/) or [Angular](https://angular.io), and even static site frameworks like [Gatsby](https://gatsbyjs.org), [Hugo](https://gohugo.io), and more.
+In addition, we’ll be using [create-react-app](https://github.com/facebook/create-react-app) to create the example project for this tutorial. No experience with React is needed, and you can easily take what you learn in this tutorial and apply it to other frameworks, such as [Vue](https://vuejs.org) or [Angular](https://angular.io), and even static site frameworks like [Gatsby](https://gatsbyjs.org), [Hugo](https://gohugo.io), and more.
 
 ## Create a static site
 
@@ -53,9 +55,9 @@ $ wrangler init --site
 
 The `init --site` command will provide the scaffolding necessary to deploy your React application. For the majority of static sites, you shouldn’t need to change the Workers script: by default, the script will look at an incoming request, and will serve a corresponding asset from [Workers KV](https://www.cloudflare.com/products/workers-kv/) based on that route. For instance, if my static site is deployed at `mystaticsite.com`, requesting `mystaticsite.com/about.html` will look for a file in KV called `about.html`, and serve it back to the client. In addition, if the asset being returned from KV is cacheable, it will automatically be cached with Cloudflare’s CDN, making subsequent requests even faster.
 
-## Configure and Publish
+## Configure and publish
 
-To prepare your application for deployment, open up the newly-created `wrangler.toml` file, which represents the configuration for your Workers application. Using the [“Configure” section of the Quick Start](https://developers.cloudflare.com/workers/quickstart/#configure) as a guide, populate `wrangler.toml` with your account ID, which will allow you to deploy your React application to your Cloudflare account.
+To prepare your application for deployment, open up the newly-created `wrangler.toml` file, which represents the configuration for your Workers application. Using the [“Configuring your project” section of Getting started](/learning/getting-started#6d-configuring-your-project) as a guide, populate `wrangler.toml` with your account ID, which will allow you to deploy your React application to your Cloudflare account.
 
 The `bucket` key in your `wrangler.toml` indicates the “build” folder that Sites will deploy to Workers. While many front-end application and static site generators use the folder `public`, `create-react-app` uses the folder `build`. Let’s change the `bucket` key in `wrangler.toml` to `build`:
 

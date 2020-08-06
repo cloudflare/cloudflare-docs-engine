@@ -162,4 +162,4 @@ Specifically, please make sure to:
 
 ## Next steps
 
-Now that you’re generally familiar with the guidelines for contributing to these docs, check out [Docs-flavored Markdown](/docs-engine/docs-flavored-markdown/) page to learn about all of the specific frontmatter properties and MDX components you can use in your Markdown `*.md` pages.
+Now that you’re generally familiar with the guidelines for contributing to these docs, check out [Docs-flavored Markdown](/docs-engine/docs-flavored-markdown) page to learn about all of the specific frontmatter properties and MDX components you can use in your Markdown `*.md` pages.

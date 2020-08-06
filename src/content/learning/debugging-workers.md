@@ -1,3 +1,7 @@
+---
+order: 3
+---
+
 # Debugging Workers
 
 Debugging is a critical part of developing a new application — whether running code in the initial stages of development, or trying to understand an issue occurring in production. In this article, we will walk you through how to effectively debug your Workeres application, as well as provide some code samples to help you get up and running:
@@ -108,7 +112,7 @@ When a Worker running in production has an error that prevents it from returning
 
 </TableWrap>
 
-Other 11xx errors generally indicate a problem with the Workers runtime itself — please check our [status page](https://www.cloudflarestatus.com/) if you see one.
+Other 11xx errors generally indicate a problem with the Workers runtime itself — please check our [status page](https://www.cloudflarestatus.com) if you see one.
 
 ### Identifying error: Workers Metrics
 
@@ -126,7 +130,7 @@ Exceptions will show up under the `exceptions` field in the JSON returned by `wr
 
 ### Setup a logging service
 
-A Worker can make HTTP requests to any HTTP service on the public internet. You can use a service like [Sentry](https://sentry.io/) to collect error logs from your Worker, by making an HTTP request to the service to report the error. Refer to your service’s API documentation for details on what kind of request to make.
+A Worker can make HTTP requests to any HTTP service on the public internet. You can use a service like [Sentry](https://sentry.io) to collect error logs from your Worker, by making an HTTP request to the service to report the error. Refer to your service’s API documentation for details on what kind of request to make.
 
 When logging using this strategy, remember that outstanding asynchronous tasks are canceled as soon as a Worker finishes sending its main response body to the client. To ensure that a logging subrequest completes, you can pass the request promise to [`event.waitUntil()`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil). For example:
 

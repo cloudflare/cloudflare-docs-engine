@@ -1,29 +1,33 @@
 ---
-updated: 2020-06-29
+updated: 2020-07-25
 difficulty: Beginner
 ---
 
+import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start.md"
+
 # Authorize users with Auth0
 
-In this tutorial you’ll integrate Auth0, an identity management platform, into a Cloudflare Workers application. Adding authorization and authentication to an application is a common task for developers. By implementing it using Cloudflare Workers, you can take advantage of Workers’ unique platform advantages to simplify how and when your application needs user data.
+<Aside header="Workers Bundled plan required">
 
-## What you’ll learn
+This tutorials requires Workers KV which is only available to users with [a paid Workers plan](/platform/pricing).
 
-- How to authorize and authenticate users in Workers
-- How to persist authorization credentials inside of Workers KV
-- How to use Auth0 user info inside of your Workers application
+</Aside>
 
-## Prerequisites
+<TutorialsBeforeYouStart/>
 
-To publish your Worker to Cloudflare, you’ll need a few things:
+## Overview
 
-- A Cloudflare account, the [Workers Unlimited Plan](/platform/pricing), and access to an [API token](/quickstart#api-token) for that account
-- A Wrangler installation running locally on your machine, and access to the command-line
-- An Auth0 account
+In this tutorial you’ll integrate [Auth0](https://auth0.com), an identity management platform, into a Cloudflare Workers application. Adding authorization and authentication to an application is a common task for developers. By implementing it using Cloudflare Workers, you can take advantage of Workers’ unique platform advantages to simplify how and when your application needs user data.
 
-Topics like configuring your Cloudflare account, API keys, and Wrangler installation are covered extensively in the [Workers Quick Start](/quickstart). Completing that guide is mandatory before following this tutorial!
+### What you’ll learn
 
-If you don’t already have an Auth0 account, you can sign up for a free account at [auth0.com](https://www.auth0.com). This tutorial doesn’t require a Workers Unlimited plan and supports integration with Auth0’s free tier.
+- How to authorize and authenticate users in Workers.
+- How to persist authorization credentials inside of Workers KV.
+- How to use Auth0 user info inside of your Workers application.
+
+## Set up Auth0
+
+If you don’t already have an Auth0 account, you can sign up for a free account at [auth0.com](https://www.auth0.com). This tutorial supports integration with Auth0’s free tier.
 
 ### Configure an Auth0 application
 
@@ -61,7 +65,7 @@ In a traditional application that is attached to a database, the authorization t
 
 ### Authenticating a user
 
-Let’s begin implementing the login flow described in the previous section. When a user makes a request to the Workers application, we should verify that the user is authenticated. To define this logic create a new file - `workers-site/auth0.js`- which will contain the authorization logic for our application:
+Let’s begin implementing the login flow described in the previous section. When a user makes a request to the Workers application, we should verify that the user is authenticated. To define this logic create a new file — `workers-site/auth0.js`- which will contain the authorization logic for our application:
 
 ```js
 ---
@@ -286,7 +290,7 @@ const persistAuth = async exchange => {
 }
 ```
 
-The `body` object - assuming no errors -  will contain an `access_token`, `id_token`, and [other fields](https://auth0.com/docs/flows/guides/auth-code/add-login-auth-code#request-tokens) that we should persist inside of Workers KV, a key-value store that we can access inside of our Workers scripts. When we store data inside Workers KV we need to persist it using a key. The `id_token` field, which is returned by Auth0, is a [JSON Web Token](https://jwt.io/) that contains a `sub` field, a unique identifier for each user. We’ll decode the JSON Web Token and parse it into an object:
+The `body` object — assuming no errors — will contain an `access_token`, `id_token`, and [other fields](https://auth0.com/docs/flows/guides/auth-code/add-login-auth-code#request-tokens) that we should persist inside of Workers KV, a key-value store that we can access inside of our Workers scripts. When we store data inside Workers KV we need to persist it using a key. The `id_token` field, which is returned by Auth0, is a [JSON Web Token](https://jwt.io) that contains a `sub` field, a unique identifier for each user. We’ll decode the JSON Web Token and parse it into an object:
 
 ```js
 ---
@@ -333,7 +337,7 @@ const persistAuth = async exchange => {
 }
 ```
 
-To ensure that the ID token we’ve received is valid, we should do a number of checks on the decoded token object, as per the [OpenID Connect Core 1.0 spec](https://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation). We’ll update the `persistAuth` function to validate the token - if it isn’t valid, we can return an object indicating that the response is invalid:
+To ensure that the ID token we’ve received is valid, we should do a number of checks on the decoded token object, as per the [OpenID Connect Core 1.0 spec](https://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation). We’ll update the `persistAuth` function to validate the token — if it isn’t valid, we can return an object indicating that the response is invalid:
 
 ```js
 ---
@@ -543,7 +547,7 @@ const verify = async event => {
 }
 ```
 
-With the unique ID `sub` parsed from the `Cookie` header, we can use it to retrieve the user information we previously stored in KV. First, we’ll do a lookup to Workers KV using the `sub` field as a key - if it isn’t found, we’ll throw an `Error`. Next, we’ll take that data from Workers KV and attempt to parse it as JSON - if that fails, another `Error` will be thrown:
+With the unique ID `sub` parsed from the `Cookie` header, we can use it to retrieve the user information we previously stored in KV. First, we’ll do a lookup to Workers KV using the `sub` field as a key — if it isn’t found, we’ll throw an `Error`. Next, we’ll take that data from Workers KV and attempt to parse it as JSON — if that fails, another `Error` will be thrown:
 
 ```js
 ---
@@ -675,7 +679,7 @@ For a more detailed example of this functionality, check out the [source code](h
 
 ### Logging out users
 
-While a user’s authentication cookie expires after a day, you may want to offer the ability for a user to log out manually. This is quite simple to implement - instead of letting the cookie expire automatically, your Workers application should pass a `Set-cookie` header that nulls out the `cookieKey` we previously defined. Let’s create a `logout` function in `workers-site/auth0.js`, and import it in `workers-site/index.js`, calling it when a user requests `/logout`:
+While a user’s authentication cookie expires after a day, you may want to offer the ability for a user to log out manually. This is quite simple to implement — instead of letting the cookie expire automatically, your Workers application should pass a `Set-cookie` header that nulls out the `cookieKey` we previously defined. Let’s create a `logout` function in `workers-site/auth0.js`, and import it in `workers-site/index.js`, calling it when a user requests `/logout`:
 
 ```js
 ---
@@ -798,7 +802,7 @@ Given an example configuration and deployment of `https://my-auth.signalnerve.co
 
 2. Configure your `wrangler.toml` to associate your Workers script with a zone
 
-Associating a configured zone from your Cloudflare account is covered in the section [“Publish To Your Domain”](https://developers.cloudflare.com/workers/quickstart#publish-to-your-domain) in the Workers Quick Start. In the “Publish” section of this guide, we’ll cover how to configure the file `wrangler.toml` to deploy to workers.dev — make sure you read the Quick Start section linked above so you can understand how these approaches differ.
+Associating a configured zone from your Cloudflare account is covered in the section [“Configure for deploying to a registered domain”](/learning/getting-started#optional-configure-for-deploying-to-a-registered-domain) section of [Getting started](/learning/getting-started). In the “Publish” section of this guide, we’ll cover how to configure the file `wrangler.toml` to deploy to workers.dev — make sure you read the [Gettinst started](/learning/getting-started#optional-configure-for-deploying-to-a-registered-domain) linked above so you can understand how these approaches differ.
 
 In particular, you’ll need to ensure that you have `zone_id` and `route` keys in your `wrangler.toml`, and `workers_dev` disabled. You may also choose to entirely remove the `[site]` block from your `wrangler.toml`, which will stop `wrangler` from uploading the contents of your project’s `public` folder to Workers KV:
 
@@ -822,7 +826,7 @@ Deploying an “origin” version of this code can be a great approach for users
 
 #### Using the open-source version of this package
 
-[The open-source example repository for this tutorial](https://github.com/signalnerve/workers-auth0-example/) showcases all the functionality outlined in this tutorial — originless/origin deploys, edge state hydration, and more. If you want to get started with this project, we recommend you check it out!
+[The open-source example repository for this tutorial](https://github.com/signalnerve/workers-auth0-example) showcases all the functionality outlined in this tutorial — originless/origin deploys, edge state hydration, and more. If you want to get started with this project, we recommend you check it out!
 
 ## Publish
 
@@ -830,7 +834,7 @@ We’re finally ready to deploy our application to Workers. Before we can succes
 
 ### Configuring `wrangler.toml`
 
-The `wrangler.toml` generated as part of your application tells wrangler how and where to deploy your application. Using the [“Configure” section of the Quick Start](https://developers.cloudflare.com/workers/quickstart/#configure) as a guide, populate `wrangler.toml` with your account ID, which will allow you to deploy your application to your Cloudflare account:
+The `wrangler.toml` generated as part of your application tells wrangler how and where to deploy your application. Using the [“Configuring your project” section of the Getting started](/learning/getting-started#6d-configuring-your-project) as a guide, populate `wrangler.toml` with your account ID, which will allow you to deploy your application to your Cloudflare account:
 
 ```toml
 ---

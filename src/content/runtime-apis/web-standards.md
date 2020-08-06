@@ -63,7 +63,7 @@ The following methods are available per the [Worker Global Scope](https://develo
 <Aside>
 
 <!-- TODO(soon): Broken link. -->
-__Note__: Timers are only available inside of [the Request Context](/about/tips/request-context).
+__Note:__ Timers are only available inside of [the Request Context](/about/tips/request-context).
 
 </Aside>
 
@@ -80,7 +80,7 @@ __Note__: Timers are only available inside of [the Request Context](/about/tips/
 <Aside>
 
 <!-- TODO(soon): Broken link. -->
-__Note__: The Fetch API is only available inside of [the Request Context](/about/tips/request-context).
+__Note:__ The Fetch API is only available inside of [the Request Context](/about/tips/request-context).
 
 </Aside>
 
@@ -102,6 +102,6 @@ The URL API supports urls conforming to http and https schemes.
 
 <Aside>
 
-__Note__: The Workers’ Runtime’s URL class behavior differs from the URL Spec documented above. If you’d like to use another URL implementation, you can [shim the URL class using webpack](/cli-wrangler/webpack/#shimming-globals).
+__Note:__ The Workers’ Runtime’s URL class behavior differs from the URL Spec documented above. If you’d like to use another URL implementation, you can [shim the URL class using webpack](/cli-wrangler/webpack/#shimming-globals).
 
 </Aside>

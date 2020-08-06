@@ -4,7 +4,7 @@
 
 <TableWrap>
 
-| Feature                                                             | Free                                                 | Unlimited |
+| Feature                                                             | Free                                                 | Bundled   |
 |---------------------------------------------------------------------|------------------------------------------------------|-----------|
 | [Request](#request)                                                 | 100,000&nbsp;requests/day<br/>1000&nbsp;requests/min | none      |
 | [Worker memory](#memory)                                            | 128 MB                                               | 12 MB     |
@@ -22,7 +22,7 @@
 
 <TableWrap>
 
-| Feature                      | Free       | Unlimited  |
+| Feature                      | Free       | Bundled    |
 |------------------------------|------------|------------|
 | [Reads/Second](#kv-limits)   | unlimited  | unlimited  |
 | [Writes/Second](#kv-limits)  | 1          | 1          |
@@ -37,7 +37,7 @@
 
 <TableWrap>
 
-| Feature                     | Free    | Unlimited |
+| Feature                     | Free    | Bundled   |
 |-----------------------------|---------|-----------|
 | [Max Obj Size](#cache-api)  | 512 MB  | 512 MB    |
 | [Calls/Request](#cache-api) | 50      | 50        |
@@ -49,7 +49,7 @@
 
 ## Request
 
-Unlimited (Paid) Workers scripts automatically scale onto thousands of Cloudflare edge servers around the world; there is no general limit to the number of requests per second Workers can handle.
+Bundled (Paid) Workers scripts automatically scale onto thousands of Cloudflare edge servers around the world; there is no general limit to the number of requests per second Workers can handle.
 
 Cloudflare’s abuse protection methods do not affect well-intentioned traffic. However, if you send many thousands of requests per second from a small number of client IP addresses, you can inadvertently trigger Cloudflare’s abuse protection. If you expect to receive `1015` errors in response to traffic or expect your application to incur these errors, contact Cloudflare to increase your limit.
 
@@ -83,7 +83,7 @@ Use the [TransformStream API](/runtime-apis/streams/transformstream) to stream r
 
 ## CPU runtime
 
-Most Workers requests consume less than a millisecond. It’s rare to find a normally operating Workers script that exceeds the CPU time limit. A Worker may consume up to 10ms on the free plan and 50ms on the Unlimited tier. The 10ms allowance on the free plan is enough execution time for most use cases including application hosting.
+Most Workers requests consume less than a millisecond. It’s rare to find a normally operating Workers script that exceeds the CPU time limit. A Worker may consume up to 10ms on the free plan and 50ms on the Bundled tier. The 10ms allowance on the free plan is enough execution time for most use cases including application hosting.
 
 There is no limit on the real runtime for a Workers script. As long as the client that sent the request remains connected, the Workers script can continue processing, making subrequests, and setting timeouts on behalf of that request. When the client disconnects, all tasks associated with that client request are canceled. You can use [`event.waitUntil()`](/runtime-apis/fetch-event) to delay cancellation for another 30 seconds or until the promise passed to `waitUntil()` completes.
 
@@ -115,9 +115,9 @@ While handling a request, each Worker script is allowed to have up to six connec
 - `get()`, `put()`, `list()`, and `delete()` methods of [Workers KV namespace objects](/runtime-apis/kv)
 - `put()`, `match()`, and `delete()` methods of [Cache objects](/runtime-apis/cache)
 
-Once a Worker has six connections open, it can still attempt to open additional connections. However, these attempts are put in a pending queue - the connections won’t be actually be initiated until one of the currently open connections has closed. Since earlier connections can delay later ones, if a Worker tries to make many simultaneous subrequests, its later subrequests may appear to take longer to start.
+Once a Worker has six connections open, it can still attempt to open additional connections. However, these attempts are put in a pending queue — the connections won’t be actually be initiated until one of the currently open connections has closed. Since earlier connections can delay later ones, if a Worker tries to make many simultaneous subrequests, its later subrequests may appear to take longer to start.
 
-If the system detects that a Worker is deadlocked on open connections - for instance, if the Worker has pending connection attempts but has no in-progress reads or writes on the connections that it already has open - then the least-recently-used open connection will be canceled to unblock the Worker. If the Worker later attempts to use a canceled connection, an exception will be thrown. These exceptions should rarely occur in practice, though, since it’s uncommon for a Worker to open a connection that it doesn’t have an immediate use for.
+If the system detects that a Worker is deadlocked on open connections — for instance, if the Worker has pending connection attempts but has no in-progress reads or writes on the connections that it already has open — then the least-recently-used open connection will be canceled to unblock the Worker. If the Worker later attempts to use a canceled connection, an exception will be thrown. These exceptions should rarely occur in practice, though, since it’s uncommon for a Worker to open a connection that it doesn’t have an immediate use for.
 
 --------------------------------
 
@@ -147,7 +147,7 @@ __Note:__ App Workers scripts do not count towards this limit.
 
 ## KV
 
-After subscription to a Workers Unlimited plan, KV is enabled. Workers KV supports:
+After subscription to a Workers Bundled plan, KV is enabled. Workers KV supports:
 
 - Up to 100 Namespaces per account
 - Unlimited keys per namespace

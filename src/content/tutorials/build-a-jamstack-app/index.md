@@ -1,30 +1,29 @@
 ---
-updated: 2020-06-26
+updated: 2020-03-09
 difficulty: Beginner
 ---
 
+import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start.md"
+
 # Build a To-Do list JAMstack app
+
+<Aside header="Workers Bundled plan required">
+
+This tutorials requires Workers KV which is only available to users with [a paid Workers plan](/platform/pricing).
+
+</Aside>
+
+<TutorialsBeforeYouStart/>
+
+## Overview
 
 In this tutorial, you’ll build a todo list application in HTML, CSS and JavaScript, with a twist: the data for the application will be stored in [Workers KV](/runtime-apis/kv).
 
 ![Preview](./media/finished.png)
 
-To build this application, we’ll use [Wrangler](https://github.com/cloudflare/wrangler), the command-line tool for generating, building, and publishing projects on the Cloudflare Workers platform. If you haven’t used Wrangler, we recommend checking out the [Quick Start Guide](/quickstart), which will get you set up with Wrangler, and familiar with the basic commands.
-
 Before starting this project, you should have some experience with HTML, CSS, and JavaScript. If you’re new to writing web apps, Workers is a great place to get started. Building with Workers is a super easy to focus on writing code, and actually shipping projects! In particular, the addition of Workers KV makes this tutorial a great introduction to building full, data-driven applications.
 
 If you’d like to see the finished code for this project, find the project [on GitHub](https://github.com/signalnerve/cloudflare-workers-todos), and check out the [live demo](https://todos.signalnerve.workers.dev/) to see what you’ll be building!
-
-## Prerequisites
-
-To publish your application to Cloudflare Workers, you’ll need a few things:
-
-- A Cloudflare account, and access to the API keys for that account
-- A Wrangler installation running locally on your machine, and access to the command-line
-
-You’ll also need to get your Cloudflare API keys to deploy code to Cloudflare Workers: see [“Finding your Cloudflare API keys”](/quickstart/api-keys) for a brief guide on how to find them.
-
-_Note: Workers KV is only available to users with a paid Workers plan._
 
 ## Generate
 
@@ -322,7 +321,7 @@ async function handleRequest(request) {
 }
 ```
 
-The script is pretty straightforward – we check that the request is a `PUT`, and wrap the remainder of the code in a `try/catch` block. First, we parse the body of the request coming in, ensuring that it is JSON, before we update the cache with the new data, and return it to the user. If anything goes wrong, we simply return a 500. If the route is hit with an HTTP method other than `PUT` - that is, `POST`, `DELETE`, or anything else — we return a 404.
+The script is pretty straightforward – we check that the request is a `PUT`, and wrap the remainder of the code in a `try/catch` block. First, we parse the body of the request coming in, ensuring that it is JSON, before we update the cache with the new data, and return it to the user. If anything goes wrong, we simply return a 500. If the route is hit with an HTTP method other than `PUT` — that is, `POST`, `DELETE`, or anything else — we return a 404.
 
 With this script, we can now add some “dynamic” functionality to our HTML page to actually hit this route. First, we’ll create an input for our todo “name”, and a button for “submitting” the todo.
 
@@ -344,7 +343,7 @@ const html = todos => `
 `
 ```
 
-Given that input and button, we can add a corresponding JavaScript function to watch for clicks on the button - once the button is clicked, the browser will `PUT` to `/` and submit the todo.
+Given that input and button, we can add a corresponding JavaScript function to watch for clicks on the button — once the button is clicked, the browser will `PUT` to `/` and submit the todo.
 
 ```js
 ---

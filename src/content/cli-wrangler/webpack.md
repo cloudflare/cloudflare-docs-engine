@@ -8,7 +8,7 @@ Out of the box, Wrangler allows you to develop modern ES6 applications with supp
 
 <Aside>
 
-__Note__: You must set `type = "webpack"` in your `wrangler.toml` in order for Wrangler to use webpack to bundle your worker scripts. No other types will build your script with webpack.
+__Note:__ You must set `type = "webpack"` in your `wrangler.toml` in order for Wrangler to use webpack to bundle your worker scripts. No other types will build your script with webpack.
 
 </Aside>
 

@@ -1,6 +1,6 @@
 # Start from existing
 
-Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) - make sure to be on the [latest version](/quickstart/#updating-the-cli) - and the Workers [Unlimited plan](https://workers.cloudflare.com/sites#plans).
+Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) — make sure to be on the [latest version](/cli-wrangler/install-update#update) — and the Workers [Bundled plan](https://workers.cloudflare.com/sites#plans).
 
 To deploy a pre-existing static site project, you’ll need to start with a pre-generated site. Workers Sites works well with all static site generators! For a quick-start, check out the following projects:
 
@@ -35,7 +35,7 @@ Once you have a site generated, follow these steps:
     - Jekyll: `_site`
     - Eleventy: `_site`
 
-3. Add your `account_id` to your `wrangler.toml`. You can find your `account_id` on the right sidebar of the Workers or Overview Dashboard. Note: You may need to scroll down! For more details on finding your `account_id` click [here](/quickstart/#account-id-and-zone-id).
+3. Add your `account_id` to your `wrangler.toml`. You can find your `account_id` on the right sidebar of the Workers or Overview Dashboard. Note: You may need to scroll down! For more details on finding your `account_id` visit [Getting started](/learning/getting-started#6a-obtaining-your-account-id-and-zone-id).
 
 4. You can preview your site by running:
 
@@ -43,7 +43,7 @@ Once you have a site generated, follow these steps:
   $ wrangler preview --watch
   ```
 
-5. Decide where you’d like to publish your site to: [a workers.dev subdomain](/quickstart#publish-to-workers-dev) or your [personal domain](/quickstart#publish-to-your-domain) registered with Cloudflare.
+5. Decide where you’d like to publish your site to: [a workers.dev subdomain](/learning/getting-started#configure-for-deploying-to-workersdev) or your [personal domain](/learning/getting-started#optional-configure-for-deploying-to-a-registered-domain) registered with Cloudflare.
 
   Then, update your `wrangler.toml`:
 
@@ -56,7 +56,7 @@ Once you have a site generated, follow these steps:
 
   **workers.dev**: Set `workers_dev` to true. This is the default.
 
-  You can learn more about configuring your project [here](/quickstart/#configure).
+  Learn more about [configuring your project](/learning/getting-started#6-configure-your-project-for-deployment).
 
 6. Run:
 

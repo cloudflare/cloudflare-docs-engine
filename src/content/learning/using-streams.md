@@ -1,3 +1,7 @@
+---
+order: 6
+---
+
 # Using Streams
 
 The [Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) is a web standard API that allows JavaScript to programmatically access and process streams of data.

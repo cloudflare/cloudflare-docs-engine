@@ -10,7 +10,7 @@ The Service Workers Cache API is currently unimplemented in the Cloudflare Worke
 
 <Aside>
 
-__Note__: This individualized zone cache object differs from Cloudflare’s Global CDN, for details see: [How the Cache Works](/learning/how-the-cache-works).
+__Note:__ This individualized zone cache object differs from Cloudflare’s Global CDN, for details see: [How the Cache Works](/learning/how-the-cache-works).
 
 </Aside>
 

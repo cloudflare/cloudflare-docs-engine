@@ -1,30 +1,23 @@
 ---
-updated: 2020-06-29
+updated: 2020-03-09
 difficulty: Beginner
 ---
 
+import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start.md"
+
 # Build a QR code generator
+
+<TutorialsBeforeYouStart/>
+
+## Overview
 
 In this tutorial, you’ll build and publish a serverless function that generates QR codes, using Cloudflare Workers.
 
 ![QR code generator working in the browser](./media/demo.png)
 
-This tutorial makes use of [Wrangler](https://github.com/cloudflare/wrangler), our command-line tool for generating, building, and publishing projects on the Cloudflare Workers platform. If you haven’t used Wrangler, we recommend checking out the [“Installing the CLI”](/quickstart/cli-setup) part of our [Quick Start guide](/quickstart), which will get you set up with Wrangler, and familiar with the basic commands.
-
 If you’re interested in building and publishing serverless functions, this is the guide for you! No prior experience with serverless functions or Cloudflare Workers is assumed.
 
 One more thing before you start the tutorial: if you just want to jump straight to the code, we’ve made the final version of the codebase [available on GitHub](https://github.com/signalnerve/workers-qr-code-generator). You can take that code, customize it, and deploy it for use in your own projects. Happy coding!
-
-## Prerequisites
-
-To publish your QR Code Generator function to Cloudflare Workers, you’ll need a few things:
-
-- A Cloudflare account, and access to the API keys for that account
-- [A Wrangler installation](/cli-wrangler/install-update) running locally on your machine, and access to the command-line
-
-If you don’t have those things quite yet, don’t worry. We’ll walk through each of them and make sure we’re ready to go, before you start creating your application.
-
-You’ll need to get your Cloudflare API keys to deploy code to Cloudflare Workers: see [“Finding your Cloudflare API keys”](/quickstart/#configure) for a brief guide on how to find them.
 
 ## Generate
 
