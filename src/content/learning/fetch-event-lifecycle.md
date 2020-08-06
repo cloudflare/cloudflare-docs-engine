@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 # FetchEvent Lifecycle
 
 When working with the [`fetch` event](/runtime-apis/fetch-event) inside the Workers runtime, it helps to have a good idea of its lifecycle.

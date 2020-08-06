@@ -1,3 +1,7 @@
+---
+order: 4
+---
+
 import NetworkMap from "../../components/network-map"
 import ArchitectureDiagram from "../../components/architecture-diagram"
 

@@ -1,3 +1,7 @@
+---
+order: 7
+---
+
 # Security model
 
 This article includes an overview of our security architecture, and then addresses two specific issues that we are frequently asked about: V8 bugs, and Spectre.
