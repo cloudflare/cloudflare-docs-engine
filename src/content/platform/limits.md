@@ -147,7 +147,7 @@ __Note:__ App Workers scripts do not count towards this limit.
 
 ## KV
 
-After subscription to a Workers Unlimited plan, KV is enabled. Workers KV supports:
+After subscription to a Workers Bundled plan, KV is enabled. Workers KV supports:
 
 - Up to 100 Namespaces per account
 - Unlimited keys per namespace
