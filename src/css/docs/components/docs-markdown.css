@@ -203,9 +203,9 @@ p.DocsMarkdown--small-header {
 
 .DocsMarkdown h1 {
   font-size: 2.4em;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -.03em;
-  margin-bottom: .425em;
+  margin-bottom: .375em;
 }
 
 @-moz-document url-prefix() {
