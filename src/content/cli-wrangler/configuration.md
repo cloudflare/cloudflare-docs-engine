@@ -171,7 +171,7 @@ For very exceptionally large pages, Workers Sites might not work for you. There 
 
 #### Ignoring Subsets of Static Assets
 
-Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) - make sure to be on the [latest version](/cli-wrangler/install-update) - and the Workers [Unlimited plan](https://workers.cloudflare.com/sites#plans).
+Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) — make sure to be on the [latest version](/cli-wrangler/install-update#update) — and the Workers [Bundled plan](https://workers.cloudflare.com/sites#plans).
 
 There are cases where users may not want to upload certain static assets to their Workers Sites.
 In this case, Workers Sites can also be configured to ignore certain files or directories using logic

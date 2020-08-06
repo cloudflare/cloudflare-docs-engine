@@ -321,7 +321,7 @@ async function handleRequest(request) {
 }
 ```
 
-The script is pretty straightforward – we check that the request is a `PUT`, and wrap the remainder of the code in a `try/catch` block. First, we parse the body of the request coming in, ensuring that it is JSON, before we update the cache with the new data, and return it to the user. If anything goes wrong, we simply return a 500. If the route is hit with an HTTP method other than `PUT` - that is, `POST`, `DELETE`, or anything else — we return a 404.
+The script is pretty straightforward – we check that the request is a `PUT`, and wrap the remainder of the code in a `try/catch` block. First, we parse the body of the request coming in, ensuring that it is JSON, before we update the cache with the new data, and return it to the user. If anything goes wrong, we simply return a 500. If the route is hit with an HTTP method other than `PUT` — that is, `POST`, `DELETE`, or anything else — we return a 404.
 
 With this script, we can now add some “dynamic” functionality to our HTML page to actually hit this route. First, we’ll create an input for our todo “name”, and a button for “submitting” the todo.
 
@@ -343,7 +343,7 @@ const html = todos => `
 `
 ```
 
-Given that input and button, we can add a corresponding JavaScript function to watch for clicks on the button - once the button is clicked, the browser will `PUT` to `/` and submit the todo.
+Given that input and button, we can add a corresponding JavaScript function to watch for clicks on the button — once the button is clicked, the browser will `PUT` to `/` and submit the todo.
 
 ```js
 ---

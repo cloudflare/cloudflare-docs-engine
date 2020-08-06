@@ -65,7 +65,7 @@ Zone data can be scoped by time range within the last 30 days. The dashboard inc
 
 ### Subrequests
 
-This chart shows subrequests - requests triggered by calling `fetch` from within a Worker script - broken down by cache status.
+This chart shows subrequests — requests triggered by calling `fetch` from within a Worker script — broken down by cache status.
 
 - **Uncached**: requests answered directly by your origin server or other servers responding to subrequests
 - **Cached**: requests answered by Cloudflare’s [cache](https://www.cloudflare.com/learning/cdn/what-is-caching/). As Cloudflare caches more of your content, it accelerates content delivery and reduces load on your origin.

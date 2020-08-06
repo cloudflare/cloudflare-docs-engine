@@ -55,9 +55,9 @@ $ wrangler init --site
 
 The `init --site` command will provide the scaffolding necessary to deploy your React application. For the majority of static sites, you shouldn’t need to change the Workers script: by default, the script will look at an incoming request, and will serve a corresponding asset from [Workers KV](https://www.cloudflare.com/products/workers-kv/) based on that route. For instance, if my static site is deployed at `mystaticsite.com`, requesting `mystaticsite.com/about.html` will look for a file in KV called `about.html`, and serve it back to the client. In addition, if the asset being returned from KV is cacheable, it will automatically be cached with Cloudflare’s CDN, making subsequent requests even faster.
 
-## Configure and Publish
+## Configure and publish
 
-To prepare your application for deployment, open up the newly-created `wrangler.toml` file, which represents the configuration for your Workers application. Using the [“Configure” section of the Quick Start](https://developers.cloudflare.com/workers/quickstart/#configure) as a guide, populate `wrangler.toml` with your account ID, which will allow you to deploy your React application to your Cloudflare account.
+To prepare your application for deployment, open up the newly-created `wrangler.toml` file, which represents the configuration for your Workers application. Using the [“Configuring your project” section of Getting started](/learning/getting-started#6d-configuring-your-project) as a guide, populate `wrangler.toml` with your account ID, which will allow you to deploy your React application to your Cloudflare account.
 
 The `bucket` key in your `wrangler.toml` indicates the “build” folder that Sites will deploy to Workers. While many front-end application and static site generators use the folder `public`, `create-react-app` uses the folder `build`. Let’s change the `bucket` key in `wrangler.toml` to `build`:
 

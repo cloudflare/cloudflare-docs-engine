@@ -15,8 +15,6 @@ In this tutorial, you’ll build a [Slack](https://slackhq.com) bot using [Cloud
 
 ![Build a Slack Application](./media/issue-command.png)
 
-This tutorial makes use of [Wrangler](https://github.com/cloudflare/wrangler), our command-line tool for generating, building, and publishing projects on the Cloudflare Workers platform. If you haven’t used Wrangler, we recommend checking out the [Quick Start Guide](/quickstart), which will get you set up with Wrangler, and familiar with the basic commands.
-
 This tutorial is recommended for people who are familiar with writing web applications. If you’ve ever built an application with tools like [Node](https://nodejs.org) and [Express](https://expressjs.com), this project will feel very familiar to you. That being said, if you’re new to writing web apps, we think that Workers is a super easy way to focus on writing code, and actually shipping projects: maybe you’ve wanted to build something like a Slack bot in the past, but things like deployment and configuration have always seemed a little scary. In either case, welcome!
 
 One more thing before you start the tutorial: if you’d like to see the code, or how the bot works in an actual Slack channel, we’ve made the final version of the codebase [available on GitHub](https://github.com/signalnerve/workers-slack-bot). From there, you can add your own Slack API keys, and deploy it to your own Slack channels for testing.
