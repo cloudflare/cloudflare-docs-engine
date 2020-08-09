@@ -10,6 +10,18 @@
   z-index: 2;
 }
 
+/* TODO: remove once Chromium bug is resolved:
+
+Reference:
+https://github.com/cloudflare/workers-docs-engine/issues/137
+https://bugs.chromium.org/p/chromium/issues/detail?id=997607
+*/
+.DocsSidebar [is-visually-hidden] {
+  clip-path: none;
+  left: -10000px;
+  top: auto;
+}
+
 [theme="dark"] .DocsSidebar {
   --sidebar-background-color: var(--gray-0F);
 }
