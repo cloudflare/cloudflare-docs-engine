@@ -6,7 +6,7 @@ tags:
   - Originless
 ---
 
-# Cache using Fetch
+# Cache using fetch
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>
@@ -32,7 +32,7 @@ async function handleRequest(request) {
   })
   // Reconstruct the Response object to make its headers mutable.
   response = new Response(response.body, response)
-  
+
   //Set cache control headers to cache on browser for 25 minutes
   response.headers.set("Cache-Control", "max-age=1500")
   return response

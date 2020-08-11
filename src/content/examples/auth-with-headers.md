@@ -22,7 +22,7 @@ const PRESHARED_AUTH_HEADER_VALUE = "mypresharedkey"
 
 async function handleRequest(request) {
   const psk = request.headers.get(PRESHARED_AUTH_HEADER_KEY)
-  
+
   if (psk === PRESHARED_AUTH_HEADER_VALUE) {
     // Correct preshared header key supplied. Fetch request from origin.
     return fetch(request)
@@ -37,7 +37,6 @@ async function handleRequest(request) {
 addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
-
 ```
 
 <!-- ## Demo

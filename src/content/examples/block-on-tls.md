@@ -6,7 +6,7 @@ tags:
   - Originless
 ---
 
-# Block on TLS version
+# Block on TLS
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>

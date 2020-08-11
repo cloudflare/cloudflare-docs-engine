@@ -8,7 +8,7 @@ tags:
   - Originless
 ---
 
-# A/B Testing
+# Read POST from an HTML form
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>
@@ -54,7 +54,7 @@ async function readRequestBody(request) {
       body[entry[0]] = entry[1]
     }
     return JSON.stringify(body)
-  } 
+  }
   else {
     const myBlob = await request.blob()
     const objectURL = URL.createObjectURL(myBlob)

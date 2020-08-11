@@ -8,7 +8,7 @@ tags:
   - Originless
 ---
 
-# Hot-Link protection
+# Hot-link protection
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>
@@ -26,7 +26,7 @@ async function handleRequest(request) {
   // Referer header.
   const referer = request.headers.get("Referer")
   const contentType = response.headers.get("Content-Type") || ""
-  
+
   if (referer && contentType.startsWith(PROTECTED_TYPE)) {
     // If the hostnames don't match, it's a hotlink
     if (new URL(referer).hostname !== new URL(request.url).hostname) {
@@ -34,7 +34,7 @@ async function handleRequest(request) {
       return Response.redirect(HOMEPAGE_URL, 302)
     }
   }
-  
+
   // Everything is fine, return the response normally.
   return response
 }

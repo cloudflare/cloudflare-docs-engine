@@ -6,7 +6,7 @@ tags:
   - Originless
 ---
 
-# Post JSON
+# Fetch JSON
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>

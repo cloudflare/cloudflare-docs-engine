@@ -6,7 +6,7 @@ tags:
   - Originless
 ---
 
-# Modify response
+# HTTP2 server push
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>

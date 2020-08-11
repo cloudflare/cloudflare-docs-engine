@@ -6,7 +6,7 @@ tags:
   - Originless
 ---
 
-# Bulk origin proxies
+# Bulk origin proxy
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>
