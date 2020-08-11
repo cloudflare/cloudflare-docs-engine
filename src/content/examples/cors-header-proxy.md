@@ -4,9 +4,8 @@ type: example
 summary: Add necessary CORS headers to a third party API response
 demo: https://cors-header-proxy.workers-sites-examples.workers.dev
 tags:
-  - API
-  - JSON
   - Originless
+  - Security
 ---
 
 # CORS header proxy
