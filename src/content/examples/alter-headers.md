@@ -9,7 +9,7 @@ tags:
   - Originless
 ---
 
-# Rewrite links In HTML
+# Alter headers
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>

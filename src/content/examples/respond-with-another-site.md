@@ -1,5 +1,5 @@
 ---
-order: 4
+order: 11
 type: example
 summary: Respond to the Worker request with the response from another (example.com in this example).
 demo: https://respond-with-another-site.workers-sites-examples.workers.dev
