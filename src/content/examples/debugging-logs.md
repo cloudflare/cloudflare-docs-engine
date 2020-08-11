@@ -15,7 +15,6 @@ tags:
 </ContentColumn>
 
 ```js
-
 // Service configured to receive logs
 const LOG_URL = "https://log-service.example.com/"
 
