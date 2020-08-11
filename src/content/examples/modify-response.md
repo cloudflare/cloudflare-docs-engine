@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Fetch and modify response properties.
 demo: https://modify-response.workers-sites-examples.workers.dev
@@ -45,7 +46,7 @@ async function handleRequest(request) {
 
   // Set destination header to the value of the source header
   const src = response.headers.get(headerNameSrc)
-  
+
   if (src != null) {
     response.headers.set(headerNameDst, src)
     console.log(

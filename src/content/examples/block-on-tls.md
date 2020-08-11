@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Inspects the incoming request's TLS version and blocks if under TLSv1.2.
 demo: https://block-on-tls.workers-sites-examples.workers.dev

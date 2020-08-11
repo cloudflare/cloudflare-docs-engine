@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Deliver an HTML page from HTML directly in the Worker script.
 demo: https://send-raw-html.workers-sites-examples.workers.dev

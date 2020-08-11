@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Send a request to a remote server, read HTML from the response, and serve that HTML.
 demo: https://fetch-html.workers-sites-examples.workers.dev

@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Redirect a response based on the country code of the visitor.
 demo: https://country-code.workers-sites-examples.workers.dev

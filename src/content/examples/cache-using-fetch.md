@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Determine how to cache a resource in a fetch request.
 demo: https://cache-using-fetch.workers-sites-examples.workers.dev
@@ -102,7 +103,7 @@ TTL values:
 - Positive TTL values indicate in seconds how long Cloudflare should cache the asset for
 - 0 TTL will cause assets to get cached, but expire immediately (revalidate from origin every time)
 - -1, or any negative value will instruct Cloudflare not to cache at all
- 
+
 <!-- ## Demo
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>

@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Prevent access to personal and sensitive data by inspecting response data from an origin server.
 demo: https://data-loss-prevention.workers-sites-examples.workers.dev

@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Rewrite URL links in HTML using HTMLRewriter.
 demo: https://rewrite-links.workers-sites-examples.workers.dev

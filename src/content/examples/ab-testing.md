@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Check signatures of requests and sign responses with a private key.
 demo: https://ab-testing.workers-sites-examples.workers.dev

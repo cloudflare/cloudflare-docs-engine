@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Send two GET request to two urls and aggregates the responses into one response.
 demo: https://aggregate-requests.workers-sites-examples.workers.dev
@@ -65,7 +66,7 @@ addEventListener("fetch", event => {
   return event.respondWith(handleRequest())
 })
 ```
-<!-- 
+<!--
 ## Demo
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>

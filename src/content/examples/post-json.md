@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Send a POST request with JSON data.
 demo: https://post-json.workers-sites-examples.workers.dev

@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Add necessary CORS headers to a third party API response
 demo: https://cors-header-proxy.workers-sites-examples.workers.dev
@@ -95,7 +96,7 @@ const DEMO_PAGE = `
 async function handleRequest(request) {
   const url = new URL(request.url)
   let apiUrl = url.searchParams.get("apiurl")
-  
+
   if (apiUrl == null) {
     apiUrl = API_URL
   }
@@ -112,10 +113,10 @@ async function handleRequest(request) {
 
   // Set CORS headers
   response.headers.set("Access-Control-Allow-Origin", url.origin)
-  
+
   // Append to/Add Vary header so browser will cache response correctly
   response.headers.append("Vary", "Origin")
-  
+
   return response
 }
 

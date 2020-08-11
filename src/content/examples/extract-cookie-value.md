@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Get the value of a cookie.
 demo: https://extract-cookie-value.workers-sites-examples.workers.dev

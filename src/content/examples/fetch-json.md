@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Sends a GET request and reads in JSON from the response.
 demo: https://fetch-json.workers-sites-examples.workers.dev

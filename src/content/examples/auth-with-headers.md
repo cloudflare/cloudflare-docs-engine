@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Allow or deny a request based on a known pre-shared key in a header.
 demo: https://auth-with-headers.workers-sites-examples.workers.dev

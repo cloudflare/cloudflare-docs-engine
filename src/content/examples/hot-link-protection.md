@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Block other websites from linking to your content.
 demo: https://hot-link-protection.workers-sites-examples.workers.dev

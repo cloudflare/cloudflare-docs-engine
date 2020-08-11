@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Return a response based on the incoming request's URL, HTTP method, User Agent, IP address, ASN or device type.
 demo: https://conditional-response.workers-sites-examples.workers.dev
@@ -36,7 +37,7 @@ async function handleRequest(request) {
   if (request.method === "POST") {
     return new Response("Response for POST")
   }
-  
+
   // On User Agent
   const userAgent = request.headers.get("User-Agent") || ""
   if (userAgent.includes("bot")) {

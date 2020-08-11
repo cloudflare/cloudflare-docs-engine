@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Serves an HTML form, then reads POSTs from that form data.
 demo: https://read-post.workers-sites-examples.workers.dev

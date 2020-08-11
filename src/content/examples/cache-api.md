@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Cache using Cloudflare's Cache API.
 demo: https://cache-api.workers-sites-examples.workers.dev
@@ -77,10 +78,10 @@ async function handlePostRequest(event) {
   })
 
   const cache = caches.default
-  
+
   //Find the cache key in the cache
   let response = await cache.match(cacheKey)
-  
+
   // Otherwise, fetch response to POST request from origin
   if (!response) {
     response = await fetch(request)

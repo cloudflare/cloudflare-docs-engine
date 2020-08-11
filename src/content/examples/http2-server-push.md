@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Push static assests to a client's browser without waiting for HTML to render.
 demo: https://http2-server-push.workers-sites-examples.workers.dev

@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Redirect requests to certain URLs based on a mapped object to the request's URL.
 demo: https://bulk-redirects.workers-sites-examples.workers.dev

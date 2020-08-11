@@ -1,4 +1,5 @@
 ---
+order: 1000
 type: example
 summary: Send debug information in an errored response and to a logging service.
 demo: https://debugging-tips.workers-sites-examples.workers.dev
