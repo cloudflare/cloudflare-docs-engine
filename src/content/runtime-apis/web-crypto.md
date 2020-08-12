@@ -283,19 +283,20 @@ We are happy to add support for more algorithms — [let us know about your use 
 
 <TableWrap>
 
-| Algorithm                                 | sign()<br/>verify() | encrypt()<br/>decrypt() | digest() | deriveBits()<br/>deriveKey() | generateKey() | wrapKey()<br/>unwrapKey() |
-| :---------------------------------------- | :------------------ | :---------------------- | :------- | :--------------------------- | :------------ | :------------------------ |
-| RSASSA-PKCS1-v1_5                         | ✓                   |                         |          |                              |               |                           |
-| ECDSA                                     | ✓                   |                         |          |                              |               |                           |
-| HMAC                                      | ✓                   |                         |          |                              | ✓             |                           |
-| AES-CBC                                   |                     | ✓                       |          |                              |               | ✓                         |
-| AES-GCM                                   |                     | ✓                       |          |                              | ✓             | ✓                         |
-| SHA-1                                     |                     |                         | ✓        |                              |               |                           |
-| SHA-256                                   |                     |                         | ✓        |                              |               |                           |
-| SHA-384                                   |                     |                         | ✓        |                              |               |                           |
-| SHA-512                                   |                     |                         | ✓        |                              |               |                           |
-| MD5<sup><a href="#footnote-1">1</a></sup> |                     |                         | ✓        |                              |               |                           |
-| PBKDF2                                    |                     |                         |          | ✓                            |               |                           |
+| Algorithm                                 | sign()<br/>verify() | encrypt()<br/>decrypt() | digest() | deriveBits()<br/>deriveKey() | generateKey() | wrapKey()<br/>unwrapKey() | exportKey() |
+| :---------------------------------------- | :------------------ | :---------------------- | :------- | :--------------------------- | :------------ | :------------------------ | ----------- |
+| RSASSA-PKCS1-v1_5                         | ✓                   |                         |          |                              | ✓             |                           | ✓           |
+| RSA-PSS                                   | ✓                   |                         |          |                              | ✓             |                           | ✓           |
+| ECDSA                                     | ✓                   |                         |          |                              |               |                           | ✓           |
+| HMAC                                      | ✓                   |                         |          |                              | ✓             |                           |             |
+| AES-CBC                                   |                     | ✓                       |          |                              |               | ✓                         |             |
+| AES-GCM                                   |                     | ✓                       |          |                              | ✓             | ✓                         |             |
+| SHA-1                                     |                     |                         | ✓        |                              |               |                           |             |
+| SHA-256                                   |                     |                         | ✓        |                              |               |                           |             |
+| SHA-384                                   |                     |                         | ✓        |                              |               |                           |             |
+| SHA-512                                   |                     |                         | ✓        |                              |               |                           |             |
+| MD5<sup><a href="#footnote-1">1</a></sup> |                     |                         | ✓        |                              |               |                           |             |
+| PBKDF2                                    |                     |                         |          | ✓                            |               |                           |             |
 
 </TableWrap>
 
