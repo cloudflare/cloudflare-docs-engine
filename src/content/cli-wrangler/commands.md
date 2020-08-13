@@ -184,19 +184,49 @@ If you would like to be able to publish your code to multiple places, please see
 
 --------------------------------
 
-## dev (alpha)
+## dev
 
-<Aside type="warning">
+`wrangler dev` starts a server on `localhost` that executes your Worker on incoming HTTP requests. It can forward the requests to Cloudflare's servers, one of your zones, or any host you specify. This is a great way to easily test you Worker while developing.
 
-__Proceed with caution:__ `wrangler dev` is an alpha feature which _will change_ in the future.
 
-</Aside>
+```sh
+$ wrangler dev [--env $ENVIRONMENT_NAME] [--ip <ip>] [--port <port>] [--host <host>] [--local-protocol <http|https>] [--upstream-protocol <http|https>]
+```
+
+<Definitions>
+
+- `--env` <PropMeta>optional</PropMeta>
+  - Perform on a specific environment specified as `$ENVIRONMENT_NAME`
+
+- `--ip` <PropMeta>optional</PropMeta>
+  - Ip to listen on, defaults to 127.0.0.1
+
+- `--port` <PropMeta>optional</PropMeta>
+  - Port to listen on, defaults to 8787
+
+- `--host` <PropMeta>optional</PropMeta>
+  - Host to forward or requests to, defaults to the zone of project or to tutorial.cloudflareworkers.com if unauthenticated.
+
+- `--local-protocol` <PropMeta>optional</PropMeta>
+  - Protocol to listen to requests on, defaults to http.
+
+- `--upstream-protocl` <PropMeta>optional</PropMeta>
+  - Protocol to forward requests to host on, defaults to https.
+
+</Definitions>
+
+These arguments can also be set in your `wrangler.toml`, read more about that [here](/cli-wrangler/configuration#dev).
 
 ### Usage
 
-`wrangler dev` starts a server on `localhost` that connects to Cloudflare’s servers and executes your Worker on incoming HTTP requests. After starting `wrangler dev` in a directory with a project, you can send it HTTP requests to test your Worker with clients such as cURL, Postman, or your browser.
+You should run `wrangler dev` from your Worker directory, and wrangler will run a local server accepting requests, executing your worker, and forwarding them to a host. If you want to use another host other than your zone or `tutorials.cloudflare.com` you can specify with `--host example.com`.
 
-You should run `wrangler dev` from your Worker directory, and if your Worker makes any requests to a backend, you should specify the host with `--host example.com`.
+```sh
+$ wrangler dev
+💁  JavaScript project found. Skipping unnecessary build!
+💁  watching "./"
+👂  Listening on http://127.0.0.1:8787
+```
 
 From here you can send HTTP requests to `localhost:8787` and your Worker should execute as expected. You will also see console.log messages and exceptions appearing in your terminal. If either of these things _don’t_ happen, or you think the output is incorrect, please [file an issue](https://github.com/cloudflare/wrangler).
 

@@ -15,7 +15,8 @@ directory in your computer’s home directory.
 
 To set up `wrangler` to work with your Cloudflare user, use the following commands:
 
-- 🔧 `config`: a command that prompts you to enter your `email` and `api` key.
+- 🔓`login`: a command that opens a Cloudflare account login page to authenticate Wrangler.
+- 🔧 `config`: an alternative to `login` that prompts you to enter your `email` and `api` key.
 - 🕵️‍♀️ `whoami`: run this command to confirm that your configuration is appropriately set up.
   When successful, this command will print out your user information, including the type of plan you
   are currently on.
