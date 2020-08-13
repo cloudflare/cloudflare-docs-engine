@@ -18,7 +18,7 @@ Whether you’re adding a new page or just updating an existing one, it’s impo
 
 ### Divio’s documentation system
 
-Our content structure was heavilly inspired by the [Divio’s documentation system](https://documentation.divio.com), which recommends dividing docs into four categories:
+Our content structure was heavily inspired by the [Divio’s documentation system](https://documentation.divio.com), which recommends dividing docs into four categories:
 
 <strong>
 
