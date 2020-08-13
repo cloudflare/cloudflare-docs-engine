@@ -7,10 +7,10 @@
 | Feature                                                             | Free                                                 | Bundled   |
 |---------------------------------------------------------------------|------------------------------------------------------|-----------|
 | [Request](#request)                                                 | 100,000&nbsp;requests/day<br/>1000&nbsp;requests/min | none      |
-| [Worker memory](#memory)                                            | 128 MB                                               | 12 MB     |
+| [Worker memory](#memory)                                            | 128 MB                                               | 128 MB     |
 | [CPU runtime](#cpu-runtime)                                         | 10 ms                                                | 50 ms     |
 | [Subreqests](#subrequests)                                          | 50                                                   | 50        |
-| [Simultaneous open<br/>connections](#simultaneous-open-connections) | 6                                                    | 6         |
+| [Simultaneous outgoing<br/>connections/Request](#simultaneous-open-connections) | 6                                                    | 6         |
 | [Environment variables](#environment-variables)                     | 32/worker                                            | 32/worker |
 | [Environment variable<br/>size](#environment-variables)             | 5 KB                                                 | 5 KB      |
 | [Script size](#script-size)                                         | 1 MB                                                 | 1 MB      |
@@ -25,7 +25,7 @@
 | Feature                      | Free       | Bundled    |
 |------------------------------|------------|------------|
 | [Reads/Second](#kv-limits)   | unlimited  | unlimited  |
-| [Writes/Second](#kv-limits)  | 1          | 1          |
+| [Writes/Second/Key](#kv-limits)  | 1          | 1          |
 | [Namespaces](#kv-limits)     | 100        | 100        |
 | [Keys/Namespace](#kv-limits) | unlimited  | unlimited  |
 | [Key Size](#kv-limits)       | 512 bytes  | 512 bytes  |
