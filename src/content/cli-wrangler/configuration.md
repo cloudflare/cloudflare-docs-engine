@@ -279,7 +279,7 @@ bucket = "./public"
 entry-point = "workers-site"
 
 [dev]
-ip = "127.0.0.1"
+ip = "0.0.0.0"
 port = 9000
 local_protocol="http"
 upstream_protocol="https"
