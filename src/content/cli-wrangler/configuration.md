@@ -69,7 +69,10 @@ Keys to configure per project in your `wrangler.toml`.
     - These specify any [Workers KV](#kv_namespaces) Namespaces you want to access from inside your Worker.
 
   - `site` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-    - Determines the local folder to upload and serve from a Worker | Optional
+    - Determines the local folder to upload and serve from a Worker
+
+  - `dev` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
+    - Arguments for `wrangler dev`, configure local server
 
 </Definitions>
 
@@ -226,6 +229,33 @@ You can learn more about the standard patterns used for include and exclude in t
 
 Workers Sites projects use webpack by default. You can [bring your own webpack config](/cli-wrangler/webpack#using-with-workers-sites), however it is important to be cognizant of your `entry` and `context` settings.
 
+### dev
+
+Arguments for `wrangler dev` can be configured here so you don't have to repeatedly pass them.
+
+Usage:
+
+```toml
+[dev]
+port=9000
+local_protocol="https"
+```
+
+<Definitions>
+
+  - `ip` <PropMeta>optional</PropMeta>
+    - Ip for local `wrangler dev` server to listen on, defaults to 127.0.0.1
+
+  - `port` <PropMeta>optional</PropMeta>
+    - Port for local `wrangler dev` server to listen on, defaults to 8787
+
+  - `local_protocol` <PropMeta>optional</PropMeta>
+    - Protocol that local `wrangler dev` server listen to requests on, defaults to http
+
+  - `upstream_protocol` <PropMeta>optional</PropMeta>
+    - Protocol that `wrangler dev` forwards requests on, defaults to https
+
+</Definitions>
 
 --------------
 ## Example
@@ -247,6 +277,12 @@ kv_namespaces = [
 [site]
 bucket = "./public"
 entry-point = "workers-site"
+
+[dev]
+ip = "127.0.0.1"
+port = 9000
+local_protocol="http"
+upstream_protocol="https"
 
 # environment configuration
 [env.staging]
