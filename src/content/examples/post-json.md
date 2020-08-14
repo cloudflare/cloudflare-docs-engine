@@ -1,10 +1,12 @@
 ---
 order: 1000
 type: example
-summary: Send a POST request with JSON data.
+summary: Send a POST request with JSON data. Use to share data with external servers.
 demo: https://post-json.workers-sites-examples.workers.dev
 tags:
   - Originless
+  - JSON
+  - API
 ---
 
 # Post JSON

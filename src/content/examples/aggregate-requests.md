@@ -5,8 +5,7 @@ summary: Send two GET request to two urls and aggregates the responses into one 
 demo: https://aggregate-requests.workers-sites-examples.workers.dev
 tags:
   - JSON
-  - API
-  - Originless
+  - HTML
 ---
 
 # Aggregate requests

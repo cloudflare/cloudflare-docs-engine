@@ -1,12 +1,11 @@
 ---
 order: 1000
 type: example
-summary: Block other websites from linking to your content.
+summary: Block other websites from linking to your content. This is useful for protecting images.
 demo: https://hot-link-protection.workers-sites-examples.workers.dev
 tags:
-  - API
-  - JSON
-  - Originless
+  - Security
+  - JAMstack
 ---
 
 # Hot-link protection

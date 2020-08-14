@@ -1,15 +1,15 @@
 ---
 order: 1000
 type: example
-summary: Serves an HTML form, then reads POSTs from that form data.
+summary: Serve an HTML form, then read POST requests. Use also to read JSON or POST data from an incoming request.
 demo: https://read-post.workers-sites-examples.workers.dev
 tags:
-  - API
+  - HTML
   - JSON
   - Originless
 ---
 
-# Read POST from an HTML form
+# Read POST
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>

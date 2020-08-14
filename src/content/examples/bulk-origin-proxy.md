@@ -1,10 +1,10 @@
 ---
 order: 1000
 type: example
-summary: Resolve requests to your domain to a set of proxy third-party origins.
+summary: Resolve requests to your domain to a set of proxy third-party origin URLs.
 demo: https://bulk-origin-proxy.workers-sites-examples.workers.dev
 tags:
-  - Originless
+  - Proxy
 ---
 
 # Bulk origin proxy

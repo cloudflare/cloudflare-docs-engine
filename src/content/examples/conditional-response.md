@@ -4,8 +4,7 @@ type: example
 summary: Return a response based on the incoming request's URL, HTTP method, User Agent, IP address, ASN or device type.
 demo: https://conditional-response.workers-sites-examples.workers.dev
 tags:
-  - API
-  - JSON
+  - Security
   - Originless
 ---
 

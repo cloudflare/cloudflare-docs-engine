@@ -1,15 +1,14 @@
 ---
 order: 1000
 type: example
-summary: Rewrite URL links in HTML using HTMLRewriter.
+summary: Rewrite URL links in HTML using the HTMLRewriter. This is useful for JAMstack websites.
 demo: https://rewrite-links.workers-sites-examples.workers.dev
 tags:
-  - API
-  - JSON
-  - Originless
+  - HTML
+  - JAMstack
 ---
 
-# Rewrite links In HTML
+# Rewrite links
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>

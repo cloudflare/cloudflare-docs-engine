@@ -1,10 +1,12 @@
 ---
 order: 1000
 type: example
-summary: Form a request based off of an incoming request.
+summary: Create a modified request with edited properties based off of an incoming request.
 demo: https://modify-request-property.workers-sites-examples.workers.dev
 tags:
   - Originless
+  - API
+  - JSON
 ---
 
 # Modify request property
@@ -19,8 +21,8 @@ tags:
  * @param {string} someUrl the URL to send the request to, since we are setting hostname too only path is applied
  * @param {string} someHost the host the request will resolve too
  */
-const someHost = 'example.com'
-const someUrl = 'https://foo.example.com/api.js'th(handleRequest(event.request))
+const someHost = "example.com"
+const someUrl = "https://foo.example.com/api.js"th(handleRequest(event.request))
 
 async function handleRequest(request) {
   /**
@@ -29,14 +31,14 @@ async function handleRequest(request) {
    */
   const newRequestInit = {
     // Change method
-    method: 'POST',
+    method: "POST",
     // Change body
-    body: JSON.stringify({ bar: 'foo' }),
+    body: JSON.stringify({ bar: "foo" }),
     // Change the redirect mode.
-    redirect: 'follow',
+    redirect: "follow",
     //Change headers, note this method will erase existing headers
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     // Change a Cloudflare feature on the outbound response
     cf: { apps: false },
@@ -56,8 +58,8 @@ async function handleRequest(request) {
   )
 
   // Set headers using method
-  newRequest.headers.set('X-Example', 'bar')
-  newRequest.headers.set('Content-Type', 'application/json')
+  newRequest.headers.set("X-Example", "bar")
+  newRequest.headers.set("Content-Type", "application/json")
   try {
     return await fetch(newRequest)
   } catch (e) {
@@ -65,9 +67,8 @@ async function handleRequest(request) {
   }
 }
 
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
-})
 })
 ```
 

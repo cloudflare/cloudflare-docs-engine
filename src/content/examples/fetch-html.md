@@ -6,7 +6,6 @@ demo: https://fetch-html.workers-sites-examples.workers.dev
 tags:
   - JSON
   - API
-  - Originless
 ---
 
 # Fetch HTML

@@ -5,6 +5,8 @@ summary: Push static assests to a client's browser without waiting for HTML to r
 demo: https://http2-server-push.workers-sites-examples.workers.dev
 tags:
   - Originless
+  - JAMstack
+  - HTML
 ---
 
 # HTTP2 server push

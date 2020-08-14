@@ -4,9 +4,7 @@ type: example
 summary: Change the headers sent in a request or returned in a response.
 demo: https://alter-headers.workers-sites-examples.workers.dev
 tags:
-  - API
-  - JSON
-  - Originless
+  - Security
 ---
 
 # Alter headers

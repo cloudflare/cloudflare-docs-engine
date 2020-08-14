@@ -1,11 +1,12 @@
 ---
 order: 1000
 type: example
-summary: Send debug information in an errored response and to a logging service.
+summary: Send debugging information in an errored response to a logging service.
 demo: https://debugging-tips.workers-sites-examples.workers.dev
 tags:
   - API
   - JSON
+  - Middleware
   - Originless
 ---
 

@@ -1,10 +1,10 @@
 ---
 order: 1000
 type: example
-summary: Allow or deny a request based on a known pre-shared key in a header.
+summary: Allow or deny a request based on a known pre-shared key in a header. This is not meant to replace the WebCrypto API.
 demo: https://auth-with-headers.workers-sites-examples.workers.dev
 tags:
-  - Originless
+  - Security
 ---
 
 # Auth with headers

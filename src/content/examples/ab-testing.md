@@ -1,63 +1,46 @@
 ---
 order: 1000
 type: example
-summary: Check signatures of requests and sign responses with a private key.
+summary: Set up an A/B test by controlling what response is served based on cookies.
 demo: https://ab-testing.workers-sites-examples.workers.dev
 tags:
-  - API
-  - JSON
+  - JAMstack 
   - Originless
 ---
 
-# Signed request/response
+# A/B testing
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>
 </ContentColumn>
 
 ```js
-// NOTE Requires ESM through webpack project type
-const crypto = require("crypto")
-const SECRET = "SECRET_KEY"
+function handleRequest(request) {
+  const NAME = "experiment-0"
 
-async function handleRequest(request) {
-  let signed = await checkSignature(request)
+  // The Responses below are placeholders. You can set up a custom path for each test (e.g. /control/somepath ).
+  const TEST_RESPONSE = new Response("Test group") // e.g. await fetch("/test/sompath", request)
+  const CONTROL_RESPONSE = new Response("Control group") // e.g. await fetch("/control/sompath", request)
 
-  if (signed) {
-    let responseBody = "Hello worker!"
-    return await signResponse(responseBody, new Response(responseBody))
+  // Determine which group this requester is in.
+  const cookie = request.headers.get("cookie")
+  if (cookie && cookie.includes(`${NAME}=control`)) {
+    return CONTROL_RESPONSE
+  }
+  else if (cookie && cookie.includes(`${NAME}=test`)) {
+    return TEST_RESPONSE
   }
   else {
-    return new Response("Request not signed", { status: 400 })
+    // If there is no cookie, this is a new client. Choose a group and set the cookie.
+    const group = Math.random() < 0.5 ? "test" : "control" // 50/50 split
+    const response = group === "control" ? CONTROL_RESPONSE : TEST_RESPONSE
+    response.headers.append("Set-Cookie", `${NAME}=${group}; path=/`)
+
+    return response
   }
-}
-
-async function createHexSignature(requestBody) {
-  let hmac = crypto.createHmac("sha256", SECRET)
-  hmac.update(requestBody)
-  return hmac.digest("hex")
-}
-
-async function checkSignature(request) {
-  // hash request with secret key
-  let expectedSignature = await createHexSignature(await request.text())
-  let actualSignature = await request.headers.get("signature")
-
-  // check that hash matches signature
-  return expectedSignature === actualSignature
-}
-
-async function signResponse(responseBody, response) {
-  // create signature
-  const signature = await createHexSignature(responseBody)
-  response.headers.set("signature", signature)
-
-  //add header with signature
-  return response
 }
 
 addEventListener("fetch", event => {
-  console.log(createHexSignature("asd"))
   event.respondWith(handleRequest(event.request))
 })
 ```

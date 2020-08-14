@@ -1,10 +1,11 @@
 ---
 order: 3
 type: example
-summary: Sends a GET request and reads in JSON from the response.
+summary: Send a GET request and read in JSON from the response. Use to fetch external data.
 demo: https://fetch-json.workers-sites-examples.workers.dev
 tags:
-  - Originless
+  - JSON
+  - API
 ---
 
 # Fetch JSON

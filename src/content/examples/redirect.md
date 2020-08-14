@@ -5,6 +5,7 @@ summary: Redirect requests from one URL to another, or from one set of URLs to a
 demo: https://redirect.workers-sites-examples.workers.dev
 tags:
   - Originless
+  - Proxy
 ---
 
 # Redirect

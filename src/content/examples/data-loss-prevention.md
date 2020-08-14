@@ -5,6 +5,7 @@ summary: Prevent access to personal and sensitive data by inspecting response da
 demo: https://data-loss-prevention.workers-sites-examples.workers.dev
 tags:
   - Security
+  - API
 ---
 
 # Data loss prevention

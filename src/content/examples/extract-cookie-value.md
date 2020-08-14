@@ -1,11 +1,11 @@
 ---
 order: 1000
 type: example
-summary: Get the value of a cookie.
+summary: Given the cookie name, get the value of a cookie. You can also use cookies for A/B testing.
 demo: https://extract-cookie-value.workers-sites-examples.workers.dev
 tags:
-  - API
-  - JSON
+  - Security
+  - JAMstack
   - Originless
 ---
 

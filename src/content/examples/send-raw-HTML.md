@@ -1,12 +1,12 @@
 ---
 order: 1000
 type: example
-summary: Deliver an HTML page from HTML directly in the Worker script.
+summary: Deliver an HTML page from HTML directly without needing an origin.
 demo: https://send-raw-html.workers-sites-examples.workers.dev
 tags:
-  - API
-  - JSON
+  - HTML
   - Originless
+  - JAMstack
 ---
 
 # Send raw HTML

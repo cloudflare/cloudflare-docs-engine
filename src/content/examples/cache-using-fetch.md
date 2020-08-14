@@ -1,10 +1,11 @@
 ---
 order: 1000
 type: example
-summary: Determine how to cache a resource in a fetch request.
+summary: Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request 
 demo: https://cache-using-fetch.workers-sites-examples.workers.dev
 tags:
-  - Originless
+  - API
+  - JAMstack
 ---
 
 # Cache using fetch
@@ -61,18 +62,19 @@ A request's cache key is what determines if two requests are "the same" for cach
 
 ```js
 // Set cache key for this request to "some-string".
-fetch(event.request, { cf: { cacheKey: 'some-string' } })
+fetch(event.request, { cf: { cacheKey: "some-string" } })
 ```
 
 Normally, Cloudflare computes the cache key for a request based on the request's URL. Sometimes, though, you'd like different URLs to be treated as if they were the same for caching purposes. For example, say your web site content is hosted from both Amazon S3 and Google Cloud Storage - you have the same content in both places, and you use a Worker to randomly balance between the two. However, you don't want to end up caching two copies of your content. You could utilize custom cache keys to cache based on the original request URL rather than the subrequest URL:
 
 ```js
-addEventListener('fetch', (event) => {
+addEventListener("fetch", (event) => {
   let url = new URL(event.request.url)
   if (Math.random() < 0.5) {
-    url.hostname = 'example.s3.amazonaws.com'
-  } else {
-    url.hostname = 'example.storage.googleapis.com'
+    url.hostname = "example.s3.amazonaws.com"
+  }
+  else {
+    url.hostname = "example.storage.googleapis.com"
   }
 
   let request = new Request(url, event.request)
@@ -92,7 +94,7 @@ Remember, Workers operating on behalf of different zones cannot affect each othe
 // Force response to be cached for 86400 seconds for 200 status codes, 1 second for 404,
 // and do not cache 500 errors
 fetch(request, {
-  cf: { cacheTtlByStatus: { '200-299': 86400, 404: 1, '500-599': 0 } },
+  cf: { cacheTtlByStatus: { "200-299": 86400, 404: 1, "500-599": 0 } },
 })
 ```
 

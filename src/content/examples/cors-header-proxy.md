@@ -1,11 +1,12 @@
 ---
 order: 1000
 type: example
-summary: Add necessary CORS headers to a third party API response
+summary: Add the necessary CORS headers to a third party API response.
 demo: https://cors-header-proxy.workers-sites-examples.workers.dev
 tags:
   - Originless
   - Security
+  - API
 ---
 
 # CORS header proxy

@@ -1,11 +1,10 @@
 ---
 order: 1000
 type: example
-summary: Redirect a response based on the country code of the visitor.
+summary: Redirect a response based on the country code in the header of a visitor.
 demo: https://country-code.workers-sites-examples.workers.dev
 tags:
-  - API
-  - JSON
+  - Security
   - Originless
 ---
 
