@@ -13,7 +13,7 @@
   font-size: 1.5em;
   line-height: 1.2;
   font-weight: 500;
-  margin-bottom: .625em;
+  margin-bottom: .5em;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -28,13 +28,18 @@
 }
 
 .DocsWorkersExamples--example-description {
-  --lines: 2;
-  display: -webkit-box;
-  -webkit-line-clamp: var(--lines);
-  -webkit-box-orient: vertical;
-  height: calc(1em * var(--lines) * var(--line-height));
-  overflow: hidden;
   margin-bottom: 1em;
+}
+
+@media (min-width: 1153px) {
+  .DocsWorkersExamples--example-description {
+    --lines: 2;
+    display: -webkit-box;
+    -webkit-line-clamp: var(--lines);
+    -webkit-box-orient: vertical;
+    height: calc(1em * var(--lines) * var(--line-height));
+    overflow: hidden;
+  }
 }
 
 .DocsWorkersExamples--example-description > *:last-child {
@@ -91,21 +96,12 @@
     margin-right: 0;
     grid-template-columns: 100%;
   }
-
-  .DocsWorkersExamples--example-description {
-    --lines: 1;
-  }
 }
 
 @media (max-width: 768px) {
   .DocsWorkersExamples--example-title {
     font-size: 1.375em;
     margin-bottom: .5rem;
-  }
-
-  .DocsWorkersExamples--example-description {
-    --lines: 2;
-    height: auto;
   }
 
   .DocsWorkersExamples--example-codeblock-link {
