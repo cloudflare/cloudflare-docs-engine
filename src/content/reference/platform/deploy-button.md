@@ -2,16 +2,17 @@
 title: Deploy Button
 ---
 
-# Deploy Button
+# Deploy Buttons
 
 ## Background
 
-The Deploy to Workers Button is an easy way to let developers deploy a project and get started with Workers. This can be a great tool for new developers just getting started and for you to share you project with others.
+Deploy Buttons let you deploy projects to the Workers platform in under five minutes. The Deploy Buttons use a Worker to deploy to the platform using the [Workers Github Action](https://github.com/marketplace/actions/github-action-for-cloudflare-workers). You can also make your own deploy buttons for your projects to make sharing your work easier.
 
-Try it out here for our GraphQl template project:
+Try the deploy button below to deploy a GraphQL server:
 
-[![Deploy to Cloudflare Workers](https://deploy-to-cf-workers.signalnerve.workers.dev/button)](https://deploy-to-cf-workers.signalnerve.workers.dev/button)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/signalnerve/workers-graphql-server)
 
+Find additional projects to deploy [here](https://deploy.workers.cloudflare.com/).
 
 ## Create a Deploy Button for your project
 
@@ -50,15 +51,15 @@ deploy:
 3. **Add the Markdown code for your button to your project's README, replacing the example `url` parameter with your repository URL.**
 
 ```md
-[![Deploy to Cloudflare Workers](https://deploy-to-cf-workers.signalnerve.workers.dev/button)](https://deploy-to-cf-workers.signalnerve.workers.dev/?url=https://github.com/YOURUSERNAME/YOURREPO)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/YOURUSERNAME/YOURREPO)
 ```
 
-[![Deploy to Cloudflare Workers](https://deploy-to-cf-workers.signalnerve.workers.dev/button)](https://deploy-to-cf-workers.signalnerve.workers.dev/button)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com)
 
 **Does your project use Workers KV or other features only available in the Workers unlimited plan?** Providing the `paid=true` query parameter to the `/button` and the deploy application paths will render a "Deploy to Workers Unlimited" button, as seen below -- it will also render a notice in the UI that the project requires Workers Unlimited:
 
 ```md
-[![Deploy to Cloudflare Workers](https://deploy-to-cf-workers.signalnerve.workers.dev/button?paid=true)](https://deploy-to-cf-workers.signalnerve.workers.dev/?url=https://github.com/YOURUSERNAME/YOURREPO&paid=true)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button?paid=true)](https://deploy.workers.cloudflare.com/?url=https://github.com/YOURUSERNAME/YOURREPO&paid=true)
 ```
 
-[![Deploy to Cloudflare Workers](https://deploy-to-cf-workers.signalnerve.workers.dev/button?paid=true)](https://deploy-to-cf-workers.signalnerve.workers.dev/?url=https://github.com/YOURUSERNAME/YOURREPO&paid=true)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button?paid=true)](https://deploy.workers.cloudflare.com/?url=https://github.com/YOURUSERNAME/YOURREPO&paid=true)
