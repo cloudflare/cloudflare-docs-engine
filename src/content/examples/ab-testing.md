@@ -4,7 +4,7 @@ type: example
 summary: Set up an A/B test by controlling what response is served based on cookies.
 demo: https://ab-testing.workers-sites-examples.workers.dev
 tags:
-  - JAMstack 
+  - JAMstack
   - Originless
 ---
 
@@ -45,8 +45,3 @@ addEventListener("fetch", event => {
 })
 ```
 
-<!-- ## Demo
-
-<p><a href={props.frontmatter.demo}>Open demo</a></p>
-
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="395"/> -->

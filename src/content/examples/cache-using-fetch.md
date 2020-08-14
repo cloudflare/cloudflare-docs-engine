@@ -106,8 +106,3 @@ TTL values:
 - 0 TTL will cause assets to get cached, but expire immediately (revalidate from origin every time)
 - -1, or any negative value will instruct Cloudflare not to cache at all
 
-<!-- ## Demo
-
-<p><a href={props.frontmatter.demo}>Open demo</a></p>
-
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="150"/> -->

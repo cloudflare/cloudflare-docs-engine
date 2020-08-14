@@ -44,8 +44,3 @@ addEventListener("fetch", event => {
 })
 ```
 
-<!-- ## Demo
-
-<p><a href={props.frontmatter.demo}>Open demo</a></p>
-
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="395"/> -->
