@@ -1,7 +1,7 @@
 ---
 order: 1000
 type: example
-summary: Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request 
+summary: Determine how to cache a resource by setting TTLs, custom cache keys, and cache headers in a fetch request.
 demo: https://cache-using-fetch.workers-sites-examples.workers.dev
 tags:
   - API
