@@ -1,3 +1,7 @@
+---
+order: 5
+---
+
 # Scripts
 
 Scripts are where the Workers code itself is stored and uploaded to the edge.

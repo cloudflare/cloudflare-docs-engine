@@ -1,3 +1,7 @@
+---
+order: 3
+---
+
 # Pricing
 
 Workers is now free to enable for all, and are subject to some limits.
