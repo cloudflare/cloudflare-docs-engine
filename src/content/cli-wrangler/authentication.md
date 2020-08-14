@@ -25,24 +25,16 @@ To set up `wrangler` to work with your Cloudflare user, use the following comman
 
 You can also configure your global user with environment variables. This is the preferred method for using Wrangler in CI.
 
-You can deploy with authentication tokens (recommended):
+You can deploy with authentication tokens (recommended). Obtain `CF_ACCOUNT_ID` and `CF_API_TOKEN` from the Cloudflare dashboard and run:
 
 ```sh
-# e.g.
-CF_ACCOUNT_ID=youraccountid
-CF_API_TOKEN=superlongapitoken wrangler publish
-# where
-# $CF_API_TOKEN -> a Cloudflare API token
+$ CF_ACCOUNT_ID=accountID CF_API_TOKEN=veryLongAPIToken wrangler publish
 ```
 
-Or you can deploy with your email and your global API key:
+Or you can deploy with your email and your global API key. Obtain `CF_EMAIL` and `CF_API_KEY` from the Cloudflare dashboard and run:
 
 ```sh
-# e.g.
-CF_EMAIL=testuser@example.com CF_API_KEY=superlongapikey wrangler publish
-# where
-# $CF_EMAIL -> your Cloudflare account email
-# $CF_API_KEY -> your Cloudflare API key
+$ CF_EMAIL=cloudflareEmail CF_API_KEY=veryLongAPI wrangler publish
 ```
 
 Note environment variables will override whatever credentials you configured in `wrangler config` or in your `wrangler.toml`.
