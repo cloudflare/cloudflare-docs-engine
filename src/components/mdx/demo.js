@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 import { className as generateClassName } from "./root"
 
-const Demo = ({ src, height, aspectRatio }) => {
+const Demo = ({ src, title, height, aspectRatio }) => {
   const className = generateClassName("demo") + (aspectRatio ? " AspectRatio" : "")
   const iframeClassName = aspectRatio ? "AspectRatio--content" : ""
 
@@ -15,13 +15,22 @@ const Demo = ({ src, height, aspectRatio }) => {
 
   return (
     <div className={className} style={style}>
-      <iframe className={iframeClassName} src={src} frameBorder="0"/>
+      <iframe
+        className={iframeClassName}
+        src={src}
+        title={`Cloudflare Workers demo, demonstrating: ${title}`}
+        frameBorder="0"
+      />
     </div>
   )
 }
 
 Demo.defaultProps = {
   height: 400
+}
+
+Demo.propTypes = {
+  title: PropTypes.string.isRequired
 }
 
 export default Demo

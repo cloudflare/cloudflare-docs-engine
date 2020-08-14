@@ -39,7 +39,7 @@ The global `fetch` method itself invokes the `Request` constructor, thus the [`R
 
 <Aside header="Learn more">
 
-Read [Understanding the FetchEvent Lifecycle](../learning/understanding-the-fetch-event-lifecycle) and [Understanding the Request Context](../learning/understanding-the-request-context) for a deeper understanding of these fundamental Workers concepts.
+Read [Understanding the FetchEvent Lifecycle](/learning/fetch-event-lifecycle) for a deeper understanding of these fundamental Workers concepts.
 
 </Aside>
 
@@ -183,7 +183,7 @@ All properties of an incoming `Request` object (i.e. `event.request`) are read o
 
 ### `IncomingRequestCfProperties`
 
-In addition to the properties on the standard [`Request`](/reference/apis/request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare’s edge.
+In addition to the properties on the standard [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare’s edge.
 
 <Definitions>
 
@@ -288,11 +288,3 @@ These methods are only available on an instance of a `Request` object or through
   - Returns a promise that resolves with a string (text) representation of the request body.
 
 </Definitions>
-
---------------------------------
-
-## Examples
-
-- [Modify request property](#)
-- [Aggregate requests](#)
-- [Signed `Request`/`Response`](#)

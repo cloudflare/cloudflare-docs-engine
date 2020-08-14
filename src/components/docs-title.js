@@ -1,5 +1,3 @@
-import React from "react"
-
 import getCloudflareDocsConfig from "../utils/get-cloudflare-docs-config"
 
 export default () => {

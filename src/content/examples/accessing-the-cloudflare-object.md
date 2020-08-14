@@ -2,7 +2,7 @@
 order: 3
 type: example
 summary: Access custom Cloudflare properties and control how Cloudflare features are applied to every request.
-demo: https://accessing-the-cloudflare-object.workers-docs-examples.workers.dev
+demo: https://accessing-the-cloudflare-object.workers-sites-examples.workers.dev
 tags:
   - API
   - JSON
@@ -36,4 +36,4 @@ addEventListener("fetch", event => {
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} height="395"/>
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="395"/>

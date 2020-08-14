@@ -7,6 +7,30 @@ import WorkerStarter from "../../components/worker-starter"
 
 # Starters
 
+<ContentColumn>
+
+Starters are essentially Github repos that are designed to be a starting point for building a new Cloudflare Workers project. For the projects below, you simply run:
+
+```sh
+$ wrangler generate <new-project-name> <github-repo-url>
+```
+
+<Definitions>
+
+- `new-project-name`
+  - A folder with this name will be created with your new project inside, pre-configured to [your Workers account](/cli-wrangler/configuration).
+
+- `github-repo-url`
+  - This is the URL of the Github repo starter, as below.
+
+</Definitions>
+
+</ContentColumn>
+
+--------------------------------
+
+## JavaScript, TypeScript
+
 <WorkerStarter
   title="Hello World"
   description="A bare-bones starter in JavaScript."
@@ -17,18 +41,6 @@ import WorkerStarter from "../../components/worker-starter"
   title="Hello World (TypeScript)"
   description="A bare-bones starter in TypeScript."
   repo="EverlastingBugstopper/worker-typescript-template"
-/>
-
-<WorkerStarter
-  title="Hello World (Rust)"
-  description="A bare-bones starter in Rust."
-  repo="cloudflare/rustwasm-worker-template"
-/>
-
-<WorkerStarter
-  title="Hello World (COBOL)"
-  description="A bare-bones starter in COBOL."
-  repo="cloudflare/cobol-worker-template"
 />
 
 <WorkerStarter
@@ -84,3 +96,57 @@ import WorkerStarter from "../../components/worker-starter"
   description="Serve a JavaScript Binary AST via a Cloudflare Worker."
   repo="xtuc/binast-cf-worker-template"
 />
+
+--------------------------------
+
+## Other languages
+
+<WorkerStarter
+  title="Hello World (Rust)"
+  description="A bare-bones starter in Rust."
+  repo="cloudflare/rustwasm-worker-template"
+/>
+
+<WorkerStarter
+  title="Hello World (Python)"
+  description="A bare-bones starter in Python."
+  repo="cloudflare/python-worker-hello-world"
+/>
+
+<WorkerStarter
+  title="Hello World (Scala)"
+  description="A bare-bones starter in Scala."
+  repo="cloudflare/scala-worker-hello-world"
+/>
+
+<WorkerStarter
+  title="Hello World (Reason)"
+  description="A bare-bones starter in Reason."
+  repo="cloudflare/reason-worker-hello-world"
+/>
+
+<WorkerStarter
+  title="Hello World (Dart)"
+  description="A bare-bones starter in Dart."
+  repo="cloudflare/dart-worker-hello-world"
+/>
+
+<WorkerStarter
+  title="Hello World (Kotlin)"
+  description="A bare-bones starter in Kotlin."
+  repo="cloudflare/kotlin-worker-hello-world"
+/>
+
+<WorkerStarter
+  title="Hello World (COBOL)"
+  description="A bare-bones starter in COBOL."
+  repo="cloudflare/cobol-worker-template"
+/>
+
+--------------------------------
+
+## Built with Workers
+
+Get inspiration from other sites and projects out there that were built with Cloudflare Workers.
+
+<Link to="https://workers.cloudflare.com/built-with" className="Button Button-is-docs-primary">Built with Workers →</Link>

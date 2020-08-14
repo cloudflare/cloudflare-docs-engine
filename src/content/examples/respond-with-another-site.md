@@ -2,7 +2,7 @@
 order: 4
 type: example
 summary: Respond to the Worker request with the response from another (example.com in this example).
-demo: https://respond-with-another-site.workers-docs-examples.workers.dev
+demo: https://respond-with-another-site.workers-sites-examples.workers.dev
 tags:
   - Proxy
 ---
@@ -25,4 +25,4 @@ addEventListener("fetch", event => {
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} aspectRatio={16/9}/>
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} aspectRatio={16/9}/>

@@ -12,6 +12,7 @@ import Aside from "./mdx/aside"
 import ContentColumn from "./mdx/content-column"
 import Example from "./mdx/example"
 import Demo from "./mdx/demo"
+import TableWrap from "./mdx/table-wrap"
 import Definitions from "./mdx/definitions"
 import Code from "./mdx/code"
 import ParamType from "./mdx/param-type"
@@ -36,6 +37,7 @@ const components = {
   ContentColumn,
   Example,
   Demo,
+  TableWrap,
   Definitions,
   Code,
   ParamType,

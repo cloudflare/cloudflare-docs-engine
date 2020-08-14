@@ -1,4 +1,3 @@
-import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import generateNavTree from "../utils/generate-nav-tree"

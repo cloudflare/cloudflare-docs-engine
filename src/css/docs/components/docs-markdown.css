@@ -90,6 +90,10 @@
   --background: var(--background-color);
 }
 
+.DocsMarkdown code .DocsMarkdown--link[data-is-type-link="true"] {
+  margin-left: .5em;
+}
+
 [theme="dark"] .DocsMarkdown--link {
   --background-color-alpha: .03;
   --border-bottom-color-rgb: var(--orange-rgb);
@@ -199,9 +203,9 @@ p.DocsMarkdown--small-header {
 
 .DocsMarkdown h1 {
   font-size: 2.4em;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -.03em;
-  margin-bottom: .425em;
+  margin-bottom: .375em;
 }
 
 @-moz-document url-prefix() {
@@ -355,6 +359,15 @@ p.DocsMarkdown--small-header {
   font-size: .75em;
   font-weight: 500;
   padding: 0 2px;
+}
+
+code .DocsMarkdown--prop-meta {
+  font-family: var(--sans-serif-font-family);
+  font-size: .8125em;
+  margin-left: .4375em;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
 }
 
 [theme="dark"] .DocsMarkdown blockquote,
@@ -587,20 +600,6 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   vertical-align: top;
 }
 
-@media (max-width: 768px) {
-  .DocsMarkdown table {
-    display: block;
-    overflow-x: auto;
-    max-width: 100%;
-  }
-
-  .DocsMarkdown th,
-  .DocsMarkdown td {
-    padding-left: .5em;
-    padding-right: .5em;
-  }
-}
-
 .DocsMarkdown th:first-child,
 .DocsMarkdown td:first-child {
   padding-left: 0;
@@ -646,14 +645,12 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   margin-bottom: 1em;
 }
 
-.DocsMarkdown details p {
-  padding-left: 1.9em;
-}
-
-@media (max-width: 414px) {
-  .DocsMarkdown details p {
-    padding-left: 0;
-  }
+.DocsMarkdown details summary + div {
+  padding: 1em 1.9em;
+  border: 1px solid rgba(var(--color-rgb), .1);
+  border-top: 0;
+  border-bottom-left-radius: .25em;
+  border-bottom-right-radius: .25em;
 }
 
 .DocsMarkdown details[open] {
@@ -661,7 +658,9 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 }
 
 .DocsMarkdown details[open] summary {
-  margin-bottom: .5em;
+  background: rgba(var(--color-rgb), .1);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .DocsMarkdown sub {
@@ -725,6 +724,48 @@ blockquote .DocsMarkdown--header-anchor-positioner {
   width: 100%;
 }
 
+.DocsMarkdown figure[data-type="youtube"] {
+  background: #000;
+}
+
+.DocsMarkdown--table-wrap {
+  border: 1px solid rgba(var(--color-rgb), .15);
+  padding: .25em 0;
+  border-radius: .3125em;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.DocsMarkdown--table-wrap:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+.DocsMarkdown--table-wrap-inner {
+  display: flex;
+}
+
+.DocsMarkdown--table-wrap table {
+  min-width: 100%;
+  margin: 0;
+}
+
+.DocsMarkdown--table-wrap table {
+  word-break: initial;
+}
+
+.DocsMarkdown--table-wrap tr > *:first-child {
+  position: sticky;
+  left: 0;
+  white-space: nowrap;
+  padding-left: 1em;
+  background: var(--background-color);
+  box-shadow: 5px 0 5px -3px var(--background-color);
+}
+
+.DocsMarkdown--table-wrap tr > *:last-child {
+  padding-right: 1em;
+}
+
 .DocsMarkdown--content-column {
   width: calc(100% - var(--docs-body-sidebar-width));
 }
@@ -751,6 +792,7 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 .DocsMarkdown li > *:first-child,
 .DocsMarkdown blockquote > *:first-child,
 .DocsMarkdown details > *:first-child,
+.DocsMarkdown details summary + div > *:first-child,
 .DocsMarkdown--content-column > *:first-child,
 .DocsMarkdown--example > *:first-child,
 .DocsMarkdown--aside > *:first-child {
@@ -763,6 +805,7 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 .DocsMarkdown li > *:not(ul):not(ol):not(pre):not(figure):not(table):last-child,
 .DocsMarkdown blockquote > *:last-child,
 .DocsMarkdown details > *:last-child,
+.DocsMarkdown details summary + div > *:last-child,
 .DocsMarkdown--content-column > *:last-child,
 .DocsMarkdown--example > *:last-child,
 .DocsMarkdown--aside > *:last-child {

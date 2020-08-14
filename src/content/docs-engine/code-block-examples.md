@@ -19,7 +19,7 @@ Learn more about [using code blocks inside docs-flavored Markdown](/docs-engine/
 filename: hello-worker.js
 highlight: [6,7,8]
 ---
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 

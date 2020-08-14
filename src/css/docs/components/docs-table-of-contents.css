@@ -22,6 +22,10 @@
   }
 }
 
+.DocsTableOfContents ul ul ul {
+  display: none;
+}
+
 .DocsTableOfContents-link {
   display: inline-block;
   line-height: 1.3;

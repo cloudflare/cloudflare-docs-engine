@@ -8,8 +8,10 @@ import sidebarCollapseTransitionDuration from "../constants/sidebar-collapse-tra
 import getNormalizedPath from "../utils/get-normalized-path"
 import userPrefersReducedMotion from "../utils/user-prefers-reduced-motion"
 
+const collapseClassesBase = "DocsSidebar--nav-item-collapse-"
+
 const DocsSidebarCollapse = ({ expanded, children }) => {
-  const base = "DocsSidebar--nav-item-collapse-"
+  const base = collapseClassesBase
   const collapseClasses = {
     container: `${base}container`,
     entered: `${base}entered`,
@@ -17,8 +19,6 @@ const DocsSidebarCollapse = ({ expanded, children }) => {
     wrapper: `${base}wrapper`,
     wrapperInner: `${base}wrapperInner`
   }
-
-  const prefersMotion = userPrefersReducedMotion()
 
   if (userPrefersReducedMotion()) {
     let className = collapseClasses.container + " "
@@ -34,6 +34,25 @@ const DocsSidebarCollapse = ({ expanded, children }) => {
       classes={collapseClasses}
       in={expanded}
       timeout={sidebarCollapseTransitionDuration}
+      onEntering={(node, isAppearing) => {
+        // Get the height Collapse wants to expand to
+        let height = parseInt(node.style.height, 10)
+
+        // Find all child Collapses which are simultaneously expanding
+        node.querySelectorAll(`.${collapseClasses.container}`).forEach(node => {
+          if (!node.hasAttribute("style")) return
+
+          const childNodeHeight = parseInt(node.style.height, 10)
+
+          // And augment the parent Collapse height by the height
+          // of the simultaneously expanding child Collapses
+          if (!isNaN(childNodeHeight)) {
+            height += parseInt(node.style.height, 10)
+          }
+        })
+
+        node.style.height = `${height}px`
+      }}
       children={children}/>
   )
 }
@@ -148,7 +167,7 @@ class DocsSidebarNavItem extends React.Component {
 
         {this.showChildren() && (
           <DocsSidebarCollapse expanded={expanded}>
-            <div className="DocsSidebar--nav-item-collapse-content">
+            <div className={`${collapseClassesBase}content`}>
               <ul className="DocsSidebar--nav-subnav" depth={depth} style={{'--depth': depth}}>
                 {node.children.map(node => (
                   <DocsSidebarNavItem

@@ -2,7 +2,7 @@
 order: 2
 type: example
 summary: Return JSON directly from a Worker script, useful for building APIs and middleware.
-demo: https://returning-json.workers-docs-examples.workers.dev
+demo: https://returning-json.workers-sites-examples.workers.dev
 tags:
   - JSON
   - API
@@ -37,4 +37,4 @@ addEventListener("fetch", event => {
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} height="80"/>
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="80"/>

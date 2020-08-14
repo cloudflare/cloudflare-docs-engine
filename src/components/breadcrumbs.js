@@ -1,5 +1,4 @@
 import React from "react"
-import { Location } from "@reach/router"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 import getBreadcrumbs from "../utils/get-breadcrumbs"

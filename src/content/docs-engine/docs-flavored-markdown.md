@@ -1,16 +1,10 @@
 ---
-order: 0
+order: 1
 ---
 
 # Docs-flavored Markdown
 
-<Aside type="warning">
-
-__Warning:__ These APIs are a work in progress, and may change substantially before release.
-
-</Aside>
-
-The Cloudflare Docs engine uses its own custom MDX/Markdown parsing to generate consistent and manageable markup, while offering flexibility to content authors.
+The Cloudflare Docs engine renders pages with [MDX](https://mdxjs.com/), and includes a number of custom MDX components in the global context, allowing authors to use them on any page without requiring them to be explicitly imported.
 
 --------------------------------
 
@@ -41,13 +35,7 @@ All pages you write will by default have the `"document"` type. This is used mai
 
 <Aside>
 
-__Note:__ A planned feature will allow content authors to disable the table of contents.
-
-</Aside>
-
-<Aside>
-
-__Note:__ A planned feature will allow content authors to replace the table of contents with other content.
+__Note:__ In the future, we plan to allow content authors to disable the table of contents with a custom frontmatter property, and/or replace them with other MDX content.
 
 </Aside>
 
@@ -73,7 +61,7 @@ By default, all pages (not at the top level of nav tree) will have breadcrumbs g
 
 ### Additional properties for tutorials
 
-Tutorials additionally have three properties which are used to sort and display them inside the [Tutorials](/tutorials) overview page.
+Tutorials additionally have two properties which are used to sort and display them inside the [Tutorials](/tutorials) overview page.
 
 ```txt
 frontmatter {
@@ -85,6 +73,24 @@ frontmatter {
 The `updated` property sets the updated date. This is currently used to sort the table.
 
 Currently `difficulty` is only set to one of `"Beginner"`, `"Advanced"`, or `"Expert"`, but any short string value is fine.
+
+### Additional properties for examples
+
+Examples additionally have three properties which are used on both the [Examples](/examples) listing view as well as on an individual example page.
+
+```txt
+frontmatter {
+  summary
+  demo
+  tags
+}
+```
+
+The `summary` should be a summary of the example, no longer than \~100 characters in length.
+
+The `demo` property is for a URL to a working demo of the example.
+
+The `tags` property is for a list of tags to use for filtering on the Examples overview page.
 
 --------------------------------
 
@@ -440,7 +446,7 @@ Filenames are applied by setting `filename: ______` in the code frontmatter.
 ---
 filename: hello-worker.js
 ---
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
@@ -456,7 +462,7 @@ Here’s what that example looks like:
 ---
 filename: hello-worker.js
 ---
-addEventListener('fetch', event => {
+addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
@@ -474,15 +480,37 @@ Header content other than [filenames](#filenames) can be specified with `header:
 ---
 header: Install the Workers CLI
 ---
-npm install -g @cloudflare/workers-cli
+$ npm install -g @cloudflare/workers-cli
 ```
 
 ```sh
 ---
 header: Configure the Workers CLI
 ---
-workers config
+$ workers config
 ```
+
+### Theme
+
+By default, code blocks use a light theme when the page uses a light theme, and a dark theme when the page uses a dark theme. To force a dark theme all the time, you can do this by setting `theme: dark` in the frontmatter.
+
+Currently, we only recommend doing this for `sh`-type code blocks, and only when doing so helps differentiate it from neighboring `js` (other other non-`sh`) code blocks.
+
+```sh
+---
+theme: dark
+---
+~/my-worker $ wrangler publish
+```
+
+``````txt
+```sh
+---
+theme: dark
+---
+~/my-worker $ wrangler publish
+```
+``````
 
 ### Workers-JavaScript
 
@@ -509,8 +537,8 @@ Custom syntax highlighting for terminal code and output, similar to what’s cur
 For now, please simply use standard Markdown code fences (\`\`\`) with `sh`.
 
 ```sh
-npm install -g @cloudflare/wrangler
-wrangler config
+$ npm install -g @cloudflare/wrangler
+$ wrangler config
 ```
 
 ### Examples
@@ -611,33 +639,29 @@ search for text within this document.
 
 ## Details and summary
 
-<Aside type="warning">
-
-__Warning:__ This API is in active development. Please don’t use until this notice is removed.
-
-</Aside>
-
 When you want to provide additional information in context, but you don’t want it to clutter up the more important content, use `<details/>` and `<summary/>`.
 
+To ensure proper layout and styling, wrap all contains of the `<details/>` element, except the `<summary/>` element, in a single `<div/>`:
+
+
+``````markdown
 <details>
 <summary>Details</summary>
+<div>
 
-Something _small enough_ to escape `casual` notice.
+Here are the details.
 
+</div>
 </details>
+``````
 
 <details>
 <summary>Details</summary>
+<div>
 
-Something _small enough_ to escape `casual` notice.
+Here are the details.
 
-</details>
-
-<details>
-<summary>Details</summary>
-
-Something _small enough_ to escape `casual` notice.
-
+</div>
 </details>
 
 --------------------------------

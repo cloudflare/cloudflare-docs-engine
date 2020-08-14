@@ -19,8 +19,6 @@ const DocsTutorials = () => {
               title
               updated
               difficulty
-              length
-              hidden
             }
             headings(depth: h1) {
               value
@@ -43,7 +41,7 @@ const DocsTutorials = () => {
       updated: page.frontmatter.updated,
       difficulty: page.frontmatter.difficulty,
       wordCount: page.wordCount.words,
-      new: (+new Date - +new Date(page.frontmatter.updated)) < oneWeekInMS
+      new: (+new Date() - +new Date(page.frontmatter.updated)) < oneWeekInMS
     }))
     .sort((a, b) => +new Date(b.updated) - +new Date(a.updated))
 
@@ -88,7 +86,11 @@ const DocsTutorials = () => {
               </Link>
             </div>
             <div className="DocsTutorials--column" data-column="updated">
-              <TimeAgo date={tutorial.updated} minPeriod={60}/>
+              <TimeAgo date={tutorial.updated} formatter={(value, unit) => (
+                <React.Fragment>
+                  {value} {unit}<span className="DocsTutorials--ago-text"> ago</span>
+                </React.Fragment>
+              )} minPeriod={60}/>
             </div>
             <div className="DocsTutorials--column" data-column="difficulty">{tutorial.difficulty}</div>
             <div className="DocsTutorials--column" data-column="length">

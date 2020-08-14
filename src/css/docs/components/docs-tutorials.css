@@ -96,6 +96,10 @@
   .DocsTutorials--link {
     font-size: 1em;
   }
+
+  .DocsTutorials--ago-text {
+    display: none;
+  }
 }
 
 [js-focus-visible-polyfill-available] .DocsTutorials--link:focus {

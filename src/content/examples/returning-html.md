@@ -2,7 +2,7 @@
 order: 1
 type: example
 summary: Deliver an HTML page from an HTML string directly inside the Worker script.
-demo: https://returning-html.workers-docs-examples.workers.dev
+demo: https://returning-html.workers-sites-examples.workers.dev
 tags:
   - HTML
   - JAMstack
@@ -39,4 +39,4 @@ addEventListener("fetch", event => {
 
 <p><a href={props.frontmatter.demo}>Open demo</a></p>
 
-<Demo src={props.frontmatter.demo} height="150"/>
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="150"/>

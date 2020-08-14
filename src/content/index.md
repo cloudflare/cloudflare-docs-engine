@@ -1,25 +1,56 @@
 ---
 title: Welcome
 order: 0
+type: overview
 ---
+
+<ContentColumn>
 
 # Cloudflare Workers documentation
 
 Cloudflare Workers provides a serverless execution environment that allows you to create entirely new applications or augment existing ones without configuring or maintaining infrastructure.
 
-<Link to="/tutorials" className="Button Button-is-docs-primary">Get started</Link> &nbsp;&nbsp; <Link to="/tutorials" className="Button Button-is-docs-secondary">Take the tutorial</Link>
+<Link to="/learning/getting-started" className="Button Button-is-docs-primary">Get started</Link> &nbsp;&nbsp; <Link to="/tutorials" className="Button Button-is-docs-secondary">View the tutorials</Link>
+
+--------------------------------
+
+## Installing the Workers CLI
+
+To install [`wrangler`](https://github.com/cloudflare/wrangler), the Workers CLI, ensure you have [`npm` installed](https://www.npmjs.com/get-npm), then run:
+
+```sh
+$ npm install -g @cloudflare/wrangler
+```
+
+--------------------------------
+
+## Playground
+
+View this “Hello World” example in the Workers playground:
+
+```javascript
+addEventListener("fetch", event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  return new Response("Hello world")
+}
+```
+
+<Link to="https://cloudflareworkers.com/#36ebe026bf3510a2e5acace89c09829f:https://tutorial.cloudflareworkers.com" className="Button Button-is-docs-primary">Launch playground</Link> &nbsp;&nbsp; <Link to="/learning/playground" className="Button Button-is-docs-secondary">Learn about the playground</Link>
 
 --------------------------------
 
 ## Popular pages
 
-- [Installing and updating the Workers CLI](#)
 - [Learning: How Workers works](/learning/how-workers-works) – learn how Cloudflare’s global network powers Workers
-- [Learning: Limits](#)
-- [Learning: Pricing](#)
-- [Reference: HTMLRewriter](/reference/html-rewriter) – parse and transform HTML from inside a Worker
-- [Reference: Workers KV](#) – high performance key-value store
+- [Pricing](/platform/pricing) – learn about the Free and Bundled plans
+- [Reference: HTMLRewriter](/runtime-apis/html-rewriter) – parse and transform HTML from inside a Worker
+- [Limits](/platform/limits) – learn about plan limits (e.g. free plans get 100,000 req/day)
 
 --------------------------------
 
 These docs are built with the [Cloudflare Docs engine](/docs-engine).
+
+</ContentColumn>
