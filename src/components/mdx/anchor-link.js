@@ -14,7 +14,8 @@ export default ({ href, className, children, ...props }) => {
 
   const isImageLink = typeof children === "object" &&
     children.props &&
-    children.props.className === "gatsby-resp-image-wrapper"
+    (children.props.originalType === "img" ||
+    children.props.className === "gatsby-resp-image-wrapper")
 
   const isExternal = !!href.match(/^https?:/)
   const isHash = href.indexOf("#") === 0
