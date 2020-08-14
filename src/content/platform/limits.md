@@ -22,14 +22,14 @@
 
 <TableWrap>
 
-| Feature                      | Free       | Bundled    |
-|------------------------------|------------|------------|
-| [Reads/Second](#kv-limits)   | unlimited  | unlimited  |
-| [Writes/Second/Key](#kv-limits)  | 1          | 1          |
-| [Namespaces](#kv-limits)     | 100        | 100        |
-| [Keys/Namespace](#kv-limits) | unlimited  | unlimited  |
-| [Key Size](#kv-limits)       | 512 bytes  | 512 bytes  |
-| [Key Metadata](#kv-limits)   | 1024 bytes | 1024 bytes |
+| Feature                  | Free       | Bundled    |
+|--------------------------|------------|------------|
+| [Reads/second](#kv)      | unlimited  | unlimited  |
+| [Writes/second/key](#kv) | 1          | 1          |
+| [Namespaces](#kv)        | 100        | 100        |
+| [Keys/namespace](#kv)    | unlimited  | unlimited  |
+| [Key size](#kv)          | 512 bytes  | 512 bytes  |
+| [Key metadata](#kv)      | 1024 bytes | 1024 bytes |
 
 </TableWrap>
 
