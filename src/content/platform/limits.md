@@ -4,17 +4,17 @@
 
 <TableWrap>
 
-| Feature                                                             | Free                                                 | Bundled   |
-|---------------------------------------------------------------------|------------------------------------------------------|-----------|
-| [Request](#request)                                                 | 100,000&nbsp;requests/day<br/>1000&nbsp;requests/min | none      |
-| [Worker memory](#memory)                                            | 128 MB                                               | 128 MB     |
-| [CPU runtime](#cpu-runtime)                                         | 10 ms                                                | 50 ms     |
-| [Subreqests](#subrequests)                                          | 50                                                   | 50        |
-| [Simultaneous outgoing<br/>connections/Request](#simultaneous-open-connections) | 6                                                    | 6         |
-| [Environment variables](#environment-variables)                     | 32/worker                                            | 32/worker |
-| [Environment variable<br/>size](#environment-variables)             | 5 KB                                                 | 5 KB      |
-| [Script size](#script-size)                                         | 1 MB                                                 | 1 MB      |
-| [Number of scripts](#number-of-scripts)                             | 30                                                   | 30        |
+| Feature                                                                         | Free                                                 | Bundled   |
+|---------------------------------------------------------------------------------|------------------------------------------------------|-----------|
+| [Request](#request)                                                             | 100,000&nbsp;requests/day<br/>1000&nbsp;requests/min | none      |
+| [Worker memory](#memory)                                                        | 128 MB                                               | 128 MB    |
+| [CPU runtime](#cpu-runtime)                                                     | 10 ms                                                | 50 ms     |
+| [Subreqests](#subrequests)                                                      | 50                                                   | 50        |
+| [Simultaneous outgoing<br/>connections/request](#simultaneous-open-connections) | 6                                                    | 6         |
+| [Environment variables](#environment-variables)                                 | 32/worker                                            | 32/worker |
+| [Environment variable<br/>size](#environment-variables)                         | 5 KB                                                 | 5 KB      |
+| [Script size](#script-size)                                                     | 1 MB                                                 | 1 MB      |
+| [Number of scripts](#number-of-scripts)                                         | 30                                                   | 30        |
 
 </TableWrap>
 
@@ -37,11 +37,11 @@
 
 <TableWrap>
 
-| Feature                     | Free    | Bundled   |
-|-----------------------------|---------|-----------|
-| [Max Obj Size](#cache-api)  | 512 MB  | 512 MB    |
-| [Calls/Request](#cache-api) | 50      | 50        |
-| [Storage Limit](#cache-api) | 5 GB    | 5 GB      |
+| Feature                       | Free   | Bundled |
+|-------------------------------|--------|---------|
+| [Max object size](#cache-api) | 512 MB | 512 MB  |
+| [Calls/request](#cache-api)   | 50     | 50      |
+| [Storage limit](#cache-api)   | 5 GB   | 5 GB    |
 
 </TableWrap>
 
