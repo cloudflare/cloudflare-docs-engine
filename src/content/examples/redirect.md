@@ -5,6 +5,7 @@ summary: Redirect requests from one URL to another, or from one set of URLs to a
 demo: https://redirect.workers-sites-examples.workers.dev
 tags:
   - Originless
+  - Proxy
 ---
 
 # Redirect
@@ -48,3 +49,9 @@ addEventListener("fetch", async event => {
   event.respondWith(handleRequest(event.request))
 })
 ```
+
+## Demo
+
+<p><a href={props.frontmatter.demo}>Open demo</a></p>
+
+<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="395"/> -->

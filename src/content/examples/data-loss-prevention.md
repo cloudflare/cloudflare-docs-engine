@@ -16,7 +16,9 @@ tags:
 const DEBUG = true
 const SOME_HOOK_SERVER = "https://webhook.flow-wolf.io/hook"
 
-// Alert a data breach by posting to a webhook server
+/**
+ * Alert a data breach by posting to a webhook server
+ */
 async function postDataBreach(request) {
   const trueClientIp = request.headers.get("cf-connecting-ip")
   const epoch = new Date().getTime()
@@ -35,10 +37,12 @@ async function postDataBreach(request) {
   return await fetch(SOME_HOOK_SERVER, init)
 }
 
-// Define personal data with regular expressions.
-// Respond with block if credit card data, and strip
-// emails and phone numbers from the response.
-// Execution will be limited to MIME type "text/*".
+/**
+ * Define personal data with regular expressions.
+ * Respond with block if credit card data, and strip
+ * emails and phone numbers from the response.
+ * Execution will be limited to MIME type "text/*".
+ */
 async function handleRequest(request) {
   const response = await fetch(request)
 
