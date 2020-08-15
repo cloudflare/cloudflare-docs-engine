@@ -4,7 +4,7 @@ import TimeAgo from "react-timeago"
 
 import getPageTitle from "../utils/get-page-title"
 
-const oneWeekInMS = 7 * 24 * 60 * 60 * 1000
+const tenDaysInMS = 10 * 24 * 60 * 60 * 1000
 
 const DocsTutorials = () => {
   const query = useStaticQuery(graphql`
@@ -41,7 +41,7 @@ const DocsTutorials = () => {
       updated: page.frontmatter.updated,
       difficulty: page.frontmatter.difficulty,
       wordCount: page.wordCount.words,
-      new: (+new Date() - +new Date(page.frontmatter.updated)) < oneWeekInMS
+      new: (+new Date() - +new Date(page.frontmatter.updated)) < tenDaysInMS
     }))
     .sort((a, b) => +new Date(b.updated) - +new Date(a.updated))
 
