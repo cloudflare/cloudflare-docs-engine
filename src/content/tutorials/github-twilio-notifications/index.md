@@ -10,7 +10,7 @@ difficulty: Intermediate
 
 # GitHub repo notifications with Twilio
 
-In this tutorial, you will build a SMS notification system on Workers to receive updates about one of your GitHub repos. Whenver there is new activity on your GitHub repo, your worker will send you a text using Twilio.
+In this tutorial, you will build an SMS notification system on Workers to receive updates about one of your GitHub repos. Whenever there is new activity on your GitHub repo, your worker will send you a text using Twilio.
 
 You’ll learn how to:
 - Build webhooks using Workers
@@ -23,12 +23,12 @@ You’ll learn how to:
 
 You will need a Worker and a GitHub repository to get started.
 
-To setup a Worker, you should have a:
+To set up a Worker, you should have a:
 
 - A Cloudflare account, and access to the API keys for that account
 - A Wrangler installation running locally on your machine, and access to the command-line
 
-Follow our [Workers Quickstart Guide](https://developers.cloudflare.com/workers/quickstart) to setup your local development environment and create a Cloudflare account.
+Follow our [Workers Quickstart Guide](https://developers.cloudflare.com/workers/quickstart) to set up your local development environment and create a Cloudflare account.
 
 If you don't have a GitHub repo or account, you can create one on [GitHub](wwww.GitHub.com) and [create a new repo](https://docs.GitHub.com/en/GitHub/getting-started-with-GitHub/create-a-repo).
 
@@ -64,14 +64,14 @@ You can reference the finished code on this [GitHub repository](https://github.c
 
 The first step is to configure a GitHub webhook to post to our Worker when there is an update to the repo.
 
-Click on the "Settings" tab for your repo and then click on the "Webhooks" page from the list on the left. Click "Add webhook" and configure the "Payload URL" with your worker URL. You can find your worker URL by running "wrangler publish" in your command line to generate a live link for your Worker. For the "Content type", choose "application/json". Generate a secret key of your choice and set it as the "Secret". Click "Let me select individual events" for the which events to trigger this webhook. Select the events you want to get notifications for. (I selected "Pull requests", "Pushes", and "Branch or tag creation") Finally, click "Add webhook" to finish our work on the GitHub side.
+Click on the "Settings" tab for your repo and then click on the "Webhooks" page from the list on the left. Click "Add webhook" and configure the "Payload URL" with your worker URL. You can find your worker URL by running "wrangler publish" in your command line to generate a live link for your Worker. For the "Content type", choose "application/json". Generate a secret key of your choice and set it as the "Secret". Click "Let me select individual events" for which events to trigger the webhook. Select the events you want to get notifications for. (I selected "Pull requests", "Pushes", and "Branch or tag creation") Finally, click "Add webhook" to finish our work on the GitHub side.
 
 ![Your config should look something like this](media/ghconfig.png)
 
 
 ## Parsing the Response
 
-With your local environment setup, we will now parse the repo update from GitHub with your worker. If you get stuck, you can refer to the this finished [index.js](https://GitHub.com/davidtsong/GitHub-twilio-notifications/blob/master/index.js). 
+With your local environment setup, we will now parse the repo update from GitHub with your worker. If you get stuck, you can refer to the finished [index.js](https://GitHub.com/davidtsong/GitHub-twilio-notifications/blob/master/index.js). 
 
 Your generated `index.js` should look like this below:
 
@@ -93,7 +93,7 @@ async function handleRequest(request) {
 }
 ```
 
-Let's start and refactor the starter code to handle a `POST` response and rename the request handler. We can use the `request.method` property of [request](/runtime-apis/request) to check if the request is a `POST` request, and send an error response if incorrect. The `simpleResponse` fucntion is an easy wrapper for you to send requests with your Worker.
+Let's start and refactor the starter code to handle a `POST` response and rename the request handler. We can use the `request.method` property of [request](/runtime-apis/request) to check if the request is a `POST` request, and send an error response if incorrect. The `simpleResponse` function is an easy wrapper for you to send requests with your Worker.
 
 ```javascript
 ---
@@ -125,7 +125,7 @@ async function githubWebhookHandler(request) {
 }
 ```
 
-Next, we'll validate that the request is sent with the right secret key. GitHub attaches a hash signature for each payload using the secret key ([see the docs for more details](https://developer.github.com/webhooks/securing/)). We can use a helper function called `checkSignature` on the request to ensure the hash is correct. Then, we can access data from the webhook by parsing the request as json.
+Next, we'll validate that the request is sent with the right secret key. GitHub attaches a hash signature for each payload using the secret key ([see the docs for more details](https://developer.github.com/webhooks/securing/)). We can use a helper function called `checkSignature` on the request to ensure the hash is correct. Then, we can access data from the webhook by parsing the request as JSON.
 
 ```javascript
 ---
@@ -159,7 +159,7 @@ async function githubWebhookHandler(request) {
 
 ```
 
-The `checkSignature` function will use the crypto library to hash the received payload with our known secret key to ensure it matches the request hash. GitHub uses a HMAC hexdigest to compute the hash in the sha1 format.
+The `checkSignature` function will use the crypto library to hash the received payload with our known secret key to ensure it matches the request hash. GitHub uses an HMAC hexdigest to compute the hash in the sha1 format.
 
 ```javascript
 ---
@@ -237,7 +237,7 @@ In order to make this work, we need to set some secrets to hide your `ACCOUNT_SI
 wrangler secret put ACCOUNT_SID
 ```
 
-Use this syntax to set your Twilio `ACCOUNT_SID`, `recipient`(your number), Twilio `AUTH_TOKEN`, and `SECRET_TOKEN` (for GitHub) to the respecive values.
+Use this syntax to set your Twilio `ACCOUNT_SID`, `recipient`(your number), Twilio `AUTH_TOKEN`, and `SECRET_TOKEN` (for GitHub) to the respective values.
 
 Finally, we modify our `githubWebhookHandler` to send a text at the end.
 
