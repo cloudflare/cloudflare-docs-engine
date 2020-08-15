@@ -215,7 +215,7 @@ $ wrangler dev [--env $ENVIRONMENT_NAME] [--ip <ip>] [--port <port>] [--host <ho
 
 </Definitions>
 
-These arguments can also be set in your `wrangler.toml`, read more about that [here](/cli-wrangler/configuration#dev).
+These arguments can also be set in your `wrangler.toml`; see [`wrangler dev` configuration](/cli-wrangler/configuration#dev).
 
 ### Usage
 

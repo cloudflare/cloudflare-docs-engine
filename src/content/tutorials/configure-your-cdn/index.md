@@ -23,7 +23,7 @@ This tutorial assumes that you have a _public_ bucket on Google Cloud Storage, w
 
 This tutorial makes use of sample images to illustrate serving data through your Cloudflare Workers function. If you have an existing set of images you’d like to use, you can upload those to your Google Cloud Storage bucket and use them — if you don’t have an existing set of images, we’ve provided a sample set of profile pictures via [UIFaces.com](http://uifaces.com/), formatted in numeric order (`1.jpg`, `2.jpg`, … `199.jpg`).
 
-To follow along with this tutorial, using the data set we’ve provided, download the sample image collection [here](https://storage.cloud.google.com/workers-docs-configure-your-cdn-tutorial/faces.zip), and upload the zipped folder “faces” to root of your bucket. The directory structure should look like this:
+To follow along with this tutorial using the data set we’ve provided, download the [sample image collection](https://storage.cloud.google.com/workers-docs-configure-your-cdn-tutorial/faces.zip), and upload the zipped folder “faces” to root of your bucket. The directory structure should look like this:
 
 ```txt
 your-bucket
@@ -34,7 +34,7 @@ your-bucket
     └── 99.jpg
 ```
 
-Finally, to ensure that you can access the objects from your Workers function, your Google Cloud Storage bucket should be publicly accessible. To ensure this, follow the “Making groups of objects publicly readable” guide in the Google Cloud Storage docs, which can be found [here](https://cloud.google.com/storage/docs/access-control/making-data-public#buckets).
+Finally, to ensure that you can access the objects from your Workers function, your Google Cloud Storage bucket should be publicly accessible. To ensure this, follow the “Making groups of objects publicly readable” guide in the Google Cloud Storage docs, which can be found at [Google Cloud’s docs](https://cloud.google.com/storage/docs/access-control/making-data-public#buckets).
 
 ## Generate
 

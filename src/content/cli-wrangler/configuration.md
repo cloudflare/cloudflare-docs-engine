@@ -60,7 +60,7 @@ Keys to configure per project in your `wrangler.toml`.
     - A list of routes you’d like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
 
   - `webpack_config` <Type>inherited</Type> <PropMeta>optional</PropMeta>
-    - This is the path to a custom webpack configuration file for your worker. You must specify this field to use a custom webpack configuration, otherwise Wrangler will use a default configuration for you. You can read more [here](/cli-wrangler/webpack).
+    - This is the path to a custom webpack configuration file for your worker. You must specify this field to use a custom webpack configuration, otherwise Wrangler will use a default configuration for you. Visit the [Wrangler webpack page](/cli-wrangler/webpack) for more information.
 
   - `vars` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
     - An object containing text variables that can be directly accessed in a Worker script.

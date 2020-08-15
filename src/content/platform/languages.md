@@ -10,7 +10,7 @@ Workers is a polyglot platform. You can likely write code on Workers with a lang
 
 ## JavaScript / TypeScript
 
-JavaScript is fully supported on the Workers platform. We recommend using JS. You can also use TypeScript on the platform and can find the [type definitions here](https://github.com/cloudflare/workers-types).
+JavaScript is fully supported on the Workers platform. We recommend using JS. You can also use TypeScript on the platform and can find the [type definitions on Github](https://github.com/cloudflare/workers-types).
 
 <TableWrap>
 

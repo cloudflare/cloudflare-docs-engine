@@ -68,7 +68,7 @@ let decoder = new TextDecoder()
 <Definitions>
 
 - `decode()` <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/DOMString">DOMString</TypeLink>
-  - Decodes using the method specified in the `TextDecoder` object. Learn more [here](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
+  - Decodes using the method specified in the `TextDecoder` object. Learn more at [MDN’s TextDecoder docs](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode).
 
 </Definitions>
 
