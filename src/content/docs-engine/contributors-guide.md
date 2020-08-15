@@ -160,6 +160,22 @@ Specifically, please make sure to:
 
 --------------------------------
 
+## Accessibility guidelines
+
+<Aside>
+
+Contributions are welcome.
+
+</Aside>
+
+- **Use descriptive link text.** Don’t say “Learn more [here](https://example.com).” Instead say “[Learn more about examples at example.com](https://example.com).”
+
+- **Use descriptive alt text and file names for images.** Don’t write `![screenshot](image.png)`. Instead write `![Workers dashboard screenshot](workers-dashboard-screenshot.png)`.
+
+- **Use an `sh` code block over a screenshot of a terminal output.** This also helps ensure a consistent display.
+
+--------------------------------
+
 ## Next steps
 
 Now that you’re generally familiar with the guidelines for contributing to these docs, check out [Docs-flavored Markdown](/docs-engine/docs-flavored-markdown) page to learn about all of the specific frontmatter properties and MDX components you can use in your Markdown `*.md` pages.
