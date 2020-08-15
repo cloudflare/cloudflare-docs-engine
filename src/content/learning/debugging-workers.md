@@ -103,12 +103,12 @@ When a Worker running in production has an error that prevents it from returning
 
 <TableWrap>
 
-| Error code | Meaning                                                                            |
-| ---------- | ---------------------------------------------------------------------------------- |
-| 1101       | Worker threw a JavaScript exception.                                               |
-| 1102       | Worker exceeded CPU time limit. See: [Resource Limits](/platform/limits)              |
-| 1015       | Your client IP is being rate limited.                                              |
-| 1027       | Worker exceeded free tier [daily request limit](/platform/limits#daily-request) |
+| Error code | Meaning                                                                          |
+| ---------- | ---------------------------------------------------------------------------------|
+| 1101       | Worker threw a JavaScript exception.                                             |
+| 1102       | Worker exceeded [CPU time limit](/platform/limits).                              |
+| 1015       | Your client IP is being rate limited.                                            |
+| 1027       | Worker exceeded free tier [daily request limit](/platform/limits#daily-request). |
 
 </TableWrap>
 
