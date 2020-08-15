@@ -6,7 +6,7 @@ order: 7
 
 ## Background
 
-Deploy buttons let you deploy projects to the Workers platform in under five minutes. The Deploy Buttons use a Worker to deploy to the platform using the [Workers Github Action](https://github.com/marketplace/actions/github-action-for-cloudflare-workers). You can also make your own deploy buttons for your projects to make sharing your work easier.
+Deploy buttons let you deploy projects to the Workers platform in under five minutes. The deploy buttons use a Worker to deploy to the platform using the [Workers Github Action](https://github.com/marketplace/actions/github-action-for-cloudflare-workers). You can also make your own deploy buttons for your projects to make sharing your work easier.
 
 Try the deploy button below to deploy a GraphQL server:
 
@@ -14,7 +14,7 @@ Try the deploy button below to deploy a GraphQL server:
 
 Visit [deploy.workers.cloudflare.com](https://deploy.workers.cloudflare.com/) for additional projects to deploy.
 
-## Create a Deploy Button for your project
+## Create a deploy button for your project
 
 1. **Add a GitHub Actions workflow to your project.**
 
