@@ -8,7 +8,7 @@ tags:
   - Originless
 ---
 
-# Signing Requests
+# Signing requests
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>
