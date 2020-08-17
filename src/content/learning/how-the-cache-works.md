@@ -36,7 +36,7 @@ We won’t discuss in this article, but other means to control Cloudflare’s ca
 
 **What should I use: the Cache API or fetch for caching objects on Cloudflare?**
 
-For requests where Workers are behaving as middleware (i.e. they are sending a subrequest via `fetch`) it is recommended to use fetch. This is because pre existing settings are in place that optimize caching while preventing unintended dynamic caching. For projects where there is no backend (i.e. the entire project is on Workers as in [Workers Sites](/sites)) the Cache API is the only option to customize caching.
+For requests where Workers are behaving as middleware (i.e. they are sending a subrequest via `fetch`) it is recommended to use fetch. This is because pre existing settings are in place that optimize caching while preventing unintended dynamic caching. For projects where there is no backend (i.e. the entire project is on Workers as in [Workers Sites](/platform/sites)) the Cache API is the only option to customize caching.
 
 ### `fetch`
 
@@ -44,7 +44,7 @@ In the context of Workers a [`fetch`](/runtime-apis/fetch) provided by the runti
 
 When a response fills the cache, the response header contains `CF-Cache-Status: HIT`. You can tell an object is attempting to cache if one sees the `CF-Cache-Status` at all.
 
-This [template](/examples/pages/cache_ttl) shows ways to customize Cloudflare cache behavior on a given request using fetch.
+This [template](/examples/cache-using-fetch) shows ways to customize Cloudflare cache behavior on a given request using fetch.
 
 ### [Cache API](/runtime-apis/cache)
 
@@ -60,4 +60,4 @@ When to use the Cache API:
 - When you need to read from cache without calling fetch. (i.e. send me the response from `slow.com/resource` if and only if it’s already a HIT on cache using `caches.default.match(..)`.
 - Explicitly store a response in the cache using `caches.default.put(..)` and explicitly delete `caches.default.delete(..)`. For example, say your origin is returning `max-age:0` and you can’t figure out how to change that header at your origin. You can explicitly tell Cloudflare to cache this response by setting `cache-control: max-age=1000` on the response passed into `cache.put()`.
 
-This [template](/examples/pages/cache_api) shows ways to use the cache API. For limits of the cache API see [limits](/platform/limits#cache-api-limits).
+This [template](/examples/cache-api) shows ways to use the cache API. For limits of the cache API see [limits](/platform/limits#cache-api-limits).

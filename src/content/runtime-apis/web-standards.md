@@ -63,7 +63,7 @@ The following methods are available per the [Worker Global Scope](https://develo
 <Aside>
 
 <!-- TODO(soon): Broken link. -->
-__Note:__ Timers are only available inside of [the Request Context](/about/tips/request-context).
+__Note:__ Timers are only available inside of [the Request Context](/runtime-apis/request#the-request-context).
 
 </Aside>
 
@@ -80,7 +80,7 @@ __Note:__ Timers are only available inside of [the Request Context](/about/tips/
 <Aside>
 
 <!-- TODO(soon): Broken link. -->
-__Note:__ The Fetch API is only available inside of [the Request Context](/about/tips/request-context).
+__Note:__ The Fetch API is only available inside of [the Request Context](/runtime-apis/request#the-request-context).
 
 </Aside>
 

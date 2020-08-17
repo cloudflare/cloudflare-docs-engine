@@ -180,7 +180,7 @@ __Note:__ Make sure to use only `route` or `routes`, not both.
 ### Publishing the same code to multiple places
 
 <!-- TODO: link to documentation for environements (see https://github.com/cloudflare/workers-docs-engine/pull/82) -->
-If you would like to be able to publish your code to multiple places, please see the [documentation for environments](#).
+If you would like to be able to publish your code to multiple places, please see the [documentation for environments](/platform/environments).
 
 --------------------------------
 

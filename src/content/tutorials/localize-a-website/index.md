@@ -36,7 +36,7 @@ theme: dark
 ~/i18n-example $
 ```
 
-The `--site` flag indicates to Wrangler that we want to build a [Workers Sites](/sites) project—this means that there will be both a “site” component, the static HTML that we want to serve to the user, and a Workers script. Inside the Workers script we can customize the HTML response using `HTMLRewriter`.
+The `--site` flag indicates to Wrangler that we want to build a [Workers Sites](/platform/sites) project—this means that there will be both a “site” component, the static HTML that we want to serve to the user, and a Workers script. Inside the Workers script we can customize the HTML response using `HTMLRewriter`.
 
 The newly generated `i18n-example` project will contain two folders: `public`, which is our static HTML, and `workers-site`:
 
@@ -81,7 +81,7 @@ Finally, it’s shockingly easy to introduce one more cool feature into this pro
 
 To start, let’s look at `workers-site/index.js`: our Workers application in this tutorial will live entirely in this file, so it’s important to be familiar with it.
 
-Inside of this file, the default code for running a [Workers Site](/sites) has been provided. The crucial part of the generated code lives in the `handleEvent` function. The`getAssetFromKV` function retrieves a website asset uploaded from your local `./public` folder, runs some magic to make it live on Workers KV, and returns it to the user. For now, we can ignore much of `getAssetFromKV` (though if you’d like to learn more, check out [the docs](/sites/start-from-worker) .
+Inside of this file, the default code for running a [Workers Site](/platform/sites) has been provided. The crucial part of the generated code lives in the `handleEvent` function. The`getAssetFromKV` function retrieves a website asset uploaded from your local `./public` folder, runs some magic to make it live on Workers KV, and returns it to the user. For now, we can ignore much of `getAssetFromKV` (though if you’d like to learn more, check out [the docs](/platform/sites/start-from-worker) .
 
 To implement translations on the site, we’ll take the HTML response retrieved from KV and pass it into a new instance of `HTMLRewriter`. When instantiating `HTMLRewriter`, we can also attach handlers using the `on` function: in our case, we’ll use the `[data-i18n-key]` selector (see the [documentation](/runtime-apis/html-rewriter) for more advanced usage) to parse all elements that require translation with a single class, `ElementHandler`. With the created instance of `HTMLRewriter`, the `transform` function takes a `response` and can be returned to the client:
 
@@ -99,7 +99,7 @@ async function handleEvent(event) {
 
 Our `ElementHandler` will receive every element parsed by the `HTMLRewriter` instance, and thanks to the expressive API, it’s really easy to query each incoming element for information.
 
-In [How it works](#how-it-works), we talked about `data-i18n-key`, a custom data attribute that could be used to find a corresponding translated string for the website’s user interface. In `ElementHandler`, we can define an `element` function, which will be called as each element is parsed. Inside of it, we can query for the custom data attribute using `getAttribute`:
+In [How it works](#understanding-data-i18n-key), we talked about `data-i18n-key`, a custom data attribute that could be used to find a corresponding translated string for the website’s user interface. In `ElementHandler`, we can define an `element` function, which will be called as each element is parsed. Inside of it, we can query for the custom data attribute using `getAttribute`:
 
 ```js
 ---
