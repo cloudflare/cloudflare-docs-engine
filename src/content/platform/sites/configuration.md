@@ -9,7 +9,7 @@ Workers Sites require the latest version of [Wrangler](https://github.com/cloudf
 - `wrangler generate proj --site`
   - Creates a project with a Worker serving a generic HTML file and favicon with the directory structure:
 
-    ```
+    ```txt
     ├── public # files to serve
     |  ├── favicon.ico
     |  └── index.html
@@ -45,7 +45,7 @@ There are a few specific configuration settings for Workers Sites in your `wrang
 
   - `exclude` <PropMeta>optional</PropMeta>
     - A list of gitignore-style patterns for files or directories in `bucket` you want to exclude from uploads. Example: `exclude = ["ignore_dir"]`.
-  
+
 </Definitions>
 
 To learn more about the optional `include` and `exclude` fields, visit [Ignoring Subsets of Static Assets](#ignoring-subsets-of-static-assets).
@@ -84,11 +84,11 @@ name = "docs-site-staging"
 route = "https://staging.example.com/docs*"
 ```
 
-## Storage Limits
+## Storage limits
 
 For very exceptionally large pages, Workers Sites might not work for you. There is a 10MB limit per page or file.
 
-## Ignoring Subsets of Static Assets
+## Ignoring subsets of static assets
 
 Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) - make sure to be on the [latest version](/cli-wrangler/install-update#update) - and the Workers [Bundled plan](https://workers.cloudflare.com/sites#plans).
 
@@ -125,7 +125,7 @@ exclude = ["excluded_dir"] # must be an array.
 
 Wrangler will ignore files or directories matching the patterns in the `exclude` array when uploading assets to Workers KV.
 
-### Include > Exclude
+### Include > exclude
 
 If you provide both `include` and `exclude` fields, the `include` field will be used and the `exclude` field will be ignored.
 
@@ -141,6 +141,6 @@ Wrangler will always ignore:
 
 You can learn more about the standard patterns used for include and exclude in the [gitignore documentation](https://git-scm.com/docs/gitignore).
 
-## Customizing your Build
+## Customizing your build
 
 Workers Sites projects use webpack by default. You can [bring your own webpack config](/cli-wrangler/webpack#using-with-workers-sites), however it is important to be cognizant of your `entry` and `context` settings.
