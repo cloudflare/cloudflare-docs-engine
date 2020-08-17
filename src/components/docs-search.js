@@ -45,8 +45,7 @@ const DocsSearch = () => {
           const page = folders[folders.length - 1]
           const hash = url.hash.slice(1)
 
-          // Navigate just to the page
-          // if the hash points page’s h1
+          // Navigate to just the page if the hash points to the h1
           if (page === hash) {
             navigate(url.pathname)
           } else {
