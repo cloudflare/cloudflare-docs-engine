@@ -25,6 +25,10 @@ module.exports = {
     },
   },
 
+  // Prefix site with /workers
+  assetPrefix: `/workers`,
+  pathPrefix: `/workers`,
+
   plugins: [
     "gatsby-plugin-sitemap",
     "gatsby-plugin-eslint",

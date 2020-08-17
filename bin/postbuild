@@ -1,0 +1,4 @@
+echo "Moving things into public/workers"
+mv public workers
+mkdir public
+mv workers public
