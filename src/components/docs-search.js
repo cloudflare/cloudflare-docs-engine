@@ -18,7 +18,7 @@ const DocsSearch = () => {
       }
 
       const search = window.docsearch({
-        indexName: "workers-cloudflare-v2",
+        indexName: "cloudflare-workers-v2",
         apiKey: "9c24e56570a37c30bba608dad543d1d8",
 
         inputSelector: "#DocsSearch--input", // TODO - pass DOM in with Reacth.createRef?
