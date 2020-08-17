@@ -34,7 +34,7 @@ class DocsSidebarNavSectionContent extends React.Component {
     // Wait the sidebar nav transition duration plus one
     // frame before determining the scroll position
     this.scrollToActiveTimeout = setTimeout(() => {
-      // TODO
+      // TODO:
       // Investigate whether it’s possible to do this
       // with a transitionend event instead of setTimeout
       // without reaching into the child components
