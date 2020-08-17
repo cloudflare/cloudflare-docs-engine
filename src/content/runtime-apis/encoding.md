@@ -71,21 +71,3 @@ let decoder = new TextDecoder()
   - Decodes using the method specified in the `TextDecoder` object. Learn more at [MDN’s TextDecoder docs](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode).
 
 </Definitions>
-
-<!-- TODO -->
-<!--
-
-## Common issues
-
-Sometimes you’ll find that when you create instances of `Class`, unexpected things happen. It’s important to remember that you can always [debug your `Class`](#learning-page-about-debugging).
-
---------------------------------
-
-## See also
-
-- [`RelatedClass`](#)
-- [`OtherRelatedClass`](#)
-- [An external link to relevant documentation, e.g. on MDN](https://example.com)
-- [A page about writing JS in general](#)
-
--->
