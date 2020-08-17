@@ -1,5 +1,4 @@
-
-# Config
+# Configuration
 
 Workers Sites require the latest version of [Wrangler](https://github.com/cloudflare/wrangler) and the Workers [Bundled plan](https://workers.cloudflare.com/sites#plans).
 
@@ -32,23 +31,37 @@ Workers Sites require the latest version of [Wrangler](https://github.com/cloudf
 
 There are a few specific configuration settings for Workers Sites in your `wrangler.toml`:
 
-<TableWrap>
 
-| Key           | Value                                                                              | Example                          | Required |
-| ------------- | ---------------------------------------------------------------------------------- | -------------------------------- | -------- |
-| `bucket`      | The directory containing your static assets, path relative to your `wrangler.toml` | `bucket = "./public"`            | yes      |
-| `entry-point` | The location of your Worker script, default is `workers-site`                      | `entry-point = "./workers-site"` | no       |
-| `include`     | A list of gitignore-style patterns for files or directories in `bucket` you exclusively want to upload. | `include = ["upload_dir"]` | no |
-| `exclude`     | A list of gitignore-style patterns for files or directories in `bucket` you want to exclude from uploads. | `exclude = ["ignore_dir"]` | no |
+<Definitions>
 
-</TableWrap>
-To learn more about the optional `include` and `exclude` fields, visit [Ignoring Subsets of Static Assets](/tooling/wrangler/sites/#ignoring-subsets-of-static-assets).
+  - `bucket` <PropMeta>required</PropMeta>
+    - The directory containing your static assets, path relative to your `wrangler.toml`. Example: `bucket = "./public"`.
 
-_Note: if your project uses [environments](/platform/environments), make sure to place `site` at the top level config._
+  - `entry-point` <PropMeta>optional</PropMeta>
+    - The location of your Worker script, default is `workers-site`. Example: `entry-point = "./workers-site"`.
+
+  - `include` <PropMeta>optional</PropMeta>
+    - A list of gitignore-style patterns for files or directories in `bucket` you exclusively want to upload. Example: `include = ["upload_dir"]`.
+
+  - `exclude` <PropMeta>optional</PropMeta>
+    - A list of gitignore-style patterns for files or directories in `bucket` you want to exclude from uploads. Example: `exclude = ["ignore_dir"]`.
+  
+</Definitions>
+
+To learn more about the optional `include` and `exclude` fields, visit [Ignoring Subsets of Static Assets](#ignoring-subsets-of-static-assets).
+
+<Aside>
+
+__Note:__ if your project uses [environments](/platform/environments), make sure to place `site` at the top level config.
+
+</Aside>
 
 Example of a `wrangler.toml`:
 
 ```toml
+---
+filename: wrangler.toml
+---
 account_id = "95e..."
 name = "docs-site-blah"
 type = "webpack"
