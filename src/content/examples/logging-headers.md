@@ -8,7 +8,7 @@ tags:
   - Originless
 ---
 
-# Logging Headers
+# Logging headers
 
 <ContentColumn>
   <p>{props.frontmatter.summary}</p>
@@ -37,33 +37,33 @@ addEventListener("fetch", event => {
 })
 ```
 
-## Console-logging Headers
+## Console-logging headers
 
 **TL;DR:** Use a Map if you just need to log a Headers object to the console:
 
-```javascript
+```js
 console.log(new Map(request.headers))
 ```
 
 Use the spread operator if you need to quickly stringify a Headers object:
 
-```javascript
+```js
 let requestHeaders = JSON.stringify([...request.headers])
 ```
 
-### The Problem
+### The problem
 
 When debugging Worker scripts, we often want to examine the headers on a request
 or response. A common pitfall is to try to log headers to the developer console
 via code like this:
 
-```javascript
+```js
 console.log(request.headers)
 ```
 
 or this:
 
-```javascript
+```js
 console.log(`Request headers: ${JSON.stringify(request.headers)}`)
 ```
 
@@ -80,12 +80,12 @@ object.
 Headers objects are iterable, however, which we can take advantage of to develop
 a couple quick one-liners for debug-printing headers.
 
-## Pass Headers objects through a Map
+## Pass headers through a Map
 
 The first common idiom for making Headers `console.log()`-friendly is to
 construct a Map object from the Headers object, and log the Map object.
 
-```javascript
+```js
 console.log(new Map(request.headers))
 ```
 
@@ -96,7 +96,7 @@ This works because:
 - The Map object _does_ store its entries in an enumerable JavaScript property,
   so the developer console can see into it.
 
-### Spread Headers into an array
+### Spread headers into an array
 
 The Map trick works great for simple calls to `console.log()`, but if we need to
 actually stringify our headers, we quickly find out that stringifying a Map
@@ -114,14 +114,14 @@ way by applying the
 [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)
 (`...`) to it.
 
-```javascript
+```js
 let requestHeaders = JSON.stringify([...request.headers], null, 2)
 console.log(`Request headers: ${requestHeaders}`)
 ```
 
 This results in something like:
 
-```javascript
+```js
 Request headers: [
   [
     "accept",
