@@ -40,7 +40,18 @@ const DocsSearch = () => {
         // https://docsearch.algolia.com/docs/behavior
         handleSelected: (input, event, suggestion, datasetNumber, context) => {
           const url = new URL(suggestion.url)
-          navigate(url.pathname + url.hash)
+
+          const folders = url.pathname.split("/")
+          const page = folders[folders.length - 1]
+          const hash = url.hash.slice(1)
+
+          // Navigate just to the page
+          // if the hash points page’s h1
+          if (page === hash) {
+            navigate(url.pathname)
+          } else {
+            navigate(url.pathname + url.hash)
+          }
         },
 
         transformData: function(hits) {
