@@ -4,6 +4,8 @@
 
 Workers KV is a global, low-latency, key-value data store. It supports exceptionally high read volumes with low-latency, making it possible to build highly dynamic APIs and websites which respond as quickly as a cached static file would.
 
+Learn more about [How KV works](/learning/how-kv-works).
+
 --------------------------------
 
 ## Methods

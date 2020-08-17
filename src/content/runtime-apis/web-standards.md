@@ -79,7 +79,6 @@ __Note:__ Timers are only available inside of [the Request Context](/runtime-api
 
 <Aside>
 
-<!-- TODO(soon): Broken link. -->
 __Note:__ The Fetch API is only available inside of [the Request Context](/runtime-apis/request#the-request-context).
 
 </Aside>

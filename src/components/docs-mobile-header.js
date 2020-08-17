@@ -5,7 +5,7 @@ import DocsNavLogoLockup from "./docs-nav-logo-lockup"
 
 const DocsMobileHeader = () => (
   <div className="DocsMobileHeader">
-    <a className="DocsMobileHeader--cloudflare-logo-link Link Link-without-underline" href="https://docs.cloudflare.com">
+    <a className="DocsMobileHeader--cloudflare-logo-link Link Link-without-underline" href="https://developers.cloudflare.com/docs/">
       <DocsNavLogoLockup
         small={true}
         logo={<CloudflareLogo/>}

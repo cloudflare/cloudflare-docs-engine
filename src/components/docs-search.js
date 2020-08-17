@@ -18,11 +18,11 @@ const DocsSearch = () => {
       }
 
       const search = window.docsearch({
-        // TODO - replace with new index and API key
-        indexName: "workers-cloudflare",
-        apiKey: "4a3bbdb939606486b94f9ce867bfd4f5",
+        indexName: "cloudflare-workers-v2",
+        apiKey: "9c24e56570a37c30bba608dad543d1d8",
 
-        inputSelector: "#DocsSearch--input", // TODO - pass DOM in with Reacth.createRef?
+        // TODO: pass DOM in with Reacth.createRef?
+        inputSelector: "#DocsSearch--input",
 
         autocompleteOptions: {
           // https://github.com/algolia/autocomplete.js#global-options
@@ -41,8 +41,16 @@ const DocsSearch = () => {
         handleSelected: (input, event, suggestion, datasetNumber, context) => {
           const url = new URL(suggestion.url)
 
-          // TODO - use a pathPrefix so this becomes unnecessary
-          navigate(url.pathname.replace("/workers", ""))
+          const folders = url.pathname.split("/")
+          const page = folders[folders.length - 1]
+          const hash = url.hash.slice(1)
+
+          // Navigate to just the page if the hash points to the h1
+          if (page === hash) {
+            navigate(url.pathname)
+          } else {
+            navigate(url.pathname + url.hash)
+          }
         },
 
         transformData: function(hits) {

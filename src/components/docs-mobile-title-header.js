@@ -10,7 +10,6 @@ import DocsNavLogoLockup from "./docs-nav-logo-lockup"
 
 const DocsMobileTitleHeader = () => (
   <div className="DocsMobileTitleHeader">
-    {/* TODO - get URL from Gatsby config? */}
     <Link className="DocsMobileTitleHeader--logo-link Link Link-without-underline" to="/">
       <DocsNavLogoLockup
         small={true}

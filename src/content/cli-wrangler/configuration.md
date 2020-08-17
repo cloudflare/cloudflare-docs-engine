@@ -38,41 +38,41 @@ Keys to configure per project in your `wrangler.toml`.
 
 <Definitions>
 
-  - `name` <Type>inherited</Type> <PropMeta>required</PropMeta>
-    -  The name of your Worker script. If inherited, your environment name with be appended to the top level.
+- `name` <Type>inherited</Type> <PropMeta>required</PropMeta>
+  -  The name of your Worker script. If inherited, your environment name with be appended to the top level.
 
-  - `type` <Type>top level</Type> <PropMeta>required</PropMeta>
-    -  Specifies how `wrangler build` will build your project. There are currently three options (`webpack`, `javascript`, and `rust`).
+- `type` <Type>top level</Type> <PropMeta>required</PropMeta>
+  -  Specifies how `wrangler build` will build your project. There are currently three options (`webpack`, `javascript`, and `rust`).
 
-  - `zone_id` <Type>inherited</Type> <PropMeta>optional</PropMeta>
-    - This is the ID of the "zone" or domain you want to run your script on. It can also be specified through the `CF_ZONE_ID` environment variable. This key is optional if you are using only a [workers.dev](https://workers.dev) subdomain.
+- `zone_id` <Type>inherited</Type> <PropMeta>optional</PropMeta>
+  - This is the ID of the "zone" or domain you want to run your script on. It can also be specified through the `CF_ZONE_ID` environment variable. This key is optional if you are using only a [workers.dev](https://workers.dev) subdomain.
 
-  - `account_id` <Type>inherited</Type> <PropMeta>required</PropMeta>
-    - This is the ID of the account associated with your zone. You might have more than one account, so make sure to use the ID of the account associated with the `zone_id` you provide, if you provide one. It can also be specified through the `CF_ACCOUNT_ID` environment variable.
+- `account_id` <Type>inherited</Type> <PropMeta>required</PropMeta>
+  - This is the ID of the account associated with your zone. You might have more than one account, so make sure to use the ID of the account associated with the `zone_id` you provide, if you provide one. It can also be specified through the `CF_ACCOUNT_ID` environment variable.
 
-  - `workers_dev` <Type>inherited</Type> <PropMeta>optional</PropMeta>
-    - This is a boolean flag that specifies if your worker will be deployed to your [workers.dev](https://workers.dev) subdomain. If omitted defaults to false.
+- `workers_dev` <Type>inherited</Type> <PropMeta>optional</PropMeta>
+  - This is a boolean flag that specifies if your worker will be deployed to your [workers.dev](https://workers.dev) subdomain. If omitted defaults to false.
 
-  - `route` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-    - A list of routes you’d like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
+- `route` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
+  - A list of routes you’d like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
 
-  - `routes` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-    - A list of routes you’d like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
+- `routes` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
+  - A list of routes you’d like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
 
-  - `webpack_config` <Type>inherited</Type> <PropMeta>optional</PropMeta>
-    - This is the path to a custom webpack configuration file for your worker. You must specify this field to use a custom webpack configuration, otherwise Wrangler will use a default configuration for you. Visit the [Wrangler webpack page](/cli-wrangler/webpack) for more information.
+- `webpack_config` <Type>inherited</Type> <PropMeta>optional</PropMeta>
+  - This is the path to a custom webpack configuration file for your worker. You must specify this field to use a custom webpack configuration, otherwise Wrangler will use a default configuration for you. Visit the [Wrangler webpack page](/cli-wrangler/webpack) for more information.
 
-  - `vars` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-    - An object containing text variables that can be directly accessed in a Worker script.
+- `vars` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
+  - An object containing text variables that can be directly accessed in a Worker script.
 
-  - `kv_namespaces` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-    - These specify any [Workers KV](#kv_namespaces) Namespaces you want to access from inside your Worker.
+- `kv_namespaces` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
+  - These specify any [Workers KV](#kv_namespaces) Namespaces you want to access from inside your Worker.
 
-  - `site` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-    - Determines the local folder to upload and serve from a Worker
+- `site` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
+  - Determines the local folder to upload and serve from a Worker
 
-  - `dev` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-    - Arguments for `wrangler dev`, configure local server
+- `dev` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
+  - Arguments for `wrangler dev`, configure local server
 
 </Definitions>
 
@@ -88,11 +88,11 @@ vars = { FOO = "some value", BAR = "some other string" }
 
 <Definitions>
 
-  - `FOO`
-    - The variable to access in your Worker script
+- `FOO`
+  - The variable to access in your Worker script
 
-  - `"some value"`
-    - The string value the variable resolves to
+- `"some value"`
+  - The string value the variable resolves to
 
 </Definitions>
 
@@ -117,14 +117,14 @@ kv_namespaces = [
 
 <Definitions>
 
-  - `binding` <PropMeta>required</PropMeta>
-    - After you’ve created a namespace, you must bind it to your Worker  so it is accessible from within the Worker script via a variable name you specify.
+- `binding` <PropMeta>required</PropMeta>
+  - After you’ve created a namespace, you must bind it to your Worker  so it is accessible from within the Worker script via a variable name you specify.
 
-  - `id` <PropMeta>required</PropMeta>
-    - The ID of the namespace you wish to bind to the Worker’s global scope when it is deployed. Required for `wrangler publish`.
+- `id` <PropMeta>required</PropMeta>
+  - The ID of the namespace you wish to bind to the Worker’s global scope when it is deployed. Required for `wrangler publish`.
 
-  - `preview_id` <PropMeta>required</PropMeta>
-    - The ID of the namespace you wish to bind to the Worker’s global scope when it is previewed . Required for `wrangler dev` and `wrangler preview`.
+- `preview_id` <PropMeta>required</PropMeta>
+  - The ID of the namespace you wish to bind to the Worker’s global scope when it is previewed . Required for `wrangler dev` and `wrangler preview`.
 
 </Definitions>
 
@@ -150,17 +150,17 @@ entry-point = "workers-site"
 
 <Definitions>
 
-  - `bucket` <PropMeta>required</PropMeta>
-    - The directory containing your static assets, path relative to your `wrangler.toml`. Example: `bucket = "./public"`
+- `bucket` <PropMeta>required</PropMeta>
+  - The directory containing your static assets, path relative to your `wrangler.toml`. Example: `bucket = "./public"`
 
-  - `entry-point` <PropMeta>optional</PropMeta>
-    - The location of your Worker script, default is `workers-site`. Example: `entry-point = "./workers-site"`
+- `entry-point` <PropMeta>optional</PropMeta>
+  - The location of your Worker script, default is `workers-site`. Example: `entry-point = "./workers-site"`
 
-  - `include` <PropMeta>optional</PropMeta>
-    - A list of gitignore-style patterns for files or directories in `bucket` you exclusively want to upload. Example: `include = ["upload_dir"]`
+- `include` <PropMeta>optional</PropMeta>
+  - A list of gitignore-style patterns for files or directories in `bucket` you exclusively want to upload. Example: `include = ["upload_dir"]`
 
-  - `exclude` <PropMeta>optional</PropMeta>
-    - A list of gitignore-style patterns for files or directories in `bucket` you want to exclude from uploads. Example: `exclude = ["ignore_dir"]`
+- `exclude` <PropMeta>optional</PropMeta>
+  - A list of gitignore-style patterns for files or directories in `bucket` you want to exclude from uploads. Example: `exclude = ["ignore_dir"]`
 
 </Definitions>
 
@@ -243,17 +243,17 @@ local_protocol="https"
 
 <Definitions>
 
-  - `ip` <PropMeta>optional</PropMeta>
-    - Ip for local `wrangler dev` server to listen on, defaults to 127.0.0.1
+- `ip` <PropMeta>optional</PropMeta>
+  - Ip for local `wrangler dev` server to listen on, defaults to 127.0.0.1
 
-  - `port` <PropMeta>optional</PropMeta>
-    - Port for local `wrangler dev` server to listen on, defaults to 8787
+- `port` <PropMeta>optional</PropMeta>
+  - Port for local `wrangler dev` server to listen on, defaults to 8787
 
-  - `local_protocol` <PropMeta>optional</PropMeta>
-    - Protocol that local `wrangler dev` server listen to requests on, defaults to http
+- `local_protocol` <PropMeta>optional</PropMeta>
+  - Protocol that local `wrangler dev` server listen to requests on, defaults to http
 
-  - `upstream_protocol` <PropMeta>optional</PropMeta>
-    - Protocol that `wrangler dev` forwards requests on, defaults to https
+- `upstream_protocol` <PropMeta>optional</PropMeta>
+  - Protocol that `wrangler dev` forwards requests on, defaults to https
 
 </Definitions>
 

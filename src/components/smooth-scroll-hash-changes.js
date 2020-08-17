@@ -9,16 +9,16 @@ import getNormalizedPath from "../utils/get-normalized-path"
 class SmoothScrollHashChanges extends React.Component {
 
   componentDidMount() {
-    this.previousLocation = window.location
+    this.previousPathname = window.location.pathname
 
     // Apply smooth scrolling only during page transitions so
     // as not to disrupt the browser’s normal in-page search
     // https://css-tricks.com/downsides-of-smooth-scrolling/
     this.historyUnsubscribe = globalHistory.listen(({ location, action }) => {
       const pathname = getNormalizedPath(location.pathname)
-      const previousPathname = getNormalizedPath(this.previousLocation.pathname)
+      const previousPathname = getNormalizedPath(this.previousPathname)
       const pathnameChanged = pathname !== previousPathname
-      this.previousLocation = location
+      this.previousPathname = location.pathname
 
       // Apply smooth scrolling only during hash changes
       if (pathnameChanged) return

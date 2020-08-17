@@ -65,7 +65,7 @@ const CodeBlock = props => {
   // in markdown code blocks because markdown
   // itself can contain frontmatter.
 
-  // TODO - find workaround for this limitation
+  // TODO: find workaround for this limitation
   if (language !== "markdown") {
     const parsed = frontMatterParser(code)
 

@@ -19,7 +19,7 @@ import "@cloudflare/workers-brand-assets/css/helpers/is-smooth-scrolling.css"
 import "@cloudflare/workers-brand-assets/css/helpers/is-visually-hidden.css"
 import "@cloudflare/workers-brand-assets/css/helpers/with-styled-webkit-scrollbars.css"
 
-// TODO - should these be imported by their respective components?
+// TODO: should these be imported by their respective components?
 import "@cloudflare/workers-brand-assets/css/components/aspect-ratio.css"
 import "@cloudflare/workers-brand-assets/css/components/breadcrumbs.css"
 import "@cloudflare/workers-brand-assets/css/components/button.css"
@@ -36,7 +36,7 @@ import "@cloudflare/workers-brand-assets/css/components/stream-video.css"
 import "@cloudflare/workers-brand-assets/css/components/superscript.css"
 import "@cloudflare/workers-brand-assets/css/components/tooltip.css"
 
-// TODO - should these be imported by their respective components?
+// TODO: should these be imported by their respective components?
 import "./src/css/docs/components/skip-nav-link.css"
 import "./src/css/docs/components/tags-filter.css"
 import "./src/css/docs/components/worker-starter.css"
