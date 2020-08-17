@@ -54,8 +54,7 @@ The runtime can continue running a function (`response.body.pipeTo(writable)`) a
 
 <Aside type="warning" header="Warning">
 
-<!-- TODO: link to documentation about the Request context. -->
-The Streams API is only available inside of the Request context, i.e. inside the `fetch` event listener callback.
+The Streams API is only available inside of the [Request context](/runtime-apis/request), i.e. inside the `fetch` event listener callback.
 
 </Aside>
 
