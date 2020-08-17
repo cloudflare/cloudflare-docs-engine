@@ -39,9 +39,7 @@ const DocsSearch = () => {
         // https://docsearch.algolia.com/docs/behavior
         handleSelected: (input, event, suggestion, datasetNumber, context) => {
           const url = new URL(suggestion.url)
-
-          // TODO - use a pathPrefix so this becomes unnecessary
-          navigate(url.pathname.replace("/workers", ""))
+          navigate(url.pathname + url.hash)
         },
 
         transformData: function(hits) {
