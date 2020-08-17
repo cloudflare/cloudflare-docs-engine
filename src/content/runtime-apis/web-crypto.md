@@ -2,16 +2,11 @@
 
 ## Background
 
-The Web Crypto API provides a set of low-level functions for common cryptographic tasks. The Workers
-Runtime implements the full surface of this API, but with some differences in the [supported
-algorithms](#supported-algorithms) compared to those implemented in most browsers.
+The Web Crypto API provides a set of low-level functions for common cryptographic tasks. The Workers Runtime implements the full surface of this API, but with some differences in the [supported algorithms](#supported-algorithms) compared to those implemented in most browsers.
 
-Performing cryptographic operations using the Web Crypto API is significantly faster than performing
-them purely in JavaScript. If you want to perform CPU-intensive cryptographic operations, you should
-consider using the Web Crypto API.
+Performing cryptographic operations using the Web Crypto API is significantly faster than performing them purely in JavaScript. If you want to perform CPU-intensive cryptographic operations, you should consider using the Web Crypto API.
 
-The Web Crypto API is implemented through the `SubtleCrypto` interface, accessible via the global
-`crypto.subtle` binding. A simple example of calculating a digest (also known as a hash) is:
+The Web Crypto API is implemented through the `SubtleCrypto` interface, accessible via the global `crypto.subtle` binding. A simple example of calculating a digest (also known as a hash) is:
 
 ```js
 const myText = new TextEncoder().encode("Hello world!")
@@ -26,16 +21,13 @@ const myDigest = await crypto.subtle.digest(
 console.log(new Uint8Array(myDigest))
 ```
 
-<!-- TODO(soon): Link does not exist. Update links to relevant Examples. -->
 Some common uses include:
 
-- [Signing requests.](/examples/signing-requests)
+- [Signing requests](/examples/signing-requests)
 
 <Aside type="warning" header="Warning">
 
-The Web Crypto API differs significantly from Node’s Crypto API. If you want to port JavaScript
-that relies on Node’s Crypto API, you’ll need to invest in translating it to use Web Crypto
-primitives.
+The Web Crypto API differs significantly from Node’s Crypto API. If you want to port JavaScript that relies on Node’s Crypto API, you’ll need to invest in translating it to use Web Crypto primitives.
 
 </Aside>
 
@@ -52,8 +44,7 @@ primitives.
 
 ### SubtleCrypto Methods
 
-These methods are all accessed via `crypto.subtle`, which is also [documented in detail on
-MDN](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto#Methods).
+These methods are all accessed via `crypto.subtle`, which is also [documented in detail on MDN](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto#Methods).
 
 <Definitions>
 
@@ -278,8 +269,7 @@ MDN](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto#Methods).
 
 ### Supported algorithms
 
-Workers implements a subset of the most common cryptographic algorithms, as shown in the following table.
-We are happy to add support for more algorithms — [let us know about your use case](https://community.cloudflare.com/c/developers/workers).
+Workers implements a subset of the most common cryptographic algorithms, as shown in the following table. We are happy to add support for more algorithms — [let us know about your use case](https://community.cloudflare.com/c/developers/workers).
 
 <TableWrap>
 
@@ -302,23 +292,11 @@ We are happy to add support for more algorithms — [let us know about your use 
 
 __Footnotes:__
 
-1. <a name="footnote-1"></a> MD5 is not part of the WebCrypto standard, but is supported in
-   Cloudflare Workers for interacting with legacy systems that require MD5. MD5 is considered a weak
-   algorithm. Do not rely upon MD5 for security.
+1. <a name="footnote-1"></a> MD5 is not part of the WebCrypto standard, but is supported in Cloudflare Workers for interacting with legacy systems that require MD5. MD5 is considered a weak algorithm. Do not rely upon MD5 for security.
 
 --------------------------------
-
-<!--
-## Common issues
-
-We should fill this in.
-
---------------------------------
--->
 
 ## See also
 
-- [SubtleCrypto documentation on
-  MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto)
-- [SubtleCrypto documentation as part of the W3C Web Crypto API
-  specification.](https://www.w3.org/TR/WebCryptoAPI/#subtlecrypto-interface)
+- [SubtleCrypto documentation on MDN.](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto)
+- [SubtleCrypto documentation as part of the W3C Web Crypto API specification.](https://www.w3.org/TR/WebCryptoAPI/#subtlecrypto-interface)
