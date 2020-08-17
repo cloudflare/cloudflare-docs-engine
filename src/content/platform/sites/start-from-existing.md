@@ -1,3 +1,7 @@
+---
+order: 0
+---
+
 # Start from existing
 
 Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) — make sure to be on the [latest version](/cli-wrangler/install-update#update) — and the Workers [Bundled plan](https://workers.cloudflare.com/sites#plans).

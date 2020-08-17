@@ -1,3 +1,7 @@
+---
+order: 1
+---
+
 # Start from scratch
 
 To start from scratch to create a Workers Site, follow these steps:
