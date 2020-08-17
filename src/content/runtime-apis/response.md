@@ -109,6 +109,6 @@ Valid options for the `options` object include:
 
 ## See also
 
-- [Modifying a Response](#)
-- [Implementing a conditional Response](#)
-- [Signing a Request/Response](#)
+- [Examples: Modify response](/examples/modify-response)
+- [Examples: Conditional response](/examples/conditional-response)
+- [Reference: `Request`](/runtime-apis/request)
