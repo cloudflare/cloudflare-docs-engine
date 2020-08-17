@@ -299,7 +299,7 @@ If you are using [kv_namespaces](/cli-wrangler/configuration#kv_namespaces) with
 
 ### Previewing on Windows Subsystem for Linux (WSL 1/2)
 
-#### Setting \$BROWSER to your browser binary
+#### Setting $BROWSER to your browser binary
 
 WSL is a Linux environment, so `wrangler` attempts to invoke `xdg-open` in order to open your browser. To make `wrangler preview` work with WSL, you should set your `$BROWSER` to the path of your browser binary.
 
@@ -311,7 +311,7 @@ $ ln -s "/mnt/c/Program Files/Mozilla Firefox/firefox.exe" firefox
 $ export BROWSER=firefox
 ```
 
-#### Setting \$BROWSER to `wsl-open`
+#### Setting $BROWSER to `wsl-open`
 
 Another option is to install [wsl-open](https://github.com/4U6U57/wsl-open#standalone) and set the `$BROWSER` env variable to `wsl-open`, via `wsl-open -w`. This ensures that `xdg-open` uses `wsl-open` when it attempts to open your browser.
 
