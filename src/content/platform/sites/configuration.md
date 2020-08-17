@@ -1,3 +1,7 @@
+---
+order: 3
+---
+
 # Configuration
 
 Workers Sites require the latest version of [Wrangler](https://github.com/cloudflare/wrangler) and the Workers [Bundled plan](https://workers.cloudflare.com/sites#plans).
