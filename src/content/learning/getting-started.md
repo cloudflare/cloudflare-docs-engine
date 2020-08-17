@@ -4,7 +4,7 @@ order: 0
 
 # Getting started
 
-Cloudflare Workers is a **serverless application platform** running on Cloudflare’s global cloud network in over 200 cities around the world, offering both [free and paid plans](/learning/pricing).
+Cloudflare Workers is a **serverless application platform** running on Cloudflare’s global cloud network in over 200 cities around the world, offering both [free and paid plans](/platform/pricing).
 
 Learn more about [how Workers works](/learning/how-workers-works).
 
@@ -324,7 +324,7 @@ When deploying to a workers.dev subdomain, the **name** field will be used as th
 
 To publish your application on a domain you own, and not a workers.dev subdomain, you can add a `route` key to your `wrangler.toml`.
 
-Wrangler’s [environments feature](/cli-wrangler/environments) allows us to specify multiple different deploy targets for our application. Let's add a `production` environment, passing in a `zone_id` and `route`:
+Wrangler’s [environments feature](/platform/environments) allows us to specify multiple different deploy targets for our application. Let's add a `production` environment, passing in a `zone_id` and `route`:
 
 ```toml
 ---

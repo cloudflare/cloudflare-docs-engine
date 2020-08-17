@@ -55,13 +55,13 @@ All bindings have the following properties:
 
 ### KV namespace bindings
 
-If your Worker uses a [KV namespace](/storage/overview/), you will want to add a `kv_namespace` binding object to the `"bindings"` array in `metadata.json`.
+If your Worker uses a [KV namespace](/learning/how-kv-works), you will want to add a `kv_namespace` binding object to the `"bindings"` array in `metadata.json`.
 
 KV bindings must include a `namespace_id`. The `namespace_id` value should correspond to the identifier associated with the namespace you want to use.
 
 ### WebAssembly module bindings
 
-If your Worker uses a [WebAssembly Module](/examples/boilerplates/rustwasm/), you will want to add a `wasm_module` binding object to the `bindings` array in `metadata.json`.
+If your Worker uses a [WebAssembly Module](https://github.com/cloudflare/rustwasm-worker-template), you will want to add a `wasm_module` binding object to the `bindings` array in `metadata.json`.
 
 You will also need to add your WebAssembly module as a file part to your request, and name it the same as the `part` field in the binding.
 
