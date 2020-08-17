@@ -400,7 +400,7 @@ For example, here we’re specifying `highlight: [5,6,7]` in order to highlight 
 highlight: [5,6,7]
 ---
 async function lazy() {
-  // TODO: implement
+  // ...
 }
 
 function hello() {
@@ -424,7 +424,7 @@ highlight: [3]
 highlight: [5,6,7]
 ---
 async function lazy() {
-  // TODO: implement
+  // ...
 }
 
 function hello() {
