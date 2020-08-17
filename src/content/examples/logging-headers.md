@@ -145,11 +145,3 @@ Request headers: [
 
 While not as elegant as object literal syntax, this is certainly readable and
 useful for debugging purposes.
-
-
-
-<!-- ## Demo
-
-<p><a href={props.frontmatter.demo}>Open demo</a></p>
-
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="80"/> -->
