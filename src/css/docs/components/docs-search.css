@@ -155,6 +155,13 @@
   [theme="dark"] .DocsSearch .algolia-autocomplete {
     background: rgba(var(--gray-0-rgb), .8);
   }
+
+  /* Safari only hack */
+  @media not all and (min-resolution:.001dpcm) { @media {
+    .DocsSearch .algolia-autocomplete {
+      background: rgba(var(--background-color-rgb), 1);
+    }
+  }}
 }
 
 .DocsSearch .algolia-autocomplete [class|="ds-dataset"] > *:first-child {
