@@ -44,7 +44,7 @@ There are a few specific configuration settings for Workers Sites in your `wrang
 </TableWrap>
 To learn more about the optional `include` and `exclude` fields, visit [Ignoring Subsets of Static Assets](/tooling/wrangler/sites/#ignoring-subsets-of-static-assets).
 
-_Note: if your project uses [environments](/tooling/wrangler/environments), make sure to place `site` at the top level config._
+_Note: if your project uses [environments](/platform/environments), make sure to place `site` at the top level config._
 
 Example of a `wrangler.toml`:
 
@@ -77,7 +77,7 @@ For very exceptionally large pages, Workers Sites might not work for you. There 
 
 ## Ignoring Subsets of Static Assets
 
-Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) - make sure to be on the [latest version](/quickstart/#updating-the-cli) - and the Workers [Bundled plan](https://workers.cloudflare.com/sites#plans).
+Workers Sites require [Wrangler](https://github.com/cloudflare/wrangler) - make sure to be on the [latest version](/cli-wrangler/install-update#update) - and the Workers [Bundled plan](https://workers.cloudflare.com/sites#plans).
 
 There are cases where users may not want to upload certain static assets to their Workers Sites.
 In this case, Workers Sites can also be configured to ignore certain files or directories using logic
@@ -130,4 +130,4 @@ You can learn more about the standard patterns used for include and exclude in t
 
 ## Customizing your Build
 
-Workers Sites projects use webpack by default. You can [bring your own webpack config](/tooling/wrangler/webpack/#using-with-workers-sites), however it is important to be cognizant of your `entry` and `context` settings.
+Workers Sites projects use webpack by default. You can [bring your own webpack config](/cli-wrangler/webpack#using-with-workers-sites), however it is important to be cognizant of your `entry` and `context` settings.
