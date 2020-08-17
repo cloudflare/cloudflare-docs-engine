@@ -155,7 +155,7 @@ This will remove the key and value from your namespace. As with any operations, 
 
 This method returns a promise that you should `await` on in order to verify successful deletion.
 
-You can also [delete key-value pairs from the command line with Wrangler](/cli-wrangler/kv_commands/#kv-key) or [via the API](https://api.cloudflare.com/#workers-kv-namespace-delete-key-value-pair).
+You can also [delete key-value pairs from the command line with Wrangler](/cli-wrangler/commands#kvkey) or [via the API](https://api.cloudflare.com/#workers-kv-namespace-delete-key-value-pair).
 
 ### Listing keys
 
@@ -242,4 +242,4 @@ const next_value = await NAMESPACE.list({"cursor": cursor})
 ## See Also
 
 - [Limits](/platform/limits#kv-limits)
-- [Pricing](/pricing#kv)
+- [Pricing](/platform/pricing#kv)
