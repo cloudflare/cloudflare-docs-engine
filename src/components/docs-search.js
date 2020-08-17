@@ -18,7 +18,6 @@ const DocsSearch = () => {
       }
 
       const search = window.docsearch({
-        // TODO - replace with new index and API key
         indexName: "workers-cloudflare-v2",
         apiKey: "9c24e56570a37c30bba608dad543d1d8",
 
