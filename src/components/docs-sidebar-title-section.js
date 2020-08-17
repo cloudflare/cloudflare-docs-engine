@@ -9,8 +9,6 @@ import DocsSidebarMoreDropdown from "./docs-sidebar-more-dropdown"
 
 const DocsSidebarTitleSection = () => (
   <div className="DocsSidebar--section DocsSidebar--docs-title-section">
-
-    {/* TODO - get URL from Gatsby config? */}
     <Link className="DocsSidebar--docs-title-logo-link DocsSidebar--link" to="/">
       <DocsNavLogoLockup
         logo={<DocsProductLogo/>}
