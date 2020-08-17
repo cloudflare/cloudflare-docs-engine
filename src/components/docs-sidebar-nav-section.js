@@ -20,9 +20,8 @@ class DocsSidebarNavSectionContent extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.location.pathname === prevProps.location.pathname) return
     if (this.scrollToActiveTimeout) clearTimeout(this.scrollToActiveTimeout)
-    if (isMobile()) return // TODO - is this necessary?
 
-    if (userPrefersReducedMotion()) {
+    if (userPrefersReducedMotion() || isMobile()) {
       // Wait one frame to allow the sidebar nav items
       // to expand/collapse as needed before determining
       // the scroll position
