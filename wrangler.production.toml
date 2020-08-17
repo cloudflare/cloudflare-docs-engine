@@ -1,0 +1,16 @@
+# wrangler.toml file for deploying to internal cloudflare zones/workers.dev instances.
+# this shouldn't be touched or used besides by the GitHub Actions workflow!
+
+name = "workers-docs"
+type = "webpack"
+account_id = "b54f07a6c269ecca2fa60f1ae4920c99" # cloudflaredocs.workers.dev
+workers_dev = true
+kv-namespaces = [{ binding = "REDIRECTS", id = "7df3fe779d0048d1bacc5d753c1153d0", preview_id = "7df3fe779d0048d1bacc5d753c1153d0" }]
+
+[site]
+bucket = "./public"
+entry-point = "workers-site"
+
+[env.production]
+zone_id = "351cf9fc660523187714fa772ad5ca49"
+route = "https://developers.cloudflare.com/workers*"
