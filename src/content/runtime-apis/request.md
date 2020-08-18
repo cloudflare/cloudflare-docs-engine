@@ -291,42 +291,42 @@ These methods are only available on an instance of a `Request` object or through
 
 --------------------------------
 
-## The Request context
+## The request context
 
-Request context is the context of the `"fetch"` event callback. It is important to note that due to how workers are executed, asynchronous tasks (e.g. `fetch `) can only be run *inside* the request context.
+The `Request` context is the context of the `"fetch"` event callback. It is important to note that due to how workers are executed, asynchronous tasks (e.g. `fetch`) can only be run _inside_ the request context.
 
-During a [Fetch Event](/reference/apis/fetch-event/) callback:
+The request context is available insie of the [`FetchEvent` handler](/runtime-apis/fetch-event/):
 
-```javascript
-addEventListener('fetch', event => {
-  // the request context is available here
+```js
+addEventListener("fetch", event => {
+  // Request context available here
   event.respondWith(/*...*/)
 })
 ```
 
-### When is the `Request` context active?
+### When passing a promise to fetch event `.respondWith()`
 
-### When passing a promise to `FetchEvent.respondWith()`
+If you pass a Response promise to the fetch event [`.respondWith()`](/runtime-apis/fetch-event/#methods) method, the request context is active during any asynchronous tasks which run before the Response promise has settled. You can pass the event to an async handler, for example:
 
-If you pass a Response promise to `FetchEvent.respondWith()`, the request context is active during any asynchronous tasks which run before the Response promise has settled. You can pass the event to an async handler, for example:
-
-```javascript
-addEventListener('fetch', event => {
+```js
+addEventListener("fetch", event => {
   event.respondWith(eventHandler(event))
 })
-// no request context here
+
+// No request context available here
+
 async function eventHandler(event){
-  // request context is available here
-  return new Response('Hello, Workers!')
+  // Request context available here
+  return new Response("Hello, Workers!")
 }
 ```
 
-### What happens when attempting to access an inactive `Request` context?
+### Errors when attempting to access an inactive `Request` context
 
-Any attempt to use APIs such as `fetch()` or access `Request` context during script startup will throw an exception:
+Any attempt to use APIs such as `fetch()` or access the `Request` context during script startup will throw an exception:
 
-```javascript
-const promise = fetch('https://example.com/') // ERROR
+```js
+const promise = fetch("https://example.com/") // Error
 async function eventHandler(event){..}
 ```
 
