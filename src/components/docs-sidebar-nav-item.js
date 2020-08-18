@@ -10,6 +10,8 @@ import userPrefersReducedMotion from "../utils/user-prefers-reduced-motion"
 
 const collapseClassesBase = "DocsSidebar--nav-item-collapse-"
 
+const DEFAULT_PATH_PREFIX = process.env.NODE_ENV !== "production" ? "/workers" : ""
+
 const DocsSidebarCollapse = ({ expanded, children }) => {
   const base = collapseClassesBase
   const collapseClasses = {
@@ -79,13 +81,11 @@ class DocsSidebarNavItem extends React.Component {
   isActive() {
     const { pathPrefix, node, location } = this.props
 
-    const path = pathPrefix
-      ? pathPrefix + location.pathname
-      : location.pathname
-
-    console.log(pathPrefix + node.href)
-    console.log(pathPrefix + location.pathname)
-    const isActive = pathPrefix + node.href === getNormalizedPath(path)
+    const href = node => pathPrefix ? pathPrefix + node.href : node.href
+    const path = process.env.NODE_ENV === "production" ?
+      location.pathname :
+      pathPrefix + location.pathname
+    const isActive = href(node) === getNormalizedPath(path)
     const isActiveDueToChild = !this.showChildren() && this.isActiveRoot()
 
     return isActive || isActiveDueToChild
@@ -94,11 +94,11 @@ class DocsSidebarNavItem extends React.Component {
   isActiveRoot() {
     const { pathPrefix, node, location } = this.props
 
-    const path = pathPrefix
-      ? pathPrefix + location.pathname
-      : location.pathname
-
-    const isActive = node => pathPrefix + node.href === getNormalizedPath(path)
+    const href = node => pathPrefix ? pathPrefix + node.href : node.href
+    const path = process.env.NODE_ENV === "production" ?
+      location.pathname :
+      pathPrefix + location.pathname
+    const isActive = node => href(node) === getNormalizedPath(path)
     const hasActiveChild = node => !node.children ? false : node.children.some(
       node => isActive(node) || hasActiveChild(node)
     )
@@ -206,7 +206,7 @@ const DocsSidebarNavItemWrapper = props => {
     }
   `)
 
-  return <DocsSidebarNavItem {...props} pathPrefix={site.pathPrefix} />
+  return <DocsSidebarNavItem {...props} pathPrefix={site.pathPrefix || DEFAULT_PATH_PREFIX} />
 }
 
 export default DocsSidebarNavItemWrapper
