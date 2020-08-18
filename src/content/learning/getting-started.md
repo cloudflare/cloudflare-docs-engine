@@ -10,7 +10,7 @@ Learn more about [how Workers works](/learning/how-workers-works).
 
 <Aside header="Try the Playground">
 
-The quickest way to expirement with Cloudflare Workers is in the [Playground](https://cloudflareworkers.com/#36ebe026bf3510a2e5acace89c09829f:about:blank). It doesn’t require _any_ setup. It’s just a simple, instant way to preview and test a Workers script directly in the browser against any site.
+The quickest way to experiment with Cloudflare Workers is in the [Playground](https://cloudflareworkers.com/#36ebe026bf3510a2e5acace89c09829f:about:blank). It doesn’t require _any_ setup. It’s just a simple, instant way to preview and test a Workers script directly in the browser against any site.
 
 </Aside>
 
@@ -22,7 +22,7 @@ Before you can start [publishing](/cli-wrangler/commands#publish) your Workers o
 
 <p><Link to="https://dash.cloudflare.com/sign-up/workers" className="Button Button-is-docs-primary">Sign up</Link></p>
 
-The signup process will guide you through choosing a workers.dev subdomain and veryifying your email address, both of which are required to publish.
+The signup process will guide you through choosing a workers.dev subdomain and verifying your email address, both of which are required to publish.
 
 --------------------------------
 
@@ -154,7 +154,7 @@ It’s very common to filter requests based on:
 
 - `request.method` — e.g. `GET` or `POST`.
 - `request.url` — e.g. filter based on query parameters or the pathname.
-- `request.headers` — filter based on spcific headers.
+- `request.headers` — filter based on specific headers.
 
 See a list of [all properties of a `Request` object](/runtime-apis/request#properties).
 
@@ -380,7 +380,7 @@ header: Publish to example.com
 
 For more information on environments, check out the [Wrangler documentation](/cli-wrangler/configuration#environments).
 
-You can also configure a Github repo to automatically deploy every time you `git push`. You can do this by either using the [Workers Github action](https://github.com/marketplace/actions/github-action-for-cloudflare-workers), or by writing your own Github action and manually configuring the necessary [Github sectets](https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
+You can also configure a Github repo to automatically deploy every time you `git push`. You can do this by either using the [Workers Github action](https://github.com/marketplace/actions/github-action-for-cloudflare-workers), or by writing your own Github action and manually configuring the necessary [Github secrets](https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
 
 --------------------------------
 

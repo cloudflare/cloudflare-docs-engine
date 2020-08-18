@@ -295,7 +295,7 @@ These methods are only available on an instance of a `Request` object or through
 
 The `Request` context is the context of the `"fetch"` event callback. It is important to note that due to how workers are executed, asynchronous tasks (e.g. `fetch`) can only be run _inside_ the request context.
 
-The request context is available insie of the [`FetchEvent` handler](/runtime-apis/fetch-event/):
+The request context is available inside of the [`FetchEvent` handler](/runtime-apis/fetch-event/):
 
 ```js
 addEventListener("fetch", event => {
