@@ -7,3 +7,14 @@ kv-namespaces = [{ binding = "REDIRECTS", id = "7df3fe779d0048d1bacc5d753c1153d0
 [site]
 bucket = "./public"
 entry-point = "workers-site"
+
+[env.migration]
+name = "workers-docs"
+account_id = "b54f07a6c269ecca2fa60f1ae4920c99" # cloudflaredocs.workers.dev
+kv-namespaces = [{ binding = "REDIRECTS", id = "18460178b7c6458b9dd4f6b99b27d2b1", preview_id = "18460178b7c6458b9dd4f6b99b27d2b1" }]
+
+[env.production]
+workers_dev = false
+zone_id = "351cf9fc660523187714fa772ad5ca49"
+route = "https://developers.cloudflare.com/workers*"
+kv-namespaces = [{ binding = "REDIRECTS", id = "18460178b7c6458b9dd4f6b99b27d2b1", preview_id = "18460178b7c6458b9dd4f6b99b27d2b1" }]
