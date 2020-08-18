@@ -26,7 +26,7 @@ module.exports = {
   },
 
   // Prefix site with /workers
-  pathPrefix: `/workers`,
+  pathPrefix: process.env.NODE_ENV === "production" ? `/workers` : '',
 
   plugins: [
     "gatsby-plugin-sitemap",

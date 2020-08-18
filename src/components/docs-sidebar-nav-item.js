@@ -80,10 +80,7 @@ class DocsSidebarNavItemContent extends React.Component {
     const { pathPrefix, node, location } = this.props
 
     const href = node => pathPrefix ? pathPrefix + node.href : node.href
-    const path = process.env.NODE_ENV === "production" ?
-      location.pathname :
-      pathPrefix + location.pathname
-    const isActive = href(node) === getNormalizedPath(path)
+    const isActive = href(node) === getNormalizedPath(location.pathname)
     const isActiveDueToChild = !this.showChildren() && this.isActiveRoot()
 
     return isActive || isActiveDueToChild
@@ -93,10 +90,7 @@ class DocsSidebarNavItemContent extends React.Component {
     const { pathPrefix, node, location } = this.props
 
     const href = node => pathPrefix ? pathPrefix + node.href : node.href
-    const path = process.env.NODE_ENV === "production" ?
-      location.pathname :
-      pathPrefix + location.pathname
-    const isActive = node => href(node) === getNormalizedPath(path)
+    const isActive = node => href(node) === getNormalizedPath(location.pathname)
     const hasActiveChild = node => !node.children ? false : node.children.some(
       node => isActive(node) || hasActiveChild(node)
     )
@@ -178,7 +172,7 @@ class DocsSidebarNavItemContent extends React.Component {
             <div className={`${collapseClassesBase}content`}>
               <ul className="DocsSidebar--nav-subnav" depth={depth} style={{'--depth': depth}}>
                 {node.children.map(node => (
-                  <DocsSidebarNavItemContent
+                  <DocsSidebarNavItem
                     key={node.id}
                     node={node}
                     location={location}
