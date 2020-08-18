@@ -33,11 +33,8 @@ jobs:
       env:
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
         CF_EMAIL: ${{ secrets.CF_EMAIL }}
-    - name: Copy wrangler.production.toml to wrangler.toml
-      run: cp wrangler.production.toml wrangler.toml
-    - name: Publish site
+    - name: Publish migration site
       uses: cloudflare/wrangler-action@1.2.0
       with:
         apiToken: ${{ secrets.CF_PRODUCTION_API_TOKEN }}
-        # Uncomment when new docs are live
-        # environment: production
+        environment: migration
