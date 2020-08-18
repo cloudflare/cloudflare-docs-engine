@@ -674,7 +674,7 @@ __Warning:__ This API is in active development. Please don’t use until this no
 
 </Aside>
 
-You can display a page listing of any depth by simplying including the `<DirectoryListing/>` component.
+You can display a page listing of any depth by simply including the `<DirectoryListing/>` component.
 
 For example, here’s a directory listing for the docs engine part of the site.
 

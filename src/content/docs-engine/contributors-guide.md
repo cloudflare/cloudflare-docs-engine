@@ -77,17 +77,17 @@ Within Cloudflare Workers, the division is as as follows:
 
 Cloudflare documentation should be practical and approachable.
 
-- **Use short words, short sentences, and short parapgraphs.**
+- **Use short words, short sentences, and short paragraphs.**
 
 - **Focus on clearly documenting the “80%” case first.** Complete documentation is important, but don’t let perfection be the enemy of the good.
 
-- **Avoid hierarchy.** When possible, it’s better to flatten hierarchy as much as possible. Practically, this often means re-wording headings to avoid h4s and h5s, and instead add a few more h2s and h3s. Flatter hiarchies are conceptually easier to understand and generally increases discoverability.
+- **Avoid hierarchy.** When possible, it’s better to flatten hierarchy as much as possible. Practically, this often means re-wording headings to avoid h4s and h5s, and instead add a few more h2s and h3s. Flatter hierarchies are conceptually easier to understand and generally increases discoverability.
 
 - **Consistency trumps style.** When in doubt, match your content to the documentation around it. Raise an issue on Github when something feels off.
 
 ### Writing technical reference
 
-When writing documentation as part of a techincal reference (e.g. [runtime API](/runtime-apis) doc), follow these additional guidelines ([from Divio](https://documentation.divio.com/reference/#reference)):
+When writing documentation as part of a technical reference (e.g. [runtime API](/runtime-apis) doc), follow these additional guidelines ([from Divio](https://documentation.divio.com/reference/#reference)):
 
 - **Structure the documentation around the codebase.** When documenting a set of APIs, for example, name and organize the files to match the codebase’s naming and folder structure. This helps ensure consistency when communicating with users, who may see and interact with codebase, and helps maintainers see where documentation is missing or needs to be updated.
 
