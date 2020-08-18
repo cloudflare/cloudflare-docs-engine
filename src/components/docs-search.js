@@ -7,9 +7,7 @@ import Helmet from "react-helmet"
 import DocsTitle from "./docs-title"
 import AccessibleSVG from "./accessible-svg"
 
-const DEFAULT_PATH_PREFIX = process.env.NODE_ENV !== "production" ? "/workers" : ""
-
-const DocsSearch = ({ pathPrefix }) => {
+const DocsSearchContent = ({ pathPrefix }) => {
   useEffect(() => {
     let frames = 0
     const init = () => {
@@ -112,7 +110,7 @@ const DocsSearch = ({ pathPrefix }) => {
   )
 }
 
-const DocsSearchWrapper = () => {
+const DocsSearch = () => {
   const { site } = useStaticQuery(graphql`
     {
       site {
@@ -121,7 +119,7 @@ const DocsSearchWrapper = () => {
     }
   `)
 
-  return <DocsSearch pathPrefix={site.pathPrefix || DEFAULT_PATH_PREFIX} />
+  return <DocsSearchContent pathPrefix={site.pathPrefix} />
 }
 
-export default DocsSearchWrapper
+export default DocsSearch

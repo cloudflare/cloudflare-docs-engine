@@ -10,8 +10,6 @@ import userPrefersReducedMotion from "../utils/user-prefers-reduced-motion"
 
 const collapseClassesBase = "DocsSidebar--nav-item-collapse-"
 
-const DEFAULT_PATH_PREFIX = process.env.NODE_ENV !== "production" ? "/workers" : ""
-
 const DocsSidebarCollapse = ({ expanded, children }) => {
   const base = collapseClassesBase
   const collapseClasses = {
@@ -59,7 +57,7 @@ const DocsSidebarCollapse = ({ expanded, children }) => {
   )
 }
 
-class DocsSidebarNavItem extends React.Component {
+class DocsSidebarNavItemContent extends React.Component {
 
   constructor(props) {
     super(props)
@@ -180,7 +178,7 @@ class DocsSidebarNavItem extends React.Component {
             <div className={`${collapseClassesBase}content`}>
               <ul className="DocsSidebar--nav-subnav" depth={depth} style={{'--depth': depth}}>
                 {node.children.map(node => (
-                  <DocsSidebarNavItemWrapper
+                  <DocsSidebarNavItemContent
                     key={node.id}
                     node={node}
                     location={location}
@@ -197,7 +195,7 @@ class DocsSidebarNavItem extends React.Component {
   }
 }
 
-const DocsSidebarNavItemWrapper = props => {
+const DocsSidebarNavItem = props => {
   const { site } = useStaticQuery(graphql`
     {
       site {
@@ -206,7 +204,7 @@ const DocsSidebarNavItemWrapper = props => {
     }
   `)
 
-  return <DocsSidebarNavItem {...props} pathPrefix={site.pathPrefix || DEFAULT_PATH_PREFIX} />
+  return <DocsSidebarNavItemContent {...props} pathPrefix={site.pathPrefix} />
 }
 
-export default DocsSidebarNavItemWrapper
+export default DocsSidebarNavItem
