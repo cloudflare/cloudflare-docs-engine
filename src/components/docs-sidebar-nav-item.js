@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 
 import Collapse from "@material-ui/core/Collapse"
 
@@ -77,18 +77,26 @@ class DocsSidebarNavItem extends React.Component {
   }
 
   isActive() {
-    const { node, location } = this.props
+    const { assetPrefix, node, location } = this.props
 
-    const isActive = node.href === getNormalizedPath(location.pathname)
+    const path = assetPrefix
+      ? assetPrefix + location.pathname
+      : location.pathname
+
+    const isActive = node.href === getNormalizedPath(path)
     const isActiveDueToChild = !this.showChildren() && this.isActiveRoot()
 
     return isActive || isActiveDueToChild
   }
 
   isActiveRoot() {
-    const { node, location } = this.props
+    const { assetPrefix, node, location } = this.props
 
-    const isActive = node => node.href === getNormalizedPath(location.pathname)
+    const path = assetPrefix
+      ? assetPrefix + location.pathname
+      : location.pathname
+
+    const isActive = node => "/workers" + node.href === getNormalizedPath(path)
     const hasActiveChild = node => !node.children ? false : node.children.some(
       node => isActive(node) || hasActiveChild(node)
     )
@@ -187,4 +195,16 @@ class DocsSidebarNavItem extends React.Component {
   }
 }
 
-export default DocsSidebarNavItem
+const DocsSidebarNavItemWrapper = props => {
+  const { site } = useStaticQuery(graphql`
+    {
+      site {
+        assetPrefix
+      }
+    }
+  `)
+
+  return <DocsSidebarNavItem {...props} assetPrefix={site.assetPrefix} />
+}
+
+export default DocsSidebarNavItemWrapper
