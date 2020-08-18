@@ -10,7 +10,7 @@ entry-point = "workers-site"
 
 [env.migration]
 name = "workers-docs"
-account_id = "b54f07a6c269ecca2fa60f1ae4920c99" # cloudflaredocs.workers.dev
+account_id = "b54f07a6c269ecca2fa60f1ae4920c99" # cloudflare-docs.workers.dev
 kv-namespaces = [{ binding = "REDIRECTS", id = "18460178b7c6458b9dd4f6b99b27d2b1", preview_id = "18460178b7c6458b9dd4f6b99b27d2b1" }]
 
 [env.production]
