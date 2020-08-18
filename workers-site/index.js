@@ -36,7 +36,9 @@ async function handleEvent(event) {
   // options.mapRequestToAsset = handlePrefix(/^\/docs/)
 
   try {
-    const { response } = await redirector(event)
+    const { response } = await redirector(event, {
+      validateRedirects: false
+    })
     if (response) return response
 
     if (DEBUG) {
