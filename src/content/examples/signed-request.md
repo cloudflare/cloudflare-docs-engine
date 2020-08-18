@@ -15,7 +15,7 @@ tags:
 </ContentColumn>
 
 ```js
-// NOTE Requires ESM through webpack project type
+// NOTE: Requires ESM through webpack project type
 const crypto = require("crypto")
 const SECRET = "SECRET_KEY"
 
@@ -36,19 +36,18 @@ async function createHexSignature(requestBody) {
 }
 
 async function checkSignature(request) {
-  // hash request with secret key
+  // Hash request with secret key
   let expectedSignature = await createHexSignature(await request.text())
   let actualSignature = await request.headers.get("signature")
-  // check that hash matches signature
+  // Check that hash matches signature
   return expectedSignature === actualSignature
 }
 
-
 async function signResponse(responseBody, response) {
-  // create signature
+  // Create signature
   const signature = await createHexSignature(responseBody)
   response.headers.set("signature", signature)
-  //add header with signature
+  // Add header with signature
   return response
 }
 
