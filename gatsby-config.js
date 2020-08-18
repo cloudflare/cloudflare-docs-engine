@@ -26,7 +26,6 @@ module.exports = {
   },
 
   // Prefix site with /workers
-  assetPrefix: `/workers`,
   pathPrefix: `/workers`,
 
   plugins: [
