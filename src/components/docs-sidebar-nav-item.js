@@ -77,26 +77,28 @@ class DocsSidebarNavItem extends React.Component {
   }
 
   isActive() {
-    const { assetPrefix, node, location } = this.props
+    const { pathPrefix, node, location } = this.props
 
-    const path = assetPrefix
-      ? assetPrefix + location.pathname
+    const path = pathPrefix
+      ? pathPrefix + location.pathname
       : location.pathname
 
-    const isActive = node.href === getNormalizedPath(path)
+    console.log(pathPrefix + node.href)
+    console.log(pathPrefix + location.pathname)
+    const isActive = pathPrefix + node.href === getNormalizedPath(path)
     const isActiveDueToChild = !this.showChildren() && this.isActiveRoot()
 
     return isActive || isActiveDueToChild
   }
 
   isActiveRoot() {
-    const { assetPrefix, node, location } = this.props
+    const { pathPrefix, node, location } = this.props
 
-    const path = assetPrefix
-      ? assetPrefix + location.pathname
+    const path = pathPrefix
+      ? pathPrefix + location.pathname
       : location.pathname
 
-    const isActive = node => "/workers" + node.href === getNormalizedPath(path)
+    const isActive = node => pathPrefix + node.href === getNormalizedPath(path)
     const hasActiveChild = node => !node.children ? false : node.children.some(
       node => isActive(node) || hasActiveChild(node)
     )
@@ -178,7 +180,7 @@ class DocsSidebarNavItem extends React.Component {
             <div className={`${collapseClassesBase}content`}>
               <ul className="DocsSidebar--nav-subnav" depth={depth} style={{'--depth': depth}}>
                 {node.children.map(node => (
-                  <DocsSidebarNavItem
+                  <DocsSidebarNavItemWrapper
                     key={node.id}
                     node={node}
                     location={location}
@@ -199,12 +201,12 @@ const DocsSidebarNavItemWrapper = props => {
   const { site } = useStaticQuery(graphql`
     {
       site {
-        assetPrefix
+        pathPrefix
       }
     }
   `)
 
-  return <DocsSidebarNavItem {...props} assetPrefix={site.assetPrefix} />
+  return <DocsSidebarNavItem {...props} pathPrefix={site.pathPrefix} />
 }
 
 export default DocsSidebarNavItemWrapper

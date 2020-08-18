@@ -130,7 +130,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Site {
-      assetPrefix: String
+      pathPrefix: String
     }
   `
 
