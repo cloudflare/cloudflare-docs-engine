@@ -1,12 +1,15 @@
 import React, { useEffect } from "react"
 import { navigate } from "@reach/router"
+import { graphql, useStaticQuery } from "gatsby"
 
 import Helmet from "react-helmet"
 
 import DocsTitle from "./docs-title"
 import AccessibleSVG from "./accessible-svg"
 
-const DocsSearch = () => {
+const DEFAULT_PATH_PREFIX = process.env.NODE_ENV !== "production" ? "/workers" : ""
+
+const DocsSearch = ({ pathPrefix }) => {
   useEffect(() => {
     let frames = 0
     const init = () => {
@@ -47,9 +50,9 @@ const DocsSearch = () => {
 
           // Navigate to just the page if the hash points to the h1
           if (page === hash) {
-            navigate(url.pathname)
+            navigate(pathPrefix + url.pathname)
           } else {
-            navigate(url.pathname + url.hash)
+            navigate(pathPrefix + url.pathname + url.hash)
           }
         },
 
@@ -109,4 +112,16 @@ const DocsSearch = () => {
   )
 }
 
-export default DocsSearch
+const DocsSearchWrapper = () => {
+  const { site } = useStaticQuery(graphql`
+    {
+      site {
+        pathPrefix
+      }
+    }
+  `)
+
+  return <DocsSearch pathPrefix={site.pathPrefix || DEFAULT_PATH_PREFIX} />
+}
+
+export default DocsSearchWrapper
