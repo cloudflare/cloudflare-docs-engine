@@ -238,7 +238,7 @@ For domains that you have registered on Cloudflare, you need both IDs:
 2. You’ll be taken to your **Profile** page.
 3. Click **Create token**.
 4. Under the **API token templates** section, find the **Edit Cloudflare Workers** template and click **Use template**.
-5. Fill out the rest of the fields and then click **Continue to Summary**, where you can click **Create Token** and issue your token for use.
+5. Fill out the rest of the fields and then click **Continue to summary**, where you can click **Create Token** and issue your token for use.
 
 #### Option 2: Obtaining your **Global API Key**
 
