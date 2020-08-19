@@ -83,6 +83,17 @@ const DocsSearch = () => {
       input.addEventListener("blur", () => {
         wrapper.removeAttribute("is-focused")
       })
+
+      document.addEventListener("keydown", event => {
+        const slashShortcut = event.key === "/"
+        const commandShorcut = event.key === "S" && event.shiftKey
+
+        if (slashShortcut || commandShorcut) {
+          event.preventDefault()
+          window.scrollTo(0, 0)
+          input.focus()
+        }
+      })
     }
 
     init()
