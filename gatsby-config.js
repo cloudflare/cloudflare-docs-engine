@@ -5,7 +5,7 @@ module.exports = {
   pathPrefix: process.env.NODE_ENV === "production" ? "/workers" : "",
 
   siteMetadata: {
-    title: "Cloudflare Workers Docs",
+    title: "Cloudflare Workers docs",
     description: "Documentation for Cloudflare Workers, a serverless execution environment that allows you to create entirely new applications or augment existing ones without configuring or maintaining infrastructure.",
     author: "@cloudflare",
     siteUrl: "http://developers.cloudflare.com/workers",

@@ -20,15 +20,25 @@ function SEO({ lang, title, description, meta }) {
 
   const metaDescription = description || site.siteMetadata.description
 
-  const titleElementText =
-    title !== site.siteMetadata.title ?
-      `${title} · ${site.siteMetadata.title}` : title
+  // TODO: simplify this
+  const pageTitle = title
+  const siteTitle = site.siteMetadata.title
+
+  const isHomeTitle = [
+    "Home",
+    "Docs",
+    "Overview",
+    "Welcome",
+    siteTitle
+  ].includes(pageTitle)
+
+  const fullTitle = `${pageTitle} · ${siteTitle}`
 
   return (
     <Helmet>
       <html lang={lang}/>
 
-      <title>{titleElementText}</title>
+      <title>{isHomeTitle ? siteTitle : fullTitle}</title>
 
       <meta name="description" content={metaDescription}/>
 
