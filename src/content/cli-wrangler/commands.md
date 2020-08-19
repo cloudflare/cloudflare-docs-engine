@@ -845,7 +845,7 @@ yes
 ✨  Success
 ```
 
-#### `kv:bulk`
+### `kv:bulk`
 
 #### `put`
 
