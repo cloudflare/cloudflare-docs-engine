@@ -45,7 +45,11 @@ addEventListener("fetch", event => {
 })
 ```
 
-## Caching HTML resources:
+--------------------------------
+
+<ContentColumn>
+
+## Caching HTML resources
 
 ```js
 // Force Cloudflare to cache an asset
@@ -53,10 +57,13 @@ fetch(event.request, { cf: { cacheEverything: true } })
 ```
 Setting the cache level to Cache Everything will override the default "cacheability" of the asset. For TTL, Cloudflare will still rely on headers set by the origin.
 
+## Custom cache keys
 
-## Custom Cache Keys
+<Aside>
 
-*This feature is available to enterprise users only.*
+__Note:__ This feature is available only to enterprise customers.
+
+</Aside>
 
 A request's cache key is what determines if two requests are "the same" for caching purposes. If a request has the same cache key as some previous request, then we can serve the same cached response for both. For more about cache keys see Using Custom Cache Keys support article.
 
@@ -85,24 +92,40 @@ addEventListener("fetch", (event) => {
   )
 })
 ```
-Remember, Workers operating on behalf of different zones cannot affect each other's cache. You can only override cache keys when making requests within your own zone (in the above example event.request.url was the key stored), or requests to hosts that are not on Cloudflare. When making a request to another Cloudflare zone (e.g. belonging to a different Cloudflare customer), that zone fully controls how its own content is cached within Cloudflare; you cannot override it.
 
+Remember, Workers operating on behalf of different zones cannot affect each other's cache. You can only override cache keys when making requests within your own zone (in the above example `event.request.url` was the key stored), or requests to hosts that are not on Cloudflare. When making a request to another Cloudflare zone (e.g. belonging to a different Cloudflare customer), that zone fully controls how its own content is cached within Cloudflare; you cannot override it.
 
-## Override based on origin response code:
-*This feature is available to enterprise users only.*
+## Override based on origin response code
+
+<Aside>
+
+__Note:__ This feature is available only to enterprise customers.
+
+</Aside>
+
 ```js
-// Force response to be cached for 86400 seconds for 200 status codes, 1 second for 404,
-// and do not cache 500 errors
+// Force response to be cached for 86400 seconds for 200 status
+// codes, 1 second for 404, and do not cache 500 errors.
 fetch(request, {
   cf: { cacheTtlByStatus: { "200-299": 86400, 404: 1, "500-599": 0 } },
 })
 ```
 
-This option is a version of the cacheTtl feature which chooses a TTL based on the response's status code and does not automatically set cacheEverything: true. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time, and override cache directives sent by the origin.
+This option is a version of the cacheTtl feature which chooses a TTL based on the response's status code and does not automatically set `cacheEverything: true`. If the response to this request has a status code that matches, Cloudflare will cache for the instructed time, and override cache directives sent by the origin.
 
-TTL values:
+### TTL interpretation
 
-- Positive TTL values indicate in seconds how long Cloudflare should cache the asset for
-- 0 TTL will cause assets to get cached, but expire immediately (revalidate from origin every time)
-- -1, or any negative value will instruct Cloudflare not to cache at all
+<Definitions>
 
+- __Positive values__
+  - Indicate in seconds how long Cloudflare should cache the asset for.
+
+- __`0`__
+  - The asset will get cached but expire immediately (revalidate from origin every time).
+
+- __`-1` or any negative value__
+  - will instruct Cloudflare not to cache at all.
+
+</Definitions>
+
+</ContentColumn>
