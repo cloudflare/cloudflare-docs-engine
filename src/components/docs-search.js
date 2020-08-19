@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { navigate } from "@reach/router"
+import getPathPrefix from "../utils/get-path-prefix"
 
 import Helmet from "react-helmet"
 
@@ -41,15 +42,31 @@ const DocsSearch = () => {
         handleSelected: (input, event, suggestion, datasetNumber, context) => {
           const url = new URL(suggestion.url)
 
-          const folders = url.pathname.split("/")
-          const page = folders[folders.length - 1]
-          const hash = url.hash.slice(1)
+          // TODO: remove after Algolia crawls the pathPrefixed site
+          const pathPrefix = getPathPrefix()
+          const pathname =
+            url.pathname.startsWith(`${pathPrefix}/`) ?
+              url.pathname :
+              pathPrefix + url.pathname
 
-          // Navigate to just the page if the hash points to the h1
-          if (page === hash) {
-            navigate(url.pathname)
+          if (suggestion.isLvl0) {
+            // Don’t scroll to hash when it’s just the h1.
+            navigate(pathname)
+
           } else {
-            navigate(url.pathname + url.hash)
+            // When search results also scroll to hash,
+            // blur the input so it’s not confusing that
+            // your focus is still up in the search, and
+            // also clear the input for next use.
+            search.input[0].blur()
+            search.input[0].value = ""
+            navigate(pathname + url.hash)
+
+            // Then focus the anchor in the header anchor
+            // corresponding to the hash if it exists (it
+            // should if Algolia’s crawl is up-to-date).
+            const headerAnchor = document.querySelector(`${url.hash} a`)
+            if (headerAnchor) headerAnchor.focus()
           }
         },
 

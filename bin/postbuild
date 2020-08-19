@@ -1,0 +1,8 @@
+echo "Correcting page-data folder"
+cp -r public/page-data public/workers
+mv public/workers public/page-data
+
+echo "Fixing folder structure to host at /workers"
+mv public workers
+mkdir public
+mv workers public

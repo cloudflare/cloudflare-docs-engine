@@ -56,7 +56,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "npm run clean && gatsby build --prefix-paths",
+    "postbuild": "bin/postbuild",
     "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",

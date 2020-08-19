@@ -128,6 +128,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       type: String
       updated: Date @dateformat
     }
+
+    type Site {
+      pathPrefix: String
+    }
   `
 
   createTypes(typeDefs)
