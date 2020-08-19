@@ -37,6 +37,7 @@ async function handleEvent(event) {
 
   try {
     const { response } = await redirector(event, {
+      baseUrl: '/workers/_redirects',
       validateRedirects: false
     })
     if (response) return response
