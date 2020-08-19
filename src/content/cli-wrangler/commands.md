@@ -670,7 +670,7 @@ yes
 ✨  Success
 ```
 
-#### `kv:key`
+### `kv:key`
 
 #### `put`
 
@@ -745,10 +745,10 @@ $ wrangler kv:key list --binding= [--namespace-id=] [--prefix] [--env]
 <Definitions>
 
 - `--binding` <PropMeta>required (if no <Code>--namespace-id</Code>)</PropMeta>
-  - The name of the namespace to delete.
+  - The name of the namespace to list.
 
 - `--namespace-id` <PropMeta>required (if no <Code>--binding</Code>)</PropMeta>
-  - The id of the namespace to delete.
+  - The id of the namespace to list.
 
 - `--env` <PropMeta>optional</PropMeta>
   - Perform on a specific environment specified as `$ENVIRONMENT_NAME`.
