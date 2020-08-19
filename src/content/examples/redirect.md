@@ -20,13 +20,13 @@ tags:
 const destinationURL = "https://example.com"
 const statusCode = 301
 
-async function handleRequest() {
+async function handleRequest(request) {
   const { pathname } = new URL(request.url)
   return Response.redirect(destinationURL, statusCode)
 }
 
 addEventListener("fetch", async event => {
-  event.respondWith(handleRequest())
+  event.respondWith(handleRequest(event.request))
 })
 ```
 
