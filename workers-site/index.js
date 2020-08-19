@@ -1,6 +1,8 @@
 import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
 import redirector from 'lilredirector'
 
+const docsConfig = require("../docs-config.js")
+
 /**
  * The DEBUG flag will do two things that help during development:
  * 1. we will skip caching on the edge, which makes it easier to
@@ -9,11 +11,6 @@ import redirector from 'lilredirector'
  *    than the default 404.html page.
  */
 const DEBUG = false
-
-// TODO:
-// This and the same variable in gatsby-config.js
-// should pull from the same location.
-const pathPrefix = '/workers'
 
 addEventListener('fetch', event => {
   try {
@@ -42,7 +39,7 @@ async function handleEvent(event) {
 
   try {
     const { response } = await redirector(event, {
-      baseUrl: `${pathPrefix}/_redirects`,
+      baseUrl: `${docsConfig.pathPrefix}/_redirects`,
       validateRedirects: false
     })
     if (response) return response
@@ -59,7 +56,7 @@ async function handleEvent(event) {
     if (!DEBUG) {
       try {
         let notFoundResponse = await getAssetFromKV(event, {
-          mapRequestToAsset: req => new Request(`${new URL(req.url).origin}${pathPrefix}/404.html`, req),
+          mapRequestToAsset: req => new Request(`${new URL(req.url).origin}${docsConfig.pathPrefix}/404.html`, req),
         })
 
         return new Response(notFoundResponse.body, { ...notFoundResponse, status: 404 })

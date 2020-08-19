@@ -1,8 +1,12 @@
+const docsConfig = require("./docs-config.js")
+
+const isProduction = process.env.NODE_ENV === "production"
+
 module.exports = {
-  // Deploy production site to /workers but keep
-  // local development done at the root due to:
+  // Deploy production site to the docs config pathPrefix
+  // but keep local development done at the root due to:
   // https://github.com/gatsbyjs/gatsby/issues/16040
-  pathPrefix: process.env.NODE_ENV === "production" ? "/workers" : "",
+  pathPrefix: isProduction ? docsConfig.pathPrefix : "",
 
   siteMetadata: {
     title: "Cloudflare Docs",
