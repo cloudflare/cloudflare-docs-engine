@@ -346,7 +346,7 @@ route = "example.com/*"
 
 The `route` key here is a [route pattern](/platform/routes), which e.g., can contain wildcards.
 
-If your route is configured to a hostname, you will need to add a DNS record to Cloudflare to ensure that the hostname can be resolved externally. If your Worker acts as your origin (the response comes directly from a Worker), you may enter a placeholder (dummy) record, pointing to an IP such as `1.2.3.4`, since the Worker will respond before ever connecting to that origin.
+If your route is configured to a hostname, you will need to add a DNS record to Cloudflare to ensure that the hostname can be resolved externally. If your Worker acts as your origin (the response comes directly from a Worker), you should enter a placeholder (dummy) AAAA record pointing to `100::`, which is the [reserved IPv6 discard prefix](https://tools.ietf.org/html/rfc6666).
 
 --------------------------------
 
