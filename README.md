@@ -14,7 +14,7 @@ For now, please see the instructions for [Gatsby’s default starter](https://gi
 
 ## Documentation (for the documentation)
 
-See https://workers.cloudflaredocs.workers.dev/workers/docs-engine. (Note: This URL is temporary. Once the docs are live on https://developers.cloudflare.com/workers, the “Docs Engine” content in `src/content/docs-engine` will be broken out to a separate project and deployed to another location.)
+See https://developers.cloudflare.com/workers/docs-engine. (Note: This URL is temporary. The content in `src/content/docs-engine` will soon be broken out to a separate project and deployed to another location.)
 
 ## Known issues
 
