@@ -1,4 +1,9 @@
 module.exports = {
+  // Deploy production site to /workers but keep
+  // local development done at the root due to:
+  // https://github.com/gatsbyjs/gatsby/issues/16040
+  pathPrefix: process.env.NODE_ENV === "production" ? "/workers" : "",
+
   siteMetadata: {
     title: "Cloudflare Docs",
     description: "Documentation for Cloudflare products and services.",

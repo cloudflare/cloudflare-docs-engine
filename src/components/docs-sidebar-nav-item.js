@@ -5,6 +5,7 @@ import Collapse from "@material-ui/core/Collapse"
 
 import sidebarCollapseTransitionDuration from "../constants/sidebar-collapse-transition-duration"
 
+import getPathPrefix from "../utils/get-path-prefix"
 import getNormalizedPath from "../utils/get-normalized-path"
 import userPrefersReducedMotion from "../utils/user-prefers-reduced-motion"
 
@@ -57,6 +58,8 @@ const DocsSidebarCollapse = ({ expanded, children }) => {
   )
 }
 
+const pathPrefix = getPathPrefix()
+
 class DocsSidebarNavItem extends React.Component {
 
   constructor(props) {
@@ -79,7 +82,8 @@ class DocsSidebarNavItem extends React.Component {
   isActive() {
     const { node, location } = this.props
 
-    const isActive = node.href === getNormalizedPath(location.pathname)
+    const href = pathPrefix ? pathPrefix + node.href : node.href
+    const isActive = href === getNormalizedPath(location.pathname)
     const isActiveDueToChild = !this.showChildren() && this.isActiveRoot()
 
     return isActive || isActiveDueToChild
@@ -88,7 +92,8 @@ class DocsSidebarNavItem extends React.Component {
   isActiveRoot() {
     const { node, location } = this.props
 
-    const isActive = node => node.href === getNormalizedPath(location.pathname)
+    const href = node => pathPrefix ? pathPrefix + node.href : node.href
+    const isActive = node => href(node) === getNormalizedPath(location.pathname)
     const hasActiveChild = node => !node.children ? false : node.children.some(
       node => isActive(node) || hasActiveChild(node)
     )

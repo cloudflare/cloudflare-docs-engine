@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { navigate } from "@reach/router"
+import getPathPrefix from "../../utils/get-path-prefix"
 
 import { className } from "./root"
 import IconExternalLink from "../icons/external-link"
@@ -32,6 +33,21 @@ export default ({ href, className, children, ...props }) => {
       const link = event.target.closest("a")
       event.preventDefault()
       navigate(link.href)
+    }
+  }
+
+  if (!useRegularLink) {
+    // Unfortunately, MDX seems to be automatically prefixing[1]
+    // the href with the `pathPrefix`[2] before we get access to
+    // it here. Gatsby’s `<Link/>` component below also prefixes
+    // it, so we strip the prefix here first so that it doesn’t
+    // end up getting double-prefixed.
+    // [1] https://git.io/JJNPs
+    // [2] https://www.gatsbyjs.com/docs/path-prefix/
+    const pathPrefix = getPathPrefix()
+
+    if (href.startsWith(`${pathPrefix}/`)) {
+      href = href.substr(pathPrefix.length)
     }
   }
 
