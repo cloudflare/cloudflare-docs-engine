@@ -88,7 +88,7 @@ const DocsTutorials = () => {
             <div className="DocsTutorials--column" data-column="updated">
               <TimeAgo date={tutorial.updated} formatter={(value, unit) => (
                 <React.Fragment>
-                  {value} {unit}<span className="DocsTutorials--ago-text"> ago</span>
+                  {value} {unit}{value > 1 ? "s" : ""}<span className="DocsTutorials--ago-text"> ago</span>
                 </React.Fragment>
               )} minPeriod={60}/>
             </div>
