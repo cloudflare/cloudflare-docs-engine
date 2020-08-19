@@ -10,6 +10,11 @@ import redirector from 'lilredirector'
  */
 const DEBUG = false
 
+// TODO:
+// This and the same variable in gatsby-config.js
+// should pull from the same location.
+const pathPrefix = '/workers'
+
 addEventListener('fetch', event => {
   try {
     event.respondWith(handleEvent(event))
@@ -37,7 +42,7 @@ async function handleEvent(event) {
 
   try {
     const { response } = await redirector(event, {
-      baseUrl: '/workers/_redirects',
+      baseUrl: `${pathPrefix}/_redirects`,
       validateRedirects: false
     })
     if (response) return response
@@ -54,7 +59,7 @@ async function handleEvent(event) {
     if (!DEBUG) {
       try {
         let notFoundResponse = await getAssetFromKV(event, {
-          mapRequestToAsset: req => new Request(`${new URL(req.url).origin}/workers/404.html`, req),
+          mapRequestToAsset: req => new Request(`${new URL(req.url).origin}${pathPrefix}/404.html`, req),
         })
 
         return new Response(notFoundResponse.body, { ...notFoundResponse, status: 404 })
