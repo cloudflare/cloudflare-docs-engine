@@ -286,7 +286,7 @@ You can reference the finished code on this [GitHub repository](https://github.c
 You’ve learned how to:
 - Build webhooks using Workers
 - Integrate Workers with GitHub and Twilio
-- use Worker secrets with wrangler
+- Use Worker secrets with wrangler
 
 Next steps:
 - [Authorize users with Auth0](/tutorials/authorize-users-with-auth0)
