@@ -20,7 +20,6 @@ function SEO({ lang, title, description, meta }) {
 
   const metaDescription = description || site.siteMetadata.description
 
-  // TODO: simplify this
   const pageTitle = title
   const siteTitle = site.siteMetadata.title
 
@@ -32,13 +31,13 @@ function SEO({ lang, title, description, meta }) {
     siteTitle
   ].includes(pageTitle)
 
-  const fullTitle = `${pageTitle} · ${siteTitle}`
+  title = isHomeTitle ? siteTitle : `${pageTitle} · ${siteTitle}`
 
   return (
     <Helmet>
       <html lang={lang}/>
 
-      <title>{isHomeTitle ? siteTitle : fullTitle}</title>
+      <title>{title}</title>
 
       <meta name="description" content={metaDescription}/>
 
