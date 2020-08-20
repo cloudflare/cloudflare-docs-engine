@@ -12,6 +12,7 @@ function SEO({ lang, title, description, meta }) {
             title
             description
             author
+            image
           }
         }
       }
@@ -41,6 +42,7 @@ function SEO({ lang, title, description, meta }) {
 
       <meta name="description" content={metaDescription}/>
 
+      <meta property="og:image" content={image} />
       <meta property="og:title" content={title}/>
       <meta property="og:description" content={metaDescription}/>
       <meta property="og:type" content="website"/>
