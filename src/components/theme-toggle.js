@@ -114,6 +114,11 @@ class ThemeToggle extends React.Component {
   }
 
   handleKeyboardCommand(event) {
+    if (event.target && event.target) {
+      const tag = event.target.tagName.toLowerCase()
+      if (["input", "textarea"].includes(tag)) return
+    }
+
     if (event.key !== keyboardShortcutKey) return
     if (!event.shiftKey) return
 
