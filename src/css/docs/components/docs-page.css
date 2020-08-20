@@ -1,7 +1,7 @@
 html[is-docs-page],
 html[is-docs-page] body {
   height: 100%;
-  overscroll-behavior: none;
+  overscroll-behavior-y: none;
 }
 
 .DocsPage {
