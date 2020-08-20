@@ -120,6 +120,12 @@ $ wrangler generate <new-project-name> <github-repo-url>
 />
 
 <WorkerStarter
+  title="KV example (Scala)"
+  description="Example usage of Workers KV in Scala."
+  repo="cloudflare/scala-worker-kv"
+/>
+
+<WorkerStarter
   title="Hello World (Reason)"
   description="A bare-bones starter in Reason."
   repo="cloudflare/reason-worker-hello-world"
@@ -141,6 +147,12 @@ $ wrangler generate <new-project-name> <github-repo-url>
   title="Hello World (COBOL)"
   description="A bare-bones starter in COBOL."
   repo="cloudflare/cobol-worker-template"
+/>
+
+<WorkerStarter
+  title="Hello World (Perl)"
+  description="A bare-bones starter in Perl."
+  repo="cloudflare/perl-worker-hello-world"
 />
 
 --------------------------------
