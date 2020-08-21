@@ -17,19 +17,11 @@ jobs:
         node-version: '14.2.0'
     - name: Install deps
       run: npm install
-    - name: Install Wrangler
-      run: npm i @cloudflare/wrangler -g
-    - name: Install Workers script deps
-      run: npm install
     - name: Build project
       run: npm run build
-    - name: Wrangler auth check
-      run: wrangler whoami
-      env:
-        CF_API_KEY: ${{ secrets.CF_API_KEY }}
-        CF_EMAIL: ${{ secrets.CF_EMAIL }}
-    - name: Upload assets (development)
-      run: wrangler publish
-      env:
-        CF_API_KEY: ${{ secrets.CF_API_KEY }}
-        CF_EMAIL: ${{ secrets.CF_EMAIL }}
+    - name: Publish
+      uses: cloudflare/wrangler-action@1.2.0
+      with:
+        apiToken: ${{ secrets.CF_PRODUCTION_API_TOKEN }}
+        environment: 'production'
+
