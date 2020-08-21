@@ -25,3 +25,4 @@ jobs:
           apiToken: ${{ secrets.CF_PRODUCTION_API_TOKEN }}
           publish: false
           preCommands: wrangler build
+          environment: "production"
