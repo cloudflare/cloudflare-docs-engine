@@ -20,12 +20,8 @@ jobs:
       - run: "npm install"
       - run: "npm run build:incremental"
       - name: "Build wrangler"
-        uses: bradyjoslin/wrangler-action@pre-post-commands
+        uses: cloudflare/wrangler-action@master
         with:
           apiToken: ${{ secrets.CF_PRODUCTION_API_TOKEN }}
           publish: false
-          preCommands: |
-            echo "Building..."
-            wrangler build
-          postCommands: |
-            echo "It works!"
+          preCommands: wrangler build
