@@ -33,8 +33,3 @@ jobs:
       env:
         CF_API_KEY: ${{ secrets.CF_API_KEY }}
         CF_EMAIL: ${{ secrets.CF_EMAIL }}
-    - name: Publish migration site
-      uses: cloudflare/wrangler-action@1.2.0
-      with:
-        apiToken: ${{ secrets.CF_PRODUCTION_API_TOKEN }}
-        environment: migration
