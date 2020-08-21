@@ -6,31 +6,31 @@ order: 1
 
 ## Background
 
-Workers is a polyglot platform. You can likely write code on Workers with a language you already know. We originally built Workers to operate on JavaScript and WASM and over time we’ve added support for new languages. We are excited to support and deepen integrations with popular languages like Python for Workers.
+Workers is a polyglot platform. You can likely write code on Workers with a language you already know. We originally built Workers to execute JavaScript and WebAssembly, and over time we’ve added support for new languages. We are excited to support and deepen integrations with popular languages like Python for Workers.
 
 ## JavaScript / TypeScript
 
-JavaScript is fully supported on the Workers platform. We recommend using JS. You can also use TypeScript on the platform and can find the [type definitions on Github](https://github.com/cloudflare/workers-types).
+JavaScript is fully supported on the Workers platform. We recommend using JavaScript. You can also use TypeScript on the platform and can find relevant [type definitions on Github](https://github.com/cloudflare/workers-types).
 
 <TableWrap>
 
 | Language   | Example project                                                                                                         |
 |------------|-------------------------------------------------------------------------------------------------------------------------|
 | JavaScript | [cloudflare/worker-template](https://github.com/cloudflare/worker-template)                                             |
-| TypeScript | [EverlastingBugstopper/worker-typescript-template](https://github.com/EverlastingBugstopper/worker-typescript-template) |
+| TypeScript | [cloudflare/worker-typescript-template](https://github.com/cloudflare/worker-typescript-template)                       |
 
 </TableWrap>
 
 ### See also
 
 - [Starters](/starters) – More example repos to use as a basis for your projects
-- [TypeScript Type Definitions](https://github.com/cloudflare/workers-types)
+- [TypeScript type definitions](https://github.com/cloudflare/workers-types)
 - [JavaScript and web standard APIs](/runtime-apis/web-standards)
 - [Tutorials](/tutorials)
 
-## WASM-supported
+## Wasm-supported
 
-WebAssembly — often abbreviated as “WASM” — is a technology that extends the web platform to support compiled languages like C, C++, Rust, and more. Since these languages can be compiled to a special WASM binary format and then loaded in a browser, you can use them on the Workers platform!  Learn more by checking out the example projects.
+[WebAssembly](https://webassembly.org/) — abbreviated “Wasm” — is a technology that extends the web platform to support compiled languages like C, C++, Rust, and more. Since these languages can be compiled to a special Wasm binary format and then loaded in a browser, you can use them on the Workers platform.  Learn more by checking out the example projects.
 
 <TableWrap>
 
@@ -49,7 +49,7 @@ WebAssembly — often abbreviated as “WASM” — is a technology that extends
 
 ## Compiled to JavaScript
 
-Since Workers runs off of JS, you can also program on Workers with any language than can compile down to JS including the languages below. Learn more by checking out the example projects.
+You can also implement Workers with any language than can compile to JavaScript, including the languages below. Learn more by checking out the example projects.
 
 <TableWrap>
 
