@@ -1,0 +1,21 @@
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    steps:
+      - uses: actions/checkout@v2
+      - name: "[cache] .cache"
+        uses: actions/cache@master
+        with:
+          key: gatsby-cache-folder
+          path: .cache
+      - name: "[cache] public"
+        uses: actions/cache@master
+        with:
+          key: gatsby-public-folder
+          path: public
+      - run: "npm install"
+      - run: "npm run build:incremental"
