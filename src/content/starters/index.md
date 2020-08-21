@@ -86,12 +86,6 @@ $ wrangler generate <new-project-name> <github-repo-url>
 />
 
 <WorkerStarter
-  title="Emscripten + Wasm Image Resizer"
-  description="An image resizer in C compiled to Wasm with Emscripten."
-  repo="cloudflare/worker-emscripten-template"
-/>
-
-<WorkerStarter
   title="BinAST"
   description="Serve a JavaScript Binary AST via a Cloudflare Worker."
   repo="xtuc/binast-cf-worker-template"
@@ -100,6 +94,8 @@ $ wrangler generate <new-project-name> <github-repo-url>
 --------------------------------
 
 ## Other languages
+
+Other languages may require you to install additional tools beyond wrangler. See the README.md file in the project.
 
 <WorkerStarter
   title="Hello World (Rust)"
@@ -153,6 +149,12 @@ $ wrangler generate <new-project-name> <github-repo-url>
   title="Hello World (Perl)"
   description="A bare-bones starter in Perl."
   repo="cloudflare/perl-worker-hello-world"
+/>
+
+<WorkerStarter
+  title="Emscripten + Wasm Image Resizer"
+  description="An image resizer in C compiled to Wasm with Emscripten."
+  repo="cloudflare/worker-emscripten-template"
 />
 
 --------------------------------
