@@ -9,7 +9,7 @@ import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start
 
 <Aside header="Workers Bundled plan required">
 
-This tutorials requires Workers KV which is only available to users with [a paid Workers plan](/platform/pricing).
+This tutorial requires Workers KV which is only available to users with [a paid Workers plan](/platform/pricing).
 
 </Aside>
 
