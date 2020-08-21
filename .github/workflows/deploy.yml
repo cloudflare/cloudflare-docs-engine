@@ -28,7 +28,7 @@ jobs:
       - name: Install deps
         run: npm install
       - name: Build project
-        run: npm run build:incremental
+        run: npm run incremental
       - name: Publish
         uses: cloudflare/wrangler-action@1.2.0
         with:
