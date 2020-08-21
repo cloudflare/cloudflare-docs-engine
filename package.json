@@ -54,7 +54,7 @@
     "gatsby-plugin-remove-trailing-slashes": "^2.3.11",
     "prettier": "^1.19.1"
   },
-  "license": "MIT",
+  "license": "Apache-2.0 OR MIT",
   "scripts": {
     "build": "npm run clean && gatsby build --prefix-paths",
     "postbuild": "bin/postbuild",
