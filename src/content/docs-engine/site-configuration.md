@@ -33,8 +33,8 @@ module.exports = {
       // https://developers.cloudflare.com/docs/
       productLogoPathD: "M13.112 9.832c.164-.276.362-[...]",
 
-      // The Github repo where the markdown files live,
-      // currently only used for "Edit on Github" links
+      // The GitHub repo where the markdown files live,
+      // currently only used for "Edit on GitHub" links
       contentRepo: "cloudflare/workers-docs",
 
       // Links to render in the vertical "..." menu

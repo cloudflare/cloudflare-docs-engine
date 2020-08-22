@@ -9,7 +9,7 @@ import WorkerStarter from "../../components/worker-starter"
 
 <ContentColumn>
 
-Starters are essentially Github repos that are designed to be a starting point for building a new Cloudflare Workers project. For the projects below, you simply run:
+Starters are essentially GitHub repos that are designed to be a starting point for building a new Cloudflare Workers project. For the projects below, you simply run:
 
 ```sh
 $ wrangler generate <new-project-name> <github-repo-url>
@@ -21,7 +21,7 @@ $ wrangler generate <new-project-name> <github-repo-url>
   - A folder with this name will be created with your new project inside, pre-configured to [your Workers account](/cli-wrangler/configuration).
 
 - `github-repo-url`
-  - This is the URL of the Github repo starter, as below.
+  - This is the URL of the GitHub repo starter, as below.
 
 </Definitions>
 

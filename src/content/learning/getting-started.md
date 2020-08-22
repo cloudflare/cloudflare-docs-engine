@@ -47,7 +47,7 @@ wrangler v1.10.3
 
 ## 3. Generate a new project
 
-Wrangler’s [`generate` subcommand](/cli-wrangler/commands#generate) will create a new project from a “starter” template—just a Github repo. With no [template argument](/cli-wrangler/commands#generate), Wrangler generates projects from the [default starter](https://github.com/cloudflare/worker-template). Let’s generate a new project, called `my-worker`:
+Wrangler’s [`generate` subcommand](/cli-wrangler/commands#generate) will create a new project from a “starter” template—just a GitHub repo. With no [template argument](/cli-wrangler/commands#generate), Wrangler generates projects from the [default starter](https://github.com/cloudflare/worker-template). Let’s generate a new project, called `my-worker`:
 
 ```sh
 ~/ $ wrangler generate my-worker
@@ -380,7 +380,7 @@ header: Publish to example.com
 
 For more information on environments, check out the [Wrangler documentation](/cli-wrangler/configuration#environments).
 
-You can also configure a Github repo to automatically deploy every time you `git push`. You can do this by either using the [Workers Github action](https://github.com/marketplace/actions/github-action-for-cloudflare-workers), or by writing your own Github action and manually configuring the necessary [Github secrets](https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
+You can also configure a GitHub repo to automatically deploy every time you `git push`. You can do this by either using the [Workers GitHub action](https://github.com/marketplace/actions/github-action-for-cloudflare-workers), or by writing your own GitHub action and manually configuring the necessary [GitHub secrets](https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets).
 
 --------------------------------
 
