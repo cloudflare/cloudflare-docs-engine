@@ -103,9 +103,9 @@ const DocsSearch = () => {
 
       document.addEventListener("keydown", event => {
         const slashShortcut = event.key === "/"
-        const commandShorcut = event.key === "S" && event.shiftKey
+        const commandShortcut = event.key === "S" && event.shiftKey
 
-        if (slashShortcut || commandShorcut) {
+        if (slashShortcut || commandShortcut) {
           event.preventDefault()
           window.scrollTo(0, 0)
           input.focus()

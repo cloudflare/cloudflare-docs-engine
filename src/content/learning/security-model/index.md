@@ -222,7 +222,7 @@ Luckily, we don’t have to. Instead, we can choose to reschedule any Worker wit
 
 In fact, fancy performance-counter based triggering may not even be necessary here. If a Worker merely uses a large amount of CPU time per event, then the overhead of isolating it in its own process is relatively less, because it switches context less often. So, we might as well use process isolation for any Worker that is CPU-hungry.
 
-Once a Worker is isolated, then we can rely on the operating system’s Spectre defenses, just aslike, for example, most desktop web browsers now do.
+Once a Worker is isolated, then we can rely on the operating system’s Spectre defenses, just as like, for example, most desktop web browsers now do.
 
 Over the past year we’ve been working with the experts at Graz Technical University to develop this approach. (TU Graz’s team co-discovered Spectre itself, and has been responsible for a huge number of the follow-on discoveries since then.) We have developed the ability to dynamically isolate workers, and we have identified metrics which reliably detect attacks. The whole system is currently undergoing testing to work out any remaining bugs, and we expect to roll it out fully within the next several weeks.
 

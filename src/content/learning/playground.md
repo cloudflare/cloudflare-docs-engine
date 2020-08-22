@@ -34,7 +34,7 @@ Check out the reference for [addEventListener](/runtime-apis/add-event-listener)
 
 ## Beyond hello world
 
-To get familiar with Workers, we recommend playing around in the Playground, borring bits from [Examples](/examples) section of the documentation. This will give you a taste of what Workers can do. It’s pretty amazing.
+To get familiar with Workers, we recommend playing around in the Playground, borrowing bits from [Examples](/examples) section of the documentation. This will give you a taste of what Workers can do. It’s pretty amazing.
 
 --------------------------------
 
@@ -52,7 +52,7 @@ To test a raw HTTP request — not in an HTML previewer, for example to test a `
 
 ## Devtools
 
-For debugging Workers inside the plaground, use out the developer tools at the bottom of the preview panel. The developer tools for Workers previewer works similar to the developer tools in Chrome or Firefox.
+For debugging Workers inside the playground, use out the developer tools at the bottom of the preview panel. The developer tools for Workers previewer works similar to the developer tools in Chrome or Firefox.
 
 ### Network tab
 
