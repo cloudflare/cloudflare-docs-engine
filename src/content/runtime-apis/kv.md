@@ -201,9 +201,7 @@ The `.list` method returns a promise which resolves with an object that looks li
 
 The `keys` property will contain an array of objects describing each key. That object will have one to three keys of its own: a `name` of the key, optionally its expiration value and optionally associated metadata. The name is a string, the expiration value is a number and metadata is whatever type was set initially. The expiration value will only be returned if the key has an expiration, and will be in the absolute value form, even if it was set in the TTL form. Metadata will also only be returned if the given key has non-null associated metadata.
 
-Additionally, if `list_complete` is `false`, there are more keys to fetch. You’ll use the `cursor` property to get more keys. See the [Pagination section](#pagination)
-
-below for more details.
+Additionally, if `list_complete` is `false`, there are more keys to fetch. You’ll use the `cursor` property to get more keys. See the [Pagination section](#pagination) below for more details.
 
 #### Listing by prefix
 
