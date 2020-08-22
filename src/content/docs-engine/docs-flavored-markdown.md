@@ -133,7 +133,7 @@ If you need to take advantage of Gatsby’s routing but you want control over th
 
 ## Images
 
-Images are added by simply using the markdown syntax.
+Images are added by simply using the Markdown syntax.
 
 ```markdown
 ![Wall of entropy](./wall-of-entropy.jpg)
@@ -361,7 +361,7 @@ Use blockquotes when quoting someone. For example, here’s a translation of a q
 
 > If you want to get fancy with it you can use
 > [links](https://example.com) and `<code/>`, and
-> really just about any another inline markdown.
+> really just about any another inline Markdown.
 >
 > Multiple paragraphs can be added as well. And of
 > course you can use **bold** or _italics_. And
@@ -372,7 +372,7 @@ Use blockquotes when quoting someone. For example, here’s a translation of a q
 ```markdown
 > If you want to get fancy with it you can use
 > [links](https://example.com) and `<code/>`, and
-> really just about any another inline markdown.
+> really just about any another inline Markdown.
 >
 > Multiple paragraphs can be added as well. And of
 > course you can use **bold** or _italics_. And

@@ -62,7 +62,7 @@ const CodeBlock = props => {
   let codeFrontmatter = {}
 
   // For now, we don’t support code frontmatter
-  // in markdown code blocks because markdown
+  // in Markdown code blocks because Markdown
   // itself can contain frontmatter.
 
   // TODO: find workaround for this limitation

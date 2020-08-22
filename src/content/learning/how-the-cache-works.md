@@ -32,7 +32,7 @@ Conceptually, there are two ways to interact with Cloudflare’s Cache using a W
 
 The browser cache is controlled through the `Cache-Control` header sent in the response to the eyeball (the response passed or promised to `event.respondWith()`). Workers can customize browser cache behavior by setting this header on the response.
 
-We won’t discuss in this article, but other means to control Cloudflare’s cache include: Page rules and Cloudflare cache settings. I highly recommend the article [How to Control Cloudflare’s cache](https://support.cloudflare.com/hc/en-us/articles/202775670) if you wish to avoid writing Javascript with still some granularity of control.
+We won’t discuss in this article, but other means to control Cloudflare’s cache include: Page rules and Cloudflare cache settings. I highly recommend the article [How to Control Cloudflare’s cache](https://support.cloudflare.com/hc/en-us/articles/202775670) if you wish to avoid writing JavaScript with still some granularity of control.
 
 **What should I use: the Cache API or fetch for caching objects on Cloudflare?**
 
