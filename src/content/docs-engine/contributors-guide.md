@@ -83,7 +83,7 @@ Cloudflare documentation should be practical and approachable.
 
 - **Avoid hierarchy.** When possible, it’s better to flatten hierarchy as much as possible. Practically, this often means re-wording headings to avoid h4s and h5s, and instead add a few more h2s and h3s. Flatter hierarchies are conceptually easier to understand and generally increases discoverability.
 
-- **Consistency trumps style.** When in doubt, match your content to the documentation around it. Raise an issue on Github when something feels off.
+- **Consistency trumps style.** When in doubt, match your content to the documentation around it. Raise an issue on GitHub when something feels off.
 
 ### Writing technical reference
 
