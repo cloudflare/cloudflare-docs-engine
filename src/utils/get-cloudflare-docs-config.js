@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from "gatsby"
 // do string interpolation inside useStaticQuery, this
 // is about the best we can do.
 
-// See these relavant issues:
+// See these relevant issues:
 // https://github.com/gatsbyjs/gatsby/issues/10482
 // https://github.com/gatsbyjs/gatsby/issues/9843
 

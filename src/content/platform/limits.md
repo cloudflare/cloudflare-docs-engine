@@ -13,7 +13,7 @@ order: 2
 | [Request](#request)                                                             | 100,000&nbsp;requests/day<br/>1000&nbsp;requests/min | none      |
 | [Worker memory](#memory)                                                        | 128 MB                                               | 128 MB    |
 | [CPU runtime](#cpu-runtime)                                                     | 10 ms                                                | 50 ms     |
-| [Subreqests](#subrequests)                                                      | 50                                                   | 50        |
+| [Subrequests](#subrequests)                                                     | 50                                                   | 50        |
 | [Simultaneous outgoing<br/>connections/request](#simultaneous-open-connections) | 6                                                    | 6         |
 | [Environment variables](#environment-variables)                                 | 32/worker                                            | 32/worker |
 | [Environment variable<br/>size](#environment-variables)                         | 5 KB                                                 | 5 KB      |

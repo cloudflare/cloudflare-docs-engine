@@ -12,7 +12,7 @@ Integrate Workers to your existing services and platforms to optimize your conti
 
 ## Lerna
 
-- __[Lerna](https://lerna.js.org/)__ allows you to easilly [manage multiple Workers projects in one repository](/tutorials/manage-projects-with-lerna).
+- __[Lerna](https://lerna.js.org/)__ allows you to easily [manage multiple Workers projects in one repository](/tutorials/manage-projects-with-lerna).
 
 ## Terraform
 
