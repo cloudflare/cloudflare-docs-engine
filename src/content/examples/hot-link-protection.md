@@ -2,7 +2,6 @@
 order: 1000
 type: example
 summary: Block other websites from linking to your content. This is useful for protecting images.
-demo: https://hot-link-protection.workers-sites-examples.workers.dev
 tags:
   - Security
   - JAMstack
@@ -43,4 +42,3 @@ addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 ```
-

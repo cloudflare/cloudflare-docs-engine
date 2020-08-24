@@ -2,7 +2,6 @@
 order: 1000
 type: example
 summary: Send two GET request to two urls and aggregates the responses into one response.
-demo: https://aggregate-requests.workers-sites-examples.workers.dev
 tags:
   - JSON
   - HTML
@@ -65,9 +64,3 @@ addEventListener("fetch", event => {
   return event.respondWith(handleRequest())
 })
 ```
-<!--
-## Demo
-
-<p><a href={props.frontmatter.demo}>Open demo</a></p>
-
-<Demo src={props.frontmatter.demo} title={props.frontmatter.summary} height="80"/> -->

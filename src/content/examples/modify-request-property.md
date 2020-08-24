@@ -2,7 +2,6 @@
 order: 1000
 type: example
 summary: Create a modified request with edited properties based off of an incoming request.
-demo: https://modify-request-property.workers-sites-examples.workers.dev
 tags:
   - Originless
   - API
@@ -71,4 +70,3 @@ addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 ```
-

@@ -2,7 +2,6 @@
 order: 1000
 type: example
 summary: Allow or deny a request based on a known pre-shared key in a header. This is not meant to replace the WebCrypto API.
-demo: https://auth-with-headers.workers-sites-examples.workers.dev
 tags:
   - Security
 ---
@@ -39,4 +38,3 @@ addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 ```
-

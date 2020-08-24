@@ -2,7 +2,6 @@
 order: 1000
 type: example
 summary: Fetch and modify response properties which are immutable by creating a copy first.
-demo: https://modify-response.workers-sites-examples.workers.dev
 tags:
   - Originless
   - API
@@ -64,4 +63,3 @@ addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 ```
-

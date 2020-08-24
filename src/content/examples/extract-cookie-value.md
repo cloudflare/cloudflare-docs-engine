@@ -2,7 +2,6 @@
 order: 1000
 type: example
 summary: Given the cookie name, get the value of a cookie. You can also use cookies for A/B testing.
-demo: https://extract-cookie-value.workers-sites-examples.workers.dev
 tags:
   - Security
   - JAMstack
@@ -52,4 +51,3 @@ addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 ```
-

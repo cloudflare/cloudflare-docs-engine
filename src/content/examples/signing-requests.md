@@ -2,7 +2,6 @@
 order: 1000
 type: example
 summary: Sign and verify a request using the HMAC and SHA-256 algorithms or return a 403.
-demo: https://send-raw-html.workers-sites-examples.workers.dev
 tags:
   - Security
   - Originless

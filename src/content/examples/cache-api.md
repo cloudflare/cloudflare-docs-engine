@@ -2,7 +2,6 @@
 order: 1000
 type: example
 summary: Cache using Cloudflare's Cache API. This example can cache POST requests as well.
-demo: https://cache-api.workers-sites-examples.workers.dev
 tags:
   - API
   - Middleware
@@ -103,4 +102,3 @@ addEventListener("fetch", event => {
   }
 })
 ```
-

@@ -2,7 +2,6 @@
 order: 1000
 type: example
 summary: Rewrite URL links in HTML using the HTMLRewriter. This is useful for JAMstack websites.
-demo: https://rewrite-links.workers-sites-examples.workers.dev
 tags:
   - HTML
   - JAMstack
@@ -46,4 +45,3 @@ addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 ```
-

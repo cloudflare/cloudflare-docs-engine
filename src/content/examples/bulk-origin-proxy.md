@@ -2,7 +2,6 @@
 order: 1000
 type: example
 summary: Resolve requests to your domain to a set of proxy third-party origin URLs.
-demo: https://bulk-origin-proxy.workers-sites-examples.workers.dev
 tags:
   - Proxy
 ---
@@ -41,4 +40,3 @@ addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 ```
-

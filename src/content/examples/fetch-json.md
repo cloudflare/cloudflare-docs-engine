@@ -2,7 +2,6 @@
 order: 3
 type: example
 summary: Send a GET request and read in JSON from the response. Use to fetch external data.
-demo: https://fetch-json.workers-sites-examples.workers.dev
 tags:
   - JSON
   - API
@@ -61,4 +60,3 @@ addEventListener("fetch", event => {
   return event.respondWith(handleRequest())
 })
 ```
-

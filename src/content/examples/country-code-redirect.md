@@ -2,7 +2,6 @@
 order: 1000
 type: example
 summary: Redirect a response based on the country code in the header of a visitor.
-demo: https://country-code.workers-sites-examples.workers.dev
 tags:
   - Security
   - Originless
@@ -49,4 +48,3 @@ addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 ```
-
