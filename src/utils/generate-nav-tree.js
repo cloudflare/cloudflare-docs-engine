@@ -9,7 +9,6 @@ const formatNode = node => {
 }
 
 const generateNavTree = pages => {
-  let totalDepth = 0
   const pagesByPath = {}
 
   pages.forEach((page, i) => {
@@ -19,7 +18,6 @@ const generateNavTree = pages => {
     pages[i].title = getPageTitle(page)
 
     const depth = path.split('/').length - 2
-    if (totalDepth < depth) totalDepth = depth
     pages[i].depth = depth
   })
 
