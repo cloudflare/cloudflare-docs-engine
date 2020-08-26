@@ -15,8 +15,8 @@ Array.from([
   siteMetadata.cloudflareDocs[prop] = docsConfig[prop]
 })
 
-// We exposed friendlier siteMetadata.url to Docs consumers
-// but gatsby-plugin-sitemap requires `siteUrl` https://git.io/JUUxW
+// We exposed friendlier siteMetadata.url to Docs consumers but
+// gatsby-plugin-sitemap requires `siteUrl` https://git.io/JUUxW
 siteMetadata.siteUrl = siteMetadata.url
 delete siteMetadata.url
 
