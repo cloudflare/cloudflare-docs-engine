@@ -311,7 +311,7 @@ class DocumentHandler {
 
 ## Selectors
 
-This is what selecters are and what they are used for.
+This is what selectors are and what they are used for.
 
 <Definitions>
 
