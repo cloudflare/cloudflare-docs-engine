@@ -18,7 +18,7 @@ const Demo = ({ src, title, height, aspectRatio }) => {
       <iframe
         className={iframeClassName}
         src={src}
-        title={`Cloudflare Workers demo, demonstrating: ${title}`}
+        title={`Demo of: ${title}`}
         frameBorder="0"
       />
     </div>
