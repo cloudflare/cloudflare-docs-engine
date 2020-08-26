@@ -10,7 +10,17 @@ Soon after that, the engine itself will be renamed [@cloudflare/cloudflare-docs-
 
 ## Developing locally
 
-For now, please see the instructions for [Gatsby’s default starter](https://github.com/gatsbyjs/gatsby-starter-default).
+Running the local development server ([localhost:8000](http://localhost:8000)):
+
+```sh
+npm run develop
+```
+
+Testing the build ([localhost:9000](http://localhost:9000)):
+
+```sh
+npm run build && npm run serve
+```
 
 ## Documentation (for the documentation)
 
