@@ -35,5 +35,4 @@ const getBreadcrumbs = (pages, location) => {
   return out
 }
 
-
 export default getBreadcrumbs

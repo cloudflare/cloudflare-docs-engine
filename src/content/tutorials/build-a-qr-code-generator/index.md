@@ -282,5 +282,3 @@ $ wrangler publish
 In this tutorial, you built and published a serverless function to Cloudflare Workers for generating QR codes. If you’d like to see the full source code for this application, you can find it [on GitHub](https://github.com/signalnerve/workers-qr-code-generator).
 
 If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/examples).
-
-
