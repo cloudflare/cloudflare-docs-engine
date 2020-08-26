@@ -239,7 +239,7 @@ In addition to the properties on the standard [`Request`](https://developer.mozi
 
   - Postal code of the incoming request, e.g. `"78701"`.
 
-- `metroCode` <Type>number | null</Type>
+- `metroCode` <Type>string | null</Type>
 
   - Metro code (DMA) of the incoming request, e.g. `"635"`.
 
