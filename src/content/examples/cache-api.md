@@ -86,7 +86,7 @@ async function handlePostRequest(event) {
   // Otherwise, fetch response to POST request from origin
   if (!response) {
     response = await fetch(request)
-    event.waitUntil(cache.put(cacheKey, response))
+    event.waitUntil(cache.put(cacheKey, response.clone()))
   }
   return response
 }
