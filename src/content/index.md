@@ -38,7 +38,7 @@ async function handleRequest(request) {
 }
 ```
 
-<Link to="https://cloudflareworkers.com/#36ebe026bf3510a2e5acace89c09829f:about:blank" className="Button Button-is-docs-primary">Launch playground</Link> &nbsp;&nbsp; <Link to="/learning/playground" className="Button Button-is-docs-secondary">Learn more</Link>
+<a href="https://cloudflareworkers.com/#36ebe026bf3510a2e5acace89c09829f:about:blank" className="Button Button-is-docs-primary">Launch playground</a> &nbsp;&nbsp; <Link to="/learning/playground" className="Button Button-is-docs-secondary">Learn more</Link>
 
 --------------------------------
 

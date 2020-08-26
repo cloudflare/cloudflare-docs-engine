@@ -163,4 +163,4 @@ Other languages may require you to install additional tools beyond wrangler. See
 
 Get inspiration from other sites and projects out there that were built with Cloudflare Workers.
 
-<Link to="https://workers.cloudflare.com/built-with" className="Button Button-is-docs-primary">Built with Workers →</Link>
+<a href="https://workers.cloudflare.com/built-with" className="Button Button-is-docs-primary">Built with Workers</a>
