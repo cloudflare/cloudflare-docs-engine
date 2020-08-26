@@ -1,5 +1,5 @@
 ---
-updated: 2020-8-20
+updated: 2020-08-25
 difficulty: Beginner
 ---
 
@@ -66,7 +66,7 @@ Finally, click "Add webhook" to finish our configuration.
 
 ## Parsing the Response
 
-With your local environment setup, we will now parse the repo update with your worker. If you get stuck, you can refer to the finished [index.js](https://GitHub.com/davidtsong/GitHub-twilio-notifications/blob/master/index.js). 
+With your local environment setup, we will now parse the repo update with your worker. If you get stuck, you can refer to the finished [index.js](https://GitHub.com/davidtsong/GitHub-twilio-notifications/blob/master/index.js).
 
 Your generated `index.js` should look like this below:
 
@@ -139,7 +139,7 @@ async function githubWebhookHandler(request) {
     const headers = await request.headers
     const action = headers.get("X-GitHub-Event")
     const repo_name = formData.repository.full_name
-    const sender_name = formData.sender.login 
+    const sender_name = formData.sender.login
 
     if (!checkSignature(formData, headers)) {
       return simpleResponse(403, "Wrong password, try again :P")
@@ -215,7 +215,7 @@ async function sendText(message){
   encoded.append("To", RECIPIENT)
   encoded.append("From", "+19388887573")
   encoded.append("Body", message)
-  
+
   let token = btoa(ACCOUNT_SID + ":" + AUTH_TOKEN)
 
   const request = {
@@ -256,12 +256,12 @@ async function githubWebhookHandler(request) {
     const headers = await request.headers
     const action = headers.get("X-GitHub-Event")
     const repo_name = formData.repository.full_name
-    const sender_name = formData.sender.login 
+    const sender_name = formData.sender.login
 
     if (!checkSignature(formData, headers)) {
       return simpleResponse(403, "Wrong password, try again :P")
     }
-    
+
     return await sendText(`${sender_name} casted spell: ${action} onto your repo ${repo_name}`)
 
   } catch (e) {
@@ -281,7 +281,7 @@ $ wrangler publish
 
 ![Video of receiving a text after pushing to a repo](media/video-of-receiving-a-text-after-pushing-to-a-repo.gif)
 
-Make an update (that you configured in the GitHub webhook settings)) to your repo and you'll get a text soon after. If you’ve never used Git before, here’s a [quick guide](https://www.datacamp.com/community/tutorials/git-push-pull) to pushing to your repo. 
+Make an update (that you configured in the GitHub webhook settings)) to your repo and you'll get a text soon after. If you’ve never used Git before, here’s a [quick guide](https://www.datacamp.com/community/tutorials/git-push-pull) to pushing to your repo.
 
 You can reference the finished code on this [GitHub repository](https://github.com/davidtsong/github-twilio-notifications/).
 
@@ -290,7 +290,7 @@ You’ve learned how to:
 - Integrate Workers with GitHub and Twilio
 - Use Worker secrets with wrangler
 
-Next steps:
+Other tutorials:
 - [Authorize users with Auth0](/tutorials/authorize-users-with-auth0)
-- [JAMStack tutorial](/tutorials/build-a-jamstack-app)
-- [QR Tutorial](/tutorials/build-a-qr-code-generator)
+- [Build a JAMStack app](/tutorials/build-a-jamstack-app)
+- [Build a QR code generator](/tutorials/build-a-qr-code-generator)
