@@ -27,7 +27,7 @@ const DocsSearch = () => {
     // then we should not strip the prefix from the pathname. This
     // is a more reliable check than location.hostname !== "locahost"
     // because both `npm run serve` and `npm run develop` serve to
-    // localhost but only the latter needs to pathPrefix removed.
+    // localhost but only the latter needs the pathPrefix removed.
     if (productionPathPrefix === pathPrefix) return pathname
 
     // The crawled search results should end up including the
