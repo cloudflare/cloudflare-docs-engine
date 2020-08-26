@@ -68,9 +68,9 @@ We talked about the basic form of the `put` method above, but this call also has
 
 <Definitions>
 
-- `NAMESPACE.put(key, value, {expiration: secondsSinceEpoch})`<Type>Promise</Type>
+- `NAMESPACE.put(key, value, {expiration: secondsSinceEpoch})` <Type>Promise</Type>
 
-- `NAMESPACE.put(key, value, {expirationTtl: secondsFromNow})`<Type>Promise</Type>
+- `NAMESPACE.put(key, value, {expirationTtl: secondsFromNow})` <Type>Promise</Type>
 
 </Definitions>
 
