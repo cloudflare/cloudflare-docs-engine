@@ -208,7 +208,6 @@ These methods are all accessed via `crypto.subtle`, which is also [documented in
 
       - An Array of strings indicating the [possible usages of the new key](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#Syntax)
 
-
 - <Code>exportKey(format<ParamType>string</ParamType>, key<ParamType>CryptoKey</ParamType>)</Code> <Type>Promise&lt;ArrayBuffer></Type>
 
   - Transform a `CryptoKey` into a portable format, if the `CryptoKey` is `extractable`.
@@ -237,7 +236,6 @@ These methods are all accessed via `crypto.subtle`, which is also [documented in
     - <Code>wrapAlgo<ParamType>object</ParamType></Code>
 
       - Describes the algorithm to be used to encrypt the exported key, including any required parameters, in [an algorithm-specific format](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/wrapKey#Syntax).
-
 
 - <Code>unwrapKey(format, key, unwrappingKey, unwrapAlgo,<br/>&nbsp;&nbsp;unwrappedKeyAlgo, extractable,
   keyUsages)</Code> <Type>Promise&lt;CryptoKey></Type>

@@ -261,7 +261,4 @@ After deploying your project, open up your browser to test retrieving your asset
 
 In this tutorial, you built and published a serverless function to Cloudflare Workers for serving assets from cloud storage. If you’d like to see the full source code for this application, visit the [repo on GitHub](https://github.com/signalnerve/assets-on-workers).
 
-
 If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/examples).
-
-

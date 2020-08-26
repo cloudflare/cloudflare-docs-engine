@@ -137,7 +137,6 @@ The `element` argument, used only in element handlers, is a representation of a 
 
   - Inserts content before the element.
 
-
 - <Code>after(content<ParamType>Content</ParamType>, contentOptions<ParamType>ContentOptions</ParamType><PropMeta>optional</PropMeta>)</Code> <Type>Element</Type>
 
   - Inserts content right after the element.

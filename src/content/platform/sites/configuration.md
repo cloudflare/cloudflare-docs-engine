@@ -35,7 +35,6 @@ Workers Sites require the latest version of [Wrangler](https://github.com/cloudf
 
 There are a few specific configuration settings for Workers Sites in your `wrangler.toml`:
 
-
 <Definitions>
 
   - `bucket` <PropMeta>required</PropMeta>
