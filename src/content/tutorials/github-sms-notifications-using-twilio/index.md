@@ -60,7 +60,7 @@ Click "Let me select individual events" for which events to trigger the webhook.
 
 Finally, click "Add webhook" to finish our configuration.
 
-![Github config screenshot](media/github-config-screenshot.png)
+![GitHub config screenshot](media/github-config-screenshot.png)
 
 --------------------------------
 
