@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { navigate } from "@reach/router"
 import getPathPrefix from "../utils/get-path-prefix"
+import getCloudflareDocsConfig from "../utils/get-cloudflare-docs-config"
 
 import Helmet from "react-helmet"
 
@@ -8,6 +9,8 @@ import DocsTitle from "./docs-title"
 import AccessibleSVG from "./accessible-svg"
 
 const DocsSearch = () => {
+  const { search: { indexName, apiKey }} = getCloudflareDocsConfig()
+
   useEffect(() => {
     let frames = 0
     const init = () => {
@@ -19,8 +22,8 @@ const DocsSearch = () => {
       }
 
       const search = window.docsearch({
-        indexName: "cloudflare-workers-v2",
-        apiKey: "9c24e56570a37c30bba608dad543d1d8",
+        indexName,
+        apiKey,
 
         // TODO: pass DOM in with Reacth.createRef?
         inputSelector: "#DocsSearch--input",
@@ -114,6 +117,8 @@ const DocsSearch = () => {
     }
 
     init()
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

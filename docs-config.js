@@ -17,6 +17,10 @@ module.exports = {
       url: "https://workers.cloudflare.com/#plans"
     },
   ],
+  search: {
+    indexName: "cloudflare-workers-v2",
+    apiKey: "9c24e56570a37c30bba608dad543d1d8",
+  },
   siteMetadata: {
     title: "Cloudflare Workers docs",
     description: "Documentation for Cloudflare Workers, a serverless execution environment that allows you to create entirely new applications or augment existing ones without configuring or maintaining infrastructure.",

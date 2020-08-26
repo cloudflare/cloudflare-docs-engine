@@ -9,7 +9,8 @@ Array.from([
   "pathPrefix",
   "productLogoPathD",
   "contentRepo",
-  "externalLinks"
+  "externalLinks",
+  "search",
 ]).forEach(prop => {
   siteMetadata.cloudflareDocs[prop] = docsConfig[prop]
 })

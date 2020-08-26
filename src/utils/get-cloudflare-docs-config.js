@@ -23,6 +23,10 @@ export default () => {
                 title
                 url
               }
+              search {
+                indexName
+                apiKey
+              }
             }
           }
         }
