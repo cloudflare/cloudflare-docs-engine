@@ -687,5 +687,3 @@ Publishing your Workers application should now cause issue updates to start appe
 In this tutorial, you built and published a Cloudflare Workers application that can respond to GitHub webhook events, and allow GitHub API lookups within Slack. If you’d like to see the full source code for this application, you can find the repo [on GitHub](https://github.com/signalnerve/workers-slack-bot).
 
 If you want to get started building your own projects, check out the quick-start templates we’ve provided in our [Template Gallery](/examples).
-
-
