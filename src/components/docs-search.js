@@ -80,17 +80,14 @@ const DocsSearch = () => {
           const url = new URL(suggestion.url)
           const pathname = fixSearchResultPathname(url.pathname)
 
+          search.input.autocomplete.setVal("")
+          search.input[0].blur()
+
+          // Don’t scroll to hash when it’s just the h1.
           if (suggestion.isLvl0) {
-            // Don’t scroll to hash when it’s just the h1.
             navigate(pathname)
 
           } else {
-            // When search results also scroll to hash,
-            // blur the input so it’s not confusing that
-            // your focus is still up in the search, and
-            // also clear the input for next use.
-            search.input[0].blur()
-            search.input[0].value = ""
             navigate(pathname + url.hash)
 
             // Then focus the anchor in the header anchor
