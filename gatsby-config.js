@@ -89,8 +89,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "cloudflare-docs",
-        short_name: "docs",
+        name: "Cloudflare docs",
+        short_name: "Docs",
         start_url: "/",
         background_color: "#f38020",
         theme_color: "#f38020",
