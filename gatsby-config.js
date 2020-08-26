@@ -12,6 +12,11 @@ Array.from(["product",
     siteMetadata.cloudflareDocs[prop] = docsConfig[prop]
 })
 
+// We exposed friendlier siteMetadata.url to Docs consumers
+// but gatsby-plugin-sitemap requires `siteUrl` https://git.io/JUUxW
+siteMetadata.siteUrl = siteMetadata.url
+delete siteMetadata.url
+
 module.exports = {
   // Deploy production site to the docs config pathPrefix
   // but keep local development done at the root due to:
