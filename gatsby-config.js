@@ -4,12 +4,14 @@ const isProduction = process.env.NODE_ENV === "production"
 
 const siteMetadata = docsConfig.siteMetadata
 siteMetadata.cloudflareDocs = {}
-Array.from(["product",
+Array.from([
+  "product",
   "pathPrefix",
   "productLogoPathD",
   "contentRepo",
-  "externalLinks"]).forEach(prop => {
-    siteMetadata.cloudflareDocs[prop] = docsConfig[prop]
+  "externalLinks"
+]).forEach(prop => {
+  siteMetadata.cloudflareDocs[prop] = docsConfig[prop]
 })
 
 // We exposed friendlier siteMetadata.url to Docs consumers
