@@ -51,7 +51,6 @@ The following methods are available per the [Worker Global Scope](https://develo
 
   - Cancels the repeated execution set using [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval).
 
-
 - <TypeLink href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">setTimeout()</TypeLink>
 
   - Schedules a function to execute in a given amount of time.

@@ -580,7 +580,6 @@ const verify = async event => {
 
 Finally, we’ll decode the `idToken` stored in KV. This includes the `profile` and `email` scopes we requested from Auth0 when the user logged in, which we’ll return as `userInfo`, along with `accessToken` and `idToken`:
 
-
 ```js
 ---
 filename: workers-site/auth0.js

@@ -643,7 +643,6 @@ When you want to provide additional information in context, but you don’t want
 
 To ensure proper layout and styling, wrap all contains of the `<details/>` element, except the `<summary/>` element, in a single `<div/>`:
 
-
 ``````markdown
 <details>
 <summary>Details</summary>
