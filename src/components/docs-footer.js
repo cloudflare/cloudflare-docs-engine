@@ -8,7 +8,7 @@ export default ({ page }) => {
   if (!page || !page.parent) return null
 
   const { modifiedTime, relativePath } = page.parent
-  const { contentRepo }  = getCloudflareDocsConfig()
+  const { contentRepo } = getCloudflareDocsConfig()
 
   const editOnGithubURL = `https://github.com/${contentRepo}/blob/master/src/content/${relativePath}`
 
