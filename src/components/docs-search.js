@@ -9,7 +9,39 @@ import DocsTitle from "./docs-title"
 import AccessibleSVG from "./accessible-svg"
 
 const DocsSearch = () => {
-  const { search: { indexName, apiKey }} = getCloudflareDocsConfig()
+  const pathPrefix = getPathPrefix()
+
+  const {
+    pathPrefix: productionPathPrefix,
+    search: {
+      indexName,
+      apiKey
+    }
+  } = getCloudflareDocsConfig()
+
+  // Adjust search result URL pathname to work with local development
+  // See https://github.com/cloudflare/workers-docs-engine/issues/196
+  const fixSearchResultPathname = (pathname) => {
+    // When the pathPrefix we get from getPathPrefix() matches the
+    // productionPathPrefix we get from getCloudflareDocsConfig()
+    // then we should not strip the prefix from the pathname. This
+    // is a more reliable check than location.hostname !== "locahost"
+    // because both `npm run serve` and `npm run develop` serve to
+    // localhost but only the latter needs to pathPrefix removed.
+    if (productionPathPrefix === pathPrefix) return pathname
+
+    // The crawled search results should end up including the
+    // productionPathPrefix (if one exists) so we need to remove
+    // that for local development (where getPathPrefix() === "").
+    if (pathname.startsWith(`${productionPathPrefix}/`))
+      return pathname.substr(productionPathPrefix.length)
+
+    // If for some reason the results are missing the pathPrefix,
+    // then this is likely due to a crawling issue. But we return
+    // the pathname as it is in this case which should cause a
+    // 404 when we try to navigate(pathname) below.
+    return pathname
+  }
 
   useEffect(() => {
     let frames = 0
@@ -43,14 +75,10 @@ const DocsSearch = () => {
 
         // https://docsearch.algolia.com/docs/behavior
         handleSelected: (input, event, suggestion, datasetNumber, context) => {
+          // Adjust search result URL pathname to work with local development
+          // See https://github.com/cloudflare/workers-docs-engine/issues/196
           const url = new URL(suggestion.url)
-
-          // TODO: remove after Algolia crawls the pathPrefixed site
-          const pathPrefix = getPathPrefix()
-          const pathname =
-            url.pathname.startsWith(`${pathPrefix}/`) ?
-              url.pathname :
-              pathPrefix + url.pathname
+          const pathname = fixSearchResultPathname(url.pathname)
 
           if (suggestion.isLvl0) {
             // Don’t scroll to hash when it’s just the h1.

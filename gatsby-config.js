@@ -4,14 +4,8 @@ const isProduction = process.env.NODE_ENV === "production"
 
 const siteMetadata = docsConfig.siteMetadata
 siteMetadata.cloudflareDocs = {}
-Array.from([
-  "product",
-  "pathPrefix",
-  "productLogoPathD",
-  "contentRepo",
-  "externalLinks",
-  "search",
-]).forEach(prop => {
+Object.keys(docsConfig).forEach(prop => {
+  if (prop === "siteMetadata") return
   siteMetadata.cloudflareDocs[prop] = docsConfig[prop]
 })
 

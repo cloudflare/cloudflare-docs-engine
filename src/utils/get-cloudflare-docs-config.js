@@ -16,6 +16,7 @@ export default () => {
         site {
           siteMetadata {
             cloudflareDocs {
+              pathPrefix
               product
               productLogoPathD
               contentRepo
