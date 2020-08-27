@@ -1,14 +1,8 @@
 # Code block examples
 
-<Aside type="warning">
+Code blocks inside [Docs Engine Markdown](/reference/markdown) offer a variety of custom presentation mechanisms. This page contains practical examples for inspiration.
 
-__Warning:__ These APIs are a work in progress, and may change substantially before release.
-
-</Aside>
-
-Code blocks inside Cloudflare [Docs-flavored Markdown](/docs-engine/docs-flavored-markdown) offer a variety of custom presentation mechanisms. This page contains practical examples for inspiration.
-
-Learn more about [using code blocks inside docs-flavored Markdown](/docs-engine/docs-flavored-markdown#codeblocks).
+Learn more about [using code blocks inside Markdown](/reference/markdown#codeblocks).
 
 --------------------------------
 

@@ -2,15 +2,15 @@
 order: 1
 ---
 
-# Docs-flavored Markdown
+# Markdown
 
-The Cloudflare Docs engine renders pages with [MDX](https://mdxjs.com/), and includes a number of custom MDX components in the global context, allowing authors to use them on any page without requiring them to be explicitly imported.
+The Cloudflare Docs Engine renders pages with [MDX](https://mdxjs.com/), and includes a number of custom MDX components in the global context, allowing authors to use them on any page without requiring them to be explicitly imported.
 
 --------------------------------
 
 ## Frontmatter
 
-There are a number of optional frontmatter properties you can set that the Cloudflare Docs engine is aware of. However, it is the goal of the docs engine that the default behavior (when not setting them) works well out of the box.
+There are a number of optional frontmatter properties you can set that the Cloudflare Docs Engine is aware of. However, it is the goal of the docs engine that the default behavior (when not setting them) works well out of the box.
 
 ```txt
 frontmatter {
