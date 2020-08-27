@@ -7,6 +7,12 @@
   width: calc(100% - var(--docs-body-sidebar-width));
 }
 
+@media (min-width: 769px) {
+  [search-disabled] .DocsContent {
+    padding-top: 0;
+  }
+}
+
 @media (max-width: 768px) {
   .DocsContent {
     padding: 2rem 1rem;

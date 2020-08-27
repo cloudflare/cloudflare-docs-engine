@@ -19,6 +19,8 @@ const DocsSearch = () => {
     }
   } = getCloudflareDocsConfig()
 
+  const enableSearch = indexName && apiKey
+
   // Adjust search result URL pathname to work with local development
   // See https://github.com/cloudflare/workers-docs-engine/issues/196
   const fixSearchResultPathname = (pathname) => {
@@ -141,10 +143,16 @@ const DocsSearch = () => {
       })
     }
 
-    init()
+    if (enableSearch) {
+      init()
+    }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  if (!enableSearch) {
+    return <React.Fragment/>
+  }
 
   return (
     <>

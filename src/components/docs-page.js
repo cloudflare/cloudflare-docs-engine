@@ -20,6 +20,7 @@ import DocsTableOfContents from "./docs-table-of-contents"
 import { className as docsMarkdownClassName } from "./mdx/root"
 import DocsFooter from "./docs-footer"
 
+import getCloudflareDocsConfig from "../utils/get-cloudflare-docs-config"
 import getPageTitle from "../utils/get-page-title"
 import getPageType from "../utils/get-page-type"
 import getTableOfContents from "../utils/get-table-of-contents"
@@ -30,12 +31,16 @@ const DocsPage = ({ pageContext: page, children, location }) => {
   const pageType = getPageType(page)
   const tableOfContents = getTableOfContents(page)
 
+  const { search } = getCloudflareDocsConfig()
+  const enableSearch = search.apiKey && search.indexName
+  const disableSearchProps = enableSearch ? {} : { "search-disabled": "" }
+
   return (
     <>
       <SEO title={title}/>
 
       <Helmet>
-        <html is-docs-page=""/>
+        <html is-docs-page="" {...disableSearchProps}/>
       </Helmet>
 
       <HandleMobilePageNavigations/>
