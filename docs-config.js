@@ -1,31 +1,27 @@
 module.exports = {
-  product: "Workers",
+  product: "Docs Engine",
   pathPrefix: "/workers",
-  productLogoPathD: "M13.112 9.832c.164-.276.362-.528.59-.75l3.71 6.508-4.02 7.054a3.742 3.742 0 000 3.712l4.02 7.056a14410.466 14410.466 0 00-3.705 6.511 3.648 3.648 0 01-.595-.755L5.495 26.3a3.517 3.517 0 010-3.6l7.617-12.868zM31.617 41h-5.354l8.346-14.644a3.742 3.742 0 000-3.712L26.263 8h5.354c1.355 0 2.602.702 3.27 1.832L42.506 22.7a3.517 3.517 0 010 3.6l-7.617 12.868c-.669 1.13-1.916 1.832-3.27 1.832zm-15.234 0c-.088 0-.176-.003-.263-.009l1.504-2.644c1.564-2.747 3.91-6.867 7.04-12.36a3 3 0 000-2.974L16.114 8.01c.089-.006.179-.009.269-.009h6.858l9.095 15.959c.193.338.193.744 0 1.082L23.24 41h-6.858z",
-  contentRepo: "cloudflare/workers-docs-engine",
+  productLogoPathD: "M10 8h18c.7.07 1.37.37 1.88.88l4.24 4.24A3 3 0 0135 15L35 20h-3v-3h-6v-6H13v27h10l3 3H10V8zm5 13h8v1h-8v-1zm1 4h3v1h-3v-1zm0-2h5v1h-5v-1zm1 4h5v1h-5v-1zm-1 6h2v1h-2v-1zm-1 2h4v1h-4v-1zm3-6h3v1h-3v-1zm-1 2h3v1h-3v-1zm-2-18h8v3h-8v-3zm20.39 27.5c-.06.29-.32.5-.62.5h-2.54a.63.63 0 01-.62-.5l-.34-1.74c-.46-.14-.9-.32-1.32-.55l-1.47.98a.63.63 0 01-.8-.08l-1.8-1.79a.63.63 0 01-.07-.8l.98-1.47c-.23-.42-.41-.86-.55-1.32l-1.73-.34a.63.63 0 01-.51-.62v-2.54c0-.3.21-.56.5-.62l1.74-.34c.14-.46.32-.9.55-1.32l-.98-1.47a.63.63 0 01.08-.8l1.79-1.8a.63.63 0 01.8-.07l1.47.98c.42-.23.86-.41 1.32-.55l.34-1.73c.06-.3.32-.51.62-.51h2.54c.3 0 .56.21.62.5l.34 1.74c.46.14.9.32 1.32.55l1.48-.98a.63.63 0 01.8.08l1.79 1.79c.2.21.24.55.08.8l-.99 1.47c.23.42.41.86.55 1.32l1.73.34c.3.06.51.32.51.62v2.54c0 .3-.21.56-.5.62l-1.74.34c-.14.46-.32.9-.55 1.32l.98 1.48c.17.25.14.58-.08.8l-1.79 1.79a.63.63 0 01-.8.08l-1.47-.99c-.42.23-.86.41-1.32.55l-.34 1.73zm2.54-9a4.43 4.43 0 10-8.86 0 4.43 4.43 0 008.86 0z",
+  contentRepo: "adamschwartz/cloudflare-docs-engine",
   externalLinks: [
     {
-      title: "Workers home",
-      url: "https://workers.cloudflare.com"
+      title: "Docs Engine on GitHub",
+      url: "https://github.com/adamschwartz/cloudflare-docs-engine"
     },
     {
-      title: "Playground",
-      url: "https://cloudflareworkers.com"
-    },
-    {
-      title: "Pricing",
-      url: "https://workers.cloudflare.com/#plans"
+      title: "Cloudflare Developers",
+      url: "https://developers.cloudflare.com"
     },
   ],
   search: {
-    indexName: "cloudflare-workers-v2",
-    apiKey: "9c24e56570a37c30bba608dad543d1d8",
+    indexName: "",
+    apiKey: "",
   },
   siteMetadata: {
-    title: "Cloudflare Workers docs",
-    description: "Documentation for Cloudflare Workers, a serverless execution environment that allows you to create entirely new applications or augment existing ones without configuring or maintaining infrastructure.",
+    title: "Cloudflare Docs Engine docs",
+    description: "Documentation for the open-source Cloudflare Documentation engine which powers Cloudflare’s open-source documentation.",
     author: "@cloudflare",
-    url: "http://developers.cloudflare.com/workers",
-    image: "https://repository-images.githubusercontent.com/253644261/3c9cd080-e25c-11ea-9db6-57a083cfdb49",
+    url: "http://developers.cloudflare.com/docs-engine",
+    image: "",
   },
 }
