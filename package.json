@@ -59,7 +59,6 @@
   "scripts": {
     "build": "npm run clean && gatsby build --prefix-paths",
     "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build --log-pages --prefix-paths",
-    "postbuild": "bin/postbuild",
     "develop": "gatsby develop -H 0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
