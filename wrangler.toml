@@ -1,18 +1,8 @@
-name = "workers-docs"
+name = "docs-engine-docs"
 type = "webpack"
-account_id = "b54f07a6c269ecca2fa60f1ae4920c99" # cloudflare-docs.workers.dev
+account_id = "1e1395dd88464c726799aac6c1be4a71" # adam.workers.dev
 workers_dev = true
-# kv namespace is workers-docs-REDIRECTS_DEV in dash
-kv-namespaces = [{ binding = "REDIRECTS", id = "1f759966503240aeb7acab72ae4e70c0", preview_id = "1f759966503240aeb7acab72ae4e70c0" }]
-
-[env.production]
-workers_dev = false
-account_id = "b54f07a6c269ecca2fa60f1ae4920c99"
-zone_id = "351cf9fc660523187714fa772ad5ca49"
-route = "https://developers.cloudflare.com/workers*"
-# kv namespace is workers-docs-REDIRECTS in dash
-kv-namespaces = [{ binding = "REDIRECTS", id = "18460178b7c6458b9dd4f6b99b27d2b1", preview_id = "18460178b7c6458b9dd4f6b99b27d2b1" }]
 
 [site]
-bucket = "./public"
+bucket = "public"
 entry-point = "workers-site"
