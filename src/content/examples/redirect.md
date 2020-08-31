@@ -20,7 +20,6 @@ const destinationURL = "https://example.com"
 const statusCode = 301
 
 async function handleRequest(request) {
-  const { pathname } = new URL(request.url)
   return Response.redirect(destinationURL, statusCode)
 }
 
