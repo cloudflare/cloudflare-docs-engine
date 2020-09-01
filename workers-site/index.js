@@ -49,6 +49,12 @@ async function handleEvent(event) {
       options.cacheControl = {
         bypassCache: true,
       }
+    } else {
+      options.cacheControl = {
+        browserTTL: null,
+        edgeTTL: 5,
+        bypassCache: false,
+      }
     }
     return await getAssetFromKV(event, options)
   } catch (e) {
