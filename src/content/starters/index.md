@@ -152,6 +152,12 @@ Other languages may require you to install additional tools beyond wrangler. See
 />
 
 <WorkerStarter
+  title="Hello World (PHP)"
+  description="A bare-bones starter in PHP."
+  repo="cloudflare/php-worker-hello-world"
+/>
+
+<WorkerStarter
   title="Emscripten + Wasm Image Resizer"
   description="An image resizer in C compiled to Wasm with Emscripten."
   repo="cloudflare/worker-emscripten-template"
