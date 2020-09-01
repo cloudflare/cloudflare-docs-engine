@@ -207,7 +207,7 @@ $ wrangler dev [--env $ENVIRONMENT_NAME] [--ip <ip>] [--port <port>] [--host <ho
 - `--local-protocol` <PropMeta>optional</PropMeta>
   - Protocol to listen to requests on, defaults to http.
 
-- `--upstream-protocl` <PropMeta>optional</PropMeta>
+- `--upstream-protocol` <PropMeta>optional</PropMeta>
   - Protocol to forward requests to host on, defaults to https.
 
 </Definitions>
