@@ -258,7 +258,7 @@ vars = {FOO = "some text"}
 
 <Aside>
 
-__Note:__ Secret variables can only be assigned to specific environments by passing the `-e/--env <environment_name>` flag while using the [`wrangler secret create`](/cli-wrangler/commands#secret) command.
+__Note:__ Secret variables can only be assigned to specific environments by passing the `-e/--env <environment_name>` flag while using the [`wrangler secret put`](/cli-wrangler/commands#secret) command.
 
 </Aside>
 
