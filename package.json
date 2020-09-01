@@ -1,5 +1,5 @@
 {
-  "name": "workers-docs-engine",
+  "name": "cloudflare-docs-engine",
   "private": true,
   "description": "Cloudflare Workers documentation engine",
   "version": "0.1.0",
