@@ -29,8 +29,8 @@ order: 2
 | Feature                               | Free       | Bundled    |
 |---------------------------------------|------------|------------|
 | [Reads/second](#kv)                   | unlimited  | unlimited  |
-| [Writes/second](#kv) (different keys) | unlimited  | unlimited  |
-| [Writes/second](#kv) (same key)       | 1          | 1          |
+| [Writes/second (different keys)](#kv) | unlimited  | unlimited  |
+| [Writes/second (same key)](#kv)       | 1          | 1          |
 | [Namespaces](#kv)                     | 100        | 100        |
 | [Keys/namespace](#kv)                 | unlimited  | unlimited  |
 | [Key size](#kv)                       | 512 bytes  | 512 bytes  |
