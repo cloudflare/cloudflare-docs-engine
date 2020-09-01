@@ -26,14 +26,15 @@ order: 2
 
 <TableWrap>
 
-| Feature                  | Free       | Bundled    |
-|--------------------------|------------|------------|
-| [Reads/second](#kv)      | unlimited  | unlimited  |
-| [Writes/second/key](#kv) | 1          | 1          |
-| [Namespaces](#kv)        | 100        | 100        |
-| [Keys/namespace](#kv)    | unlimited  | unlimited  |
-| [Key size](#kv)          | 512 bytes  | 512 bytes  |
-| [Key metadata](#kv)      | 1024 bytes | 1024 bytes |
+| Feature                               | Free       | Bundled    |
+|---------------------------------------|------------|------------|
+| [Reads/second](#kv)                   | unlimited  | unlimited  |
+| [Writes/second](#kv) (different keys) | unlimited  | unlimited  |
+| [Writes/second](#kv) (same key)       | 1          | 1          |
+| [Namespaces](#kv)                     | 100        | 100        |
+| [Keys/namespace](#kv)                 | unlimited  | unlimited  |
+| [Key size](#kv)                       | 512 bytes  | 512 bytes  |
+| [Key metadata](#kv)                   | 1024 bytes | 1024 bytes |
 
 </TableWrap>
 
@@ -158,8 +159,9 @@ After subscription to a Workers Bundled plan, KV is enabled. Workers KV supports
 - Keys of up to 512 bytes
 - Values of up to 10 MB
 - Metadata of up to 1024 bytes per key
-- Unlimited reads per second per key
-- Up to one write per second per key
+- Unlimited reads per second
+- Unlimited writes per second, if they are to different keys
+- Up to one write per second to any particular key
 
 Workers KV read performance is determined by the amount of read-volume a
 given key receives. Maximum performance for a key is not reached unless that
