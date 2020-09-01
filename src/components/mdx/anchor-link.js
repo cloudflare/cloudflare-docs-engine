@@ -13,15 +13,12 @@ export default ({ href, className, children, ...props }) => {
   // eslint-disable-next-line jsx-a11y/anchor-has-content
   if (!href || !children) return (<a {...props}/>)
 
-  const isImageLink = typeof children === "object" &&
-    children.props &&
-    (children.props.originalType === "img" ||
-    children.props.className === "gatsby-resp-image-wrapper")
-
-  const isExternal = !!href.match(/^https?:/)
+  // Similar to Gatsby’s own mdx-link.js https://git.io/JUmtg
   const isHash = href.indexOf("#") === 0
-
-  const useRegularLink = isImageLink || isExternal || isHash
+  const isExternal = !!href.match(/^https?:/)
+  const isFile = /\..+$/.test(href)
+  const linkHasChildren = typeof children === "object"
+  const useRegularLink = isHash || isExternal || isFile
 
   if (isHash) {
     props.onClick = event => {
@@ -52,7 +49,7 @@ export default ({ href, className, children, ...props }) => {
   }
 
   return useRegularLink ? (
-    (isExternal && !isImageLink) ? (
+    (isExternal && !linkHasChildren) ? (
       <a href={href} className={className || linkClassName} {...props}>
         <span className={contentClassName}>{children}</span>
         <IconExternalLink className={externalIconClassName}/>
