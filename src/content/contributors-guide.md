@@ -1,3 +1,7 @@
+---
+order: 3
+---
+
 # Contributor’s guide
 
 This page provides an overview of how best to contribute to Cloudflare’s documentation. This is a living document and will be updated as recommendations change.
