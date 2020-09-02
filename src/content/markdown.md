@@ -543,7 +543,7 @@ $ wrangler config
 
 ### Examples
 
-Check out the dedicated [code block examples](/docs-engine/code-block-examples) page for more.
+Check out the dedicated [code block examples](/markdown/code-block-examples) page for more.
 
 --------------------------------
 
