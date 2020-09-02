@@ -48,7 +48,7 @@ copysrc() {
   echo "Deleting .docs/docs-config.js"
   rm docs-config.js
 
-  echo "Copying docs-config.js into .docs/docs-engine"
+  echo "Copying docs-config.js into .docs"
   cp ../docs-config.js ./
 
   echo "Entering .docs/src/"
