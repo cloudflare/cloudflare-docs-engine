@@ -49,7 +49,7 @@ JavaScript is fully supported on the Workers platform. We recommend using JavaSc
 
 ## Compiled to JavaScript
 
-You can also implement Workers with any language than can compile to JavaScript, including the languages below. Learn more by checking out the example projects.
+You can also implement Workers with any language that can compile to JavaScript, including the languages below. Learn more by checking out the example projects.
 
 <TableWrap>
 
