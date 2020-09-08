@@ -21,7 +21,7 @@ tags:
  * @param {string} someHost the host the request will resolve too
  */
 const someHost = "example.com"
-const someUrl = "https://foo.example.com/api.js"th(handleRequest(event.request))
+const someUrl = "https://foo.example.com/api.js"
 
 async function handleRequest(request) {
   /**
