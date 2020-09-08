@@ -89,9 +89,6 @@ if [ "$1" = "build" ]; then
   echo "Running npm run build"
   npm run build
 
-  echo "Entering cloudflare-docs-engine"
-  cd $docs_engine_path
-
   echo "Running bin/postbuild.js"
   node bin/postbuild.js
 fi
