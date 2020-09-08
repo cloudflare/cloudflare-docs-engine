@@ -13,10 +13,6 @@ if (pathPrefix.length && !pathPrefix.startsWith("/")) {
   return
 }
 
-const bucketRoot = "./.docs/public"
-const oldPath = `${bucketRoot}`
-const newPath = `${bucketRoot}${pathPrefix}`
-
 const handleExec = (completed) => {
   return (error, stdout, stderr) => {
     if (error) {
@@ -34,14 +30,15 @@ const handleExec = (completed) => {
   }
 }
 
-const move = () => {
-  exec(`mv ${oldPath}/* ${newPath}`, handleExec(() => {
-    console.log("Completed postbuild")
-  }))
-}
+if (pathPrefix !== "") {
+  const dir = "$PWD/.docs/"
+  const folderName = pathPrefix.substr(1)
 
-if (newPath !== oldPath) {
-  exec(`mkdir -p ${newPath}`, handleExec(() => {
-    move()
+  exec(`mv "${dir}public" "${dir}${folderName}"`, handleExec(() => {
+    exec(`mkdir "${dir}public"`, handleExec(() => {
+      exec(`mv "${dir}${folderName}" "${dir}public/"`, handleExec(() => {
+        console.log("Completed postbuild")
+      }))
+    }))
   }))
 }
