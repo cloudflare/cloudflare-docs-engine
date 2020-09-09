@@ -848,7 +848,7 @@ yes
 Writes a file full of key/value pairs to the given namespace.
 
 ```sh
-$ wrangler kv:key put --binding= [--env=] [--preview] [--namespace-id=] $FILENAME
+$ wrangler kv:bulk put --binding= [--env=] [--preview] [--namespace-id=] $FILENAME
 ```
 
 <Definitions>
