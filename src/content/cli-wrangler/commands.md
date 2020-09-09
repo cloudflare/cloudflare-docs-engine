@@ -421,19 +421,6 @@ $ wrangler secret list --env ENVIRONMENT_NAME
 
 ## kv
 
-Interact with your Cloudflare Workers KV store.
-
-If you’ve already selected a workers.dev subdomain, running `wrangler subdomain <name>` will update all your currently running Workers to run on the new subdomain (e.g. `hello.world.workers.dev` will now run on `hello.new-world.workers.dev`).
-
-<Definitions>
-
-- `$NAME`
-  - Name of the workers.dev subdomain you wish to deploy to (e.g. `name.workers.dev`)
-
-</Definitions>
-
-### Overview
-
 The `kv` subcommand allows you to store application data in the Cloudflare network to be accessed from Workers, using
 [Workers KV](https://www.cloudflare.com/products/workers-kv/).
 KV operations are scoped to your account, so in order to use any of these commands, you need to:
