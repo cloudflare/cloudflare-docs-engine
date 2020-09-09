@@ -31,7 +31,8 @@ const handleExec = (completed) => {
 }
 
 if (pathPrefix !== "") {
-  const dir = "$PWD/.docs/"
+  // We are running from inside `.docs/`
+  const dir = "$PWD/"
   const folderName = pathPrefix.substr(1)
 
   exec(`mv "${dir}public" "${dir}${folderName}"`, handleExec(() => {

@@ -89,6 +89,7 @@ if [ "$1" = "build" ]; then
   echo "Running npm run build"
   npm run build
 
+  # We must run from inside `.docs/`
   echo "Running bin/postbuild.js"
   node bin/postbuild.js
 fi
