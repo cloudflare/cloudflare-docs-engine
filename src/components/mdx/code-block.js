@@ -10,6 +10,7 @@ import { languageMappings, prismLanguages, transformToken } from "./custom-synta
 import Prism from "prism-react-renderer/prism"
 (typeof global !== "undefined" ? global : window).Prism = Prism
 require("prismjs/components/prism-toml")
+require("prismjs/components/prism-rust")
 Prism.languages.sh = prismLanguages.sh
 
 const codeBlockClassName = theme => {
