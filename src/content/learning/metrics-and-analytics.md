@@ -2,7 +2,7 @@
 order: 9
 ---
 
-# Workers metrics and analytics
+# Metrics and analytics
 
 There are two graphical sources of information about your Workers traffic at at given time: Workers Metrics and zone-based Workers analytics. Workers metrics can help you diagnose issues and understand your Workers workloads by showing performance and usage of your Workers. If your Worker runs on a route on a zone, or on a few zones, the Workers tab in the zone can help you understand on a per-zone basis how much traffic your Worker is handling, and how many requests your site is getting.
 
