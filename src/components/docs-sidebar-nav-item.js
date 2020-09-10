@@ -83,7 +83,7 @@ class DocsSidebarNavItem extends React.Component {
     const { node, location } = this.props
 
     const href = pathPrefix ? pathPrefix + node.href : node.href
-    const isActive = href === getNormalizedPath(location.pathname)
+    const isActive = getNormalizedPath(href) === getNormalizedPath(location.pathname)
     const isActiveDueToChild = !this.showChildren() && this.isActiveRoot()
 
     return isActive || isActiveDueToChild
@@ -93,7 +93,7 @@ class DocsSidebarNavItem extends React.Component {
     const { node, location } = this.props
 
     const href = node => pathPrefix ? pathPrefix + node.href : node.href
-    const isActive = node => href(node) === getNormalizedPath(location.pathname)
+    const isActive = node => getNormalizedPath(href(node)) === getNormalizedPath(location.pathname)
     const hasActiveChild = node => !node.children ? false : node.children.some(
       node => isActive(node) || hasActiveChild(node)
     )
