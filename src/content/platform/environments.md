@@ -89,13 +89,16 @@ name = "my-worker-dev"
 account_id = "12345678901234567890"
 zone_id = "09876543210987654321"
 route = "dev.example.com/*"
+vars = { ENVIRONMENT = "dev" }
 
 [env.staging]
 name = "my-worker-staging"
+vars = { ENVIRONMENT = "staging" }
 route = "staging.example.com/*"
 
 [env.production]
 name = "my-worker"
+vars = { ENVIRONMENT = "production" }
 routes = [
   "example.com/foo/*",
   "example.com/bar/*"
@@ -125,6 +128,8 @@ With this configuration, Wrangler will behave in the following manner:
 ```
 
 Once a text variable is uploaded via [wrangler](/cli-wrangler) or in the UI, the string is exposed on the global namespace as type [`String`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String).
+
+With this configuration, the `ENVIRONMENT` variable can be used to call specific code depending on the given environment:
 
 ```js
 if (ENVIRONMENT === "staging") {
