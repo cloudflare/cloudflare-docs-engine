@@ -1,5 +1,5 @@
 ---
-updated: 2020-08-21
+updated: 2020-09-12
 difficulty: Advanced
 ---
 
@@ -34,9 +34,11 @@ wrangler dev
 
 [`wrangler dev`](/cli-wrangler/commands#dev) starts a server on localhost that executes your Worker on incoming HTTP requests. By default, it'll listen on port :8787. 
 
-<Aside>The first time you run `wrangler dev` might take a couple minutes. </Aside>
+<Aside>The first time you run `wrangler dev` might take a couple minutes to compile to WebAssembly. </Aside>
 
 When navigating to localhost:8787 in your browser, you should see something like this:
+
+![Hello wasm-worker](./media/hello-wasm-worker.png)
 
 
 ## Building your code
@@ -117,7 +119,7 @@ async function handleRequest(request) {
 }
 ```
 
-Whenever we `dev` or `publish`, `wrangler` will build our project. But if you just want to `build` and not
+Whenever we run `dev` or `publish`, `wrangler` will build our project. But if you just want to `build` and not
 `dev` or `publish`, you can run the `build` command:
 
 ```sh
@@ -125,7 +127,7 @@ wrangler build
 ```
 
 This will compile your Rust to WebAssembly. It'll show you any compiler errors you have so you can fix them!
-To preview this code in the Cloudflare UI, you can run:
+To preview this code in the browser, and get runtime errors in your terminal, you can run:
 
 ```sh
 wrangler dev
@@ -133,22 +135,22 @@ wrangler dev
 
 If everything worked, you should see:
 
-![Cloudflare UI with working RustWasm Worker](./media/rustwasm1.png)
+![Working RustWasm Worker](./media/parsed-markdown.png)
 
 ## Publishing your Worker
 
 And with that, you're finished writing a Cloudflare Workers function with Rust-generated WASM!
 
-Wrangler has built-in support for bundling, uploading, and releasing your Cloudflare Workers application. To do this, we'll run `wrangler publish`, which will _build_ and _publish_ your code:
+Wrangler has built-in support for bundling, uploading, and releasing your Cloudflare Workers application. To do this, we'll run `wrangler publish`, which will _build_ and _publish_ your code to your workers.dev subdomain:
 
-![Publish](./media/publish.gif)
+![Publish](./media/rust-wasm-publish-worker.gif)
 
 ## Resources
 
-In this tutorial, you built and published a Rust-generated WebAssembly serverless function that parses Markdown. If you'd like to see the full source code for this application, you can find it [on GitHub](https://github.com/granjef3/rustwasm-markdown-parser).
+In this tutorial, you built and published a Rust-generated WebAssembly serverless function that parses Markdown. If you'd like to see the full source code for this application, you can find it [on GitHub](https://github.com/xortive/rustwasm-markdown-parser).
 
 If you enjoyed this tutorial, we encourage you to explore our other tutorials for building on Cloudflare Workers:
 
-- [Build A Serverless Function](/tutorials/build-a-serverless-function)
-- [Build An Application](/tutorials/build-an-application)
-- [Configure Your CDN](/tutorials/configure-your-cdn)
+- [Build a QR Code Generator](/tutorials/build-a-qr-code-generator)
+- [Build a To-Do List JAMstack Application](/tutorials/build-a-jamstack-app)
+- [Build a SlackBot](/tutorials/build-a-slackbot)
