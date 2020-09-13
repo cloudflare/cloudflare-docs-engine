@@ -205,7 +205,7 @@ Additionally, if `list_complete` is `false`, there are more keys to fetch. You�
 
 #### Listing by prefix
 
-You can also list all of the keys starting with a particular prefix. For example, say you’ve structured your keys with a user, a user id, and then some key names, separated by colons (e.g. ` user:1:<key>`). You could get the keys for user number one by doing this:
+You can also list all of the keys starting with a particular prefix. For example, say you’ve structured your keys with a user, a user id, and then some key names, separated by colons (e.g. `user:1:<key>`). You could get the keys for user number one by doing this:
 
 ```js
 addEventListener("fetch", event => {

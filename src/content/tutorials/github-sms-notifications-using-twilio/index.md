@@ -14,6 +14,7 @@ import TutorialsBeforeYouStart from "../../_partials/_tutorials-before-you-start
 In this tutorial, you will learn to build an SMS notification system on Workers to receive updates about one of your GitHub repositories. When there is new activity on your repo, your worker will send you a text update using Twilio.
 
 You’ll learn how to:
+
 - Build webhooks using Workers
 - Integrate Workers with GitHub and Twilio
 - Use Worker secrets with Wrangler
@@ -233,6 +234,7 @@ async function sendText(message){
   return new Response(JSON.stringify(result), request)
 }
 ```
+
 To make this work, we need to set some secrets to hide your `ACCOUNT_SID` and `AUTH_TOKEN` from the source code. You can set secrets with `wrangler secret put` in the cli.
 
 ```sh
@@ -286,11 +288,13 @@ Make an update (that you configured in the GitHub webhook settings)) to your rep
 You can reference the finished code on this [GitHub repository](https://github.com/davidtsong/github-twilio-notifications/).
 
 You’ve learned how to:
+
 - Build webhooks using Workers
 - Integrate Workers with GitHub and Twilio
 - Use Worker secrets with wrangler
 
 Other tutorials:
+
 - [Authorize users with Auth0](/tutorials/authorize-users-with-auth0)
 - [Build a JAMStack app](/tutorials/build-a-jamstack-app)
 - [Build a QR code generator](/tutorials/build-a-qr-code-generator)
