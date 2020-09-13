@@ -120,7 +120,7 @@ While handling a request, each Worker script is allowed to have up to six connec
 - `get()`, `put()`, `list()`, and `delete()` methods of [Workers KV namespace objects](/runtime-apis/kv)
 - `put()`, `match()`, and `delete()` methods of [Cache objects](/runtime-apis/cache)
 
-Once a Worker has six connections open, it can still attempt to open additional connections. However, these attempts are put in a pending queue — the connections won’t be actually be initiated until one of the currently open connections has closed. Since earlier connections can delay later ones, if a Worker tries to make many simultaneous subrequests, its later subrequests may appear to take longer to start.
+Once a Worker has six connections open, it can still attempt to open additional connections. However, these attempts are put in a pending queue — the connections won’t actually be initiated until one of the currently open connections has closed. Since earlier connections can delay later ones, if a Worker tries to make many simultaneous subrequests, its later subrequests may appear to take longer to start.
 
 If the system detects that a Worker is deadlocked on open connections — for instance, if the Worker has pending connection attempts but has no in-progress reads or writes on the connections that it already has open — then the least-recently-used open connection will be canceled to unblock the Worker. If the Worker later attempts to use a canceled connection, an exception will be thrown. These exceptions should rarely occur in practice, though, since it’s uncommon for a Worker to open a connection that it doesn’t have an immediate use for.
 
