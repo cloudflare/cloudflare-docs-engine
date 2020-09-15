@@ -30,7 +30,7 @@ async function handleRequest(request) {
   if (location) {
     return Response.redirect(location, 301)
   }
-  // If request in map, return the original request
+  // If request not in map, return the original request
   return fetch(request)
 }
 
