@@ -8,7 +8,7 @@ __Note:__ Workers Sites requires the Workers [Bundled plan](https://workers.clou
 
 Workers Sites enables developers to deploy __static applications__ directly to Workers.
 
-It’s perfect for deploying applications built with or static site generators like [Hugo](https://gohugo.io) and [Gatsby](https://www.gatsbyjs.org), or frontend frameworks like [Vue](https://vuejs.org) and [React](https://reactjs.org).
+It’s perfect for deploying applications built with static site generators like [Hugo](https://gohugo.io) and [Gatsby](https://www.gatsbyjs.org), or frontend frameworks like [Vue](https://vuejs.org) and [React](https://reactjs.org).
 
 To deploy with Workers Sites, select from one of these __three routes__ depending on the state of your target project:
 
