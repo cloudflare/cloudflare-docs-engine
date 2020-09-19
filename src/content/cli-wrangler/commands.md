@@ -202,7 +202,7 @@ $ wrangler dev [--env $ENVIRONMENT_NAME] [--ip <ip>] [--port <port>] [--host <ho
   - Port to listen on, defaults to 8787
 
 - `--host` <PropMeta>optional</PropMeta>
-  - Host to forward or requests to, defaults to the zone of project or to tutorial.cloudflareworkers.com if unauthenticated.
+  - Host to forward requests to, defaults to the zone of project or to tutorial.cloudflareworkers.com if unauthenticated.
 
 - `--local-protocol` <PropMeta>optional</PropMeta>
   - Protocol to listen to requests on, defaults to http.
