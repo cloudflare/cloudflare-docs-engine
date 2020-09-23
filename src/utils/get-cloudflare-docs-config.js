@@ -20,6 +20,7 @@ export default () => {
               product
               productLogoPathD
               contentRepo
+              contentRepoFolder
               externalLinks {
                 title
                 url
