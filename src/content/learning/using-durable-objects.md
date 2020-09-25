@@ -1,8 +1,8 @@
 ---
-order: 5
+order: 8
 ---
 
-# How Durable Objects Work
+# Using Durable Objects
 
 Durable Objects provide low-latency coordination and consistent storage for the Workers platform through two features: global uniqueness and a transactional storage API.
 
@@ -208,7 +208,7 @@ Applications should be prepared for transactions to fail due to conflicts, and t
 
 Durable Objects are single-threaded, but each Object has almost no overhead associated with it.  In general, this means your application should look to create and access many Durable Objects over sending many requests to the same Object.  Access patterns that make many requests to a single Object will see degraded performance.
 
-Since Durable Objects are globally distributed, initial creation latency may be high when using system-generated ids (see above).  Until automatic migration of Durable Objects is implemented, latency will also be high on subsequent read and write operations.
+Since Durable Objects are globally distributed, initial creation latency may be high when using user-generated ids (see above).  Until automatic migration of Durable Objects is implemented, latency will also be high on subsequent read and write operations.
 
 
 

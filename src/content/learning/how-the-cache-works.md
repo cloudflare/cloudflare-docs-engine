@@ -1,5 +1,5 @@
 ---
-order: 7
+order: 6
 ---
 
 # How the Cache works
