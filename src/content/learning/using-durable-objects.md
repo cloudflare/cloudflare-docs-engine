@@ -8,7 +8,7 @@ Durable Objects provide low-latency coordination and consistent storage for the 
 
 * Global Uniqueness guarantees that there will be a single Durable Object with a given id running at once, in the whole world.  Requests for a Durable Object id are routed by the Workers runtime to the Cloudflare point-of-presence that owns the Durable Object.
 
-* The transactional storage API provides strongly-consistent, key-value storage to the Durable Object.  Each Object can only read and modify keys associated with that Object. Execution of a Durable Object is single-threaded, but multiple request threads may be processed out-of-order from how they arrived at the Object.
+* The transactional storage API provides strongly-consistent, key-value storage to the Durable Object.  Each Object can only read and modify keys associated with that Object. Execution of a Durable Object is single-threaded, but multiple request events may be processed out-of-order from how they arrived at the Object.
 
 ## Using Durable Objects
 
@@ -25,24 +25,23 @@ There are four steps to creating a Durable Object:
 
 To define a Durable Object, developers export an ordinary Javascript class.  Other languages will need a shim that translates their class definition to a Javascript class.
 
-The first variable passed to the class constructor contains state specific to the Durable Object, including methods for accessing storage.
+The first parameter passed to the class constructor contains state specific to the Durable Object, including methods for accessing storage. The second parameter contains any bindings you have associated with the Worker when you uploaded it.
 
 ```js
 
 export class DurableObjectExample {
-    constructor(state, environment){
-
+    constructor(state, environment) {
     }
 }
 
 ```
 
-Workers communicate with a Durable Object via the fetch API.  Like any other Worker, a Durable Object listens for incoming Fetch events by registering an event handler.
+Workers communicate with a Durable Object via the fetch API.  Like any other Worker, a Durable Object listens for incoming Fetch events by registering an event handler. The only difference is that for Durable Objects the fetch handler is defined as a method on the class.
 
 ```js
 
 export class DurableObjectExample {
-    constructor(state, environment){
+    constructor(state, environment) {
     }
 
     async fetch(request) {
@@ -63,18 +62,18 @@ HTTP requests received by a Durable Object do not come directly from the Interne
 
 ### Accessing Storage from a Durable Object
 
-Durable Objects gain access to a TODO: fill in[persistent storage API]() via the first parameter passed to the Durable Object constructor.  While access to a Durable Object is single-threaded, it's important to remember that there can still be race conditions across multiple requests.
+Durable Objects gain access to a TODO: fill in[persistent storage API]() via the first parameter passed to the Durable Object constructor. While access to a Durable Object is single-threaded, it's important to remember that request executions can still interleave with each other when they wait on I/O, such as when waiting on the promises returned by persistent storage methods or fetch requests.
 
 ```js
 
 export class DurableObjectExample {
     constructor(state, environment){
-        this.state = state
+        this.state = state;
     }
 
     async fetch(request) {
         let ip = request.headers.get('CF-Connecting-IP');
-        let data = request.text();
+        let data = await request.text();
         let storagePromise = this.state.storage.set(ip, data);
         await storagePromise;
         return new Response(ip + ' stored ' + data);
@@ -84,24 +83,37 @@ export class DurableObjectExample {
 
 ```
 
-Single statement transactions are always transactional.  More complex use cases can wrap multiple storage statements in a transaction.
+Each individual storage operation behaves like a database transaction. More complex use cases can wrap multiple storage statements in a transaction. For example, this actor sets a key if and only if its current value matches the provided "If-Match" header value:
 
 ```js
 
 export class DurableObjectExample {
     constructor(state, environment){
-        this.state = state
+        this.state = state;
     }
 
     async fetch(request) {
-        // TODO: txn example
+        let key = new Url(request.url).host
+        let ifMatch = request.headers.get('If-Match');
+        let newValue = await request.text();
+        let changedValue = false;;
+        await actorState.persistent.transaction(async (txn) => {
+          let currentValue = await txn.get(key);
+          if (currentValue != ifMatch) {
+            txn.rollback();
+            return;
+          }
+          changedValue = true;
+          await txn.put(key, newValue);
+        });
+        return new Response(changedValue);
     }
 
 }
 
 ```
 
-Transactions can fail if they conflict with a concurrent transaction from the same Durable Object.  Transactions are transparently and automatically retried once before returning a failure.
+Transactions can fail if they conflict with a concurrent transaction from the same Durable Object. Transactions are transparently and automatically retried once by rerunning the provided function before returning a failure. To avoid transaction conflicts, don't use transactions when you don't need them, don't hold transactions open any longer than necessary, and limit the number of key-value pairs operated on by each transaction.
 
 <Aside>
 
@@ -187,7 +199,7 @@ curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/clie
 
 <Aside>
 
-In this example, we have used the old, non-modules-based syntax when defining our calling worker. In the new modules-based syntax, the binding `EXAMPLE_CLASS` would not show up as a global variable, but would instead be delivered as a property of the environment object passed when an event handler or class constructor is invoked.
+In this example, we have used the old, non-modules-based syntax when defining our calling worker. In the new modules-based syntax, the binding `EXAMPLE_CLASS` would not show up as a global variable, but would instead be delivered as a property of the environment object passed as the second parameter when an event handler or class constructor is invoked.
 
 Lots has changed under the new modules-based syntax; we will be providing more complete documentation soon.
 
@@ -212,7 +224,7 @@ async function handleRequest(request) {
   let id = EXAMPLE_CLASS.idFromName(new URL(request.url).pathname)
 
   // Construct the stub for the Durable Object. A "stub" is a client object
-  // used to send messages to the remove Durable Object.
+  // used to send messages to the Durable Object.
   let stub = await EXAMPLE_CLASS.get(id)
 
   // Forward the request to the Durable Object. Note that `stub.fetch()` has
@@ -242,7 +254,7 @@ In the above example, we used a string-derived object ID. You can also ask the s
 
 ## Limitations during the Beta
 
-Durable Objects is currently in early beta, and some planned features have not been enabled yet. All of these limitations will be fixed before Durable Objects becomes generally available.
+Durable Objects is currently in early beta, and some planned features have not been enabled yet. Many of these limitations will be fixed before Durable Objects becomes generally available.
 
 ### Risk of Data Loss
 
@@ -256,21 +268,21 @@ Uniqueness is currently enforced upon starting a new event (such as receiving an
 
 In particular, a Durable Object may be superseded in this way in the event of a network partition or a software update (including either an update of the Durable Object's class code, or of the Workers system itself).
 
-We plan to resolve these edge cases soon.
-
 ### Creation and Routing
 
 When using string-derived object IDs, the Durable Object is constructed at a Cloudflare point-of-presence chosen based on a hash of the string. The chosen location has no relationship to the location where the object was requested; it could be on the opposite side of the world. In the future, these objects will be constructed nearby the location where they were first requested (although a global lookup will still be needed to verify that the same name hasn't been used on the other side of the world at the same time).
 
 When using system-generated IDs, the Durable Object is placed at a point-of-presence near where the ID was generated. However, not all Cloudflare locations support Durable Objects yet today, so the object may not be located in exactly the same PoP where it was requested.
 
-Currently, Durable Objects do not migrate between locations after initial creation. We are busy working on automatic migration and will be enabling it soon.
+Currently, Durable Objects do not migrate between locations after initial creation. We are busy working on automatic migration and will be enabling it in the future.
 
 Because of these factors, when using string-derived object IDs, you may find that request latency varies considerably between objects, while system-generated IDs will result in consistently low latency. Once our work is complete, you should be able to expect that variability exists only in initial creation latency for string-derived IDs.
 
-### Cross-object Storage API
+### Cross-object Storage Access
 
-The storage API is scoped to a single Durable Object.  It is not currently possible to access data stored in a Durable Object from a different Durable Object or external API. There is no support for listing objects or bulk imports or exports. These features will be added over time.
+The storage API is scoped to a single Durable Object. It is not possible to access data stored in a Durable Object from a different Durable Object or from an external API.
+
+There is currently no support for listing objects or bulk imports or exports. These features will be added over time.
 
 ### Performance
 
