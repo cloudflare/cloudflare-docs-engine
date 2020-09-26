@@ -44,38 +44,67 @@ export class DurableObject {
 Accessible via the `controller.storage` object passed to the Durable Object constructor.
 
 #### Methods
+
+Each method is implicitly wrapped inside a transaction, such that its results are atomic and isolated from all other storage operations, even when accessing multiple key-value pairs.
+
 <Definitions>
 
-- <code>get(key <ParamType>string</ParamType> | <ParamType>Array&lt;String></ParamType></code> <Type>Promise&lt;<ParamType>string</ParamType> | <ParamType>ReadableStream</ParamType> | <ParamType>ArrayBuffer</ParamType>></Type>
+- <code>get(key<ParamType>string</ParamType>)</code> <Type>Promise&lt;any></Type>
 
-  - Retrieves the value associated with the given key.  Implicitly wrapped inside of a transaction.
+  - Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
 
-- <code>put(key <ParamType>string</ParamType>, value <ParamType>string</ParamType> | <ParamType>ReadableStream</ParamType> | <ParamType>ArrayBuffer</ParamType>)</code>
+- <code>get(keys<ParamType>Array&lt;String></ParamType>)</code> <Type>Promise&lt;Map&lt;string, any>></Type>
 
-  - Stores the value and associates it with the given key.  Implicitly wrapped inside of a transaction.
+  - Retrieves the values associated with each of the provided keys. The type of each returned value in the [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key. Any keys that do not exist will be omitted from the result Map. Supports up to 128 keys at a time.
 
-- <code>delete(key <ParamType>string</ParamType>)</code> <Type>Promise</Type>
+- <code>put(key<ParamType>string</ParamType>, value<ParamType>any</ParamType>) <Type>Promise</Type></code>
 
-  - Deletes the key and associated value.
+  - Stores the value and associates it with the given key. The value can be any type supported by [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
 
-- <code>list()</code> <Type>Promise</Type>
+- <code>put(entries<ParamType>Object</ParamType>) <Type>Promise</Type></code>
 
-  - Returns all keys associated with the current Durable Object.
+  - Takes an Object and stores each of its keys and values to storage. Each value can be any type supported by [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
 
-- <code>transaction(closure <ParamType>Function(txn)</ParamType>)</code> <Type>Promise</Type>
+- <code>delete(key<ParamType>string</ParamType>) <Type>Promise&lt;boolean></Type></code>
 
- - Runs the sequence of storage operations called on `txn` in a single transaction that either commits successfully or aborts.  Failed transactions are retried automatically.  Non-storage operations that affect external state, like calling Fetch, may execute more than once if the transaction is retried.
+  - Deletes the key and associated value. Returns true if the key existed or false if it didn't.
 
-- `txn`
+- <code>delete(keys<ParamType>Array&lt;String></ParamType>) <Type>Promise&lt;number></Type></code>
 
-  - Provides access to `put()`, `get()`, `delete()` and `list()` methods to run in the current transaction context.
+  - Deletes the provided keys and their associated values. Returns a count of the number of key-value pairs deleted.
 
+- <code>list() <Type>Promise&lt;Map&lt;string, any>></Type></code>
+
+  - Returns all keys and values associated with the current Durable Object in ascending lexicographic sorted order. The type of each returned value in the [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key. Be aware of how much data may be stored in your actor before calling this version of `list` without options, because it will all be loaded into the Durable Object's memory, potentially hitting its [limit](/platform/limits). If that is a concern, pass options to `list` as documented below.
+
+- <code>list(options<ParamType>Object</ParamType>) <Type>Promise&lt;Map&lt;string, any>></Type></code>
+
+  - Returns keys associated with the current Durable Object according to the parameters in the provided options object.
+
+    __Supported options:__
+
+    - <Code>start<ParamType>string</ParamType></Code>
+      - Key at which the list results should start, inclusive.
+    - <Code>end<ParamType>string</ParamType></Code>
+      - Key at which the list results should end, exclusive.
+    - <Code>reverse<ParamType>boolean</ParamType></Code>
+      - If true, return results in descending lexicographic order instead of the default ascending order.
+    - <Code>limit<ParamType>number</ParamType></Code>
+      - Maximum number of key-value pairs to return.
+
+- <code>transaction(closure <ParamType>Function(txn)</ParamType>) <Type>Promise</Type></code>
+
+  - Runs the sequence of storage operations called on `txn` in a single transaction that either commits successfully or aborts. Failed transactions are retried automatically.  Non-storage operations that affect external state, like calling `fetch`, may execute more than once if the transaction is retried.
+
+  - `txn`
+
+    - Provides access to `put()`, `get()`, `delete()` and `list()` methods to run in the current transaction context. In order to get transactional behavior within a transaction closure, you must call the methods on the `txn` object instead of on the top-level `state.storage` object.
 
 </Definitions>
 
 ### `fetch()` handler method
 
-The `fetch()` method of a Durable Object class is called by the system when an HTTP request is sent to the Object. These requests are not sent from the public internet, but from other Workers, using a Durable Object namespace binding (see below).
+The `fetch()` method of a Durable Object class is called by the system when an HTTP request is sent to the Object. These requests are not sent from the public Internet, but from other Workers, using a Durable Object namespace binding (see below).
 
 The method takes a [`Request`](/runtime-apis/request) as the parameter, and returns a [`Response`](/runtime-apis/response) (or a `Promise` for a `Response`).
 
