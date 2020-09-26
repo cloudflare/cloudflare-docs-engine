@@ -2,7 +2,7 @@
 
 ## Background
 
-Durable Objects provide low-latency coordination and consistent storage for the Workers platform.  A given Class can support essentially unlimited Durable Objects, with each Object having access to a transactional, key-value storage API.
+Durable Objects provide low-latency coordination and consistent storage for the Workers platform.  A given namespace can support essentially unlimited Durable Objects, with each Object having access to a transactional, key-value storage API.
 
 Durable Objects consist of two components: a class that defines a template for creating Durable Objects and a Workers script that instantiates and uses those Durable Objects.  The class and the Workers script are linked together with a binding.
 
@@ -35,7 +35,7 @@ export class DurableObject {
 
 - `env`
 
-  - Contains environment bindings configured for the Worker script, such as KV namespaces, secrets, and other Durable Object classes. Note that in traditional Workers not using ES Modules syntax, these same "bindings" appear as global variables within the script. Durable Object classes, though, always use ES Modules syntax, and have bindings delivered to the constructor rather than placed in global variables.
+  - Contains environment bindings configured for the Worker script, such as KV namespaces, secrets, and other Durable Object namespaces. Note that in traditional Workers not using ES Modules syntax, these same "bindings" appear as global variables within the script. Durable Object namespaces, though, always use ES Modules syntax, and have bindings delivered to the constructor rather than placed in global variables.
 
 </Definitions>
 
@@ -104,7 +104,7 @@ Each method is implicitly wrapped inside a transaction, such that its results ar
 
 ### `fetch()` handler method
 
-The `fetch()` method of a Durable Object class is called by the system when an HTTP request is sent to the Object. These requests are not sent from the public Internet, but from other Workers, using a Durable Object namespace binding (see below).
+The `fetch()` method of a Durable Object namespaces is called by the system when an HTTP request is sent to the Object. These requests are not sent from the public Internet, but from other Workers, using a Durable Object namespace binding (see below).
 
 The method takes a [`Request`](/runtime-apis/request) as the parameter, and returns a [`Response`](/runtime-apis/response) (or a `Promise` for a `Response`).
 

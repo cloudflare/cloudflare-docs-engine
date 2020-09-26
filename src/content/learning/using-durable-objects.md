@@ -136,13 +136,13 @@ Since each Durable Object is single-threaded, technically it is not necessary to
 
 <Aside type="warning" header="Wrangler support coming soon">
 
-The following describes the raw HTTP API to upload your class definition, define a Durable Object class, and then bind another worker to be able to talk to it. This functionality is not yet available in Wrangler, but will be very soon, at which point these instructions will become much simpler.
+The following describes the raw HTTP API to upload your class definition, define a Durable Object namespace, and then bind another worker to be able to talk to it. This functionality is not yet available in Wrangler, but will be very soon, at which point these instructions will become much simpler.
 
-We've included a helper script that will handle creating configuring and uploading the script for you.  See the [class configuration script](#classs-configuration-script) section below.
+We've included a helper script that will handle creating configuring and uploading the script for you.  See the [configuration script](#configuration-script) section below.
 
 </Aside>
 
-Now that we have a class, we need tell Cloudflare that this class is a Durable Object class, so that the runtime can create instances of this class and allow Workers to contact those instances.
+Now that we have a class, we need tell Cloudflare to associate this class with a Durable Object namespace, so that the runtime can create instances of this class and allow Workers to contact those instances.
 
 Durable Objects are written using a new kind of Workers syntax based on ES Modules. ES Modules differ from regular JavaScript files in that they have imports and exports. As you saw above, we wrote `export class DurableObjectExample` when defining our class. The `export` statement makes the class visible to the system, so that the Workers Runtime can instantiate it directly.
 
@@ -161,19 +161,19 @@ Now we can upload the script that defines the class:
 curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/scripts/${SCRIPT_NAME}" -X PUT -F "metadata=@durable-object-example.json;type=application/json" -F "script=@durable-object-example.mjs;type=application/javascript+module"
 ```
 
-Now that the script containing the class exists on Cloudflare's servers, we can tell Cloudflare that this script contains a Durable Object class. Use the API to define a new Durable Object class:
+Now that the script containing the class exists on Cloudflare's servers, we can tell Cloudflare that this script contains a Durable Object class. Use the API to define a new Durable Object namespace:
 
 ```sh
 curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/durable_objects/namespaces" -X POST --data "{\"name\": \"example-class\", \"script\": \"${SCRIPT_NAME}\", \"class\": \"DurableObjectExample\"}"
 ```
 
-The new class's ID will be returned in the response; save this for use below.
+The new namespace's ID will be returned in the response; save this for use below.
 
-## Binding the class to a calling Worker
+## Binding the Durable Object namespace to a calling Worker
 
-In order for Workers to talk to instances of this class, they need an environment binding for it. This works similarly to Workers KV bindings. A Durable Object class binding is a named global variable that appears in your Worker that provides access to instances of your Durable Object.
+In order for Workers to talk to instances of this class, they need an environment binding for it. This works similarly to Workers KV bindings. A Durable Object namespace binding is a named global variable that appears in your Worker that provides access to instances of your Durable Object.
 
-Here's a basic Worker script that always forwards all requests to the object named "foo". Our binding for our class shows up as a global called `EXAMPLE_CLASS`.
+Here's a basic Worker script that always forwards all requests to the object named "foo". Our binding for our namespace shows up as a global called `EXAMPLE_CLASS`.
 
 ```
 // calling-worker.js
@@ -196,9 +196,9 @@ When uploading the worker that needs to call your Durable Object, you will again
   "body_part": "script",
   "bindings": [
     {
-      "type": "durable_object_class",
+      "type": "durable_object_namespace",
       "name": "EXAMPLE_CLASS",
-      "class_id": "$CLASS_ID"
+      "namespace_id": "$NAMESPACE_ID"
     }
   ]
 }
@@ -365,7 +365,7 @@ export class Counter {
 }
 ```
 
-## Class Configuration Script
+## Configuration Script
 
 ```sh
 #! /bin/bash
@@ -375,7 +375,7 @@ export class Counter {
 # This is a temporary hack needed until we add Durable Objects support to Wrangler. Once Wrangler
 # support exists, this script can probably go away.
 #
-# On first run, this script will ask for configuration, create the Durable Object classes bindings,
+# On first run, this script will ask for configuration, create the Durable Object namespace bindings,
 # and generate metadata.json. On subsequent runs it will just update the script from source code.
 
 set -euo pipefail
@@ -436,11 +436,11 @@ curl_api() {
   fi
 }
 
-# Let's verify the credentials work by listing Workers scripts and Durable Object classes. If
+# Let's verify the credentials work by listing Workers scripts and Durable Object namespaces. If
 # either of these requests error then we're certainly not going to be able to continue.
 echo "Checking credentials..."
 curl_api https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts >/dev/null
-curl_api https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/durable_objects/classes >/dev/null
+curl_api https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/durable_objects/namespaces >/dev/null
 
 # upload_script uploads our Worker code with the appropriate metadata.
 upload_script() {
@@ -452,10 +452,10 @@ upload_script() {
 }
 
 # upload_bootstrap_script is a temporary hack to work around a chicken-and-egg problem: in order
-# to define a Durable Object class, we must tell it a script and class name. But when we upload our
-# script, we need to configure the environment to bind to our durable object classes. This function
+# to define a Durable Object namespace, we must tell it a script and class name. But when we upload our
+# script, we need to configure the environment to bind to our durable object namespaces. This function
 # uploads a version of our script with an empty environment (no bindings). The script won't be able
-# to run correctly, but this gets us far enough to define the classes, and then we can upload the
+# to run correctly, but this gets us far enough to define the namespaces, and then we can upload the
 # script with full environment later.
 #
 # This is obviously dumb and we (Cloudflare) will come up with something better soon.
@@ -469,16 +469,16 @@ upload_bootstrap_script() {
   rm bootstrap-metadata.json
 }
 
-# upsert_class configures a Durable Object class so that instances of it can be created and called
-# from other scripts (or from the same script). This function checks if the class already exists,
-# creates it if it doesn't, and either way writes the class ID to stdout.
+# upsert_namespace configures a Durable Object namespace so that instances of it can be created and called
+# from other scripts (or from the same script). This function checks if the namespace already exists,
+# creates it if it doesn't, and either way writes the namespace ID to stdout.
 #
-# The class ID can be used to configure environment bindings in other scripts (or even the same
-# script) such that they can send messages to instances of this class.
-upsert_class() {
-  # Check if the class exists already.
+# The namespace ID can be used to configure environment bindings in other scripts (or even the same
+# script) such that they can send messages to instances of this namespace.
+upsert_namespace() {
+  # Check if the namespace exists already.
   EXISTING_ID=$(\
-      curl_api https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/durable_objects/classes | \
+      curl_api https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/durable_objects/namespaces | \
       jq -r ".[] | select(.script == \"$SCRIPT_NAME\" and .class == \"$1\") | .id")
 
   if [ "$EXISTING_ID" != "" ]; then
@@ -487,27 +487,27 @@ upsert_class() {
   fi
 
   # No. Create it.
-  curl_api https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/durable_objects/classes \
+  curl_api https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/durable_objects/namespaces \
       -X POST --data "{\"name\": \"$SCRIPT_NAME-$1\", \"script\": \"$SCRIPT_NAME\", \"class\": \"$1\"}" | \
       jq -r .id
 }
 
 if [ ! -e metadata.json ]; then
   # If metadata.json doesn't exist we assume this is first-time setup and we need to create the
-  # classes.
+  # namespaces.
 
   upload_bootstrap_script
-  CLASS_ID=$(upsert_class $CLASS_NAME)
-  LIMITERS_ID=$(upsert_class RateLimiter)
+  NAMESPACE_ID=$(upsert_namespace $NAMESPACE_NAME)
+  LIMITERS_ID=$(upsert_namespace RateLimiter)
 
   cat > metadata.json << __EOF__
 {
   "main_module": "$SCRIPT_FILE",
   "bindings": [
     {
-      "type": "durable_object_class",
+      "type": "durable_object_namespace",
       "name": "$CLASS_NAME",
-      "class_id": "$CLASS_ID"
+      "namespace_id": "$NAMESPACE_ID"
     }
   ]
 }
