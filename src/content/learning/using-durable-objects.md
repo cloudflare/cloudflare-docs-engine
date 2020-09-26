@@ -265,11 +265,7 @@ In the above example, we used a string-derived object ID. You can also ask the s
 
 ## Limitations during the Beta
 
-<<<<<<< HEAD
-Durable Objects is currently in early beta, and some planned features have not been enabled yet. We will be addressing these limitations throughout the beta period.
-=======
 Durable Objects is currently in early beta, and some planned features have not been enabled yet. Many of these limitations will be fixed before Durable Objects becomes generally available.
->>>>>>> bb741a271155c49bb9b1a746a6e39adefbc720b1
 
 ### Risk of Data Loss
 
@@ -300,3 +296,69 @@ The storage API is scoped to a single Durable Object.  It is not currently possi
 ### Performance
 
 While Durable Objects already perform well for many kinds of tasks, we have lots of performance tuning to do. Expect performance (latency, throughput, overhead, etc.) to improve over the beta period -- and if you observe a performance problem, please tell us about it!
+
+## Example - Counter
+
+We've included complete example code for both the Worker and the Durable Object for a basic counter below.
+
+```js
+// Worker
+
+export default {
+    async fetch(request, env) {
+        return await handleRequest(request, env)
+    }
+}
+
+async function handleRequest(request, env) {
+    let id = env.Counter.idFromName("A")
+    let obj = env.Counter.get(id)
+    let resp = await obj.fetch(request.url)
+    let count = await resp.text()
+
+    return new Response("Durable Object 'A' count: " + count)
+}
+
+// Durable Object
+
+export class Counter {
+    constructor(controller, env) {
+        this.storage = controller.storage
+    }
+
+    async initialize() {
+        let stored = await this.storage.get("value");
+        this.value = stored || 0;
+    }
+
+    // Handle HTTP requests from clients.
+    async fetch(request) {
+        // Make sure we're fully initialized from storage.
+        if (!this.initializePromise) {
+            this.initializePromise = this.initialize();
+        }
+        await this.initializePromise;
+
+        // Apply requested action.
+        let url = new URL(request.url);
+        switch (url.pathname) {
+        case "/increment":
+            ++this.value;
+            await this.storage.put("value", this.value);
+            break;
+        case "/decrement":
+            --this.value;
+            await this.storage.put("value", this.value);
+            break;
+        case "/":
+            // Just serve the current value. No storage calls needed!
+            break;
+        default:
+            return new Response("Not found", {status: 404});
+        }
+
+        // Return current value.
+        return new Response(this.value);
+    }
+}
+```
