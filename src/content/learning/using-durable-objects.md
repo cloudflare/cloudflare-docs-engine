@@ -39,7 +39,7 @@ The first parameter passed to the class constructor contains state specific to t
 ```js
 
 export class DurableObjectExample {
-    constructor(state, environment) {
+    constructor(state, env) {
     }
 }
 
@@ -50,7 +50,7 @@ Workers communicate with a Durable Object via the fetch API.  Like any other Wor
 ```js
 
 export class DurableObjectExample {
-    constructor(state, environment) {
+    constructor(state, env) {
     }
 
     async fetch(request) {
@@ -76,14 +76,14 @@ Durable Objects gain access to a [persistent storage API](/runtime-apis/durable-
 ```js
 
 export class DurableObjectExample {
-    constructor(controller, environment){
-        this.controller = controller
+    constructor(state, env){
+        this.state = state;
     }
 
     async fetch(request) {
         let ip = request.headers.get('CF-Connecting-IP');
         let data = await request.text();
-        let storagePromise = this.controller.storage.set(ip, data);
+        let storagePromise = this.state.storage.set(ip, data);
         await storagePromise;
         return new Response(ip + ' stored ' + data);
     }
@@ -97,8 +97,8 @@ Each individual storage operation behaves like a database transaction. More comp
 ```js
 
 export class DurableObjectExample {
-    constructor(controller, environment){
-        this.controller = controller
+    constructor(state, env){
+        this.state = state;
     }
 
     async fetch(request) {
@@ -106,7 +106,7 @@ export class DurableObjectExample {
         let ifMatch = request.headers.get('If-Match');
         let newValue = await request.text();
         let changedValue = false;;
-        await this.controller.transaction(async (txn) => {
+        await this.state.transaction(async (txn) => {
           let currentValue = await txn.get(key);
           if (currentValue != ifMatch) {
             txn.rollback();
@@ -324,8 +324,8 @@ async function handleRequest(request, env) {
 // Durable Object
 
 export class Counter {
-    constructor(controller, env) {
-        this.storage = controller.storage
+    constructor(state, env) {
+        this.storage = state.storage;
     }
 
     async initialize() {
