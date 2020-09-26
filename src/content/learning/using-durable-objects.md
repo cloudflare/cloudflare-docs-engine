@@ -370,7 +370,7 @@ export class Counter {
 ```sh
 #! /bin/bash
 #
-# This script uploads the edge chat demo to your Cloudflare Workers account.
+# This script configures a Durable Object namespace on your Cloudflare Workers account.
 #
 # This is a temporary hack needed until we add Durable Objects support to Wrangler. Once Wrangler
 # support exists, this script can probably go away.
