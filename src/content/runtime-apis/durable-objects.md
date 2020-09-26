@@ -14,7 +14,7 @@ Learn more about [using Durable Objects](/learning/using-durable-objects).
 
 ```js
 export class DurableObject {
-  constructor(state, env){
+  constructor(controller, env){
 
   }
 
@@ -41,7 +41,7 @@ export class DurableObject {
 
 ### Transactional Storage API
 
-Accessible via the `state.storage` object passed to the Durable Object constructor.
+Accessible via the `controller.storage` object passed to the Durable Object constructor.
 
 #### Methods
 <Definitions>

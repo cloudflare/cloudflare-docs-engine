@@ -6,17 +6,18 @@ order: 8
 
 Durable Objects provide low-latency coordination and consistent storage for the Workers platform through two features: global uniqueness and a transactional storage API.
 
-* Global Uniqueness guarantees that there will be a single Durable Object with a given id running at once, in the whole world.  Requests for a Durable Object id are routed by the Workers runtime to the Cloudflare point-of-presence that owns the Durable Object.
+* Global Uniqueness guarantees that there will be a single Durable Object with a given id running at once, across the whole world.  Requests for a Durable Object id are routed by the Workers runtime to the Cloudflare point-of-presence that owns the Durable Object.
 
-* The transactional storage API provides strongly-consistent, key-value storage to the Durable Object.  Each Object can only read and modify keys associated with that Object. Execution of a Durable Object is single-threaded, but multiple request threads may be processed out-of-order from how they arrived at the Object.
+* The transactional storage API provides strongly-consistent, key-value storage to the Durable Object.  Each Object can only read and modify keys associated with that Object. Execution of a Durable Object is single-threaded, but multiple request events may be processed out-of-order from how they arrived at the Object.
 
 ## Using Durable Objects
 
 Durable Objects are named instances of a class you define.  Just like a class in object-oriented programming, the class defines the methods and data a Durable Object can access.
 
-There are four steps to creating a Durable Object:
+Today, Wrangler does not support managing Durable Objects.  There are five steps to creating a Durable Object:
 
 * __Writing the class__ that defines a Durable Object.
+* 
 * __Binding that class__ into a Worker.
 * __Instantiating a Durable Object__ from within a running Worker.
 * __Communicating with a Durable Object__ from a running Worker via the Fetch API.
@@ -63,19 +64,19 @@ HTTP requests received by a Durable Object do not come directly from the Interne
 
 ### Accessing Storage from a Durable Object
 
-Durable Objects gain access to a TODO: fill in[persistent storage API]() via the first parameter passed to the Durable Object constructor.  While access to a Durable Object is single-threaded, it's important to remember that there can still be race conditions across multiple requests.
+Durable Objects gain access to a [persistent storage API](/runtime-apis/durable-objects#transactional-storage-api) via the first parameter passed to the Durable Object constructor.  While access to a Durable Object is single-threaded, it's important to remember that request executions can still interleave with each other when they wait on I/O, such as when waiting on the promises returned by persistent storage methods or `fetch` requests.
 
 ```js
 
 export class DurableObjectExample {
-    constructor(state, environment){
-        this.state = state
+    constructor(controller, environment){
+        this.controller = controller
     }
 
     async fetch(request) {
         let ip = request.headers.get('CF-Connecting-IP');
         let data = request.text();
-        let storagePromise = this.state.storage.set(ip, data);
+        let storagePromise = this.controller.storage.set(ip, data);
         await storagePromise;
         return new Response(ip + ' stored ' + data);
     }
@@ -84,13 +85,13 @@ export class DurableObjectExample {
 
 ```
 
-Single statement transactions are always transactional.  More complex use cases can wrap multiple storage statements in a transaction.
+Single statement storage operations are always transactional.  More complex use cases can wrap multiple storage statements in a transaction.
 
 ```js
 
 export class DurableObjectExample {
-    constructor(state, environment){
-        this.state = state
+    constructor(controller, environment){
+        this.controller = controller
     }
 
     async fetch(request) {
@@ -101,7 +102,7 @@ export class DurableObjectExample {
 
 ```
 
-Transactions can fail if they conflict with a concurrent transaction from the same Durable Object.  Transactions are transparently and automatically retried once before returning a failure.
+Transactions operate at a Serializable isolation level.  This means transactions can fail if they conflict with a concurrent transaction being run by the same Durable Object.  Transactions are transparently and automatically retried once by rerunning the provided function before returning an error.
 
 <Aside>
 
@@ -117,7 +118,7 @@ The following describes the raw HTTP API to upload your class definition, define
 
 </Aside>
 
-Now that we have a class, we need tell Cloudflare that this class is a Durable Object class, so that Cloudflare can begin tracking instances of this class and allowing other workers to contact those instances.
+Now that we have a class, we need tell Cloudflare that this class is a Durable Object class, so that the runtime can create instances of this class and allow Workers to contact those instances.
 
 Durable Objects are written using a new kind of Workers syntax based on ES Modules. ES Modules differ from regular JavaScript files in that they have imports and exports. As you saw above, we wrote `export class DurableObjectExample` when defining our class. The `export` statement makes the class visible to the system, so that the Workers Runtime can instantiate it directly.
 
@@ -136,13 +137,13 @@ Now we can upload the script that defines the class:
 curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/scripts/${SCRIPT_NAME}" -X PUT -F "metadata=@durable-object-example.json;type=application/json" -F "script=@durable-object-example.mjs;type=application/javascript+module"
 ```
 
-Now that the script containing the class exists, we can tell Cloudflare about the class itself. Use the API to define a new Durable Object class:
+Now that the script containing the class exists on Cloudflare's servers, we can tell Cloudflare that this script contains a Durable Object class. Use the API to define a new Durable Object class:
 
 ```sh
 curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/durable_objects/namespaces" -X POST --data "{\"name\": \"example-class\", \"script\": \"${SCRIPT_NAME}\", \"class\": \"DurableObjectExample\"}"
 ```
 
-The new class's ID will be returned in the response; save this for below.
+The new class's ID will be returned in the response; save this for use below.
 
 ## Binding the class to a calling Worker
 
@@ -171,7 +172,7 @@ When uploading the worker that needs to call your Durable Object, you will again
   "body_part": "script",
   "bindings": [
     {
-      "type": "durable_object_namespace",
+      "type": "durable_object_class",
       "name": "EXAMPLE_CLASS",
       "class_id": "$CLASS_ID"
     }
@@ -242,13 +243,13 @@ In the above example, we used a string-derived object ID. You can also ask the s
 
 ## Limitations during the Beta
 
-Durable Objects is currently in early beta, and some planned features have not been enabled yet. All of these limitations will be fixed before Durable Objects becomes generally available.
+Durable Objects is currently in early beta, and some planned features have not been enabled yet. We will be addressing these limitations throughout the beta period.
 
 ### Risk of Data Loss
 
 At this time, we are not ready to guarantee that data won't be lost. We don't expect data loss, but bugs are always possible, and we are still working on automatic backup and recovery.
 
-For now, if you are storing data in Durable Objects that you can't stand to lose, you must arrange to make backups of that data into some other storage system. (This is, of course, always best practice anyway, but it is especially important in the beta.)
+For now, if you are storing data in Durable Objects that you can't stand to lose, you must arrange to make backups of that data into some other storage system. Do not rely on Durable Objects for storing production data during the beta period. (This is, of course, always best practice anyway, but it is especially important in the beta.)
 
 ### Global Uniqueness
 
@@ -270,7 +271,7 @@ Because of these factors, when using string-derived object IDs, you may find tha
 
 ### Cross-object Storage API
 
-The storage API is scoped to a single Durable Object.  It is not currently possible to access data stored in a Durable Object from a different Durable Object or external API. There is no support for listing objects or bulk imports or exports. These features will be added over time.
+The storage API is scoped to a single Durable Object.  It is not currently possible to access data stored in a Durable Object from a different Durable Object or external API. There is no support for listing objects or bulk imports or exports.
 
 ### Performance
 
