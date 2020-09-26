@@ -6,7 +6,7 @@ order: 8
 
 Durable Objects provide low-latency coordination and consistent storage for the Workers platform through two features: global uniqueness and a transactional storage API.
 
-* Global Uniqueness guarantees that there will be a single Durable Object with a given id running at once.  Requests for a Durable Object id are routed by the Workers runtime to the Cloudflare point-of-presence that owns the Durable Object.  
+* Global Uniqueness guarantees that there will be a single Durable Object with a given id running at once, in the whole world.  Requests for a Durable Object id are routed by the Workers runtime to the Cloudflare point-of-presence that owns the Durable Object.
 
 * The transactional storage API provides strongly-consistent, key-value storage to the Durable Object.  Each Object can only read and modify keys associated with that Object. Execution of a Durable Object is single-threaded, but multiple request threads may be processed out-of-order from how they arrived at the Object.
 
@@ -29,7 +29,7 @@ The first variable passed to the class constructor contains state specific to th
 
 ```js
 
-class DurableObjectExample {
+export class DurableObjectExample {
     constructor(state, environment){
 
     }
@@ -41,15 +41,11 @@ Workers communicate with a Durable Object via the fetch API.  Like any other Wor
 
 ```js
 
-class DurableObjectExample {
+export class DurableObjectExample {
     constructor(state, environment){
     }
-    
-    addEventListener("fetch", (event) => {
-        event.respondWith(handle(event.request));
-    });
- 
-    async function handle(request) {
+
+    async fetch(request) {
         return new Response('Hello World');
     }
 
@@ -59,22 +55,24 @@ class DurableObjectExample {
 
 A Worker can pass information to a Durable Object via headers, the HTTP method, the Request body, or the Request URI.
 
+<Aside>
+
+HTTP requests received by a Durable Object do not come directly from the Internet. They come from other Worker code -- possibly other Durable Objects, or just plain Workers. We'll see how to send such a request in a bit. Durable Objects use HTTP for familiarity, but we plan to introduce other protocols in the future.
+
+</Aside>
+
 ### Accessing Storage from a Durable Object
 
 Durable Objects gain access to a TODO: fill in[persistent storage API]() via the first parameter passed to the Durable Object constructor.  While access to a Durable Object is single-threaded, it's important to remember that there can still be race conditions across multiple requests.
 
 ```js
 
-class DurableObjectExample {
+export class DurableObjectExample {
     constructor(state, environment){
         this.state = state
     }
-    
-    addEventListener("fetch", (event) => {
-        event.respondWith(handle(event.request));
-    });
- 
-    async function handle(request) {
+
+    async fetch(request) {
         let ip = request.headers.get('CF-Connecting-IP');
         let data = request.text();
         let storagePromise = this.state.storage.set(ip, data);
@@ -86,20 +84,16 @@ class DurableObjectExample {
 
 ```
 
-Single statement transactions are always transactional.  More complex use cases can wrap multiple storage statements in a transaction.  
+Single statement transactions are always transactional.  More complex use cases can wrap multiple storage statements in a transaction.
 
 ```js
 
-class DurableObjectExample {
+export class DurableObjectExample {
     constructor(state, environment){
         this.state = state
     }
-    
-    addEventListener("fetch", (event) => {
-        event.respondWith(handle(event.request));
-    });
- 
-    async function handle(request) {
+
+    async fetch(request) {
         // TODO: txn example
     }
 
@@ -109,108 +103,175 @@ class DurableObjectExample {
 
 Transactions can fail if they conflict with a concurrent transaction from the same Durable Object.  Transactions are transparently and automatically retried once before returning a failure.
 
+<Aside>
 
-## Binding the class to a Worker
+Since each Durable Object is single-threaded, technically it is not necessary to use transactions to achieve transactional semantics. With careful use of promises, you could serialize operations in your live object so that there's no possibility of concurrent storage operations. We provide the transactional interface as a convenience for those who don't want to do their own synchronization.
 
-As with Workers KV, the class namespace must be created and then bound into a Worker before it can be used.
+</Aside>
 
-First, upload the script that contains the class via the Workers Dashboard or via the command line.
+## Configuring your class
 
-```sh
-curl -i -H "X-Auth-Email: ${EMAIL}" -H "X-Auth-Key: ${AUTH_KEY}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/scripts/${SCRIPT_NAME}" -X PUT -H "Content-Type: application/javascript" --data "`cat durable_object_example.js`"
+<Aside type="warning" header="Wrangler support coming soon">
+
+The following describes the raw HTTP API to upload your class definition, define a Durable Object class, and then bind another worker to be able to talk to it. This functionality is not yet available in Wrangler, but will be very soon, at which point these instructions will become much simpler.
+
+</Aside>
+
+Now that we have a class, we need tell Cloudflare that this class is a Durable Object class, so that Cloudflare can begin tracking instances of this class and allowing other workers to contact those instances.
+
+Durable Objects are written using a new kind of Workers syntax based on ES Modules. ES Modules differ from regular JavaScript files in that they have imports and exports. As you saw above, we wrote `export class DurableObjectExample` when defining our class. The `export` statement makes the class visible to the system, so that the Workers Runtime can instantiate it directly.
+
+In order to upload Workers written with this new syntax, you must first define a metadata file. Let's call it `durable-object-example.json`:
+
+```js
+// durable-object-example.json
+{
+    "main_module": "durable-object-example.mjs"
+}
 ```
 
-To create the class, call the following endpoint.
+Now we can upload the script that defines the class:
 
 ```sh
-curl -i -H "X-Auth-Email: ${EMAIL}" -H "X-Auth-Key: ${AUTH_KEY}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/durable_objects/namespaces" -X POST --data "{'name': 'example-class', 'script': ${SCRIPT_NAME}"
+curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/scripts/${SCRIPT_NAME}" -X PUT -F "metadata=@durable-object-example.json;type=application/json" -F "script=@durable-object-example.mjs;type=application/javascript+module"
 ```
 
-You can now create a binding for the Worker which uses this class.  TODO: Not sure if this is still the correct syntax, check.
+Now that the script containing the class exists, we can tell Cloudflare about the class itself. Use the API to define a new Durable Object class:
 
-```js 
-// binding.json
+```sh
+curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/durable_objects/namespaces" -X POST --data "{\"name\": \"example-class\", \"script\": \"${SCRIPT_NAME}\", \"class\": \"DurableObjectExample\"}"
+```
+
+The new class's ID will be returned in the response; save this for below.
+
+## Binding the class to a calling Worker
+
+In order for Workers to talk to instances of this class, they need an environment binding for it. This works similarly to Workers KV bindings. A Durable Object class binding is a named global variable that appears in your Worker that provides access to instances of your Durable Object.
+
+Here's a basic Worker script that always forwards all requests to the object named "foo". Our binding for our class shows up as a global called `EXAMPLE_CLASS`.
+
+```
+// calling-worker.js
+addEventListener("fetch", event => {
+    return event.respondWith(handle(event.request));
+});
+
+async function handle(request) {
+    let objectId = EXAMPLE_CLASS.idFromName("foo");
+    let object = EXAMPLE_CLASS.get(objectId);
+    return object.fetch(request);
+}
+```
+
+When uploading the worker that needs to call your Durable Object, you will again need to specify metadata, in order to define the binding.
+
+```js
+// calling-worker.json
 {
   "body_part": "script",
   "bindings": [
     {
       "type": "durable_object_namespace",
-      "name": "example-class",
-      "namespace_id": "<namespace id>"
+      "name": "EXAMPLE_CLASS",
+      "class_id": "$CLASS_ID"
     }
   ]
 }
-
 ```
 
+Upload your worker like this:
+
+```sh
+curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/scripts/${CALLING_SCRIPT_NAME}" -X PUT -F "metadata=@calling-worker.json;type=application/json" -F "script=@calling-worker.js;type=application/javascript+module"
+```
+
+<Aside>
+
+In this example, we have used the old, non-modules-based syntax when defining our calling worker. In the new modules-based syntax, the binding `EXAMPLE_CLASS` would not show up as a global variable, but would instead be delivered as a property of the environment object passed when an event handler or class constructor is invoked.
+
+Lots has changed under the new modules-based syntax; we will be providing more complete documentation soon.
+
+</Aside>
 
 ## Instantiating a Durable Object
 
-Creating a Durable Object requires retrieving a Fetcher object from the class in your Workers Script.  Once you have the Fetcher object, you can use it to send [Requests](/runtime-apis/request) to the Durable Object instance.
+When a Worker talks to a Durable Object, it does so through a "stub" object. The class binding's `get()` method returns a stub, and the stub's `fetch()` method sends [Requests](/runtime-apis/request) to the Durable Object instance.
 
 ```js
 
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))
 })
- 
-async function handleRequest(request) {
-  // Retrieve the Fetcher for the Durable Object with id 1
-  let durableObject = await DURABLE_OBJECT_CLASS.get("1")
-  // Send a request to Durable Object '1', with the URI "get-count"
-  let resp = await durableObject.fetch("get-count")
-  let count = await resp.text()
- 
-  // Regardless of the URI, requests are always routed to the Durable Object
-  resp = await durableObject.fetch()
-  let message = await resp.text()
 
-  // TODO: system generated id example
-  let id = generateId()
-  let sysDurableObject = await DURABLE_OBJECT_CLASS.get()
-  resp = await sysDurableObject.fetch('get-count')
-  let sysCount = await resp.text()
- 
-  return new Response("Object '1' count: " + count + " and message " + message + ".  System Object '" + id + "' count: " + sysCount)
+async function handleRequest(request) {
+  // Derive an object ID from the URL path. `EXAMPLE_CLASS.idFromName()`
+  // always returns the same ID when given the same string as input (and
+  // called on the same class), but never the same ID for two different
+  // strings (or for different classes). So, in this case, we are creating
+  // a new object for each unique path.
+  let id = EXAMPLE_CLASS.idFromName(new URL(request.url).pathname)
+
+  // Construct the stub for the Durable Object. A "stub" is a client object
+  // used to send messages to the remove Durable Object.
+  let stub = await EXAMPLE_CLASS.get(id)
+
+  // Forward the request to the Durable Object. Note that `stub.fetch()` has
+  // the same signature as the global `fetch()` function, except that the
+  // request is always sent to the object, regardless of the request's URL.
+  //
+  // The first time we send a request to a new object, the object will be
+  // created for us. If we don't store durable state in the object, it will
+  // automatically be deleted later (and recreated if we request it again).
+  // If we do store durable state, then the object becomes permanent.
+  let response = await stub.fetch(request);
+
+  // We received an HTTP response back. We could process it in the usual
+  // ways, but in this case we will just return it to the client.
+  return response;
 }
 
 ```
 
 Learn more at the [Workers Durable Objects API reference](/runtime-apis/durable-objects).
 
-## Limitations and considerations when working with Durable Objects
+<Aside header="String-derived IDs vs. system-generated IDs">
+
+In the above example, we used a string-derived object ID. You can also ask the system generate random unique IDs. System-generated unique IDs have better performance characteristics, but require that you store the ID somewhere in order to access the object again later. [See the API reference docs for more information.](/runtime-apis/durable-objects)
+
+</Aside>
+
+## Limitations during the Beta
+
+Durable Objects is currently in early beta, and some planned features have not been enabled yet. All of these limitations will be fixed before Durable Objects becomes generally available.
+
+### Risk of Data Loss
+
+At this time, we are not ready to guarantee that data won't be lost. We don't expect data loss, but bugs are always possible, and we are still working on automatic backup and recovery.
+
+For now, if you are storing data in Durable Objects that you can't stand to lose, you must arrange to make backups of that data into some other storage system. (This is, of course, always best practice anyway, but it is especially important in the beta.)
 
 ### Global Uniqueness
 
-Uniqueness is currently enforced only when a Durable Object begins execution.  In the future, uniqueness will also be enforced whenever a Durable Object makes storage requests.  
+Uniqueness is currently enforced upon starting a new event (such as receiving an HTTP request), and upon accessing storage. After an event is received, if the event takes some time to execute and does not ever access its durable storage, then it is possible that the Durable Object instance may no longer be current, and some other instance of the same object ID will have been created elsewhere. If the event accesses storage at this point, it will receive an exception, but if the event completes without ever accessing storage, it may not ever realize that the object was no longer current.
 
-During a network partition between data centers or between machines within a data center, it is possible for more than one Durable Object with a given id to be active.  While this is unlikely, we plan to do additional work to reduce the chance of a network partition during the beta period.
+In particular, a Durable Object may be superseded in this way in the event of a network partition or a software update (including either an update of the Durable Object's class code, or of the Workers system itself).
+
+We plan to resolve these edge cases soon.
 
 ### Creation and Routing
 
-Durable Objects use a deterministic hash of the Object's id to determine the Cloudflare point-of-presence that owns the Object.  It is not currently possible for an Object to migrate ownership to a different point-of-presence.
+When using string-derived object IDs, the Durable Object is constructed at a Cloudflare point-of-presence chosen based on a hash of the string. The chosen location has no relationship to the location where the object was requested; it could be on the opposite side of the world. In the future, these objects will be constructed nearby the location where they were first requested (although a global lookup will still be needed to verify that the same name hasn't been used on the other side of the world at the same time).
 
-When using system generated ids, Durable Objects are created in a Cloudflare point-of-presence located near the Worker that made the creation request.
+When using system-generated IDs, the Durable Object is placed at a point-of-presence near where the ID was generated. However, not all Cloudflare locations support Durable Objects yet today, so the object may not be located in exactly the same PoP where it was requested.
 
-When using client-defined ids, Durable Objects may be created in any of Cloudflare's points-of-presence. Durable Object with client-defined ids will see greater variance in request latency across different Objects, as each Object may be routed to a different point-of-presence.  
+Currently, Durable Objects do not migrate between locations after initial creation. We are busy working on automatic migration and will be enabling it soon.
 
-When migrations of Objects are enabled, this variance in request latency will only affect Object creation.
+Because of these factors, when using string-derived object IDs, you may find that request latency varies considerably between objects, while system-generated IDs will result in consistently low latency. Once our work is complete, you should be able to expect that variability exists only in initial creation latency for string-derived IDs.
 
-### Transactional Storage API
+### Cross-object Storage API
 
-The transactional storage API is scoped to a single Durable Object.  It is not currently possible to access data stored in a Durable Object from a different Durable Object directly through the API.
-
-There is no support for querying, bulk loading, or exporting data stored in Durable Objects.
-
-Applications should be prepared for transactions to fail due to conflicts, and to retry those failed transactions.  A failed transaction will throw an error (TODO: what error?  is this true?) that can be caught.  It is always safe to retry failed transactions.
+The storage API is scoped to a single Durable Object.  It is not currently possible to access data stored in a Durable Object from a different Durable Object or external API. There is no support for listing objects or bulk imports or exports. These features will be added over time.
 
 ### Performance
 
-Durable Objects are single-threaded, but each Object has almost no overhead associated with it.  In general, this means your application should look to create and access many Durable Objects over sending many requests to the same Object.  Access patterns that make many requests to a single Object will see degraded performance.
-
-Since Durable Objects are globally distributed, initial creation latency may be high when using user-generated ids (see above).  Until automatic migration of Durable Objects is implemented, latency will also be high on subsequent read and write operations.
-
-
-
-
-
+While Durable Objects already perform well for many kinds of tasks, we have lots of performance tuning to do. Expect performance (latency, throughput, overhead, etc.) to improve over the beta period -- and if you observe a performance problem, please tell us about it!
