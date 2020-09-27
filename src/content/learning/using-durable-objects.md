@@ -24,10 +24,10 @@ Durable Objects are named instances of a class you define.  Just like a class in
 
 Today, Wrangler does not support managing Durable Objects.  There are four steps to creating a Durable Object:
 
-* __Writing the class__ that defines a Durable Object.
-* __Configuring the class as Durable Object namespace__ and uploading it to Cloudflare's servers.
-* __Binding that namespace__ into a Worker.
-* __Instantiating and communicating with a Durable Object__ from a running Worker via the Fetch API.
+* [__Writing the class__](#writing-a-class-that-defines-a-durable-object) that defines a Durable Object.
+* [__Configuring the class as Durable Object namespace__](#configuring-the-class-to-define-a-durable-object-namespace) and uploading it to Cloudflare's servers.
+* [__Binding that namespace__](#binding-to-the-durable-object-namespace) into a Worker.
+* [__Instantiating and communicating with a Durable Object__](#instantiating-and-communicating-with-a-durable-object) from a running Worker via the Fetch API.
 
 ## Writing a class that defines a Durable Object
 
@@ -168,7 +168,7 @@ curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/clie
 
 The new namespace's ID will be returned in the response; save this for use below.
 
-## Binding the Durable Object namespace to a calling Worker
+## Binding to the Durable Object namespace
 
 In order for Workers to talk to instances of this class, they need an environment binding for it. This works similarly to Workers KV bindings. A Durable Object namespace binding is a named global variable that appears in your Worker that provides access to instances of your Durable Object.
 
@@ -256,7 +256,7 @@ async function handleRequest(request) {
 
 ```
 
-Learn more about communicating with a Durabke Object in the [Workers Durable Objects API reference](/runtime-apis/durable-objects).
+Learn more about communicating with a Durable Object in the [Workers Durable Objects API reference](/runtime-apis/durable-objects).
 
 <Aside header="String-derived IDs vs. system-generated IDs">
 
@@ -366,4 +366,4 @@ export class Counter {
 
 ## Configuration Script
 
-To simplify [configuring the class](#configuring-the-class-to-define-a-durable-object-namespace), we've included a [shell script](/public-durable-object.sh) to automate the curl commands.  Once Wrangler support is implemented, this shell script will no longer be necessary.
+To simplify [configuring the class](#configuring-the-class-to-define-a-durable-object-namespace), we've included a [shell script](/publish-durable-object.sh) to automate the curl commands.  Once Wrangler support is implemented, this shell script will no longer be necessary.

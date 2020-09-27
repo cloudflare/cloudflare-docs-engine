@@ -1,5 +1,11 @@
 # Durable Objects
 
+<Aside type="warning" header="Beta">
+
+Durable Objects are currently in closed beta. If you are interested in using them, [request a beta invite](http://www.cloudflare.com/cloudflare-workers-durable-objects-beta).
+
+</Aside>
+
 ## Background
 
 Durable Objects provide low-latency coordination and consistent storage for the Workers platform.  A given namespace can support essentially unlimited Durable Objects, with each Object having access to a transactional, key-value storage API.
