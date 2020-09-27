@@ -366,4 +366,4 @@ export class Counter {
 
 ## Configuration Script
 
-To simplify steps
+To simplify [configuring the class](#configuring-the-class-to-define-a-durable-object-namespace), we've included a [shell script](/public-durable-object.sh) to automate the curl commands.  Once Wrangler support is implemented, this shell script will no longer be necessary.
