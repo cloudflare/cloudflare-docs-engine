@@ -5,7 +5,7 @@ order: 4
 import NetworkMap from "../../components/network-map"
 import ArchitectureDiagram from "../../components/architecture-diagram"
 
-# How Workers Works
+# How Workers works
 
 Though Cloudflare Workers behave similar to JavaScript in the browser or in Node.js, there are a few subtle differences in how you have to think about your code. Under the hood, the Workers runtime uses the [V8 engine](https://v8.dev) - the same engine used by Chromium and Node.js. The Workers runtime also implements many of the standard [APIs](/runtime-apis) available in most modern browsers.
 
@@ -37,7 +37,7 @@ Because of this, it is generally advised that you not store mutable state in you
 
 If you're interested in how we handle security with the Workers runtime, you can [read more about how Isolates relate to Security and Spectre Threat Mitigation](/learning/security-model).
 
-## Compute per Request
+## Compute per request
 
 Most Workers scripts are a variation on the default Workers flow:
 
@@ -53,7 +53,7 @@ async function handleRequest(request) {
 
 When a request to your workers.dev subdomain or to your Cloudflare-managed domain is received by any of Cloudflare's runtimes, the Workers script is passed a [`FetchEvent`](/runtime-apis/fetch-event) argument to the event handler defined in the script. From there you can generate a [`Response`](/runtime-apis/response) by computing a response on the spot, calling to another server using [`fetch`](/runtime-apis/fetch), etc.. The CPU cycles it takes to get to the point of the `respondWith` call all contribute to the compute time. For example, a `setInterval` timeout does not consume CPU cycles while waiting.
 
-## Distributed Execution
+## Distributed execution
 
 Isolates are resilient and continuously available for the duration of a request, but in rare instances isolates may be evicted. When a script hits our [limits](/platform/limits) or when resources are exceptionally tight on the machine the request is running on, the runtime will selectively evict isolates _after_ their events are properly resolved.
 
