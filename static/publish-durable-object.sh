@@ -127,8 +127,7 @@ if [ ! -e metadata.json ]; then
   # namespaces.
 
   upload_bootstrap_script
-  NAMESPACE_ID=$(upsert_namespace $NAMESPACE_NAME)
-  LIMITERS_ID=$(upsert_namespace RateLimiter)
+  NAMESPACE_ID=$(upsert_namespace $CLASS_NAME)
 
   cat > metadata.json << __EOF__
 {
