@@ -1,4 +1,3 @@
-```sh
 #! /bin/bash
 #
 # This script configures a Durable Object namespace on your Cloudflare Workers account.
@@ -149,4 +148,3 @@ upload_script
 
 echo "App uploaded to your account under the name: $SCRIPT_NAME"
 echo "You may deploy it to a specific host in the Cloudflare Dashboard."
-```
