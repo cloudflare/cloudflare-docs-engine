@@ -31,7 +31,7 @@ Today, Wrangler does not support managing Durable Objects.  There are four steps
 
 ## Writing a class that defines a Durable Object
 
-To define a Durable Object, developers export an ordinary Javascript class.  Other languages will need a shim that translates their class definition to a Javascript class.
+To define a Durable Object, developers export an ordinary JavaScript class.  Other languages will need a shim that translates their class definition to a JavaScript class.
 
 The first parameter passed to the class constructor contains state specific to the Durable Object, including methods for accessing storage. The second parameter contains any bindings you have associated with the Worker when you uploaded it.
 
@@ -76,13 +76,13 @@ Durable Objects gain access to a [persistent storage API](/runtime-apis/durable-
 
 export class DurableObjectExample {
     constructor(state, env){
-        this.state = state;
+        this.storage = state.storage;
     }
 
     async fetch(request) {
         let ip = request.headers.get('CF-Connecting-IP');
         let data = await request.text();
-        let storagePromise = this.state.storage.put(ip, data);
+        let storagePromise = this.storage.put(ip, data);
         await storagePromise;
         return new Response(ip + ' stored ' + data);
     }
@@ -97,7 +97,7 @@ Each individual storage operation behaves like a database transaction. More comp
 
 export class DurableObjectExample {
     constructor(state, env){
-        this.state = state;
+        this.storage = state.storage;
     }
 
     async fetch(request) {
@@ -105,7 +105,7 @@ export class DurableObjectExample {
         let ifMatch = request.headers.get('If-Match');
         let newValue = await request.text();
         let changedValue = false;;
-        await this.state.transaction(async (txn) => {
+        await this.storage.transaction(async (txn) => {
           let currentValue = await txn.get(key);
           if (currentValue != ifMatch) {
             txn.rollback();
@@ -121,7 +121,7 @@ export class DurableObjectExample {
 
 ```
 
-Transactions operate at a Serializable isolation level.  This means transactions can fail if they conflict with a concurrent transaction being run by the same Durable Object.  
+Transactions operate at a [serializable isolation level](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Serializable).  This means transactions can fail if they conflict with a concurrent transaction being run by the same Durable Object.  
 
 Transactions are transparently and automatically retried once by rerunning the provided function before returning an error.  To avoid transaction conflicts, don't use transactions when you don't need them, don't hold transactions open any longer than necessary, and limit the number of key-value pairs operated on by each transaction.
 
