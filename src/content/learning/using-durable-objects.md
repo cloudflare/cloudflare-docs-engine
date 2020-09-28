@@ -131,7 +131,7 @@ Since each Durable Object is single-threaded, technically it is not necessary to
 
 </Aside>
 
-## Configuring the class to define a Durable Object namespace
+## Defining a Durable Object namespace
 
 <Aside type="warning" header="Wrangler support coming soon">
 
@@ -418,4 +418,4 @@ export class Counter {
 
 ## Configuration Script
 
-To simplify [configuring the class](#configuring-the-class-to-define-a-durable-object-namespace), we've included a [shell script](/publish-durable-object.sh) to automate the curl commands.  Once Wrangler support is implemented, this shell script will no longer be necessary.
+To simplify [configuring the namespace and class](#configuring-the-class-to-define-a-durable-object-namespace), we've included a [shell script](/publish-durable-object.sh) to automate the curl commands.  Once Wrangler support is implemented, this shell script will no longer be necessary.

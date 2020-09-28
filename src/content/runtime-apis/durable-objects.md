@@ -20,7 +20,7 @@ Learn more about [using Durable Objects](/learning/using-durable-objects).
 
 ```js
 export class DurableObject {
-  constructor(controller, env){
+  constructor(state, env){
 
   }
 
@@ -31,11 +31,11 @@ export class DurableObject {
 ```
 <Definitions>
 
-- `controller`
+- `state`
 
   - Passed from the runtime to provide access to the Durable Object's storage as well as various metadata about the Object.
 
-- `controller.storage`
+- `state.storage`
 
   - Contains methods for accessing persistent storage via the transactional storage API. See [Transactional Storage API](#transactional-storage-api) for a detailed reference.
 
@@ -47,7 +47,7 @@ export class DurableObject {
 
 ### Transactional Storage API
 
-Accessible via the `controller.storage` object passed to the Durable Object constructor.
+Accessible via the `state.storage` object passed to the Durable Object constructor.
 
 #### Methods
 
@@ -104,14 +104,14 @@ Each method is implicitly wrapped inside a transaction, such that its results ar
 
   - `txn`
 
-    - Provides access to the `put()`, `get()`, `delete()` and `list()` methods documented aboveto run in the current transaction context. In order to get transactional behavior within a transaction closure, you must call the methods on the `txn` object instead of on the top-level `state.storage` object.
+    - Provides access to the `put()`, `get()`, `delete()` and `list()` methods documented above to run in the current transaction context. In order to get transactional behavior within a transaction closure, you must call the methods on the `txn` object instead of on the top-level `state.storage` object.
     - Also supports a `rollback()` function that ensures any changes made during the transaction will be rolled back rather than committed. After `rollback()` is called, any subsequent operations on the `txn` object will fail with an exception. `rollback()` takes no parameters and returns nothing to the caller.
 
 </Definitions>
 
 ### `fetch()` handler method
 
-The `fetch()` method of a Durable Object namespaces is called by the system when an HTTP request is sent to the Object. These requests are not sent from the public Internet, but from other Workers, using a Durable Object namespace binding (see below).
+The `fetch()` method of a Durable Object namespace is called by the system when an HTTP request is sent to the Object. These requests are not sent from the public Internet, but from other Workers, using a Durable Object namespace binding (see below).
 
 The method takes a [`Request`](/runtime-apis/request) as the parameter, and returns a [`Response`](/runtime-apis/response) (or a `Promise` for a `Response`).
 
@@ -121,7 +121,7 @@ The method takes a [`Request`](/runtime-apis/request) as the parameter, and retu
 
 To access a Durable Object from a worker, you must first configure the worker with a binding for a Durable Object namespace. The namespace is, in turn, configured to use a particular class, and controls access to instances of that class.
 
-Namespace bindings have two jobs: generating object IDs, and connecting to objects.
+Namespace bindings have two jobs: generating object IDs and connecting to objects.
 
 ### Generating IDs randomly
 
