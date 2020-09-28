@@ -101,20 +101,20 @@ export class DurableObjectExample {
     }
 
     async fetch(request) {
-        let key = new Url(request.url).host
+        let key = new URL(request.url).host
         let ifMatch = request.headers.get('If-Match');
         let newValue = await request.text();
-        let changedValue = false;;
-        await this.storage.transaction(async (txn) => {
+        let changedValue = false;
+        await this.storage.transaction(async txn => {
           let currentValue = await txn.get(key);
-          if (currentValue != ifMatch) {
+          if (currentValue != ifMatch && ifMatch != '*') {
             txn.rollback();
-            return;
-          }
+            return; 
+           }
           changedValue = true;
           await txn.put(key, newValue);
         });
-        return new Response(changedValue);
+        return new Response("Changed: " + changedValue);
     }
 
 }
