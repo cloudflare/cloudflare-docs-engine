@@ -105,6 +105,7 @@ Each method is implicitly wrapped inside a transaction, such that its results ar
   - `txn`
 
     - Provides access to the `put()`, `get()`, `delete()` and `list()` methods documented aboveto run in the current transaction context. In order to get transactional behavior within a transaction closure, you must call the methods on the `txn` object instead of on the top-level `state.storage` object.
+    - Also supports a `rollback()` function that ensures any changes made during the transaction will be rolled back rather than committed. After `rollback()` is called, any subsequent operations on the `txn` object will fail with an exception. `rollback()` takes no parameters and returns nothing to the caller.
 
 </Definitions>
 
