@@ -82,7 +82,7 @@ export class DurableObjectExample {
     async fetch(request) {
         let ip = request.headers.get('CF-Connecting-IP');
         let data = await request.text();
-        let storagePromise = this.state.storage.set(ip, data);
+        let storagePromise = this.state.storage.put(ip, data);
         await storagePromise;
         return new Response(ip + ' stored ' + data);
     }
@@ -91,7 +91,7 @@ export class DurableObjectExample {
 
 ```
 
-Each individual storage operation behaves like a database transaction. More complex use cases can wrap multiple storage statements in a transaction. For example, this actor sets a key if and only if its current value matches the provided "If-Match" header value:
+Each individual storage operation behaves like a database transaction. More complex use cases can wrap multiple storage statements in a transaction. For example, this actor puts a key if and only if its current value matches the provided "If-Match" header value:
 
 ```js
 
@@ -141,7 +141,36 @@ We've included a helper script that will handle creating configuring and uploadi
 
 </Aside>
 
-Now that we have a class, we need tell Cloudflare to associate this class with a Durable Object namespace, so that the runtime can create instances of this class and allow Workers to contact those instances.
+For the following example, we'll be using this Durable Object class:
+
+```js
+// durable-object-example.mjs
+export class DurableObjectExample {
+    constructor(state, env){
+        this.state = state;
+    }
+
+    async fetch(request) {
+        let ip = request.headers.get('CF-Connecting-IP');
+        let data = await request.text()  || "No data!";
+        let storagePromise = this.state.storage.put(ip, data);
+        await storagePromise;
+        return new Response(ip + ' stored ' + data);
+    }
+
+}
+
+// required for the script to be accepted by the API endpoint
+export default {
+    async fetch(request, env) {
+        return new Response("Hello World")
+    }
+}
+```
+
+Now that we have a class, we need to tell Cloudflare to associate this class with a Durable Object namespace so that the runtime can create instances of this class and allow Workers to contact those instances.
+
+For these examples, make sure the class you wrote is in a file named `durable-object-example.mjs`.
 
 Durable Objects are written using a new kind of Workers syntax based on ES Modules. ES Modules differ from regular JavaScript files in that they have imports and exports. As you saw above, we wrote `export class DurableObjectExample` when defining our class. The `export` statement makes the class visible to the system, so that the Workers Runtime can instantiate it directly.
 
@@ -154,11 +183,27 @@ In order to upload Workers written with this new syntax, you must first define a
 }
 ```
 
-Now we can upload the script that defines the class:
+Now we can upload the script that defines the class, where API_TOKEN is your Workers API Token, ACCOUNT_TAG is your Account ID, and script name is your chosen script name:
 
 ```sh
 curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/scripts/${SCRIPT_NAME}" -X PUT -F "metadata=@durable-object-example.json;type=application/json" -F "script=@durable-object-example.mjs;type=application/javascript+module"
 ```
+
+<Aside>
+
+If you wrote your Durable Object and your Worker in separate files, the endpoint will return an error saying `The uploaded script has no registered event handlers`.  You can get around this by adding a stub event handler to durable-object-example.mjs.
+
+```js
+
+export default {
+    async fetch(request, env) {
+        return new Response("Hello World");
+    }
+}
+
+```
+
+</Aside>
 
 Now that the script containing the class exists on Cloudflare's servers, we can tell Cloudflare that this script contains a Durable Object class. Use the API to define a new Durable Object namespace:
 
@@ -174,7 +219,7 @@ In order for Workers to talk to instances of this class, they need an environmen
 
 Here's a basic Worker script that always forwards all requests to the object named "foo". Our binding for our namespace shows up as a global called `EXAMPLE_CLASS`.
 
-```
+``` js
 // calling-worker.js
 addEventListener("fetch", event => {
     return event.respondWith(handle(event.request));
@@ -187,7 +232,7 @@ async function handle(request) {
 }
 ```
 
-When uploading the worker that needs to call your Durable Object, you will again need to specify metadata, in order to define the binding.
+When uploading the worker that needs to call your Durable Object, you will again need to specify metadata, in order to define the binding.  Create the following JSON file, using the namespace id from above:
 
 ```js
 // calling-worker.json
@@ -197,13 +242,13 @@ When uploading the worker that needs to call your Durable Object, you will again
     {
       "type": "durable_object_namespace",
       "name": "EXAMPLE_CLASS",
-      "namespace_id": "$NAMESPACE_ID"
+      "namespace_id": <the namespace id from above>
     }
   ]
 }
 ```
 
-Upload your worker like this:
+Upload your worker like this, where `CALLING_SCRIPT_NAME` is the name you've chosen for your calling worker:
 
 ```sh
 curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/scripts/${CALLING_SCRIPT_NAME}" -X PUT -F "metadata=@calling-worker.json;type=application/json" -F "script=@calling-worker.js;type=application/javascript+module"
@@ -214,6 +259,13 @@ curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/clie
 In this example, we have used the old, non-modules-based syntax when defining our calling worker. In the new modules-based syntax, the binding `EXAMPLE_CLASS` would not show up as a global variable, but would instead be delivered as a property of the environment object passed as the second parameter when an event handler or class constructor is invoked.
 
 Lots has changed under the new modules-based syntax; we will be providing more complete documentation soon.
+
+We're done! If you deploy your calling worker and make a request to it, you'll see that your request was stored in the Durable Object.
+
+```sh
+curl -H "Content-Type: text/plain" https://calling-worker.<your-namespace>.workers.dev/ --data "important data!"
+***.***.***.*** stored important data!
+```
 
 </Aside>
 
