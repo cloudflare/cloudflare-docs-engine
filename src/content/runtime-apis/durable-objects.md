@@ -65,11 +65,11 @@ Each method is implicitly wrapped inside a transaction, such that its results ar
 
 - <code>put(key<ParamType>string</ParamType>, value<ParamType>any</ParamType>) <Type>Promise</Type></code>
 
-  - Stores the value and associates it with the given key. The value can be any type supported by [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
+  - Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
 
 - <code>put(entries<ParamType>Object</ParamType>) <Type>Promise</Type></code>
 
-  - Takes an Object and stores each of its keys and values to storage. Each value can be any type supported by [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
+  - Takes an Object and stores each of its keys and values to storage. Each value can be any type supported by the [structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types. Supports up to 128 key-value pairs at a time.
 
 - <code>delete(key<ParamType>string</ParamType>) <Type>Promise&lt;boolean></Type></code>
 
@@ -104,7 +104,7 @@ Each method is implicitly wrapped inside a transaction, such that its results ar
 
   - `txn`
 
-    - Provides access to `put()`, `get()`, `delete()` and `list()` methods to run in the current transaction context. In order to get transactional behavior within a transaction closure, you must call the methods on the `txn` object instead of on the top-level `state.storage` object.
+    - Provides access to the `put()`, `get()`, `delete()` and `list()` methods documented aboveto run in the current transaction context. In order to get transactional behavior within a transaction closure, you must call the methods on the `txn` object instead of on the top-level `state.storage` object.
 
 </Definitions>
 
