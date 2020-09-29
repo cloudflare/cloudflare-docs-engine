@@ -26,10 +26,9 @@ if [ -e credentials.conf ]; then
 else
     echo -n "Cloudflare account ID (32 hex digits): "
     read ACCOUNT_ID
-    echo -n "Cloudflare account email: "
-    read AUTH_EMAIL
-    echo -n "Cloudflare auth key: "
-    read AUTH_KEY
+    echo "Please create a Cloudflare API Token with Workers Scripts Edit permission on your account (can be created using the Edit Cloudflare Workers API Token template)."
+    echo -n "API Token: "
+    read API_TOKEN
     echo -n "JavaScript module file (e.g. counter.mjs): "
     read SCRIPT_FILE
     echo -n "script name: (e.g counter-worker): "
@@ -39,8 +38,7 @@ else
 
     cat > credentials.conf << __EOF__
 ACCOUNT_ID=$ACCOUNT_ID
-AUTH_EMAIL=$AUTH_EMAIL
-AUTH_KEY=$AUTH_KEY
+API_TOKEN=$API_TOKEN
 SCRIPT_FILE=$SCRIPT_FILE
 SCRIPT_NAME=$SCRIPT_NAME
 CLASS_NAME=$CLASS_NAME
@@ -55,7 +53,7 @@ fi
 # JSON response for errors. In case of errors, exit. Otherwise, write just the result part to
 # stdout.
 curl_api() {
-  RESULT=$(curl -s -H "X-Auth-Email: $AUTH_EMAIL" -H "X-Auth-Key: $AUTH_KEY" "$@")
+  RESULT=$(curl -s -H "Authorization: Bearer $API_TOKEN" "$@")
   if [ $(echo "$RESULT" | jq .success) = true ]; then
     echo "$RESULT" | jq .result
     return 0
