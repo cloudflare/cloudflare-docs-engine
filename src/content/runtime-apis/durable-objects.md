@@ -220,7 +220,7 @@ Stubs implement E-order semantics. When you make multiple calls to the same stub
 
 <Aside header="E-order">
 
-E-order is a concept deriving from the [E distributed programming language](https://en.wikipedia.org/wiki/E_(programming_language)). E-order is implemented by the [Cap'n Proto](https://canproto.org) distributed object-capability RPC protocol, which Cloudflare Workers uses for internal communications.
+E-order is a concept deriving from the [E distributed programming language](https://en.wikipedia.org/wiki/E_(programming_language)). E-order is implemented by the [Cap'n Proto](https://capnproto.org) distributed object-capability RPC protocol, which Cloudflare Workers uses for internal communications.
 
 </Aside>
 
