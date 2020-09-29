@@ -260,6 +260,8 @@ In this example, we have used the old, non-modules-based syntax when defining ou
 
 Lots has changed under the new modules-based syntax; we will be providing more complete documentation soon.
 
+</Aside>
+
 We're done! If you deploy your calling worker and make a request to it, you'll see that your request was stored in the Durable Object.
 
 ```sh
@@ -267,7 +269,7 @@ curl -H "Content-Type: text/plain" https://calling-worker.<your-namespace>.worke
 ***.***.***.*** stored important data!
 ```
 
-</Aside>
+
 
 ## Instantiating and communicating with a Durable Object
 
