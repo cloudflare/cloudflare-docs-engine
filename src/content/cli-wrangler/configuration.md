@@ -54,7 +54,7 @@ Keys to configure per project in your `wrangler.toml`.
   - This is a boolean flag that specifies if your worker will be deployed to your [workers.dev](https://workers.dev) subdomain. If omitted defaults to false.
 
 - `route` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
-  - A list of routes you’d like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
+  - A route, specificied by URL pattern, on your zone that you would like to run your Worker on. <br />`route = "http://example.com/*"`. One key of `route` OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
 
 - `routes` <Type>not inherited</Type> <PropMeta>optional</PropMeta>
   - A list of routes you’d like to use your worker on. These follow exactly the same rules a `route`, but you can specify a list of them.<br />`routes = ["http://example.com/hello", "http://example.com/goodbye"]` One key of `route`OR `routes` is only if you are not using a [workers.dev](https://workers.dev) subdomain.
