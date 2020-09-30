@@ -217,9 +217,9 @@ In order to upload Workers written with this new syntax, you must first define a
 
 Now we can upload the script that defines the class, where API_TOKEN is your Workers API Token, ACCOUNT_TAG is your Account ID, and script name is your chosen script name:
 
-```
+```sh
 
-curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/scripts/${SCRIPT_NAME}" -X PUT -F "metadata=@durable-object-example.json;type=application/json" -F "script=@durable-object-example.mjs;type=application/javascript+module"
+$ curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/scripts/${SCRIPT_NAME}" -X PUT -F "metadata=@durable-object-example.json;type=application/json" -F "script=@durable-object-example.mjs;type=application/javascript+module"
 
 ```
 
@@ -241,9 +241,9 @@ export default {
 
 Now that the script containing the class exists on Cloudflare's servers, we can tell Cloudflare that this script contains a Durable Object class. Use the API to define a new Durable Object namespace:
 
-```
+```sh
 
-curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/durable_objects/namespaces" -X POST --data "{\"name\": \"example-class\", \"script\": \"${SCRIPT_NAME}\", \"class\": \"DurableObjectExample\"}"
+$ curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/durable_objects/namespaces" -X POST --data "{\"name\": \"example-class\", \"script\": \"${SCRIPT_NAME}\", \"class\": \"DurableObjectExample\"}"
 
 ```
 
@@ -286,9 +286,9 @@ When uploading the worker that needs to call your Durable Object, you will again
 
 Upload your worker like this, where `CALLING_SCRIPT_NAME` is the name you've chosen for your calling worker:
 
-```
+```sh
 
-curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/scripts/${CALLING_SCRIPT_NAME}" -X PUT -F "metadata=@calling-worker.json;type=application/json" -F "script=@calling-worker.js;type=application/javascript+module"
+$ curl -i -H "Authorization: Bearer ${API_TOKEN}" "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_TAG}/workers/scripts/${CALLING_SCRIPT_NAME}" -X PUT -F "metadata=@calling-worker.json;type=application/json" -F "script=@calling-worker.js;type=application/javascript+module"
 
 ```
 
@@ -302,9 +302,9 @@ Lots has changed under the new modules-based syntax; we will be providing more c
 
 We're done! If you deploy your calling worker and make a request to it, you'll see that your request was stored in the Durable Object.
 
-```
+```sh
 
-curl -H "Content-Type: text/plain" https://calling-worker.<your-namespace>.workers.dev/ --data "important data!"
+$ curl -H "Content-Type: text/plain" https://calling-worker.<your-namespace>.workers.dev/ --data "important data!"
 ***.***.***.*** stored important data!
 
 ```
