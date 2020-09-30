@@ -133,7 +133,7 @@ Since each Durable Object is single-threaded, technically it is not necessary to
 
 ### In-memory state in a Durable Object
 
-Variables in a Durable Object will maintain state as long as your Durable Object is not evicted from memory.  A common pattern is to initialize an object from persistent storage and set class variables the first time it is accessed.  Since future accesses all go to the same object, it is then possible to return values without making a call to persistent storage.
+Variables in a Durable Object will maintain state as long as your Durable Object is not evicted from memory.  A common pattern is to initialize an object from persistent storage and set class variables the first time it is accessed.  Since future accesses are routed to the same object, it is then possible to return any initialized values without making further calls to persistent storage.
 
 This is shown in the [Counter example](#example---counter) below, which is partially shown here.
 
