@@ -15,7 +15,7 @@ The [`HTMLRewriter`](/runtime-apis/html-rewriter) class (currently in beta) buil
 
 In this tutorial, we’ll build an example internationalization and localization engine (commonly referred to as “i18n” and “l10n”) for your application, server the content of your site, and automatically translate the content based your visitors’ location in the world.
 
-[![Demo Image](./media/i18n.jpg)](https://i18n-example.workers-tooling.cf)
+![Demo Image](./media/i18n.jpg)
 
 ## Setup
 
@@ -289,7 +289,7 @@ theme: dark
 ~/i18n-example $ wrangler publish
 ```
 
-[![Demo Image](./media/i18n.jpg)](https://i18n-example.workers-tooling.cf)
+![Demo Image](./media/i18n.jpg)
 
 ## Resources
 
