@@ -21,7 +21,7 @@ tags:
  * @param {string} url the URL to send the request to
  * @param {BodyInit} body the JSON data to send in the request
  */
-const someHost = "https://workers-tooling.cf/demos"
+const someHost = "https://examples.cloudflareworkers.com/demos"
 const url = someHost + "/requests/json"
 const body = {
   results: ["default data to send"],

@@ -28,7 +28,7 @@ const corsHeaders = {
 
 // The URL for the remote third party API you want to fetch from
 // but does not implement CORS
-const API_URL = "https://workers-tooling.cf/demos/demoapi"
+const API_URL = "https://examples.cloudflareworkers.com/demos/demoapi"
 
 // The endpoint you want the CORS reverse proxy to be on
 const PROXY_ENDPOINT = "/corsproxy/"

@@ -14,7 +14,7 @@ tags:
 </ContentColumn>
 
 ```js
-const externalHostname = "workers-tooling.cf"
+const externalHostname = "examples.cloudflareworkers.com"
 
 const redirectMap = new Map([
   ["/bulk1", "https://" + externalHostname + "/redirect2"],

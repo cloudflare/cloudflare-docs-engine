@@ -19,7 +19,7 @@ tags:
  * Replace url1 and url2 with the hosts you wish to send requests to
  * @param {string} url the URL to send the request to
  */
-const someHost = "https://workers-tooling.cf/demos"
+const someHost = "https://examples.cloudflareworkers.com/demos"
 const url1 = someHost + "/requests/json"
 const url2 = someHost + "/requests/json"
 const type = "application/json;charset=UTF-8"

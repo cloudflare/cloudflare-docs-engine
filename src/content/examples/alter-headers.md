@@ -17,7 +17,7 @@ async function handleRequest(request) {
   // Make the headers mutable by re-constructing the Request.
   request = new Request(request)
   request.headers.set("x-my-header", "custom value")
-  const URL = "https://workers-tooling.cf/demos/static/html"
+  const URL = "https://examples.cloudflareworkers.com/demos/static/html"
 
   // URL is set up to respond with dummy HTML
   let response = await fetch(URL, request)

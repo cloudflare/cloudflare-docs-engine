@@ -20,7 +20,7 @@ tags:
  * @param {string} someHost the host to send the request to
  * @param {string} url the URL to send the request to
  */
-const someHost = "https://workers-tooling.cf/demos"
+const someHost = "https://examples.cloudflareworkers.com/demos"
 const url = someHost + "/static/json"
 
 /**

@@ -18,7 +18,7 @@ tags:
  * Example someHost at url is set up to respond with HTML
  * Replace url with the host you wish to send requests to
  */
-const someHost = "https://workers-tooling.cf/demos"
+const someHost = "https://examples.cloudflareworkers.com/demos"
 const url = someHost + "/static/html"
 
 /**
