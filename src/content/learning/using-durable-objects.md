@@ -68,7 +68,7 @@ HTTP requests received by a Durable Object do not come directly from the Interne
 
 </Aside>
 
-### Accessing Storage from a Durable Object
+### Accessing Persistent Storage from a Durable Object
 
 Durable Objects gain access to a [persistent storage API](/runtime-apis/durable-objects#transactional-storage-api) via the first parameter passed to the Durable Object constructor.  While access to a Durable Object is single-threaded, it's important to remember that request executions can still interleave with each other when they wait on I/O, such as when waiting on the promises returned by persistent storage methods or `fetch` requests.
 
@@ -130,6 +130,38 @@ Transactions are transparently and automatically retried once by rerunning the p
 Since each Durable Object is single-threaded, technically it is not necessary to use transactions to achieve transactional semantics. With careful use of promises, you could serialize operations in your live object so that there's no possibility of concurrent storage operations. We provide the transactional interface as a convenience for those who don't want to do their own synchronization.
 
 </Aside>
+
+### In-memory state in a Durable Object
+
+Variables in a Durable Object will maintain state as long as your Durable Object is not evicted from memory.  A common pattern is to initialize an object from persistent storage and set class variables the first time it is accessed.  Since future accesses all go to the same object, it is then possible to return values without making a call to persistent storage.
+
+This is shown in the [Counter example](#example---counter) below, which is partially shown here.
+
+```js
+
+export class Counter {
+    constructor(state, env) {
+        this.storage = state.storage;
+    }
+    
+    async initialize() {
+        let stored = await this.storage.get("value");
+        // after initialization, future reads don't need to access storage!
+        this.value = stored || 0;
+    }
+
+    // Handle HTTP requests from clients.
+    async fetch(request) {
+        // Make sure we're fully initialized from storage.
+        if (!this.initializePromise) {
+            this.initializePromise = this.initialize();
+        }
+        await this.initializePromise;
+        // this.value will retain its state until this object is evicted from memory
+        ...
+    }
+}
+```
 
 ## Defining a Durable Object namespace
 
