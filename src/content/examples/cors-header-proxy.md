@@ -16,13 +16,13 @@ tags:
 
 ```js
 // We support the GET, POST, HEAD, and OPTIONS methods from any origin,
-// and accept the Content-Type header on requests. These headers must be
-// present on all responses to all CORS requests. In practice, this means
+// and allow any header on requests. These headers must be present
+// on all responses to all CORS preflight requests. In practice, this means
 // all responses to OPTIONS requests.
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Headers": null,
   "Access-Control-Max-Age": "86400",
 }
 
@@ -132,8 +132,12 @@ function handleOptions(request) {
     // Handle CORS pre-flight request.
     // If you want to check the requested method + headers
     // you can do that here.
+    let respHeaders = corsHeaders;
+    // allow all future content request headers to go back to browser
+    // such as Authorization (Bearer) or X-Client-Name-Version
+    respHeaders["Access-Control-Allow-Headers"] = request.get("Access-Control-Request-Headers")
     return new Response(null, {
-      headers: corsHeaders,
+      headers: respHeaders,
     })
   }
   else {
