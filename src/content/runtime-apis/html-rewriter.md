@@ -409,4 +409,4 @@ async function handle(request) {
 ## See also
 
 - [Introducing `HTMLRewriter`](https://blog.cloudflare.com/introducing-htmlrewriter/)
-- [Tutorial: Localize a Website](tutorials/localize-a-website)
+- [Tutorial: Localize a Website](/tutorials/localize-a-website)
