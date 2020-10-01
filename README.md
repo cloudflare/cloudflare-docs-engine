@@ -1,13 +1,11 @@
-# Workers Docs Engine
+# Cloudflare Docs Engine
 
-## Note about the project naming
+Cloudflare’s open-source tool for building documentation.
 
-While this project is currently called Workers Docs Engine, it currently contains both the docs engine and content.
+_WIP, more to come..._
 
-The plan is to move the content into either [@cloudflare/workers-docs](https://github.com/cloudflare/workers-docs) or (-content).
-
-Soon after that, the engine itself will be renamed [@cloudflare/cloudflare-docs-engine](https://github.com/cloudflare/cloudflare-docs-engine), and other Cloudflare products in addition to Workers will begin using it.
-
+<!-- TODO -->
+<!--
 ## Developing locally
 
 Running the local development server ([localhost:8000](http://localhost:8000)):
@@ -22,11 +20,12 @@ Testing the build ([localhost:9000](http://localhost:9000)):
 npm run build && npm run serve
 ```
 
-## Documentation (for the documentation)
+## Documentation (for Docs Engine)
 
-See https://developers.cloudflare.com/workers/docs-engine. (Note: This URL is temporary. The content in `src/content/docs-engine` will soon be broken out to a separate project and deployed to another location.)
+See https://docs-engine-docs.adam.workers.dev. (Note: This URL is temporary.)
 
 ## Known issues
 
 - [@gatsbyjs/gatsby#17506](https://github.com/gatsbyjs/gatsby/issues/17506) Console warning about `lazy=load` images missing dimensions. This is a known issue in Gatsby and the [recommendation as of Sept, 2019](https://github.com/gatsbyjs/gatsby/issues/17506#issuecomment-529904482) is to ignore it.
 - Hard page loads with hashes don’t start scrolled when developing locally (e.g. `http://localhost:8000/#docs-content`).
+-->
