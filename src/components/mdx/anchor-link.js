@@ -17,8 +17,15 @@ export default ({ href, className, children, ...props }) => {
   const isHash = href.indexOf("#") === 0
   const isExternal = !!href.match(/^https?:/)
   const isFile = /\..+$/.test(href)
-  const linkHasChildren = typeof children === "object"
   const useRegularLink = isHash || isExternal || isFile
+
+  const linkHasChildren = typeof children === "object"
+  const linkHasImageChild = linkHasChildren && React.Children.toArray(children).filter(item => {
+    if (typeof item === "object" && item.props && (item.props.parentName === "img" || item.props.originalType === "img" || item.props.className === "gatsby-resp-image-wrapper"))
+      return true
+
+    return false
+  }).length
 
   if (isHash) {
     props.onClick = event => {
@@ -49,7 +56,7 @@ export default ({ href, className, children, ...props }) => {
   }
 
   return useRegularLink ? (
-    (isExternal && !linkHasChildren) ? (
+    (isExternal && !linkHasImageChild) ? (
       <a href={href} className={className || linkClassName} {...props}>
         <span className={contentClassName}>{children}</span>
         <IconExternalLink className={externalIconClassName}/>
