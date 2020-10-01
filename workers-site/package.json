@@ -8,6 +8,6 @@
   "license": "MIT",
   "dependencies": {
     "@cloudflare/kv-asset-handler": "^0.0.12",
-    "lilredirector": "0.3.0"
+    "lilredirector": "^0.5.1"
   }
 }
