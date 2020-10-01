@@ -1,4 +1,4 @@
-# Cloudflare Docs Engine
+# Cloudflare Docs Engine - an amazing project
 
 Cloudflare’s open-source tool for building documentation.
 
