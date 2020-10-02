@@ -22,7 +22,7 @@ const DocsSearch = () => {
   const enableSearch = indexName && apiKey
 
   // Adjust search result URL pathname to work with local development
-  // See https://github.com/cloudflare/workers-docs-engine/issues/196
+  // See https://github.com/cloudflare/cloudflare-docs-engine/issues/196
   const fixSearchResultPathname = (pathname) => {
     // When the pathPrefix we get from getPathPrefix() matches the
     // productionPathPrefix we get from getCloudflareDocsConfig()
@@ -78,7 +78,7 @@ const DocsSearch = () => {
         // https://docsearch.algolia.com/docs/behavior
         handleSelected: (input, event, suggestion, datasetNumber, context) => {
           // Adjust search result URL pathname to work with local development
-          // See https://github.com/cloudflare/workers-docs-engine/issues/196
+          // See https://github.com/cloudflare/cloudflare-docs-engine/issues/196
           const url = new URL(suggestion.url)
           const pathname = fixSearchResultPathname(url.pathname)
 
