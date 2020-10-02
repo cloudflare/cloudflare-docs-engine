@@ -54,9 +54,6 @@ copysrc() {
   echo "Entering .docs/src/"
   cd src
 
-  echo "Deleting .docs/src/content/"
-  rm -rf content/
-
   echo "Copying content into .docs/src/"
   cp -r ../../src/content ./
 }
