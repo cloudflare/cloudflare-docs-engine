@@ -1,8 +1,0 @@
-name = "docs-engine-docs"
-type = "webpack"
-account_id = "1e1395dd88464c726799aac6c1be4a71" # adam.workers.dev
-workers_dev = true
-
-[site]
-bucket = "public"
-entry-point = "workers-site"
