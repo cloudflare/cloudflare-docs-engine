@@ -25,6 +25,9 @@ if [ "$1" = "ghactionsbootstrap" ]; then
 
   echo "Moving cloudflare-docs-engine files into .docs"
   cp -r node_modules/cloudflare-docs-engine/* .docs
+
+  echo "Running npm install inside .docs"
+  npm install
 fi
 
 
