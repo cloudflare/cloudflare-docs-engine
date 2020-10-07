@@ -16,17 +16,26 @@ fi
 
 project_path=$(dirname $(dirname $docs_engine_path))
 
+
+if [ "$1" = "ghactionsbootstrap" ]; then
+  cd $project_path
+
+  echo "Deleting .docs"
+  rm -rf .docs
+
+  echo "Moving cloudflare-docs-engine files into .docs"
+  cp -r node_modules/cloudflare-docs-engine/* .docs
+fi
+
+
 if [ "$1" = "bootstrap" ]; then
   cd $project_path
 
   echo "Deleting .docs"
   rm -rf .docs
 
-  echo "Creating .docs directory"
-  mkdir .docs
-
   echo "Moving cloudflare-docs-engine files into .docs"
-  cp -r node_modules/cloudflare-docs-engine/* .docs
+  cp -r node_modules/cloudflare-docs-engine/ .docs
 
   echo "Entering .docs"
   cd .docs
