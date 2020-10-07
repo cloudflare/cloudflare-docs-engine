@@ -99,3 +99,10 @@ if [ "$1" = "build" ]; then
   echo "Running bin/postbuild.js"
   node bin/postbuild.js
 fi
+
+
+if [ "$1" = "savechanges" ]; then
+  cd $project_path
+
+  cp -r .docs/src/content/ src/content/
+fi
