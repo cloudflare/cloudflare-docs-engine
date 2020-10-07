@@ -23,8 +23,17 @@ if [ "$1" = "ghactionsbootstrap" ]; then
   echo "Deleting .docs"
   rm -rf .docs
 
+  echo "Creating .docs directory"
+  mkdir .docs
+
   echo "Moving cloudflare-docs-engine files into .docs"
   cp -r node_modules/cloudflare-docs-engine/* .docs
+
+  echo "Entering .docs"
+  cd .docs
+
+  echo "Removing existing node_modules (local npm link case)"
+  rm -rf node_modules/
 
   echo "Running npm install inside .docs"
   npm install
