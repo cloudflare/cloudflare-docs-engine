@@ -32,9 +32,6 @@ if [ "$1" = "ghactionsbootstrap" ]; then
   echo "Entering .docs"
   cd .docs
 
-  echo "Removing existing node_modules (local npm link case)"
-  rm -rf node_modules/
-
   echo "Running npm install inside .docs"
   npm install
 fi
