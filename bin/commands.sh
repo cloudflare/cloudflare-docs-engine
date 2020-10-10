@@ -64,11 +64,8 @@ copysrc() {
   echo "Entering .docs"
   cd .docs
 
-  echo "Deleting .docs/docs-config.js"
-  rm docs-config.js
-
   echo "Copying docs-config.js into .docs"
-  cp ../docs-config.js ./
+  cp -r ../docs-config.js ./
 
   echo "Entering .docs/src/"
   cd src
