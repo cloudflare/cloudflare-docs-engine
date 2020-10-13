@@ -63,11 +63,11 @@ const CodeBlock = props => {
   let codeFrontmatter = {}
 
   // For now, we don’t support code frontmatter
-  // in Markdown code blocks because Markdown
-  // itself can contain frontmatter.
+  // in Markdown or YAML blocks because they
+  // themselves can contain frontmatter.
 
   // TODO: find workaround for this limitation
-  if (language !== "markdown") {
+  if (language !== "markdown" && language !== "yaml") {
     const parsed = frontMatterParser(code)
 
     if (Object.keys(parsed.data).length) {
