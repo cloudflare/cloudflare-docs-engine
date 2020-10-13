@@ -67,6 +67,11 @@ copysrc() {
   echo "Copying docs-config.js into .docs"
   cp -r ../docs-config.js ./
 
+  if [ -e ../static ]; then
+      echo "Copying static into .docs"
+      cp -r ../static ./
+  fi
+
   echo "Entering .docs/src/"
   cd src
 
