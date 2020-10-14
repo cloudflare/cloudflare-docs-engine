@@ -22,7 +22,6 @@ module.exports = {
   siteMetadata: siteMetadata,
 
   plugins: [
-    "gatsby-plugin-sitemap",
     "gatsby-plugin-eslint",
     "gatsby-plugin-no-sourcemaps",
     "gatsby-plugin-react-helmet",
@@ -32,6 +31,14 @@ module.exports = {
 
     // Sets page.updatedAt to the author time of last commit (https://git.io/JfPCj)
     "saber-plugin-git-modification-time",
+
+    // Custom sitemap configuration that fixes prefix issues
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        resolveSiteUrl: () => new URL(siteMetadata.siteUrl).origin,
+      },
+    },
 
     // Prevent nav from (un)mounting on page navigations (https://git.io/JfOKn)
     {
