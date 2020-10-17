@@ -21,6 +21,7 @@ import TypeLink from "./mdx/type-link"
 import PropMeta from "./mdx/prop-meta"
 import DirectoryListing from "./mdx/directory-listing"
 import YouTube from "./mdx/youtube"
+import StreamVideo from "./mdx/stream-video"
 
 // https://mdxjs.com/table-of-components
 // https://www.gatsbyjs.org/docs/mdx/customizing-components/
@@ -46,6 +47,7 @@ const components = {
   PropMeta,
   DirectoryListing,
   YouTube,
+  StreamVideo,
 }
 
 const MDXCustomRenderer = ({ data: { mdx } }) => {
