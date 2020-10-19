@@ -112,6 +112,7 @@ if [ "$1" = "build" ]; then
   node bin/postbuild.js
 fi
 
+
 if [ "$1" = "serve" ]; then
   cd $project_path
 
