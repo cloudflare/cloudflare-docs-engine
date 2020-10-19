@@ -112,6 +112,16 @@ if [ "$1" = "build" ]; then
   node bin/postbuild.js
 fi
 
+if [ "$1" = "serve" ]; then
+  cd $project_path
+
+  echo "Entering .docs"
+  cd .docs
+
+  echo "Running npm run serve"
+  npm run serve
+fi
+
 
 if [ "$1" = "savechanges" ]; then
   cd $project_path
