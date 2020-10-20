@@ -42,6 +42,7 @@ if (pathPrefix !== "") {
       exec(`mv "${dir}${folderName}" "${dir}public/"`, handleExec(() => {
         console.log("Completed postbuild")
         if (process.env.WORKERS_ENV && process.env.WORKERS_ENV === "development") {
+          console.log("Building robots.txt for development environment")
           fs.writeFile(`${process.env.PWD}/public/robots.txt`, robots, err => err && console.error(err))
         }
       }))
