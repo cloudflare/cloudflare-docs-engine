@@ -30,6 +30,8 @@ const handleExec = (completed) => {
   }
 }
 
+const robots = `User-agent: *\nDisallow: /`
+
 if (pathPrefix !== "") {
   // We are running from inside `.docs/`
   const dir = "$PWD/"
@@ -39,6 +41,9 @@ if (pathPrefix !== "") {
     exec(`mkdir "${dir}public"`, handleExec(() => {
       exec(`mv "${dir}${folderName}" "${dir}public/"`, handleExec(() => {
         console.log("Completed postbuild")
+        if (process.env.WORKERS_ENV && process.env.WORKERS_ENV === "development") {
+          fs.writeFile(`${process.env.PWD}/public/robots.txt`, robots, err => err && console.error(err))
+        }
       }))
     }))
   }))
