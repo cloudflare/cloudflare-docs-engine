@@ -580,6 +580,7 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 }
 
 .DocsMarkdown th {
+  word-break: normal;
   vertical-align: bottom;
   font-weight: bold;
   border-bottom: 2px solid var(--border-color);
