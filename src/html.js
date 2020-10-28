@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import googleAnalytics from './utils/google-analytics'
 
 export default function HTML(props) {
   return (
@@ -9,6 +10,8 @@ export default function HTML(props) {
         <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         { props.headComponents }
+        <script type="text/javascript" src="/_cf/analytics.js" />
+        <script type="text/javascript" dangerouslySetInnerHTML={{ __html: googleAnalytics }}/>
       </head>
 
       <body { ...props.bodyAttributes }>
