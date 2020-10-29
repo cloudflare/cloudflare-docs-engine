@@ -1,7 +1,8 @@
 export const languageMappings = {
   "shell": "sh",
   "javascript": "js",
-  "markup": "html"
+  "markup": "html",
+  "vue": "html"
 }
 
 export const prismLanguages = {
