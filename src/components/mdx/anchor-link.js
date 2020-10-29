@@ -16,7 +16,7 @@ export default ({ href, className, children, ...props }) => {
   // Similar to Gatsby’s own mdx-link.js https://git.io/JUmtg
   const isHash = href.indexOf("#") === 0
   const isExternal = !!href.match(/^https?:/)
-  const isFile = /\..+$/.test(href)
+  const isFile = /\.[^/]*$/.test(href)
   const useRegularLink = isHash || isExternal || isFile
 
   const linkHasChildren = typeof children === "object"
