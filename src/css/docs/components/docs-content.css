@@ -15,7 +15,8 @@
 
 @media (max-width: 768px) {
   .DocsContent {
-    padding: 2rem 1rem;
+    --docs-content-horizontal-padding: 1rem;
+    padding: 2rem var(--docs-content-horizontal-padding);
     min-height: 1em; /* TODO */
   }
 }
