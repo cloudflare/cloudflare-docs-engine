@@ -1,15 +1,15 @@
-.DocsWorkersExamples {
+.DocsCodeExamplesOverview {
   margin: 2.5rem 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-gap: var(--docs-content-gap);
 }
 
-.DocsWorkersExamples--example {
+.DocsCodeExamplesOverview--example {
   border-radius: .5em;
 }
 
-.DocsWorkersExamples--example-title {
+.DocsCodeExamplesOverview--example-title {
   font-size: 1.5em;
   line-height: 1.2;
   font-weight: 500;
@@ -19,7 +19,7 @@
   overflow: hidden;
 }
 
-.DocsWorkersExamples--example-title .Link { /* TODO */
+.DocsCodeExamplesOverview--example-title .Link { /* TODO */
   color: inherit;
   --underline-opacity: .75;
   text-decoration: underline;
@@ -27,12 +27,12 @@
   box-shadow: 0 0 0 var(--focus-size) var(--focus-color);
 }
 
-.DocsWorkersExamples--example-description {
+.DocsCodeExamplesOverview--example-description {
   margin-bottom: 1em;
 }
 
 @media (min-width: 1153px) {
-  .DocsWorkersExamples--example-description {
+  .DocsCodeExamplesOverview--example-description {
     --lines: 2;
     display: -webkit-box;
     -webkit-line-clamp: var(--lines);
@@ -42,17 +42,17 @@
   }
 }
 
-.DocsWorkersExamples--example-description > *:last-child {
+.DocsCodeExamplesOverview--example-description > *:last-child {
   margin-bottom: 0;
 }
 
-.DocsWorkersExamples--example-codeblock-link {
+.DocsCodeExamplesOverview--example-codeblock-link {
   display: block;
   position: relative;
   color: inherit;
 }
 
-.DocsWorkersExamples--example-codeblock-link::after {
+.DocsCodeExamplesOverview--example-codeblock-link::after {
   content: "";
   position: absolute;
   top: 0;
@@ -65,33 +65,33 @@
 }
 
 @media (hover: hover) {
-  .DocsWorkersExamples--example-codeblock-link:hover:not(:active)::after {
+  .DocsCodeExamplesOverview--example-codeblock-link:hover:not(:active)::after {
     background: rgba(255, 255, 255, .2);
   }
 
-  [theme="dark"] .DocsWorkersExamples--example-codeblock-link:hover:not(:active)::after {
+  [theme="dark"] .DocsCodeExamplesOverview--example-codeblock-link:hover:not(:active)::after {
     background: rgba(var(--color-rgb), .05);
   }
 }
 
-.DocsWorkersExamples--example-codeblock-link:active::after {
+.DocsCodeExamplesOverview--example-codeblock-link:active::after {
   background: rgba(var(--shadow-color-rgb), .05);
   --active-box-shadow-color: rgba(var(--shadow-color-rgb), .2);
 }
 
-.DocsWorkersExamples--example-codeblock-link pre {
+.DocsCodeExamplesOverview--example-codeblock-link pre {
   height: 19em;
   margin-bottom: 0;
   pointer-events: none;
 }
 
-.DocsWorkersExamples--example-codeblock-link pre,
-.DocsWorkersExamples--example-codeblock-link pre code {
+.DocsCodeExamplesOverview--example-codeblock-link pre,
+.DocsCodeExamplesOverview--example-codeblock-link pre code {
   overflow: hidden;
 }
 
 @media (max-width: 1152px) {
-  .DocsWorkersExamples {
+  .DocsCodeExamplesOverview {
     margin-left: 0;
     margin-right: 0;
     grid-template-columns: 100%;
@@ -99,21 +99,21 @@
 }
 
 @media (max-width: 768px) {
-  .DocsWorkersExamples--example-title {
+  .DocsCodeExamplesOverview--example-title {
     font-size: 1.375em;
     margin-bottom: .5rem;
   }
 
-  .DocsWorkersExamples--example-codeblock-link {
+  .DocsCodeExamplesOverview--example-codeblock-link {
     margin-left: -1rem;
     width: calc(100% + 2rem);
   }
 
-  .DocsWorkersExamples--example-codeblock-link::after {
+  .DocsCodeExamplesOverview--example-codeblock-link::after {
     border-radius: 0;
   }
 
-  .DocsWorkersExamples--example-codeblock-link pre {
+  .DocsCodeExamplesOverview--example-codeblock-link pre {
     height: 12.2em;
     --border-radius: 0em;
   }

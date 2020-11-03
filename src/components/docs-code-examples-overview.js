@@ -12,7 +12,7 @@ const getCodeBlockFromMDXAST = ast => {
   }
 }
 
-const DocsWorkersData = props => {
+const DocsExamplesData = props => {
   const query = useStaticQuery(graphql`
     query {
       allMdx {
@@ -70,7 +70,7 @@ const DocsWorkersData = props => {
   return props.children({ examples, tags })
 }
 
-class DocsWorkersExamples extends React.Component {
+class DocsCodeExamplesOverview extends React.Component {
 
   constructor(props) {
     super(props)
@@ -84,7 +84,7 @@ class DocsWorkersExamples extends React.Component {
     const activeTag = this.state.activeTag
 
     return (
-      <DocsWorkersData>
+      <DocsExamplesData>
         {({ examples, tags }) => (
           <>
             <div className="TagsFilter">
@@ -106,7 +106,7 @@ class DocsWorkersExamples extends React.Component {
               ))}
             </div>
 
-            <div className="DocsWorkersExamples">
+            <div className="DocsCodeExamplesOverview">
               {examples
                 .filter(ex =>
                   activeTag === "All examples" ?
@@ -114,18 +114,18 @@ class DocsWorkersExamples extends React.Component {
                     ex.tags.indexOf(activeTag) >= 0
                 )
                 .map((example, i) => (
-                  <div key={example.url} className="DocsWorkersExamples--example">
-                    <div className="DocsWorkersExamples--example-title">
+                  <div key={example.url} className="DocsCodeExamplesOverview--example">
+                    <div className="DocsCodeExamplesOverview--example-title">
                       <Link className="Link" to={example.url}>
                         {example.title}
                       </Link>
                     </div>
 
-                    <div className="DocsWorkersExamples--example-description">
+                    <div className="DocsCodeExamplesOverview--example-description">
                       <p>{example.summary}</p>
                     </div>
 
-                    <Link to={example.url} className="DocsWorkersExamples--example-codeblock-link">
+                    <Link to={example.url} className="DocsCodeExamplesOverview--example-codeblock-link">
                       <CodeBlock lang={example.code.lang} children={example.code.value}/>
                     </Link>
                   </div>
@@ -133,9 +133,9 @@ class DocsWorkersExamples extends React.Component {
             </div>
           </>
         )}
-      </DocsWorkersData>
+      </DocsExamplesData>
     )
   }
 }
 
-export default DocsWorkersExamples
+export default DocsCodeExamplesOverview
