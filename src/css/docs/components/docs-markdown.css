@@ -789,8 +789,7 @@ blockquote .DocsMarkdown--header-anchor-positioner {
 .DocsMarkdown--button-group-content {
   display: flex;
   flex-wrap: wrap;
-  margin-top: -.375em;
-  margin-left: -.375em;
+  margin: -.375em;
 }
 
 .DocsMarkdown--button-group-content > a,
