@@ -8,6 +8,8 @@ import a from "./mdx/anchor-link"
 import headers from "./mdx/headers"
 import inlineCode from "./mdx/inline-code"
 import pre from "./mdx/code-block"
+import Button from "./mdx/button"
+import ButtonGroup from "./mdx/button-group"
 import Aside from "./mdx/aside"
 import ContentColumn from "./mdx/content-column"
 import Example from "./mdx/example"
@@ -34,6 +36,8 @@ const components = {
 
   // Add custom components
   Link,
+  Button,
+  ButtonGroup,
   Aside,
   ContentColumn,
   Example,
