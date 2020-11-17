@@ -92,7 +92,7 @@ if [ "$1" = "develop" ]; then
   npm run clean
 
   echo "Running npm run develop"
-  npm run develop
+  npm run develop -- "${@:2}"
 fi
 
 
@@ -105,7 +105,7 @@ if [ "$1" = "build" ]; then
   cd .docs
 
   echo "Running npm run build"
-  npm run build
+  npm run build -- "${@:2}"
 
   # We must run from inside `.docs/`
   echo "Running bin/postbuild.js"
@@ -120,7 +120,7 @@ if [ "$1" = "serve" ]; then
   cd .docs
 
   echo "Running npm run serve"
-  npm run serve
+  npm run serve -- "${@:2}"
 fi
 
 
