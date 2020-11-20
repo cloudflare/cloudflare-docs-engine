@@ -40,6 +40,7 @@ const products = [
   "time-services",
   "waf",
   "warp-client",
+  "workers",
 ]
 
 const productIcons = {}
