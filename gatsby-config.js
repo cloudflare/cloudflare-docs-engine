@@ -62,7 +62,7 @@ Object.keys(docsConfig).forEach(prop => {
   siteMetadata.cloudflareDocs[prop] = docsConfig[prop]
 })
 
-docsConfig.cloudflareDocs.productIcons = productIcons
+siteMetadata.cloudflareDocs.productIcons = productIcons
 
 // We exposed friendlier siteMetadata.url to Docs consumers but
 // gatsby-plugin-sitemap requires `siteUrl` https://git.io/JUUxW
