@@ -28,6 +28,9 @@ export default () => {
               search {
                 indexName
                 apiKey
+                algoliaOptions {
+                  facetFilters
+                }
               }
             }
           }
