@@ -32,7 +32,7 @@ const DocsPage = ({ pageContext: page, children, location }) => {
   const tableOfContents = getTableOfContents(page)
 
   const { search } = getCloudflareDocsConfig()
-  const enableSearch = search.apiKey && search.indexName
+  const enableSearch = search.apiKey && search.indexName && search.algoliaOptions
   const disableSearchProps = enableSearch ? {} : { "search-disabled": "" }
 
   return (
