@@ -40,6 +40,7 @@ const products = [
   "terraform",
   "time-services",
   "waf",
+  "waiting-room",
   "warp-client",
   "workers",
 ]
