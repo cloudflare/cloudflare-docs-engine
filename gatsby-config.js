@@ -14,6 +14,7 @@ const products = [
   "analytics",
   "api",
   "argo-tunnel",
+  "bots",
   "byoip",
   "cloudflare-for-teams",
   "cloudflare-one",
@@ -39,6 +40,7 @@ const products = [
   "terraform",
   "time-services",
   "waf",
+  "waiting-room",
   "warp-client",
   "workers",
 ]

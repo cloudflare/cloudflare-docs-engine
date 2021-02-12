@@ -15,11 +15,12 @@ const DocsSearch = () => {
     pathPrefix: productionPathPrefix,
     search: {
       indexName,
-      apiKey
+      apiKey,
+      algoliaOptions
     }
   } = getCloudflareDocsConfig()
 
-  const enableSearch = indexName && apiKey
+  const enableSearch = indexName && apiKey && algoliaOptions
 
   // Adjust search result URL pathname to work with local development
   // See https://github.com/cloudflare/cloudflare-docs-engine/issues/196
@@ -58,6 +59,7 @@ const DocsSearch = () => {
       const search = window.docsearch({
         indexName,
         apiKey,
+        algoliaOptions,
 
         // TODO: pass DOM in with Reacth.createRef?
         inputSelector: "#DocsSearch--input",
