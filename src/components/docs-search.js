@@ -134,6 +134,8 @@ const DocsSearch = () => {
       })
 
       document.addEventListener("keydown", event => {
+        if (event.target === input) return
+
         const slashShortcut = event.key === "/"
         const commandShortcut = event.key === "S" && event.shiftKey
 
