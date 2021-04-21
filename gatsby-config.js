@@ -31,6 +31,7 @@ const products = [
   "magic-transit",
   "mobile-sdk",
   "network-interconnect",
+  "page-shield",
   "randomness-beacon",
   "registrar",
   "spectrum",
