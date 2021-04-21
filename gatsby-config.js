@@ -34,6 +34,7 @@ const products = [
   "page-shield",
   "randomness-beacon",
   "registrar",
+  "rules",
   "spectrum",
   "ssl",
   "stream",
