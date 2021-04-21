@@ -33,6 +33,7 @@ const products = [
   "network-interconnect",
   "randomness-beacon",
   "registrar",
+  "rules",
   "spectrum",
   "ssl",
   "stream",
