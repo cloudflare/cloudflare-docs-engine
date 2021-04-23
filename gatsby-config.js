@@ -13,6 +13,7 @@ const products = [
   "access",
   "analytics",
   "api",
+  "automatic-platform-optimization",
   "argo-tunnel",
   "bots",
   "byoip",
