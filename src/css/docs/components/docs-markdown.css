@@ -14,6 +14,22 @@
   overflow: visible;
 }
 
+.DocsMarkdown .small-img {
+  max-width:242px;
+}
+
+.DocsMarkdown .medium-img {
+  max-width:311px;
+}
+
+.DocsMarkdown .large-img {
+  max-width:450px;
+}
+
+.DocsMarkdown .full-img {
+  max-width:692px;
+}
+
 .DocsMarkdown--link {
   text-decoration: none;
   color: inherit;
