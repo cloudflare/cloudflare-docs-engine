@@ -33,6 +33,7 @@ const products = [
   "mobile-sdk",
   "network-interconnect",
   "page-shield",
+  "railgun",
   "randomness-beacon",
   "registrar",
   "rules",
