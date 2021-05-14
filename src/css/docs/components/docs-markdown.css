@@ -16,18 +16,22 @@
 
 .DocsMarkdown .small-img {
   max-width:242px;
+  margin-bottom: 1em;  
 }
 
 .DocsMarkdown .medium-img {
   max-width:311px;
+  margin-bottom: 1em;
 }
 
 .DocsMarkdown .large-img {
   max-width:450px;
+  margin-bottom: 1em;
 }
 
 .DocsMarkdown .full-img {
   max-width:692px;
+  margin-bottom: 1em;
 }
 
 .DocsMarkdown--link {
