@@ -27,7 +27,7 @@ import getTableOfContents from "../utils/get-table-of-contents"
 import hasBreadcrumbs from "../utils/has-breadcrumbs"
 
 const DocsPage = ({ pageContext: page, children, location }) => {
-  const title = getPageTitle(page)
+  const title = getPageTitle(page, true)
   const pageType = getPageType(page)
   const tableOfContents = getTableOfContents(page)
 
