@@ -30,6 +30,7 @@ const products = [
   "load-balancing",
   "logs",
   "magic-transit",
+  "magic-wan",
   "mobile-sdk",
   "network-interconnect",
   "page-shield",
