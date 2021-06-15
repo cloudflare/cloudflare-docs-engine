@@ -5,8 +5,6 @@ import { navigate } from "@reach/router"
 class Item extends React.Component {
 
   constructor(props) {
-    super(props)
-
     this.handleLinkClick = this.handleLinkClick.bind(this)
   }
 
