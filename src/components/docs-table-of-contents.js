@@ -1,7 +1,5 @@
 import React from "react"
 
-import { navigate } from "@reach/router"
-
 class Item extends React.Component {
 
   constructor(props) {
@@ -22,7 +20,7 @@ class Item extends React.Component {
 
     return (
       <li key={item.url}>
-        <a className="DocsTableOfContents-link" href={item.url} onClick={this.handleLinkClick}>
+        <a className="DocsTableOfContents-link" href={item.url}>
           {item.title}
         </a>
 
@@ -40,7 +38,8 @@ class Item extends React.Component {
 
 const DocsTableOfContents = ({ items }) => {
   const toTop = {
-    url: "",
+    // the top most div of content to scroll to 
+    url: "#docs-content",
     title: "↑ Top"
   }
 
