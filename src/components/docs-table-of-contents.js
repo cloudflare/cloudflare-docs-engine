@@ -6,17 +6,6 @@ class Item extends React.Component {
 
   constructor(props) {
     super(props)
-
-    this.handleLinkClick = this.handleLinkClick.bind(this)
-  }
-
-  handleLinkClick(event) {
-    // If we don’t handle this click, then the page
-    // will hard refresh for the "↑ Top" item, and
-    // if we use <Link/>, @reach throws an error:
-    // https://github.com/reach/router/issues/114
-    event.preventDefault()
-    navigate(event.target.href)
   }
 
   render() {
