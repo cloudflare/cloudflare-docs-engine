@@ -33,7 +33,7 @@
     "graphql": "14.7.0",
     "gray-matter": "4.0.2",
     "prism-react-renderer": "1.1.1",
-    "prismjs": "1.21.0",
+    "prismjs": "1.24.0",
     "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-copy-to-clipboard": "5.0.2",
