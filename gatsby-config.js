@@ -17,6 +17,7 @@ const products = [
   "argo-tunnel",
   "bots",
   "byoip",
+  "cache",
   "cloudflare-for-teams",
   "cloudflare-one",
   "distributed-web",
