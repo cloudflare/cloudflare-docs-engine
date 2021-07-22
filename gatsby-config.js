@@ -28,6 +28,7 @@ const products = [
   "fundamentals",
   "gateway",
   "http3",
+  "image-resizing",
   "images",
   "load-balancing",
   "logs",
