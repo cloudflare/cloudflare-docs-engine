@@ -24,19 +24,9 @@ const codeBlockClassName = (theme) => {
 }
 
 const addNewlineToEmptyLine = (line) => {
-  // addresses pasting bug on firefox by creating a new line at the 
-  // end of a code block row
-  // this code looks for an empty string at the end or beginning of the 
-  // codeblock character which indicates an indention of code
-  // adding \n at the end of the row keeps original indentation of codeblock
-  // when pasting codeblock on firefox
-
-  if (
-    line &&
-    (line[line.length - 1].content.trim() === "" ||
-      line[0].content.trim() === "")
-  ) {
-    line[line.length - 1].content = line[line.length - 1].content + " \n"
+  if (line && line.length === 1 && line[0].empty) {
+    // Improves copy/paste behavior
+    line[0].content = "\n"
   }
 
   return line
@@ -133,6 +123,12 @@ const CodeBlock = (props) => {
                           {...tokenProps(getTokenProps({ token, key }))}
                         />
                       ))}
+                      {/* Forced newline added to the markup here for each line */}
+                      {/* This doesn't add an additional newline to be shown but */}
+                      {/* makes copying  and pasting more consistent */}
+                      <span className="CodeBlock--token-plain">
+                        <br />
+                      </span>
                     </span>
                   </span>
                 ))}
