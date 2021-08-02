@@ -4,21 +4,26 @@ import * as frontMatterParser from "gray-matter"
 
 import Highlight, { defaultProps } from "prism-react-renderer"
 
-import { languageMappings, prismLanguages, transformToken } from "./custom-syntax-highlighting"
+import {
+  languageMappings,
+  prismLanguages,
+  transformToken,
+} from "./custom-syntax-highlighting"
 
 // Additional language support (See https://git.io/JJuZX)
 import Prism from "prism-react-renderer/prism"
-(typeof global !== "undefined" ? global : window).Prism = Prism
+;(typeof global !== "undefined" ? global : window).Prism = Prism
 require("prismjs/components/prism-toml")
 require("prismjs/components/prism-rust")
 Prism.languages.sh = prismLanguages.sh
 
-const codeBlockClassName = theme => {
-  const themeClassName = theme === "dark" ? "" : " CodeBlock-is-light-in-light-theme"
+const codeBlockClassName = (theme) => {
+  const themeClassName =
+    theme === "dark" ? "" : " CodeBlock-is-light-in-light-theme"
   return `CodeBlock CodeBlock-with-rows CodeBlock-scrolls-horizontally${themeClassName}`
 }
 
-const addNewlineToEmptyLine = line => {
+const addNewlineToEmptyLine = (line) => {
   if (line && line.length === 1 && line[0].empty) {
     // Improves copy/paste behavior
     line[0].content = "\n"
@@ -27,11 +32,11 @@ const addNewlineToEmptyLine = line => {
   return line
 }
 
-const CodeBlock = props => {
+const CodeBlock = (props) => {
   const { className, children } = props.children.props
 
   if (props.className) {
-    return (<pre {...props}/>)
+    return <pre {...props} />
   }
 
   let language = className ? className.split("-")[1] : "js"
@@ -47,8 +52,8 @@ const CodeBlock = props => {
 
     tokens.forEach((token, i) => {
       token = transformToken({ token, children, language })
-      if (token.indexOf("language-") !== 0) token = `token-${ token }`
-      className += ` CodeBlock--${ token }`
+      if (token.indexOf("language-") !== 0) token = `token-${token}`
+      className += ` CodeBlock--${token}`
     })
 
     className = className.trim()
@@ -56,7 +61,7 @@ const CodeBlock = props => {
     return {
       key,
       children,
-      className
+      className,
     }
   }
 
@@ -81,12 +86,19 @@ const CodeBlock = props => {
   return (
     <Highlight {...defaultProps} code={code} language={language}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={codeBlockClassName(theme) + " CodeBlock--language-" + language} language={language}>
+        <pre
+          className={
+            codeBlockClassName(theme) + " CodeBlock--language-" + language
+          }
+          language={language}
+        >
           {codeFrontmatter.header && (
             <span className="CodeBlock--header">{codeFrontmatter.header}</span>
           )}
           {codeFrontmatter.filename && !codeFrontmatter.header && (
-            <span className="CodeBlock--filename">{codeFrontmatter.filename}</span>
+            <span className="CodeBlock--filename">
+              {codeFrontmatter.filename}
+            </span>
           )}
           <code>
             <span className="CodeBlock--rows">
@@ -94,18 +106,29 @@ const CodeBlock = props => {
                 {tokens.map((line, i) => (
                   <span
                     key={i}
-                    className={"CodeBlock--row" + (
-                      codeFrontmatter.highlight &&
+                    className={
+                      "CodeBlock--row" +
+                      (codeFrontmatter.highlight &&
                       codeFrontmatter.highlight.length &&
-                      codeFrontmatter.highlight.includes(i + 1) ?
-                        " CodeBlock--row-is-highlighted" : ""
-                    )}
+                      codeFrontmatter.highlight.includes(i + 1)
+                        ? " CodeBlock--row-is-highlighted"
+                        : "")
+                    }
                   >
                     <span className="CodeBlock--row-indicator"></span>
                     <span className="CodeBlock--row-content">
                       {addNewlineToEmptyLine(line).map((token, key) => (
-                        <span key={key} {...tokenProps(getTokenProps({ token, key }))}/>
+                        <span
+                          key={key}
+                          {...tokenProps(getTokenProps({ token, key }))}
+                        />
                       ))}
+                      {/* Forced newline added to the markup here for each line */}
+                      {/* This doesn't add an additional newline to be shown but */}
+                      {/* makes copying  and pasting more consistent */}
+                      <span className="CodeBlock--token-plain">
+                        <br />
+                      </span>
                     </span>
                   </span>
                 ))}
