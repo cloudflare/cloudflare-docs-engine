@@ -116,20 +116,14 @@ const CodeBlock = (props) => {
                     }
                   >
                     <span className="CodeBlock--row-indicator"></span>
-                    <span className="CodeBlock--row-content">
+                    <div className="CodeBlock--row-content">
                       {addNewlineToEmptyLine(line).map((token, key) => (
                         <span
                           key={key}
                           {...tokenProps(getTokenProps({ token, key }))}
                         />
                       ))}
-                      {/* Forced newline added to the markup here for each line */}
-                      {/* This doesn't add an additional newline to be shown but */}
-                      {/* makes copying  and pasting more consistent */}
-                      <span className="CodeBlock--token-plain">
-                        <br />
-                      </span>
-                    </span>
+                    </div>
                   </span>
                 ))}
               </span>
