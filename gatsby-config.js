@@ -57,10 +57,6 @@ products.forEach(name => {
   productIcons[name] = require(getProduct(name)).pathD
 })
 
-if (docsConfig.productLogoPathD && docsConfig.productIconKey) {
-  return Error("Set either `productLogoPathD` or `productIconKey` in docs-config.js, not both")
-}
-
 if (docsConfig.productIconKey) {
   docsConfig.productLogoPathD = productIcons[docsConfig.productIconKey]
 }

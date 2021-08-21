@@ -18,6 +18,14 @@
   flex-shrink: 0;
 }
 
+[theme="light"] .DocsNavLogoLockup--logo {
+  fill: var(--orange);
+}
+
+[theme="dark"] .DocsNavLogoLockup--logo {
+  fill: var(--orange);
+}
+
 .DocsNavLogoLockup--text {
   font-size: var(--font-size, 1em);
   font-weight: 700;
