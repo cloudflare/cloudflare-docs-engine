@@ -16,6 +16,7 @@
   color: var(--orange);
   margin-right: var(--gap);
   flex-shrink: 0;
+  fill: var(--orange);
 }
 
 .DocsNavLogoLockup--text {

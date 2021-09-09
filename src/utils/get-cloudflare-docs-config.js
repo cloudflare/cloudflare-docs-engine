@@ -19,6 +19,7 @@ export default () => {
               pathPrefix
               product
               productLogoPathD
+              # logoSVGContent
               contentRepo
               contentRepoFolder
               externalLinks {

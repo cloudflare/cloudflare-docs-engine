@@ -57,7 +57,8 @@ products.forEach(name => {
   productIcons[name] = require(getProduct(name)).pathD
 })
 
-if (docsConfig.productIconKey) {
+// This is to support some cases when the pathD is directly added in the docs-config manually in the product instead of getting the icon from the cloudflare-brand-assets repo
+if (docsConfig.productIconKey && !docsConfig.productLogoPathD) {
   docsConfig.productLogoPathD = productIcons[docsConfig.productIconKey]
 }
 
