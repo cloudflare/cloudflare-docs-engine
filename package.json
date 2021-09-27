@@ -4,9 +4,6 @@
   "description": "Cloudflare Workers documentation engine",
   "version": "0.1.0",
   "author": "Cloudflare <github@cloudflare.com>",
-  "resolutions": {
-    "nanocolors": "0.2.11"
-  },
   "dependencies": {
     "@adaptivelink/pops": "0.2.10",
     "@cloudflare/cloudflare-brand-assets": "^4.7.7",
@@ -68,7 +65,6 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "publish": "npm run build && wrangler publish",
     "serve": "gatsby serve",
-    "start": "npm run develop",
-    "preinstall": "npx npm-force-resolutions"
+    "start": "npm run develop"
   }
 }
