@@ -5,6 +5,7 @@ realpath() {
   [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
 }
 
+echo "Docs Engine Version: 0.1.1"
 
 docs_engine_path=$(dirname $(dirname $(realpath "$0")))
 parent_path=$(dirname $docs_engine_path)
