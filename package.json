@@ -33,6 +33,7 @@
     "gatsby-transformer-sharp": "2.5.21",
     "graphql": "14.7.0",
     "gray-matter": "4.0.2",
+    "postcss": "7.0.32",
     "prism-react-renderer": "1.1.1",
     "prismjs": "1.21.0",
     "prop-types": "15.7.2",
