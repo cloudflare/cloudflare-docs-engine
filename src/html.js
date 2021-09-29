@@ -9,8 +9,6 @@ export default function HTML(props) {
         <meta httpEquiv="x-ua-compatible" content="ie=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         { props.headComponents }
-        <script type="text/javascript" src="https://developers.cloudflare.com/_cf/analytics.js" />
-        <script src="https://tr.www.cloudflare.com/gtm.js?id=GTM-PKQFGQB" />
       </head>
 
       <body { ...props.bodyAttributes }>
