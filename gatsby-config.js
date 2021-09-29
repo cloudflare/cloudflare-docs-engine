@@ -156,5 +156,13 @@ module.exports = {
     // Consider enabling for PWA + offline functionality
     // https://gatsby.dev/offline
     // 'gatsby-plugin-offline',
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-PKQFGQB",
+        dataLayerName: "cfDataLayer",
+        selfHostedOrigin: "https://tr.www.cloudflare.com"
+      },
+    },
   ],
 }
