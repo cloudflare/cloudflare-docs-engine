@@ -41,6 +41,9 @@ const DocsPage = ({ pageContext: page, children, location }) => {
 
       <Helmet>
         <html is-docs-page="" {...disableSearchProps}/>
+        <script data-source="docs" async defer src="https://feedback.developers.cloudflare.com/sdk.js"></script>
+        <link rel="preload" href="https://feedback.developers.cloudflare.com/sdk.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+        <noscript>{'<link rel="stylesheet" href="https://feedback.developers.cloudflare.com/sdk.css"/>'}</noscript>
       </Helmet>
 
       <HandleMobilePageNavigations/>
