@@ -1,6 +1,9 @@
 {
   "name": "cloudflare-docs-engine",
   "private": true,
+  "browser": {
+    "fs": false
+  },
   "description": "Cloudflare Workers documentation engine",
   "version": "0.1.5",
   "author": "Cloudflare <github@cloudflare.com>",
