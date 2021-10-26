@@ -68,10 +68,24 @@ const setTheme = theme => {
 }
 
 const storeTheme = theme => {
-  localStorage.theme = JSON.stringify({
-    theme: theme,
-    updated: +new Date()
-  })
+  try {
+    document.dispatchEvent(
+      new CustomEvent('theme', {
+        detail: theme === 'dark'
+      })
+    )
+  } catch (err) {
+    // ignore
+  }
+
+  try {
+    localStorage.theme = JSON.stringify({
+      theme: theme,
+      updated: +new Date()
+    })
+  } catch (err) {
+    // safari may throw SecurityError
+  }
 }
 
 class ThemeToggle extends React.Component {
