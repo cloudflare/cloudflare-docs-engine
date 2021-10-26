@@ -17,6 +17,16 @@ const DocsToolbar = () => {
       </div>
 
       <div className="DocsToolbar--tools">
+        <button data-feedback className="DocsToolbar--feedback Button Button-is-docs-secondary">
+          <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 17">
+            <path d="M14 2.5H2l-.5.5v11.165l.863.345 2.852-3.01H14l.5-.5V3l-.5-.5Zm-.5 8H4.785L2.5 12.911V3.5h11v7Z" fill="currentColor"></path>
+            <path d="M12.5 5.003h-9v1h9v-1ZM12.5 7.5h-9v1h9v-1Z" fill="currentColor"></path>
+          </svg>
+          Give Feedback
+        </button>
+
+        <div className="DocsToolbar--tools-spacer"/>
+
         <div className="DocsToolbar--tools-icon-item">
           <div className="Tooltip---root">
             <div className="DocsToolbar--tools-icon-item-content">
