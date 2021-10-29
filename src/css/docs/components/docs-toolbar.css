@@ -18,6 +18,18 @@
   visibility: hidden;
 }
 
+.DocsToolbar--feedback {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.DocsToolbar--feedback svg {
+  width: 1em;
+  margin-right: 0.5em;
+  height: 1em;
+}
+
 .DocsToolbar--tools {
   display: flex;
   align-items: center;
@@ -70,6 +82,7 @@
     max-width: 100vw;
   }
 
+  .DocsToolbar--feedback,
   .DocsToolbar--tools-spacer,
   .DocsToolbar--tools-icon-item {
     display: none;
