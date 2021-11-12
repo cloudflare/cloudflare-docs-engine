@@ -1,5 +1,4 @@
 const docsConfig = require("./docs-config.js")
-
 const isProduction = process.env.NODE_ENV === "production"
 
 const getProduct = (name) => {
@@ -52,14 +51,16 @@ const products = [
   "workers",
 ]
 
+// TODO: Delete later
 const productIcons = {}
 products.forEach(name => {
   productIcons[name] = require(getProduct(name)).pathD
 })
 
-// This is to support some cases when the pathD is directly added in the docs-config manually in the product instead of getting the icon from the cloudflare-brand-assets repo
+
+// TODO: Delete later on, This is to support some cases when the pathD is directly added in the docs-config manually in the product instead of getting the icon from the cloudflare-brand-assets repo
 if (docsConfig.productIconKey && !docsConfig.productLogoPathD) {
-  docsConfig.productLogoPathD = productIcons[docsConfig.productIconKey]
+  docsConfig.productLogoPathD = productIcons.productIconKey ? productIcons[docsConfig.productIconKey] : ''
 }
 
 const siteMetadata = docsConfig.siteMetadata
@@ -69,6 +70,7 @@ Object.keys(docsConfig).forEach(prop => {
   siteMetadata.cloudflareDocs[prop] = docsConfig[prop]
 })
 
+// TODO: Delete later on
 siteMetadata.cloudflareDocs.productIcons = productIcons
 
 // We exposed friendlier siteMetadata.url to Docs consumers but
