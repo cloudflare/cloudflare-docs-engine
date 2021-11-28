@@ -91,7 +91,6 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
-    "gatsby-plugin-remove-trailing-slashes",
 
     // Sets page.updatedAt to the author time of last commit (https://git.io/JfPCj)
     "saber-plugin-git-modification-time",
