@@ -1,6 +1,6 @@
 import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
-import analytics from 'workers-google-analytics'
 import redirector from 'lilredirector'
+import analytics from 'workers-google-analytics'
 
 const docsConfig = require("../docs-config.js")
 
@@ -29,7 +29,14 @@ addEventListener('fetch', event => {
 })
 
 async function handleEvent(event) {
-  const url = new URL(event.request.url)
+  const url = new URL(event.request.url);
+
+  if(!url.pathname.endsWith('/')) {
+    url.pathname += '/';
+
+    return new Response(url.toString(), { status: 301 });
+  }
+
   let options = {}
 
   /**
