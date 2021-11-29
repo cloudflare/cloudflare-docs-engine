@@ -166,12 +166,5 @@ module.exports = {
         selfHostedOrigin: "https://tr.www.cloudflare.com"
       },
     },
-    {
-      resolve: "gatsby-plugin-canonical-urls",
-      options: {
-        siteUrl: `https://developers.cloudflare.com`,
-        stripQueryString: true,
-      },
-    },
   ],
 }
