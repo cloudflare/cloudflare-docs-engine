@@ -16,6 +16,7 @@
     "@reach/skip-nav": "0.10.5",
     "animejs": "3.2.0",
     "autoprefixer": "10.3.6",
+    "color-string": "1.7.0",
     "focus-group": "0.3.1",
     "focus-visible-polyfill": "1.0.0",
     "gatsby": "2.24.7",
