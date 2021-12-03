@@ -57,19 +57,3 @@ import "./src/css/docs/components/docs-mobile-nav-backdrop.css"
 import "./src/css/docs/components/docs-footer.css"
 import "./src/css/docs/components/docs-code-examples-overview.css"
 import "./src/css/docs/components/docs-tutorials.css"
-
-
-exports.onRouteUpdate = ({ location }) => {
-  const domElem = document.querySelector(`link[rel='canonical']`)
-  const existingValue = domElem.getAttribute(`href`)
-  const baseProtocol = domElem.getAttribute(`data-baseProtocol`)
-  const baseHost = domElem.getAttribute(`data-baseHost`)
-  
-  location.pathname = !location.pathname.endsWith('/') ? '/' : location.pathname;
-
-  if (existingValue && baseProtocol && baseHost) {
-    let value = `${baseProtocol}//${baseHost}${location.pathname}${location.hash}`
-
-    domElem.setAttribute(`href`, `${value}`)
-  }
-}

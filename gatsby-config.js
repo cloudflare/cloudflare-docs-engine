@@ -165,5 +165,6 @@ module.exports = {
         selfHostedOrigin: "https://tr.www.cloudflare.com"
       },
     },
+    'gatsby-plugin-canonical-urls',
   ],
 }
