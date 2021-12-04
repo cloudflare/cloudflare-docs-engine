@@ -4,8 +4,8 @@ exports.onRouteUpdate = ({ location }) => {
   const baseProtocol = domElem.getAttribute(`data-baseProtocol`)
   const baseHost = domElem.getAttribute(`data-baseHost`)
   
-  location.pathname = !location.pathname.endsWith('/') ? '/' : location.pathname;
-
+  location.pathname += !location.pathname.endsWith('/') ? '/' : '';
+  
   let value = `${baseProtocol}//${baseHost}${location.pathname}${location.hash}`
   if (existingValue && baseProtocol && baseHost) {
 
