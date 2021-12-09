@@ -29,14 +29,7 @@ addEventListener('fetch', event => {
 })
 
 async function handleEvent(event) {
-  const url = new URL(event.request.url);
-
-  if(!url.pathname.endsWith('/')) {
-    url.pathname += '/';
-
-    return new Response(url.toString(), { status: 301 });
-  }
-
+  const url = new URL(event.request.url)
   let options = {}
 
   /**

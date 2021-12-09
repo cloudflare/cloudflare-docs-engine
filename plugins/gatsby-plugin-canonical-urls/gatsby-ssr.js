@@ -9,8 +9,6 @@ exports.onRenderBody = (
   const siteUrl = SITE_URL.replace(/\/$/, ``)
   const parsed = url.parse(`${siteUrl}${pathname}`)
   
-  parsed.pathname += !parsed.pathname.endsWith('/') ? '/' : '';
-
   const pageUrl = `${parsed.protocol}//${parsed.host}${parsed.pathname}`;
 
   setHeadComponents([
