@@ -93,7 +93,7 @@ if [ "$1" = "develop" ]; then
   yarn clean
 
   echo "Running yarn develop"
-  yarn develop -- "${@:2}"
+  yarn develop "${@:2}"
 fi
 
 
@@ -106,7 +106,7 @@ if [ "$1" = "build" ]; then
   cd .docs
 
   echo "Running yarn build"
-  yarn build -- "${@:2}"
+  yarn build "${@:2}"
 
   # We must run from inside `.docs/`
   echo "Running bin/postbuild.js"
@@ -121,7 +121,7 @@ if [ "$1" = "serve" ]; then
   cd .docs
 
   echo "Running yarn serve"
-  yarn serve -- "${@:2}"
+  yarn serve "${@:2}"
 fi
 
 
