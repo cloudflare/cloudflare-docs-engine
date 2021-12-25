@@ -300,7 +300,6 @@ https://bugs.chromium.org/p/chromium/issues/detail?id=997607
 [theme="dark"] .DocsSidebar--nav-section-shadow {
   box-shadow: inset 0 1px rgba(var(--shadow-color-rgb), .5);
   background: linear-gradient(rgba(var(--shadow-color-rgb), .2), transparent);
-  height: .5em;
   border-top: 1px solid #222;
 }
 
