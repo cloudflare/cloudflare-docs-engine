@@ -58,6 +58,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               slug
             }
             frontmatter {
+              pcx_content_type
               title
               type
               order
@@ -111,6 +112,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Frontmatter {
+      pcx_content_type:String
       demo: String
       breadcrumbs: Boolean
       difficulty: String
@@ -140,7 +142,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       search: AlgoliaSearch
       externalLinks: [ExternalLinksType]
     }
-    
+
     type ExternalLinksType {
       title: String
       url: String
@@ -149,7 +151,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type AlgoliaOptions {
       facetFilters: String
     }
-    
+
     type AlgoliaSearch {
       indexName: String
       apiKey: String

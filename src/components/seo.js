@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ lang, title, description, meta }) {
+function SEO({ lang, title, description, meta, pcxContentType }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -29,29 +29,33 @@ function SEO({ lang, title, description, meta }) {
     "Docs",
     "Overview",
     "Welcome",
-    siteTitle
+    siteTitle,
   ].includes(pageTitle)
 
   title = isHomeTitle ? siteTitle : `${pageTitle} · ${siteTitle}`
 
   return (
     <Helmet>
-      <html lang={lang}/>
+      <html lang={lang} />
 
       <title>{title}</title>
 
-      <meta name="description" content={metaDescription}/>
+      <meta name="description" content={metaDescription} />
 
       <meta property="og:image" content={site.siteMetadata.image} />
-      <meta property="og:title" content={title}/>
-      <meta property="og:description" content={metaDescription}/>
-      <meta property="og:type" content="website"/>
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:type" content="website" />
 
-      <meta name="twitter:title" content={title}/>
-      <meta name="twitter:image" content="https://www.cloudflare.com/img/cf-twitter-card.png"/>
-      <meta name="twitter:description" content={metaDescription}/>
-      <meta name="twitter:creator" content={site.siteMetadata.author}/>
-      <meta name="twitter:card" content="summary_large_image"/>
+      <meta name="twitter:title" content={title} />
+      <meta
+        name="twitter:image"
+        content="https://www.cloudflare.com/img/cf-twitter-card.png"
+      />
+      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:creator" content={site.siteMetadata.author} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="pcx-content-type" content={pcxContentType} />
     </Helmet>
   )
 }
@@ -59,14 +63,15 @@ function SEO({ lang, title, description, meta }) {
 SEO.defaultProps = {
   lang: "en",
   description: "",
-  meta: []
+  meta: [],
 }
 
 SEO.propTypes = {
   lang: PropTypes.string,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object)
+  meta: PropTypes.arrayOf(PropTypes.object),
+  pcxContentType: PropTypes.string,
 }
 
 export default SEO

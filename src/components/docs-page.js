@@ -22,6 +22,7 @@ import DocsFooter from "./docs-footer"
 
 import getCloudflareDocsConfig from "../utils/get-cloudflare-docs-config"
 import getPageTitle from "../utils/get-page-title"
+import getPcxContentType from "../utils/get-pxc-content-type"
 import getPageType from "../utils/get-page-type"
 import getTableOfContents from "../utils/get-table-of-contents"
 import hasBreadcrumbs from "../utils/has-breadcrumbs"
@@ -29,35 +30,51 @@ import hasBreadcrumbs from "../utils/has-breadcrumbs"
 const DocsPage = ({ pageContext: page, children, location }) => {
   const title = getPageTitle(page, true)
   const pageType = getPageType(page)
+  const pcxContentType = getPcxContentType(page)
   const tableOfContents = getTableOfContents(page)
 
   const { search } = getCloudflareDocsConfig()
-  const enableSearch = search.apiKey && search.indexName && search.algoliaOptions
+  const enableSearch =
+    search.apiKey && search.indexName && search.algoliaOptions
   const disableSearchProps = enableSearch ? {} : { "search-disabled": "" }
 
   return (
     <>
-      <SEO title={title}/>
+      <SEO title={title} pcxContentType={pcxContentType} />
 
       <Helmet>
-        <html is-docs-page="" {...disableSearchProps}/>
-        <script data-source="docs" async defer src="https://feedback.developers.cloudflare.com/sdk.js"></script>
-        <link rel="preload" href="https://feedback.developers.cloudflare.com/sdk.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
-        <noscript>{'<link rel="stylesheet" href="https://feedback.developers.cloudflare.com/sdk.css"/>'}</noscript>
+        <html is-docs-page="" {...disableSearchProps} />
+        <script
+          data-source="docs"
+          async
+          defer
+          src="https://feedback.developers.cloudflare.com/sdk.js"
+        ></script>
+        <link
+          rel="preload"
+          href="https://feedback.developers.cloudflare.com/sdk.css"
+          as="style"
+          onload="this.onload=null;this.rel='stylesheet'"
+        />
+        <noscript>
+          {
+            '<link rel="stylesheet" href="https://feedback.developers.cloudflare.com/sdk.css"/>'
+          }
+        </noscript>
       </Helmet>
 
-      <HandleMobilePageNavigations/>
-      <BrowserResizeTracking/>
-      <SmoothScrollHashChanges/>
+      <HandleMobilePageNavigations />
+      <BrowserResizeTracking />
+      <SmoothScrollHashChanges />
 
-      <SkipNavLink contentId="docs-content" className="SkipNavLink"/>
+      <SkipNavLink contentId="docs-content" className="SkipNavLink" />
 
       <div className="DocsPage">
-        <DocsMobileHeader/>
-        <DocsMobileTitleHeader/>
-        <div className="DocsMobileNavBackdrop"/>
-        <DocsSidebar/>
-        <DocsToolbar/>
+        <DocsMobileHeader />
+        <DocsMobileTitleHeader />
+        <div className="DocsMobileNavBackdrop" />
+        <DocsSidebar />
+        <DocsToolbar />
 
         <main className="DocsBody">
           {pageType === "document" && tableOfContents && (
@@ -65,26 +82,27 @@ const DocsPage = ({ pageContext: page, children, location }) => {
               <div className="DocsBody--sidebar-content-scroll-fade"></div>
               <div className="DocsBody--sidebar-content">
                 <nav>
-                  <DocsTableOfContents items={tableOfContents}/>
+                  <DocsTableOfContents items={tableOfContents} />
                 </nav>
               </div>
             </div>
           )}
 
-          <SkipNavContent id="docs-content"/>
+          <SkipNavContent id="docs-content" />
 
           <div className="DocsContent" page-type={pageType}>
             {hasBreadcrumbs(page) && (
-              <Breadcrumbs className="DocsContent--breadcrumbs" location={location}/>
+              <Breadcrumbs
+                className="DocsContent--breadcrumbs"
+                location={location}
+              />
             )}
 
-            <article className={docsMarkdownClassName()}>
-              {children}
-            </article>
+            <article className={docsMarkdownClassName()}>{children}</article>
           </div>
         </main>
 
-        <DocsFooter page={page}/>
+        <DocsFooter page={page} />
       </div>
     </>
   )
