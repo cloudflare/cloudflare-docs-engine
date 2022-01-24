@@ -4,11 +4,7 @@
   }
 
   .DocsMarkdown--table-wrap:hover table {
-    background-color: #fff;
-    z-index: 1;
-  }
-
-  [theme="dark"] .DocsMarkdown--table-wrap:hover table {
     background-color: var(--background-color);
+    z-index: 1;
   }
 }
