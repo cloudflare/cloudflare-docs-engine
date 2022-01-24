@@ -1,0 +1,14 @@
+@media (hover: hover) {
+  .DocsMarkdown--table-wrap:hover {
+    width: calc(100% + var(--docs-body-sidebar-width));
+  }
+
+  .DocsMarkdown--table-wrap:hover table {
+    background-color: #fff;
+    z-index: 1;
+  }
+
+  [theme="dark"] .DocsMarkdown--table-wrap:hover table {
+    background-color: var(--background-color);
+  }
+}
