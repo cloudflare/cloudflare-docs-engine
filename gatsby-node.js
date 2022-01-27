@@ -112,7 +112,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     }
 
     type Frontmatter {
-      pcx_content_type:String
+      pcxContentType: String
       demo: String
       breadcrumbs: Boolean
       difficulty: String
