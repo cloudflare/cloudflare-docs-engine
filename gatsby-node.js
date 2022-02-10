@@ -155,6 +155,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type AlgoliaSearch {
       indexName: String
       apiKey: String
+      appId: String
       algoliaOptions: AlgoliaOptions
     }
 

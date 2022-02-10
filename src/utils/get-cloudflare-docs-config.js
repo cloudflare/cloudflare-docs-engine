@@ -30,6 +30,7 @@ export default () => {
               search {
                 indexName
                 apiKey
+                appId
                 algoliaOptions {
                   facetFilters
                 }
