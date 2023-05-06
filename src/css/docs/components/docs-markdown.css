@@ -63,6 +63,10 @@
   opacity: .7;
 }
 
+.DocsMarkdown--link:has(img) .DocsMarkdown--link-external-icon {
+  display: none;
+}
+
 .DocsMarkdown--link:focus .DocsMarkdown--link-external-icon {
   opacity: 1;
 }
