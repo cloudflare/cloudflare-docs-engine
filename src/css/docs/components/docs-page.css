@@ -5,6 +5,24 @@ html[is-docs-page] body {
   overscroll-behavior-y: none;
 }
 
+.MiniflareWarningBanner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  z-index: 1000;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF6633;
+  color: white;
+}
+.MiniflareWarningBanner a {
+  color: inherit;
+}
+
 .DocsPage {
   --sixty-four-px-rem: 3.7647058824rem; /* 64 / 17 */
   --docs-content-gap: var(--sixty-four-px-rem);
@@ -25,7 +43,7 @@ html[is-docs-page] body {
   width: 100%;
   max-width: var(--docs-max-page-width);
   min-height: 100%;
-  margin: 0 auto;
+  margin: 100px auto 0 auto;
 }
 
 @media (max-width: 1439px) {

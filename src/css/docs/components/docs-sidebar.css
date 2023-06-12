@@ -1,6 +1,6 @@
 .DocsSidebar {
   position: fixed;
-  top: 0;
+  top: 100px;
   bottom: 0;
   --sidebar-background-color: var(--background-color);
   --content-indent: var(--docs-page-side-padding);

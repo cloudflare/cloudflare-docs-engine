@@ -52,6 +52,16 @@ const DocsPage = ({ pageContext: page, children, location }) => {
 
       <SkipNavLink contentId="docs-content" className="SkipNavLink"/>
 
+      <header className="MiniflareWarningBanner">
+        <p>
+          These docs are for Miniflare 2 which is no longer supported apart from
+          critical security updates.
+          <br />
+          Please see the <a href="/get-started/migrating">migration guide</a> to
+          upgrade to Miniflare 3.
+        </p>
+      </header>
+
       <div className="DocsPage">
         <DocsMobileHeader/>
         <DocsMobileTitleHeader/>
