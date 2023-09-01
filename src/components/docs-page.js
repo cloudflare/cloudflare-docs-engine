@@ -58,7 +58,7 @@ const DocsPage = ({ pageContext: page, children, location }) => {
           critical security updates.
           <br />
           Please see the <a href="/get-started/migrating">migration guide</a> to
-          upgrade to Miniflare 3.
+          upgrade to Miniflare 3, and the <a href="https://latest.miniflare.dev/">updated API docs</a>.
         </p>
       </header>
 
